@@ -1,0 +1,11 @@
+{
+    "cardMenu": {
+        "moveToGroupIds": [],
+        "options": [
+            {
+                "labelId": "toggleRotate",
+                "actionList": "toggleRotate"
+            }
+        ]
+    }
+}

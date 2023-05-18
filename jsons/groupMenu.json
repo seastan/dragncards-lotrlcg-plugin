@@ -1,0 +1,11 @@
+{
+    "groupMenu": {
+        "moveToGroupIds": [],
+        "options": [
+            {
+                "labelId": "shuffleGroupIntoDeck",
+                "actionList": "shuffleGroupIntoDeck"
+            }
+        ]
+    }
+}

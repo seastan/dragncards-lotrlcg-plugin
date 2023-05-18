@@ -1,0 +1,28 @@
+{
+    "topBarCounters": {
+        "shared": [
+            {
+                "labelId": "round",
+                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/time.png",
+                "gameProperty": "roundNumber"
+            },
+            {
+                "labelId": "freePVP",
+                "imageUrl": "",
+                "gameProperty": "victoryPointsBlue"
+            },
+            {
+                "labelId": "shadowVP",
+                "imageUrl": "",
+                "gameProperty": "victoryPointsRed"
+            }
+        ],
+        "player": [
+            {
+                "labelId": "Ring Tokens",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/RingBlue.png",
+                "playerProperty": "ringTokens"
+            }
+        ]
+    }
+}

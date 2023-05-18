@@ -1,0 +1,17 @@
+{
+    "cardBacks": {
+        "Shadow Card":    {"width": 0.72, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/RedCardBack.jpg"},
+        "Free Peoples Card":   {"width": 0.72, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/BlueCardBack.jpg"},
+        "Path 1":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack1.jpg"},
+        "Path 2":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack2.jpg"},
+        "Path 3":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack3.jpg"},
+        "Path 4":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack4.jpg"},
+        "Path 5":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack5.jpg"},
+        "Path 6":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack6.jpg"},
+        "Path 7":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack7.jpg"},
+        "Path 8":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack8.jpg"},
+        "Path 9":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/PathBack9.jpg"},
+        "Shadow Battleground":  {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/RedBattlegroundBack.jpg"},
+        "Free Peoples Battleground": {"width": 1.44, "height": 1.0, "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/cards/BlueBattlegroundBack.jpg"}
+    }
+}

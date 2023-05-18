@@ -1,0 +1,7 @@
+{
+    "pluginName": "WotR The Card Game",
+    "tutorialUrl": "youtube.com",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "firstPlayerImageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/RectangleBlue.png"
+}

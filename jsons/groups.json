@@ -1,0 +1,480 @@
+{
+    "groups": {
+        "sharedBattlegroundBlue": {
+            "labelId": "freePeoplesBattlegroundDeck", 
+            "tableLabelId": "",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "controller": "shared",
+                "inPlay": false,
+                "deckGroupId": "sharedBattlegroundRed"
+            }
+        },
+        "sharedBattlegroundRed": {
+            "labelId": "shadowBattlegroundDeck", 
+            "tableLabelId": "",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "controller": "shared",
+                "inPlay": false,
+                "deckGroupId": "sharedBattlegroundRed"
+            }
+        },
+        "sharedScoringBlue": {
+            "labelId": "freePeoplesScoringArea", 
+            "tableLabelId": "freePeoplesScoringArea",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": false
+            }
+        },
+        "sharedScoringRed": {
+            "labelId": "shadowScoringArea", 
+            "tableLabelId": "shadowScoringArea",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": false
+            }
+        },
+        "sharedPathDeck1": {
+            "labelId": "pathDeck1",
+            "tableLabelId": "pathDeck1",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck1"
+            }
+        },
+        "sharedPathDeck2": {
+            "labelId": "pathDeck2",
+            "tableLabelId": "pathDeck2",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck2"
+            }
+        },
+        "sharedPathDeck3": {
+            "labelId": "pathDeck3",
+            "tableLabelId": "pathDeck3",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck3"
+            }
+        },
+        "sharedPathDeck4": {
+            "labelId": "pathDeck4",
+            "tableLabelId": "pathDeck4",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck4"
+            }
+        },
+        "sharedPathDeck5": {
+            "labelId": "pathDeck5",
+            "tableLabelId": "pathDeck5",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck5"
+            }
+        },
+        "sharedPathDeck6": {
+            "labelId": "pathDeck6",
+            "tableLabelId": "pathDeck6",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck6"
+            }
+        },
+        "sharedPathDeck7": {
+            "labelId": "pathDeck7",
+            "tableLabelId": "pathDeck7",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck7"
+            }
+        },
+        "sharedPathDeck8": {
+            "labelId": "pathDeck8",
+            "tableLabelId": "pathDeck8",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck8"
+            }
+        },
+        "sharedPathDeck9": {
+            "labelId": "pathDeck9",
+            "tableLabelId": "pathDeck9",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "deckGroupId": "sharedPathDeck9"
+            }
+        },
+        "sharedSetAside": {
+            "labelId": "setAside", 
+            "tableLabelId": "setAside",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": false
+            }
+        },
+        "sharedActiveLocation1": {
+            "labelId": "activeLocation1", 
+            "tableLabelId": "location1",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveLocation2": {
+            "labelId": "activeLocation2", 
+            "tableLabelId": "location2",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveLocation3": {
+            "labelId": "activeLocation3", 
+            "tableLabelId": "location3",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveLocation4": {
+            "labelId": "activeLocation4", 
+            "tableLabelId": "location4",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveRed1": {
+            "labelId": "activeShadow1", 
+            "tableLabelId": "shadow1",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveRed2": {
+            "labelId": "activeShadow2", 
+            "tableLabelId": "shadow2",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveRed3": {
+            "labelId": "activeShadow3", 
+            "tableLabelId": "shadow3",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveRed4": {
+            "labelId": "activeShadow4", 
+            "tableLabelId": "shadow4",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveBlue1": {
+            "labelId": "activeFreePeoples1", 
+            "tableLabelId": "freePeoples1",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveBlue2": {
+            "labelId": "activeFreePeoples2", 
+            "tableLabelId": "freePeoples2",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveBlue3": {
+            "labelId": "activeFreePeoples3", 
+            "tableLabelId": "freePeoples3",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "sharedActiveBlue4": {
+            "labelId": "activeFreePeoples4", 
+            "tableLabelId": "freePeoples4",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true
+            }
+        },
+        "player1Hand": {
+            "labelId": "player1Hand", 
+            "tableLabelId": "hand",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "peeking": {"player1": true}
+            }
+        },
+        "player1Deck": {
+            "labelId": "player1Deck", 
+            "tableLabelId": "deck",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "controller": "player1",
+                "deckGroupId": "player1Deck",
+                "cycleGroupId": "player1Cycled",
+                "eliminateGroupId": "player1Eliminated"
+            }
+        },
+        "player1Cycled": {
+            "labelId": "player1Cycled", 
+            "tableLabelId": "cycled",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player1Eliminated": {
+            "labelId": "player1Eliminated", 
+            "tableLabelId": "eliminated",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player1Reserve": {
+            "labelId": "player1Reserve", 
+            "tableLabelId": "p1Reserve",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true,
+                "rotation": 90
+            }
+        },
+        "player2Hand": {
+            "labelId": "player2Hand", 
+            "tableLabelId": "hand",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "peeking": {"player2": true}
+            }
+        },
+        "player2Deck": {
+            "labelId": "player2Deck", 
+            "tableLabelId": "deck",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "controller": "player2",
+                "deckGroupId": "player2Deck",
+                "cycleGroupId": "player2Cycled",
+                "eliminateGroupId": "player2Eliminated"
+            }
+        },
+        "player2Cycled": {
+            "labelId": "player2Cycled", 
+            "tableLabelId": "cycled",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player2Eliminated": {
+            "labelId": "player2Eliminated", 
+            "tableLabelId": "eliminated",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player2Reserve": {
+            "labelId": "player2Reserve", 
+            "tableLabelId": "p2Reserve",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true,
+                "rotation": 90
+            }
+        },
+        "player3Hand": {
+            "labelId": "player3Hand", 
+            "tableLabelId": "hand",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "peeking": {"player3": true}
+            }
+        },
+        "player3Deck": {
+            "labelId": "player3Deck", 
+            "tableLabelId": "deck",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "controller": "player3",
+                "deckGroupId": "player3Deck",
+                "cycleGroupId": "player3Cycled",
+                "eliminateGroupId": "player3Eliminated"
+            }
+        },
+        "player3Cycled": {
+            "labelId": "player3Cycled", 
+            "tableLabelId": "cycled",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player3Eliminated": {
+            "labelId": "player3Eliminated", 
+            "tableLabelId": "eliminated",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player3Reserve": {
+            "labelId": "player3Reserve", 
+            "tableLabelId": "p3Reserve",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true,
+                "rotation": 90
+            }
+        },
+        "player4Hand": {
+            "labelId": "player4Hand", 
+            "tableLabelId": "hand",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "peeking": {"player4": true}
+            }
+        },
+        "player4Deck": {
+            "labelId": "player4Deck", 
+            "tableLabelId": "deck",
+            "canHaveAttachments": false,
+            "shuffleOnLoad": true,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false,
+                "controller": "player4",
+                "deckGroupId": "player4Deck",
+                "cycleGroupId": "player4Cycled",
+                "eliminateGroupId": "player4Eliminated"
+            }
+        },
+        "player4Cycled": {
+            "labelId": "player4Cycled", 
+            "tableLabelId": "cycled",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player4Eliminated": {
+            "labelId": "player4Eliminated", 
+            "tableLabelId": "eliminated",
+            "canHaveAttachments": false,
+            "onCardEnter": {
+                "currentSide": "B",
+                "inPlay": false
+            }
+        },
+        "player4Reserve": {
+            "labelId": "player4Reserve", 
+            "tableLabelId": "p4Reserve",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": true,
+                "rotation": 90
+            }
+        },
+        "sharedRules": {
+            "labelId": "rules", 
+            "tableLabelId": "rules",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+                "currentSide": "A",
+                "inPlay": false,
+                "rotation": 0
+            }
+        }
+    }
+}

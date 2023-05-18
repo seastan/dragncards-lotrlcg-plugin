@@ -1,0 +1,6 @@
+{
+    "playerProperties": {    
+        "ringTokens": {"type": "integer", "default": 1, "min": 0},
+        "team": {"type": "string", "default": ""}
+    }
+}

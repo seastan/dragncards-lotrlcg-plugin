@@ -1,0 +1,225 @@
+{
+    "actionLists": {
+        "trilogySetup": [
+            ["SET", "/numPlayers", 4],
+            ["SET", "/layoutVariants/bluePlayers", 2],
+            ["SET", "/layoutVariants/redPlayers", 2],
+            ["SET", "/cardsPerRound", {"player1": 3, "player2": 3, "player3": 3, "player4": 3}],
+            ["MOVE_STACKS", "player1Deck", "player1Hand", 7, "bottom"],
+            ["LOG", "player1 drew their starting hand."],
+            ["MOVE_STACKS", "player2Deck", "player2Hand", 7, "bottom"],
+            ["LOG", "player2 drew their starting hand."],
+            ["MOVE_STACKS", "player3Deck", "player3Hand", 7, "bottom"],
+            ["LOG", "player3 drew their starting hand."],
+            ["MOVE_STACKS", "player4Deck", "player4Hand", 7, "bottom"],
+            ["LOG", "player4 drew their starting hand."]
+        ],
+        "twoPlayerSetup": [
+            ["SET", "/numPlayers", 2],
+            ["SET", "/layoutVariants/bluePlayers", 1],
+            ["SET", "/layoutVariants/redPlayers", 1],
+            ["SET", "/cardsPerRound", {"player1": 4, "player2": 6}],
+            ["SET", "/player1CardsPerRound", 4],
+            ["SET", "/player2CardsPerRound", 6],
+            ["MOVE_STACKS", "player1Deck", "player1Hand", 4, "bottom"],
+            ["LOG", "player1 drew their starting hand."],
+            ["MOVE_STACKS", "player2Deck", "player2Hand", 6, "bottom"],
+            ["LOG", "player2 drew their starting hand."]
+        ],
+        "threePlayerSetup": [
+            ["SET", "/numPlayers", 3],
+            ["SET", "/layoutVariants/bluePlayers", 1],
+            ["SET", "/layoutVariants/redPlayers", 2],
+            ["SET", "/cardsPerRound", {"player1": 6, "player2": 4, "player3": 4}],
+            ["MOVE_STACKS", "player1Deck", "player1Hand", 6, "bottom"],
+            ["LOG", "player1 drew their starting hand."],
+            ["MOVE_STACKS", "player2Deck", "player2Hand", 7, "bottom"],
+            ["LOG", "player2 drew their starting hand."],
+            ["MOVE_STACKS", "player3Deck", "player3Hand", 7, "bottom"],
+            ["LOG", "player3 drew their starting hand."]
+        ],
+        "fellowshipSetup": [
+            ["SET", "/numPlayers", 3],
+            ["SET", "/layoutVariants/bluePlayers", 1],
+            ["SET", "/layoutVariants/redPlayers", 2],
+            ["SET", "/cardsPerRound", {"player1": 3, "player2": 4}],
+            ["MOVE_STACKS", "player1Deck", "player1Hand", 7, "bottom"],
+            ["LOG", "player1 drew their starting hand."],
+            ["MOVE_STACKS", "player2Deck", "player2Hand", 7, "bottom"],
+            ["LOG", "player2 drew their starting hand."]
+        ],
+        "newRound": [
+            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", 
+            [
+                ["COND",
+                ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_N", "Reserve"]],
+                ["SET", "/cardById/$CARD_ID/rotation", 0]
+                ]
+            ]
+            ],
+            ["DRAW_CARD", "$GAME.cardsPerRound.$PLAYER_N"],
+            ["LOG", "$PLAYER_N", " performed their draw step."],
+            ["COND",
+            ["EQUAL", "$PLAYER_N", "player1"],
+            [
+                ["SET", "/firstPlayer", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
+                ["INCREASE_VAL", "/roundNumber", 1],
+                ["LOG", "$PLAYER_N", " moved the first player token and increased the round number."]
+            ]
+            ]
+        ],
+        "pass": [
+            ["LOG", "$PLAYER_N", " passes."]
+        ],
+        "drawCard": [
+            ["DRAW_CARD"]
+        ],
+        "zeroTokens": [
+            ["SET", "$ACTIVE_TOKENS_PATH", {}],
+            ["LOG", "$PLAYER_N", " removed all tokens from ", "$ACTIVE_FACE.name", "."]
+        ],
+        "toggleRotate": [
+            ["COND",
+            ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 90], "$ACTIVE_CARD.inPlay"],
+            [
+                ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
+                ["LOG", "$PLAYER_N", " rotated ", "$ACTIVE_FACE.name", "."]
+            ],
+            ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], "$ACTIVE_CARD.inPlay"],
+            [
+                ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
+                ["LOG", "$PLAYER_N", " rotated ", "$ACTIVE_FACE.name", "."]
+            ]
+            ]
+        ],
+        "flipCard": [
+            ["COND",
+            ["EQUAL", "$ACTIVE_CARD.currentSide", "A"],
+            [
+                ["LOG", "$PLAYER_N", " flipped ", "$ACTIVE_FACE.name", " facedown."],
+                ["SET", "/$ACTIVE_CARD_PATH/currentSide", "B"]
+            ],
+            true,
+            [
+                ["SET", "/cardById/$ACTIVE_CARD_ID/currentSide", "A"],
+                ["LOG", "$PLAYER_N", " flipped ", "$ACTIVE_FACE.name", " faceup."]
+            ]
+            ]
+        ],
+        "targetCard": [
+            ["SET", "/cardById/$ACTIVE_CARD_ID/targeting/$PLAYER_N", true],
+            ["LOG", "$PLAYER_N", " targeted ", "$ACTIVE_FACE.name", "."]
+        ],
+        "addToScoringArea": [
+            ["COND",
+                ["EQUAL", "$PLAYER_DATA.team", "red"],
+                ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedScoringRed", 0, 0],
+                ["EQUAL", "$PLAYER_DATA.team", "blue"],
+                ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedScoringBlue", 0, 0]
+            ]
+        ],
+        "cycleCard": [
+            ["COND",
+            ["EQUAL", "$ACTIVE_CARD.cycleGroupId", null],
+            ["LOG", "$PLAYER_N", " failed to cycle ", "$ACTIVE_FACE.name", " because it is not associated with a cycle pile. Please drag the card instead."],
+            true,
+            [
+                ["LOG", "$PLAYER_N", " cycled ", "$ACTIVE_FACE.name", "."],
+                ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.cycleGroupId", 0, 0]
+            ]
+            ]
+        ],
+        "eliminateCard": [
+            ["COND",
+            ["EQUAL", "$ACTIVE_CARD.eliminateGroupId", null],
+            ["LOG", "$PLAYER_N", " failed to eliminate ", "$ACTIVE_FACE.name", " because it is not associated with an eliminated pile. Please drag the card instead."],
+            true,
+            [
+                ["LOG", "$PLAYER_N", " eliminated ", "$ACTIVE_FACE.name", "."],
+                ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.eliminateGroupId", 0, 0]
+            ]
+            ]
+        ],
+        "detach": [
+            ["COND",
+            ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
+            [
+                ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.groupId", ["ADD", "$ACTIVE_CARD.stackIndex", 1], 0],
+                ["LOG", "$PLAYER_N", " detached ", "$ACTIVE_FACE.name", "."]
+            ]
+            ]
+        ],
+        "togglePeeking": [
+            ["DEFINE", "$GROUP_ID", "$ACTIVE_CARD.groupId"],
+            ["DEFINE", "$GROUP_NAME", ["$GAME.groupById.$GROUP_ID.name"]],
+            ["COND",
+            ["EQUAL", "$ACTIVE_CARD.peeking.$PLAYER_N", true],
+            [
+                ["LOG", "$PLAYER_N", " stopped peeking at a card in ", "$GROUP_NAME"],
+                ["SET", "/cardById/$ACTIVE_CARD_ID/peeking/$PLAYER_N", false]
+            ],
+            true,
+            [
+                ["LOG", "$PLAYER_N", " started peeking at a card in ", "$GROUP_NAME"],
+                ["SET", "/cardById/$ACTIVE_CARD_ID/peeking/$PLAYER_N", true]
+            ]
+            ]
+        ],
+        "shuffleGroupIntoDeck": [
+            ["DEFINE", "$ORIG_GROUP", "$GAME.playerUi.dropdownMenu.group"],
+            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
+            ["COND", 
+                ["AND",
+                ["EQUAL", "$CARD.groupId", "$GAME.playerUi.dropdownMenu.group.id"],
+                ["NOT_EQUAL", "$CARD.deckGroupId", null]
+                ],
+                [
+                ["MOVE_CARD", "$CARD_ID", "$CARD.deckGroupId", 0, 0],
+                ["SHUFFLE_GROUP", "$CARD.deckGroupId"]
+                ]
+            ]
+            ],
+            ["LOG", "$PLAYER_N", " shuffled the cards in ", "$ORIG_GROUP.name", " into their corresponding decks."]
+        ],
+        "deleteCard": [
+            ["LOG", "$PLAYER_N", " deleted ", "$ACTIVE_FACE.name", "."],
+            ["DELETE", "$ACTIVE_CARD_ID"]
+        ],
+        "layoutPath1": [
+            ["SET", "/layoutVariants/path", 1]
+        ],
+        "layoutPath2": [
+            ["SET", "/layoutVariants/path", 2]
+        ],
+        "layoutPath3": [
+            ["SET", "/layoutVariants/path", 3]
+        ],
+        "layoutPath4": [
+            ["SET", "/layoutVariants/path", 4]
+        ],
+        "layoutPath5": [
+            ["SET", "/layoutVariants/path", 5]
+        ],
+        "layoutPath6": [
+            ["SET", "/layoutVariants/path", 6]
+        ],
+        "layoutPath7": [
+            ["SET", "/layoutVariants/path", 7]
+        ],
+        "layoutPath8": [
+            ["SET", "/layoutVariants/path", 8]
+        ],
+        "layoutPath9": [
+            ["SET", "/layoutVariants/path", 9]
+        ],
+        "layoutLocation2": [
+            ["SET", "/layoutVariants/location", 2]
+        ],
+        "layoutLocation3": [
+            ["SET", "/layoutVariants/location", 3]
+        ],
+        "layoutLocation4": [
+            ["SET", "/layoutVariants/location", 4]
+        ]
+    }
+}

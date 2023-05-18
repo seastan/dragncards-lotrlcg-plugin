@@ -1,0 +1,29 @@
+{
+    "phases": [
+        {
+            "phaseId": "Location",
+            "labelId" : "location",
+            "height" : "10%"
+        },
+        {
+            "phaseId": "Action",
+            "labelId" : "action",
+            "height" : "10%"
+        },
+        {
+            "phaseId": "Combat",
+            "labelId" : "combat",
+            "height" : "60%"
+        },
+        {
+            "phaseId": "Victory",
+            "labelId" : "victory",
+            "height" : "10%"
+        },
+        {
+            "phaseId": "Draw",
+            "labelId" : "drawPhase",
+            "height" : "10%"
+        }
+    ]
+}

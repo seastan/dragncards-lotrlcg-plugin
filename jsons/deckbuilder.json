@@ -1,0 +1,37 @@
+{
+    "deckbuilder": {
+        "addButtons": [1,2,3],
+        "colorKey": "cardBack",
+        "colorValues": {
+            "Shadow Card": "#CB0707",
+            "Free Peoples Card": "#007BBD",
+            "Shadow Battleground": "#CB0707",
+            "Free Peoples Battleground": "#007BBD"
+        },
+        "columns": [
+            {"propName": "name", "propLabel": "Name"},
+            {"propName": "faction", "propLabel": "Faction"},
+            {"propName": "type", "propLabel": "Type"},
+            {"propName": "playerName", "propLabel": "Player Name"},
+            {"propName": "cardNumber", "propLabel": "Number"}
+        ],
+        "spawnGroups": [
+            {"id": "playerNDeck", "labelId": "myDeck"},
+            {"id": "player1Deck", "labelId": "player1Deck"},
+            {"id": "player2Deck", "labelId": "player2Deck"},
+            {"id": "player3Deck", "labelId": "player3Deck"},
+            {"id": "player4Deck", "labelId": "player4Deck"},
+            {"id": "sharedBattlegroundBlue","labelId": "freePeoplesBattlegroundDeck"},
+            {"id": "sharedBattlegroundRed", "labelId": "shadowBattlegroundDeck"},
+            {"id": "sharedPathDeck1", "labelId": "pathDeck1"},
+            {"id": "sharedPathDeck2", "labelId": "pathDeck2"},
+            {"id": "sharedPathDeck3", "labelId": "pathDeck3"},
+            {"id": "sharedPathDeck4", "labelId": "pathDeck4"},
+            {"id": "sharedPathDeck5", "labelId": "pathDeck5"},
+            {"id": "sharedPathDeck6", "labelId": "pathDeck6"},
+            {"id": "sharedPathDeck7", "labelId": "pathDeck7"},
+            {"id": "sharedPathDeck8", "labelId": "pathDeck8"},
+            {"id": "sharedPathDeck9", "labelId": "pathDeck9"}
+        ]
+    }
+}

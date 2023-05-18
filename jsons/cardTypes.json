@@ -1,0 +1,12 @@
+{
+    "cardTypes": {
+        "Army":          {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "Character":     {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "Item":          {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "Event":         {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "Path":          {"width": 1.44, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "Battleground":  {"width": 1.44, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "Rules":         {"width": 1.44, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
+        "_Other":        {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]}
+    }
+}

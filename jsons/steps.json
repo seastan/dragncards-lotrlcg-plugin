@@ -1,0 +1,19 @@
+{
+    "steps": [
+        {"stepId": "1.1", "phaseId": "Location", "labelId": "step-1.1"},
+        {"stepId": "1.2", "phaseId": "Location", "labelId": "step-1.2"},
+        {"stepId": "2.1", "phaseId": "Action",   "labelId": "step-2.1"},
+        {"stepId": "3.0", "phaseId": "Combat",   "labelId": "step-3.0"},
+        {"stepId": "3.1", "phaseId": "Combat",   "labelId": "step-3.1"},
+        {"stepId": "3.2", "phaseId": "Combat",   "labelId": "step-3.2"},
+        {"stepId": "3.3", "phaseId": "Combat",   "labelId": "step-3.3"},
+        {"stepId": "3.4", "phaseId": "Combat",   "labelId": "step-3.4"},
+        {"stepId": "3.5", "phaseId": "Combat",   "labelId": "step-3.5"},
+        {"stepId": "3.6", "phaseId": "Combat",   "labelId": "step-3.6"},
+        {"stepId": "3.7", "phaseId": "Combat",   "labelId": "step-3.7"},
+        {"stepId": "4.1", "phaseId": "Victory",  "labelId": "step-4.1"},
+        {"stepId": "4.2", "phaseId": "Victory",  "labelId": "step-4.2"},
+        {"stepId": "5.1", "phaseId": "Draw",     "labelId": "step-5.1"},
+        {"stepId": "5.2", "phaseId": "Draw",     "labelId": "step-5.2"}
+    ]
+}

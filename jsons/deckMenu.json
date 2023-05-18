@@ -1,0 +1,10 @@
+{
+    "deckMenu": {
+        "deckLists": [
+            {"deckListId": "Trilogy", "postLoadActionList": "trilogySetup"},
+            {"deckListId": "Two-Player Duel", "postLoadActionList": "twoPlayerSetup"},
+            {"deckListId": "Three-Player Duel", "postLoadActionList": "threePlayerSetup"},
+            {"deckListId": "The Fellowship of the Ring", "postLoadActionList": "fellowshipSetup"}
+        ]
+    }
+}

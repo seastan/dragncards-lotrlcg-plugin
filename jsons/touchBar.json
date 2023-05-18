@@ -1,0 +1,141 @@
+{
+    "touchBar": [
+        [
+            {
+                "id": "removeTokens",
+                "labelId": "removeTokens",
+                "actionType": "card",
+                "actionListId": "zeroTokens"
+            },
+            {
+                "id": "incrementBlueAttack",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/AttackBlue.png",
+                "actionType": "token",
+                "tokenType": "attackBlue"
+            },
+            {
+                "id": "incrementBlueDefense",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/DefenseBlue.png",
+                "actionType": "token",
+                "tokenType": "defenseBlue"
+            },
+            {
+                "id": "incrementRedAttack",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/AttackRed.png",
+                "actionType": "token",
+                "tokenType": "attackRed"
+            },
+            {
+                "id": "incrementRedDefense",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/DefenseRed.png",
+                "actionType": "token",
+                "tokenType": "defenseRed"
+            },
+            {
+                "id": "incrementBluePath",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/PathBlue.png",
+                "actionType": "token",
+                "tokenType": "pathBlue"
+            },
+            {
+                "id": "incrementRedPath",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/PathRed.png",
+                "actionType": "token",
+                "tokenType": "pathRed"
+            },
+            {
+                "id": "incrementCorruption",
+                "labelId": "",
+                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/Corruption.png",
+                "actionType": "token",
+                "tokenType": "corruption"
+            },
+            {
+                "id": "toggleRotate",
+                "labelId": "rotate",
+                "actionType": "card",
+                "actionListId": "toggleRotate"
+            },
+            {
+                "id": "flip",
+                "labelId": "flip",
+                "actionType": "card",
+                "actionListId": "flipCard"
+            },
+            {
+                "id": "cycle",
+                "labelId": "cycle",
+                "actionType": "card",
+                "actionListId": "cycleCard"
+            },
+            {
+                "id": "eliminate",
+                "labelId": "eliminate",
+                "actionType": "card",
+                "actionListId": "eliminateCard"
+            },
+            {
+                "id": "target",
+                "labelId": "target",
+                "actionType": "card",
+                "actionListId": "targetCard"
+            },
+            {
+                "id": "claim",
+                "labelId": "claim",
+                "actionType": "card",
+                "actionListId": "addToScoringArea"
+            },
+            {
+                "id": "drawArrow",
+                "labelId": "drawArrow",
+                "actionType": "card",
+                "actionListId": "drawArrow"
+            }
+        ],
+        [
+            {
+                "id": "drawCard",
+                "labelId": "draw",
+                "actionType": "game",
+                "actionListId": "drawCard"
+            },
+            {
+                "id": "clearTargets",
+                "labelId": "clearTargets",
+                "actionType": "game",
+                "actionListId": "clearTargets"
+            },
+            {
+                "id": "undo",
+                "labelId": "undo",
+                "actionType": "engine",
+                "actionId": "undo"
+            },
+            {
+                "id": "undoMany",
+                "labelId": "undoMany",
+                "actionType": "engine",
+                "actionId": "undoMany"
+            },
+            {
+                "id": "nextStep",
+                "labelId": "nextStep",
+                "actionType": "game",
+                "actionListId": "nextStep"
+            },
+            {
+                "id": "save",
+                "labelId": "save",
+                "actionType": "engine",
+                "actionId": "save"
+            }
+        ]
+    ]
+}

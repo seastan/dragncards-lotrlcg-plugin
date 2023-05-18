@@ -1,0 +1,26 @@
+{
+    "hotkeys": {
+        "token": [
+            {"key": "1", "tokenType": "attackBlue", "labelId": "attackBlueIcon"},
+            {"key": "2", "tokenType": "defenseBlue", "labelId": "defenseBlueIcon"},
+            {"key": "3", "tokenType": "pathBlue", "labelId": "pathBlueIcon"},
+            {"key": "4", "tokenType": "attackRed", "labelId": "attackRedIcon"},
+            {"key": "5", "tokenType": "defenseRed", "labelId": "defenseRedIcon"},
+            {"key": "6", "tokenType": "pathRed", "labelId": "pathRedIcon"},
+            {"key": "7", "tokenType": "corruption", "labelId": "corruptionIcon"}
+        ],
+        "game": [
+            {"key": "D", "actionListId": "drawCard", "labelId": "drawCard"},
+            {"key": "P", "actionListId": "pass", "labelId": "pass"}
+        ],
+        "card": [
+            {"key": "Shift+N", "actionListId": "newRound", "labelId": "drawCardsAndStartNewRound"},
+            {"key": "F", "actionListId": "flipCard", "labelId": "flip"},
+            {"key": "T", "actionListId": "targetCard", "labelId": "targetCard"},
+            {"key": "S", "actionListId": "addToScoringArea", "labelId": "addToScoringArea"},
+            {"key": "C", "actionListId": "cycleCard", "labelId": "cycleCard"},
+            {"key": "E", "actionListId": "eliminateCard", "labelId": "eliminateCard"},
+            {"key": "R", "actionListId": "toggleRotate", "labelId": "rotateCard"}
+        ]
+    }
+}
