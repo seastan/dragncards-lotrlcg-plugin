@@ -7,21 +7,26 @@
                 "gameProperty": "roundNumber"
             },
             {
-                "labelId": "freePVP",
-                "imageUrl": "",
-                "gameProperty": "victoryPointsBlue"
+                "labelId": "stagingThreat",
+                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/threat.png",
+                "gameProperty": "stagingThreat"
             },
             {
-                "labelId": "shadowVP",
-                "imageUrl": "",
-                "gameProperty": "victoryPointsRed"
+                "labelId": "stagingProgress",
+                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/progress.png",
+                "gameProperty": "questProgress"
             }
         ],
         "player": [
             {
-                "labelId": "Ring Tokens",
-                "imageUrl": "https://dragncards-wotr.s3.amazonaws.com/tokens/RingBlue.png",
-                "playerProperty": "ringTokens"
+                "labelId": "threat",
+                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/threat.png",
+                "playerProperty": "threat"
+            },
+            {
+                "labelId": "willpower",
+                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/willpoer.png",
+                "playerProperty": "willpower"
             }
         ]
     }

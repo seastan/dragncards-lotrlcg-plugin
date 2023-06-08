@@ -1,5 +1,38 @@
 {
     "pluginMenu": {
-        
+        "options": [
+            { 
+                "labelId": "cardsPerRound",
+                "actionList": "setCardsDrawn"
+            },
+            {
+                "labelId": "normalQuest",
+                "actionList": "setQuestNormal"
+            },
+            { 
+                "labelId": "battleQuest",
+                "actionList": "setQuestBattle"
+            },
+            {
+                "labelId": "siegeQuest",
+                "actionList": "setQuestSiege"
+            },
+            {
+                "labelId": "setupEscapeFromMountGram",
+                "actionList": "setupEscapeFromMountGram"
+            },
+            {
+                "labelId": "setupToCatchAnOrc",
+                "actionList": "setupToCatchAnOrc"
+            },
+            {
+                "labelId": "setupGlitteringCaves",
+                "actionList": "setupGlitteringCaves"
+            },
+            {
+                "labelId": "setupTheFortressOfNurn",
+                "actionList": "setupTheFortressOfNurn"
+            }
+        ]
     }
 }
