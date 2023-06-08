@@ -1,6 +1,8 @@
 {
-    "playerProperties": {    
-        "ringTokens": {"type": "integer", "default": 1, "min": 0},
-        "team": {"type": "string", "default": ""}
+    "playerProperties": {
+        "willpower": {"type": "integer", "default": 0, "min": 0},
+        "threat": {"type": "integer", "default": 0, "min": 0},
+        "cardsDrawn": {"type": "integer", "default": 1, "min": 0},
+        "refreshed": {"type": "boolean", "default": false}
     }
 }

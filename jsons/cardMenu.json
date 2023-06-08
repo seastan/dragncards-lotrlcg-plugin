@@ -3,8 +3,8 @@
         "moveToGroupIds": [],
         "options": [
             {
-                "labelId": "toggleRotate",
-                "actionList": "toggleRotate"
+                "labelId": "toggleExhaust",
+                "actionList": "toggleExhaust"
             }
         ]
     }

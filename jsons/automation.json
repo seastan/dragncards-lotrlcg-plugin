@@ -1,45 +1,4 @@
 {
     "automation": {
-        "a6cdd8d3-cd6e-4d1a-908b-2f788fbb357e": {
-            "_labelId": "Aragorn",
-            "rules": [
-                { 
-                    "type": "trigger", 
-                    "listenTo": [["cardById", "$THIS_ID", "inPlay"]],
-                    "condition": ["AND", "$THIS.inPlay", ["PREV", ["NOT", "$THIS.inPlay"]]],
-                    "then": [
-                        ["DEFINE", "$TARGET", ["ONE_CARD", "$CARD", ["EQUAL", "$CARD.sides.A.name", "Strider"]]],
-                        ["MOVE_CARD", "$TARGET.id", ["JOIN_STRING", "$TARGET.controller", "Eliminated"], 0, 0],
-                        ["LOG", "Strider was removed from the game."]
-                    ]
-                },
-                { 
-                    "type": "passive", 
-                    "listenTo": [["cardById", "*", "groupId"], ["cardById", "*", "inPlay"], ["cardById", "*", "currentSide"]],
-                    "condition": [
-                    "AND", 
-                        "$THIS.inPlay",
-                        ["NOT_EQUAL",
-                        ["ONE_CARD", 
-                            "$CARD",
-                            ["AND",
-                            ["EQUAL", "$CARD.groupId", "$THIS.groupId"],
-                            ["EQUAL", "$CARD.currentFace.type", "Army"]
-                            ]
-                        ],
-                        null
-                        ]
-                    ],
-                    "onDo": [
-                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attackBlue", 1],
-                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/defenseBlue", 1]
-                    ],
-                    "offDo": [
-                        ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attackBlue", 1],
-                        ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/defenseBlue", 1]
-                    ]
-                }
-            ]
-        }
     }
 }

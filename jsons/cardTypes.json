@@ -1,12 +1,23 @@
 {
     "cardTypes": {
-        "Army":          {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "Character":     {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "Item":          {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "Event":         {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "Path":          {"width": 1.44, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "Battleground":  {"width": 1.44, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "Rules":         {"width": 1.44, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]},
-        "_Other":        {"width": 0.72, "height": 1.0, "tokens": ["attackBlue","defenseBlue","attackRed","defenseRed","pathRed","pathBlue","corruption"]}
+        "Ally":           {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints"]},
+        "Attachment":     {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints"]},
+        "Event":          {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints"]},
+        "Hero":           {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints"]},
+        "Contract":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints"]},
+        "Objective Ally": {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints"]},
+        "Treachery":      {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Campaign":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Enemy":          {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Location":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Nightmare":      {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Objective":      {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Presentation":   {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Quest":          {"width":  1.0, "height": 0.72,"tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Rules":          {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Ship-Enemy":     {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Side Quest":     {"width":  1.0, "height": 0.72,"tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "Treasure":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]},
+        "_Other":         {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints"]}
     }
 }

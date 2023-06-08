@@ -1,374 +1,188 @@
 
 {
     "labels": {
-        "labelMarkAsFreePeoplesVictory": {
-            "English": "Mark as Free Peoples Victory"
-        },
-        "labelMarkAsShadowVictory": {
-            "English": "Mark as Shadow Victory"
-        },
-        "labelMarkAsIncomplete": {
-            "English": "Mark as Incomplete"
-        },
-        "delete": {
-            "English": "Delete"
-        },
-        "shuffleGroupIntoDeck": {
-            "English": "Shuffle into deck"
-        },
-        "myDeck": {
-            "English": "My Deck"
-        },
-        "freePeoplesBattlegroundDeck": {
-            "English": "Free Peoples Battleground Deck"
-        },
-        "shadowBattlegroundDeck": {
-            "English": "Shadow Battleground Deck"
-        },
-        "pathDeck1": {
-            "English": "Path Deck 1"
-        },
-        "pathDeck2": {
-            "English": "Path Deck 2"
-        },
-        "pathDeck3": {
-            "English": "Path Deck 3"
-        },
-        "pathDeck4": {
-            "English": "Path Deck 4"
-        },
-        "pathDeck5": {
-            "English": "Path Deck 5"
-        },
-        "pathDeck6": {
-            "English": "Path Deck 6"
-        },
-        "pathDeck7": {
-            "English": "Path Deck 7"
-        },
-        "pathDeck8": {
-            "English": "Path Deck 8"
-        },
-        "pathDeck9": {
-            "English": "Path Deck 9"
-        },
-        "freePeoplesScoringArea": {
-            "English": "Free Peoples Scoring Area"
-        },
-        "shadowScoringArea": {
-            "English": "Shadow Scoring Area"
-        },
-        "drawCard": {
+        "drawACard": {
             "English": "Draw a card"
         },
-        "pass": {
-            "English": "Pass"
+        "revealEncounterCard": {
+            "English": "Reveal encounter card"
         },
-        "drawCardsAndStartNewRound": {
-            "English": "Draw cards and start new round"
+        "revealFacedownEncounterCard": {
+            "English": "Reveal facedown encounter card"
+        },
+        "revealCardFromSecondEncounterDeck": {
+            "English": "Reveal card from second encounter deck"
+        },
+        "revealFacedownCardFromSecondEncounterDeck": {
+            "English": "Reveal facedown card from second encounter deck"
+        },
+        "drawCardAndGainResourcesIfHostIncrementRound": {
+            "English": "Draw card and gain resources. If host, increment round."
+        },
+        "calculateScore": {
+            "English": "Calculate score"
+        },
+        "refreshAndRaiseThreatIfHostMove1StPlayerToken": {
+            "English": "Refresh and raise threat. If host, move 1st player token."
+        },
+        "dealAllShadowCards": {
+            "English": "Deal all shadow cards"
+        },
+        "discardAllShadowCards": {
+            "English": "Discard all shadow cards"
+        },
+        "raiseThreatBy1": {
+            "English": "Raise threat by 1"
+        },
+        "saveGame": {
+            "English": "Save game"
+        },
+        "clearTargetsArrows": {
+            "English": "Clear targets/arrows"
+        },
+        "undoOneAction": {
+            "English": "Undo one action"
+        },
+        "redoOneAction": {
+            "English": "Redo one action"
+        },
+        "moveToPreviousGameStep": {
+            "English": "Move to previous game step"
+        },
+        "moveToNextGameStep": {
+            "English": "Move to next game step"
+        },
+        "moveToPreviousPhase": {
+            "English": "Move to previous phase"
+        },
+        "moveToNextPhase": {
+            "English": "Move to next phase"
+        },
+        "ifHostEnableMultiplayerHotkeys": {
+            "English": "If host, enable multiplayer hotkeys"
+        },
+        "pressShiftNForAllPlayers": {
+            "English": "Press Shift+N for all players"
+        },
+        "pressShiftRForAllPlayers": {
+            "English": "Press Shift+R for all players"
+        },
+        "raiseThreatBy1ForAllPlayers": {
+            "English": "Raise threat by 1 for all players"
+        },
+        "reduceThreatBy1ForAllPlayers": {
+            "English": "Reduce threat by 1 for all players"
+        },
+        "drawCardOnBehalfOfNextEmptySeat": {
+            "English": "Draw card on behalf of next empty seat"
+        },
+        "exhaustReadyIfLocationMakeActive": {
+            "English": "Exhaust / ready. If location, make active."
+        },
+        "detach": {
+            "English": "Detach"
         },
         "flip": {
             "English": "Flip"
         },
+        "shuffleIntoOwnerSDeck": {
+            "English": "Shuffle into owner's deck"
+        },
+        "commitUncommitFromQuest": {
+            "English": "Commit / uncommit from quest"
+        },
+        "commitUncommitFromQuestWithoutExhaustingReadying": {
+            "English": "Commit / uncommit from quest without exhausting / readying"
+        },
+        "dealShadowCard": {
+            "English": "Deal shadow card"
+        },
         "targetCard": {
             "English": "Target card"
         },
-        "addToScoringArea": {
-            "English": "Add to scoring area"
+        "addToVictoryDisplay": {
+            "English": "Add to victory display"
         },
-        "cycleCard": {
-            "English": "Cycle card"
+        "discard": {
+            "English": "Discard"
         },
-        "eliminateCard": {
-            "English": "Eliminate card"
+        "discardAllOtherCardsInThisCardSStack": {
+            "English": "Discard all other cards in this card's stack"
         },
-        "removeTokens": {
-            "English": "Remove Tokens"
+        "sendAttachmentToBackOfStack": {
+            "English": "Send attachment to back of stack"
         },
-        "rotate": {
-            "English": "Rotate"
+        "triggerAbilityOnlyAvailableForSelectCards": {
+            "English": "Trigger ability (only available for select cards)"
         },
-        "toggleRotate": {
-            "English": "Toggle rotate"
+        "layout1Player": {
+            "English": "1 player"
         },
-        "eliminate": {
-            "English": "Eliminate"
+        "layout2Player": {
+            "English": "2 players"
         },
-        "target": {
-            "English": "Target"
+        "layout3Player": {
+            "English": "3 players"
         },
-        "claim": {
-            "English": "Claim"
+        "layout4Player": {
+            "English": "4 players"
         },
-        "drawArrow": {
-            "English": "Draw Arrow"
+        "layout1PlayerExtra3": {
+            "English": "1 player (3 extra rows)"
         },
-        "draw": {
-            "English": "Draw"
+        "layout2PlayerExtra3": {
+            "English": "2 players (3 extra rows)"
         },
-        "save": {
-            "English": "Save"
+        "layout3PlayerExtra3": {
+            "English": "3 players (3 extra rows)"
         },
-        "cycle": {
-            "English": "Cycle"
+        "layout4PlayerExtra3": {
+            "English": "4 players (3 extra rows)"
         },
-        "location": {
-            "English": "Location"
+        "layout1PlayerExtra4": {
+            "English": "1 player (4 extra rows)"
         },
-        "action": {
-            "English": "Action"
+        "layout2PlayerExtra4": {
+            "English": "2 players (4 extra rows)"
+        },
+        "layout3PlayerExtra4": {
+            "English": "3 players (4 extra rows)"
+        },
+        "layout4PlayerExtra4": {
+            "English": "4 players (4 extra rows)"
+        },
+        "alpha": {
+            "English": "α"
+        },
+        "resource": {
+            "English": "Resource"
+        },
+        "planning": {
+            "English": "Planning"
+        },
+        "quest": {
+            "English": "Quest"
+        },
+        "travel": {
+            "English": "Travel"
+        },
+        "encounter": {
+            "English": "Encounter"
         },
         "combat": {
             "English": "Combat"
         },
-        "victory": {
-            "English": "Victory"
+        "refresh": {
+            "English": "Refresh"
         },
-        "drawPhase": {
-            "English": "Draw"
+        "omega": {
+            "English": "Ω"
         },
-        "attackBlueIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/AttackBlue.png)"
+        "": {
+            "English": ""
         },
-        "defenseBlueIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/DefenseBlue.png)"
+        "": {
+            "English": ""
         },
-        "pathBlueIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/PathBlue.png)"
-        },
-        "attackRedIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/AttackRed.png)"
-        },
-        "defenseRedIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/DefenseRed.png)"
-        },
-        "pathRedIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/PathRed.png)"
-        },
-        "corruptionIcon": {
-            "English": "icon(https://dragncards-wotr.s3.amazonaws.com/tokens/Corruption.png)"
-        },
-        "rotateCard": {
-            "English": "Rotate card"
-        },
-        "round": {
-            "English": "Round"
-        },
-        "freePVP": {
-            "English": "Free P. VP"
-        },
-        "shadowVP": {
-            "English": "Shadow VP"
-        },
-        "standard": {
-            "English": "Standard"
-        },
-        "setAside": {
-            "English": "Set Aside"
-        },
-        "activeLocation1": {
-            "English": "Active Location 1"
-        },
-        "location1": {
-            "English": "Location 1"
-        },
-        "activeLocation2": {
-            "English": "Active Location 2"
-        },
-        "location2": {
-            "English": "Location 2"
-        },
-        "activeLocation3": {
-            "English": "Active Location 3"
-        },
-        "location3": {
-            "English": "Location 3"
-        },
-        "activeLocation4": {
-            "English": "Active Location 4"
-        },
-        "location4": {
-            "English": "Location 4"
-        },
-        "activeShadow1": {
-            "English": "Active Shadow 1"
-        },
-        "shadow1": {
-            "English": "Shadow 1"
-        },
-        "activeShadow2": {
-            "English": "Active Shadow 2"
-        },
-        "shadow2": {
-            "English": "Shadow 2"
-        },
-        "activeShadow3": {
-            "English": "Active Shadow 3"
-        },
-        "shadow3": {
-            "English": "Shadow 3"
-        },
-        "activeShadow4": {
-            "English": "Active Shadow 4"
-        },
-        "shadow4": {
-            "English": "Shadow 4"
-        },
-        "activeFreePeoples1": {
-            "English": "Active Free Peoples 1"
-        },
-        "freePeoples1": {
-            "English": "Free Peoples 1"
-        },
-        "activeFreePeoples2": {
-            "English": "Active Free Peoples 2"
-        },
-        "freePeoples2": {
-            "English": "Free Peoples 2"
-        },
-        "activeFreePeoples3": {
-            "English": "Active Free Peoples 3"
-        },
-        "freePeoples3": {
-            "English": "Free Peoples 3"
-        },
-        "activeFreePeoples4": {
-            "English": "Active Free Peoples 4"
-        },
-        "freePeoples4": {
-            "English": "Free Peoples 4"
-        },
-        "player1Hand": {
-            "English": "Player 1 Hand"
-        },
-        "hand": {
-            "English": "Hand"
-        },
-        "player1Deck": {
-            "English": "Player 1 Deck"
-        },
-        "deck": {
-            "English": "Deck"
-        },
-        "player1Cycled": {
-            "English": "Player 1 Cycled"
-        },
-        "cycled": {
-            "English": "Cycled"
-        },
-        "player1Eliminated": {
-            "English": "Player 1 Eliminated"
-        },
-        "eliminated": {
-            "English": "Eliminated"
-        },
-        "player1Reserve": {
-            "English": "Player 1 Reserve"
-        },
-        "p1Reserve": {
-            "English": "P1 Reserve"
-        },
-        "player2Hand": {
-            "English": "Player 2 Hand"
-        },
-        "player2Deck": {
-            "English": "Player 2 Deck"
-        },
-        "player2Cycled": {
-            "English": "Player 2 Cycled"
-        },
-        "player2Eliminated": {
-            "English": "Player 2 Eliminated"
-        },
-        "player2Reserve": {
-            "English": "Player 2 Reserve"
-        },
-        "p2Reserve": {
-            "English": "P2 Reserve"
-        },
-        "player3Hand": {
-            "English": "Player 3 Hand"
-        },
-        "player3Deck": {
-            "English": "Player 3 Deck"
-        },
-        "player3Cycled": {
-            "English": "Player 3 Cycled"
-        },
-        "player3Eliminated": {
-            "English": "Player 3 Eliminated"
-        },
-        "player3Reserve": {
-            "English": "Player 3 Reserve"
-        },
-        "p3Reserve": {
-            "English": "P3 Reserve"
-        },
-        "player4Hand": {
-            "English": "Player 4 Hand"
-        },
-        "player4Deck": {
-            "English": "Player 4 Deck"
-        },
-        "player4Cycled": {
-            "English": "Player 4 Cycled"
-        },
-        "player4Eliminated": {
-            "English": "Player 4 Eliminated"
-        },
-        "player4Reserve": {
-            "English": "Player 4 Reserve"
-        },
-        "p4Reserve": {
-            "English": "P4 Reserve"
-        },
-        "rules": {
-            "English": "Rules"
-        },
-        "step-1.1": {
-            "English": "1.1: First player activates 1 battleground"
-        },
-        "step-1.2": {
-            "English": "1.2: First player activates 1 path"
-        },
-        "step-2.1": {
-            "English": "2.1: Players take turns taking actions or passing"
-        },
-        "step-3.0": {
-            "English": "3.0: Starting player decides the order the battleground and path combats are resolved"
-        },
-        "step-3.1": {
-            "English": "3.1: Count the number of attacking icons"
-        },
-        "step-3.2": {
-            "English": "3.2: Subtract battleground or path icons"
-        },
-        "step-3.3": {
-            "English": "3.3: Discard defending cards to subtract more icons"
-        },
-        "step-3.4": {
-            "English": "3.4: Leftover defending cards are cycled"
-        },
-        "step-3.5": {
-            "English": "3.5: All attacking cards are eliminated"
-        },
-        "step-3.6": {
-            "English": "3.6: If path, Shadow team gains corruption tokens equal to excess attack"
-        },
-        "step-3.7": {
-            "English": "3.7: Winning side takes control (Shadow team takes control of paths facedown)"
-        },
-        "step-4.1": {
-            "English": "4.1: If the difference between scores is 10 or more, the team with the higher score wins"
-        },
-        "step-4.2": {
-            "English": "4.2: If the last path combat has been resolved, the team with the higher score wins"
-        },
-        "step-5.1": {
-            "English": "5.1: Draw cards"
-        },
-        "step-5.2": {
-            "English": "5.2: Pass the starting player token to the next player"
-        }
     }
 }

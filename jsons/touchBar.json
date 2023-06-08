@@ -5,7 +5,7 @@
                 "id": "removeTokens",
                 "labelId": "removeTokens",
                 "actionType": "card",
-                "actionListId": "zeroTokens"
+                "actionList": "zeroTokens"
             },
             {
                 "id": "incrementBlueAttack",
@@ -60,43 +60,43 @@
                 "id": "toggleRotate",
                 "labelId": "rotate",
                 "actionType": "card",
-                "actionListId": "toggleRotate"
+                "actionList": "toggleRotate"
             },
             {
                 "id": "flip",
                 "labelId": "flip",
                 "actionType": "card",
-                "actionListId": "flipCard"
+                "actionList": "flipCard"
             },
             {
                 "id": "cycle",
                 "labelId": "cycle",
                 "actionType": "card",
-                "actionListId": "cycleCard"
+                "actionList": "cycleCard"
             },
             {
                 "id": "eliminate",
                 "labelId": "eliminate",
                 "actionType": "card",
-                "actionListId": "eliminateCard"
+                "actionList": "eliminateCard"
             },
             {
                 "id": "target",
                 "labelId": "target",
                 "actionType": "card",
-                "actionListId": "targetCard"
+                "actionList": "targetCard"
             },
             {
                 "id": "claim",
                 "labelId": "claim",
                 "actionType": "card",
-                "actionListId": "addToScoringArea"
+                "actionList": "addToScoringArea"
             },
             {
                 "id": "drawArrow",
                 "labelId": "drawArrow",
                 "actionType": "card",
-                "actionListId": "drawArrow"
+                "actionList": "drawArrow"
             }
         ],
         [
@@ -104,13 +104,13 @@
                 "id": "drawCard",
                 "labelId": "draw",
                 "actionType": "game",
-                "actionListId": "drawCard"
+                "actionList": "drawCard"
             },
             {
                 "id": "clearTargets",
                 "labelId": "clearTargets",
                 "actionType": "game",
-                "actionListId": "clearTargets"
+                "actionList": "clearTargets"
             },
             {
                 "id": "undo",
@@ -128,7 +128,7 @@
                 "id": "nextStep",
                 "labelId": "nextStep",
                 "actionType": "game",
-                "actionListId": "nextStep"
+                "actionList": "nextStep"
             },
             {
                 "id": "save",
