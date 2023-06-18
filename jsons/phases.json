@@ -2,47 +2,47 @@
     "phases": [
         {
             "phaseId": "Beginning",
-            "labelId" : "alpha",
+            "label": "id:alpha",
             "height" : "4%"
         },
         {
             "phaseId": "Resource",
-            "labelId" : "resource",
+            "label": "id:resource",
             "height" : "11%"
         },
         {
             "phaseId": "Planning",
-            "labelId" : "planning",
+            "label": "id:planning",
             "height" : "11%"
         },
         {
             "phaseId": "Quest",
-            "labelId" : "quest",
+            "label": "id:quest",
             "height" : "17%"
         },
         {
             "phaseId": "Travel",
-            "labelId" : "travel",
+            "label": "id:travel",
             "height" : "11%"
         },
         {
             "phaseId": "Encounter",
-            "labelId" : "encounter",
+            "label": "id:encounter",
             "height" : "14%"
         },
         {
             "phaseId": "Combat",
-            "labelId" : "combat",
+            "label": "id:combat",
             "height" : "17%"
         },
         {
             "phaseId": "Refresh",
-            "labelId" : "refresh",
+            "label": "id:refresh",
             "height" : "11%"
         },
         {
             "phaseId": "End",
-            "labelId" : "omega",
+            "label": "id:omega",
             "height" : "4%"
         }
     ]

@@ -2,30 +2,30 @@
     "topBarCounters": {
         "shared": [
             {
-                "labelId": "round",
+                "label": "id:round",
                 "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/time.png",
                 "gameProperty": "roundNumber"
             },
             {
-                "labelId": "stagingThreat",
+                "label": "id:topBarStagingThreat",
                 "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/threat.png",
                 "gameProperty": "stagingThreat"
             },
             {
-                "labelId": "stagingProgress",
+                "label": "id:topBarStagingProgress",
                 "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/progress.png",
                 "gameProperty": "questProgress"
             }
         ],
         "player": [
             {
-                "labelId": "threat",
+                "label": "id:threat",
                 "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/threat.png",
                 "playerProperty": "threat"
             },
             {
-                "labelId": "willpower",
-                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/willpoer.png",
+                "label": "id:willpower",
+                "imageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/willpower.png",
                 "playerProperty": "willpower"
             }
         ]

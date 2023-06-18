@@ -1,103 +1,120 @@
 {
     "layouts": {
-        "standard": {
-            "cardSize": 13,
+        "layout1Player": {
+            "cardSize": 17,
             "rowSpacing": 3,
-            "chat": {"left": "63%", "top": "84%", "width": "25%", "height": "16%"},
-            "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "48%", "width": "88%", "height": "16%"},
+            "chat": {"left": "75%", "top": "80%", "width": "23%", "height": "20%"},
+            "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "60%", "width": "90%", "height": "20%"},
             "defaultVariants": {
-                "path": 1,
-                "location": 2,
-                "redPlayers": 2,
-                "bluePlayers": 2
+                "sideGroupId": "sharedSetAside"
             },
             "regions": [
-                {"groupId": "player2Reserve",        "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "38%", "height": "16%", "layoutVariants": {"redPlayers": 2}},
-                {"groupId": "player2Reserve",        "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "76%", "height": "16%", "layoutVariants": {"redPlayers": 1}},
-                {"groupId": "sharedBattlegroundRed", "type": "pile","direction": "horizontal", "left": "38%", "top":  "0%", "width": "12%", "height": "16%", "layoutVariants": {"redPlayers": 2}},
-                {"groupId": "sharedBattlegroundRed", "type": "pile","direction": "horizontal", "left": "76%", "top":  "0%", "width": "12%", "height": "16%", "layoutVariants": {"redPlayers": 1}},
-                {"groupId": "player4Reserve",        "type": "row", "direction": "horizontal", "left": "50%", "top":  "0%", "width": "38%", "height": "16%", "layoutVariants": {"redPlayers": 2}},
-                {"groupId": "sharedActiveRed1",      "type": "row", "direction": "horizontal", "left":  "0%", "top": "16%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideTitle": true},
-                {"groupId": "sharedActiveRed2",      "type": "row", "direction": "horizontal", "left": "22%", "top": "16%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideTitle": true},
-                {"groupId": "sharedActiveRed3",      "type": "row", "direction": "horizontal", "left": "44%", "top": "16%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideTitle": true},
-                {"groupId": "sharedActiveRed4",      "type": "row", "direction": "horizontal", "left": "66%", "top": "16%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideTitle": true},
-                {"groupId": "sharedActiveLocation1", "type": "row", "direction": "horizontal", "left":  "0%", "top": "32%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}},
-                {"groupId": "sharedActiveLocation2", "type": "row", "direction": "horizontal", "left": "22%", "top": "32%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}},
-                {"groupId": "sharedActiveLocation3", "type": "row", "direction": "horizontal", "left": "44%", "top": "32%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}},
-                {"groupId": "sharedActiveLocation4", "type": "row", "direction": "horizontal", "left": "66%", "top": "32%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}},
-                {"groupId": "sharedActiveBlue1",     "type": "row", "direction": "horizontal", "left":  "0%", "top": "48%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveBlue2",     "type": "row", "direction": "horizontal", "left": "22%", "top": "48%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveBlue3",     "type": "row", "direction": "horizontal", "left": "44%", "top": "48%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveBlue4",     "type": "row", "direction": "horizontal", "left": "66%", "top": "48%", "width": "22%", "height": "16%", "layoutVariants": {"location": 4}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveRed1",      "type": "row", "direction": "horizontal", "left":  "0%", "top": "16%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}, "hideTitle": true},
-                {"groupId": "sharedActiveRed2",      "type": "row", "direction": "horizontal", "left": "29%", "top": "16%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}, "hideTitle": true},
-                {"groupId": "sharedActiveRed3",      "type": "row", "direction": "horizontal", "left": "58%", "top": "16%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}, "hideTitle": true},
-                {"groupId": "sharedActiveLocation1", "type": "row", "direction": "horizontal", "left":  "0%", "top": "32%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}},
-                {"groupId": "sharedActiveLocation2", "type": "row", "direction": "horizontal", "left": "29%", "top": "32%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}},
-                {"groupId": "sharedActiveLocation3", "type": "row", "direction": "horizontal", "left": "58%", "top": "32%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}},
-                {"groupId": "sharedActiveBlue1",     "type": "row", "direction": "horizontal", "left":  "0%", "top": "48%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveBlue2",     "type": "row", "direction": "horizontal", "left": "29%", "top": "48%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveBlue3",     "type": "row", "direction": "horizontal", "left": "58%", "top": "48%", "width": "29%", "height": "16%", "layoutVariants": {"location": 3}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveRed1",      "type": "row", "direction": "horizontal", "left":  "0%", "top": "16%", "width": "44%", "height": "16%", "layoutVariants": {"location": 2}, "hideTitle": true},
-                {"groupId": "sharedActiveRed2",      "type": "row", "direction": "horizontal", "left": "44%", "top": "16%", "width": "44%", "height": "16%", "layoutVariants": {"location": 2}, "hideTitle": true},
-                {"groupId": "sharedActiveLocation1", "type": "row", "direction": "horizontal", "left":  "0%", "top": "32%", "width": "44%", "height": "16%", "layoutVariants": {"location": 2}},
-                {"groupId": "sharedActiveLocation2", "type": "row", "direction": "horizontal", "left": "44%", "top": "32%", "width": "44%", "height": "16%", "layoutVariants": {"location": 2}},
-                {"groupId": "sharedActiveBlue1",     "type": "row", "direction": "horizontal", "left":  "0%", "top": "48%", "width": "44%", "height": "16%", "layoutVariants": {"location": 2}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "sharedActiveBlue2",     "type": "row", "direction": "horizontal", "left": "44%", "top": "48%", "width": "44%", "height": "16%", "layoutVariants": {"location": 2}, "hideWhileBrowsing": true, "hideTitle": true},
-                {"groupId": "player1Reserve",        "type": "row", "direction": "horizontal", "left":  "0%", "top": "64%", "width": "32%", "height": "16%", "layoutVariants": {"bluePlayers": 2}},
-                {"groupId": "player1Reserve",        "type": "row", "direction": "horizontal", "left":  "0%", "top": "64%", "width": "64%", "height": "16%", "layoutVariants": {"bluePlayers": 1}},
-                {"groupId": "sharedBattlegroundBlue","type": "pile","direction": "horizontal", "left": "32%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"bluePlayers": 2}},
-                {"groupId": "sharedBattlegroundBlue","type": "pile","direction": "horizontal", "left": "64%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"bluePlayers": 1}},
-                {"groupId": "sharedPathDeck1",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 1, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck2",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 2, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck3",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 3, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck4",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 4, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck5",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 5, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck6",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 6, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck7",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 7, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck8",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 8, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck9",       "type": "pile","direction": "horizontal", "left": "44%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 9, "bluePlayers": 2}},
-                {"groupId": "sharedPathDeck1",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 1, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck2",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 2, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck3",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 3, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck4",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 4, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck5",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 5, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck6",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 6, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck7",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 7, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck8",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 8, "bluePlayers": 1}},
-                {"groupId": "sharedPathDeck9",       "type": "pile","direction": "horizontal", "left": "76%", "top": "64%", "width": "12%", "height": "16%", "layoutVariants": {"path": 9, "bluePlayers": 1}},
-                {"groupId": "player3Reserve",        "type": "row", "direction": "horizontal", "left": "56%", "top": "64%", "width": "32%", "height": "16%", "layoutVariants": {"bluePlayers": 2}},
-                {"groupId": "playerNHand",           "type": "fan", "direction": "horizontal", "left":  "0%", "top": "84%", "width": "39%", "height": "16%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                {"groupId": "playerNDeck",           "type": "pile","direction": "horizontal", "left": "39%", "top": "84%", "width":  "8%", "height": "16%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                {"groupId": "playerNCycled",         "type": "pile","direction": "horizontal", "left": "47%", "top": "84%", "width":  "8%", "height": "16%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                {"groupId": "playerNEliminated",     "type": "pile","direction": "horizontal", "left": "55%", "top": "84%", "width":  "8%", "height": "16%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                {"groupId": "sharedRules",           "type": "row", "direction": "horizontal", "left": "88%", "top": "0%",  "width": "12%", "height": "16%"},
-                {"groupId": "sharedScoringRed",      "type": "fan", "direction": "vertical",   "left": "88%", "top": "16%", "width": "12%", "height": "42%"},
-                {"groupId": "sharedScoringBlue",     "type": "fan", "direction": "vertical",   "left": "88%", "top": "58%", "width": "12%", "height": "42%"}
+                {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "20%"},
+                {"groupId": "sharedActiveLocation",  "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "20%"},
+                {"groupId": "sharedStagingArea",     "type": "row","direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedEncounterDeck",   "type": "pile", "direction": "horizontal", "left":  "81%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "sharedEncounterDiscard","type": "pile", "direction": "horizontal", "left":  "90.5%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "player1Engaged",        "type": "row", "direction": "horizontal", "left":  "0%", "top":  "20%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play1",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "40%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play2",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "60%", "width": "79%", "height": "20%", "hideWhileBrowsing": true},
+                {"groupId": "player1Event",          "type": "row", "direction": "horizontal", "left":  "79%", "top":  "60%", "width": "11%", "height": "20%"},
+                {"groupId": "playerNHand",           "type": "fan", "direction": "horizontal", "left":  "0%", "top": "80%", "width": "56%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDeck",           "type": "pile","direction": "horizontal", "left": "56%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDiscard",        "type": "pile","direction": "horizontal", "left": "65.5%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "90%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "sharedSetAside"}},
+                {"groupId": "playerNSideboard",      "type": "fan","direction": "vertical", "left": "90%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "playerNSideboard"}}
             ],
             "tableButtons": [
-                {"actionList": "layoutPath1", "text": "1", "left": "43%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath2", "text": "2", "left": "44.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath3", "text": "3", "left": "46%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath4", "text": "4", "left": "47.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath5", "text": "5", "left": "49%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath6", "text": "6", "left": "50.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath7", "text": "7", "left": "52%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath8", "text": "8", "left": "53.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath9", "text": "9", "left": "55%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 2}},
-                {"actionList": "layoutPath1", "text": "1", "left": "74.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath2", "text": "2", "left": "76%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath3", "text": "3", "left": "77.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath4", "text": "4", "left": "79%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath5", "text": "5", "left": "80.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath6", "text": "6", "left": "82%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath7", "text": "7", "left": "83.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath8", "text": "8", "left": "85%",   "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutPath9", "text": "9", "left": "86.5%", "top": "80.5%", "width": "1.5%", "height": "3.5%", "layoutVariants": {"bluePlayers": 1}},
-                {"actionList": "layoutLocation2", "text": "2", "left": "86.5%", "top": "32%", "width": "1.5%", "height": "5%"},
-                {"actionList": "layoutLocation3", "text": "3", "left": "86.5%", "top": "37%", "width": "1.5%", "height": "5%"},
-                {"actionList": "layoutLocation4", "text": "4", "left": "86.5%", "top": "42%", "width": "1.5%", "height": "5%"}
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "sharedSetAside"], "label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "playerNSideboard"], "label": "SB", "left": "98%", "top": "85%", "width": "2%", "height": "5%"}
             ]
-        } 
+        },
+        "layout2Player": {
+            "cardSize": 17,
+            "rowSpacing": 3,
+            "chat": {"left": "75%", "top": "80%", "width": "23%", "height": "20%"},
+            "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "60%", "width": "90%", "height": "20%"},
+            "defaultVariants": {
+                "sideGroupId": "sharedSetAside"
+            },
+            "regions": [
+                {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "20%"},
+                {"groupId": "sharedActiveLocation",          "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "20%"},
+                {"groupId": "sharedStagingArea",     "type": "row","direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedEncounterDeck",   "type": "row", "direction": "horizontal", "left":  "81%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "sharedEncounterDiscard","type": "row", "direction": "horizontal", "left":  "90.5%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "player1Engaged",        "type": "row", "direction": "horizontal", "left":  "0%", "top":  "20%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play1",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "40%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play2",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "60%", "width": "79%", "height": "20%", "hideWhileBrowsing": true},
+                {"groupId": "player1Event",          "type": "row", "direction": "horizontal", "left":  "79%", "top":  "60%", "width": "11%", "height": "20%"},
+                {"groupId": "playerNHand",           "type": "fan", "direction": "horizontal", "left":  "0%", "top": "80%", "width": "56%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDeck",           "type": "pile","direction": "horizontal", "left": "56%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDiscard",        "type": "pile","direction": "horizontal", "left": "65.5%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "80%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "sharedSetAside"}},
+                {"groupId": "playerNSideboard",      "type": "fan","direction": "vertical", "left": "80%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "playerNSideboard"}}
+            ],
+            "tableButtons": [
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "sharedSetAside"], "label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "2%"},
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "playerNSideboard"], "label": "SB", "left": "98%", "top": "80%", "width": "2%", "height": "2%"}
+            ]
+        },
+        "layout3Player": {
+            "cardSize": 17,
+            "rowSpacing": 3,
+            "chat": {"left": "75%", "top": "80%", "width": "23%", "height": "20%"},
+            "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "60%", "width": "90%", "height": "20%"},
+            "defaultVariants": {
+                "sideGroupId": "sharedSetAside"
+            },
+            "regions": [
+                {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "20%"},
+                {"groupId": "sharedActiveLocation",          "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "20%"},
+                {"groupId": "sharedStagingArea",     "type": "row","direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedEncounterDeck",   "type": "row", "direction": "horizontal", "left":  "81%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "sharedEncounterDiscard","type": "row", "direction": "horizontal", "left":  "90.5%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "player1Engaged",        "type": "row", "direction": "horizontal", "left":  "0%", "top":  "20%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play1",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "40%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play2",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "60%", "width": "79%", "height": "20%", "hideWhileBrowsing": true},
+                {"groupId": "player1Event",          "type": "row", "direction": "horizontal", "left":  "79%", "top":  "60%", "width": "11%", "height": "20%"},
+                {"groupId": "playerNHand",           "type": "fan", "direction": "horizontal", "left":  "0%", "top": "80%", "width": "56%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDeck",           "type": "pile","direction": "horizontal", "left": "56%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDiscard",        "type": "pile","direction": "horizontal", "left": "65.5%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "80%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "sharedSetAside"}},
+                {"groupId": "playerNSideboard",      "type": "fan","direction": "vertical", "left": "80%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "playerNSideboard"}}
+            ],
+            "tableButtons": [
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "sharedSetAside"], "label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "2%"},
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "playerNSideboard"], "label": "SB", "left": "98%", "top": "80%", "width": "2%", "height": "2%"}
+            ]
+        },
+        "layout4Player": {
+            "cardSize": 17,
+            "rowSpacing": 3,
+            "chat": {"left": "75%", "top": "80%", "width": "23%", "height": "20%"},
+            "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "60%", "width": "90%", "height": "20%"},
+            "defaultVariants": {
+                "sideGroupId": "sharedSetAside"
+            },
+            "regions": [
+                {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "20%"},
+                {"groupId": "sharedActiveLocation",          "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "20%"},
+                {"groupId": "sharedStagingArea",     "type": "row","direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedEncounterDeck",   "type": "row", "direction": "horizontal", "left":  "81%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "sharedEncounterDiscard","type": "row", "direction": "horizontal", "left":  "90.5%", "top":  "0%", "width": "9.5%", "height": "20%"},
+                {"groupId": "player1Engaged",        "type": "row", "direction": "horizontal", "left":  "0%", "top":  "20%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play1",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "40%", "width": "90%", "height": "20%"},
+                {"groupId": "player1Play2",          "type": "row", "direction": "horizontal", "left":  "0%", "top":  "60%", "width": "79%", "height": "20%", "hideWhileBrowsing": true},
+                {"groupId": "player1Event",          "type": "row", "direction": "horizontal", "left":  "79%", "top":  "60%", "width": "11%", "height": "20%"},
+                {"groupId": "playerNHand",           "type": "fan", "direction": "horizontal", "left":  "0%", "top": "80%", "width": "56%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDeck",           "type": "pile","direction": "horizontal", "left": "56%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "playerNDiscard",        "type": "pile","direction": "horizontal", "left": "65.5%", "top": "80%", "width":  "9.5%", "height": "20%", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
+                {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "80%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "sharedSetAside"}},
+                {"groupId": "playerNSideboard",      "type": "fan","direction": "vertical", "left": "80%", "top": "20%", "width":  "10%", "height": "60%", "layoutVariants": {"sideGroupId": "playerNSideboard"}}
+            ],
+            "tableButtons": [
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "sharedSetAside"], "label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "2%"},
+                {"actionList": ["SET", "/layoutVariants/sideGroupId", "playerNSideboard"], "label": "SB", "left": "98%", "top": "80%", "width": "2%", "height": "2%"}
+            ]
+        }
     }
 }

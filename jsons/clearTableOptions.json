@@ -1,7 +1,7 @@
 {
     "clearTableOptions": [
-        {"labelId": "labelMarkAsVictory", "actionList": ["SET", "/victoryState", "victory"]},
-        {"labelId": "labelMarkAsDefeat", "actionList": ["SET", "/victoryState", "defeat"]},
-        {"labelId": "labelMarkAsIncomplete", "actionList": ["SET", "/victoryState", "incomplete"]}
+        {"label": "id:labelMarkAsVictory", "actionList": ["SET", "/victoryState", "victory"]},
+        {"label": "id:labelMarkAsDefeat", "actionList": ["SET", "/victoryState", "defeat"]},
+        {"label": "id:labelMarkAsIncomplete", "actionList": ["SET", "/victoryState", "incomplete"]}
     ]
 }

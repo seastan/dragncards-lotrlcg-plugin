@@ -3,7 +3,7 @@
         "moveToGroupIds": [],
         "options": [
             {
-                "labelId": "shuffleGroupIntoDeck",
+                "label": "id:shuffleGroupIntoDeck",
                 "actionList": "shuffleGroupIntoDeck"
             }
         ]

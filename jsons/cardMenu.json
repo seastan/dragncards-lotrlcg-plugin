@@ -3,7 +3,7 @@
         "moveToGroupIds": [],
         "options": [
             {
-                "labelId": "toggleExhaust",
+                "label": "id:toggleExhaust",
                 "actionList": "toggleExhaust"
             }
         ]

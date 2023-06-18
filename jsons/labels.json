@@ -406,5 +406,710 @@
         "score": {    
             "English": "Score"
         },
+        "toggleExhaust": {    
+            "English": "Exhaust/Ready"
+        },
+        "labelMarkAsVictory": {
+            "English": "Mark as Victory"
+        },
+        "labelMarkAsDefeat": {
+            "English": "Mark as Defeat"
+        },
+        "labelMarkAsIncomplete": {
+            "English": "Mark as Incomplete"
+        },
+        "easy": {
+            "English": "Easy"
+        },
+        "normal": {
+            "English": "Normal"
+        },
+        "nightmare": {
+            "English": "Nightmare"
+        },
+        "Core Set & Shadows of Mirkwood": {
+            "English": "Core Set & Shadows of Mirkwood"
+        },
+        "Passage Through Mirkwood": {
+            "English": "Passage Through Mirkwood"
+        },
+        "Journey Along the Anduin": {
+            "English": "Journey Along the Anduin"
+        },
+        "Escape from Dol Guldur": {
+            "English": "Escape from Dol Guldur"
+        },
+        "The Hunt for Gollum": {
+            "English": "The Hunt for Gollum"
+        },
+        "Conflict at the Carrock": {
+            "English": "Conflict at the Carrock"
+        },
+        "A Journey to Rhosgobel": {
+            "English": "A Journey to Rhosgobel"
+        },
+        "The Hills of Emyn Muil": {
+            "English": "The Hills of Emyn Muil"
+        },
+        "The Dead Marshes": {
+            "English": "The Dead Marshes"
+        },
+        "Return to Mirkwood": {
+            "English": "Return to Mirkwood"
+        },
+        "Khazad-dûm & Dwarrowdelf": {
+            "English": "Khazad-dûm & Dwarrowdelf"
+        },
+        "Into the Pit": {
+            "English": "Into the Pit"
+        },
+        "The Seventh Level": {
+            "English": "The Seventh Level"
+        },
+        "Flight from Moria": {
+            "English": "Flight from Moria"
+        },
+        "The Redhorn Gate": {
+            "English": "The Redhorn Gate"
+        },
+        "Road to Rivendell": {
+            "English": "Road to Rivendell"
+        },
+        "The Watcher in the Water": {
+            "English": "The Watcher in the Water"
+        },
+        "The Long Dark": {
+            "English": "The Long Dark"
+        },
+        "Foundations of Stone": {
+            "English": "Foundations of Stone"
+        },
+        "Shadow and Flame": {
+            "English": "Shadow and Flame"
+        },
+        "Heirs of Númenor & Against the Shadow": {
+            "English": "Heirs of Númenor & Against the Shadow"
+        },
+        "Peril In Pelargir": {
+            "English": "Peril In Pelargir"
+        },
+        "Into Ithilien": {
+            "English": "Into Ithilien"
+        },
+        "The Siege of Cair Andros": {
+            "English": "The Siege of Cair Andros"
+        },
+        "The Steward's Fear": {
+            "English": "The Steward's Fear"
+        },
+        "The Drúadan Forest": {
+            "English": "The Drúadan Forest"
+        },
+        "Encounter at Amon Dîn": {
+            "English": "Encounter at Amon Dîn"
+        },
+        "Assault on Osgiliath": {
+            "English": "Assault on Osgiliath"
+        },
+        "The Blood of Gondor": {
+            "English": "The Blood of Gondor"
+        },
+        "The Morgul Vale": {
+            "English": "The Morgul Vale"
+        },
+        "The Voice of Isengard & The Ringmaker": {
+            "English": "The Voice of Isengard & The Ringmaker"
+        },
+        "Fords of Isen": {
+            "English": "Fords of Isen"
+        },
+        "To Catch an Orc": {
+            "English": "To Catch an Orc"
+        },
+        "Into Fangorn": {
+            "English": "Into Fangorn"
+        },
+        "The Dunland Trap": {
+            "English": "The Dunland Trap"
+        },
+        "The Three Trials": {
+            "English": "The Three Trials"
+        },
+        "Trouble in Tharbad": {
+            "English": "Trouble in Tharbad"
+        },
+        "The Nin in Eilph": {
+            "English": "The Nin in Eilph"
+        },
+        "Celebrimbor's Secret": {
+            "English": "Celebrimbor's Secret"
+        },
+        "The Antlered Crown": {
+            "English": "The Antlered Crown"
+        },
+        "The Lost Realm & Angmar Awakened": {
+            "English": "The Lost Realm & Angmar Awakened"
+        },
+        "Intruders in Chetwood": {
+            "English": "Intruders in Chetwood"
+        },
+        "The Weather Hills": {
+            "English": "The Weather Hills"
+        },
+        "Deadmen's Dike": {
+            "English": "Deadmen's Dike"
+        },
+        "The Wastes of Eriador": {
+            "English": "The Wastes of Eriador"
+        },
+        "Escape from Mount Gram": {
+            "English": "Escape from Mount Gram"
+        },
+        "Across the Ettenmoors": {
+            "English": "Across the Ettenmoors"
+        },
+        "The Treachery of Rhudaur": {
+            "English": "The Treachery of Rhudaur"
+        },
+        "The Battle of Carn Dum": {
+            "English": "The Battle of Carn Dum"
+        },
+        "The Dread Realm": {
+            "English": "The Dread Realm"
+        },
+        "The Grey Havens & The Dreamchaser": {
+            "English": "The Grey Havens & The Dreamchaser"
+        },
+        "Voyage Across Belegaer": {
+            "English": "Voyage Across Belegaer"
+        },
+        "The Fate of Numenor": {
+            "English": "The Fate of Numenor"
+        },
+        "Raid on the Grey Havens": {
+            "English": "Raid on the Grey Havens"
+        },
+        "Flight of the Stormcaller": {
+            "English": "Flight of the Stormcaller"
+        },
+        "The Thing in the Depths": {
+            "English": "The Thing in the Depths"
+        },
+        "Temple of the Deceived": {
+            "English": "Temple of the Deceived"
+        },
+        "The Drowned Ruins": {
+            "English": "The Drowned Ruins"
+        },
+        "A Storm on Cobas Haven": {
+            "English": "A Storm on Cobas Haven"
+        },
+        "The City of Corsairs": {
+            "English": "The City of Corsairs"
+        },
+        "The Sands of Harad & The Haradrim": {
+            "English": "The Sands of Harad & The Haradrim"
+        },
+        "Escape from Umbar": {
+            "English": "Escape from Umbar"
+        },
+        "Desert Crossing": {
+            "English": "Desert Crossing"
+        },
+        "The Long Arm of Mordor": {
+            "English": "The Long Arm of Mordor"
+        },
+        "The Mumakil": {
+            "English": "The Mumakil"
+        },
+        "Race Across Harad": {
+            "English": "Race Across Harad"
+        },
+        "Beneath the Sands": {
+            "English": "Beneath the Sands"
+        },
+        "The Black Serpent": {
+            "English": "The Black Serpent"
+        },
+        "The Dungeons of Cirith Gurat": {
+            "English": "The Dungeons of Cirith Gurat"
+        },
+        "The Crossings of Poros": {
+            "English": "The Crossings of Poros"
+        },
+        "The Wilds of Rhovanion & Ered Mithrin": {
+            "English": "The Wilds of Rhovanion & Ered Mithrin"
+        },
+        "Journey Up the Anduin": {
+            "English": "Journey Up the Anduin"
+        },
+        "Lost in Mirkwood": {
+            "English": "Lost in Mirkwood"
+        },
+        "The King's Quest": {
+            "English": "The King's Quest"
+        },
+        "The Withered Heath": {
+            "English": "The Withered Heath"
+        },
+        "Roam Across Rhovanion": {
+            "English": "Roam Across Rhovanion"
+        },
+        "Fire in the Night": {
+            "English": "Fire in the Night"
+        },
+        "The Ghost of Framsburg": {
+            "English": "The Ghost of Framsburg"
+        },
+        "Mount Gundabad": {
+            "English": "Mount Gundabad"
+        },
+        "The Fate of Wilderland": {
+            "English": "The Fate of Wilderland"
+        },
+        "A Shadow in the East & Vengenace of Mordor": {
+            "English": "A Shadow in the East & Vengenace of Mordor"
+        },
+        "The River Running": {
+            "English": "The River Running"
+        },
+        "Danger in Dorwinian": {
+            "English": "Danger in Dorwinian"
+        },
+        "Temple of Doom": {
+            "English": "Temple of Doom"
+        },
+        "Wrath and Ruin": {
+            "English": "Wrath and Ruin"
+        },
+        "The City of Ulfast": {
+            "English": "The City of Ulfast"
+        },
+        "Challenge of the Wainriders": {
+            "English": "Challenge of the Wainriders"
+        },
+        "Under the Ash Mountains": {
+            "English": "Under the Ash Mountains"
+        },
+        "The Land of Sorrow": {
+            "English": "The Land of Sorrow"
+        },
+        "The Fortress of Nurn": {
+            "English": "The Fortress of Nurn"
+        },
+        "The Hobbit": {
+            "English": "The Hobbit"
+        },
+        "We Must Away Ere Break of Day": {
+            "English": "We Must Away Ere Break of Day"
+        },
+        "Over the Misty Mountains Grim": {
+            "English": "Over the Misty Mountains Grim"
+        },
+        "Dungeons Deep and Caverns Dim": {
+            "English": "Dungeons Deep and Caverns Dim"
+        },
+        "Flies and Spiders": {
+            "English": "Flies and Spiders"
+        },
+        "The Lonely Mountain": {
+            "English": "The Lonely Mountain"
+        },
+        "The Battle of Five Armies": {
+            "English": "The Battle of Five Armies"
+        },
+        "The Lord of the Rings Standalone": {
+            "English": "The Lord of the Rings Standalone"
+        },
+        "The Lord of the Rings Campaign": {
+            "English": "The Lord of the Rings Campaign"
+        },
+        "The Passage of the Marshes": {
+            "English": "The Passage of the Marshes"
+        },
+        "Journey to the Cross roads": {
+            "English": "Journey to the Cross roads"
+        },
+        "Shelob's Lair": {
+            "English": "Shelob's Lair"
+        },
+        "The Passing of the Grey Company": {
+            "English": "The Passing of the Grey Company"
+        },
+        "The Siege of Gondor": {
+            "English": "The Siege of Gondor"
+        },
+        "The Battle of the Pelennor Fields": {
+            "English": "The Battle of the Pelennor Fields"
+        },
+        "The Tower of Cirith Ungol": {
+            "English": "The Tower of Cirith Ungol"
+        },
+        "The Black Gate Opens": {
+            "English": "The Black Gate Opens"
+        },
+        "Mount Doom": {
+            "English": "Mount Doom"
+        },
+        "Two-Player Limited-Edition Starter": {
+            "English": "Two-Player Limited-Edition Starter"
+        },
+        "Print on Demand": {
+            "English": "Print on Demand"
+        },
+        "Attack on Dol Guldur": {
+            "English": "Attack on Dol Guldur"
+        },
+        "The Wizard's Quest": {
+            "English": "The Wizard's Quest"
+        },
+        "The Woodland Realm": {
+            "English": "The Woodland Realm"
+        },
+        "The Mines of Moria": {
+            "English": "The Mines of Moria"
+        },
+        "Escape from Khazad dûm": {
+            "English": "Escape from Khazad dûm"
+        },
+        "The Hunt for the Dreadnaught": {
+            "English": "The Hunt for the Dreadnaught"
+        },
+        "ALeP The Scouring of the Shire": {
+            "English": "ALeP The Scouring of the Shire"
+        },
+        "Campaign": {
+            "English": "Campaign"
+        },
+        "ALeP - Children of Eorl & Oaths of the Rohirrim": {
+            "English": "ALeP - Children of Eorl & Oaths of the Rohirrim"
+        },
+        "ALeP Ambush at Erelas": {
+            "English": "ALeP Ambush at Erelas"
+        },
+        "ALeP The Battle for the Beacon": {
+            "English": "ALeP The Battle for the Beacon"
+        },
+        "ALeP The Horse Lord s Ire": {
+            "English": "ALeP The Horse Lord s Ire"
+        },
+        "ALeP The Aldburg Plot": {
+            "English": "ALeP The Aldburg Plot"
+        },
+        "ALeP The Gap of Rohan Playtest": {
+            "English": "ALeP The Gap of Rohan Playtest"
+        },
+        "ALeP The Glittering Caves Playtest": {
+            "English": "ALeP The Glittering Caves Playtest"
+        },
+        "ALeP Mustering of the Rohirrim Playtest": {
+            "English": "ALeP Mustering of the Rohirrim Playtest"
+        },
+        "ALeP Blood in the Isen Playtest": {
+            "English": "ALeP Blood in the Isen Playtest"
+        },
+        "ALeP - Playtest": {
+            "English": "ALeP - Playtest"
+        },
+        "myDeck": {
+            "English": "My Deck"
+        },
+        "player1Deck": {
+            "English": "Player 1 Deck"
+        },
+        "player2Deck": {
+            "English": "Player 2 Deck"
+        },
+        "player3Deck": {
+            "English": "Player 3 Deck"
+        },
+        "player4Deck": {
+            "English": "Player 4 Deck"
+        },
+        "sharedQuestDeck": {
+            "English": "Quest Deck"
+        },
+        "sharedQuestDeck2": {
+            "English": "Quest Deck"
+        },
+        "sharedActiveLocation": {
+            "English": "Active Location"
+        },
+        "sharedStagingArea": {
+            "English": "Staging Area"
+      },
+        "sharedEncounterDeck": {
+            "English": "Encounter Deck"
+        },
+        "sharedEncounterDeck2": {
+            "English": "Encounter Deck 2"
+        },
+        "sharedEncounterDeck3": {
+            "English": "Encounter Deck 3"
+        },
+        "sharedExtra1": {
+            "English": "Extra1"
+        },
+        "sharedExtra2": {
+            "English": "Extra2"
+        },
+        "sharedExtra3": {
+            "English": "Extra3"
+        },
+        "sharedExtra4": {
+            "English": "Extra4"
+        },
+        "damage": {
+            "English": "damage"
+        },
+        "add to VD": {
+            "English": "add to VD"
+        },
+        "progress": {
+            "English": "progress"
+        },
+        "exhaust": {
+            "English": "exhaust"
+        },
+        "ready": {
+            "English": "ready"
+        },
+        "A Shadow of the Past": {
+            "English": "A Shadow of the Past"
+        },
+        "A Knife in the Dark": {
+            "English": "A Knife in the Dark"
+        },
+        "Flight to the Ford": {
+            "English": "Flight to the Ford"
+        },
+        "The Ring Goes South": {
+            "English": "The Ring Goes South"
+        },
+        "Journey in the Dark": {
+            "English": "Journey in the Dark"
+        },
+        "Breaking of the Fellowship": {
+            "English": "Breaking of the Fellowship"
+        },
+        "The Uruk hai": {
+            "English": "The Uruk hai"
+        },
+        "Helm's Deep": {
+            "English": "Helm's Deep"
+        },
+        "The Road to Isengard": {
+            "English": "The Road to Isengard"
+        },
+        "The Massing at Osgiliath": {
+            "English": "The Massing at Osgiliath"
+        },
+        "The Battle of Lake Town": {
+            "English": "The Battle of Lake Town"
+        },
+        "The Stone of Erech": {
+            "English": "The Stone of Erech"
+        },
+        "The Old Forest": {
+            "English": "The Old Forest"
+        },
+        "Fog on the Barrow downs": {
+            "English": "Fog on the Barrow downs"
+        },
+        "The Ruins of Belegost": {
+            "English": "The Ruins of Belegost"
+        },
+        "Murder at the Prancing Pony": {
+            "English": "Murder at the Prancing Pony"
+        },
+        "Standard The Siege of Annuminas": {
+            "English": "Standard The Siege of Annuminas"
+        },
+        "Epic The Siege of Annuminas": {
+            "English": "Epic The Siege of Annuminas"
+        },
+        "The Lord of the Rings": {
+            "English": "The Lord of the Rings"
+        },
+        "The Core Set": {
+            "English": "The Core Set"
+        },
+        "Angmar Awakened": {
+            "English": "Angmar Awakened"
+        },
+        "name": {
+            "English": "Name"
+        },
+        "sphere": {
+            "English": "Sphere"
+        },
+        "type": {
+            "English": "Type"
+        },
+        "traits": {
+            "English": "Traits"
+        },
+        "shuffleGroupIntoDeck": {
+            "English": "Shuffle Into Deck"
+        },
+        "sharedEncounterDiscard": {
+            "English": "Encounter Discard"
+        },
+        "sharedEncounterDiscard2": {
+            "English": "Encounter Discard 2"
+        },
+        "sharedEncounterDiscard3": {
+            "English": "Encounter Discard 3"
+        },
+        "sharedOther": {
+            "English": "Other"
+        },
+        "sharedSetAside": {
+            "English": "Set Aside"
+        },
+        "sharedVictory": {
+            "English": "Victory Display"
+        },
+        "staging": {
+            "English": "Staging"
+        },
+        "active": {
+            "English": "Active"
+        },
+        "player1Hand": {
+            "English": "Player1 Hand"
+        },
+        "hand": {
+            "English": "Hand"
+        },
+        "deck": {
+            "English": "Deck"
+        },
+        "player1Discard": {
+            "English": "Player1 Discard"
+        },
+        "player1Play1": {
+            "English": "Player1 Play1"
+        },
+        "playArea": {
+            "English": "Play Area"
+        },
+        "player1Play2": {
+            "English": "Player1 Play 2"
+        },
+        "player1Play3": {
+            "English": "Player1 Play 3"
+        },
+        "player1Play4": {
+            "English": "Player1 Play 4"
+        },
+        "player1Engaged": {
+            "English": "Player1 Engaged"
+        },
+        "engaged": {
+            "English": "Engaged"
+        },
+        "player1Event": {
+            "English": "Player 1 Event"
+        },
+        "event": {
+            "English": "Event"
+        },
+        "player2Hand": {
+            "English": "Player 2 Hand"
+        },
+        "player2Discard": {
+            "English": "Player 2 Discard"
+        },
+        "player2Play1": {
+            "English": "Player 2 Play 1"
+        },
+        "player2Play2": {
+            "English": "Player2 Play 2"
+        },
+        "player2Play3": {
+            "English": "Player 2 Play 3"
+        },
+        "player2Play4": {
+            "English": "Player 2 Play 4"
+        },
+        "player2Engaged": {
+            "English": "Player 2 Engaged"
+        },
+        "player2Event": {
+            "English": "Player 2 Event"
+        },
+        "player3Hand": {
+            "English": "Player 3 Hand"
+        },
+        "player3Discard": {
+            "English": "Player 3 Discard"
+        },
+        "player3Play1": {
+            "English": "Player 3 Play 1"
+        },
+        "player3Play2": {
+            "English": "Player 3 Play 2"
+        },
+        "player3Play3": {
+            "English": "Player 3 Play 3"
+        },
+        "player3Play4": {
+            "English": "Player 3 Play 4"
+        },
+        "player3Engaged": {
+            "English": "Player 3 Engaged"
+        },
+        "player3Event": {
+            "English": "Player 3 Event"
+        },
+        "player4Hand": {
+            "English": "Player 4 Hand"
+        },
+        "player4Discard": {
+            "English": "Player 4 Discard"
+        },
+        "player4Play1": {
+            "English": "Player 4 Play 1"
+        },
+        "player4Play2": {
+            "English": "Player 4 Play 2"
+        },
+        "player4Play3": {
+            "English": "Player 4 Play 3"
+        },
+        "player4Play4": {
+            "English": "Player 4 Play 4"
+        },
+        "player4Engaged": {
+            "English": "Player 4 Engaged"
+        },
+        "player4Event": {
+            "English": "Player 4 Event"
+        },
+        "sharedMainQuest": {
+            "English": "Main Quest"
+        },
+        "player1Deck2": {
+            "English": "Player1 Deck2"
+        },
+        "player2Deck2": {
+            "English": "Player2 Deck2"
+        },
+        "player3Deck2": {
+            "English": "Player3 Deck2"
+        },
+        "player4Deck2": {
+            "English": "Player4 Deck2"
+        },
+        "exhaustReady": {
+            "English": "Exhaust/Ready"
+        },
+        "topBarStagingThreat": {
+            "English": "Threat"
+        },
+        "topBarStagingProgress": {
+            "English": "Progress"
+        }
     }
 }

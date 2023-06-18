@@ -9,28 +9,28 @@
             "Tactics": "#ff0000"
         },
         "columns": [
-            {"propName": "name", "propLabel": "Name"},
-            {"propName": "sphere", "propLabel": "Sphere"},
-            {"propName": "type", "propLabel": "Type"},
-            {"propName": "traits", "propLabel": "Traits"}
+            {"propName": "name", "label": "id:name"},
+            {"propName": "sphere", "label": "id:sphere"},
+            {"propName": "type", "label": "id:type"},
+            {"propName": "traits", "label": "id:traits"}
         ],
         "spawnGroups": [
-            {"id": "playerNDeck", "labelId": "myDeck"},
-            {"id": "player1Deck", "labelId": "player1Deck"},
-            {"id": "player2Deck", "labelId": "player2Deck"},
-            {"id": "player3Deck", "labelId": "player3Deck"},
-            {"id": "player4Deck", "labelId": "player4Deck"},
-            {"id": "sharedQuestDeck","labelId": "sharedQuestDeck"},
-            {"id": "sharedQuestDeck2","labelId": "sharedQuestDeck2"},
-            {"id": "sharedActiveLocation", "labelId": "sharedActiveLocation"},
-            {"id": "sharedStagingArea", "labelId": "sharedStagingArea"},
-            {"id": "sharedEncounterDeck", "labelId": "sharedEncounterDeck"},
-            {"id": "sharedEncounterDeck2", "labelId": "sharedEncounterDeck2"},
-            {"id": "sharedEncounterDeck3", "labelId": "sharedEncounterDeck3"},
-            {"id": "sharedExtra1", "labelId": "sharedExtra1"},
-            {"id": "sharedExtra2", "labelId": "sharedExtra2"},
-            {"id": "sharedExtra3", "labelId": "sharedExtra3"},
-            {"id": "sharedExtra4", "labelId": "sharedExtra4"}
+            {"id": "playerNDeck", "label": "id:myDeck"},
+            {"id": "player1Deck", "label": "id:player1Deck"},
+            {"id": "player2Deck", "label": "id:player2Deck"},
+            {"id": "player3Deck", "label": "id:player3Deck"},
+            {"id": "player4Deck", "label": "id:player4Deck"},
+            {"id": "sharedQuestDeck","label": "id:sharedQuestDeck"},
+            {"id": "sharedQuestDeck2","label": "id:sharedQuestDeck2"},
+            {"id": "sharedActiveLocation", "label": "id:sharedActiveLocation"},
+            {"id": "sharedStagingArea", "label": "id:sharedStagingArea"},
+            {"id": "sharedEncounterDeck", "label": "id:sharedEncounterDeck"},
+            {"id": "sharedEncounterDeck2", "label": "id:sharedEncounterDeck2"},
+            {"id": "sharedEncounterDeck3", "label": "id:sharedEncounterDeck3"},
+            {"id": "sharedExtra1", "label": "id:sharedExtra1"},
+            {"id": "sharedExtra2", "label": "id:sharedExtra2"},
+            {"id": "sharedExtra3", "label": "id:sharedExtra3"},
+            {"id": "sharedExtra4", "label": "id:sharedExtra4"}
         ]
     }
 }

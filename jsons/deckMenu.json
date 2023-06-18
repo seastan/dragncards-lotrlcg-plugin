@@ -2,1030 +2,1209 @@
     "deckMenu": {
         "subMenus": [
             {
-                "labelId": "Core Set & Shadows of Mirkwood",
+                "label": "id:Core Set & Shadows of Mirkwood",
                 "subMenus": [
                 {
-                    "labelId": "Passage Through Mirkwood",
+                    "label": "id:Passage Through Mirkwood",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.1"},
-                        {"labelId": "Normal", "deckListId": "Q01.1"},
-                        {"labelId": "Nightmare", "deckListId": "N01.1"}
+                        {"label": "id:easy", "deckListId": "E01.1"},
+                        {"label": "id:normal", "deckListId": "Q01.1"},
+                        {"label": "id:nightmare", "deckListId": "N01.1"}
                     ]
                 },
                 {
-                    "labelId": "Journey Along the Anduin",
+                    "label": "id:Journey Along the Anduin",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.2"},
-                        {"labelId": "Normal", "deckListId": "Q01.2"},
-                        {"labelId": "Nightmare", "deckListId": "N01.2"}
+                        {"label": "id:easy", "deckListId": "E01.2"},
+                        {"label": "id:normal", "deckListId": "Q01.2"},
+                        {"label": "id:nightmare", "deckListId": "N01.2"}
                     ]
                 },
                 {
-                    "labelId": "Escape from Dol Guldur",
+                    "label": "id:Escape from Dol Guldur",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.3"},
-                        {"labelId": "Normal", "deckListId": "Q01.3"},
-                        {"labelId": "Nightmare", "deckListId": "N01.3"}
+                        {"label": "id:easy", "deckListId": "E01.3"},
+                        {"label": "id:normal", "deckListId": "Q01.3"},
+                        {"label": "id:nightmare", "deckListId": "N01.3"}
                     ]
                 },
                 {
-                    "labelId": "The Hunt for Gollum",
+                    "label": "id:The Hunt for Gollum",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.4"},
-                        {"labelId": "Normal", "deckListId": "Q01.4"},
-                        {"labelId": "Nightmare", "deckListId": "N01.4"}
+                        {"label": "id:easy", "deckListId": "E01.4"},
+                        {"label": "id:normal", "deckListId": "Q01.4"},
+                        {"label": "id:nightmare", "deckListId": "N01.4"}
                     ]
                 },
                 {
-                    "labelId": "Conflict at the Carrock",
+                    "label": "id:Conflict at the Carrock",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.5"},
-                        {"labelId": "Normal", "deckListId": "Q01.5"},
-                        {"labelId": "Nightmare", "deckListId": "N01.5"}
+                        {"label": "id:easy", "deckListId": "E01.5"},
+                        {"label": "id:normal", "deckListId": "Q01.5"},
+                        {"label": "id:nightmare", "deckListId": "N01.5"}
                     ]
                 },
                 {
-                    "labelId": "A Journey to Rhosgobel",
+                    "label": "id:A Journey to Rhosgobel",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.6"},
-                        {"labelId": "Normal", "deckListId": "Q01.6"},
-                        {"labelId": "Nightmare", "deckListId": "N01.6"}
+                        {"label": "id:easy", "deckListId": "E01.6"},
+                        {"label": "id:normal", "deckListId": "Q01.6"},
+                        {"label": "id:nightmare", "deckListId": "N01.6"}
                     ]
                 },
                 {
-                    "labelId": "The Hills of Emyn Muil",
+                    "label": "id:The Hills of Emyn Muil",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.7"},
-                        {"labelId": "Normal", "deckListId": "Q01.7"},
-                        {"labelId": "Nightmare", "deckListId": "N01.7"}
+                        {"label": "id:easy", "deckListId": "E01.7"},
+                        {"label": "id:normal", "deckListId": "Q01.7"},
+                        {"label": "id:nightmare", "deckListId": "N01.7"}
                     ]
                 },
                 {
-                    "labelId": "The Dead Marshes",
+                    "label": "id:The Dead Marshes",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.8"},
-                        {"labelId": "Normal", "deckListId": "Q01.8"},
-                        {"labelId": "Nightmare", "deckListId": "N01.8"}
+                        {"label": "id:easy", "deckListId": "E01.8"},
+                        {"label": "id:normal", "deckListId": "Q01.8"},
+                        {"label": "id:nightmare", "deckListId": "N01.8"}
                     ]
                 },
                 {
-                    "labelId": "Return to Mirkwood",
+                    "label": "id:Return to Mirkwood",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E01.9"},
-                        {"labelId": "Normal", "deckListId": "Q01.9"},
-                        {"labelId": "Nightmare", "deckListId": "N01.9"}
+                        {"label": "id:easy", "deckListId": "E01.9"},
+                        {"label": "id:normal", "deckListId": "Q01.9"},
+                        {"label": "id:nightmare", "deckListId": "N01.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "Khazad-dûm & Dwarrowdelf",
+                "label": "id:Khazad-dûm & Dwarrowdelf",
                 "subMenus": [
                 {
-                    "labelId": "Into the Pit",
+                    "label": "id:Into the Pit",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.1"},
-                        {"labelId": "Normal", "deckListId": "Q02.1"},
-                        {"labelId": "Nightmare", "deckListId": "N02.1"}
+                        {"label": "id:easy", "deckListId": "E02.1"},
+                        {"label": "id:normal", "deckListId": "Q02.1"},
+                        {"label": "id:nightmare", "deckListId": "N02.1"}
                     ]
                 },
                 {
-                    "labelId": "The Seventh Level",
+                    "label": "id:The Seventh Level",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.2"},
-                        {"labelId": "Normal", "deckListId": "Q02.2"},
-                        {"labelId": "Nightmare", "deckListId": "N02.2"}
+                        {"label": "id:easy", "deckListId": "E02.2"},
+                        {"label": "id:normal", "deckListId": "Q02.2"},
+                        {"label": "id:nightmare", "deckListId": "N02.2"}
                     ]
                 },
                 {
-                    "labelId": "Flight from Moria",
+                    "label": "id:Flight from Moria",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.3"},
-                        {"labelId": "Normal", "deckListId": "Q02.3"},
-                        {"labelId": "Nightmare", "deckListId": "N02.3"}
+                        {"label": "id:easy", "deckListId": "E02.3"},
+                        {"label": "id:normal", "deckListId": "Q02.3"},
+                        {"label": "id:nightmare", "deckListId": "N02.3"}
                     ]
                 },
                 {
-                    "labelId": "The Redhorn Gate",
+                    "label": "id:The Redhorn Gate",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.4"},
-                        {"labelId": "Normal", "deckListId": "Q02.4"},
-                        {"labelId": "Nightmare", "deckListId": "N02.4"}
+                        {"label": "id:easy", "deckListId": "E02.4"},
+                        {"label": "id:normal", "deckListId": "Q02.4"},
+                        {"label": "id:nightmare", "deckListId": "N02.4"}
                     ]
                 },
                 {
-                    "labelId": "Road to Rivendell",
+                    "label": "id:Road to Rivendell",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.5"},
-                        {"labelId": "Normal", "deckListId": "Q02.5"},
-                        {"labelId": "Nightmare", "deckListId": "N02.5"}
+                        {"label": "id:easy", "deckListId": "E02.5"},
+                        {"label": "id:normal", "deckListId": "Q02.5"},
+                        {"label": "id:nightmare", "deckListId": "N02.5"}
                     ]
                 },
                 {
-                    "labelId": "The Watcher in the Water",
+                    "label": "id:The Watcher in the Water",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.6"},
-                        {"labelId": "Normal", "deckListId": "Q02.6"},
-                        {"labelId": "Nightmare", "deckListId": "N02.6"}
+                        {"label": "id:easy", "deckListId": "E02.6"},
+                        {"label": "id:normal", "deckListId": "Q02.6"},
+                        {"label": "id:nightmare", "deckListId": "N02.6"}
                     ]
                 },
                 {
-                    "labelId": "The Long Dark",
+                    "label": "id:The Long Dark",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.7"},
-                        {"labelId": "Normal", "deckListId": "Q02.7"},
-                        {"labelId": "Nightmare", "deckListId": "N02.7"}
+                        {"label": "id:easy", "deckListId": "E02.7"},
+                        {"label": "id:normal", "deckListId": "Q02.7"},
+                        {"label": "id:nightmare", "deckListId": "N02.7"}
                     ]
                 },
                 {
-                    "labelId": "Foundations of Stone",
+                    "label": "id:Foundations of Stone",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.8"},
-                        {"labelId": "Normal", "deckListId": "Q02.8"},
-                        {"labelId": "Nightmare", "deckListId": "N02.8"}
+                        {"label": "id:easy", "deckListId": "E02.8"},
+                        {"label": "id:normal", "deckListId": "Q02.8"},
+                        {"label": "id:nightmare", "deckListId": "N02.8"}
                     ]
                 },
                 {
-                    "labelId": "Shadow and Flame",
+                    "label": "id:Shadow and Flame",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E02.9"},
-                        {"labelId": "Normal", "deckListId": "Q02.9"},
-                        {"labelId": "Nightmare", "deckListId": "N02.9"}
+                        {"label": "id:easy", "deckListId": "E02.9"},
+                        {"label": "id:normal", "deckListId": "Q02.9"},
+                        {"label": "id:nightmare", "deckListId": "N02.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "Heirs of Númenor & Against the Shadow",
+                "label": "id:Heirs of Númenor & Against the Shadow",
                 "subMenus": [
                 {
-                    "labelId": "Peril In Pelargir",
+                    "label": "id:Peril In Pelargir",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.1"},
-                        {"labelId": "Normal", "deckListId": "Q03.1"},
-                        {"labelId": "Nightmare", "deckListId": "N03.1"}
+                        {"label": "id:easy", "deckListId": "E03.1"},
+                        {"label": "id:normal", "deckListId": "Q03.1"},
+                        {"label": "id:nightmare", "deckListId": "N03.1"}
                     ]
                 },
                 {
-                    "labelId": "Into Ithilien",
+                    "label": "id:Into Ithilien",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.2"},
-                        {"labelId": "Normal", "deckListId": "Q03.2"},
-                        {"labelId": "Nightmare", "deckListId": "N03.2"}
+                        {"label": "id:easy", "deckListId": "E03.2"},
+                        {"label": "id:normal", "deckListId": "Q03.2"},
+                        {"label": "id:nightmare", "deckListId": "N03.2"}
                     ]
                 },
                 {
-                    "labelId": "The Siege of Cair Andros",
+                    "label": "id:The Siege of Cair Andros",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.3"},
-                        {"labelId": "Normal", "deckListId": "Q03.3"},
-                        {"labelId": "Nightmare", "deckListId": "N03.3"}
+                        {"label": "id:easy", "deckListId": "E03.3"},
+                        {"label": "id:normal", "deckListId": "Q03.3"},
+                        {"label": "id:nightmare", "deckListId": "N03.3"}
                     ]
                 },
                 {
-                    "labelId": "The Steward's Fear",
+                    "label": "id:The Steward's Fear",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.4"},
-                        {"labelId": "Normal", "deckListId": "Q03.4"},
-                        {"labelId": "Nightmare", "deckListId": "N03.4"}
+                        {"label": "id:easy", "deckListId": "E03.4"},
+                        {"label": "id:normal", "deckListId": "Q03.4"},
+                        {"label": "id:nightmare", "deckListId": "N03.4"}
                     ]
                 },
                 {
-                    "labelId": "The Drúadan Forest",
+                    "label": "id:The Drúadan Forest",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.5"},
-                        {"labelId": "Normal", "deckListId": "Q03.5"},
-                        {"labelId": "Nightmare", "deckListId": "N03.5"}
+                        {"label": "id:easy", "deckListId": "E03.5"},
+                        {"label": "id:normal", "deckListId": "Q03.5"},
+                        {"label": "id:nightmare", "deckListId": "N03.5"}
                     ]
                 },
                 {
-                    "labelId": "Encounter at Amon Dîn",
+                    "label": "id:Encounter at Amon Dîn",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.6"},
-                        {"labelId": "Normal", "deckListId": "Q03.6"},
-                        {"labelId": "Nightmare", "deckListId": "N03.6"}
+                        {"label": "id:easy", "deckListId": "E03.6"},
+                        {"label": "id:normal", "deckListId": "Q03.6"},
+                        {"label": "id:nightmare", "deckListId": "N03.6"}
                     ]
                 },
                 {
-                    "labelId": "Assault on Osgiliath",
+                    "label": "id:Assault on Osgiliath",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.7"},
-                        {"labelId": "Normal", "deckListId": "Q03.7"},
-                        {"labelId": "Nightmare", "deckListId": "N03.7"}
+                        {"label": "id:easy", "deckListId": "E03.7"},
+                        {"label": "id:normal", "deckListId": "Q03.7"},
+                        {"label": "id:nightmare", "deckListId": "N03.7"}
                     ]
                 },
                 {
-                    "labelId": "The Blood of Gondor",
+                    "label": "id:The Blood of Gondor",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.8"},
-                        {"labelId": "Normal", "deckListId": "Q03.8"},
-                        {"labelId": "Nightmare", "deckListId": "N03.8"}
+                        {"label": "id:easy", "deckListId": "E03.8"},
+                        {"label": "id:normal", "deckListId": "Q03.8"},
+                        {"label": "id:nightmare", "deckListId": "N03.8"}
                     ]
                 },
                 {
-                    "labelId": "The Morgul Vale",
+                    "label": "id:The Morgul Vale",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E03.9"},
-                        {"labelId": "Normal", "deckListId": "Q03.9"},
-                        {"labelId": "Nightmare", "deckListId": "N03.9"}
+                        {"label": "id:easy", "deckListId": "E03.9"},
+                        {"label": "id:normal", "deckListId": "Q03.9"},
+                        {"label": "id:nightmare", "deckListId": "N03.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Voice of Isengard & The Ringmaker",
+                "label": "id:The Voice of Isengard & The Ringmaker",
                 "subMenus": [
                 {
-                    "labelId": "Fords of Isen",
+                    "label": "id:Fords of Isen",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.1"},
-                        {"labelId": "Normal", "deckListId": "Q04.1"},
-                        {"labelId": "Nightmare", "deckListId": "N04.1"}
+                        {"label": "id:easy", "deckListId": "E04.1"},
+                        {"label": "id:normal", "deckListId": "Q04.1"},
+                        {"label": "id:nightmare", "deckListId": "N04.1"}
                     ]
                 },
                 {
-                    "labelId": "To Catch an Orc",
+                    "label": "id:To Catch an Orc",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.2"},
-                        {"labelId": "Normal", "deckListId": "Q04.2"},
-                        {"labelId": "Nightmare", "deckListId": "N04.2"}
+                        {"label": "id:easy", "deckListId": "E04.2"},
+                        {"label": "id:normal", "deckListId": "Q04.2"},
+                        {"label": "id:nightmare", "deckListId": "N04.2"}
                     ]
                 },
                 {
-                    "labelId": "Into Fangorn",
+                    "label": "id:Into Fangorn",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.3"},
-                        {"labelId": "Normal", "deckListId": "Q04.3"},
-                        {"labelId": "Nightmare", "deckListId": "N04.3"}
+                        {"label": "id:easy", "deckListId": "E04.3"},
+                        {"label": "id:normal", "deckListId": "Q04.3"},
+                        {"label": "id:nightmare", "deckListId": "N04.3"}
                     ]
                 },
                 {
-                    "labelId": "The Dunland Trap",
+                    "label": "id:The Dunland Trap",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.4"},
-                        {"labelId": "Normal", "deckListId": "Q04.4"},
-                        {"labelId": "Nightmare", "deckListId": "N04.4"}
+                        {"label": "id:easy", "deckListId": "E04.4"},
+                        {"label": "id:normal", "deckListId": "Q04.4"},
+                        {"label": "id:nightmare", "deckListId": "N04.4"}
                     ]
                 },
                 {
-                    "labelId": "The Three Trials",
+                    "label": "id:The Three Trials",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.5"},
-                        {"labelId": "Normal", "deckListId": "Q04.5"},
-                        {"labelId": "Nightmare", "deckListId": "N04.5"}
+                        {"label": "id:easy", "deckListId": "E04.5"},
+                        {"label": "id:normal", "deckListId": "Q04.5"},
+                        {"label": "id:nightmare", "deckListId": "N04.5"}
                     ]
                 },
                 {
-                    "labelId": "Trouble in Tharbad",
+                    "label": "id:Trouble in Tharbad",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.6"},
-                        {"labelId": "Normal", "deckListId": "Q04.6"},
-                        {"labelId": "Nightmare", "deckListId": "N04.6"}
+                        {"label": "id:easy", "deckListId": "E04.6"},
+                        {"label": "id:normal", "deckListId": "Q04.6"},
+                        {"label": "id:nightmare", "deckListId": "N04.6"}
                     ]
                 },
                 {
-                    "labelId": "The Nin in Eilph",
+                    "label": "id:The Nin in Eilph",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.7"},
-                        {"labelId": "Normal", "deckListId": "Q04.7"},
-                        {"labelId": "Nightmare", "deckListId": "N04.7"}
+                        {"label": "id:easy", "deckListId": "E04.7"},
+                        {"label": "id:normal", "deckListId": "Q04.7"},
+                        {"label": "id:nightmare", "deckListId": "N04.7"}
                     ]
                 },
                 {
-                    "labelId": "Celebrimbor's Secret",
+                    "label": "id:Celebrimbor's Secret",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.8"},
-                        {"labelId": "Normal", "deckListId": "Q04.8"},
-                        {"labelId": "Nightmare", "deckListId": "N04.8"}
+                        {"label": "id:easy", "deckListId": "E04.8"},
+                        {"label": "id:normal", "deckListId": "Q04.8"},
+                        {"label": "id:nightmare", "deckListId": "N04.8"}
                     ]
                 },
                 {
-                    "labelId": "The Antlered Crown",
+                    "label": "id:The Antlered Crown",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E04.9"},
-                        {"labelId": "Normal", "deckListId": "Q04.9"},
-                        {"labelId": "Nightmare", "deckListId": "N04.9"}
+                        {"label": "id:easy", "deckListId": "E04.9"},
+                        {"label": "id:normal", "deckListId": "Q04.9"},
+                        {"label": "id:nightmare", "deckListId": "N04.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Lost Realm & Angmar Awakened",
+                "label": "id:The Lost Realm & Angmar Awakened",
                 "subMenus": [
                 {
-                    "labelId": "Intruders in Chetwood",
+                    "label": "id:Intruders in Chetwood",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.1"},
-                        {"labelId": "Normal", "deckListId": "Q05.1"},
-                        {"labelId": "Nightmare", "deckListId": "N05.1"}
+                        {"label": "id:easy", "deckListId": "E05.1"},
+                        {"label": "id:normal", "deckListId": "Q05.1"},
+                        {"label": "id:nightmare", "deckListId": "N05.1"}
                     ]
                 },
                 {
-                    "labelId": "The Weather Hills",
+                    "label": "id:The Weather Hills",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.2"},
-                        {"labelId": "Normal", "deckListId": "Q05.2"},
-                        {"labelId": "Nightmare", "deckListId": "N05.2"}
+                        {"label": "id:easy", "deckListId": "E05.2"},
+                        {"label": "id:normal", "deckListId": "Q05.2"},
+                        {"label": "id:nightmare", "deckListId": "N05.2"}
                     ]
                 },
                 {
-                    "labelId": "Deadmen's Dike",
+                    "label": "id:Deadmen's Dike",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.3"},
-                        {"labelId": "Normal", "deckListId": "Q05.3"},
-                        {"labelId": "Nightmare", "deckListId": "N05.3"}
+                        {"label": "id:easy", "deckListId": "E05.3"},
+                        {"label": "id:normal", "deckListId": "Q05.3"},
+                        {"label": "id:nightmare", "deckListId": "N05.3"}
                     ]
                 },
                 {
-                    "labelId": "The Wastes of Eriador",
+                    "label": "id:The Wastes of Eriador",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.4"},
-                        {"labelId": "Normal", "deckListId": "Q05.4"},
-                        {"labelId": "Nightmare", "deckListId": "N05.4"}
+                        {"label": "id:easy", "deckListId": "E05.4"},
+                        {"label": "id:normal", "deckListId": "Q05.4"},
+                        {"label": "id:nightmare", "deckListId": "N05.4"}
                     ]
                 },
                 {
-                    "labelId": "Escape from Mount Gram",
+                    "label": "id:Escape from Mount Gram",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.5"},
-                        {"labelId": "Normal", "deckListId": "Q05.5"},
-                        {"labelId": "Nightmare", "deckListId": "N05.5"}
+                        {"label": "id:easy", "deckListId": "E05.5"},
+                        {"label": "id:normal", "deckListId": "Q05.5"},
+                        {"label": "id:nightmare", "deckListId": "N05.5"}
                     ]
                 },
                 {
-                    "labelId": "Across the Ettenmoors",
+                    "label": "id:Across the Ettenmoors",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.6"},
-                        {"labelId": "Normal", "deckListId": "Q05.6"},
-                        {"labelId": "Nightmare", "deckListId": "N05.6"}
+                        {"label": "id:easy", "deckListId": "E05.6"},
+                        {"label": "id:normal", "deckListId": "Q05.6"},
+                        {"label": "id:nightmare", "deckListId": "N05.6"}
                     ]
                 },
                 {
-                    "labelId": "The Treachery of Rhudaur",
+                    "label": "id:The Treachery of Rhudaur",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.7"},
-                        {"labelId": "Normal", "deckListId": "Q05.7"},
-                        {"labelId": "Nightmare", "deckListId": "N05.7"}
+                        {"label": "id:easy", "deckListId": "E05.7"},
+                        {"label": "id:normal", "deckListId": "Q05.7"},
+                        {"label": "id:nightmare", "deckListId": "N05.7"}
                     ]
                 },
                 {
-                    "labelId": "The Battle of Carn Dum",
+                    "label": "id:The Battle of Carn Dum",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.8"},
-                        {"labelId": "Normal", "deckListId": "Q05.8"},
-                        {"labelId": "Nightmare", "deckListId": "N05.8"}
+                        {"label": "id:easy", "deckListId": "E05.8"},
+                        {"label": "id:normal", "deckListId": "Q05.8"},
+                        {"label": "id:nightmare", "deckListId": "N05.8"}
                     ]
                 },
                 {
-                    "labelId": "The Dread Realm",
+                    "label": "id:The Dread Realm",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E05.9"},
-                        {"labelId": "Normal", "deckListId": "Q05.9"},
-                        {"labelId": "Nightmare", "deckListId": "N05.9"}
+                        {"label": "id:easy", "deckListId": "E05.9"},
+                        {"label": "id:normal", "deckListId": "Q05.9"},
+                        {"label": "id:nightmare", "deckListId": "N05.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Grey Havens & The Dreamchaser",
+                "label": "id:The Grey Havens & The Dreamchaser",
                 "subMenus": [
                 {
-                    "labelId": "Voyage Across Belegaer",
+                    "label": "id:Voyage Across Belegaer",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.1"},
-                        {"labelId": "Normal", "deckListId": "Q06.1"},
-                        {"labelId": "Nightmare", "deckListId": "N06.1"}
+                        {"label": "id:easy", "deckListId": "E06.1"},
+                        {"label": "id:normal", "deckListId": "Q06.1"},
+                        {"label": "id:nightmare", "deckListId": "N06.1"}
                     ]
                 },
                 {
-                    "labelId": "The Fate of Numenor",
+                    "label": "id:The Fate of Numenor",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.2"},
-                        {"labelId": "Normal", "deckListId": "Q06.2"},
-                        {"labelId": "Nightmare", "deckListId": "N06.2"}
+                        {"label": "id:easy", "deckListId": "E06.2"},
+                        {"label": "id:normal", "deckListId": "Q06.2"},
+                        {"label": "id:nightmare", "deckListId": "N06.2"}
                     ]
                 },
                 {
-                    "labelId": "Raid on the Grey Havens",
+                    "label": "id:Raid on the Grey Havens",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.3"},
-                        {"labelId": "Normal", "deckListId": "Q06.3"},
-                        {"labelId": "Nightmare", "deckListId": "N06.3"}
+                        {"label": "id:easy", "deckListId": "E06.3"},
+                        {"label": "id:normal", "deckListId": "Q06.3"},
+                        {"label": "id:nightmare", "deckListId": "N06.3"}
                     ]
                 },
                 {
-                    "labelId": "Flight of the Stormcaller",
+                    "label": "id:Flight of the Stormcaller",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.4"},
-                        {"labelId": "Normal", "deckListId": "Q06.4"},
-                        {"labelId": "Nightmare", "deckListId": "N06.4"}
+                        {"label": "id:easy", "deckListId": "E06.4"},
+                        {"label": "id:normal", "deckListId": "Q06.4"},
+                        {"label": "id:nightmare", "deckListId": "N06.4"}
                     ]
                 },
                 {
-                    "labelId": "The Thing in the Depths",
+                    "label": "id:The Thing in the Depths",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.5"},
-                        {"labelId": "Normal", "deckListId": "Q06.5"},
-                        {"labelId": "Nightmare", "deckListId": "N06.5"}
+                        {"label": "id:easy", "deckListId": "E06.5"},
+                        {"label": "id:normal", "deckListId": "Q06.5"},
+                        {"label": "id:nightmare", "deckListId": "N06.5"}
                     ]
                 },
                 {
-                    "labelId": "Temple of the Deceived",
+                    "label": "id:Temple of the Deceived",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.6"},
-                        {"labelId": "Normal", "deckListId": "Q06.6"},
-                        {"labelId": "Nightmare", "deckListId": "N06.6"}
+                        {"label": "id:easy", "deckListId": "E06.6"},
+                        {"label": "id:normal", "deckListId": "Q06.6"},
+                        {"label": "id:nightmare", "deckListId": "N06.6"}
                     ]
                 },
                 {
-                    "labelId": "The Drowned Ruins",
+                    "label": "id:The Drowned Ruins",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.7"},
-                        {"labelId": "Normal", "deckListId": "Q06.7"},
-                        {"labelId": "Nightmare", "deckListId": "N06.7"}
+                        {"label": "id:easy", "deckListId": "E06.7"},
+                        {"label": "id:normal", "deckListId": "Q06.7"},
+                        {"label": "id:nightmare", "deckListId": "N06.7"}
                     ]
                 },
                 {
-                    "labelId": "A Storm on Cobas Haven",
+                    "label": "id:A Storm on Cobas Haven",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.8"},
-                        {"labelId": "Normal", "deckListId": "Q06.8"},
-                        {"labelId": "Nightmare", "deckListId": "N06.8"}
+                        {"label": "id:easy", "deckListId": "E06.8"},
+                        {"label": "id:normal", "deckListId": "Q06.8"},
+                        {"label": "id:nightmare", "deckListId": "N06.8"}
                     ]
                 },
                 {
-                    "labelId": "The City of Corsairs",
+                    "label": "id:The City of Corsairs",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E06.9"},
-                        {"labelId": "Normal", "deckListId": "Q06.9"},
-                        {"labelId": "Nightmare", "deckListId": "N06.9"}
+                        {"label": "id:easy", "deckListId": "E06.9"},
+                        {"label": "id:normal", "deckListId": "Q06.9"},
+                        {"label": "id:nightmare", "deckListId": "N06.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Sands of Harad & The Haradrim",
+                "label": "id:The Sands of Harad & The Haradrim",
                 "subMenus": [
                 {
-                    "labelId": "Escape from Umbar",
+                    "label": "id:Escape from Umbar",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.1"},
-                        {"labelId": "Normal", "deckListId": "Q07.1"},
-                        {"labelId": "Nightmare", "deckListId": "N07.1"}
+                        {"label": "id:easy", "deckListId": "E07.1"},
+                        {"label": "id:normal", "deckListId": "Q07.1"},
+                        {"label": "id:nightmare", "deckListId": "N07.1"}
                     ]
                 },
                 {
-                    "labelId": "Desert Crossing",
+                    "label": "id:Desert Crossing",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.2"},
-                        {"labelId": "Normal", "deckListId": "Q07.2"}
+                        {"label": "id:easy", "deckListId": "E07.2"},
+                        {"label": "id:normal", "deckListId": "Q07.2"}
                     ]
                 },
                 {
-                    "labelId": "The Long Arm of Mordor",
+                    "label": "id:The Long Arm of Mordor",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.3"},
-                        {"labelId": "Normal", "deckListId": "Q07.3"}
+                        {"label": "id:easy", "deckListId": "E07.3"},
+                        {"label": "id:normal", "deckListId": "Q07.3"}
                     ]
                 },
                 {
-                    "labelId": "The Mumakil",
+                    "label": "id:The Mumakil",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.4"},
-                        {"labelId": "Normal", "deckListId": "Q07.4"}
+                        {"label": "id:easy", "deckListId": "E07.4"},
+                        {"label": "id:normal", "deckListId": "Q07.4"}
                     ]
                 },
                 {
-                    "labelId": "Race Across Harad",
+                    "label": "id:Race Across Harad",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.5"},
-                        {"labelId": "Normal", "deckListId": "Q07.5"}
+                        {"label": "id:easy", "deckListId": "E07.5"},
+                        {"label": "id:normal", "deckListId": "Q07.5"}
                     ]
                 },
                 {
-                    "labelId": "Beneath the Sands",
+                    "label": "id:Beneath the Sands",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.6"},
-                        {"labelId": "Normal", "deckListId": "Q07.6"}
+                        {"label": "id:easy", "deckListId": "E07.6"},
+                        {"label": "id:normal", "deckListId": "Q07.6"}
                     ]
                 },
                 {
-                    "labelId": "The Black Serpent",
+                    "label": "id:The Black Serpent",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.7"},
-                        {"labelId": "Normal", "deckListId": "Q07.7"}
+                        {"label": "id:easy", "deckListId": "E07.7"},
+                        {"label": "id:normal", "deckListId": "Q07.7"}
                     ]
                 },
                 {
-                    "labelId": "The Dungeons of Cirith Gurat",
+                    "label": "id:The Dungeons of Cirith Gurat",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.8"},
-                        {"labelId": "Normal", "deckListId": "Q07.8"}
+                        {"label": "id:easy", "deckListId": "E07.8"},
+                        {"label": "id:normal", "deckListId": "Q07.8"}
                     ]
                 },
                 {
-                    "labelId": "The Crossings of Poros",
+                    "label": "id:The Crossings of Poros",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E07.9"},
-                        {"labelId": "Normal", "deckListId": "Q07.9"}
+                        {"label": "id:easy", "deckListId": "E07.9"},
+                        {"label": "id:normal", "deckListId": "Q07.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Wilds of Rhovanion & Ered Mithrin",
+                "label": "id:The Wilds of Rhovanion & Ered Mithrin",
                 "subMenus": [
                 {
-                    "labelId": "Journey Up the Anduin",
+                    "label": "id:Journey Up the Anduin",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.1"},
-                        {"labelId": "Normal", "deckListId": "Q08.1"}
+                        {"label": "id:easy", "deckListId": "E08.1"},
+                        {"label": "id:normal", "deckListId": "Q08.1"}
                     ]
                 },
                 {
-                    "labelId": "Lost in Mirkwood",
+                    "label": "id:Lost in Mirkwood",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.2"},
-                        {"labelId": "Normal", "deckListId": "Q08.2"}
+                        {"label": "id:easy", "deckListId": "E08.2"},
+                        {"label": "id:normal", "deckListId": "Q08.2"}
                     ]
                 },
                 {
-                    "labelId": "The King's Quest",
+                    "label": "id:The King's Quest",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.3"},
-                        {"labelId": "Normal", "deckListId": "Q08.3"}
+                        {"label": "id:easy", "deckListId": "E08.3"},
+                        {"label": "id:normal", "deckListId": "Q08.3"}
                     ]
                 },
                 {
-                    "labelId": "The Withered Heath",
+                    "label": "id:The Withered Heath",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.4"},
-                        {"labelId": "Normal", "deckListId": "Q08.4"},
-                        {"labelId": "Nightmare", "deckListId": "N08.4"}
+                        {"label": "id:easy", "deckListId": "E08.4"},
+                        {"label": "id:normal", "deckListId": "Q08.4"},
+                        {"label": "id:nightmare", "deckListId": "N08.4"}
                     ]
                 },
                 {
-                    "labelId": "Roam Across Rhovanion",
+                    "label": "id:Roam Across Rhovanion",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.5"},
-                        {"labelId": "Normal", "deckListId": "Q08.5"}
+                        {"label": "id:easy", "deckListId": "E08.5"},
+                        {"label": "id:normal", "deckListId": "Q08.5"}
                     ]
                 },
                 {
-                    "labelId": "Fire in the Night",
+                    "label": "id:Fire in the Night",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.6"},
-                        {"labelId": "Normal", "deckListId": "Q08.6"}
+                        {"label": "id:easy", "deckListId": "E08.6"},
+                        {"label": "id:normal", "deckListId": "Q08.6"}
                     ]
                 },
                 {
-                    "labelId": "The Ghost of Framsburg",
+                    "label": "id:The Ghost of Framsburg",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.7"},
-                        {"labelId": "Normal", "deckListId": "Q08.7"}
+                        {"label": "id:easy", "deckListId": "E08.7"},
+                        {"label": "id:normal", "deckListId": "Q08.7"}
                     ]
                 },
                 {
-                    "labelId": "Mount Gundabad",
+                    "label": "id:Mount Gundabad",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.8"},
-                        {"labelId": "Normal", "deckListId": "Q08.8"}
+                        {"label": "id:easy", "deckListId": "E08.8"},
+                        {"label": "id:normal", "deckListId": "Q08.8"}
                     ]
                 },
                 {
-                    "labelId": "The Fate of Wilderland",
+                    "label": "id:The Fate of Wilderland",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E08.9"},
-                        {"labelId": "Normal", "deckListId": "Q08.9"}
+                        {"label": "id:easy", "deckListId": "E08.9"},
+                        {"label": "id:normal", "deckListId": "Q08.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "A Shadow in the East & Vengenace of Mordor",
+                "label": "id:A Shadow in the East & Vengenace of Mordor",
                 "subMenus": [
                 {
-                    "labelId": "The River Running",
+                    "label": "id:The River Running",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.1"},
-                        {"labelId": "Normal", "deckListId": "Q09.1"}
+                        {"label": "id:easy", "deckListId": "E09.1"},
+                        {"label": "id:normal", "deckListId": "Q09.1"}
                     ]
                 },
                 {
-                    "labelId": "Danger in Dorwinian",
+                    "label": "id:Danger in Dorwinian",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.2"},
-                        {"labelId": "Normal", "deckListId": "Q09.2"}
+                        {"label": "id:easy", "deckListId": "E09.2"},
+                        {"label": "id:normal", "deckListId": "Q09.2"}
                     ]
                 },
                 {
-                    "labelId": "Temple of Doom",
+                    "label": "id:Temple of Doom",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.3"},
-                        {"labelId": "Normal", "deckListId": "Q09.3"}
+                        {"label": "id:easy", "deckListId": "E09.3"},
+                        {"label": "id:normal", "deckListId": "Q09.3"}
                     ]
                 },
                 {
-                    "labelId": "Wrath and Ruin",
+                    "label": "id:Wrath and Ruin",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.4"},
-                        {"labelId": "Normal", "deckListId": "Q09.4"}
+                        {"label": "id:easy", "deckListId": "E09.4"},
+                        {"label": "id:normal", "deckListId": "Q09.4"}
                     ]
                 },
                 {
-                    "labelId": "The City of Ulfast",
+                    "label": "id:The City of Ulfast",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.5"},
-                        {"labelId": "Normal", "deckListId": "Q09.5"}
+                        {"label": "id:easy", "deckListId": "E09.5"},
+                        {"label": "id:normal", "deckListId": "Q09.5"}
                     ]
                 },
                 {
-                    "labelId": "Challenge of the Wainriders",
+                    "label": "id:Challenge of the Wainriders",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.6"},
-                        {"labelId": "Normal", "deckListId": "Q09.6"}
+                        {"label": "id:easy", "deckListId": "E09.6"},
+                        {"label": "id:normal", "deckListId": "Q09.6"}
                     ]
                 },
                 {
-                    "labelId": "Under the Ash Mountains",
+                    "label": "id:Under the Ash Mountains",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.7"},
-                        {"labelId": "Normal", "deckListId": "Q09.7"}
+                        {"label": "id:easy", "deckListId": "E09.7"},
+                        {"label": "id:normal", "deckListId": "Q09.7"}
                     ]
                 },
                 {
-                    "labelId": "The Land of Sorrow",
+                    "label": "id:The Land of Sorrow",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.8"},
-                        {"labelId": "Normal", "deckListId": "Q09.8"}
+                        {"label": "id:easy", "deckListId": "E09.8"},
+                        {"label": "id:normal", "deckListId": "Q09.8"}
                     ]
                 },
                 {
-                    "labelId": "The Fortress of Nurn",
+                    "label": "id:The Fortress of Nurn",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E09.9"},
-                        {"labelId": "Normal", "deckListId": "Q09.9"}
+                        {"label": "id:easy", "deckListId": "E09.9"},
+                        {"label": "id:normal", "deckListId": "Q09.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Hobbit",
+                "label": "id:The Hobbit",
                 "subMenus": [
                 {
-                    "labelId": "We Must Away Ere Break of Day",
+                    "label": "id:We Must Away Ere Break of Day",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0A.1"},
-                        {"labelId": "Normal", "deckListId": "Q0A.1"},
-                        {"labelId": "Nightmare", "deckListId": "N0A.1"}
+                        {"label": "id:easy", "deckListId": "E0A.1"},
+                        {"label": "id:normal", "deckListId": "Q0A.1"},
+                        {"label": "id:nightmare", "deckListId": "N0A.1"}
                     ]
                 },
                 {
-                    "labelId": "Over the Misty Mountains Grim",
+                    "label": "id:Over the Misty Mountains Grim",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0A.2"},
-                        {"labelId": "Normal", "deckListId": "Q0A.2"},
-                        {"labelId": "Nightmare", "deckListId": "N0A.2"}
+                        {"label": "id:easy", "deckListId": "E0A.2"},
+                        {"label": "id:normal", "deckListId": "Q0A.2"},
+                        {"label": "id:nightmare", "deckListId": "N0A.2"}
                     ]
                 },
                 {
-                    "labelId": "Dungeons Deep and Caverns Dim",
+                    "label": "id:Dungeons Deep and Caverns Dim",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0A.3"},
-                        {"labelId": "Normal", "deckListId": "Q0A.3"},
-                        {"labelId": "Nightmare", "deckListId": "N0A.3"}
+                        {"label": "id:easy", "deckListId": "E0A.3"},
+                        {"label": "id:normal", "deckListId": "Q0A.3"},
+                        {"label": "id:nightmare", "deckListId": "N0A.3"}
                     ]
                 },
                 {
-                    "labelId": "Flies and Spiders",
+                    "label": "id:Flies and Spiders",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0A.4"},
-                        {"labelId": "Normal", "deckListId": "Q0A.4"},
-                        {"labelId": "Nightmare", "deckListId": "N0A.4"}
+                        {"label": "id:easy", "deckListId": "E0A.4"},
+                        {"label": "id:normal", "deckListId": "Q0A.4"},
+                        {"label": "id:nightmare", "deckListId": "N0A.4"}
                     ]
                 },
                 {
-                    "labelId": "The Lonely Mountain",
+                    "label": "id:The Lonely Mountain",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0A.5"},
-                        {"labelId": "Normal", "deckListId": "Q0A.5"},
-                        {"labelId": "Nightmare", "deckListId": "N0A.5"}
+                        {"label": "id:easy", "deckListId": "E0A.5"},
+                        {"label": "id:normal", "deckListId": "Q0A.5"},
+                        {"label": "id:nightmare", "deckListId": "N0A.5"}
                     ]
                 },
                 {
-                    "labelId": "The Battle of Five Armies",
+                    "label": "id:The Battle of Five Armies",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0A.6"},
-                        {"labelId": "Normal", "deckListId": "Q0A.6"},
-                        {"labelId": "Nightmare", "deckListId": "N0A.6"}
+                        {"label": "id:easy", "deckListId": "E0A.6"},
+                        {"label": "id:normal", "deckListId": "Q0A.6"},
+                        {"label": "id:nightmare", "deckListId": "N0A.6"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Lord of the Rings Standalone",
+                "label": "id:The Lord of the Rings Standalone",
                 "subMenus": [
                 {
-                    "labelId": "The Passage of the Marshes",
+                    "label": "id:A Shadow of the Past",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.1"},
-                        {"labelId": "Normal", "deckListId": "Q0B.1"},
-                        {"labelId": "Nightmare", "deckListId": "N0B.1"}
+                        {"label": "id:easy", "deckListId": "E0B.01"},
+                        {"label": "id:normal", "deckListId": "Q0B.01"},
+                        {"label": "id:nightmare", "deckListId": "N0B.01"}
                     ]
                 },
                 {
-                    "labelId": "The Passage of the Marshes",
+                    "label": "id:A Knife in the Dark",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.10"},
-                        {"labelId": "Normal", "deckListId": "Q0B.10"},
-                        {"labelId": "Nightmare", "deckListId": "N0B.10"}
+                        {"label": "id:easy", "deckListId": "E0B.02"},
+                        {"label": "id:normal", "deckListId": "Q0B.02"},
+                        {"label": "id:nightmare", "deckListId": "N0B.02"}
                     ]
                 },
                 {
-                    "labelId": "Journey to the Cross roads",
+                    "label": "id:Flight to the Ford",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.11"},
-                        {"labelId": "Normal", "deckListId": "Q0B.11"},
-                        {"labelId": "Nightmare", "deckListId": "N0B.11"}
+                        {"label": "id:easy", "deckListId": "E0B.03"},
+                        {"label": "id:normal", "deckListId": "Q0B.03"},
+                        {"label": "id:nightmare", "deckListId": "N0B.03"}
                     ]
                 },
                 {
-                    "labelId": "Shelob's Lair",
+                    "label": "id:The Ring Goes South",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.12"},
-                        {"labelId": "Normal", "deckListId": "Q0B.12"},
-                        {"labelId": "Nightmare", "deckListId": "N0B.12"}
+                        {"label": "id:easy", "deckListId": "E0B.04"},
+                        {"label": "id:normal", "deckListId": "Q0B.04"},
+                        {"label": "id:nightmare", "deckListId": "N0B.04"}
                     ]
                 },
                 {
-                    "labelId": "The Passing of the Grey Company",
+                    "label": "id:Journey in the Dark",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.13"},
-                        {"labelId": "Normal", "deckListId": "Q0B.13"}
+                        {"label": "id:easy", "deckListId": "E0B.05"},
+                        {"label": "id:normal", "deckListId": "Q0B.05"},
+                        {"label": "id:nightmare", "deckListId": "N0B.05"}
                     ]
                 },
                 {
-                    "labelId": "The Siege of Gondor",
+                    "label": "id:Breaking of the Fellowship",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.14"},
-                        {"labelId": "Normal", "deckListId": "Q0B.14"}
+                        {"label": "id:easy", "deckListId": "E0B.06"},
+                        {"label": "id:normal", "deckListId": "Q0B.06"},
+                        {"label": "id:nightmare", "deckListId": "N0B.06"}
                     ]
                 },
                 {
-                    "labelId": "The Battle of the Pelennor Fields",
+                    "label": "id:The Uruk hai",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.15"},
-                        {"labelId": "Normal", "deckListId": "Q0B.15"}
+                        {"label": "id:easy", "deckListId": "E0B.07"},
+                        {"label": "id:normal", "deckListId": "Q0B.07"},
+                        {"label": "id:nightmare", "deckListId": "N0B.07"}
                     ]
                 },
                 {
-                    "labelId": "The Tower of Cirith Ungol",
+                    "label": "id:Helm's Deep",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.16"},
-                        {"labelId": "Normal", "deckListId": "Q0B.16"}
+                        {"label": "id:easy", "deckListId": "E0B.08"},
+                        {"label": "id:normal", "deckListId": "Q0B.08"},
+                        {"label": "id:nightmare", "deckListId": "N0B.08"}
                     ]
                 },
                 {
-                    "labelId": "The Black Gate Opens",
+                    "label": "id:The Road to Isengard",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.17"},
-                        {"labelId": "Normal", "deckListId": "Q0B.17"}
+                        {"label": "id:easy", "deckListId": "E0B.09"},
+                        {"label": "id:normal", "deckListId": "Q0B.09"},
+                        {"label": "id:nightmare", "deckListId": "N0B.09"}
                     ]
                 },
                 {
-                    "labelId": "Mount Doom",
+                    "label": "id:The Passage of the Marshes",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0B.18"},
-                        {"labelId": "Normal", "deckListId": "Q0B.18"}
+                        {"label": "id:easy", "deckListId": "E0B.10"},
+                        {"label": "id:normal", "deckListId": "Q0B.10"},
+                        {"label": "id:nightmare", "deckListId": "N0B.10"}
+                    ]
+                },
+                {
+                    "label": "id:Journey to the Cross roads",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.11"},
+                        {"label": "id:normal", "deckListId": "Q0B.11"},
+                        {"label": "id:nightmare", "deckListId": "N0B.11"}
+                    ]
+                },
+                {
+                    "label": "id:Shelob's Lair",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.12"},
+                        {"label": "id:normal", "deckListId": "Q0B.12"},
+                        {"label": "id:nightmare", "deckListId": "N0B.12"}
+                    ]
+                },
+                {
+                    "label": "id:The Passing of the Grey Company",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.13"},
+                        {"label": "id:normal", "deckListId": "Q0B.13"}
+                    ]
+                },
+                {
+                    "label": "id:The Siege of Gondor",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.14"},
+                        {"label": "id:normal", "deckListId": "Q0B.14"}
+                    ]
+                },
+                {
+                    "label": "id:The Battle of the Pelennor Fields",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.15"},
+                        {"label": "id:normal", "deckListId": "Q0B.15"}
+                    ]
+                },
+                {
+                    "label": "id:The Tower of Cirith Ungol",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.16"},
+                        {"label": "id:normal", "deckListId": "Q0B.16"}
+                    ]
+                },
+                {
+                    "label": "id:The Black Gate Opens",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.17"},
+                        {"label": "id:normal", "deckListId": "Q0B.17"}
+                    ]
+                },
+                {
+                    "label": "id:Mount Doom",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0B.18"},
+                        {"label": "id:normal", "deckListId": "Q0B.18"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "The Lord of the Rings Campaign",
+                "label": "id:The Lord of the Rings Campaign",
                 "subMenus": [
                 {
-                    "labelId": "The Passage of the Marshes",
+                    "label": "id:A Shadow of the Past",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.1"},
-                        {"labelId": "Normal", "deckListId": "Q0C.1"},
-                        {"labelId": "Nightmare", "deckListId": "N0C.1"}
+                        {"label": "id:easy", "deckListId": "E0C.01"},
+                        {"label": "id:normal", "deckListId": "Q0C.01"},
+                        {"label": "id:nightmare", "deckListId": "N0C.01"}
                     ]
                 },
                 {
-                    "labelId": "The Passage of the Marshes",
+                    "label": "id:A Knife in the Dark",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.10"},
-                        {"labelId": "Normal", "deckListId": "Q0C.10"},
-                        {"labelId": "Nightmare", "deckListId": "N0C.10"}
+                        {"label": "id:easy", "deckListId": "E0C.02"},
+                        {"label": "id:normal", "deckListId": "Q0C.02"},
+                        {"label": "id:nightmare", "deckListId": "N0C.02"}
                     ]
                 },
                 {
-                    "labelId": "Journey to the Cross roads",
+                    "label": "id:Flight to the Ford",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.11"},
-                        {"labelId": "Normal", "deckListId": "Q0C.11"},
-                        {"labelId": "Nightmare", "deckListId": "N0C.11"}
+                        {"label": "id:easy", "deckListId": "E0C.03"},
+                        {"label": "id:normal", "deckListId": "Q0C.03"},
+                        {"label": "id:nightmare", "deckListId": "N0C.03"}
                     ]
                 },
                 {
-                    "labelId": "Shelob's Lair",
+                    "label": "id:The Ring Goes South",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.12"},
-                        {"labelId": "Normal", "deckListId": "Q0C.12"},
-                        {"labelId": "Nightmare", "deckListId": "N0C.12"}
+                        {"label": "id:easy", "deckListId": "E0C.04"},
+                        {"label": "id:normal", "deckListId": "Q0C.04"},
+                        {"label": "id:nightmare", "deckListId": "N0C.04"}
                     ]
                 },
                 {
-                    "labelId": "The Passing of the Grey Company",
+                    "label": "id:Journey in the Dark",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.13"},
-                        {"labelId": "Normal", "deckListId": "Q0C.13"}
+                        {"label": "id:easy", "deckListId": "E0C.05"},
+                        {"label": "id:normal", "deckListId": "Q0C.05"},
+                        {"label": "id:nightmare", "deckListId": "N0C.05"}
                     ]
                 },
                 {
-                    "labelId": "The Siege of Gondor",
+                    "label": "id:Breaking of the Fellowship",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.14"},
-                        {"labelId": "Normal", "deckListId": "Q0C.14"}
+                        {"label": "id:easy", "deckListId": "E0C.06"},
+                        {"label": "id:normal", "deckListId": "Q0C.06"},
+                        {"label": "id:nightmare", "deckListId": "N0C.06"}
                     ]
                 },
                 {
-                    "labelId": "The Battle of the Pelennor Fields",
+                    "label": "id:The Uruk hai",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.15"},
-                        {"labelId": "Normal", "deckListId": "Q0C.15"}
+                        {"label": "id:easy", "deckListId": "E0C.07"},
+                        {"label": "id:normal", "deckListId": "Q0C.07"},
+                        {"label": "id:nightmare", "deckListId": "N0C.07"}
                     ]
                 },
                 {
-                    "labelId": "The Tower of Cirith Ungol",
+                    "label": "id:Helm's Deep",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.16"},
-                        {"labelId": "Normal", "deckListId": "Q0C.16"}
+                        {"label": "id:easy", "deckListId": "E0C.08"},
+                        {"label": "id:normal", "deckListId": "Q0C.08"},
+                        {"label": "id:nightmare", "deckListId": "N0C.08"}
                     ]
                 },
                 {
-                    "labelId": "The Black Gate Opens",
+                    "label": "id:The Road to Isengard",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.17"},
-                        {"labelId": "Normal", "deckListId": "Q0C.17"}
+                        {"label": "id:easy", "deckListId": "E0C.09"},
+                        {"label": "id:normal", "deckListId": "Q0C.09"},
+                        {"label": "id:nightmare", "deckListId": "N0C.09"}
                     ]
                 },
                 {
-                    "labelId": "Mount Doom",
+                    "label": "id:The Passage of the Marshes",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.18"},
-                        {"labelId": "Normal", "deckListId": "Q0C.18"}
+                        {"label": "id:easy", "deckListId": "E0C.10"},
+                        {"label": "id:normal", "deckListId": "Q0C.10"},
+                        {"label": "id:nightmare", "deckListId": "N0C.10"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Scouring of the Shire",
+                    "label": "id:Journey to the Cross roads",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E0C.19"},
-                        {"labelId": "Normal", "deckListId": "Q0C.19"}
+                        {"label": "id:easy", "deckListId": "E0C.11"},
+                        {"label": "id:normal", "deckListId": "Q0C.11"},
+                        {"label": "id:nightmare", "deckListId": "N0C.11"}
+                    ]
+                },
+                {
+                    "label": "id:Shelob's Lair",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.12"},
+                        {"label": "id:normal", "deckListId": "Q0C.12"},
+                        {"label": "id:nightmare", "deckListId": "N0C.12"}
+                    ]
+                },
+                {
+                    "label": "id:The Passing of the Grey Company",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.13"},
+                        {"label": "id:normal", "deckListId": "Q0C.13"}
+                    ]
+                },
+                {
+                    "label": "id:The Siege of Gondor",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.14"},
+                        {"label": "id:normal", "deckListId": "Q0C.14"}
+                    ]
+                },
+                {
+                    "label": "id:The Battle of the Pelennor Fields",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.15"},
+                        {"label": "id:normal", "deckListId": "Q0C.15"}
+                    ]
+                },
+                {
+                    "label": "id:The Tower of Cirith Ungol",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.16"},
+                        {"label": "id:normal", "deckListId": "Q0C.16"}
+                    ]
+                },
+                {
+                    "label": "id:The Black Gate Opens",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.17"},
+                        {"label": "id:normal", "deckListId": "Q0C.17"}
+                    ]
+                },
+                {
+                    "label": "id:Mount Doom",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.18"},
+                        {"label": "id:normal", "deckListId": "Q0C.18"}
+                    ]
+                },
+                {
+                    "label": "id:ALeP The Scouring of the Shire",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E0C.19"},
+                        {"label": "id:normal", "deckListId": "Q0C.19"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "Two-Player Limited-Edition Starter",
+                "label": "id:Two-Player Limited-Edition Starter",
                 "subMenus": []
             },
             {
-                "labelId": "Print on Demand",
+                "label": "id:Print on Demand",
                 "subMenus": [
                 {
-                    "labelId": "Attack on Dol Guldur",
+                    "label": "id:The Massing at Osgiliath",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E99.1"},
-                        {"labelId": "Normal", "deckListId": "Q99.1"}
+                        {"label": "id:normal", "deckListId": "Q99.01"}
                     ]
                 },
                 {
-                    "labelId": "Attack on Dol Guldur",
+                    "label": "id:The Battle of Lake Town",
                     "deckLists": [
-                        {"labelId": "Normal", "deckListId": "Q99.10"}
+                        {"label": "id:normal", "deckListId": "Q99.02"}
                     ]
                 },
                 {
-                    "labelId": "The Wizard's Quest",
+                    "label": "id:The Stone of Erech",
                     "deckLists": [
-                        {"labelId": "Normal", "deckListId": "Q99.11"}
+                        {"label": "id:normal", "deckListId": "Q99.03"}
                     ]
                 },
                 {
-                    "labelId": "The Woodland Realm",
+                    "label": "id:The Old Forest",
                     "deckLists": [
-                        {"labelId": "Normal", "deckListId": "Q99.12"}
+                        {"label": "id:normal", "deckListId": "Q99.04"}
                     ]
                 },
                 {
-                    "labelId": "The Mines of Moria",
+                    "label": "id:Fog on the Barrow downs",
                     "deckLists": [
-                        {"labelId": "Normal", "deckListId": "Q99.13"}
+                        {"label": "id:normal", "deckListId": "Q99.05"}
                     ]
                 },
                 {
-                    "labelId": "Escape from Khazad dûm",
+                    "label": "id:The Ruins of Belegost",
                     "deckLists": [
-                        {"labelId": "Normal", "deckListId": "Q99.14"}
+                        {"label": "id:normal", "deckListId": "Q99.06"}
                     ]
                 },
                 {
-                    "labelId": "The Hunt for the Dreadnaught",
+                    "label": "id:Murder at the Prancing Pony",
                     "deckLists": [
-                        {"labelId": "Normal", "deckListId": "Q99.15"}
+                        {"label": "id:normal", "deckListId": "Q99.07"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Scouring of the Shire",
+                    "label": "id:Standard The Siege of Annuminas",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "E99.16"},
-                        {"labelId": "Normal", "deckListId": "Q99.16"}
+                        {"label": "id:normal", "deckListId": "Q99.08"}
+                    ]
+                },
+                {
+                    "label": "id:Epic The Siege of Annuminas",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.09"}
+                    ]
+                },
+                {
+                    "label": "id:Attack on Dol Guldur",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.10"}
+                    ]
+                },
+                {
+                    "label": "id:The Wizard's Quest",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.11"}
+                    ]
+                },
+                {
+                    "label": "id:The Woodland Realm",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.12"}
+                    ]
+                },
+                {
+                    "label": "id:The Mines of Moria",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.13"}
+                    ]
+                },
+                {
+                    "label": "id:Escape from Khazad dûm",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.14"}
+                    ]
+                },
+                {
+                    "label": "id:The Hunt for the Dreadnaught",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q99.15"}
+                    ]
+                },
+                {
+                    "label": "id:ALeP The Scouring of the Shire",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E99.16"},
+                        {"label": "id:normal", "deckListId": "Q99.16"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "Campaign",
+                "label": "id:Campaign",
                 "deckLists": [
-                {
-                    "deckListId": "CCH.1"
-                },
-                {
-                    "deckListId": "CCL.1"
-                },
-                {
-                    "deckListId": "CCC.1"
-                },
-                {
-                    "deckListId": "CCC.2"
-                }
+                    {
+                        "label": "id:The Hobbit",
+                        "deckListId": "CCH.1"
+                    },
+                    {
+                        "label": "id:The Lord of the Rings",
+                        "deckListId": "CCL.1"
+                    },
+                    {
+                        "label": "id:The Core Set",
+                        "deckListId": "CCC.1"
+                    },
+                    {
+                        "label": "id:Angmar Awakened",
+                        "deckListId": "CCC.2"
+                    }
                 ]
             },
             {
-                "labelId": "ALeP - Children of Eorl & Oaths of the Rohirrim",
+                "label": "id:ALeP - Children of Eorl & Oaths of the Rohirrim",
                 "subMenus": [
                 {
-                    "labelId": "ALeP Ambush at Erelas",
+                    "label": "id:ALeP Ambush at Erelas",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.1"},
-                        {"labelId": "Normal", "deckListId": "QA1.1"}
+                        {"label": "id:easy", "deckListId": "EA1.1"},
+                        {"label": "id:normal", "deckListId": "QA1.1"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Battle for the Beacon",
+                    "label": "id:ALeP The Battle for the Beacon",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.2"},
-                        {"labelId": "Normal", "deckListId": "QA1.2"}
+                        {"label": "id:easy", "deckListId": "EA1.2"},
+                        {"label": "id:normal", "deckListId": "QA1.2"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Horse Lord s Ire",
+                    "label": "id:ALeP The Horse Lord s Ire",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.3"},
-                        {"labelId": "Normal", "deckListId": "QA1.3"}
+                        {"label": "id:easy", "deckListId": "EA1.3"},
+                        {"label": "id:normal", "deckListId": "QA1.3"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Aldburg Plot",
+                    "label": "id:ALeP The Aldburg Plot",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.4"},
-                        {"labelId": "Normal", "deckListId": "QA1.4"}
+                        {"label": "id:easy", "deckListId": "EA1.4"},
+                        {"label": "id:normal", "deckListId": "QA1.4"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Gap of Rohan Playtest",
+                    "label": "id:ALeP The Gap of Rohan Playtest",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.6"},
-                        {"labelId": "Normal", "deckListId": "QA1.6"}
+                        {"label": "id:easy", "deckListId": "EA1.6"},
+                        {"label": "id:normal", "deckListId": "QA1.6"}
                     ]
                 },
                 {
-                    "labelId": "ALeP The Glittering Caves Playtest",
+                    "label": "id:ALeP The Glittering Caves Playtest",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.7"},
-                        {"labelId": "Normal", "deckListId": "QA1.7"}
+                        {"label": "id:easy", "deckListId": "EA1.7"},
+                        {"label": "id:normal", "deckListId": "QA1.7"}
                     ]
                 },
                 {
-                    "labelId": "ALeP Mustering of the Rohirrim Playtest",
+                    "label": "id:ALeP Mustering of the Rohirrim Playtest",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.8"},
-                        {"labelId": "Normal", "deckListId": "QA1.8"}
+                        {"label": "id:easy", "deckListId": "EA1.8"},
+                        {"label": "id:normal", "deckListId": "QA1.8"}
                     ]
                 },
                 {
-                    "labelId": "ALeP Blood in the Isen Playtest",
+                    "label": "id:ALeP Blood in the Isen Playtest",
                     "deckLists": [
-                        {"labelId": "Easy", "deckListId": "EA1.9"},
-                        {"labelId": "Normal", "deckListId": "QA1.9"}
+                        {"label": "id:easy", "deckListId": "EA1.9"},
+                        {"label": "id:normal", "deckListId": "QA1.9"}
                     ]
                 }
                 ]
             },
             {
-                "labelId": "ALeP - Playtest",
+                "label": "id:ALeP - Playtest",
                 "subMenus": []
             }
         ]

@@ -107,43 +107,55 @@
         ],
         "revealEncounter": [
             ["COND",
-            ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
-            ["COND",
-                ["EQUAL", "$GAME.phaseId", "Quest"],
-                [
-                ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"],
-                ["LOG", "$PLAYER_N"," shuffled the encounter discard pile into the encounter deck."]
+                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+                ["COND",
+                    ["EQUAL", "$GAME.phaseId", "Quest"],
+                    [
+                        ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"],
+                        ["LOG", "$PLAYER_N"," shuffled the encounter discard pile into the encounter deck."]
+                    ],
+                    true,
+                    ["LOG", "$PLAYER_N", "tried to reveal a card, but the encounter deck is empty and it's not the quest phase."]
                 ],
                 true,
-                ["LOG", "$PLAYER_N", "tried to reveal a card, but the encounter deck is empty and it's not the quest phase."]
-            ],
-            true,
-            [
-                ["DEFINE", "$STACK_ID", ["AT_INDEX", "$GAME.groupById.sharedEncounterDeck.stackIds", 0]],
-                ["MOVE_STACK", "$STACK_ID", "sharedStaging", -1, false, "$REVEAL_FACEDOWN"],
-                ["LOG", "$PLAYER_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"]]
-            ]
+                [
+                    ["DEFINE", "$STACK_ID", "$GAME.groupById.sharedEncounterDeck.stackIds.[0]"],
+                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1, false],
+                    ["COND",
+                        "$REVEAL_FACEDOWN",
+                        ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
+                            ["SET", "/cardById/$CARD_ID/currentSide", "B"]
+                        ]
+                    ],
+                    ["LOG", "$PLAYER_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"], "."]
+                ]
             ],
             ["COND",
-            ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
-            [
-                ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"],
-                ["LOG", "$PLAYER_N"," shuffled the encounter discard pile into the encounter deck."]
-            ],
-            true,
-            "$GAME"
+                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+                [
+                    ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"],
+                    ["LOG", "$PLAYER_N"," shuffled the encounter discard pile into the encounter deck."]
+                ],
+                true,
+                "$GAME"
             ]
         ],
         "revealSecondary": [
             ["COND",
-            ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck2.stackIds"], 0],
-            ["LOG", "$PLAYER_N", " tried to reveal a card from the second encounter deck, but it's empty."],
-            true,
-            [
-                ["DEFINE", "$STACK_ID", ["AT_INDEX", "$GAME.groupById.sharedEncounterDeck2.stackIds", 0]],
-                ["MOVE_STACK", "$STACK_ID", "sharedStaging", -1, false, "$REVEAL_FACEDOWN"],
-                ["LOG", "$PLAYER_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"]]
-            ]
+                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck2.stackIds"], 0],
+                ["LOG", "$PLAYER_N", " tried to reveal a card from the second encounter deck, but it's empty."],
+                true,
+                [
+                    ["DEFINE", "$STACK_ID", ["AT_INDEX", "$GAME.groupById.sharedEncounterDeck2.stackIds", 0]],
+                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1, false],
+                    ["COND",
+                    "$REVEAL_FACEDOWN",
+                        ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
+                            ["SET", "/cardById/$CARD_ID/currentSide", "B"]
+                        ]
+                    ],
+                    ["LOG", "$PLAYER_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"], "."]
+                ]
             ]
         ],
         "drawCard": [
@@ -264,21 +276,21 @@
             ["LOG", "$PLAYER_N", " drew 1 card."]
         ],
         "zeroTokens": [
-            ["SET", "$ACTIVE_TOKENS_PATH", {}],
+            ["SET", "/cardById/$ACTIVE_PATH_ID/tokens", {}],
             ["LOG", "$PLAYER_N", " removed all tokens from ", "$ACTIVE_FACE.name", "."]
         ],
         "toggleExhaust": [
             ["COND",
                 ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 90], "$ACTIVE_CARD.inPlay"],
                 [
-                    ["SET", "$ACTIVE_CARD_PATH", "rotation", 0],
-                    ["SET", "$ACTIVE_CARD_PATH", "exhausted", false],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false],
                     ["LOG", "$PLAYER_N", " readied ", "$ACTIVE_FACE.name", "."]
                 ],
                 ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], "$ACTIVE_CARD.inPlay"],
                 [
-                    ["SET", "$ACTIVE_CARD_PATH", "rotation", 90],
-                    ["SET", "$ACTIVE_CARD_PATH", "exhausted", true],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true],
                     ["LOG", "$PLAYER_N", " exhausted ", "$ACTIVE_FACE.name", "."]
                 ]
             ]
@@ -288,11 +300,11 @@
                 ["EQUAL", "$ACTIVE_CARD.currentSide", "A"],
                 [
                     ["LOG", "$PLAYER_N", " flipped ", "$ACTIVE_FACE.name", " facedown."],
-                    ["SET", "$ACTIVE_CARD_PATH", "currentSide", "B"]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/currentSide", "B"]    
                 ],
                 true,
                 [
-                    ["SET", "$ACTIVE_CARD_PATH", "currentSide", "A"],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/currentSide", "A"],
                     ["LOG", "$PLAYER_N", " flipped ", "$ACTIVE_FACE.name", " faceup."]
                 ]
             ]
@@ -309,15 +321,15 @@
             ["COND",
                 ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$CARD.inPlay"],
                 [
-                    ["SET", "$ACTIVE_CARD_PATH", "rotation", 90],
-                    ["SET", "$ACTIVE_CARD_PATH", "exhausted", true],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true],
                     ["INCREASE_VAL", "playerData", "$ACTIVE_CARD.controller", "willpower", "$ACTIVE_FACE.willpower"],
                     ["SET", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", "to the quest."]
                 ],
                 ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$CARD.inPlay"],
                 [
-                    ["SET", "$ACTIVE_CARD_PATH", "rotation", 0],
-                    ["SET", "$ACTIVE_CARD_PATH", "exhausted", false],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false],
                     ["DECREASE_VAL", "playerData", "$ACTIVE_CARD.controller", "willpower", "$ACTIVE_FACE.willpower"],
                     ["SET", "$PLAYER_N", " uncommitted ", "$ACTIVE_FACE.name", "to the quest."]
                 ]
@@ -353,17 +365,17 @@
                     ["LOG", "$PLAYER_N", " tried to deal a shadow card but the encounter deck is empty."],
                     true,
                     [
-                    ["DEFINE", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                    ["ATTACH_CARD", "$SHADOW_CARD_ID", "$ACTIVE_CARD_ID"],
-                    ["SET", "cardById", "$SHADOW_CARD_ID", "rotation", -30],
-                    ["SET", "cardById", "$SHADOW_CARD_ID", "currentSide", "B"],
-                    ["LOG", "$PLAYER_N", " dealt a shadow card to ", "$ACTIVE_FACE.name", "."]
+                        ["DEFINE", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
+                        ["ATTACH_CARD", "$SHADOW_CARD_ID", "$ACTIVE_CARD_ID"],
+                        ["SET", "cardById", "$SHADOW_CARD_ID", "rotation", -30],
+                        ["SET", "cardById", "$SHADOW_CARD_ID", "currentSide", "B"],
+                        ["LOG", "$PLAYER_N", " dealt a shadow card to ", "$ACTIVE_FACE.name", "."]
                     ]
                 ]
             ]
         ],
         "targetCard": [
-            ["SET", "$ACTIVE_CARD_PATH", "targeting", "$PLAYER_N", true],
+            ["SET", "/cardById/$ACTIVE_CARD_ID/targeting", "$PLAYER_N", true],
             ["LOG", "$PLAYER_N", " targeted ", "$ACTIVE_FACE.name", "."]
         ],
         "addToVictoryDisplay": [
@@ -559,12 +571,12 @@
                 ["EQUAL", "$ACTIVE_CARD.peeking.$PLAYER_N", true],
                 [
                     ["LOG", "$PLAYER_N", " stopped peeking at a card in ", "$GROUP_NAME"],
-                    ["SET", "$ACTIVE_CARD_PATH", "peeking", "$PLAYER_N", false]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/peeking", "$PLAYER_N", false]
                 ],
                 true,
                 [
                     ["LOG", "$PLAYER_N", " started peeking at a card in ", "$GROUP_NAME"],
-                    ["SET", "$ACTIVE_CARD_PATH", "peeking", "$PLAYER_N", true]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/peeking", "$PLAYER_N", true]
                 ]
             ]
         ],
@@ -573,11 +585,11 @@
                 ["EQUAL", "$ACTIVE_CARD.locked", true],
                 [
                     ["LOG", "$PLAYER_N", " unlocked ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "$ACTIVE_CARD_PATH", "locked", false]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/locked", false]
                 ],
                 true,
                 [
-                    ["SET", "$ACTIVE_CARD_PATH", "locked", true],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/locked", true],
                     ["LOG", "$PLAYER_N", " locked ", "$ACTIVE_FACE.name", "."]
                 ]
             ]
