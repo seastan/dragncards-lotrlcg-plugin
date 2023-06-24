@@ -15,22 +15,22 @@
             {"propName": "traits", "label": "id:traits"}
         ],
         "spawnGroups": [
-            {"id": "playerNDeck", "label": "id:myDeck"},
-            {"id": "player1Deck", "label": "id:player1Deck"},
-            {"id": "player2Deck", "label": "id:player2Deck"},
-            {"id": "player3Deck", "label": "id:player3Deck"},
-            {"id": "player4Deck", "label": "id:player4Deck"},
-            {"id": "sharedQuestDeck","label": "id:sharedQuestDeck"},
-            {"id": "sharedQuestDeck2","label": "id:sharedQuestDeck2"},
-            {"id": "sharedActiveLocation", "label": "id:sharedActiveLocation"},
-            {"id": "sharedStagingArea", "label": "id:sharedStagingArea"},
-            {"id": "sharedEncounterDeck", "label": "id:sharedEncounterDeck"},
-            {"id": "sharedEncounterDeck2", "label": "id:sharedEncounterDeck2"},
-            {"id": "sharedEncounterDeck3", "label": "id:sharedEncounterDeck3"},
-            {"id": "sharedExtra1", "label": "id:sharedExtra1"},
-            {"id": "sharedExtra2", "label": "id:sharedExtra2"},
-            {"id": "sharedExtra3", "label": "id:sharedExtra3"},
-            {"id": "sharedExtra4", "label": "id:sharedExtra4"}
+            {"loadGroupId": "playerNDeck", "label": "id:myDeck"},
+            {"loadGroupId": "player1Deck", "label": "id:player1Deck"},
+            {"loadGroupId": "player2Deck", "label": "id:player2Deck"},
+            {"loadGroupId": "player3Deck", "label": "id:player3Deck"},
+            {"loadGroupId": "player4Deck", "label": "id:player4Deck"},
+            {"loadGroupId": "sharedQuestDeck","label": "id:sharedQuestDeck"},
+            {"loadGroupId": "sharedQuestDeck2","label": "id:sharedQuestDeck2"},
+            {"loadGroupId": "sharedActiveLocation", "label": "id:sharedActiveLocation"},
+            {"loadGroupId": "sharedStagingArea", "label": "id:sharedStagingArea"},
+            {"loadGroupId": "sharedEncounterDeck", "label": "id:sharedEncounterDeck"},
+            {"loadGroupId": "sharedEncounterDeck2", "label": "id:sharedEncounterDeck2"},
+            {"loadGroupId": "sharedEncounterDeck3", "label": "id:sharedEncounterDeck3"},
+            {"loadGroupId": "sharedExtra1", "label": "id:sharedExtra1"},
+            {"loadGroupId": "sharedExtra2", "label": "id:sharedExtra2"},
+            {"loadGroupId": "sharedExtra3", "label": "id:sharedExtra3"},
+            {"loadGroupId": "sharedExtra4", "label": "id:sharedExtra4"}
         ]
     }
 }
