@@ -949,6 +949,15 @@
         "traits": {
             "English": "Traits"
         },
+        "pack": {
+            "English": "Pack"
+        },
+        "number": {
+            "English": "Number"
+        },
+        "myPlayArea": {
+            "English": "My Play Area"
+        },
         "shuffleGroupIntoDeck": {
             "English": "Shuffle Into Deck"
         },
@@ -989,19 +998,19 @@
             "English": "Player1 Discard"
         },
         "player1Play1": {
-            "English": "Player1 Play1"
+            "English": "Player 1 Play Area"
         },
         "playArea": {
             "English": "Play Area"
         },
         "player1Play2": {
-            "English": "Player1 Play 2"
+            "English": "Player 1 Play Area"
         },
         "player1Play3": {
-            "English": "Player1 Play 3"
+            "English": "Player 1 Play Area"
         },
         "player1Play4": {
-            "English": "Player1 Play 4"
+            "English": "Player 1 Play Area"
         },
         "player1Engaged": {
             "English": "Player1 Engaged"
@@ -1022,16 +1031,16 @@
             "English": "Player 2 Discard"
         },
         "player2Play1": {
-            "English": "Player 2 Play 1"
+            "English": "Player 2 Play Area"
         },
         "player2Play2": {
-            "English": "Player2 Play 2"
+            "English": "Player 2 Play Area"
         },
         "player2Play3": {
-            "English": "Player 2 Play 3"
+            "English": "Player 2 Play Area"
         },
         "player2Play4": {
-            "English": "Player 2 Play 4"
+            "English": "Player 2 Play Area"
         },
         "player2Engaged": {
             "English": "Player 2 Engaged"
@@ -1046,16 +1055,16 @@
             "English": "Player 3 Discard"
         },
         "player3Play1": {
-            "English": "Player 3 Play 1"
+            "English": "Player 3 Play Area"
         },
         "player3Play2": {
-            "English": "Player 3 Play 2"
+            "English": "Player 3 Play Area"
         },
         "player3Play3": {
-            "English": "Player 3 Play 3"
+            "English": "Player 3 Play Area"
         },
         "player3Play4": {
-            "English": "Player 3 Play 4"
+            "English": "Player 3 Play Area"
         },
         "player3Engaged": {
             "English": "Player 3 Engaged"
@@ -1070,16 +1079,16 @@
             "English": "Player 4 Discard"
         },
         "player4Play1": {
-            "English": "Player 4 Play 1"
+            "English": "Player 4 Play Area"
         },
         "player4Play2": {
-            "English": "Player 4 Play 2"
+            "English": "Player 4 Play Area"
         },
         "player4Play3": {
-            "English": "Player 4 Play 3"
+            "English": "Player 4 Play Area"
         },
         "player4Play4": {
-            "English": "Player 4 Play 4"
+            "English": "Player 4 Play Area"
         },
         "player4Engaged": {
             "English": "Player 4 Engaged"
@@ -1110,6 +1119,9 @@
         },
         "topBarStagingProgress": {
             "English": "Progress"
+        },
+        "coreLeadership": {
+            "English": "30 Card Original Core Set Deck - Leadership"
         }
     }
 }

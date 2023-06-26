@@ -3,6 +3,6 @@
         "willpower": {"type": "integer", "default": 0, "min": 0},
         "threat": {"type": "integer", "default": 0, "min": 0},
         "cardsDrawn": {"type": "integer", "default": 1, "min": 0},
-        "refreshed": {"type": "boolean", "default": false}
+        "refreshed": {"type": "boolean", "default": true}
     }
 }

@@ -1,5 +1,124 @@
 {
     "preBuiltDecks": {
+      "coreLeadership": {
+        "label": "id:coreLeadership",
+        "cards": [
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9001",
+            "quantity": 1,
+            "loadGroupId": "playerNPlay1",
+            "_name": "Aragorn"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9003",
+            "quantity": 1,
+            "loadGroupId": "playerNPlay1",
+            "_name": "Glóin"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9002",
+            "quantity": 1,
+            "loadGroupId": "playerNPlay1",
+            "_name": "Théodred"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9019",
+            "quantity": 1,
+            "loadGroupId": "playerNDeck",
+            "_name": "Brok Ironfist"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9014",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Faramir"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9073",
+            "quantity": 1,
+            "loadGroupId": "playerNDeck",
+            "_name": "Gandalf"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9013",
+            "quantity": 3,
+            "loadGroupId": "playerNDeck",
+            "_name": "Guard of the Citadel"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9018",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Longbeard Orc Slayer"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9017",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Silverlode Archer"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9016",
+            "quantity": 3,
+            "loadGroupId": "playerNDeck",
+            "_name": "Snowbourn Scout"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9015",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Son of Arnor"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9027",
+            "quantity": 1,
+            "loadGroupId": "playerNDeck",
+            "_name": "Celebrían's Stone"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9026",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Steward of Gondor"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9021",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Common Cause"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9024",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Valiant Sacrifice"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9020",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Ever Vigilant"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9022",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "For Gondor!"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9025",
+            "quantity": 1,
+            "loadGroupId": "playerNDeck",
+            "_name": "Grim Resolve"
+          },
+          {
+            "uuid": "51223bd0-ffd1-11df-a976-0801200c9023",
+            "quantity": 2,
+            "loadGroupId": "playerNDeck",
+            "_name": "Sneak Attack"
+          }
+        ]
+      },
       "Q00.01": {
         "label": "The Oath",
         "cards": [{"uuid": "4a6fe2e8-899b-4d4b-9b02-61516044fdc4", "quantity": 1, "loadGroupId": "sharedQuestDeck"}, {"uuid": "ebfa8c86-1f8c-4c37-adf3-75dfb7b77cef", "quantity": 1, "loadGroupId": "sharedQuestDeck"}, {"uuid": "9bb6a890-b9d3-4528-8049-8017d9a01c4c", "quantity": 1, "loadGroupId": "sharedQuestDeck"}, {"uuid": "e8db9cc7-d53f-4ce9-991d-31078b2d507a", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "acd10bf3-4af4-41f0-888f-55eb777be3d8", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "b18b3bfa-4620-4c15-960f-5a3642ca9d5a", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "26e6135d-df1b-4221-ba45-a501858bafdf", "quantity": 1, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "7b3e0874-fa4e-4ffb-8614-2bb088896d42", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "d80da0f8-430e-4a67-91ca-35cc9d3afe8b", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "84efd59f-f6f2-44c4-b995-8ad809dd25d1", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "21b339e8-a5e9-4491-96cc-1a4b0f1b18cb", "quantity": 1, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "650522ec-c2e3-4e42-be7a-e87cceccc545", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "96b72fe4-c42d-469d-9741-294c4da73278", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "52e70f35-b859-494e-81d0-8be66f519a2a", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "251c0ba0-a466-401e-b762-b2fef09ea96a", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "64813258-1533-420c-9fce-4d4c1f13c99d", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "4af27413-5674-4352-b54a-7f12c4fa0afc", "quantity": 2, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "460b83ed-986a-496b-9b38-627c77a836e9", "quantity": 1, "loadGroupId": "sharedEncounterDeck"}, {"uuid": "998f6e45-b0d3-42c4-b5ba-fdf301401d90", "quantity": 1, "loadGroupId": "sharedSetAside"}, {"uuid": "21b339e8-a5e9-4491-96cc-1a4b0f1b18cb", "quantity": 1, "loadGroupId": "sharedStagingArea"}      ]

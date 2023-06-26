@@ -1,6 +1,11 @@
 {
     "deckMenu": {
         "subMenus": [
+            {   "label": "Player",
+                "deckLists": [
+                    {"label": "id:coreLeadership", "deckListId": "coreLeadership"}
+                ]
+            },
             {
                 "label": "id:Core Set & Shadows of Mirkwood",
                 "subMenus": [
