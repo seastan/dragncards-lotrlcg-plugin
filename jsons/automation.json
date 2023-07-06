@@ -1,6 +1,7 @@
 {
     "automation": {
         "postLoadActionList": [
+            ["DEFINE", "$LOADED_PLAYER_DECK", false],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
                 ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND", 
@@ -21,6 +22,9 @@
                     ["LOG", "$PLAYER_N", " draws 6 cards."]
                 ]
             ]
-        ]
+        ],
+        "rules": {
+
+        }
     }
 }
