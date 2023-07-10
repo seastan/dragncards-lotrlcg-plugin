@@ -1122,6 +1122,9 @@
         },
         "coreLeadership": {
             "English": "30 Card Original Core Set Deck - Leadership"
+        },
+        "questingToken": {
+            "English": "Questing Token"
         }
     }
 }

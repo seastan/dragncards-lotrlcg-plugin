@@ -20,13 +20,13 @@
                 ["DEFINE", "$CURRENT_SIDE", "$CARD.currentSide"],
                 ["COND",
                     ["AND",
-                    ["EQUAL", "$CARD.sides.$CURRENT_SIDE.type", "Hero"],
-                    ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                    ["EQUAL", "$CARD.inPlay", true]
+                        ["EQUAL", "$CARD.sides.$CURRENT_SIDE.type", "Hero"],
+                        ["EQUAL", "$CARD.controller", "$PLAYER_N"],
+                        ["EQUAL", "$CARD.inPlay", true]
                     ],
                     [
-                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1],
-                    ["LOG", "$PLAYER_N", " added 1 resource token to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
+                        ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1],
+                        ["LOG", "$PLAYER_N", " added 1 resource token to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
                     ]
                 ],
                 ["COND",
@@ -119,7 +119,7 @@
                 true,
                 [
                     ["DEFINE", "$STACK_ID", "$GAME.groupById.sharedEncounterDeck.stackIds.[0]"],
-                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1, false],
+                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1],
                     ["COND",
                         "$REVEAL_FACEDOWN",
                         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
@@ -146,7 +146,7 @@
                 true,
                 [
                     ["DEFINE", "$STACK_ID", ["AT_INDEX", "$GAME.groupById.sharedEncounterDeck2.stackIds", 0]],
-                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1, false],
+                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1],
                     ["COND",
                     "$REVEAL_FACEDOWN",
                         ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
@@ -158,7 +158,8 @@
             ]
         ],
         "drawCard": [
-            ["DRAW_CARD"]
+            ["DRAW_CARD"],
+            ["LOG", "$PLAYER_N", " drew 1 card."]
         ],
         "dealShadows": [
             ["DEFINE", "$STEP_INDEX", 20],
@@ -171,40 +172,33 @@
                 true,
                 "$GAME"
             ],
-            ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
+            ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_ORDER", "$GAME.playerData", [
                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
-                    [
+                    ["COND",
+                        ["AND",
+                            ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_I", "Engaged"]],
+                            ["EQUAL", "$CARD.cardIndex", 0],
+                            ["EQUAL", "$CARD.currentFace.type", "Enemy"]
+                        ],
                         ["COND",
-                            ["AND",
-                                ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_I", "Engaged"]],
-                                ["EQUAL", "$CARD.cardIndex", 0],
-                                ["EQUAL", "$CARD.sides.A.type", "Enemy"]
+                            ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+                            [
+                                ["LOG", "$PLAYER_N", " tried to deal a shadow card but the encounter deck is empty."]
                             ],
-                            ["COND",
-                                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
-                                [
-                                    ["LOG", "$PLAYER_N", " tried to deal a shadow card but the encounter deck is empty."],
-                                    ["LOG_DEV", "tried to deal shadow but couldn't"]
-                                ],
-                                true,
-                                [
-                                    ["DEFINE", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                                    ["ATTACH_CARD", "$SHADOW_CARD_ID", "$CARD_ID"],
-                                    ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
-                                    ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
-                                    ["LOG", "$PLAYER_N", " dealt a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
-                                ]
-                            ],
-                        true,
-                        "$GAME"
+                            true,
+                            [
+                                ["DEFINE", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
+                                ["ATTACH_CARD", "$SHADOW_CARD_ID", "$CARD_ID"],
+                                ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
+                                ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
+                                ["LOG", "$PLAYER_N", " dealt a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
+                            ]
                         ]
                     ],
-                    ["sides", "A", "engagementCost"],
+                    "/sides/A/engagementCost",
                     "DESC"
                 ]
-            ],
-            ["currentPosition"]
-            ]
+            ]]
         ],
         "discardShadows": [
             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
@@ -265,7 +259,8 @@
             ["LOG", "$PLAYER_N", " increased each player's threat by 1."]
         ],
         "drawNextSeat": [
-            ["ACTION_LIST", "drawCard", null, ["NEXT_PLAYER", "$PLAYER_N"]],
+            ["DEFINE", "$PLAYER_N", ["NEXT_SEAT", "$PLAYER_N"]],
+            ["DRAW_CARD"],
             ["LOG", "$PLAYER_N", " drew 1 card."]
         ],
         "zeroTokens": [
@@ -440,8 +435,6 @@
         "swapWithTop": [
             ["DEFINE", "$ORIG_GROUP_ID", "$ACTIVE_CARD.groupId"],
             ["DEFINE", "$DECK_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
-            ["LOG_DEV", "$ORIG_GROUP_ID"],
-            ["LOG_DEV", "$DECK_GROUP_ID"],
             ["DEFINE", "$TOP_STACK_ID", "$GAME.groupById.$DECK_GROUP_ID.stackIds.[0]"],
             ["DEFINE", "$TOP_CARD_ID", "$GAME.stackById.$TOP_STACK_ID.cardIds.[0]"],
             ["DEFINE", "$TOP_CARD", "$GAME.cardById.$TOP_CARD_ID"],
