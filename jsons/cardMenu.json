@@ -5,6 +5,10 @@
             {
                 "label": "id:toggleExhaust",
                 "actionList": "toggleExhaust"
+            },
+            {
+                "label": "id:preventRefresh",
+                "actionList": "preventRefresh"
             }
         ]
     }

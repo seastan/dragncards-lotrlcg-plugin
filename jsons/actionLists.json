@@ -74,7 +74,8 @@
                 ["COND",
                     ["AND",
                         ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                        ["EQUAL", "$CARD.inPlay", true]
+                        ["EQUAL", "$CARD.inPlay", true],
+                        ["NOT_EQUAL", "$CARD.preventRefresh", true]
                     ],
                     [
                         ["SET", "/cardById/$CARD_ID/rotation", 0],
@@ -554,23 +555,19 @@
                 ]
             ]
         ],
-        "toggleLocked": [
+        "togglePreventRefresh": [
             ["COND",
-                ["EQUAL", "$ACTIVE_CARD.locked", true],
+                ["EQUAL", "$ACTIVE_CARD.preventRefresh", true],
                 [
                     ["LOG", "$PLAYER_N", " unlocked ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/locked", false]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/preventRefresh", false]
                 ],
                 true,
                 [
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/locked", true],
-                    ["LOG", "$PLAYER_N", " locked ", "$ACTIVE_FACE.name", "."]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/preventRefresh", true],
+                    ["LOG", "$PLAYER_N", " preventRefresh ", "$ACTIVE_FACE.name", "."]
                 ]
             ]
-        ],
-        "deleteCard": [
-            ["LOG", "$PLAYER_N", " deleted ", "$ACTIVE_FACE.name", "."],
-            ["DELETE", "$ACTIVE_CARD_ID"]
         ]
     }
 }
