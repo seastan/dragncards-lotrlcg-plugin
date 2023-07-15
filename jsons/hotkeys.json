@@ -54,7 +54,7 @@
             {"key": "T", "actionList": "targetCard", "label": "id:targetCard"},
             {"key": "V", "actionList": "addToVictoryDisplay", "label": "id:addToVictoryDisplay"},
             {"key": "Q", "actionList": "toggleCommit", "label": "id:commitUncommitFromQuest"},
-            {"key": "X", "actionList": "discardCard", "label": "id:discard"},
+            {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
             {"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
             {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
             {"key": "Shift+A", "actionList": "triggerAbility", "label": "id:triggerAbilityOnlyAvailableForSelectCards"}

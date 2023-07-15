@@ -106,6 +106,9 @@
         "discard": {
             "English": "Discard"
         },
+        "discardOrAdvance": {
+            "English": "Discard (if quest card, advance quest)"
+        },
         "discardAllOtherCardsInThisCardSStack": {
             "English": "Discard all other cards in this card's stack"
         },

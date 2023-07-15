@@ -405,6 +405,18 @@
                         ]
                     ]
                 ]
+            ],
+            ["COND",
+                ["EQUAL", "$ACTIVE_CARD.currentFace.type", "Quest"],
+                ["COND", 
+                    ["EQUAL", ["LENGTH", "$GAME.groupById.sharedQuestDeck.stackIds"], 0],
+                    ["LOG", "The players won the game!"],
+                    true,
+                    [
+                        ["MOVE_STACK", ["GET_STACK_ID", "sharedQuestDeck", 0], "sharedMainQuest", 0],
+                        ["LOG", "$PLAYER_N", " advanced the quest."]
+                    ]
+                ]
             ]
         ],
         "shuffleIntoDeck": [
