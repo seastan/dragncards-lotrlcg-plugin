@@ -10,7 +10,26 @@
                         ["DEFINE", "$LOADED_PLAYER_DECK", true],
                         ["DEFINE", "$CONTROLLER", "$CARD.controller"],
                         ["INCREASE_VAL", "/playerData/$CONTROLLER/threat", "$CARD.sides.A.cost"],
-                        ["LOG", "$PLAYER_N", "increased their threat by ", "$CARD.sides.A.cost", " (", "$CARD.sides.A.name", ")"]
+                        ["LOG", "$PLAYER_N", " increased their threat by ", "$CARD.sides.A.cost", " (", "$CARD.sides.A.name", ")"]
+                    ]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_N", "Play1"]],
+                    [
+                        ["SET", "/cardById/$CARD_ID/deckGroupId", ["JOIN_STRING", "$PLAYER_N", "Deck"]],
+                        ["SET", "/cardById/$CARD_ID/discardGroupId", ["JOIN_STRING", "$PLAYER_N", "Discard"]]
+                    ],
+                    ["IN_LIST", ["LIST", "sharedStagingArea", "ahredActiveLocation"], "$CARD.groupId"],
+                    [
+                        ["SET", "/cardById/$CARD_ID/deckGroupId", "sharedEncounterDeck"],
+                        ["SET", "/cardById/$CARD_ID/discardGroupId", "sharedEncounterDiscard"]
+                    ]
+                ],
+                ["COND", 
+                    ["AND", ["EQUAL", "$CARD.sides.A.type", "Quest"], ["EQUAL", "$CARD.sides.A.cost", 1]],
+                    [
+                        ["MOVE_CARD", "$CARD_ID", "sharedMainQuest", 0],
+                        ["LOG", "$PLAYER_N", " made ", "$CARD.sides.A.name", " the main quest."]
                     ]
                 ]
             ]],

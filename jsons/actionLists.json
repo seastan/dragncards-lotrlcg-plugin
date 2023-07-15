@@ -375,20 +375,20 @@
             ["COND",
                 ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
                 [
-                    ["DEFINE", "$STACK_ID", "$ACTIVE_CARD.stackId"],
+                    ["DEFINE", "$STACK_ID", ["GET_STACK_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex"]],
                     ["DEFINE", "$CARD_IDS", "$GAME.stackById.$STACK_ID.cardIds"],
                     ["FOR_EACH_VAL", "$CARD_ID", "$CARD_IDS",
                         [
                             ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
                             ["COND",
-                            ["EQUAL", "$CARD.discardGroupId", null],
-                            ["LOG", "$PLAYER_N", " failed to discard ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], " because it is not associated with a discard pile. Please drag the card instead."],
-                            true,
-                            [
-                                ["DEFINE", "$CURRENT_SIDE", "$CARD.currentSide"],
-                                ["LOG", "$PLAYER_N", " discarded ", "$CARD.sides.$CURRENT_SIDE.name", "."],
-                                ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0]
-                            ]
+                                ["EQUAL", "$CARD.discardGroupId", null],
+                                ["LOG", "$PLAYER_N", " failed to discard ", "$CARD.currentFace.name", " because it is not associated with a discard pile. Please drag the card instead."],
+                                true,
+                                [
+                                    ["DEFINE", "$CURRENT_SIDE", "$CARD.currentSide"],
+                                    ["LOG", "$PLAYER_N", " discarded ", "$CARD.currentFace.name", "."],
+                                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0]
+                                ]
                             ]
                         ]
                     ]
@@ -401,11 +401,11 @@
                         true,
                         [
                             ["LOG", "$PLAYER_N", " discarded ", "$ACTIVE_FACE.name", "."],
-                            ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0]
+                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.discardGroupId", 0]
                         ]
                     ]
                 ]
-            ] 
+            ]
         ],
         "shuffleIntoDeck": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.deckGroupId", 0],
