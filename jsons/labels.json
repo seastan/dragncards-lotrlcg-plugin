@@ -989,7 +989,7 @@
             "English": "Active"
         },
         "player1Hand": {
-            "English": "Player1 Hand"
+            "English": "Player 1 Hand"
         },
         "hand": {
             "English": "Hand"
@@ -998,7 +998,7 @@
             "English": "Deck"
         },
         "player1Discard": {
-            "English": "Player1 Discard"
+            "English": "Player 1 Discard"
         },
         "player1Play1": {
             "English": "Player 1 Play Area"
@@ -1016,7 +1016,22 @@
             "English": "Player 1 Play Area"
         },
         "player1Engaged": {
-            "English": "Player1 Engaged"
+            "English": "Player 1 Engaged"
+        },
+        "sideboard": {
+            "English": "Sideboard"
+        },
+        "player1Sideboard": {
+            "English": "Player 1 Sideboard"
+        },
+        "player2Sideboard": {
+            "English": "Player 2 Sideboard"
+        },
+        "player3Sideboard": {
+            "English": "Player 3 Sideboard"
+        },
+        "player4Sideboard": {
+            "English": "Player 4 Sideboard"
         },
         "engaged": {
             "English": "Engaged"
