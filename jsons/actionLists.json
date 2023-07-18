@@ -146,13 +146,11 @@
                 ["LOG", "$PLAYER_N", " tried to reveal a card from the second encounter deck, but it's empty."],
                 true,
                 [
-                    ["DEFINE", "$STACK_ID", ["AT_INDEX", "$GAME.groupById.sharedEncounterDeck2.stackIds", 0]],
-                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1],
+                    ["DEFINE", "$CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck2", 0, 0]],
+                    ["MOVE_CARD", "$CARD_ID", "sharedStagingArea", -1, 0],
                     ["COND",
-                    "$REVEAL_FACEDOWN",
-                        ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
-                            ["SET", "/cardById/$CARD_ID/currentSide", "B"]
-                        ]
+                        "$REVEAL_FACEDOWN",
+                        ["SET", "/cardById/$CARD_ID/currentSide", "B"]
                     ],
                     ["LOG", "$PLAYER_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"], "."]
                 ]
@@ -168,7 +166,7 @@
                 ["AND", ["EQUAL", "$GAME.playerUi.playerN", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
                 [
                     ["SET", "/stepIndex", "$STEP_INDEX"],
-                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].text", "."]
+                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].label", "."]
                 ],
                 true,
                 "$GAME"
@@ -220,7 +218,7 @@
             ],
             ["DEFINE", "$STEP_INDEX", "$GAME.stepIndex"],
             ["DEFINE", "$STEP", "$GAME.steps.[$STEP_INDEX]"],
-            ["LOG", "$PLAYER_N", " set the round step to ", "$STEP.text", "."]
+            ["LOG", "$PLAYER_N", " set the round step to ", "$STEP.label", "."]
         ],
         "prevStep": [
             ["DECREASE_VAL", "/stepIndex", 1],
@@ -230,7 +228,7 @@
             ],
             ["DEFINE", "$STEP_INDEX", "$GAME.stepIndex"],
             ["DEFINE", "$STEP", "$GAME.steps.[$STEP_INDEX]"],
-            ["LOG", "$PLAYER_N", " set the round step to ", "$STEP.text", "."]
+            ["LOG", "$PLAYER_N", " set the round step to ", "$STEP.label", "."]
         ],
         "mulligan": [
             ["DEFINE", "$HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
@@ -301,48 +299,62 @@
         "toggleCommit": [
             ["DEFINE", "$STEP_INDEX", 8],
             ["COND",
-                ["AND", ["EQUAL", "$GAME.playerUi.playerN", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
+                ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
                 [
                     ["SET", "/stepIndex", "$STEP_INDEX"],
-                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].text", "."]
+                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].label", "."]
                 ]
             ],
             ["COND",
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$CARD.inPlay"],
+                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
                 [
+                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["DEFINE", "$QUESTING_AMOUNT", ["ADD", "$ACTIVE_FACE.$QUESTING_STAT", "$ACTIVE_CARD.tokens.$QUESTING_STAT"]],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true],
-                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$ACTIVE_FACE.willpower"],
-                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", "to the quest."]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/committed", true],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", "$QUESTING_AMOUNT"],
+                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
+                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."]
                 ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$CARD.inPlay"],
+                ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$ACTIVE_CARD.inPlay"],
                 [
+                    ["DEFINE", "$QUESTING_AMOUNT", "$ACTIVE_CARD.tokens.questing"],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false],
-                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$ACTIVE_FACE.willpower"],
-                    ["LOG", "$PLAYER_N", " uncommitted ", "$ACTIVE_FACE.name", "to the quest."]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/committed", false],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", 0],
+                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
+                    ["LOG", "$PLAYER_N", " removed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."]
                 ]
             ]
         ],
         "toggleCommitWithoutExhausting": [
             ["DEFINE", "$STEP_INDEX", 8],
             ["COND",
-                ["AND", ["EQUAL", "$GAME.playerUi.playerN", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
+                ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
                 [
                     ["SET", "/stepIndex", "$STEP_INDEX"],
-                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].text", "."]
+                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].label", "."]
                 ]
             ],
             ["COND",
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$CARD.inPlay"],
+                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
                 [
-                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower/$ACTIVE_FACE.willpower"],
-                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", "to the quest without exhausting."]
+                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["DEFINE", "$QUESTING_AMOUNT", ["ADD", "$ACTIVE_FACE.$QUESTING_STAT", "$ACTIVE_CARD.tokens.$QUESTING_STAT"]],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/committed", true],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", "$QUESTING_AMOUNT"],
+                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
+                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest without exhausting."]
                 ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$CARD.inPlay"],
+                ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$ACTIVE_CARD.inPlay"],
                 [
-                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$ACTIVE_FACE.willpower"],
-                    ["LOG", "$PLAYER_N", " removed ", "$ACTIVE_FACE.name", "from the quest."]
+                    ["DEFINE", "$QUESTING_AMOUNT", "$ACTIVE_CARD.tokens.questing"],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/committed", false],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", 0],
+                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
+                    ["LOG", "$PLAYER_N", " removed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."]
                 ]
             ]
         ],
@@ -455,7 +467,7 @@
             ["DEFINE", "$ACTIVE_CARD_INDEX", "$ACTIVE_CARD.cardIndex"],
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$TOP_CARD.deckGroupId", "$TOP_CARD.stackIndex", "$TOP_CARD.cardIndex"],
             ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"],
-            ["LOG", "$PLAYER_N", " swapped ", ["FACEUP_NAME_FROM_CARD_ID", "$ACTIVE_CARD_ID"], " with the top card of ", "$GAME.groupById.$DECK_GROUP_ID.name", "."]
+            ["LOG", "$PLAYER_N", " swapped ", ["FACEUP_NAME_FROM_CARD_ID", "$ACTIVE_CARD_ID"], " with the top card of ", "$GAME.groupById.$DECK_GROUP_ID.label", "."]
         ],
         "moveToBack": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex", -1]
@@ -474,28 +486,28 @@
             ["LOG", "$PLAYER_N", " set the questing type to Battle."]
         ],
         "setQuestSiege": [
-            ["SET", "/questingStat", "attack"],
+            ["SET", "/questingStat", "defense"],
             ["LOG", "$PLAYER_N", " set the questing type to Siege."]
         ],
         "setupEscapeFromMountGram": [
-            ["CONFIRM", "This function will set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels. Before running this function, each player should flip each hero they control that is not their starting hero facedown. Continue?"],
+            ["CONFIRM", "This function will set up each player's capture deck, add 2 resources to each hero, draw a new starting hands of 3 cards, and set new threat levels. Before running this function, each player should flip each hero they control that is not their starting hero facedown. Continue?"],
             ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData",
             [
                 ["MOVE_STACKS", ["JOIN_STRING", "$PLAYER_I", "Hand"], ["JOIN_STRING", "$PLAYER_I", "Deck"], "$HAND_SIZE", "shuffle"],
                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
-                ["COND",
-                    ["AND",
-                    ["EQUAL", "$CARD.controller", "$PLAYER_I"],
-                    ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_I", "Deck"]],
-                    ["OR",
-                        ["EQUAL", "$CARD.sides.A.type", "Ally"],
-                        ["IN_STRING", "$CARD.sides.A.traits", "Item."],
-                        ["IN_STRING", "$CARD.sides.A.traits", "Mount."],
-                        ["IN_STRING", "$CARD.sides.A.traits", "Artifact."]
+                    ["COND",
+                        ["AND",
+                        ["EQUAL", "$CARD.controller", "$PLAYER_I"],
+                        ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_I", "Deck"]],
+                        ["OR",
+                            ["EQUAL", "$CARD.sides.A.type", "Ally"],
+                            ["IN_STRING", "$CARD.sides.A.traits", "Item."],
+                            ["IN_STRING", "$CARD.sides.A.traits", "Mount."],
+                            ["IN_STRING", "$CARD.sides.A.traits", "Artifact."]
+                        ]
+                        ],
+                        ["MOVE_CARD", "$CARD_ID", ["JOIN_STRING", "$PLAYER_I", "Deck2"], 0]
                     ]
-                    ],
-                    ["MOVE_CARD", "$CARD_ID", ["JOIN_STRING", "$PLAYER_I", "Deck2"], 0]
-                ]
                 ]]
             ],
             ["DEFINE", "$FACEDOWN_HEROES", ["LIST"]],
@@ -550,22 +562,6 @@
         ],
         "setupToCatchAnOrc": [
             ["CONFIRM", "This function will set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels. Before running this function, each player should flip each hero they control that is not their starting hero facedown. Continue?"]
-        ],
-        "togglePeeking": [
-            ["DEFINE", "$GROUP_ID", "$ACTIVE_CARD.groupId"],
-            ["DEFINE", "$GROUP_NAME", ["$GAME.groupById.$GROUP_ID.name"]],
-            ["COND",
-                ["EQUAL", "$ACTIVE_CARD.peeking.$PLAYER_N", true],
-                [
-                    ["LOG", "$PLAYER_N", " stopped peeking at a card in ", "$GROUP_NAME"],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/peeking", "$PLAYER_N", false]
-                ],
-                true,
-                [
-                    ["LOG", "$PLAYER_N", " started peeking at a card in ", "$GROUP_NAME"],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/peeking", "$PLAYER_N", true]
-                ]
-            ]
         ],
         "togglePreventRefresh": [
             ["COND",

@@ -1146,6 +1146,9 @@
         },
         "preventRefresh": {
             "English": "Prevent Refresh"
+        },
+        "swapWithTop": {
+            "English": "Swap with top card in deck of origin"
         }
     }
 }

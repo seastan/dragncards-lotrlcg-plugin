@@ -57,7 +57,8 @@
             {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
             {"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
             {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
-            {"key": "Shift+A", "actionList": "triggerAbility", "label": "id:triggerAbilityOnlyAvailableForSelectCards"}
+            {"key": "Shift+A", "actionList": "triggerAbility", "label": "id:triggerAbilityOnlyAvailableForSelectCards"},
+            {"key": "Shift+T", "actionList": "swapWithTop", "label": "id:swapWithTop"}
         ]
     }
 }
