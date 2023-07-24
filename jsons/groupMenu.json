@@ -1,6 +1,6 @@
 {
     "groupMenu": {
-        "moveToGroupIds": [],
+        "moveToGroupIds": ["sharedEncounterDeck", "sharedEncounterDiscard", "sharedEncounterDeck2", "sharedEncounterDiscard2", "player1Deck", "player2Deck", "player3Deck", "player4Deck"],
         "options": [
             {
                 "label": "id:shuffleGroupIntoDeck",
