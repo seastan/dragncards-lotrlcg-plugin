@@ -12,7 +12,7 @@
                     ["LOG", "player1 increased the round."],
                     ["SET", "/phaseId", "Resource"],
                     ["LOG", "player1 set the phase to Resource."],
-                    ["SET", "/stepIndex", "2"],
+                    ["SET", "/stepId", "1.R"],
                     ["LOG", "player1 set the round step to 1.R."]
                 ]
             ],
@@ -64,7 +64,7 @@
             ["COND",
                 ["EQUAL", "$PLAYER_N", "player1"],
                 [
-                    ["SET", "/stepIndex", 25],
+                    ["SET", "/stepId", "7.R"],
                     ["SET", "/firstPlayer", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
                     ["LOG", "player1 set the phase to Refresh."],
                     ["LOG", "player1 set the round step to 7.R."]
@@ -161,12 +161,12 @@
             ["LOG", "$PLAYER_N", " drew 1 card."]
         ],
         "dealShadows": [
-            ["DEFINE", "$STEP_INDEX", 20],
+            ["DEFINE", "$STEP_ID", "6.2"],
             ["COND",
-                ["AND", ["EQUAL", "$GAME.playerUi.playerN", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
+                ["AND", ["EQUAL", "$GAME.playerUi.playerN", "player1"], ["NOT_EQUAL", "$STEP_ID", "$GAME.stepId"]],
                 [
-                    ["SET", "/stepIndex", "$STEP_INDEX"],
-                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].label", "."]
+                    ["SET", "/stepId", "$STEP_ID"],
+                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.$STEP_ID.label", "."]
                 ],
                 true,
                 "$GAME"
@@ -208,27 +208,6 @@
                 ]
             ]
             ]
-        ],
-        "nextStep": [
-            ["INCREASE_VAL", "/stepIndex", 1],
-            ["COND",
-                ["EQUAL", "$GAME.stepIndex", ["LENGTH", "$GAME.steps"],
-                ["SET", "/stepIndex", 0]
-            ]
-            ],
-            ["DEFINE", "$STEP_INDEX", "$GAME.stepIndex"],
-            ["DEFINE", "$STEP", "$GAME.steps.[$STEP_INDEX]"],
-            ["LOG", "$PLAYER_N", " set the round step to ", "$STEP.label", "."]
-        ],
-        "prevStep": [
-            ["DECREASE_VAL", "/stepIndex", 1],
-            ["COND",
-                ["LESS_THAN", "$GAME.stepIndex", 0],
-                ["SET", "/stepIndex", ["MINUS", ["LENGTH", "$GAME.steps"], 1]]
-            ],
-            ["DEFINE", "$STEP_INDEX", "$GAME.stepIndex"],
-            ["DEFINE", "$STEP", "$GAME.steps.[$STEP_INDEX]"],
-            ["LOG", "$PLAYER_N", " set the round step to ", "$STEP.label", "."]
         ],
         "mulligan": [
             ["DEFINE", "$HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
@@ -297,12 +276,12 @@
             ]
         ],
         "toggleCommit": [
-            ["DEFINE", "$STEP_INDEX", 8],
+            ["DEFINE", "$STEP_ID", "3.2"],
             ["COND",
-                ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
+                ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$GAME.stepId", "$STEP_ID"]],
                 [
-                    ["SET", "/stepIndex", "$STEP_INDEX"],
-                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].label", "."]
+                    ["SET", "/stepId", "$STEP_ID"],
+                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.$STEP_ID.label", "."]
                 ]
             ],
             ["COND",

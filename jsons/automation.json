@@ -42,8 +42,18 @@
                 ]
             ]
         ],
-        "gameRules": [
-
+        "gameRules": [  
+            { 
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/inPlay"],
+                "condition": ["AND", ["NOT", "$TARGET.inPlay"], ["PREV", "$TARGET.inPlay"], ["PREV", "$TARGET.committed"]],
+                "then": [
+                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["DEFINE", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
+                    ["DECREASE_VAL", "/playerData/$TARGET.controller/willpower", "$COMMITTED_VAL"],
+                    ["LOG", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
+                ]
+            }
         ]
     }
 }

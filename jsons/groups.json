@@ -9,6 +9,7 @@
                 "currentSide": "B",
                 "controller": "shared",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck",
                 "discardGroupId": "sharedEncounterDiscard"
             }
@@ -22,6 +23,7 @@
                 "currentSide": "A",
                 "controller": "shared",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck",
                 "discardGroupId": "sharedEncounterDiscard"
             }
@@ -34,6 +36,7 @@
             "onCardEnter": {
                 "currentSide": "A",
                 "inPlay": false,
+                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
                 "discardGroupId": "sharedQuestDiscard"
@@ -47,6 +50,7 @@
             "onCardEnter": {
                 "currentSide": "B",
                 "inPlay": false,
+                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
                 "discardGroupId": "sharedQuestDiscard"
@@ -60,6 +64,7 @@
             "onCardEnter": {
                 "currentSide": "A",
                 "inPlay": false,
+                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",
                 "discardGroupId": "sharedQuestDiscard2"
@@ -73,6 +78,7 @@
             "onCardEnter": {
                 "currentSide": "B",
                 "inPlay": false,
+                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",
                 "discardGroupId": "sharedQuestDiscard2"
@@ -87,6 +93,7 @@
                 "currentSide": "B",
                 "controller": "shared",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck2",
                 "discardGroupId": "sharedEncounterDiscard2"
             }
@@ -100,6 +107,7 @@
                 "currentSide": "A",
                 "controller": "shared",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck2",
                 "discardGroupId": "sharedEncounterDiscard2"
             }
@@ -113,6 +121,7 @@
                 "currentSide": "B",
                 "controller": "shared",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck3",
                 "discardGroupId": "sharedEncounterDiscard3"
             }
@@ -126,6 +135,7 @@
                 "currentSide": "A",
                 "controller": "shared",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck3",
                 "discardGroupId": "sharedEncounterDiscard3"
             }
@@ -241,6 +251,7 @@
                 "currentSide": "B",
                 "controller": "player1",
                 "inPlay": false,
+                "rotation": 0,
                 "peeking": {"player1": true},
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
@@ -255,6 +266,7 @@
                 "currentSide": "B",
                 "controller": "player1",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
             }
@@ -268,6 +280,7 @@
                 "currentSide": "A",
                 "controller": "player1",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
             }
@@ -281,6 +294,7 @@
                 "currentSide": "B",
                 "controller": "player1",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player1Deck2",
                 "discardGroupId": "player1Discard"
             }
@@ -371,6 +385,7 @@
                 "currentSide": "B",
                 "controller": "player2",
                 "inPlay": false,
+                "rotation": 0,
                 "peeking": {"player2": true},
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
@@ -385,6 +400,7 @@
                 "currentSide": "B",
                 "controller": "player2",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
             }
@@ -398,6 +414,7 @@
                 "currentSide": "A",
                 "controller": "player2",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
             }
@@ -411,6 +428,7 @@
                 "currentSide": "B",
                 "controller": "player2",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player2Deck2",
                 "discardGroupId": "player2Discard"
             }
@@ -501,6 +519,7 @@
                 "currentSide": "B",
                 "controller": "player3",
                 "inPlay": false,
+                "rotation": 0,
                 "peeking": {"player3": true},
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
@@ -515,6 +534,7 @@
                 "currentSide": "B",
                 "controller": "player3",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
             }
@@ -528,6 +548,7 @@
                 "currentSide": "A",
                 "controller": "player3",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
             }
@@ -541,6 +562,7 @@
                 "currentSide": "B",
                 "controller": "player3",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player3Deck2",
                 "discardGroupId": "player3Discard"
             }
@@ -631,6 +653,7 @@
                 "currentSide": "B",
                 "controller": "player4",
                 "inPlay": false,
+                "rotation": 0,
                 "peeking": {"player4": true},
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
@@ -645,6 +668,7 @@
                 "currentSide": "B",
                 "controller": "player4",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
             }
@@ -658,6 +682,7 @@
                 "currentSide": "A",
                 "controller": "player4",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
             }
@@ -671,6 +696,7 @@
                 "currentSide": "B",
                 "controller": "player4",
                 "inPlay": false,
+                "rotation": 0,
                 "deckGroupId": "player4Deck2",
                 "discardGroupId": "player4Discard"
             }
