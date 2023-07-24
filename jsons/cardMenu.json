@@ -1,6 +1,6 @@
 {
     "cardMenu": {
-        "moveToGroupIds": [],
+        "moveToGroupIds": ["sharedEncounterDeck", "sharedEncounterDeck2", "sharedQuestDeck"],
         "options": [
             {
                 "label": "id:toggleExhaust",

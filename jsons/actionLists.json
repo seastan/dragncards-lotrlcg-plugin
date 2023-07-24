@@ -9,11 +9,11 @@
                 ["EQUAL", "$PLAYER_N", "player1"],
                 [
                     ["INCREASE_VAL", "/roundNumber", 1],
-                    ["LOG", "player1 increased the round."],
+                    ["LOG", "{player1} increased the round."],
                     ["SET", "/phaseId", "Resource"],
-                    ["LOG", "player1 set the phase to Resource."],
+                    ["LOG", "{player1} set the phase to Resource."],
                     ["SET", "/stepId", "1.R"],
-                    ["LOG", "player1 set the round step to 1.R."]
+                    ["LOG", "{player1} set the round step to 1.R."]
                 ]
             ],
             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
@@ -66,8 +66,8 @@
                 [
                     ["SET", "/stepId", "7.R"],
                     ["SET", "/firstPlayer", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
-                    ["LOG", "player1 set the phase to Refresh."],
-                    ["LOG", "player1 set the round step to 7.R."]
+                    ["LOG", "{player1} set the phase to Refresh."],
+                    ["LOG", "{player1} set the round step to 7.R."]
                 ]
             ],
             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [

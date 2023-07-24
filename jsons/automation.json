@@ -54,6 +54,92 @@
                     ["LOG", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
                 ]
             }
-        ]
+        ],
+        "cards": {
+            "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b": {
+                "_comment": "Celeborn",
+                "rules": [
+                    {
+                        "_comment": "Add tokens to Silvan allies that enter play if Celeborn is in play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                        "then": [
+                            ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                            ["DEFINE", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
+                            ["SET", "/cardById/$TARGET_ID/hasCelebornTokens", true],
+                            ["LOG", "$TARGET.controller", " added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."]
+                        ]
+                    },
+                    {
+                        "type": "trigger",
+                        "listenTo": ["/roundNumber"],
+                        "condition": ["TRUE"],
+                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.hasCelebornTokens", "$CARD.inPlay"],
+                                [
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1],
+                                    ["SET", "/cardById/$CARD_ID/hasCelebornTokens", false],
+                                    ["LOG", "$CARD.controller", " removed 1 willpower, 1 attack, and 1 defense token from ", "$CARD.currentFace.name", "."]
+                                ]
+                            ]
+                        ]]
+                    }
+                ]
+            },
+            "51223bd0-ffd1-11df-a976-0801206c9005": {
+                "_comment": "Leadership Dain Ironfoot",
+                "rules": [
+                    {
+                        "_comment": "Add tokens to Dwarf allies that enter play if Dain is in play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Dwarf."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
+                            ["LOG", "$TARGET.controller", " added 1 willpower and 1 attack to ", "$TARGET.currentFace.name", "."]
+                        ]
+                    },
+                    { 
+                        "_comment": "Add/remove tokens on Dwarf characters depending on whether Dain is ready or not.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/exhausted"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["EQUAL", "$THIS.currentSide", "A"],
+                                ["EQUAL", "$THIS.exhausted", false]
+                        ],
+                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Dwarf."]],
+                                [
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " added 1 willpower and 1 attack to each Dwarf character in play."]
+                        ],
+                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Dwarf."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
+                                [
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " removed 1 willpower and 1 attack to each Dwarf character in play."]
+                        ]
+                    }
+                ]
+            }
+        }
     }
 }
