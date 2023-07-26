@@ -7,19 +7,19 @@
                 ["COND", 
                     ["EQUAL", "$CARD.sides.A.type", "Hero"],
                     [
+                        ["LOG", "├── ", "$PLAYER_N", " increased their threat by ", "$CARD.sides.A.cost", " (", "$CARD.sides.A.name", ")"],
                         ["DEFINE", "$LOADED_PLAYER_DECK", true],
                         ["DEFINE", "$CONTROLLER", "$CARD.controller"],
-                        ["INCREASE_VAL", "/playerData/$CONTROLLER/threat", "$CARD.sides.A.cost"],
-                        ["LOG", "$PLAYER_N", " increased their threat by ", "$CARD.sides.A.cost", " (", "$CARD.sides.A.name", ")"]
+                        ["INCREASE_VAL", "/playerData/$CONTROLLER/threat", "$CARD.sides.A.cost"]
                     ]
                 ],
                 ["COND",
-                    ["EQUAL", "$CARD.groupId", ["JOIN_STRING", "$PLAYER_N", "Play1"]],
+                    ["IN_STRING", "$CARD.groupId", "Play1"],
                     [
                         ["SET", "/cardById/$CARD_ID/deckGroupId", ["JOIN_STRING", "$PLAYER_N", "Deck"]],
                         ["SET", "/cardById/$CARD_ID/discardGroupId", ["JOIN_STRING", "$PLAYER_N", "Discard"]]
                     ],
-                    ["IN_LIST", ["LIST", "sharedStagingArea", "ahredActiveLocation"], "$CARD.groupId"],
+                    ["IN_LIST", ["LIST", "sharedStagingArea", "sharedActiveLocation"], "$CARD.groupId"],
                     [
                         ["SET", "/cardById/$CARD_ID/deckGroupId", "sharedEncounterDeck"],
                         ["SET", "/cardById/$CARD_ID/discardGroupId", "sharedEncounterDiscard"]
@@ -28,8 +28,8 @@
                 ["COND", 
                     ["AND", ["EQUAL", "$CARD.sides.A.type", "Quest"], ["EQUAL", "$CARD.sides.A.cost", 1]],
                     [
-                        ["MOVE_CARD", "$CARD_ID", "sharedMainQuest", 0],
-                        ["LOG", "$PLAYER_N", " made ", "$CARD.sides.A.name", " the main quest."]
+                        ["LOG", "├── ", "Made ", "$CARD.sides.A.name", " the main quest."],
+                        ["MOVE_CARD", "$CARD_ID", "sharedMainQuest", 0]
                     ]
                 ]
             ]],
@@ -37,8 +37,8 @@
             ["COND",
                 ["AND", "$LOADED_PLAYER_DECK", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", ["LENGTH", "$GAME.groupById.$PLAYER_N_HAND_GROUP_ID.stackIds"], 0]],
                 [
-                    ["DRAW_CARD", 6],
-                    ["LOG", "$PLAYER_N", " draws 6 cards."]
+                    ["LOG", "└── ", "$PLAYER_N", " draws 6 cards."],
+                    ["DRAW_CARD", 6]
                 ]
             ]
         ],
@@ -51,7 +51,31 @@
                     ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["DEFINE", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
                     ["DECREASE_VAL", "/playerData/$TARGET.controller/willpower", "$COMMITTED_VAL"],
-                    ["LOG", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
+                    ["LOG", "└── ", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
+                ]
+            },
+            { 
+                "type": "passive", 
+                "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints"],
+                "condition": ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]],
+                "onDo": [
+                    ["LOG", "└── ", "$TARGET.currentFace.name", " is destroyed."],
+                    ["SET", "/cardById/$TARGET_ID/borderColor", "red"]
+                ],
+                "offDo": [
+                    ["SET", "/cardById/$TARGET_ID/borderColor", null]
+                ]
+            },
+            { 
+                "type": "passive", 
+                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints"],
+                "condition": ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]],
+                "onDo": [
+                    ["LOG", "└── ", "$TARGET.currentFace.name", " is explored."],
+                    ["SET", "/cardById/$TARGET_ID/borderColor", "green"]
+                ],
+                "offDo": [
+                    ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             }
         ],
@@ -65,13 +89,13 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
+                            ["LOG", "└── ", "Added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."],
                             ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
                             ["DEFINE", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
-                            ["SET", "/cardById/$TARGET_ID/hasCelebornTokens", true],
-                            ["LOG", "$TARGET.controller", " added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."]
+                            ["SET", "/cardById/$TARGET_ID/hasCelebornTokens", true]
                         ]
                     },
                     {
@@ -82,11 +106,11 @@
                             ["COND",
                                 ["AND", "$CARD.hasCelebornTokens", "$CARD.inPlay"],
                                 [
+                                    ["LOG", "└── ", "Removed 1 willpower, 1 attack, and 1 defense token from ", "$CARD.currentFace.name", "."],
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1],
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1],
-                                    ["SET", "/cardById/$CARD_ID/hasCelebornTokens", false],
-                                    ["LOG", "$CARD.controller", " removed 1 willpower, 1 attack, and 1 defense token from ", "$CARD.currentFace.name", "."]
+                                    ["SET", "/cardById/$CARD_ID/hasCelebornTokens", false]
                                 ]
                             ]
                         ]]
@@ -102,9 +126,9 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Dwarf."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
                         "then": [
+                            ["LOG", "└── ", "Added 1 willpower and 1 attack to ", "$TARGET.currentFace.name", "."],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
-                            ["LOG", "$TARGET.controller", " added 1 willpower and 1 attack to ", "$TARGET.currentFace.name", "."]
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1]
                         ]
                     },
                     { 
@@ -117,25 +141,27 @@
                                 ["EQUAL", "$THIS.currentSide", "A"],
                                 ["EQUAL", "$THIS.exhausted", false]
                         ],
-                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "onDo": [
+                            ["LOG", "└── ", "Added 1 willpower and 1 attack to each Dwarf character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Dwarf."]],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " added 1 willpower and 1 attack to each Dwarf character in play."]
+                            ]]]
                         ],
-                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "offDo": [
+                            ["LOG", "└── ", "$THIS.controller", " removed 1 willpower and 1 attack from each Dwarf character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Dwarf."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
                                 [
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " removed 1 willpower and 1 attack to each Dwarf character in play."]
+                            ]]]
                         ]
                     }
                 ]
@@ -149,8 +175,8 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
                         "then": [
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
-                            ["LOG", "$TARGET.controller", " added 1 willpower to ", "$TARGET.currentFace.name", "."]
+                            ["LOG", "└── ", "$TARGET.controller", " added 1 willpower to ", "$TARGET.currentFace.name", "."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1]
                         ]
                     },
                     { 
@@ -162,23 +188,25 @@
                                 "$THIS.inPlay",
                                 ["EQUAL", "$THIS.currentSide", "A"]
                         ],
-                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "onDo": [
+                            ["LOG", "└── ", "$THIS.controller", " added 1 willpower to each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " added 1 willpower to each Outlands character in play."]
+                            ]]]
                         ],
-                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "offDo": [
+                            ["LOG", "└── ", "$THIS.controller", " removed 1 willpower from each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
                                 [
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " removed 1 willpower to each Outlands character in play."]
+                            ]]]
                         ]
                     }
                 ]
@@ -192,8 +220,8 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
                         "then": [
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
-                            ["LOG", "$TARGET.controller", " added 1 defense to ", "$TARGET.currentFace.name", "."]
+                            ["LOG", "└── ", "$TARGET.controller", " added 1 defense to ", "$TARGET.currentFace.name", "."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1]
                         ]
                     },
                     { 
@@ -205,23 +233,25 @@
                                 "$THIS.inPlay",
                                 ["EQUAL", "$THIS.currentSide", "A"]
                         ],
-                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "onDo": [
+                            ["LOG", "└── ", "$THIS.controller", " added 1 defense to each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " added 1 defense to each Outlands character in play."]
+                            ]]]
                         ],
-                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "offDo": [
+                            ["LOG", "└── ", "$THIS.controller", " removed 1 defense from each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
                                 [
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " removed 1 defense to each Outlands character in play."]
+                            ]]]
                         ]
                     }
                 ]
@@ -235,8 +265,8 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
                         "then": [
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
-                            ["LOG", "$TARGET.controller", " added 1 attack to ", "$TARGET.currentFace.name", "."]
+                            ["LOG", "└── ", "$TARGET.controller", " added 1 attack to ", "$TARGET.currentFace.name", "."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1]
                         ]
                     },
                     { 
@@ -248,14 +278,15 @@
                                 "$THIS.inPlay",
                                 ["EQUAL", "$THIS.currentSide", "A"]
                         ],
-                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "onDo": [
+                            ["LOG", "└── ", "$THIS.controller", " added 1 attack to each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " added 1 attack to each Outlands character in play."]
+                            ]]]
                         ],
                         "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
@@ -264,7 +295,7 @@
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
                                 ]
                             ]]],
-                            ["LOG", "$THIS.controller", " removed 1 attack to each Outlands character in play."]
+                            ["LOG", "└── ", "$THIS.controller", " removed 1 attack from each Outlands character in play."]
                         ]
                     }
                 ]
@@ -279,7 +310,7 @@
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
                         "then": [
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/hitPoints", 1],
-                            ["LOG", "$TARGET.controller", " added 1 hit point to ", "$TARGET.currentFace.name", "."]
+                            ["LOG", "└── ", "$TARGET.controller", " added 1 hit point to ", "$TARGET.currentFace.name", "."]
                         ]
                     },
                     { 
@@ -291,23 +322,25 @@
                                 "$THIS.inPlay",
                                 ["EQUAL", "$THIS.currentSide", "A"]
                         ],
-                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "onDo": [
+                            ["LOG", "└── ", "$THIS.controller", " added 1 hit point to each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/hitPoints", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " added 1 hit point to each Outlands character in play."]
+                            ]]]
                         ],
-                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        "offDo": [
+                            ["LOG", "└── ", "$THIS.controller", " removed 1 hit point from each Outlands character in play."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                             ["COND",
                                 ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
                                 [
                                     ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/hitPoints", 1]
                                 ]
-                            ]]],
-                            ["LOG", "$THIS.controller", " removed 1 hit point to each Outlands character in play."]
+                            ]]]
                         ]
                     }
                 ]
