@@ -139,6 +139,178 @@
                         ]
                     }
                 ]
+            },
+            "1c149f93-9e3b-42fa-878c-80b29563a283": {
+                "_comment": "Ethir Swordsman",
+                "rules": [
+                    {
+                        "_comment": "Add tokens to allies that enter play if this ally is in play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
+                            ["LOG", "$TARGET.controller", " added 1 willpower to ", "$TARGET.currentFace.name", "."]
+                        ]
+                    },
+                    { 
+                        "_comment": "Add/remove tokens depending on whether this is in play.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
+                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
+                                [
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " added 1 willpower to each Outlands character in play."]
+                        ],
+                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
+                                [
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " removed 1 willpower to each Outlands character in play."]
+                        ]
+                    }
+                ]
+            },
+            "2e84d805-365c-47ea-9c4f-e3f75daeb9a6": {
+                "_comment": "Warrior of Lossarnach",
+                "rules": [
+                    {
+                        "_comment": "Add tokens to allies that enter play if this ally is in play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
+                            ["LOG", "$TARGET.controller", " added 1 defense to ", "$TARGET.currentFace.name", "."]
+                        ]
+                    },
+                    { 
+                        "_comment": "Add/remove tokens depending on whether this is in play.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
+                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
+                                [
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " added 1 defense to each Outlands character in play."]
+                        ],
+                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
+                                [
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " removed 1 defense to each Outlands character in play."]
+                        ]
+                    }
+                ]
+            },
+            "c00844d6-1c3c-4e8c-a46c-8de15b8408df": {
+                "_comment": "Knights of the Swan",
+                "rules": [
+                    {
+                        "_comment": "Add tokens to allies that enter play if this ally is in play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
+                            ["LOG", "$TARGET.controller", " added 1 attack to ", "$TARGET.currentFace.name", "."]
+                        ]
+                    },
+                    { 
+                        "_comment": "Add/remove tokens depending on whether this is in play.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
+                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
+                                [
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " added 1 attack to each Outlands character in play."]
+                        ],
+                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
+                                [
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " removed 1 attack to each Outlands character in play."]
+                        ]
+                    }
+                ]
+            },
+            "4cb4741d-c9d8-4d62-ab4f-50fa80c59fbb": {
+                "_comment": "Anfalas Herdsman",
+                "rules": [
+                    {
+                        "_comment": "Add tokens to allies that enter play if this ally is in play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Outlands."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/hitPoints", 1],
+                            ["LOG", "$TARGET.controller", " added 1 hit point to ", "$TARGET.currentFace.name", "."]
+                        ]
+                    },
+                    { 
+                        "_comment": "Add/remove tokens depending on whether this is in play.",
+                        "type": "passive", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
+                        "onDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."]],
+                                [
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/hitPoints", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " added 1 hit point to each Outlands character in play."]
+                        ],
+                        "offDo": [["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["OR", ["IN_STRING", "$CARD.currentFace.traits", "Outlands."], ["EQUAL", "$CARD_ID", "$THIS_ID"]]],
+                                [
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/hitPoints", 1]
+                                ]
+                            ]]],
+                            ["LOG", "$THIS.controller", " removed 1 hit point to each Outlands character in play."]
+                        ]
+                    }
+                ]
             }
         }
     }
