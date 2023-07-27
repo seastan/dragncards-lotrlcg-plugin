@@ -276,6 +276,15 @@
             ]
         ],
         "toggleCommit": [
+            ["ACTION_LIST", "toggleCommitWithoutExhausting"],
+            ["COND",
+                ["AND", "$ACTIVE_CARD.committed", "$ACTIVE_CARD.inPlay", ["NOT", "$ACTIVE_CARD.exhausted"]],
+                ["ACTION_LIST", "toggleExhaust"],
+                ["AND", ["NOT", "$ACTIVE_CARD.committed"], "$ACTIVE_CARD.inPlay", "$ACTIVE_CARD.exhausted"],
+                ["ACTION_LIST", "toggleExhaust"]
+            ]
+        ],
+        "toggleCommitWithoutExhausting": [
             ["DEFINE", "$STEP_ID", "3.2"],
             ["COND",
                 ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$GAME.stepId", "$STEP_ID"]],
@@ -285,55 +294,22 @@
                 ]
             ],
             ["COND",
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
+                ["AND", ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
                 [
                     ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["DEFINE", "$QUESTING_AMOUNT", ["ADD", "$ACTIVE_FACE.$QUESTING_STAT", "$ACTIVE_CARD.tokens.$QUESTING_STAT"]],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true],
+                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/committed", true],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", "$QUESTING_AMOUNT"],
-                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
-                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."]
+                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"]
                 ],
                 ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$ACTIVE_CARD.inPlay"],
                 [
                     ["DEFINE", "$QUESTING_AMOUNT", "$ACTIVE_CARD.tokens.questing"],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false],
+                    ["LOG", "$PLAYER_N", " removed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/committed", false],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", 0],
-                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
-                    ["LOG", "$PLAYER_N", " removed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."]
-                ]
-            ]
-        ],
-        "toggleCommitWithoutExhausting": [
-            ["DEFINE", "$STEP_INDEX", 8],
-            ["COND",
-                ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$STEP_INDEX", "$GAME.stepIndex"]],
-                [
-                    ["SET", "/stepIndex", "$STEP_INDEX"],
-                    ["LOG", "$PLAYER_N", " set the round step to ", "$GAME.steps.[$STEP_INDEX].label", "."]
-                ]
-            ],
-            ["COND",
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
-                [
-                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
-                    ["DEFINE", "$QUESTING_AMOUNT", ["ADD", "$ACTIVE_FACE.$QUESTING_STAT", "$ACTIVE_CARD.tokens.$QUESTING_STAT"]],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/committed", true],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", "$QUESTING_AMOUNT"],
-                    ["INCREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
-                    ["LOG", "$PLAYER_N", " committed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest without exhausting."]
-                ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.committed", true], "$ACTIVE_CARD.inPlay"],
-                [
-                    ["DEFINE", "$QUESTING_AMOUNT", "$ACTIVE_CARD.tokens.questing"],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/committed", false],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/tokens/questing", 0],
-                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"],
-                    ["LOG", "$PLAYER_N", " removed ", "$ACTIVE_FACE.name", " (", "$QUESTING_AMOUNT", ") to the quest."]
+                    ["DECREASE_VAL", "/playerData/$ACTIVE_CARD.controller/willpower", "$QUESTING_AMOUNT"]
                 ]
             ]
         ],
