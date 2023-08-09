@@ -50,8 +50,9 @@
                 ]
             ]
         ],
-        "gameRules": [  
+        "gameRules": [
             { 
+                "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/inPlay"],
                 "condition": ["AND", ["NOT", "$TARGET.inPlay"], ["PREV", "$TARGET.inPlay"], ["PREV", "$TARGET.committed"]],
@@ -63,6 +64,71 @@
                 ]
             },
             { 
+                "_comment": "Adjust committed value when token is adjusted",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/tokens/willpower"],
+                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "willpower"]],
+                "then": [
+                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
+                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
+                ]
+            },
+            { 
+                "_comment": "Adjust committed value when token is adjusted",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/tokens/attack"],
+                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "attack"]],
+                "then": [
+                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.attack", ["PREV", "$TARGET.tokens.attack"]]],
+                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
+                ]
+            },
+            { 
+                "_comment": "Adjust committed value when token is adjusted",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/tokens/defense"],
+                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "defense"]],
+                "then": [
+                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.defense", ["PREV", "$TARGET.tokens.defense"]]],
+                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
+                ]
+            },
+            { 
+                "_comment": "Adjust staging threat when a card is added/removed",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/groupId", "/cardById/*/currentSide"],
+                "condition": ["AND", ["NOT_EQUAL", "$TARGET.currentSide", null], ["GREATER_THAN", "$TARGET.currentFace.threat", 0],
+                                ["OR", ["EQUAL", "$TARGET.groupId", "sharedStagingArea"], ["PREV", ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]]]],
+                "then": [
+                    ["DEFINE", "$STAGING_THREAT", 0],
+                    ["FOR_EACH_VAL", "$CARD_ID", "$GAME.groupById.sharedStagingArea.parentCardIds", [
+                        ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                        ["DEFINE", "$STAGING_THREAT", ["ADD", "$STAGING_THREAT", "$CARD.currentFace.threat"]]
+                    ]],
+                    ["LOG", "└── ", "Staging threat is now ", "$STAGING_THREAT", "."],
+                    ["SET", "/stagingThreat", "$STAGING_THREAT"]
+                ]
+            },
+            { 
+                "_comment": "Adjust expected progress",
+                "type": "trigger", 
+                "listenTo": ["/stagingThreat", "/playerData/*/willpower"],
+                "condition": ["TRUE"],
+                "then": [
+                    ["DEFINE", "$TOTAL_QUESTING", 0],
+                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                        ["DEFINE", "$TOTAL_QUESTING", ["ADD", "$TOTAL_QUESTING", "$GAME.playerData.$PLAYER_I.willpower"]]
+                    ]],
+                    ["DEFINE", "$EXPECTED_PROGRESS", ["SUBTRACT", "$TOTAL_QUESTING", "$GAME.stagingThreat"]],
+                    ["LOG", "└── ", "Expected progress is now ", "$EXPECTED_PROGRESS", "."],
+                    ["SET", "/questProgress", "$EXPECTED_PROGRESS"]
+                ]
+            },
+            { 
+                "_comment": "Turn cards red when they have 0 hit points left",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints"],
                 "condition": ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]],
@@ -75,6 +141,7 @@
                 ]
             },
             { 
+                "_comment": "Turn cards green when they have 0 quest points left",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints"],
                 "condition": ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]],
