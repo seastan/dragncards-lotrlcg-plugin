@@ -2,15 +2,16 @@
     "automation": {
         "postLoadActionList": [
             ["DEFINE", "$LOADED_PLAYER_DECK", false],
+            ["DEFINE", "$THREAT_RAISE", 0],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
                 ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND", 
                     ["EQUAL", "$CARD.sides.A.type", "Hero"],
                     [
-                        ["LOG", "├── ", "$PLAYER_N", " increased their threat by ", "$CARD.sides.A.cost", " (", "$CARD.sides.A.name", ")"],
                         ["DEFINE", "$LOADED_PLAYER_DECK", true],
                         ["DEFINE", "$CONTROLLER", "$CARD.controller"],
-                        ["INCREASE_VAL", "/playerData/$CONTROLLER/threat", "$CARD.sides.A.cost"]
+                        ["DEFINE", "$THREAT_RAISE", ["ADD", "$THREAT_RAISE", "$CARD.sides.A.cost"]],
+                        ["SET", "/playerData/$CONTROLLER/threat", 0]
                     ]
                 ],
                 ["COND",
@@ -34,6 +35,13 @@
                 ]
             ]],
             ["DEFINE", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
+            ["COND",
+                "$LOADED_PLAYER_DECK",
+                [
+                    ["LOG", "├── ", "$PLAYER_N", " set their starting threat to ", "$THREAT_RAISE", "."],
+                    ["SET", "/playerData/$PLAYER_N/threat", "$THREAT_RAISE"]
+                ]
+            ],
             ["COND",
                 ["AND", "$LOADED_PLAYER_DECK", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", ["LENGTH", "$GAME.groupById.$PLAYER_N_HAND_GROUP_ID.stackIds"], 0]],
                 [

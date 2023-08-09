@@ -237,9 +237,9 @@
             ["LOG", "$PLAYER_N", " increased each player's threat by 1."]
         ],
         "drawNextSeat": [
-            ["DEFINE", "$PLAYER_N", ["NEXT_SEAT", "$PLAYER_N"]],
-            ["DRAW_CARD"],
-            ["LOG", "$PLAYER_N", " drew 1 card."]
+            ["DEFINE", "$PLAYER_N", ["NEXT_PLAYER", "$PLAYER_N"]],
+            ["LOG", "$PLAYER_N", " drew 1 card."],
+            ["DRAW_CARD"]
         ],
         "zeroTokens": [
             ["SET", "/cardById/$ACTIVE_CARD_ID/tokens", {}],
@@ -247,17 +247,22 @@
         ],
         "toggleExhaust": [
             ["COND",
+                ["EQUAL", "$ACTIVE_FACE.type", "Location"],
+                [
+                    ["LOG", "$PLAYER_N", " made ", "$ACTIVE_FACE.name", " active."],
+                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                ],
                 ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 90], "$ACTIVE_CARD.inPlay"],
                 [
+                    ["LOG", "$PLAYER_N", " readied ", "$ACTIVE_FACE.name", "."],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false],
-                    ["LOG", "$PLAYER_N", " readied ", "$ACTIVE_FACE.name", "."]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
                 ],
                 ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], "$ACTIVE_CARD.inPlay"],
                 [
+                    ["LOG", "$PLAYER_N", " exhausted ", "$ACTIVE_FACE.name", "."],
                     ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true],
-                    ["LOG", "$PLAYER_N", " exhausted ", "$ACTIVE_FACE.name", "."]
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true]
                 ]
             ]
         ],

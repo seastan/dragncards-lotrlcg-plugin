@@ -1,781 +1,594 @@
 {
     "groups": {
         "sharedEncounterDeck": {
+            "groupType": "deck",
             "label": "id:sharedEncounterDeck", 
             "tableLabel": "id:encounter",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "shared",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck",
                 "discardGroupId": "sharedEncounterDiscard"
             }
         },
         "sharedEncounterDiscard": {
+            "groupType": "discard",
             "label": "id:sharedEncounterDiscard", 
             "tableLabel": "id:discard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "shared",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck",
                 "discardGroupId": "sharedEncounterDiscard"
             }
         },
         "sharedQuestDeck": {
+            "groupType": "deck",
             "label": "id:sharedQuestDeck", 
             "tableLabel": "id:sharedQuestDeck",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": false,
-                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
                 "discardGroupId": "sharedQuestDiscard"
             }
         },
         "sharedQuestDiscard": {
+            "groupType": "discard",
             "label": "id:sharedQuestDeck", 
             "tableLabel": "id:sharedQuestDeck",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "B",
-                "inPlay": false,
-                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
                 "discardGroupId": "sharedQuestDiscard"
             }
         },
         "sharedQuestDeck2": {
+            "groupType": "deck",
             "label": "id:sharedQuestDeck2", 
             "tableLabel": "id:sharedQuestDeck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": false,
-                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",
                 "discardGroupId": "sharedQuestDiscard2"
             }
         },
         "sharedQuestDiscard2": {
+            "groupType": "discard",
             "label": "id:sharedQuestDeck2", 
             "tableLabel": "id:sharedQuestDeck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "B",
-                "inPlay": false,
-                "rotation": 0,
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",
                 "discardGroupId": "sharedQuestDiscard2"
             }
         },
         "sharedEncounterDeck2": {
+            "groupType": "deck",
             "label": "id:sharedEncounterDeck2", 
             "tableLabel": "id:sharedEncounterDeck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "shared",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck2",
                 "discardGroupId": "sharedEncounterDiscard2"
             }
         },
         "sharedEncounterDiscard2": {
+            "groupType": "discard",
             "label": "id:sharedEncounterDiscard2", 
             "tableLabel": "id:sharedEncounterDiscard2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "shared",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck2",
                 "discardGroupId": "sharedEncounterDiscard2"
             }
         },
         "sharedEncounterDeck3": {
+            "groupType": "deck",
             "label": "id:sharedEncounterDeck3", 
             "tableLabel": "id:sharedEncounterDeck3",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "shared",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck3",
                 "discardGroupId": "sharedEncounterDiscard3"
             }
         },
         "sharedEncounterDiscard3": {
+            "groupType": "discard",
             "label": "id:sharedEncounterDiscard3", 
             "tableLabel": "id:sharedEncounterDiscard3",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "shared",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "sharedEncounterDeck3",
                 "discardGroupId": "sharedEncounterDiscard3"
             }
         },
         "sharedOther": {
+            "groupType": "discard",
             "label": "id:sharedOther", 
             "tableLabel": "id:sharedOther",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "shared",
-                "inPlay": false
+                "controller": "shared"
             }
         },
         "sharedSetAside": {
+            "groupType": "discard",
             "label": "id:sharedSetAside", 
             "tableLabel": "id:sharedSetAside",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "shared",
-                "inPlay": false
+                "controller": "shared"
             }
         },
         "sharedVictory": {
+            "groupType": "discard",
             "label": "id:sharedVictory", 
             "tableLabel": "id:sharedVictory",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": false
             }
         },
         "sharedStagingArea": {
+            "groupType": "inPlay",
             "label": "id:sharedStagingArea", 
             "tableLabel": "id:staging",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "sharedActiveLocation": {
+            "groupType": "inPlay",
             "label": "id:sharedActiveLocation", 
             "tableLabel": "id:active",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "sharedMainQuest": {
+            "groupType": "inPlay",
             "label": "id:sharedMainQuest", 
             "tableLabel": "id:sharedMainQuest",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "sharedExtra1": {
+            "groupType": "inPlay",
             "label": "id:sharedExtra1", 
             "tableLabel": "id:sharedExtra1",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "sharedExtra2": {
+            "groupType": "inPlay",
             "label": "id:sharedExtra2", 
             "tableLabel": "id:sharedExtra2",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "sharedExtra3": {
+            "groupType": "inPlay",
             "label": "id:sharedExtra3", 
             "tableLabel": "id:sharedExtra3",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "sharedExtra4": {
+            "groupType": "inPlay",
             "label": "id:sharedExtra4", 
             "tableLabel": "id:sharedExtra4",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "inPlay": true
             }
         },
         "player1Hand": {
+            "groupType": "hand",
             "label": "id:player1Hand", 
             "tableLabel": "id:hand",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player1",
-                "inPlay": false,
-                "rotation": 0,
                 "peeking": {"player1": true},
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
             }
         },
         "player1Deck": {
+            "groupType": "deck",
             "label": "id:player1Deck", 
             "tableLabel": "id:deck",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player1",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
             }
         },
         "player1Discard": {
+            "groupType": "discard",
             "label": "id:player1Discard", 
             "tableLabel": "id:discard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "player1",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
             }
         },
         "player1Deck2": {
+            "groupType": "deck",
             "label": "id:player1Deck2", 
             "tableLabel": "id:player1Deck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player1",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player1Deck2",
                 "discardGroupId": "player1Discard"
             }
         },
         "player1Play1": {
+            "groupType": "inPlay",
             "label": "id:player1Play1", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player1",
-                "inPlay": true
+                "controller": "player1"
             }
         },
         "player1Play2": {
+            "groupType": "inPlay",
             "label": "id:player1Play2", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player1",
-                "inPlay": true
+                "controller": "player1"
             }
         },
         "player1Play3": {
+            "groupType": "inPlay",
             "label": "id:player1Play3", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player1",
-                "inPlay": true
+                "controller": "player1"
             }
         },
         "player1Play4": {
+            "groupType": "inPlay",
             "label": "id:player1Play4", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player1",
-                "inPlay": true
+                "controller": "player1"
             }
         },
         "player1Engaged": {
+            "groupType": "inPlay",
             "label": "id:player1Engaged", 
             "tableLabel": "id:engaged",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "shared",
-                "inPlay": true
+                "controller": "shared"
             }
         },
         "player1Event": {
+            "groupType": "inPlay",
             "label": "id:player1Event", 
             "tableLabel": "id:event",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player1",
-                "inPlay": true
+                "controller": "player1"
             }
         },
         "player1Sideboard": {
+            "groupType": "discard",
             "label": "id:player1Sideboard", 
             "tableLabel": "id:sideboard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player1",
-                "inPlay": true
+                "controller": "player1"
             }
         },
         "player2Hand": {
+            "groupType": "hand",
             "label": "id:player2Hand", 
             "tableLabel": "id:hand",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player2",
-                "inPlay": false,
-                "rotation": 0,
                 "peeking": {"player2": true},
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
             }
         },
         "player2Deck": {
+            "groupType": "deck",
             "label": "id:player2Deck", 
             "tableLabel": "id:deck",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player2",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
             }
         },
         "player2Discard": {
+            "groupType": "discard",
             "label": "id:player2Discard", 
             "tableLabel": "id:discard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "player2",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
             }
         },
         "player2Deck2": {
+            "groupType": "deck",
             "label": "id:player2Deck2", 
             "tableLabel": "id:player2Deck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player2",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player2Deck2",
                 "discardGroupId": "player2Discard"
             }
         },
         "player2Play1": {
+            "groupType": "inPlay",
             "label": "id:player2Play1", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player2",
-                "inPlay": true
+                "controller": "player2"
             }
         },
         "player2Play2": {
+            "groupType": "inPlay",
             "label": "id:player2Play2", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player2",
-                "inPlay": true
+                "controller": "player2"
             }
         },
         "player2Play3": {
+            "groupType": "inPlay",
             "label": "id:player2Play3", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player2",
-                "inPlay": true
+                "controller": "player2"
             }
         },
         "player2Play4": {
+            "groupType": "inPlay",
             "label": "id:player2Play4", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player2",
-                "inPlay": true
+                "controller": "player2"
             }
         },
         "player2Engaged": {
+            "groupType": "inPlay",
             "label": "id:player2Engaged", 
             "tableLabel": "id:engaged",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "shared",
-                "inPlay": true
+                "controller": "shared"
             }
         },
         "player2Event": {
+            "groupType": "inPlay",
             "label": "id:player2Event", 
             "tableLabel": "id:event",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player2",
-                "inPlay": true
+                "controller": "player2"
             }
         },
         "player2Sideboard": {
+            "groupType": "discard",
             "label": "id:player2Sideboard", 
             "tableLabel": "id:sideboard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player2",
-                "inPlay": true
+                "controller": "player2"
             }
         },
         "player3Hand": {
+            "groupType": "hand",
             "label": "id:player3Hand", 
             "tableLabel": "id:hand",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player3",
-                "inPlay": false,
-                "rotation": 0,
                 "peeking": {"player3": true},
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
             }
         },
         "player3Deck": {
+            "groupType": "deck",
             "label": "id:player3Deck", 
             "tableLabel": "id:deck",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player3",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
             }
         },
         "player3Discard": {
+            "groupType": "discard",
             "label": "id:player3Discard", 
             "tableLabel": "id:discard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "player3",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
             }
         },
         "player3Deck2": {
+            "groupType": "deck",
             "label": "id:player3Deck2", 
             "tableLabel": "id:player3Deck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player3",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player3Deck2",
                 "discardGroupId": "player3Discard"
             }
         },
         "player3Play1": {
+            "groupType": "inPlay",
             "label": "id:player3Play1", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player3",
-                "inPlay": true
+                "controller": "player3"
             }
         },
         "player3Play2": {
+            "groupType": "inPlay",
             "label": "id:player3Play2", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player3",
-                "inPlay": true
+                "controller": "player3"
             }
         },
         "player3Play3": {
+            "groupType": "inPlay",
             "label": "id:player3Play3", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player3",
-                "inPlay": true
+                "controller": "player3"
             }
         },
         "player3Play4": {
+            "groupType": "inPlay",
             "label": "id:player3Play4", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player3",
-                "inPlay": true
+                "controller": "player3"
             }
         },
         "player3Engaged": {
+            "groupType": "inPlay",
             "label": "id:player3Engaged", 
             "tableLabel": "id:engaged",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "shared",
-                "inPlay": true
+                "controller": "shared"
             }
         },
         "player3Event": {
+            "groupType": "inPlay",
             "label": "id:player3Event", 
             "tableLabel": "id:event",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player3",
-                "inPlay": true
+                "controller": "player3"
             }
         },
         "player3Sideboard": {
+            "groupType": "discard",
             "label": "id:player3Sideboard", 
             "tableLabel": "id:sideboard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player3",
-                "inPlay": true
+                "controller": "player3"
             }
         },
         "player4Hand": {
+            "groupType": "hand",
             "label": "id:player4Hand", 
             "tableLabel": "id:hand",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player4",
-                "inPlay": false,
-                "rotation": 0,
                 "peeking": {"player4": true},
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
             }
         },
         "player4Deck": {
+            "groupType": "deck",
             "label": "id:player4Deck", 
             "tableLabel": "id:deck",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player4",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
             }
         },
         "player4Discard": {
+            "groupType": "discard",
             "label": "id:player4Discard", 
             "tableLabel": "id:discard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
                 "controller": "player4",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
             }
         },
         "player4Deck2": {
+            "groupType": "deck",
             "label": "id:player4Deck2", 
             "tableLabel": "id:player4Deck2",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": true,
             "onCardEnter": {
-                "currentSide": "B",
                 "controller": "player4",
-                "inPlay": false,
-                "rotation": 0,
                 "deckGroupId": "player4Deck2",
                 "discardGroupId": "player4Discard"
             }
         },
         "player4Play1": {
+            "groupType": "inPlay",
             "label": "id:player4Play1", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player4",
-                "inPlay": true
+                "controller": "player4"
             }
         },
         "player4Play2": {
+            "groupType": "inPlay",
             "label": "id:player4Play2", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player4",
-                "inPlay": true
+                "controller": "player4"
             }
         },
         "player4Play3": {
+            "groupType": "inPlay",
             "label": "id:player4Play3", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player4",
-                "inPlay": true
+                "controller": "player4"
             }
         },
         "player4Play4": {
+            "groupType": "inPlay",
             "label": "id:player4Play4", 
             "tableLabel": "id:playArea",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player4",
-                "inPlay": true
+                "controller": "player4"
             }
         },
         "player4Engaged": {
+            "groupType": "inPlay",
             "label": "id:player4Engaged", 
             "tableLabel": "id:engaged",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "shared",
-                "inPlay": true
+                "controller": "shared"
             }
         },
         "player4Event": {
+            "groupType": "inPlay",
             "label": "id:player4Event", 
             "tableLabel": "id:event",
             "canHaveAttachments": true,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player4",
-                "inPlay": true
+                "controller": "player4"
             }
         },
         "player4Sideboard": {
+            "groupType": "discard",
             "label": "id:player4Sideboard", 
             "tableLabel": "id:sideboard",
-            "canHaveAttachments": false,
-            "shuffleOnLoad": false,
             "onCardEnter": {
-                "currentSide": "A",
-                "controller": "player4",
-                "inPlay": true
+                "controller": "player4"
             }
         }
     }
