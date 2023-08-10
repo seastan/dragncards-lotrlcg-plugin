@@ -335,10 +335,6 @@
                 ]
             ]
         ],
-        "targetCard": [
-            ["SET", "/cardById/$ACTIVE_CARD_ID/targeting", "$PLAYER_N", true],
-            ["LOG", "$PLAYER_N", " targeted ", "$ACTIVE_FACE.name", "."]
-        ],
         "addToVictoryDisplay": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
             ["LOG", "$PLAYER_N", " added ", "$ACTIVE_FACE.name", " to the victory display."]
@@ -429,25 +425,28 @@
             ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"],
             ["LOG", "$PLAYER_N", " swapped ", ["FACEUP_NAME_FROM_CARD_ID", "$ACTIVE_CARD_ID"], " with the top card of ", "$GAME.groupById.$DECK_GROUP_ID.label", "."]
         ],
-        "moveToBack": [
-            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex", -1]
-        ],
         "setCardsDrawn": [
+            ["LOG", "$PLAYER_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."],
             ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
-            ["SET", "/playerData/$PLAYER_N/cardsDrawn", "$VAL"],
-            ["LOG", "$PLAYER_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."]
+            ["SET", "/playerData/$PLAYER_N/cardsDrawn", "$VAL"]
         ],
         "setQuestNormal": [
-            ["SET", "/questingStat", "willpower"],
-            ["LOG", "$PLAYER_N", " set the questing type to Normal."]
+            ["LOG", "$PLAYER_N", " set the questing type to Normal."],
+            ["SET", "/questingStat", "willpower"]
         ],
         "setQuestBattle": [
-            ["SET", "/questingStat", "attack"],
-            ["LOG", "$PLAYER_N", " set the questing type to Battle."]
+            ["LOG", "$PLAYER_N", " set the questing type to Battle."],
+            ["SET", "/questingStat", "attack"]
         ],
         "setQuestSiege": [
-            ["SET", "/questingStat", "defense"],
-            ["LOG", "$PLAYER_N", " set the questing type to Siege."]
+            ["LOG", "$PLAYER_N", " set the questing type to Siege."],
+            ["SET", "/questingStat", "defense"]
+        ],
+        "shuffleGroupIntoDeck": [
+            ["DEFINE", "$DEST_GROUP_ID", "$ACTIVE_GROUP.onCardEnter.deckGroupId"],
+            ["DEFINE", "$DEST_GROUP", "$GAME.groupById.$DEST_GROUP_ID"],
+            ["LOG", "$PLAYER_N", " shuffled ", "$ACTIVE_GROUP.label", " into ", "$DEST_GROUP.label", "."],
+            ["MOVE_STACKS", "$ACTIVE_GROUP_ID", "$DEST_GROUP_ID"]
         ],
         "setupEscapeFromMountGram": [
             ["CONFIRM", "This function will set up each player's capture deck, add 2 resources to each hero, draw a new starting hands of 3 cards, and set new threat levels. Before running this function, each player should flip each hero they control that is not their starting hero facedown. Continue?"],
