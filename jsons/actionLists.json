@@ -339,6 +339,39 @@
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
             ["LOG", "$PLAYER_N", " added ", "$ACTIVE_FACE.name", " to the victory display."]
         ],
+        "calculateScore": [
+            ["DEFINE", "$TOTAL_THREAT", 0],
+            ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                ["DEFINE", "$TOTAL_THREAT", ["ADD", "$TOTAL_THREAT", "$GAME.playerData.$PLAYER_I.threat"]]
+            ]],
+            ["LOG", "Total threat: ", "$TOTAL_THREAT"],
+            ["DEFINE", "$FALLEN_HERO_COST", 0],
+            ["DEFINE", "$DAMAGE_ON_HEROES", 0],
+            ["DEFINE", "$TOTAL_VICTORY_POINTS", 0],
+            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                ["COND", 
+                    ["IN_STRING", "$CARD.groupId", "Discard"],
+                    ["DEFINE", "$FALLEN_HERO_COST", ["ADD", "$FALLEN_HERO_COST", "$CARD.sides.A.cost"]]
+                ],
+                ["COND",
+                    ["AND",
+                        "$CARD.inPlay",
+                        ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                    ],
+                    ["DEFINE", "$DAMAGE_ON_HEROES", ["ADD", "$DAMAGE_ON_HEROES", "$CARD.tokens.damage"]]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.groupId", "sharedVictory"],
+                    ["DEFINE", "$TOTAL_VICTORY_POINTS", ["ADD", "$TOTAL_VICTORY_POINTS", "$CARD.sides.A.victoryPoints"]]
+                ]
+            ]],
+            ["LOG", "Fallen hero cost: ", "$FALLEN_HERO_COST"],
+            ["LOG", "Damage on heroes: ", "$DAMAGE_ON_HEROES"],
+            ["LOG", "Number of rounds: ", "$GAME.roundNumber"],
+            ["LOG", "Victory points: ", "$TOTAL_VICTORY_POINTS"],
+            ["DEFINE", "$FINAL_SCORE", ["SUBTRACT", ["ADD", "$TOTAL_THREAT", "$FALLEN_HERO_COST", "$DAMAGE_ON_HEROES", ["MULTIPLY", "$GAME.roundNumber", 10]], "$TOTAL_VICTORY_POINTS"]],
+            ["LOG", "Final score: ", "$FINAL_SCORE"]
+        ],
         "discardCard": [
             ["COND",
                 ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
