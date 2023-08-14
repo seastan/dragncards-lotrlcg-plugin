@@ -456,7 +456,7 @@
             ["DEFINE", "$ACTIVE_CARD_INDEX", "$ACTIVE_CARD.cardIndex"],
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$TOP_CARD.deckGroupId", "$TOP_CARD.stackIndex", "$TOP_CARD.cardIndex"],
             ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"],
-            ["LOG", "$ALIAS_N", " swapped ", ["FACEUP_NAME_FROM_CARD_ID", "$ACTIVE_CARD_ID"], " with the top card of ", "$GAME.groupById.$DECK_GROUP_ID.label", "."]
+            ["LOG", "{{$ALIAS_N}} swapped {{$ACTIVE_CARD.currentFace.name}} with the top card of {{$GAME.groupById.$DECK_GROUP_ID.label}}."]
         ],
         "setCardsDrawn": [
             ["LOG", "$ALIAS_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."],
