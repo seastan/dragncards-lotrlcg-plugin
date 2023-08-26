@@ -1,10 +1,10 @@
 {
     "saveGame": {
-        "description": [
-            ["DEFINE", "$QUEST_CARD", ["ONE_CARD", "$CARD", ["AND", ["EQUAL", "$CARD.sides.A.cost", 1], ["EQUAL", "$CARD.sides.A.type", "Quest"]]]],
-            "$QUEST_CARD.sides.A.encounterSet"
-        ],
         "metadata": {
+            "Encounter": [
+                ["DEFINE", "$QUEST_CARD", ["ONE_CARD", "$CARD", ["AND", ["EQUAL", "$CARD.sides.A.cost", 1], ["EQUAL", "$CARD.sides.A.type", "Quest"]]]],
+                "$QUEST_CARD.sides.A.encounterSet"
+            ],
             "Heroes": [
                 ["DEFINE", "$HEROES", ""],
                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
