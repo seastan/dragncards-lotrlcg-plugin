@@ -185,7 +185,6 @@
             "tableLabel": "id:hand",
             "onCardEnter": {
                 "controller": "player1",
-                "peeking": {"player1": true},
                 "deckGroupId": "player1Deck",
                 "discardGroupId": "player1Discard"
             }
@@ -288,7 +287,6 @@
             "tableLabel": "id:hand",
             "onCardEnter": {
                 "controller": "player2",
-                "peeking": {"player2": true},
                 "deckGroupId": "player2Deck",
                 "discardGroupId": "player2Discard"
             }
@@ -391,7 +389,6 @@
             "tableLabel": "id:hand",
             "onCardEnter": {
                 "controller": "player3",
-                "peeking": {"player3": true},
                 "deckGroupId": "player3Deck",
                 "discardGroupId": "player3Discard"
             }
@@ -494,7 +491,6 @@
             "tableLabel": "id:hand",
             "onCardEnter": {
                 "controller": "player4",
-                "peeking": {"player4": true},
                 "deckGroupId": "player4Deck",
                 "discardGroupId": "player4Discard"
             }
