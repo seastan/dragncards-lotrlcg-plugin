@@ -203,8 +203,11 @@
             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
             [
                 ["COND",
-                ["EQUAL", "$CARD.rotation", -30],
-                ["ACTION_LIST", "discardCard", "$CARD_ID"]
+                    ["EQUAL", "$CARD.rotation", -30],
+                    [
+                        ["DEFINE", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
                 ]
             ]
             ]

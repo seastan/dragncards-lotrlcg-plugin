@@ -1141,6 +1141,27 @@
         "coreLeadership": {
             "English": "30 Card Original Core Set Deck - Leadership"
         },
+        "coreLore": {
+            "English": "30 Card Original Core Set Deck - Lore"
+        },
+        "coreSpirit": {
+            "English": "30 Card Original Core Set Deck - Spirit"
+        },
+        "coreTactics": {
+            "English": "30 Card Original Core Set Deck - Tactics"
+        },
+        "starterElves": {
+            "English": "Starter Deck - Elves of Lórien"
+        },
+        "starterGondor": {
+            "English": "Starter Deck - Defenders of Gondor"
+        },
+        "starterDwarves": {
+            "English": "Starter Deck - Dwarves of Durin"
+        },
+        "starterRohan": {
+            "English": "Starter Deck - Riders of Rohan"
+        },
         "questingToken": {
             "English": "Questing Token"
         },

@@ -3,7 +3,14 @@
         "subMenus": [
             {   "label": "Player",
                 "deckLists": [
-                    {"label": "id:coreLeadership", "deckListId": "coreLeadership"}
+                    {"label": "id:coreLeadership", "deckListId": "coreLeadership"},
+                    {"label": "id:coreLore", "deckListId": "coreLore"},
+                    {"label": "id:coreSpirit", "deckListId": "coreSpirit"},
+                    {"label": "id:coreTactics", "deckListId": "coreTactics"},
+                    {"label": "id:starterElves", "deckListId": "starterElves"},
+                    {"label": "id:starterGondor", "deckListId": "starterGondor"},
+                    {"label": "id:starterDwarves", "deckListId": "starterDwarves"},
+                    {"label": "id:starterRohan", "deckListId": "starterRohan"}
                 ]
             },
             {

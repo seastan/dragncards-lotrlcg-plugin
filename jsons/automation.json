@@ -113,6 +113,19 @@
                 ]
             },
             { 
+                "_comment": "Adjust staging threat when a threat token is added/removed",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/tokens/threat"],
+                "condition": ["AND", ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]],
+                "then": [
+                    ["LOG_DEV", "$GAME.stagingThreat"],
+                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.threat", ["PREV", "$TARGET.tokens.threat"]]],
+                    ["LOG_DEV", "$DELTA"],
+                    ["INCREASE_VAL", "/stagingThreat", "$DELTA"],
+                    ["LOG_DEV", "$GAME.stagingThreat"]
+                ]
+            },
+            { 
                 "_comment": "Adjust expected progress",
                 "type": "trigger", 
                 "listenTo": ["/stagingThreat", "/playerData/*/willpower"],
