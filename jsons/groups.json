@@ -119,7 +119,7 @@
         "sharedVictory": {
             "groupType": "discard",
             "label": "id:sharedVictory", 
-            "tableLabel": "id:sharedVictory",
+            "tableLabel": "id:sharedVictoryTable",
             "onCardEnter": {
             }
         },
