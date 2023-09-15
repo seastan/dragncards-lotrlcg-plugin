@@ -1,6 +1,6 @@
 {
-    "pluginName": "LotR Living Card Game",
-    "tutorialUrl": "https://www.youtube.com/watch?v=mshb1EDsnB8&list=PLuyP-hlzlHjd-XADfU-kqJaGpSE9RWHRa&index=1",
+    "pluginName": "LotR-Trek LCG",
+    "tutorialUrl": "",
     "minPlayers": 1,
     "maxPlayers": 4,
     "firstPlayerImageUrl": "https://dragncards-lotrlcg.s3.amazonaws.com/tokens/firstplayer.png",
