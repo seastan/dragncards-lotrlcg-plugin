@@ -1185,6 +1185,12 @@
         },
         "swapWithTop": {
             "English": "Swap with top card in deck of origin"
+        },
+        "discardUntilLocation": {
+            "English": "Discard Until Location"
+        },
+        "discardUntilEnemy": {
+            "English": "Discard Until Enemy"
         }
     }
 }
