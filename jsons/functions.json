@@ -3,7 +3,7 @@
         "DISCARD_UNTIL": {
             "args": ["$GROUP_ID", "$TYPE"],
             "code": [
-                ["LOG", "{{$PLAYER_N}} began discarding until an enemy is found."],
+                ["LOG", "{{$PLAYER_N}} began discarding until {{$TYPE}}."],
                 ["WHILE",
                   ["NOT_EQUAL", "$GAME.groupById.$GROUP_ID.parentCards.[0].sides.A.type", "$TYPE"],
                   [
