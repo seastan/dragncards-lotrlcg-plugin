@@ -6,7 +6,10 @@
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
                 ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND", 
-                    ["EQUAL", "$CARD.sides.A.type", "Hero"],
+                    ["AND", 
+                        ["EQUAL", "$CARD.sides.A.type", "Hero"],
+                        ["EQUAL", "$CARD.inPlay", true]
+                    ],
                     [
                         ["DEFINE", "$LOADED_PLAYER_DECK", true],
                         ["DEFINE", "$CONTROLLER", "$CARD.controller"],
