@@ -117,7 +117,7 @@
                                 ["EQUAL", "$TARGET.groupId", "sharedStagingArea"], 
                                 ["NOT_EQUAL", "$TARGET.currentSide", ["PREV", "$TARGET.currentSide"]]
                             ],
-                "then": ["COMPUTE_STAGING_THREAT"] 
+                "then": ["COMPUTE_STAGING_THREAT"]
             },
             { 
                 "_comment": "Adjust staging threat when a threat token is added/removed",

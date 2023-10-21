@@ -24,6 +24,7 @@
             "groupType": "deck",
             "label": "id:sharedQuestDeck", 
             "tableLabel": "id:sharedQuestDeck",
+            "shuffleOnLoad": false,
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
@@ -44,6 +45,7 @@
             "groupType": "deck",
             "label": "id:sharedQuestDeck2", 
             "tableLabel": "id:sharedQuestDeck2",
+            "shuffleOnLoad": false,
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",

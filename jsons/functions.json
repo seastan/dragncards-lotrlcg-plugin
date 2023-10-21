@@ -11,7 +11,7 @@
                     ["ACTION_LIST", "discardCard"]
                   ]
                 ],
-                ["DEFINE", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],
+                ["VAR", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],
                 ["LOG", "{{$PLAYER_N}} discarded {{$TOP_CARD.sides.A.name}} and added it to the staging area."],
                 ["MOVE_CARD", "$TOP_CARD.id", "sharedStagingArea", -1]
             ]
