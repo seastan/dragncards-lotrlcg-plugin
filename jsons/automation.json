@@ -150,7 +150,7 @@
             { 
                 "_comment": "Turn cards red when they have 0 hit points left",
                 "type": "passive", 
-                "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints"],
+                "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
                 "condition": ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is destroyed."],
@@ -163,7 +163,7 @@
             { 
                 "_comment": "Turn cards green when they have 0 quest points left",
                 "type": "passive", 
-                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints"],
+                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
                 "condition": ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is explored."],
