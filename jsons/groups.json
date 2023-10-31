@@ -1,5 +1,12 @@
 {
     "groups": {
+        "sharedFree": {
+            "groupType": "inPlay",
+            "label": "Table", 
+            "tableLabel": "",
+            "onCardEnter": {
+            }
+        },
         "sharedEncounterDeck": {
             "groupType": "deck",
             "label": "id:sharedEncounterDeck", 

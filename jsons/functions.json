@@ -22,7 +22,7 @@
                 ["DEFINE", "$STAGING_THREAT", 0],
                 ["FOR_EACH_VAL", "$CARD_ID", "$GAME.groupById.sharedStagingArea.parentCardIds", [
                     ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
-                    ["DEFINE", "$STAGING_THREAT", ["ADD", "$STAGING_THREAT", "$CARD.currentFace.threat"]]
+                    ["DEFINE", "$STAGING_THREAT", ["ADD", ["ADD", "$STAGING_THREAT", "$CARD.currentFace.threat"], "$CARD.tokens.threat"]]
                 ]],
                 ["LOG", "└── ", "Staging threat is now ", "$STAGING_THREAT", "."],
                 ["SET", "/stagingThreat", "$STAGING_THREAT"]

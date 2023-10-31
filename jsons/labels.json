@@ -130,29 +130,26 @@
         "layout4Player": {
             "English": "4 players"
         },
-        "layout1PlayerExtra": {
-            "English": "1 player (Extra Space)"
+        "layout1PlayerMap": {
+            "English": "1 player (Map)"
         },
-        "layout2PlayerExtra": {
-            "English": "2 players (Extra Space)"
+        "layout2PlayerMap": {
+            "English": "2 players (Map)"
         },
-        "layout3PlayerExtra": {
-            "English": "3 players (Extra Space)"
+        "layout3PlayerMap": {
+            "English": "3 players (Map)"
         },
-        "layout4PlayerExtra": {
-            "English": "4 players (Extra Space)"
+        "layout4PlayerMap": {
+            "English": "4 players (Map)"
         },
-        "layout1PlayerExtra3": {
-            "English": "1 player (3 extra rows)"
+        "layout2PlayerMultiStaging": {
+            "English": "2 players (Multiple Staging Areas)"
         },
-        "layout2PlayerExtra3": {
-            "English": "2 players (3 extra rows)"
+        "layout3PlayerMultiStaging": {
+            "English": "3 players (Multiple Staging Areas)"
         },
-        "layout3PlayerExtra3": {
-            "English": "3 players (3 extra rows)"
-        },
-        "layout4PlayerExtra3": {
-            "English": "4 players (3 extra rows)"
+        "layout4PlayerMultiStaging": {
+            "English": "4 players (Multiple Staging Areas)"
         },
         "layout1PlayerExtra4": {
             "English": "1 player (4 extra rows)"
