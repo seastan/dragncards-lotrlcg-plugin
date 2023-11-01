@@ -152,7 +152,7 @@
                         "$REVEAL_FACEDOWN",
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"]
                     ],
-                    ["LOG", "$ALIAS_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"], "."]
+                    ["LOG", "{{$ALIAS_N}} revealed {{$GAME.cardById.$CARD_ID.currentFace.name}}."]
                 ]
             ]
         ],
@@ -359,7 +359,10 @@
             ["DEFINE", "$TOTAL_VICTORY_POINTS", 0],
             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                 ["COND", 
-                    ["IN_STRING", "$CARD.groupId", "Discard"],
+                    ["AND",
+                        ["IN_STRING", "$CARD.groupId", "Discard"],
+                        ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                    ],
                     ["DEFINE", "$FALLEN_HERO_COST", ["ADD", "$FALLEN_HERO_COST", "$CARD.sides.A.cost"]]
                 ],
                 ["COND",
@@ -463,13 +466,13 @@
             ["VAR", "$TOP_CARD", "$GAME.cardById.$TOP_CARD_ID"],
             ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
             ["VAR", "$ACTIVE_CARD_INDEX", "$ACTIVE_CARD.cardIndex"],
+            ["LOG", "{{$ALIAS_N}} swapped {{$ACTIVE_CARD.currentFace.name}} with the top card of {{$GAME.groupById.$DECK_GROUP_ID.label}}."],
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$TOP_CARD.deckGroupId", "$TOP_CARD.stackIndex", "$TOP_CARD.cardIndex"],
-            ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"],
-            ["LOG", "{{$ALIAS_N}} swapped {{$ACTIVE_CARD.currentFace.name}} with the top card of {{$GAME.groupById.$DECK_GROUP_ID.label}}."]
+            ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"]
         ],
         "setCardsDrawn": [
-            ["LOG", "$ALIAS_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."],
             ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
+            ["LOG", "$ALIAS_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."],
             ["SET", "/playerData/$PLAYER_N/cardsDrawn", "$VAL"]
         ],
         "setQuestNormal": [
