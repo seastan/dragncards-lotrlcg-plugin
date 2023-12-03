@@ -1,7 +1,38 @@
 {
     "gameProperties": {
-      "stagingThreat": {"type": "integer", "default": 0},
-      "questProgress": {"type": "integer", "default": 0},
-      "questingStat": {"type": "string", "default": "willpower"}
+      "stagingThreat": {
+        "label": "id:stagingThreat",
+        "type": "integer", 
+        "default": 0
+      },
+      "questProgress": {
+        "label": "id:questProgress",
+        "type": "integer",
+        "default": 0
+      },
+      "questingStat": {
+        "label": "id:questingStat",
+        "type": "option", 
+        "default": "willpower", 
+        "showInSettings": true, 
+        "options": [
+          {
+              "id": "willpower",
+              "label": "id:willpower"
+          },
+          {
+              "id": "attack",
+              "label": "id:attack"
+          },
+          {
+              "id": "defense",
+              "label": "id:defense"
+          },
+          {
+              "id": "hitpoints",
+              "label": "id:hitpoints"
+          }
+        ]
+      }
     }
 }

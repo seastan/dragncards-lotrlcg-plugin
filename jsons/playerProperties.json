@@ -1,8 +1,28 @@
 {
     "playerProperties": {
-        "willpower": {"type": "integer", "default": 0, "min": 0},
-        "threat": {"type": "integer", "default": 0, "min": 0},
-        "cardsDrawn": {"type": "integer", "default": 1, "min": 0},
-        "refreshed": {"type": "boolean", "default": true}
+        "willpower": {
+            "label": "id:questingWillpower",
+            "type": "integer", 
+            "default": 0,
+            "min": 0
+        },
+        "threat": {
+            "label": "id:threat",
+            "type": "integer", 
+            "default": 0, 
+            "min": 0
+        },
+        "cardsDrawn": {
+            "label": "id:cardsDrawn",
+            "type": "integer",
+            "default": 1,
+            "min": 0,
+            "showInSettings": true
+        },
+        "refreshed": {
+            "label": "id:refreshed",
+            "type": "boolean", 
+            "default": true
+        }
     }
 }

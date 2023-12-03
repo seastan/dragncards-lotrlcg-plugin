@@ -1,19 +1,19 @@
 {
     "automation": {
         "postLoadActionList": [
-            ["DEFINE", "$LOADED_PLAYER_DECK", false],
-            ["DEFINE", "$THREAT_RAISE", 0],
+            ["VAR", "$LOADED_PLAYER_DECK", false],
+            ["VAR", "$THREAT_RAISE", 0],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
-                ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
+                ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                 ["COND", 
                     ["AND", 
                         ["EQUAL", "$CARD.sides.A.type", "Hero"],
                         ["EQUAL", "$CARD.inPlay", true]
                     ],
                     [
-                        ["DEFINE", "$LOADED_PLAYER_DECK", true],
-                        ["DEFINE", "$CONTROLLER", "$CARD.controller"],
-                        ["DEFINE", "$THREAT_RAISE", ["ADD", "$THREAT_RAISE", "$CARD.sides.A.cost"]],
+                        ["UPDATE_VAR", "$LOADED_PLAYER_DECK", true],
+                        ["VAR", "$CONTROLLER", "$CARD.controller"],
+                        ["INCREASE_VAR", "$THREAT_RAISE", "$CARD.sides.A.cost"],
                         ["SET", "/playerData/$CONTROLLER/threat", 0]
                     ]
                 ],
@@ -37,7 +37,7 @@
                     ]
                 ]
             ]],
-            ["DEFINE", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
+            ["VAR", "$PLAYER_N_HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
             ["COND",
                 "$LOADED_PLAYER_DECK",
                 [
@@ -58,10 +58,10 @@
                 "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/inPlay"],
-                "condition": ["AND", ["NOT", "$TARGET.inPlay"], ["PREV", "$TARGET.inPlay"], ["PREV", "$TARGET.committed"]],
+                "condition": ["AND", ["NOT", "$TARGET.inPlay"], ["PREV", "$TARGET.inPlay"], ["PREV", "$TARGET.committed"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
-                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
-                    ["DEFINE", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
+                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["VAR", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
                     ["DECREASE_VAL", "/playerData/$TARGET.controller/willpower", "$COMMITTED_VAL"],
                     ["LOG", "└── ", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
                 ]
@@ -70,10 +70,10 @@
                 "_comment": "Adjust committed value when token is adjusted",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/willpower"],
-                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "willpower"]],
+                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "willpower"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
-                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
-                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
+                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
                 ]
             },
@@ -81,10 +81,10 @@
                 "_comment": "Adjust committed value when token is adjusted",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/attack"],
-                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "attack"]],
+                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "attack"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
-                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.attack", ["PREV", "$TARGET.tokens.attack"]]],
-                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.attack", ["PREV", "$TARGET.tokens.attack"]]],
+                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
                 ]
             },
@@ -92,10 +92,10 @@
                 "_comment": "Adjust committed value when token is adjusted",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/defense"],
-                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "defense"]],
+                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "defense"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
-                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.defense", ["PREV", "$TARGET.tokens.defense"]]],
-                    ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.defense", ["PREV", "$TARGET.tokens.defense"]]],
+                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
                 ]
             },
@@ -125,11 +125,8 @@
                 "listenTo": ["/cardById/*/tokens/threat"],
                 "condition": ["AND", ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]],
                 "then": [
-                    ["LOG_DEV", "$GAME.stagingThreat"],
-                    ["DEFINE", "$DELTA", ["SUBTRACT", "$TARGET.tokens.threat", ["PREV", "$TARGET.tokens.threat"]]],
-                    ["LOG_DEV", "$DELTA"],
-                    ["INCREASE_VAL", "/stagingThreat", "$DELTA"],
-                    ["LOG_DEV", "$GAME.stagingThreat"]
+                    ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.threat", ["PREV", "$TARGET.tokens.threat"]]],
+                    ["INCREASE_VAL", "/stagingThreat", "$DELTA"]
                 ]
             },
             { 
@@ -138,11 +135,11 @@
                 "listenTo": ["/stagingThreat", "/playerData/*/willpower"],
                 "condition": ["TRUE"],
                 "then": [
-                    ["DEFINE", "$TOTAL_QUESTING", 0],
+                    ["VAR", "$TOTAL_QUESTING", 0],
                     ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
-                        ["DEFINE", "$TOTAL_QUESTING", ["ADD", "$TOTAL_QUESTING", "$GAME.playerData.$PLAYER_I.willpower"]]
+                        ["INCREASE_VAR", "$TOTAL_QUESTING", "$GAME.playerData.$PLAYER_I.willpower"]
                     ]],
-                    ["DEFINE", "$EXPECTED_PROGRESS", ["SUBTRACT", "$TOTAL_QUESTING", "$GAME.stagingThreat"]],
+                    ["VAR", "$EXPECTED_PROGRESS", ["SUBTRACT", "$TOTAL_QUESTING", "$GAME.stagingThreat"]],
                     ["LOG", "└── ", "Expected progress is now ", "$EXPECTED_PROGRESS", "."],
                     ["SET", "/questProgress", "$EXPECTED_PROGRESS"]
                 ]
@@ -185,8 +182,8 @@
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
                             ["LOG", "└── ", "Added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."],
-                            ["DEFINE", "$QUESTING_STAT", "$GAME.questingStat"],
-                            ["DEFINE", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
+                            ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
+                            ["VAR", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],

@@ -337,8 +337,11 @@
         "threat": {
             "English": "Threat"
         },
-        "willpower": {
+        "questingWillpower": {
             "English": "Questing Willpower"
+        },
+        "willpower" : {
+            "English": "Willpower"
         },
         "removeTokens": {
             "English": "Remove Tokens"
@@ -1191,6 +1194,18 @@
         },
         "showQuestDeck": {
             "English": "Show Quest Deck"
-        }
+        },
+        "customBoolean": {"English": "Custom Boolean"},
+        "choice2": {"English": "Choice2"},
+        "choice1": {"English": "Choice1"},
+        "customChoice": {"English": "Custom Choice"},
+        "customString": {"English": "Custom String"},
+        "refreshed": {"English": "Refreshed"},
+        "cardsDrawn": {"English": "Cards Drawn"},
+        "hitpoints": {"English": "Hitpoints"},
+        "defense": {"English": "Defense"},
+        "attack": {"English": "Attack"},
+        "questingStat": {"English": "Questing Stat"},
+        "questProgress": {"English": "Quest Progress"}
     }
 }
