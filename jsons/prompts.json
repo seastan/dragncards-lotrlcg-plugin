@@ -1,0 +1,76 @@
+{
+    "prompts": {
+        "mountGramSetup": {
+            "args": [],
+            "message": "To set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels, press Setup. IMPORTANT: Before running this function, flip facedown all heroes that are not starting heroes.",
+            "options": [
+                {
+                    "label": "Setup",
+                    "hotkey": "S",
+                    "code": [
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+
+                            ["LOG", "Performing Escape from Mount Gram setup for {{$GAME.playerInfo.$PLAYER_I.alias}}."],
+                            ["VAR", "$FACEDOWN_HEROES", ["LIST"]],
+                            ["VAR", "$FACEUP_HERO", null],
+                            ["MOVE_STACKS", "{{$PLAYER_I}}Hand", "{{$PLAYER_I}}Deck", 1000, "shuffle"],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                                ["COND",
+                                    ["OR",
+                                        ["EQUAL", "$CARD.sides.A.type", "Ally"],
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Item."],
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Mount."],
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Artifact."]
+                                    ],
+                                    ["MOVE_CARD", "$CARD_ID", "{{$PLAYER_I}}Deck2", 0]
+                                ],
+                                ["COND",
+                                    ["AND",
+                                        ["EQUAL", "$CARD.controller", "$PLAYER_I"],
+                                        ["EQUAL", "$CARD.inPlay", true],
+                                        ["EQUAL", "$CARD.sides.A.type", "Hero"],
+                                        ["EQUAL", "$CARD.currentSide", "B"]
+                                    ],
+                                    ["UPDATE_VAR", "$FACEDOWN_HEROES", ["APPEND", "$FACEDOWN_HEROES", "$CARD_ID"]],
+                                    ["AND",
+                                        ["EQUAL", "$CARD.controller", "$PLAYER_I"],
+                                        ["EQUAL", "$CARD.inPlay", true],
+                                        ["EQUAL", "$CARD.sides.A.type", "Hero"],
+                                        ["EQUAL", "$CARD.currentSide", "A"]
+                                    ],
+                                    ["UPDATE_VAR", "$FACEUP_HERO", "$CARD_ID"]
+                                ]
+                            ]],
+                            ["VAR", "$NUM_FACEDOWN", ["LENGTH", "$FACEDOWN_HEROES"]],
+                            ["COND",
+                                ["GREATER_THAN", "$NUM_FACEDOWN", 0],
+                                [
+                                    ["VAR", "$SET_ASIDE_HERO_INDEX", ["RANDOM_INT", 0, ["SUBTRACT", "$NUM_FACEDOWN", 1]]],
+                                    ["FOR_EACH_START_STOP_STEP", "$I", 0, "$NUM_FACEDOWN", 1, [
+                                        ["COND",
+                                            ["NOT_EQUAL", "$I", "$SET_ASIDE_HERO_INDEX"],
+                                            [
+                                                ["MOVE_CARD", "$FACEDOWN_HEROES.[$I]", "{{$PLAYER_I}}Deck2", 0],
+                                                ["SHUFFLE_GROUP", "{{$PLAYER_I}}Deck2"]
+                                            ]
+                                        ]
+                                    ]],
+                                    ["MOVE_CARD", "$FACEDOWN_HEROES.[$SET_ASIDE_HERO_INDEX]", "{{$PLAYER_I}}Deck2", 0]
+                                ],
+                                ["TRUE"],
+                                ["LOG", "WARNING: No facedown heroes detected."]
+                            ],
+                            ["DRAW_CARD", 3, "$PLAYER_I"],
+                            ["SET", "/playerData/$PLAYER_I/threat", "$CARD_BY_ID.{{$FACEUP_HERO}}.sides.A.threat"],
+                            ["SET", "/cardById/$FACEUP_HERO/tokens/resource", 2]
+                        ]]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        }
+    }
+}

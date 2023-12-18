@@ -436,6 +436,16 @@
                         ]
                     }
                 ]
+            },
+            "d1a3a535-7679-4757-871c-80c50c003cff": {
+                "_comment": "Escape From Mount Gram",
+                "rules": [
+                    {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": ["PROMPT", "player1", "mountGramSetup"]
+                    }
+                ]
             }
         }
     }

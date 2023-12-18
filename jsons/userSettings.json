@@ -1,0 +1,38 @@
+{
+    "userSettings": [
+        {
+            "id": "cardsPerRound",
+            "label": "id:cardsPerRound",
+            "type": "integer",
+            "default": 5
+        },
+        {
+            "id": "customString",
+            "label": "id:customString",
+            "type": "string",
+            "default": "Hello World"
+        },
+        {
+            "id": "customChoice",
+            "label": "id:customChoice",
+            "type": "dropdown",
+            "default": "choice1",
+            "options": [
+                {
+                    "id": "choice1",
+                    "label": "id:choice1"
+                },
+                {
+                    "id": "choice2",
+                    "label": "id:choice2"
+                }
+            ]
+        },
+        {
+            "id": "customBoolean",
+            "label": "id:customBoolean",
+            "type": "checkbox",
+            "default": true
+        }
+    ]
+}

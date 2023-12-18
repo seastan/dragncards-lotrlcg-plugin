@@ -167,11 +167,9 @@
                 [
                     ["SET", "/stepId", "$STEP_ID"],
                     ["LOG", "$ALIAS_N", " set the round step to ", "$GAME.steps.$STEP_ID.label", "."]
-                ],
-                true,
-                "$GAME"
+                ]
             ],
-            ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_ORDER", "$GAME.playerData", [
+            ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
                     ["COND",
                         ["AND",
