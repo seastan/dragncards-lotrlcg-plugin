@@ -62,8 +62,53 @@
                             ],
                             ["DRAW_CARD", 3, "$PLAYER_I"],
                             ["SET", "/playerData/$PLAYER_I/threat", "$CARD_BY_ID.{{$FACEUP_HERO}}.sides.A.threat"],
-                            ["SET", "/cardById/$FACEUP_HERO/tokens/resource", 2]
+                            ["SET", "/cardById/$FACEUP_HERO/tokens/resource", 2],
+                            ["SET", "/layoutVariants/secondPlayerDeck", true],
+                            ["SET", "/groupById/{{$PLAYER_I}}Deck2/tableLabel", "Capture Deck"]
                         ]]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "templeSetup": {
+            "args": [],
+            "message": "To set up the Island Map, press Setup.",
+            "options": [
+                {
+                    "label": "Setup",
+                    "hotkey": "S",
+                    "code": [
+                        ["SET", "/layoutId", "{{$GAME.layoutId}}Map"],
+                        ["VAR", "$TEMPLE_REGION", ["LIST", 1, 2, 3]],
+                        ["VAR", "$TEMPLE_INDEX", 0],
+                        ["VAR", "$NORMAL_REGION", ["LIST", 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]],
+                        ["VAR", "$NORMAL_INDEX", 0],
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
+                            ["COND",
+                                ["AND", ["EQUAL", "$CARD.sides.A.name", "Temple of the Deceived"], ["EQUAL", "$CARD.sides.A.type", "Location"]],
+                                [
+                                    ["MOVE_CARD", "$CARD.id", "sharedExtra{{$TEMPLE_REGION.[$TEMPLE_INDEX]}}", 0, 0, {"allowFlip": false}],
+                                    ["INCREASE_VAR", "$TEMPLE_INDEX", 1]
+                                ]
+                            ]
+                        ]],
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
+                            ["COND",
+                                ["AND", ["EQUAL", "$CARD.sides.A.name", "Lost Island"], ["EQUAL", "$CARD.sides.A.type", "Location"]],
+                                [
+                                    ["MOVE_CARD", "$CARD.id", "sharedExtra{{$NORMAL_REGION.[$NORMAL_INDEX]}}", 0, 0, {"allowFlip": false}],
+                                    ["INCREASE_VAR", "$NORMAL_INDEX", 1]
+                                ]
+                            ]
+                        ]],
+                        ["VAR", "$CORNER_CARD_ID_1", ["GET_CARD_ID", "sharedExtra1", 0, 0]],
+                        ["VAR", "$CORNER_CARD_ID_2", ["GET_CARD_ID", "sharedExtra3", 0, 0]],
+                        ["SET", "/cardById/$CORNER_CARD_ID_1/currentSide", "A"],
+                        ["SET", "/cardById/$CORNER_CARD_ID_2/currentSide", "A"]
                     ]
                 },
                 {

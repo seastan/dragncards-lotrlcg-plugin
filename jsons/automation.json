@@ -446,6 +446,16 @@
                         "then": ["PROMPT", "player1", "mountGramSetup"]
                     }
                 ]
+            },
+            "fb7d55c5-7198-45c5-97d7-be4c6a26fa68" : {
+                "_comment": "Temple of the Deceived",
+                "rules": [
+                    {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": ["PROMPT", "player1", "templeSetup"]
+                    }
+                ]
             }
         }
     }
