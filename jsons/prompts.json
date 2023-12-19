@@ -89,7 +89,7 @@
                         ["VAR", "$NORMAL_INDEX", 0],
                         ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
                             ["COND",
-                                ["AND", ["EQUAL", "$CARD.sides.A.name", "Temple of the Deceived"], ["EQUAL", "$CARD.sides.A.type", "Location"]],
+                                ["AND", ["EQUAL", "$CARD.sides.B.name", "Temple of the Deceived"], ["EQUAL", "$CARD.sides.B.type", "Location"]],
                                 [
                                     ["MOVE_CARD", "$CARD.id", "sharedExtra{{$TEMPLE_REGION.[$TEMPLE_INDEX]}}", 0, 0, {"allowFlip": false}],
                                     ["INCREASE_VAR", "$TEMPLE_INDEX", 1]
@@ -98,7 +98,7 @@
                         ]],
                         ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
                             ["COND",
-                                ["AND", ["EQUAL", "$CARD.sides.A.name", "Lost Island"], ["EQUAL", "$CARD.sides.A.type", "Location"]],
+                                ["AND", ["EQUAL", "$CARD.sides.B.name", "Lost Island"], ["EQUAL", "$CARD.sides.B.type", "Location"]],
                                 [
                                     ["MOVE_CARD", "$CARD.id", "sharedExtra{{$NORMAL_REGION.[$NORMAL_INDEX]}}", 0, 0, {"allowFlip": false}],
                                     ["INCREASE_VAR", "$NORMAL_INDEX", 1]
