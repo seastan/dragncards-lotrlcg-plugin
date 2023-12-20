@@ -447,13 +447,39 @@
                     }
                 ]
             },
-            "fb7d55c5-7198-45c5-97d7-be4c6a26fa68" : {
+            "fb7d55c5-7198-45c5-97d7-be4c6a26fa68": {
                 "_comment": "Temple of the Deceived",
                 "rules": [
                     {
                         "type": "entersPlay",
                         "side": "A",
                         "then": ["PROMPT", "player1", "templeSetup"]
+                    }
+                ]
+            },
+            "03a074ce-d581-4672-b6ea-ed97b7afd415": {
+                "_comment": "The Glittering Caves",
+                "rules": [
+                    {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["LOG_DEV", "A"],
+                            ["SET", "/layoutId", "{{$GAME.layoutId}}Map"],
+                            ["LOG_DEV", "B"],
+                            ["VAR", "$EXTRA_REGION", ["LIST", 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]],
+                            ["LOG_DEV", "C"],
+                            ["VAR", "$INDEX", 0],
+                            ["LOG_DEV", "D"],
+                            ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck3.parentCards", [
+                                ["LOG_DEV", "E"],
+                                ["MOVE_CARD", "$CARD.id", "sharedExtra{{$EXTRA_REGION.[$INDEX]}}", 0],
+                                ["INCREASE_VAR", "$INDEX", 1]
+                            ]],
+                            ["LOG_DEV", "F"],
+                            ["PROMPT", "player1", "glitteringSetup"],
+                            ["LOG_DEV", "G"]
+                        ]
                     }
                 ]
             }

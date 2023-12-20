@@ -25,7 +25,6 @@
             {"key": "Shift+X", "actionList": "discardShadows", "label": "id:discardAllShadowCards"},
             {"key": "U", "actionList": "increasehreat", "label": "id:raiseThreatBy1"},
             {"key": "J", "actionList": "decreaseThreat", "label": "id:raiseThreatBy1"},
-            {"key": "Shift+P", "actionList": "saveGame", "label": "id:saveGame"},
             {"key": "Shift+L", "actionList": "enableMultiplayerHotkeys", "label": "id:ifHostEnableMultiplayerHotkeys"},
             {"key": "Ctrl+Shift+N", "actionList": "newRoundAll", "label": "id:pressShiftNForAllPlayers"},
             {"key": "Alt+Shift+N", "actionList": "newRoundAll", "label": "id:pressShiftNForAllPlayers"},
