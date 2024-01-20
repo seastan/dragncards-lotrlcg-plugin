@@ -17,6 +17,9 @@
         "Rules":          {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
         "Ship-Enemy":     {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
         "Side Quest":     {"width":  1.0, "height": 0.72,"tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
-        "Treasure":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]}
+        "Treasure":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
+        "Ship Objective": {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
+        "Ship Enemy":     {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
+        "Player Objective":{"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]}
     }
 }

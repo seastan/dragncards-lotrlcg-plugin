@@ -464,24 +464,30 @@
                         "type": "entersPlay",
                         "side": "A",
                         "then": [
-                            ["LOG_DEV", "A"],
                             ["SET", "/layoutId", "{{$GAME.layoutId}}Map"],
-                            ["LOG_DEV", "B"],
                             ["VAR", "$EXTRA_REGION", ["LIST", 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]],
-                            ["LOG_DEV", "C"],
                             ["VAR", "$INDEX", 0],
-                            ["LOG_DEV", "D"],
                             ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck3.parentCards", [
-                                ["LOG_DEV", "E"],
                                 ["MOVE_CARD", "$CARD.id", "sharedExtra{{$EXTRA_REGION.[$INDEX]}}", 0],
                                 ["INCREASE_VAR", "$INDEX", 1]
                             ]],
-                            ["LOG_DEV", "F"],
-                            ["PROMPT", "player1", "glitteringSetup"],
-                            ["LOG_DEV", "G"]
+                            ["PROMPT", "player1", "glitteringSetup"]
                         ]
                     }
                 ]
+            },
+            "51223bd0-ffd1-11df-a976-0801213c9027": {
+                "_comment": "Vilya",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", ["GREATER_THAN", "$THIS.cardIndex", 0]],
+                        [
+                            ["ACTION_LIST", "toggleExhaust"],
+                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS.parentCardId"],
+                            ["ACTION_LIST", "toggleExhaust"]
+                        ]
+                    ]
+                }
             }
         }
     }

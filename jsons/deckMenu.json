@@ -482,8 +482,7 @@
                     "label": "id:Escape from Umbar",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E07.1"},
-                        {"label": "id:normal", "deckListId": "Q07.1"},
-                        {"label": "id:nightmare", "deckListId": "N07.1"}
+                        {"label": "id:normal", "deckListId": "Q07.1"}
                     ]
                 },
                 {
@@ -572,8 +571,7 @@
                     "label": "id:The Withered Heath",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E08.4"},
-                        {"label": "id:normal", "deckListId": "Q08.4"},
-                        {"label": "id:nightmare", "deckListId": "N08.4"}
+                        {"label": "id:normal", "deckListId": "Q08.4"}
                     ]
                 },
                 {
@@ -1017,13 +1015,6 @@
                         {"label": "id:easy", "deckListId": "E0C.18"},
                         {"label": "id:normal", "deckListId": "Q0C.18"}
                     ]
-                },
-                {
-                    "label": "id:ALeP The Scouring of the Shire",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "E0C.19"},
-                        {"label": "id:normal", "deckListId": "Q0C.19"}
-                    ]
                 }
                 ]
             },
@@ -1123,13 +1114,6 @@
                     "deckLists": [
                         {"label": "id:normal", "deckListId": "Q99.15"}
                     ]
-                },
-                {
-                    "label": "id:ALeP The Scouring of the Shire",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "E99.16"},
-                        {"label": "id:normal", "deckListId": "Q99.16"}
-                    ]
                 }
                 ]
             },
@@ -1153,71 +1137,6 @@
                         "deckListId": "CCC.2"
                     }
                 ]
-            },
-            {
-                "label": "id:ALeP - Children of Eorl & Oaths of the Rohirrim",
-                "subMenus": [
-                {
-                    "label": "id:ALeP Ambush at Erelas",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.1"},
-                        {"label": "id:normal", "deckListId": "QA1.1"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP The Battle for the Beacon",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.2"},
-                        {"label": "id:normal", "deckListId": "QA1.2"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP The Horse Lord s Ire",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.3"},
-                        {"label": "id:normal", "deckListId": "QA1.3"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP The Aldburg Plot",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.4"},
-                        {"label": "id:normal", "deckListId": "QA1.4"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP The Gap of Rohan Playtest",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.6"},
-                        {"label": "id:normal", "deckListId": "QA1.6"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP The Glittering Caves Playtest",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.7"},
-                        {"label": "id:normal", "deckListId": "QA1.7"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP Mustering of the Rohirrim Playtest",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.8"},
-                        {"label": "id:normal", "deckListId": "QA1.8"}
-                    ]
-                },
-                {
-                    "label": "id:ALeP Blood in the Isen Playtest",
-                    "deckLists": [
-                        {"label": "id:easy", "deckListId": "EA1.9"},
-                        {"label": "id:normal", "deckListId": "QA1.9"}
-                    ]
-                }
-                ]
-            },
-            {
-                "label": "id:ALeP - Playtest",
-                "subMenus": []
             }
         ]
       
