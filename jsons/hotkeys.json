@@ -23,7 +23,7 @@
             {"key": "Shift+R", "actionList": "refresh", "label": "id:refreshAndRaiseThreatIfHostMove1StPlayerToken"},
             {"key": "Shift+S", "actionList": "dealShadows", "label": "id:dealAllShadowCards"},
             {"key": "Shift+X", "actionList": "discardShadows", "label": "id:discardAllShadowCards"},
-            {"key": "U", "actionList": "increasehreat", "label": "id:raiseThreatBy1"},
+            {"key": "U", "actionList": "increaseThreat", "label": "id:raiseThreatBy1"},
             {"key": "J", "actionList": "decreaseThreat", "label": "id:raiseThreatBy1"},
             {"key": "Shift+L", "actionList": "enableMultiplayerHotkeys", "label": "id:ifHostEnableMultiplayerHotkeys"},
             {"key": "Ctrl+Shift+N", "actionList": "newRoundAll", "label": "id:pressShiftNForAllPlayers"},

@@ -480,12 +480,21 @@
                 "_comment": "Vilya",
                 "ability": {
                     "A": ["COND",
-                        ["AND", ["GREATER_THAN", "$THIS.cardIndex", 0]],
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            ["NOT", "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"],
+                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
+                        ],
                         [
                             ["ACTION_LIST", "toggleExhaust"],
                             ["DEFINE", "$ACTIVE_CARD_ID", "$THIS.parentCardId"],
-                            ["ACTION_LIST", "toggleExhaust"]
-                        ]
+                            ["ACTION_LIST", "toggleExhaust"],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
+                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Play1", -1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "Vilya's use conditions are not met."]
                     ]
                 }
             }
