@@ -1,5 +1,22 @@
 {
     "prompts": {
+        "victoryDisplay": {
+            "args": ["$CARD_ID"],
+            "message": "This card you discarded had victory points. Move it to the victory display instead?",
+            "options": [
+                {
+                    "label": "Yes",
+                    "hotkey": "Y",
+                    "code": [
+                        ["MOVE_CARD", "$CARD_ID", "sharedVictory", 0]
+                    ]
+                },
+                {
+                    "label": "NO",
+                    "hotkey": "N"
+                }
+            ]
+        },
         "mountGramSetup": {
             "args": [],
             "message": "To set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels, press Setup. IMPORTANT: Before running this function, flip facedown all heroes that are not starting heroes.",

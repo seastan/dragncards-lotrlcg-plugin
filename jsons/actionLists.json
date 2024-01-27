@@ -398,7 +398,11 @@
                                 [
                                     ["VAR", "$CURRENT_SIDE", "$CARD.currentSide"],
                                     ["LOG", "$ALIAS_N", " discarded ", "$CARD.sides.A.name", "."],
-                                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0]
+                                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0],
+                                    ["COND",
+                                        ["NOT_EQUAL", "$CARD.sides.$CURRENT_SIDE.victoryPoints", null],
+                                        ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
+                                    ]
                                 ]
                             ]
                         ]
@@ -412,7 +416,11 @@
                         true,
                         [
                             ["LOG", "$ALIAS_N", " discarded ", "$ACTIVE_CARD.sides.A.name", "."],
-                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.discardGroupId", 0]
+                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.discardGroupId", 0],
+                            ["COND",
+                                ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                                ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
+                            ]
                         ]
                     ]
                 ]
