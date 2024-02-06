@@ -27,6 +27,41 @@
                 ["LOG", "└── ", "Staging threat is now ", "$STAGING_THREAT", "."],
                 ["SET", "/stagingThreat", "$STAGING_THREAT"]
             ]
+        },
+        "EXHAUST_TO_LOOK_AT_X": {
+            "args": ["$CARD", "$X"],
+            "code": ["ACTION_LIST_TO_LOOK_AT_X", 
+                ["AND", "$CARD.inPlay", ["NOT", "$CARD.exhausted"]], 
+                "toggleExhaust", 
+                "$CARD",
+                "{{$CARD.controller}}Deck",
+                "$X"
+            ]
+        },
+        "DISCARD_TO_LOOK_AT_X": {
+            "args": ["$CARD", "$X"],
+            "code": ["ACTION_LIST_TO_LOOK_AT_X", 
+                ["IN_STRING", "$CARD.groupId", "Hand"], 
+                "discardCard", 
+                "$CARD",
+                "{{$CARD.controller}}Deck",
+                "$X"
+            ]
+        },
+        "ACTION_LIST_TO_LOOK_AT_X": {
+            "args": ["$CONDITION", "$ACTION_LIST", "$CARD", "$GROUP_ID", "$X"],
+            "code": ["COND",
+                "$CONDITION",
+                [   
+                    ["VAR", "$ACTIVE_CARD_ID", "$CARD.id"],
+                    ["ACTION_LIST", "$ACTION_LIST"],
+                    ["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+                    ["LOG", "└── {{$ALIAS_N}} is looking at the top {{$X}} cards of {{$GROUP.label}}."],
+                    ["LOOK_AT", "$PLAYER_N", "$GROUP_ID", "$X", true]
+                ],
+                ["TRUE"],
+                ["LOG", "└── ", "The ability's conditions are not met."]
+            ]
         }
     }
 }

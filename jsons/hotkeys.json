@@ -30,8 +30,8 @@
             {"key": "Alt+Shift+N", "actionList": "newRoundAll", "label": "id:pressShiftNForAllPlayers"},
             {"key": "Ctrl+Shift+R", "actionList": "refreshAll", "label": "id:pressShiftRForAllPlayers"},
             {"key": "Alt+Shift+R", "actionList": "refreshAll", "label": "id:pressShiftRForAllPlayers"},
-            {"key": "Ctrl+U", "actionList": "raiseAll", "label": "id:raiseThreatBy1ForAllPlayers"},
-            {"key": "Ctrl+J", "actionList": "reduceAll", "label": "id:reduceThreatBy1ForAllPlayers"},
+            {"key": "Ctrl+U", "actionList": "raiseAllThreat", "label": "id:raiseThreatBy1ForAllPlayers"},
+            {"key": "Ctrl+J", "actionList": "reduceAllThreat", "label": "id:reduceThreatBy1ForAllPlayers"},
             {"key": "Shift+D", "actionList": "drawNextPlayer", "label": "id:drawCardOnBehalfOfNextEmptySeat"}
         ],
         "card": [

@@ -1,6 +1,9 @@
 
 {
     "labels": {
+        "multiplayerHotkeys": {
+            "English": "Multiplayer Hotkeys"
+        },
         "drawACard": {
             "English": "Draw a card"
         },

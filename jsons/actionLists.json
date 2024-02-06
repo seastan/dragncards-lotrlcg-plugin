@@ -247,6 +247,7 @@
             ["LOG", "$ALIAS_N", " removed all tokens from ", "$ACTIVE_FACE.name", "."]
         ],
         "toggleExhaust": [
+            ["LOG_DEV", "$ACTIVE_CARD"],
             ["COND",
                 ["EQUAL", "$ACTIVE_FACE.type", "Location"],
                 [
@@ -475,6 +476,54 @@
             ["LOG", "{{$ALIAS_N}} swapped {{$ACTIVE_CARD.currentFace.name}} with the top card of {{$GAME.groupById.$DECK_GROUP_ID.label}}."],
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$TOP_CARD.deckGroupId", "$TOP_CARD.stackIndex", "$TOP_CARD.cardIndex"],
             ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"]
+        ],
+        "enableMultiplayerHotkeys": [
+            ["SET", "/multiplayerHotkeys", true],
+            ["LOG", "{{$ALIAS_N}} enabled multiplayer hotkeys."]
+        ],
+        "newRoundAll": [
+            ["COND",
+                "$GAME.multiplayerHotkeys",
+                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
+                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
+                    ["ACTION_LIST", "newRound"]
+                ]],
+                true,
+                ["LOG", "{{$ALIAS_N}} tried to start a new round for all players, but multiplayer hotkeys (Shift+L) are disabled."]
+            ]
+        ],
+        "refreshAll": [
+            ["COND",
+                "$GAME.multiplayerHotkeys",
+                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
+                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
+                    ["ACTION_LIST", "refresh"]
+                ]],
+                true,
+                ["LOG", "{{$ALIAS_N}} tried to start a new round for all players, but multiplayer hotkeys (Shift+L) are disabled."]
+            ]
+        ],
+        "raiseAllThreat": [
+            ["COND",
+                "$GAME.multiplayerHotkeys",
+                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
+                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
+                    ["ACTION_LIST", "increaseThreat"]
+                ]],
+                true,
+                ["LOG", "{{$ALIAS_N}} tried to raise all players' threat, but multiplayer hotkeys (Shift+L) are disabled."]
+            ]
+        ],
+        "reduceAllThreat": [
+            ["COND",
+                "$GAME.multiplayerHotkeys",
+                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
+                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
+                    ["ACTION_LIST", "decreaseThreat"]
+                ]],
+                true,
+                ["LOG", "{{$ALIAS_N}} tried to lower all players' threat, but multiplayer hotkeys (Shift+L) are disabled."]
+            ]
         ],
         "setCardsDrawn": [
             ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
