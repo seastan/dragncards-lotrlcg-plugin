@@ -1,5 +1,61 @@
 {
     "functions": {
+        "TOGGLE_TABLE_BUTTON": {
+          "args": ["$SIDE_GROUP_ID"],
+          "code": [
+            ["COND",
+              ["AND",
+                "$GAME.playerData.$PLAYER_N.layout.regions.sideGroup.visible",
+                ["EQUAL", "$GAME.playerData.$PLAYER_N.layout.regions.sideGroup.groupId", "$SIDE_GROUP_ID"]
+              ],
+              [
+                ["LOG", "{{$PLAYER_N}} updated their layout to display {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideGroup/visible", false],
+                ["ADJUST_PLAYER_REGION_SIZES", 100]
+              ],
+              true,
+              [
+                ["LOG", "{{$PLAYER_N}} updated their layout to hide {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideGroup/groupId", "$SIDE_GROUP_ID"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideGroup/visible", true],
+                ["ADJUST_PLAYER_REGION_SIZES", 90]
+              ]
+            ]
+          ]
+        },
+        "ADJUST_PLAYER_REGION_SIZES": {
+          "args": ["$TOTAL_WIDTH"],
+          "code": [
+            ["VAR", "$ENGAGED_WIDTH", ["DIVIDE", "$TOTAL_WIDTH", "$GAME.numPlayers", 1]],
+            ["VAR", "$PLAY_WIDTH", 
+                ["COND",
+                    ["EQUAL", "$GAME.playerData.$PLAYER_N.showOnePlayer", true],
+                    "$TOTAL_WIDTH",
+                    ["TRUE"],
+                    "$ENGAGED_WIDTH"
+                ]
+            ],
+            ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                ["VAR", "$ENGAGED_LEFT", ["CALC", "{{$WIDTH}} * ({{$I}} - 1)"]],
+                ["VAR", "$PLAY_LEFT",
+                    ["COND",
+                        ["EQUAL", "$GAME.playerData.$PLAYER_N.showOnePlayer", true],
+                        0,
+                        ["TRUE"],
+                        "$ENGAGED_LEFT"
+                    ]
+                ],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/width", "{{$ENGAGED_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/left", "{{$ENGAGED_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/left", "{{$PLAY_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/left", "{{$PLAY_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/left", "{{$PLAY_LEFT}}%"]
+            ]]
+          ]
+        },
         "DISCARD_UNTIL": {
             "args": ["$GROUP_ID", "$TYPE"],
             "code": [

@@ -1,5 +1,9 @@
 {
     "labels": {
+        "showOnePlayer": {
+            "English": "Show 1 player area at a time",
+            "Chinese": "一次只显示一个玩家区域"
+        },
         "multiplayerHotkeys": {
             "English": "Multiplayer Hotkeys"
         },
