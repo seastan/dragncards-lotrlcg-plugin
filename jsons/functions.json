@@ -47,7 +47,7 @@
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/width", "{{$PLAY_WIDTH}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/width", "{{$PLAY_WIDTH}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/width", "{{$PLAY_WIDTH}}%"],
-                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/left", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/left", "{{$PLAY_LEFT}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/left", "{{$PLAY_LEFT}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/left", "{{$PLAY_LEFT}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/left", "{{$PLAY_LEFT}}%"]

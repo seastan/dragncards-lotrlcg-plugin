@@ -26,14 +26,14 @@
                 "sideRegion":            {"groupId": "sharedSetAside",        "type": "fan", "direction": "vertical",   "left": "90%", "top": "1/5", "width":  "10%", "height": "3/5", "style": {"background": "rgba(0, 0, 0, 0.3)"}}
             },
             "tableButtons": {
-                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],"label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},
-                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "playerNSideboard"],    "label": "SB", "left": "98%", "top": "85%", "width": "2%", "height": "5%"},
-                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],       "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"},
-                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],     "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"}
+                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],  "label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},
+                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "{{$PLAYER_N}}Sideboard"],"label": "SB", "left": "98%", "top": "85%", "width": "2%", "height": "5%"},
+                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],         "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"},
+                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],       "label": "QD", "left": "98%", "top": "95%", "width": "2%", "height": "5%"}
             }
         },
         "layout2Player": {
-            "cardSize": 12,
+            "cardSize": 14,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "4/6", "width": "90%", "height": "1/6"},
@@ -63,14 +63,14 @@
                 "sideRegion":             {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "90%", "top": "1/6", "width":  "10%", "height": "3/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}}
             },
             "tableButtons": {
-                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],"label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},
-                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "playerNSideboard"],    "label": "SB", "left": "98%", "top": "85%", "width": "2%", "height": "5%"},
-                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],       "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"},
-                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],     "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"}
+                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],  "label": "SA", "left": "98%", "top": "20/24", "width": "2%", "height": "1/24"},
+                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "{{$PLAYER_N}}Sideboard"],"label": "SB", "left": "98%", "top": "21/24", "width": "2%", "height": "1/24"},
+                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],         "label": "VD", "left": "98%", "top": "22/24", "width": "2%", "height": "1/24"},
+                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],       "label": "QD", "left": "98%", "top": "23/24", "width": "2%", "height": "1/24"}
             }
         },
         "layout3Player": {
-            "cardSize": 13,
+            "cardSize": 14,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "4/6", "width": "90%", "height": "1/6"},
@@ -106,14 +106,14 @@
                 "sideRegion":             {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}}
             },
             "tableButtons": {
-                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],"label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},
-                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "playerNSideboard"],    "label": "SB", "left": "98%", "top": "85%", "width": "2%", "height": "5%"},
-                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],       "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"},
-                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],     "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"}
+                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],  "label": "SA", "left": "98%", "top": "20/24", "width": "2%", "height": "1/24"},
+                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "{{$PLAYER_N}}Sideboard"],"label": "SB", "left": "98%", "top": "21/24", "width": "2%", "height": "1/24"},
+                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],         "label": "VD", "left": "98%", "top": "22/24", "width": "2%", "height": "1/24"},
+                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],       "label": "QD", "left": "98%", "top": "23/24", "width": "2%", "height": "1/24"}
             }
         },
         "layout4Player": {
-            "cardSize": 13,
+            "cardSize": 14,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "browse": {"type": "fan", "direction": "horizontal", "left": "0%", "top": "4/6", "width": "90%", "height": "1/6"},
@@ -153,10 +153,10 @@
                "sideRegion":             {"groupId": "sharedSetAside",        "type": "fan", "direction": "vertical",   "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}}
             },
             "tableButtons": {
-                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],"label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},
-                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "playerNSideboard"],    "label": "SB", "left": "98%", "top": "85%", "width": "2%", "height": "5%"},
-                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],       "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"},
-                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],     "label": "VD", "left": "98%", "top": "90%", "width": "2%", "height": "5%"}
+                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],  "label": "SA", "left": "98%", "top": "20/24", "width": "2%", "height": "1/24"},
+                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "{{$PLAYER_N}}Sideboard"],"label": "SB", "left": "98%", "top": "21/24", "width": "2%", "height": "1/24"},
+                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],         "label": "VD", "left": "98%", "top": "22/24", "width": "2%", "height": "1/24"},
+                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],       "label": "QD", "left": "98%", "top": "23/24", "width": "2%", "height": "1/24"}
             }
         }
     }
