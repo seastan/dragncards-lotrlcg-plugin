@@ -103,9 +103,7 @@
                 "playerNDeck":            {"groupId": "playerNDeck",           "type": "pile","direction": "horizontal", "left": "56%", "top":  "5/6", "width":  "9.5%", "height": "1/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
                 "playerNDiscard":         {"groupId": "playerNDiscard",        "type": "pile","direction": "horizontal", "left": "65.5%","top": "5/6", "width":  "9.5%", "height": "1/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
                 "sharedQuestDeck":        {"groupId": "sharedQuestDeck",        "type": "fan","direction": "vertical", "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                "sharedSetAside":         {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                "playerNSideboard":       {"groupId": "playerNSideboard",      "type": "fan","direction": "vertical", "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}},
-                "sharedVictory":          {"groupId": "sharedVictory",         "type": "fan","direction": "vertical", "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}}
+                "sideRegion":             {"groupId": "sharedSetAside",        "type": "fan","direction": "vertical", "left": "92%", "top": "1/6", "width": "8%", "height": "4/6", "style": {"background": "rgba(0, 0, 0, 0.3)"}}
             },
             "tableButtons": {
                 "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictoryDisplay"],"label": "SA", "left": "98%", "top": "80%", "width": "2%", "height": "5%"},

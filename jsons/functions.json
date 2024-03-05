@@ -5,19 +5,19 @@
           "code": [
             ["COND",
               ["AND",
-                "$GAME.playerData.$PLAYER_N.layout.regions.sideGroup.visible",
-                ["EQUAL", "$GAME.playerData.$PLAYER_N.layout.regions.sideGroup.groupId", "$SIDE_GROUP_ID"]
+                "$GAME.playerData.$PLAYER_N.layout.regions.sideRegion.visible",
+                ["EQUAL", "$GAME.playerData.$PLAYER_N.layout.regions.sideRegion.groupId", "$SIDE_GROUP_ID"]
               ],
               [
                 ["LOG", "{{$PLAYER_N}} updated their layout to display {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
-                ["SET", "/playerData/$PLAYER_N/layout/regions/sideGroup/visible", false],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/visible", false],
                 ["ADJUST_PLAYER_REGION_SIZES", 100]
               ],
               true,
               [
                 ["LOG", "{{$PLAYER_N}} updated their layout to hide {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
-                ["SET", "/playerData/$PLAYER_N/layout/regions/sideGroup/groupId", "$SIDE_GROUP_ID"],
-                ["SET", "/playerData/$PLAYER_N/layout/regions/sideGroup/visible", true],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/groupId", "$SIDE_GROUP_ID"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/visible", true],
                 ["ADJUST_PLAYER_REGION_SIZES", 90]
               ]
             ]
