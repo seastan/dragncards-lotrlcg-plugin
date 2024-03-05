@@ -26,30 +26,28 @@
         "ADJUST_PLAYER_REGION_SIZES": {
           "args": ["$TOTAL_WIDTH"],
           "code": [
-            ["VAR", "$ENGAGED_WIDTH", ["DIVIDE", "$TOTAL_WIDTH", "$GAME.numPlayers", 1]],
             ["VAR", "$PLAY_WIDTH", 
                 ["COND",
                     ["EQUAL", "$GAME.playerData.$PLAYER_N.showOnePlayer", true],
                     "$TOTAL_WIDTH",
                     ["TRUE"],
-                    "$ENGAGED_WIDTH"
+                    ["DIVIDE", "$TOTAL_WIDTH", "$GAME.numPlayers", 1]
                 ]
             ],
             ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
-                ["VAR", "$ENGAGED_LEFT", ["CALC", "{{$WIDTH}} * ({{$I}} - 1)"]],
                 ["VAR", "$PLAY_LEFT",
                     ["COND",
                         ["EQUAL", "$GAME.playerData.$PLAYER_N.showOnePlayer", true],
                         0,
                         ["TRUE"],
-                        "$ENGAGED_LEFT"
+                        ["CALC", "{{$PLAY_WIDTH}} * ({{$I}} - 1)"]
                     ]
                 ],
-                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/width", "{{$ENGAGED_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/width", "{{$PLAY_WIDTH}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/width", "{{$PLAY_WIDTH}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/width", "{{$PLAY_WIDTH}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/width", "{{$PLAY_WIDTH}}%"],
-                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/left", "{{$ENGAGED_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/left", "{{$PLAY_WIDTH}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/left", "{{$PLAY_LEFT}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/left", "{{$PLAY_LEFT}}%"],
                 ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/left", "{{$PLAY_LEFT}}%"]
