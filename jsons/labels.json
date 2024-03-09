@@ -1,11 +1,20 @@
 {
     "labels": {
+        "sharedQuestDiscard": {
+            "English": "Shared Quest Discard",
+            "Chinese": "共享探险弃牌"
+        },
+        "sharedQuestDiscard2": {
+            "English": "Shared Quest Discard 2",
+            "Chinese": "共享探险弃牌 2"
+        },
         "showOnePlayer": {
             "English": "Show 1 player area at a time",
             "Chinese": "一次只显示一个玩家区域"
         },
         "multiplayerHotkeys": {
-            "English": "Multiplayer Hotkeys"
+            "English": "Multiplayer Hotkeys",
+            "Chinese": "多人模式快捷键"
         },
         "drawACard": {
             "English": "Draw a card",

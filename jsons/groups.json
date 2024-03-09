@@ -40,8 +40,8 @@
         },
         "sharedQuestDiscard": {
             "groupType": "discard",
-            "label": "id:sharedQuestDeck", 
-            "tableLabel": "id:sharedQuestDeck",
+            "label": "id:sharedQuestDiscard", 
+            "tableLabel": "id:sharedQuestDiscard",
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
@@ -61,8 +61,8 @@
         },
         "sharedQuestDiscard2": {
             "groupType": "discard",
-            "label": "id:sharedQuestDeck2", 
-            "tableLabel": "id:sharedQuestDeck2",
+            "label": "id:sharedQuestDiscard2", 
+            "tableLabel": "id:sharedQuestDiscard2",
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",

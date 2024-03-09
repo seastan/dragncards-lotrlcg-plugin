@@ -17,7 +17,7 @@
             {"key": "Shift+E", "actionList": "revealEncounterFacedown", "label": "id:revealFacedownEncounterCard"},
             {"key": "K", "actionList": "revealSecondaryFaceup", "label": "id:revealCardFromSecondEncounterDeck"},
             {"key": "Shift+K", "actionList": "revealSecondaryFacedown", "label": "id:revealFacedownCardFromSecondEncounterDeck"},
-            {"key": "Shift+M", "actionList": "mulligan", "label": "id:revealFacedownCardFromSecondEncounterDeck"},
+            {"key": "Shift+M", "actionList": "mulligan", "label": "id:mulligan"},
             {"key": "Shift+N", "actionList": "newRound", "label": "id:drawCardAndGainResourcesIfHostIncrementRound"},
             {"key": "Shift+O", "actionList": "calculateScore", "label": "id:calculateScore"},
             {"key": "Shift+R", "actionList": "refresh", "label": "id:refreshAndRaiseThreatIfHostMove1StPlayerToken"},
