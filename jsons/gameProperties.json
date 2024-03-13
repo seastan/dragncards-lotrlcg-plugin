@@ -33,6 +33,12 @@
               "label": "id:hitpoints"
           }
         ]
+      },
+      "multiplayerHotkeys": {
+        "label": "id:multiplayerHotkeys",
+        "type": "boolean",
+        "default": false,
+        "showInSettings": true
       }
     }
 }

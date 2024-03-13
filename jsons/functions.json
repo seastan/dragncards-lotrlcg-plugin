@@ -1,5 +1,59 @@
 {
     "functions": {
+        "TOGGLE_TABLE_BUTTON": {
+          "args": ["$SIDE_GROUP_ID"],
+          "code": [
+            ["COND",
+              ["AND",
+                ["NOT_EQUAL", "$GAME.playerData.$PLAYER_N.layout.regions.sideRegion.visible", false],
+                ["EQUAL", "$GAME.playerData.$PLAYER_N.layout.regions.sideRegion.groupId", "$SIDE_GROUP_ID"]
+              ],
+              [
+                ["LOG", "{{$PLAYER_N}} updated their layout to hide {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/visible", false],
+                ["ADJUST_PLAYER_REGION_SIZES", 100]
+              ],
+              true,
+              [
+                ["LOG", "{{$PLAYER_N}} updated their layout to show {{$GAME.groupById.$SIDE_GROUP_ID.label}}."],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/groupId", "$SIDE_GROUP_ID"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/sideRegion/visible", true],
+                ["ADJUST_PLAYER_REGION_SIZES", 90]
+              ]
+            ]
+          ]
+        },
+        "ADJUST_PLAYER_REGION_SIZES": {
+          "args": ["$TOTAL_WIDTH"],
+          "code": [
+            ["VAR", "$PLAY_WIDTH", 
+                ["COND",
+                    ["EQUAL", "$GAME.playerData.$PLAYER_N.showOnePlayer", true],
+                    "$TOTAL_WIDTH",
+                    ["TRUE"],
+                    ["DIVIDE", "$TOTAL_WIDTH", "$GAME.numPlayers", 1]
+                ]
+            ],
+            ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                ["VAR", "$PLAY_LEFT",
+                    ["COND",
+                        ["EQUAL", "$GAME.playerData.$PLAYER_N.showOnePlayer", true],
+                        0,
+                        ["TRUE"],
+                        ["CALC", "{{$PLAY_WIDTH}} * ({{$I}} - 1)"]
+                    ]
+                ],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/width", "{{$PLAY_WIDTH}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Engaged/left", "{{$PLAY_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play1/left", "{{$PLAY_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play2/left", "{{$PLAY_LEFT}}%"],
+                ["SET", "/playerData/$PLAYER_N/layout/regions/player{{$I}}Play3/left", "{{$PLAY_LEFT}}%"]
+            ]]
+          ]
+        },
         "DISCARD_UNTIL": {
             "args": ["$GROUP_ID", "$TYPE"],
             "code": [
@@ -19,13 +73,48 @@
         "COMPUTE_STAGING_THREAT": {
             "args": [],
             "code": [
-                ["DEFINE", "$STAGING_THREAT", 0],
+                ["VAR", "$STAGING_THREAT", 0],
                 ["FOR_EACH_VAL", "$CARD_ID", "$GAME.groupById.sharedStagingArea.parentCardIds", [
-                    ["DEFINE", "$CARD", "$GAME.cardById.$CARD_ID"],
-                    ["DEFINE", "$STAGING_THREAT", ["ADD", ["ADD", "$STAGING_THREAT", "$CARD.currentFace.threat"], "$CARD.tokens.threat"]]
+                    ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
+                    ["INCREASE_VAR", "$STAGING_THREAT", ["ADD", "$CARD.currentFace.threat", "$CARD.tokens.threat"]]
                 ]],
                 ["LOG", "└── ", "Staging threat is now ", "$STAGING_THREAT", "."],
                 ["SET", "/stagingThreat", "$STAGING_THREAT"]
+            ]
+        },
+        "EXHAUST_TO_LOOK_AT_X": {
+            "args": ["$CARD", "$X"],
+            "code": ["ACTION_LIST_TO_LOOK_AT_X", 
+                ["AND", "$CARD.inPlay", ["NOT", "$CARD.exhausted"]], 
+                "toggleExhaust", 
+                "$CARD",
+                "{{$CARD.controller}}Deck",
+                "$X"
+            ]
+        },
+        "DISCARD_TO_LOOK_AT_X": {
+            "args": ["$CARD", "$X"],
+            "code": ["ACTION_LIST_TO_LOOK_AT_X", 
+                ["IN_STRING", "$CARD.groupId", "Hand"], 
+                "discardCard", 
+                "$CARD",
+                "{{$CARD.controller}}Deck",
+                "$X"
+            ]
+        },
+        "ACTION_LIST_TO_LOOK_AT_X": {
+            "args": ["$CONDITION", "$ACTION_LIST", "$CARD", "$GROUP_ID", "$X"],
+            "code": ["COND",
+                "$CONDITION",
+                [   
+                    ["VAR", "$ACTIVE_CARD_ID", "$CARD.id"],
+                    ["ACTION_LIST", "$ACTION_LIST"],
+                    ["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+                    ["LOG", "└── {{$ALIAS_N}} is looking at the top {{$X}} cards of {{$GROUP.label}}."],
+                    ["LOOK_AT", "$PLAYER_N", "$GROUP_ID", "$X", true]
+                ],
+                ["TRUE"],
+                ["LOG", "└── ", "The ability's conditions are not met."]
             ]
         }
     }

@@ -23,6 +23,11 @@
             "label": "id:refreshed",
             "type": "boolean", 
             "default": true
+        },
+        "showOnePlayer": {
+            "label": "id:showOnePlayer",
+            "type": "boolean", 
+            "default": false
         }
     }
 }
