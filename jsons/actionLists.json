@@ -354,7 +354,6 @@
                 ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_FACE.name}}."]
                 ]
             ]
-
         ],
         "addToVictoryDisplay": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
@@ -393,7 +392,7 @@
             ["LOG", "Damage on heroes: ", "$DAMAGE_ON_HEROES"],
             ["LOG", "Number of rounds: ", "$GAME.roundNumber"],
             ["LOG", "Victory points: ", "$TOTAL_VICTORY_POINTS"],
-            ["VAR", "$FINAL_SCORE", ["SUBTRACT", ["ADD", "$TOTAL_THREAT", "$FALLEN_HERO_COST", "$DAMAGE_ON_HEROES", ["MULTIPLY", "$GAME.roundNumber", 10]], "$TOTAL_VICTORY_POINTS"]],
+            ["VAR", "$FINAL_SCORE", ["SUBTRACT", ["ADD", ["ADD", "$FALLEN_HERO_COST", "$TOTAL_THREAT"], ["ADD", "$DAMAGE_ON_HEROES", ["MULTIPLY", "$GAME.roundNumber", 10]]], "$TOTAL_VICTORY_POINTS"]],
             ["LOG", "Final score: ", "$FINAL_SCORE"]
         ],
         "discardCard": [
