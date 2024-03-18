@@ -462,7 +462,11 @@
                 ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
                 [
                     ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.groupId", ["ADD", "$ACTIVE_CARD.stackIndex", 1]],
-                    ["LOG", "$ALIAS_N", " detached ", "$ACTIVE_FACE.name", "."]
+                    ["LOG", "$ALIAS_N", " detached ", "$ACTIVE_FACE.name", "."],
+                    ["COND", 
+                        ["EQUAL", "$ACTIVE_CARD.rotation", -30],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0]
+                    ]
                 ]
             ]
         ],
