@@ -690,7 +690,7 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
                         ]
@@ -703,7 +703,7 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
                         ]
@@ -716,7 +716,7 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
                         ]
@@ -729,7 +729,7 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
                         ]
@@ -742,7 +742,7 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
                         ]
@@ -755,7 +755,7 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
                         ]
@@ -768,9 +768,73 @@
                     { 
                         "type": "trigger", 
                         "listenTo": ["/roundNumber"],
-                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$GAME.stepId", "7.R"]],
+                        "condition": ["TRUE"],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "discardEndOfRound", "Gandalf", "Gandalf"]
+                        ]
+                    }
+                ]
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9027": {
+                "_comment": "Celebrian Stone",
+                "rules": [
+                    { 
+                        "_comment": "Add/remove tokens depending on whether this is in play.",
+                        "type": "trigger", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["GREATER_THAN", "$THIS.cardIndex", 0],
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/willpower", 2],
+                            ["SET", "/cardById/$THIS.parentCardId/hasCelebrianTokens", true]
+                        ]
+                    },
+                    {
+                        "type": "trigger", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": ["AND", ["NOT", "$THIS.inPlay"], ["PREV", "$THIS.inPlay"]],
+                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById",
+                            ["COND",
+                                ["AND", "$CARD.hasCelebrianTokens", "$CARD.inPlay"],
+                                ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 2],
+                                ["SET", "/cardById/$THIS.parentCardId/hasCelebrianTokens", false]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "ac8089a9-6dee-4c11-8c6c-4ef528400b39": {
+                "_comment": "Celebrian Stone",
+                "rules": [
+                    { 
+                        "_comment": "Add/remove tokens depending on whether this is in play.",
+                        "type": "trigger", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["GREATER_THAN", "$THIS.cardIndex", 0],
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
+                        "then": [
+                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/willpower", 2],
+                            ["SET", "/cardById/$THIS.parentCardId/hasCelebrianTokens", true]
+                        ]
+                    },
+                    {
+                        "type": "trigger", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": ["AND", ["NOT", "$THIS.inPlay"], ["PREV", "$THIS.inPlay"]],
+                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById",
+                            ["COND",
+                                ["AND", "$CARD.hasCelebrianTokens", "$CARD.inPlay"],
+                                ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 2],
+                                ["SET", "/cardById/$THIS.parentCardId/hasCelebrianTokens", false]
+                            ]
                         ]
                     }
                 ]
