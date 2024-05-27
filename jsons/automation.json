@@ -55,6 +55,20 @@
         ],
         "gameRules": [
             { 
+                "_comment": "Automation for card attachment",
+                "type": "trigger", 
+                "listenTo": ["/cardById/*/parentCardId"],
+                "condition": [
+                    ["AND", 
+                        ["PREV", ["EQUAL", "$TARGET.parentCardId", "$TARGET.id"]],
+                        ["NOT_EQUAL", "$TARGET.parentCardId", "$TARGET.id"]
+                    ]
+                ],
+                "then": [
+                    ["LOG", "└── ", "$ALIAS_N", " triggered the automation for card attachment. ", "$TARGET.currentFace.name", " is now attached to ", "$TARGET.parentCard.currentFace.name","."]
+                ]
+            },
+            {  
                 "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/inPlay"],
@@ -495,6 +509,23 @@
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "7ce49caa-c7ac-455e-b35f-217055be34ed": {
+                "_comment": "Steward of Gondor",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["ACTION_LIST", "toggleExhaust"],
+                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS.parentCardId"],
+                            ["ACTION_LIST", "toggleExhaust"],
+                            ["INCREASE_VAR", "/cardById/{{$THIS.parentCardId}}/tokens/resources", 2]
+                        ]
                     ]
                 }
             },

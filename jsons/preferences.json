@@ -1,0 +1,6 @@
+{
+    "preferences": {
+        "game": ["questingStat", "multiplayerHotkeys"],
+        "player": ["cardsDrawn"]
+    }
+}
