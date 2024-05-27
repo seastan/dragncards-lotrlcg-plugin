@@ -1,7 +1,7 @@
 {
     "gameProperties": {
       "stagingThreat": {
-        "label": "id:stagingThreat",
+        "label": "id:stagingThreatTest",
         "type": "integer", 
         "default": 0
       },
