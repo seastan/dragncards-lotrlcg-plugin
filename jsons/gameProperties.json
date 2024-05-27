@@ -1,9 +1,10 @@
 {
     "gameProperties": {
       "stagingThreat": {
-        "label": "id:stagingThreatTest",
+        "label": "id:stagingThreat",
         "type": "integer", 
-        "default": 0
+        "default": 0,
+        "badKey": 1
       },
       "questProgress": {
         "label": "id:questProgress",
