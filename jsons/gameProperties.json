@@ -4,7 +4,7 @@
         "label": "id:stagingThreat",
         "type": "integer", 
         "default": 0,
-        "badkey": 1
+        "badkey": 2
       },
       "questProgress": {
         "label": "id:questProgress",
