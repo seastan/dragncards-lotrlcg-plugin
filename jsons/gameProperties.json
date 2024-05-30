@@ -3,7 +3,7 @@
       "stagingThreat": {
         "label": "id:stagingThreat",
         "type": "integer", 
-        "default": 0 
+        "default": 0
       },
       "questProgress": {
         "label": "id:questProgress",
