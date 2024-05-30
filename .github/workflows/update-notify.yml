@@ -16,6 +16,11 @@ jobs:
       - name: Archive JSON files
         run: tar -czf jsons.tar.gz jsons/*.json
 
+      - name: Print REPO_URL for debugging
+        run: echo "REPO_URL is set to ${REPO_URL}"
+        env:
+          REPO_URL: ${{ github.repository_url }}
+
       - name: Send files to server
         env:
           REPO_URL: ${{ github.repository_url }}
