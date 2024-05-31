@@ -16,9 +16,14 @@ jobs:
       - name: Archive JSON files
         run: tar -czf jsons.tar.gz jsons/*.json
 
+      - name: Print REPO_URL for debugging
+        env:
+          REPO_URL: ${{ github.event.repository.html_url }}
+        run: echo "REPO_URL is set to ${REPO_URL}"
+
       - name: Send files to server
         env:
-          REPO_URL: ${{ github.repository_url }}
+          REPO_URL: ${{ github.event.repository.html_url }}
         run: |
           curl -X POST https://beta.dragncards.com/api/plugin-repo-update \
                -H 'Content-Type: multipart/form-data' \
