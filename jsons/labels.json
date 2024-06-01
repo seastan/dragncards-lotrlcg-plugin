@@ -1180,6 +1180,18 @@
             "English": "Extra4",
             "Chinese": "额外区域 4"
         },
+        "sharedExtra5": {
+            "English": "Extra5",
+            "Chinese": "额外区域 5"
+        },
+        "sharedExtra6": {
+            "English": "Extra6",
+            "Chinese": "额外区域 6"
+        },
+        "sharedExtra7": {
+            "English": "Extra7",
+            "Chinese": "额外区域 7"
+        },
         "damage": {
             "English": "damage",
             "Chinese": "伤害"

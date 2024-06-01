@@ -188,6 +188,30 @@
             "onCardEnter": {
             }
         },
+        "sharedExtra5": {
+            "groupType": "inPlay",
+            "label": "id:sharedExtra5", 
+            "tableLabel": "id:sharedExtra5",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+            }
+        },
+        "sharedExtra6": {
+            "groupType": "inPlay",
+            "label": "id:sharedExtra6", 
+            "tableLabel": "id:sharedExtra6",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+            }
+        },
+        "sharedExtra7": {
+            "groupType": "inPlay",
+            "label": "id:sharedExtra7", 
+            "tableLabel": "id:sharedExtra7",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+            }
+        },
         "player1Hand": {
             "groupType": "hand",
             "label": "id:player1Hand", 

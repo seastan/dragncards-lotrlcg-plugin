@@ -147,7 +147,7 @@
                 true,
                 [
                     ["VAR", "$CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck2", 0, 0]],
-                    ["MOVE_CARD", "$CARD_ID", "sharedStagingArea", -1, 0],
+                    ["MOVE_CARD", "$CARD_ID", "sharedStagingArea", -1, 0], 
                     ["COND",
                         "$REVEAL_FACEDOWN",
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"]
@@ -343,6 +343,18 @@
                 ]
             ]
         ],
+        "sendToBack": [
+            ["COND",
+                ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
+                [            
+                ["VAR", "$ACTIVE_GROUP_ID", "$ACTIVE_CARD.groupId"],
+                ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
+                ["VAR", "$CARD_ID", ["GET_CARD_ID", "$ACTIVE_GROUP_ID", "$ACTIVE_STACK_INDEX", 0]],
+                ["ATTACH_CARD", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_FACE.name}}."]
+                ]
+            ]
+        ],
         "addToVictoryDisplay": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
             ["LOG", "$ALIAS_N", " added ", "$ACTIVE_FACE.name", " to the victory display."]
@@ -380,7 +392,7 @@
             ["LOG", "Damage on heroes: ", "$DAMAGE_ON_HEROES"],
             ["LOG", "Number of rounds: ", "$GAME.roundNumber"],
             ["LOG", "Victory points: ", "$TOTAL_VICTORY_POINTS"],
-            ["VAR", "$FINAL_SCORE", ["SUBTRACT", ["ADD", "$TOTAL_THREAT", "$FALLEN_HERO_COST", "$DAMAGE_ON_HEROES", ["MULTIPLY", "$GAME.roundNumber", 10]], "$TOTAL_VICTORY_POINTS"]],
+            ["VAR", "$FINAL_SCORE", ["SUBTRACT", ["ADD", ["ADD", "$FALLEN_HERO_COST", "$TOTAL_THREAT"], ["ADD", "$DAMAGE_ON_HEROES", ["MULTIPLY", "$GAME.roundNumber", 10]]], "$TOTAL_VICTORY_POINTS"]],
             ["LOG", "Final score: ", "$FINAL_SCORE"]
         ],
         "discardCard": [
@@ -450,7 +462,11 @@
                 ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
                 [
                     ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.groupId", ["ADD", "$ACTIVE_CARD.stackIndex", 1]],
-                    ["LOG", "$ALIAS_N", " detached ", "$ACTIVE_FACE.name", "."]
+                    ["LOG", "$ALIAS_N", " detached ", "$ACTIVE_FACE.name", "."],
+                    ["COND", 
+                        ["EQUAL", "$ACTIVE_CARD.rotation", -30],
+                        ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0]
+                    ]
                 ]
             ]
         ],

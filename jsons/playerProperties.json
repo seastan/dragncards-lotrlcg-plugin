@@ -16,18 +16,12 @@
             "label": "id:cardsDrawn",
             "type": "integer",
             "default": 1,
-            "min": 0,
-            "showInSettings": true
+            "min": 0
         },
         "refreshed": {
             "label": "id:refreshed",
             "type": "boolean", 
             "default": true
-        },
-        "showOnePlayer": {
-            "label": "id:showOnePlayer",
-            "type": "boolean", 
-            "default": false
         }
     }
 }

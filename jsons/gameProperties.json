@@ -14,7 +14,6 @@
         "label": "id:questingStat",
         "type": "option", 
         "default": "willpower", 
-        "showInSettings": true, 
         "options": [
           {
               "id": "willpower",
@@ -37,8 +36,7 @@
       "multiplayerHotkeys": {
         "label": "id:multiplayerHotkeys",
         "type": "boolean",
-        "default": false,
-        "showInSettings": true
+        "default": false
       }
     }
 }
