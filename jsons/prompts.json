@@ -192,6 +192,25 @@
                     "hotkey": "X"
                 }
             ]
+        },
+        "discardEndOfRound": {
+            "args": ["$PLAYED_CARD_NAME", "$DISCARD_CARD_NAME"],
+            "message": "{{$PLAYED_CARD_NAME}} was played. Discard {{$DISCARD_CARD_NAME}}?",
+            "options": [
+                {
+                    "label": "Yes",
+                    "hotkey": "Y",
+                    "code": [
+                        ["VAR", "$DISCARD_CARD", ["ONE_CARD", "$CARD", ["EQUAL", "$CARD.sides.A.name", "$DISCARD_CARD_NAME"]]],
+                        ["LOG", "{{$ALIAS_N}} eliminated {{$DISCARD_CARD_NAME}}."],
+                        ["MOVE_CARD", "$DISCARD_CARD.id", "{{$PLAYER_N}}Discard", 0]
+                    ]
+                },
+                {
+                    "label": "No",
+                    "hotkey": "N"
+                }
+            ]
         }
     }
 }
