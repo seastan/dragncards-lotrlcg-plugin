@@ -570,6 +570,38 @@
                 "ability": {
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
                 }
+            },
+            "dabe7ec6-1018-4ac7-8b54-b7ad49c0edc9": {
+                "_comment": "The Hobbit - On the Road",
+                "ability": {
+                    "A": [
+                        ["VAR", "$STAGE_NUM", ["GET_STAGE_NUM"]],
+                        ["LOG", "{{$ALIAS_N}} removed the encounter deck and discard pile from the game"],
+                        ["MOVE_STACKS", "sharedEncounterDeck", "sharedEncounterDeck2", -1, "top"],
+                        ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDiscard", -1, "top"],
+                        ["VAR", "$PLIGHT", 
+                            ["ONE_CARD", "$CARD", 
+                                ["AND", 
+                                    "$CARD.inPlay", 
+                                    ["IN_STRING", "$CARD.sides.A.traits", "Plight."]
+                                ]
+                            ]
+                        ],
+                        ["LOG", "{{$ALIAS_N}} removed the Plight card from the game"],
+                        ["DELETE_CARD", "$PLIGHT.id"],
+                        ["VAR", "$NEXT_STAGE", ["ADD", "$STAGE_NUM", 1]],
+                        ["LOG", "{{$ALIAS_N}} shuffled all Stage {{$NEXT_STAGE}} cards into the encounter deck and set the unique cards aside."],
+                        ["MOVE_STACKS", "sharedExtra{{$NEXT_STAGE}}", "sharedEncounterDeck", -1, "shuffle"],
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck.parentCards", [
+                            ["COND", 
+                                "$CARD.sides.A.unique",
+                                ["MOVE_CARD", "$CARD.id", "sharedSetAside", 0]
+                            ]
+                        ]],
+                        ["DEFINE", "$ACTIVE_CARD_ID", "$GAME.groupById.sharedMainQuest.parentCardIds.[0]"],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
             }
         }
     }

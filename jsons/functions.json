@@ -116,6 +116,10 @@
                 ["TRUE"],
                 ["LOG", "└── ", "The ability's conditions are not met."]
             ]
+        },
+        "GET_STAGE_NUM": {
+            "args": [],
+            "code": "$GAME.groupById.sharedMainQuest.parentCards.[0].currentFace.cost"
         }
     }
 }
