@@ -582,13 +582,20 @@
                         ["VAR", "$PLIGHT", 
                             ["ONE_CARD", "$CARD", 
                                 ["AND", 
-                                    "$CARD.inPlay", 
+                                    ["IN_STRING", "$CARD.sides.A.traits", "Stage {{$STAGE_NUM}}."],
                                     ["IN_STRING", "$CARD.sides.A.traits", "Plight."]
                                 ]
                             ]
                         ],
-                        ["LOG", "{{$ALIAS_N}} removed the Plight card {{$PLIGHT.sides.A.name}} from the game"],
-                        ["DELETE_CARD", "$PLIGHT.id"],
+                        ["COND", 
+                            ["NOT_EQUAL", "$PLIGHT", null],
+                            [
+                                ["LOG", "{{$ALIAS_N}} removed the Plight card {{$PLIGHT.sides.A.name}} from the game"],
+                                ["DELETE_CARD", "$PLIGHT.id"]
+                            ],
+                            ["TRUE"],
+                            ["LOG", "{{$ALIAS_N}} did not find a Plight card to remove."]   
+                        ],
                         ["VAR", "$NEXT_STAGE", ["ADD", "$STAGE_NUM", 1]],
                         ["LOG", "{{$ALIAS_N}} shuffled all Stage {{$NEXT_STAGE}} cards into the encounter deck and set the unique cards aside."],
                         ["MOVE_STACKS", "sharedExtra{{$NEXT_STAGE}}", "sharedEncounterDeck", -1, "shuffle"],
@@ -611,7 +618,15 @@
                                 ]
                             ]
                         ],
-                        ["LOG", "{{$ALIAS_N}} added the Plight card {{$PLIGHT.sides.A.name}} to the staging area."]
+                        ["COND", 
+                            ["NOT_EQUAL", "$PLIGHT", null],
+                            [
+                                ["LOG", "{{$ALIAS_N}} added the Plight card {{$PLIGHT.sides.A.name}} to the staging area."],
+                                ["MOVE_CARD", "$PLIGHT.id", "sharedStagingArea", -1]
+                            ],
+                            ["TRUE"],
+                            ["LOG", "{{$ALIAS_N}} did not find a Plight card to add to the staging area."]   
+                        ]
                     ]
                 }
             }
