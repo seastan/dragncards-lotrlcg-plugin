@@ -611,7 +611,7 @@
                                 ]
                             ]
                         ],
-                        ["LOG", "{{$ALIAS_N}} added the Plight card {{$PLIGHT.sides.A.name}} to the staging area."],
+                        ["LOG", "{{$ALIAS_N}} added the Plight card {{$PLIGHT.sides.A.name}} to the staging area."]
                     ]
                 }
             }
