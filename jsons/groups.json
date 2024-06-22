@@ -15,7 +15,17 @@
                 "controller": "shared",
                 "deckGroupId": "sharedEncounterDeck",
                 "discardGroupId": "sharedEncounterDiscard"
-            }
+            },
+            "menuOptions": [
+                {
+                    "label": "id:discardUntilEnemy",
+                    "actionList": ["DISCARD_UNTIL", "$ACTIVE_GROUP_ID", "Enemy"]
+                },
+                {
+                    "label": "id:discardUntilLocation",
+                    "actionList": ["DISCARD_UNTIL", "$ACTIVE_GROUP_ID", "Location"]
+                }
+            ]
         },
         "sharedEncounterDiscard": {
             "groupType": "discard",
