@@ -119,7 +119,9 @@
         },
         "GET_STAGE_NUM": {
             "args": [],
-            "code": "$GAME.groupById.sharedMainQuest.parentCards.[0].currentFace.cost"
+            "code": [
+              ["COND", "TRUE", "$GAME.groupById.sharedMainQuest.parentCards.[0].currentFace.cost"]
+            ]
         }
     }
 }

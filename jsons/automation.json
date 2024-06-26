@@ -1,5 +1,8 @@
 {
     "automation": {
+        "postNewGameActionList": [
+            ["LOAD_CARDS", "coreLeadership"]
+        ],
         "postLoadActionList": [
             ["VAR", "$LOADED_PLAYER_DECK", false],
             ["VAR", "$THREAT_RAISE", 0],
@@ -54,20 +57,6 @@
             ]
         ],
         "gameRules": [
-            { 
-                "_comment": "Automation for card attachment",
-                "type": "trigger", 
-                "listenTo": ["/cardById/*/parentCardId"],
-                "condition": [
-                    ["AND", 
-                        ["PREV", ["EQUAL", "$TARGET.parentCardId", "$TARGET.id"]],
-                        ["NOT_EQUAL", "$TARGET.parentCardId", "$TARGET.id"]
-                    ]
-                ],
-                "then": [
-                    ["LOG", "└── ", "$ALIAS_N", " triggered the automation for card attachment. ", "$TARGET.currentFace.name", " is now attached to ", "$TARGET.parentCard.currentFace.name","."]
-                ]
-            },
             {  
                 "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
@@ -578,29 +567,22 @@
                         ["VAR", "$STAGE_NUM", ["GET_STAGE_NUM"]],
                         ["LOG", "{{$ALIAS_N}} removed the encounter deck and discard pile from the game"],
                         ["MOVE_STACKS", "sharedEncounterDeck", "sharedEncounterDeck2", -1, "top"],
-                        ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDiscard", -1, "top"],
-                        ["VAR", "$PLIGHT", 
-                            ["ONE_CARD", "$CARD", 
-                                ["AND", 
-                                    ["IN_STRING", "$CARD.sides.A.traits", "Stage {{$STAGE_NUM}}."],
-                                    ["IN_STRING", "$CARD.sides.A.traits", "Plight."]
-                                ]
+                        ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDiscard2", -1, "top"],
+                        ["LOG", "{{$ALIAS_N}} removed all Stage {{$STAGE_NUM}} cards in play from the game."],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND",
+                                    "$CARD.inPlay",
+                                    ["IN_STRING", "$CARD.sides.A.traits", "Stage {{$STAGE_NUM}}."]
+                                ],
+                                ["DELETE_CARD", "$CARD_ID"]
                             ]
-                        ],
-                        ["COND", 
-                            ["NOT_EQUAL", "$PLIGHT", null],
-                            [
-                                ["LOG", "{{$ALIAS_N}} removed the Plight card {{$PLIGHT.sides.A.name}} from the game"],
-                                ["DELETE_CARD", "$PLIGHT.id"]
-                            ],
-                            ["TRUE"],
-                            ["LOG", "{{$ALIAS_N}} did not find a Plight card to remove."]   
-                        ],
+                        ]],
                         ["VAR", "$NEXT_STAGE", ["ADD", "$STAGE_NUM", 1]],
                         ["LOG", "{{$ALIAS_N}} shuffled all Stage {{$NEXT_STAGE}} cards into the encounter deck and set the unique cards aside."],
                         ["MOVE_STACKS", "sharedExtra{{$NEXT_STAGE}}", "sharedEncounterDeck", -1, "shuffle"],
                         ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck.parentCards", [
-                            ["COND", 
+                            ["COND",
                                 "$CARD.sides.A.unique",
                                 ["MOVE_CARD", "$CARD.id", "sharedSetAside", 0]
                             ]
