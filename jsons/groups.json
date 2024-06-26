@@ -222,6 +222,14 @@
             "onCardEnter": {
             }
         },
+        "sharedExtra8": {
+            "groupType": "inPlay",
+            "label": "id:sharedExtra8", 
+            "tableLabel": "id:sharedExtra8",
+            "canHaveAttachments": true,
+            "onCardEnter": {
+            }
+        },
         "player1Hand": {
             "groupType": "hand",
             "label": "id:player1Hand", 
