@@ -1,8 +1,5 @@
 {
     "automation": {
-        "postNewGameActionList": [
-            ["LOAD_CARDS", "coreLeadership"]
-        ],
         "postLoadActionList": [
             ["VAR", "$LOADED_PLAYER_DECK", false],
             ["VAR", "$THREAT_RAISE", 0],
