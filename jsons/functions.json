@@ -120,7 +120,11 @@
         "GET_STAGE_NUM": {
             "args": [],
             "code": [
-              ["COND", "TRUE", "$GAME.groupById.sharedMainQuest.parentCards.[0].currentFace.cost"]
+              ["COND", 
+                ["GREATER_THAN", ["LENGTH", "$GAME.groupById.sharedMainQuest.stackIds"], 0],
+                "$GAME.groupById.sharedMainQuest.parentCards.[0].currentFace.cost"],
+                ["TRUE"],
+                null
             ]
         }
     }
