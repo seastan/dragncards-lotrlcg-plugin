@@ -1,5 +1,6 @@
 {
     "groups": {
+        // Test comment
         "sharedFree": {
             "groupType": "inPlay",
             "label": "Table", 
