@@ -53,31 +53,32 @@
                 ]
             ]
         ],
-        "gameRules": [
-            {  
+        "gameRules": {
+            "removeCommittedWillpower": {  
                 "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/inPlay"],
                 "condition": ["AND", ["NOT", "$TARGET.inPlay"], ["PREV", "$TARGET.inPlay"], ["PREV", "$TARGET.committed"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
                     ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
-                    ["VAR", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
+                    ["VAR", "$PREV_TARGET", ["PREV", "$TARGET"]],
+                    ["VAR", "$COMMITTED_VAL", ["ADD", "$PREV_TARGET.currentFace.$QUESTING_STAT", "$PREV_TARGET.tokens.$QUESTING_STAT"]],
                     ["DECREASE_VAL", "/playerData/$TARGET.controller/willpower", "$COMMITTED_VAL"],
                     ["LOG", "└── ", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
                 ]
             },
-            { 
+            "adjustCommittedWillpower": { 
                 "_comment": "Adjust committed value when token is adjusted",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/willpower"],
-                "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "willpower"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
+                "condition": ["AND", "$TARGET.committed", "$TARGET.inPlay", ["EQUAL", "$GAME.questingStat", "willpower"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
                     ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
                 ]
             },
-            { 
+            "adjustCommittedAttack": { 
                 "_comment": "Adjust committed value when token is adjusted",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/attack"],
@@ -88,7 +89,7 @@
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
                 ]
             },
-            { 
+            "adjustCommittedDefense": { 
                 "_comment": "Adjust committed value when token is adjusted",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/defense"],
@@ -99,7 +100,7 @@
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
                 ]
             },
-            { 
+            "adjustStagingThreatWhenCardAddedRemoved": { 
                 "_comment": "Adjust staging threat when a card is added/removed",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/groupId"],
@@ -109,7 +110,7 @@
                             ],
                 "then": ["COMPUTE_STAGING_THREAT"] 
             },
-            { 
+            "adjustStagingThreatWhenCardFlipped": { 
                 "_comment": "Adjust staging threat when a staging card is flipped",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/currentSide"],
@@ -119,7 +120,7 @@
                             ],
                 "then": ["COMPUTE_STAGING_THREAT"]
             },
-            { 
+            "adjustStagingThreatWhenThreatTokenAddedRemoved": { 
                 "_comment": "Adjust staging threat when a threat token is added/removed",
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/tokens/threat"],
@@ -129,7 +130,7 @@
                     ["INCREASE_VAL", "/stagingThreat", "$DELTA"]
                 ]
             },
-            { 
+            "computeStagingThreat": { 
                 "_comment": "Adjust expected progress",
                 "type": "trigger", 
                 "listenTo": ["/stagingThreat", "/playerData/*/willpower"],
@@ -144,7 +145,7 @@
                     ["SET", "/questProgress", "$EXPECTED_PROGRESS"]
                 ]
             },
-            { 
+            "turnCardsRed": { 
                 "_comment": "Turn cards red when they have 0 hit points left",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
@@ -157,7 +158,7 @@
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             },
-            { 
+            "turnCardsGreen": { 
                 "_comment": "Turn cards green when they have 0 quest points left",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
@@ -170,27 +171,25 @@
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
                 ]
             }
-        ],
+        },
         "cards": {
             "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b": {
                 "_comment": "Celeborn",
-                "rules": [
-                    {
+                "rules": {
+                    "celebornEnterPlayTokens": {
                         "_comment": "Add tokens to Silvan allies that enter play if Celeborn is in play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
                             ["LOG", "└── ", "Added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."],
-                            ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
-                            ["VAR", "$COMMITTED_VAL", ["PREV", ["ADD", "$TARGET.currentFace.$QUESTING_STAT", "$TARGET.tokens.$QUESTING_STAT"]]],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
                             ["SET", "/cardById/$TARGET_ID/hasCelebornTokens", true]
                         ]
                     },
-                    {
+                    "celebornRoundEndTokens": {
                         "type": "trigger",
                         "listenTo": ["/roundNumber"],
                         "condition": ["TRUE"],
@@ -207,12 +206,12 @@
                             ]
                         ]]
                     }
-                ]
+                }
             },
             "51223bd0-ffd1-11df-a976-0801206c9005": {
                 "_comment": "Leadership Dain Ironfoot",
-                "rules": [
-                    {
+                "rules": {
+                    "dainEnterPlayTokens": {
                         "_comment": "Add tokens to Dwarf allies that enter play if Dain is in play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
@@ -223,16 +222,12 @@
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1]
                         ]
                     },
-                    { 
+                    "dainPassiveTokens": { 
                         "_comment": "Add/remove tokens on Dwarf characters depending on whether Dain is ready or not.",
-                        "type": "passive", 
-                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/exhausted"],
-                        "condition": [
-                            "AND", 
-                                "$THIS.inPlay",
-                                ["EQUAL", "$THIS.currentSide", "A"],
-                                ["EQUAL", "$THIS.exhausted", false]
-                        ],
+                        "type": "whileInPlay", 
+                        "side": "A",
+                        "listenTo": ["/cardById/$THIS_ID/exhausted"],
+                        "condition": ["EQUAL", "$THIS.exhausted", false],
                         "onDo": [
                             ["LOG", "└── ", "Added 1 willpower and 1 attack to each Dwarf character in play."],
                             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
@@ -256,12 +251,12 @@
                             ]]]
                         ]
                     }
-                ]
+                }
             },
             "1c149f93-9e3b-42fa-878c-80b29563a283": {
                 "_comment": "Ethir Swordsman",
-                "rules": [
-                    {
+                "rules": {
+                    "ethirSwordsmanEnterPlayTokens": {
                         "_comment": "Add tokens to allies that enter play if this ally is in play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
@@ -271,7 +266,7 @@
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1]
                         ]
                     },
-                    { 
+                    "ethirSwordsmanPassiveTokens": {
                         "_comment": "Add/remove tokens depending on whether this is in play.",
                         "type": "passive", 
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
@@ -301,12 +296,12 @@
                             ]]]
                         ]
                     }
-                ]
+                }
             },
             "2e84d805-365c-47ea-9c4f-e3f75daeb9a6": {
                 "_comment": "Warrior of Lossarnach",
-                "rules": [
-                    {
+                "rules": {
+                    "warriorOfLossarnachEnterPlayTokens": {
                         "_comment": "Add tokens to allies that enter play if this ally is in play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
@@ -316,7 +311,7 @@
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1]
                         ]
                     },
-                    { 
+                    "warriorOfLossarnachPassiveTokens": { 
                         "_comment": "Add/remove tokens depending on whether this is in play.",
                         "type": "passive", 
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
@@ -346,12 +341,12 @@
                             ]]]
                         ]
                     }
-                ]
+                }
             },
             "c00844d6-1c3c-4e8c-a46c-8de15b8408df": {
                 "_comment": "Knights of the Swan",
-                "rules": [
-                    {
+                "rules": {
+                    "knightsOfTheSwanEnterPlayTokens": {
                         "_comment": "Add tokens to allies that enter play if this ally is in play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
@@ -361,7 +356,7 @@
                             ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1]
                         ]
                     },
-                    { 
+                    "knightsOfTheSwanPassiveTokens": {
                         "_comment": "Add/remove tokens depending on whether this is in play.",
                         "type": "passive", 
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
@@ -390,12 +385,12 @@
                             ["LOG", "└── ", "$THIS.controller", " removed 1 attack from each Outlands character in play."]
                         ]
                     }
-                ]
+                }
             },
             "4cb4741d-c9d8-4d62-ab4f-50fa80c59fbb": {
                 "_comment": "Anfalas Herdsman",
-                "rules": [
-                    {
+                "rules": {
+                    "anfalasHerdsmanEnterPlayTokens": {
                         "_comment": "Add tokens to allies that enter play if this ally is in play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
@@ -405,7 +400,7 @@
                             ["LOG", "└── ", "$TARGET.controller", " added 1 hit point to ", "$TARGET.currentFace.name", "."]
                         ]
                     },
-                    { 
+                    "anfalasHerdsmanPassiveTokens": {
                         "_comment": "Add/remove tokens depending on whether this is in play.",
                         "type": "passive", 
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
@@ -435,32 +430,32 @@
                             ]]]
                         ]
                     }
-                ]
+                }
             },
             "d1a3a535-7679-4757-871c-80c50c003cff": {
                 "_comment": "Escape From Mount Gram",
-                "rules": [
-                    {
+                "rules": {
+                    "escapeFromMountGramSetup": {
                         "type": "entersPlay",
                         "side": "A",
                         "then": ["PROMPT", "player1", "mountGramSetup"]
                     }
-                ]
+                }
             },
             "fb7d55c5-7198-45c5-97d7-be4c6a26fa68": {
                 "_comment": "Temple of the Deceived",
-                "rules": [
-                    {
+                "rules": {
+                    "templeOfTheDeceivedSetup": {
                         "type": "entersPlay",
                         "side": "A",
                         "then": ["PROMPT", "player1", "templeSetup"]
                     }
-                ]
+                }
             },
             "03a074ce-d581-4672-b6ea-ed97b7afd415": {
                 "_comment": "The Glittering Caves",
-                "rules": [
-                    {
+                "rules": {
+                    "theGlitteringCavesSetup": {
                         "type": "entersPlay",
                         "side": "A",
                         "then": [
@@ -474,7 +469,7 @@
                             ["PROMPT", "player1", "glitteringSetup"]
                         ]
                     }
-                ]
+                }
             },
             "51223bd0-ffd1-11df-a976-0801213c9027": {
                 "_comment": "Vilya",
@@ -572,7 +567,7 @@
                                     "$CARD.inPlay",
                                     ["IN_STRING", "$CARD.sides.A.traits", "Stage {{$STAGE_NUM}}."]
                                 ],
-                                ["DELETE_CARD", "$CARD_ID"]
+                                ["MOVE_CARD", "$CARD_ID", "sharedExtra8", 0]
                             ]
                         ]],
                         ["VAR", "$NEXT_STAGE", ["ADD", "$STAGE_NUM", 1]],
@@ -585,7 +580,23 @@
                             ]
                         ]],
                         ["DEFINE", "$ACTIVE_CARD_ID", "$GAME.groupById.sharedMainQuest.parentCardIds.[0]"],
-                        ["ACTION_LIST", "discardCard"]
+                        ["ACTION_LIST", "discardCard"],
+                        ["COND",
+                            ["EQUAL", "$NEXT_STAGE", 7],
+                            [
+                                ["LOG", "{{$ALIAS_N}} shuffled the Stage 4 cards into the encounter deck"],
+                                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                                    ["COND",
+                                        ["AND",
+                                            ["NOT_EQUAL", "$CARD.sides.A.unique", 1],
+                                            ["IN_STRING", "$CARD.sides.A.traits", "Stage 4."]
+                                        ],
+                                        ["MOVE_CARD", "$CARD_ID", "sharedEncounterDeck", 0]
+                                    ]
+                                ]],
+                                ["SHUFFLE_GROUP", "sharedEncounterDeck"]
+                            ]
+                        ]
                     ],
                     "B": [
                         ["VAR", "$STAGE_NUM", ["GET_STAGE_NUM"]],
