@@ -54,6 +54,21 @@
             ]
         ],
         "gameRules": {
+            "triggerGameStepEffects": {
+                "_comment": "Trigger card effects for a given game step",
+                "type": "trigger",
+                "listenTo": ["/stepId"],
+                "condition": ["TRUE"],
+                "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                    ["COND",
+                        ["AND",
+                            ["DEFINED", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}"],
+                            ["EQUAL", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}.enabled", true]
+                        ],
+                        ["ACTION_LIST", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}.actionList"]
+                    ]
+                ]]
+            },
             "removeCommittedWillpower": {  
                 "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
@@ -149,7 +164,10 @@
                 "_comment": "Turn cards red when they have 0 hit points left",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
-                "condition": ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]],
+                "condition": ["AND", 
+                    ["GREATER_THAN", "$TARGET.tokens.damage", 0],
+                    ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]]
+                ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is destroyed."],
                     ["SET", "/cardById/$TARGET_ID/borderColor", "red"]
@@ -162,7 +180,10 @@
                 "_comment": "Turn cards green when they have 0 quest points left",
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
-                "condition": ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]],
+                "condition": ["AND", 
+                    ["GREATER_THAN", "$TARGET.tokens.progress", 0],
+                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]]
+                ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is explored."],
                     ["SET", "/cardById/$TARGET_ID/borderColor", "green"]
@@ -618,6 +639,53 @@
                             ["LOG", "{{$ALIAS_N}} did not find a Plight card to add to the staging area."]   
                         ]
                     ]
+                }
+            },
+            "c266126d-cf2d-4a61-aac7-28bac2d1ea0d": {
+                "_comment": "Treebeard",
+                "rules": {
+                    "treebeardResource": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Add 1 resource to Treebeard?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} added 1 resource to Treebeard."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801210c9012": {
+                "_comment": "Resourceful",
+                "rules": {
+                    "resourcefulResource": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Add 1 resource to Resourceful's attached hero?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["LOG", "{{$ALIAS_N}} added 1 resource to Resourceful's attached hero."],
+                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
+                        ]
+                    }
                 }
             }
         }

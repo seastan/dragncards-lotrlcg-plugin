@@ -109,7 +109,7 @@
             {
               "id": "target",
               "label": "id:target",
-              "actionType": "card",
+              "actionType": "engine",
               "actionList": "targetCard"
             },
             {
@@ -121,7 +121,7 @@
             {
               "id": "drawArrow",
               "label": "id:drawArrow",
-              "actionType": "card",
+              "actionType": "engine",
               "actionList": "drawArrow"
             }
         ],
@@ -165,7 +165,7 @@
             {
               "id": "clearTargets",
               "label": "id:clearTargets",
-              "actionType": "game",
+              "actionType": "engine",
               "actionList": "clearTargets"
             },
             {
@@ -175,15 +175,9 @@
               "actionList": "undo"
             },
             {
-              "id": "undoMany",
-              "label": "id:undoMany",
-              "actionType": "engine",
-              "actionList": "undoMany"
-            },
-            {
               "id": "nextStep",
               "label": "id:nextStep",
-              "actionType": "game",
+              "actionType": "engine",
               "actionList": "nextStep"
             },
             {
@@ -199,10 +193,10 @@
               "actionList": "decreaseThreat"
             },
             {
-              "id": "save",
+              "id": "saveGame",
               "label": "id:save",
               "actionType": "engine",
-              "actionList": "save"
+              "actionList": "saveGame"
             },
             {
               "id": "revealDeck2",

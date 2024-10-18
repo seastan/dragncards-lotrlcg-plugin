@@ -37,7 +37,8 @@
                     ["AND",
                         ["EQUAL", "$CARD.controller", "$PLAYER_N"],
                         ["EQUAL", "$CARD.inPlay", true],
-                        ["NOT_EQUAL", "$CARD.extraResources", null]
+                        ["NOT_EQUAL", "$CARD.extraResources", null],
+                        ["NOT_EQUAL", "$CARD.extraResources", 0]
                     ],
                     [
                         ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", "$CARD.extraResources"],
