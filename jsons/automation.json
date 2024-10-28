@@ -1,5 +1,8 @@
 {
     "automation": {
+        "postNewGameActionList": [
+            ["PROMPT", "player1", "setPlayerCount"]
+        ],
         "postLoadActionList": [
             ["VAR", "$LOADED_PLAYER_DECK", false],
             ["VAR", "$THREAT_RAISE", 0],
@@ -571,74 +574,6 @@
                 "_comment": "The Eagles Are Coming",
                 "ability": {
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
-                }
-            },
-            "dabe7ec6-1018-4ac7-8b54-b7ad49c0edc9": {
-                "_comment": "The Hobbit - We Must Away",
-                "ability": {
-                    "A": [
-                        ["VAR", "$STAGE_NUM", ["GET_STAGE_NUM"]],
-                        ["LOG", "{{$ALIAS_N}} removed the encounter deck and discard pile from the game"],
-                        ["MOVE_STACKS", "sharedEncounterDeck", "sharedEncounterDeck2", -1, "top"],
-                        ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDiscard2", -1, "top"],
-                        ["LOG", "{{$ALIAS_N}} removed all Stage {{$STAGE_NUM}} cards in play from the game."],
-                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND",
-                                    "$CARD.inPlay",
-                                    ["IN_STRING", "$CARD.sides.A.traits", "Stage {{$STAGE_NUM}}."]
-                                ],
-                                ["MOVE_CARD", "$CARD_ID", "sharedExtra8", 0]
-                            ]
-                        ]],
-                        ["VAR", "$NEXT_STAGE", ["ADD", "$STAGE_NUM", 1]],
-                        ["LOG", "{{$ALIAS_N}} shuffled all Stage {{$NEXT_STAGE}} cards into the encounter deck and set the unique cards aside."],
-                        ["MOVE_STACKS", "sharedExtra{{$NEXT_STAGE}}", "sharedEncounterDeck", -1, "shuffle"],
-                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck.parentCards", [
-                            ["COND",
-                                "$CARD.sides.A.unique",
-                                ["MOVE_CARD", "$CARD.id", "sharedSetAside", 0]
-                            ]
-                        ]],
-                        ["DEFINE", "$ACTIVE_CARD_ID", "$GAME.groupById.sharedMainQuest.parentCardIds.[0]"],
-                        ["ACTION_LIST", "discardCard"],
-                        ["COND",
-                            ["EQUAL", "$NEXT_STAGE", 7],
-                            [
-                                ["LOG", "{{$ALIAS_N}} shuffled the Stage 4 cards into the encounter deck"],
-                                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                                    ["COND",
-                                        ["AND",
-                                            ["NOT_EQUAL", "$CARD.sides.A.unique", 1],
-                                            ["IN_STRING", "$CARD.sides.A.traits", "Stage 4."]
-                                        ],
-                                        ["MOVE_CARD", "$CARD_ID", "sharedEncounterDeck", 0]
-                                    ]
-                                ]],
-                                ["SHUFFLE_GROUP", "sharedEncounterDeck"]
-                            ]
-                        ]
-                    ],
-                    "B": [
-                        ["VAR", "$STAGE_NUM", ["GET_STAGE_NUM"]],
-                        ["VAR", "$PLIGHT", 
-                            ["ONE_CARD", "$CARD", 
-                                ["AND", 
-                                    ["IN_STRING", "$CARD.sides.A.traits", "Stage {{$STAGE_NUM}}."],
-                                    ["IN_STRING", "$CARD.sides.A.traits", "Plight."]
-                                ]
-                            ]
-                        ],
-                        ["COND", 
-                            ["NOT_EQUAL", "$PLIGHT", null],
-                            [
-                                ["LOG", "{{$ALIAS_N}} added the Plight card {{$PLIGHT.sides.A.name}} to the staging area."],
-                                ["MOVE_CARD", "$PLIGHT.id", "sharedStagingArea", -1]
-                            ],
-                            ["TRUE"],
-                            ["LOG", "{{$ALIAS_N}} did not find a Plight card to add to the staging area."]   
-                        ]
-                    ]
                 }
             },
             "c266126d-cf2d-4a61-aac7-28bac2d1ea0d": {

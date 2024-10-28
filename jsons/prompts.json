@@ -1,5 +1,48 @@
 {
     "prompts": {
+        "basePrompt": {
+            "args": ["$MESSAGE"],
+            "message": "$MESSAGE",
+            "options": []
+        },
+        "setPlayerCount": {
+            "args": [],
+            "message": "How many players?",
+            "options": [
+                {
+                    "label": "1",
+                    "hotkey": "1",
+                    "code": [
+                        ["SET_LAYOUT", "shared", "layout1Player"],
+                        ["SET", "/numPlayers", 1]
+                    ]
+                },
+                {
+                    "label": "2",
+                    "hotkey": "2",
+                    "code": [
+                        ["SET_LAYOUT", "shared", "layout2Player"],
+                        ["SET", "/numPlayers", 2]
+                    ]
+                },
+                {
+                    "label": "3",
+                    "hotkey": "3",
+                    "code": [
+                        ["SET_LAYOUT", "shared", "layout3Player"],
+                        ["SET", "/numPlayers", 3]
+                    ]
+                },
+                {
+                    "label": "4",
+                    "hotkey": "4",
+                    "code": [
+                        ["SET_LAYOUT", "shared", "layout4Player"],
+                        ["SET", "/numPlayers", 4]
+                    ]
+                }
+            ]
+        },
         "victoryDisplay": {
             "args": ["$CARD_ID"],
             "message": "This card you discarded had victory points. Move it to the victory display instead?",
