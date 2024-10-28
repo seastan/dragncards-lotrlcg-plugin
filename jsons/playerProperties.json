@@ -22,6 +22,11 @@
             "label": "id:refreshed",
             "type": "boolean", 
             "default": true
+        },
+        "alwaysDo": {
+            "label": "id:alwaysDo",
+            "type": "object", 
+            "default": {}
         }
     }
 }

@@ -1,5 +1,21 @@
 {
     "labels": {
+        "yes": {
+            "English": "Yes",
+            "Chinese": "是"
+        },
+        "no": {
+            "English": "No",
+            "Chinese": "否"
+        },
+        "alwaysDo": {
+            "English": "Always do",
+            "Chinese": "总是执行"
+        },
+        "always": {
+            "English": "Always",
+            "Chinese": "总是"
+        },
         "sharedQuestDiscard": {
             "English": "Shared Quest Discard",
             "Chinese": "共享探险弃牌"
