@@ -57,6 +57,72 @@
             ]
         ],
         "gameRules": {
+            "step_1.R": {
+                "_comment": "Trigger resource phase framework effects",
+                "type": "trigger",
+                "listenTo": ["/stepId"],
+                "condition": ["EQUAL", "$GAME.stepId", "1.R"],
+                "then": [
+                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                        ["VAR", "$NUM_DRAWN", "$PLAYER_DATA.$PLAYER_I.cardsDrawn"],
+                        ["LOG", "├── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
+                        ["DRAW_CARD", "$NUM_DRAWN", "$PLAYER_I"]
+                    ]],
+                    ["LOG", "└── ", "Each hero gains 1 resource."],
+                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                        ["COND",
+                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.currentFace.type", "Hero"]],
+                            ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
+                        ]
+                    ]]
+                ]
+            },
+            "step_3.5": {
+                "_comment": "Trigger end of quest phase framework effects",
+                "type": "trigger",
+                "listenTo": ["/stepId"],
+                "condition": ["EQUAL", "$GAME.stepId", "3.5"],
+                "then": [
+                    ["LOG", "└── ", "All characters were removed from the quest."],
+                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                        ["COND",
+                            ["EQUAL", "$CARD.questing", true],
+                            [
+                                ["SET", "/cardById/$CARD_ID/questing", false],
+                                ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
+                            ]
+                        ]
+                    ]]
+                ]
+            },
+            "step_7.1": {
+                "_comment": "Trigger refresh phase framework effects",
+                "type": "trigger",
+                "listenTo": ["/stepId"],
+                "condition": ["EQUAL", "$GAME.stepId", "7.1"],
+                "then": [
+                    ["VAR", "$NEXT_PLAYER", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
+                    ["LOG", "├── The first player is now {{$NEXT_PLAYER}}"],
+                    ["SET", "/firstPlayer", "$NEXT_PLAYER"],
+                    ["LOG", "├── Readied all cards in play."],
+                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", "$CARD.inPlay", true],
+                                ["NOT_EQUAL", "$CARD.preventRefresh", true]
+                            ],
+                            [
+                                ["SET", "/cardById/$CARD_ID/rotation", 0],
+                                ["SET", "/cardById/$CARD_ID/exhausted", false]
+                            ]
+                        ]
+                    ]],    
+                    ["LOG", "└── ", "Each player increased their threat by 1."],        
+                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
+                        ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", 1]
+                    ]
+                ]
+            },
             "triggerGameStepEffects": {
                 "_comment": "Trigger card effects for a given game step",
                 "type": "trigger",

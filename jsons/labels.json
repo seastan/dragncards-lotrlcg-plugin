@@ -1,5 +1,9 @@
 {
     "labels": {
+        "advanceTheRound": {
+            "English": "Advance the round",
+            "Chinese": "推进回合"
+        },
         "yes": {
             "English": "Yes",
             "Chinese": "是"
@@ -549,8 +553,8 @@
             "Chinese": "恢复"
         },
         "newRound": {
-            "English": "New round",
-            "Chinese": "新一回合"
+            "English": "New round (Deprecated)",
+            "Chinese": "新回合（已弃用）"
         },
         "clearTargets": {
             "English": "Clear Targets",

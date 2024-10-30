@@ -157,10 +157,10 @@
               "actionList": "refresh"
             },
             {
-              "id": "newRound",
-              "label": "id:newRound",
+              "id": "advanceRound",
+              "label": "id:advanceTheRound",
               "actionType": "game",
-              "actionList": "newRound"
+              "actionList": "advanceRound"
             },
             {
               "id": "clearTargets",

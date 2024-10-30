@@ -1,135 +1,52 @@
 {
     "actionLists": {
-        "newRound": [
-            ["COND",
-                ["EQUAL", "$GAME.playerData.$PLAYER_N.refreshed", false],
-                ["ACTION_LIST", "refresh"]
-            ],
-            ["VAR", "$END_OF_ROUND_TRIGGERS", false],
-            ["COND",
-                ["NOT_EQUAL", "$GAME.stepId", "0.1"],
+        "advanceRound": [
+            ["VAR", "$HALT", false],
+            ["CLEAR_ALL_TARGETS"],
+            ["WHILE", 
+                ["NOT", "$HALT"],
                 [
-                    ["ADVANCE_TO_STEP", "0.1"],
+                    ["NEXT_STEP"],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                         ["COND",
                             ["AND",
                                 ["EQUAL", "$CARD.inPlay", true],
-                                ["OR",
-                                    ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                                    ["AND",
-                                        ["EQUAL", "$CARD.controller", "shared"],
-                                        ["EQUAL", "$PLAYER_N", "player1"]
-                                    ]
-                                ],
-                                ["LOG_DEV", "{{$CARD.currentFace.keywords}} {{$CARD.currentFace.text}}"],
-                                ["IN_STRING", "{{$CARD.currentFace.keywords}} {{$CARD.currentFace.text}}", "nd of the round"]
+                                ["EQUAL", "$CARD.currentFace.triggers.{{$GAME.stepId}}", true]
                             ],
                             [
-                                ["LOG", "{{$ALIAS_N}} targetted {{$CARD.currentFace.name}} for end of round triggers."],
                                 ["TARGET", "$CARD_ID"],
-                                ["UPDATE_VAR", "$END_OF_ROUND_TRIGGERS", true]
+                                ["UPDATE_VAR", "$HALT", true]
                             ]
                         ]
-                    ]]
-                ]
-            ],
-            ["COND",
-                "$END_OF_ROUND_TRIGGERS",
-                ["LOG", "{{$ALIAS_N}}", " has some end-of-round triggers to resolve. Once resolved, press the new round button again to advance to the resource phase."],
-                ["TRUE"],
-                [
-                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                        ["SET", "/cardById/$CARD_ID/targeting/$PLAYER_N", false]
                     ]],
-                    ["ACTION_LIST", "resourcePhase"]
+                    ["COND", 
+                        "$HALT", 
+                        ["LOG", "{{$ALIAS_N}} halted round advancement due to triggers."]
+                    ],
+                    ["COND", 
+                        ["EQUAL", "$GAME.stepId", "1.R"],
+                        [
+                            ["LOG", "{{$ALIAS_N}} halted round advancement at the planning phase special action window."],
+                            ["UPDATE_VAR", "$HALT", true]
+                        ]
+                    ],
+                    ["COND", 
+                        ["EQUAL", "$GAME.stepId", "$GAME.stopAtStep"],
+                        [
+                            ["LOG", "{{$ALIAS_N}} halted round advancement."],
+                            ["UPDATE_VAR", "$HALT", true],
+                            ["SET", "/stopAtStep", null]
+                        ]
+                    ]
                 ]
             ]
         ],
-        "resourcePhase": [
-            ["COND",
-                ["EQUAL", "$PLAYER_N", "player1"],
-                [
-                    ["ADVANCE_TO_STEP", "1.R"],
-                    ["COND", 
-                        ["EQUAL", "$GAME.roundNumber", 0], 
-                        [
-                            ["INCREASE_VAL", "/roundNumber", 1],
-                            ["LOG", "$ALIAS_N", " started round ", "$GAME.roundNumber", "."]
-                        ]
-                    ]
-                ]
-            ],
-            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
-                ["VAR", "$CURRENT_SIDE", "$CARD.currentSide"],
-                ["COND",
-                    ["AND",
-                        ["EQUAL", "$CARD.sides.$CURRENT_SIDE.type", "Hero"],
-                        ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                        ["EQUAL", "$CARD.inPlay", true]
-                    ],
-                    [
-                        ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1],
-                        ["LOG", "$ALIAS_N", " added 1 resource token to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
-                    ]
-                ],
-                ["COND",
-                    ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                    ["SET", "/cardById/$CARD_ID/committed", false]
-                ],
-                ["COND",
-                    ["AND",
-                        ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                        ["EQUAL", "$CARD.inPlay", true],
-                        ["NOT_EQUAL", "$CARD.extraResources", null],
-                        ["NOT_EQUAL", "$CARD.extraResources", 0]
-                    ],
-                    [
-                        ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", "$CARD.extraResources"],
-                        ["LOG", "$ALIAS_N", " added ", ["OBJ_GET_VAL", "$CARD", "extraResources"]," extra resource token(s) to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"]]
-                    ]
-                ]
-            ]],
-            ["COND",
-                ["EQUAL", "$GAME.playerData.$PLAYER_N.cardsDrawn", 1],
-                [
-                    ["DRAW_CARD"],
-                    ["LOG", "$ALIAS_N", " drew 1 card."]
-                ],
-                true,
-                [
-                    ["DRAW_CARD", "$GAME.playerData.$PLAYER_N.cardsDrawn"],
-                    ["LOG", "$ALIAS_N", " drew ", "$GAME.playerData.$PLAYER_N.cardsDrawn", " cards."]
-                ]
-            ],
-            ["SET", "/playerData/$PLAYER_N/willpower", 0],
-            ["SET", "/playerData/$PLAYER_N/refreshed", false]
+        "newRound": [
+            ["LOG", "{{ALIAS_N}} tried to start a new round (Shift+N), but this hotkey is no longer in use. Please have one player 'Advance the Round' (Shift+V) instead."]
         ],
         "refresh": [
-            ["COND",
-                ["EQUAL", "$PLAYER_N", "player1"],
-                [
-                    ["ADVANCE_TO_STEP", "7.R"],
-                    ["SET", "/firstPlayer", ["NEXT_PLAYER", "$GAME.firstPlayer"]]
-                ]
-            ],
-            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
-                ["COND",
-                    ["AND",
-                        ["EQUAL", "$CARD.controller", "$PLAYER_N"],
-                        ["EQUAL", "$CARD.inPlay", true],
-                        ["NOT_EQUAL", "$CARD.preventRefresh", true]
-                    ],
-                    [
-                        ["SET", "/cardById/$CARD_ID/rotation", 0],
-                        ["SET", "/cardById/$CARD_ID/exhausted", false],
-                        ["SET", "/cardById/$CARD_ID/questing", false],
-                        ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
-                    ]
-                ]
-            ]],
-            ["ACTION_LIST", "increaseThreat"],
-            ["SET", "/playerData/$PLAYER_N/refreshed", true],
-            ["LOG", "$ALIAS_N", " refreshed."]
+            ["LOG", "{{ALIAS_N}} indicated that they would like to perform Refresh Actions. The next time 'Advance the Round' (Shift+V) is pressed, the round will stop at at step 7.R."],
+            ["SET", "/stopAtStep", "7.R"]
         ],
         "revealEncounterFaceup": [
             ["VAR", "$REVEAL_FACEDOWN", false],
