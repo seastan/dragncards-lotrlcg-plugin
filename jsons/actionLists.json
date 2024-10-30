@@ -7,11 +7,12 @@
                 ["NOT", "$HALT"],
                 [
                     ["NEXT_STEP"],
+                    ["VAR", "$STEP", "$GAME.stepId"],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                         ["COND",
                             ["AND",
                                 ["EQUAL", "$CARD.inPlay", true],
-                                ["EQUAL", "$CARD.currentFace.triggers.{{$GAME.stepId}}", true]
+                                ["EQUAL", "$CARD.currentFace.triggers.$STEP", true]
                             ],
                             [
                                 ["TARGET", "$CARD_ID"],
@@ -24,14 +25,14 @@
                         ["LOG", "{{$ALIAS_N}} halted round advancement due to triggers."]
                     ],
                     ["COND", 
-                        ["EQUAL", "$GAME.stepId", "1.R"],
+                        ["EQUAL", "$STEP", "1.R"],
                         [
                             ["LOG", "{{$ALIAS_N}} halted round advancement at the planning phase special action window."],
                             ["UPDATE_VAR", "$HALT", true]
                         ]
                     ],
                     ["COND", 
-                        ["EQUAL", "$GAME.stepId", "$GAME.stopAtStep"],
+                        ["EQUAL", "$STEP", "$GAME.stopAtStep"],
                         [
                             ["LOG", "{{$ALIAS_N}} halted round advancement."],
                             ["UPDATE_VAR", "$HALT", true],
