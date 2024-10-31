@@ -89,7 +89,7 @@
                             ["EQUAL", "$CARD.committed", true],
                             [
                                 ["SET", "/cardById/$CARD_ID/committed", false],
-                                ["SET", "/cardById/$CARD_ID/tokens/committed", 0]
+                                ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
                             ]
                         ]
                     ]]

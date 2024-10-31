@@ -121,13 +121,9 @@
             ["LOG", "$ALIAS_N", " drew 1 card."]
         ],
         "dealShadows": [
-            ["VAR", "$STEP_ID", "6.2"],
             ["COND",
-                ["AND", ["EQUAL", "$GAME.playerUi.playerN", "player1"], ["NOT_EQUAL", "$STEP_ID", "$GAME.stepId"]],
-                [
-                    ["SET", "/stepId", "$STEP_ID"],
-                    ["LOG", "$ALIAS_N", " set the round step to ", "$GAME.steps.$STEP_ID.label", "."]
-                ]
+                ["NOT_EQUAL", "$GAME.stepId", "6.2"],
+                ["ADVANCE_TO_STEP", "6.2"]
             ],
             ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                 ["VAR", "$ENGAGED_CARDS", "$GAME.groupById.{{$PLAYER_I}}Engaged.parentCards"],
@@ -254,13 +250,9 @@
             ]
         ],
         "toggleCommitWithoutExhausting": [
-            ["VAR", "$STEP_ID", "3.2"],
-            ["COND",
-                ["AND", ["EQUAL", "$PLAYER_N", "player1"], ["NOT_EQUAL", "$GAME.stepId", "$STEP_ID"]],
-                [
-                    ["SET", "/stepId", "$STEP_ID"],
-                    ["LOG", "$ALIAS_N", " set the round step to ", "$GAME.steps.$STEP_ID.label", "."]
-                ]
+            ["COND", 
+                ["NOT_EQUAL", "$GAME.stepId", "3.2"],
+                ["ADVANCE_TO_STEP", "3.2"]
             ],
             ["COND",
                 ["AND", ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
