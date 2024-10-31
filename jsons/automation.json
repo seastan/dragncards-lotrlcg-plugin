@@ -86,10 +86,10 @@
                     ["LOG", "└── ", "All characters were removed from the quest."],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                         ["COND",
-                            ["EQUAL", "$CARD.questing", true],
+                            ["EQUAL", "$CARD.committed", true],
                             [
-                                ["SET", "/cardById/$CARD_ID/questing", false],
-                                ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
+                                ["SET", "/cardById/$CARD_ID/committed", false],
+                                ["SET", "/cardById/$CARD_ID/tokens/committed", 0]
                             ]
                         ]
                     ]]
