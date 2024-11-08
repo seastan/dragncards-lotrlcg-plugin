@@ -92,6 +92,9 @@
                                 ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
                             ]
                         ]
+                    ]],
+                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                        ["SET", "/playerData/$PLAYER_I/willpower", 0]
                     ]]
                 ]
             },
