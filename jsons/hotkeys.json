@@ -16,6 +16,7 @@
             {"key": "E", "actionList": "revealEncounterFaceup", "label": "id:revealEncounterCard"},
             {"key": "Shift+E", "actionList": "revealEncounterFacedown", "label": "id:revealFacedownEncounterCard"},
             {"key": "K", "actionList": "revealSecondaryFaceup", "label": "id:revealCardFromSecondEncounterDeck"},
+            {"key": "M", "actionList": "toggleMap", "label": "id:toggleTheMap"},
             {"key": "Shift+K", "actionList": "revealSecondaryFacedown", "label": "id:revealFacedownCardFromSecondEncounterDeck"},
             {"key": "Shift+M", "actionList": "mulligan", "label": "id:mulligan"},
             {"key": "Shift+V", "actionList": "advanceRound", "label": "id:advanceTheRound"},

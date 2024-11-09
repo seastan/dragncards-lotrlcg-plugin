@@ -116,6 +116,20 @@
                 ]
             ]
         ],
+        "toggleMap": [
+            ["COND", 
+                "$GAME.playerData.$PLAYER_N.layout.regions.sharedMap.visible",
+                [
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedMap/visible", false],
+                    ["LOG", "$ALIAS_N", " hid the map."]
+                ],
+                ["TRUE"],
+                [
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedMap/visible", true],
+                    ["LOG", "$ALIAS_N", " is looking at the map."]
+                ]
+            ]
+        ],
         "drawCard": [
             ["DRAW_CARD"],
             ["LOG", "$ALIAS_N", " drew 1 card."]

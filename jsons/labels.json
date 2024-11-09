@@ -1,5 +1,13 @@
 {
     "labels": {
+        "map": {
+            "English": "Map",
+            "Chinese": "地图"
+        },
+        "toggleTheMap": {
+            "English": "Toggle the map",
+            "Chinese": "切换地图"
+        },
         "advanceTheRound": {
             "English": "Advance the round",
             "Chinese": "推进回合"

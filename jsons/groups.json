@@ -1,11 +1,11 @@
 {
     "groups": {
-        // Test comment
-        "sharedFree": {
+        "sharedMap": {
             "groupType": "inPlay",
-            "label": "Table", 
+            "label": "id:map", 
             "tableLabel": "",
             "onCardEnter": {
+                "controller": "shared"
             }
         },
         "sharedEncounterDeck": {
