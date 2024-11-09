@@ -237,6 +237,7 @@
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/damage", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
                 "condition": ["AND", 
+                    ["NOT_EQUAL", "$TARGET.currentFace.hitPoints", null],
                     ["GREATER_THAN", "$TARGET.tokens.damage", 0],
                     ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]]
                 ],
@@ -253,6 +254,7 @@
                 "type": "passive", 
                 "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
                 "condition": ["AND", 
+                    ["NOT_EQUAL", "$TARGET.currentFace.questPoints", null],
                     ["GREATER_THAN", "$TARGET.tokens.progress", 0],
                     ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]]
                 ],
