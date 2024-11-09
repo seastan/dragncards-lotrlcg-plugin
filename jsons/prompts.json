@@ -177,6 +177,15 @@
                 }
             ]
         },
+        "mapHotkeyReminder": {
+            "args": [],
+            "message": "This quest uses a 'map'. Use the M key to toggle view of the map region.",
+            "options": [
+                {
+                    "label": "Ok",
+                    "hotkey": "K"
+                }]
+        },
         "glitteringSetup": {
             "args": [],
             "message": "After you finish rearranging the Caves Map so that all the caves are connected, press Setup to complete the remainder of the setup.",
@@ -188,6 +197,10 @@
                         ["VAR", "$NUM_CLUES", ["MULTIPLY", "$GAME.numPlayers", 2]],
                         ["VAR", "$COORDS",
                             ["LIST",
+                                ["LIST", 0, 0],
+                                ["LIST", 0, 1],
+                                ["LIST", 0, 2],
+                                ["LIST", 0, 3],
                                 ["LIST", 1, 0],
                                 ["LIST", 1, 1],
                                 ["LIST", 1, 2],
@@ -195,16 +208,35 @@
                                 ["LIST", 2, 0],
                                 ["LIST", 2, 1],
                                 ["LIST", 2, 2],
-                                ["LIST", 2, 3],
-                                ["LIST", 3, 0],
-                                ["LIST", 3, 1],
-                                ["LIST", 3, 2],
-                                ["LIST", 3, 3]
+                                ["LIST", 2, 3]
                             ]
                         ],
+                        ["VAR", "$SORTED_BY_LEFT", ["SORT_OBJ_LIST",
+                            "$GAME.groupById.sharedMap.stackIds",
+                            "$STACK_ID",
+                            "$GAME.stackById.$STACK_ID.left"
+                        ]],
+                        ["VAR", "$SORTED_BY_TOP", ["SORT_OBJ_LIST",
+                            "$GAME.groupById.sharedMap.stackIds",
+                            "$STACK_ID",
+                            "$GAME.stackById.$STACK_ID.top"
+                        ]],
+                        ["FOR_EACH_START_STOP_STEP", "$I", 0, 12, 1, [
+                            ["VAR", "$ROW", ["SUBTRACT", 2, ["TO_INT", ["DIVIDE", "$I", 4]]]],
+                            ["VAR", "$STACK_ID", "$SORTED_BY_TOP.[$I]"],
+                            ["VAR", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
+                            ["SET" , "/cardById/$CARD_ID/row", "$ROW"],
+                            ["LOG_DEV", "{{$GAME.cardById.$CARD_ID.sides.A.name}}: row {{$ROW}}"],
+                            ["VAR", "$COL", ["TO_INT", ["DIVIDE", "$I", 3]] ],
+                            ["VAR", "$STACK_ID", "$SORTED_BY_LEFT.[$I]"],
+                            ["VAR", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
+                            ["SET" , "/cardById/$CARD_ID/col", "$COL"],
+                            ["LOG_DEV", "{{$GAME.cardById.$CARD_ID.sides.A.name}}: col {{$COL}}"]
+                        ]],
                         ["WHILE", ["NOT_EQUAL", "$COORDS.[0].[1]", 3], ["UPDATE_VAR", "$COORDS", ["SHUFFLE_LIST", "$COORDS"]]],
                         ["FOR_EACH_START_STOP_STEP", "$I", 0, "$NUM_CLUES", 1, [
-                            ["MOVE_CARD", ["GET_CARD_ID", "sharedEncounterDeck2", 0, 0], "sharedExtra{{$COORDS.[$I].[0]}}", "$COORDS.[$I].[1]", 1]
+                            ["VAR", "$ATTACH_TO", ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.row", "$COORDS.[$I].[0]"], ["EQUAL", "$C.col", "$COORDS.[$I].[1]"]]]],
+                            ["ATTACH_CARD", ["GET_CARD_ID", "sharedEncounterDeck2", 0, 0], "$ATTACH_TO.id"]
                         ]],
                         ["VAR", "$HELMS_HORN_ATTACHMENT", "$GAME.groupById.sharedEncounterDeck2.parentCards.[0]"],
                         ["VAR", "$HELMS_HORN_CARD", ["ONE_CARD", "$C", ["EQUAL", "$C.databaseId", "066c1c63-c480-40ea-9c59-581cae333e58"]]],
