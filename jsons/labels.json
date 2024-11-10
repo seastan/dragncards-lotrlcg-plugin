@@ -1,5 +1,13 @@
 {
     "labels": {
+        "allPlayerDecksLoaded": {
+            "English": "All player decks loaded",
+            "Chinese": "所有玩家牌组已加载"
+        },
+        "pressMToShowHide": {
+            "English": "Press M to show/hide",
+            "Chinese": "按 M 键显示/隐藏"
+        },
         "map": {
             "English": "Map",
             "Chinese": "地图"

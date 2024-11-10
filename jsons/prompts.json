@@ -13,6 +13,7 @@
                     "label": "1",
                     "hotkey": "1",
                     "code": [
+                        ["LOG", "{{$ALIAS_N}} set the layout for 1 player."],
                         ["SET_LAYOUT", "shared", "layout1Player"],
                         ["SET", "/numPlayers", 1]
                     ]
@@ -21,6 +22,7 @@
                     "label": "2",
                     "hotkey": "2",
                     "code": [
+                        ["LOG", "{{$ALIAS_N}} set the layout for 2 players."],
                         ["SET_LAYOUT", "shared", "layout2Player"],
                         ["SET", "/numPlayers", 2]
                     ]
@@ -29,6 +31,7 @@
                     "label": "3",
                     "hotkey": "3",
                     "code": [
+                        ["LOG", "{{$ALIAS_N}} set the layout for 3 players."],
                         ["SET_LAYOUT", "shared", "layout3Player"],
                         ["SET", "/numPlayers", 3]
                     ]
@@ -37,6 +40,7 @@
                     "label": "4",
                     "hotkey": "4",
                     "code": [
+                        ["LOG", "{{$ALIAS_N}} set the layout for 4 players."],
                         ["SET_LAYOUT", "shared", "layout4Player"],
                         ["SET", "/numPlayers", 4]
                     ]
@@ -60,6 +64,69 @@
                 }
             ]
         },
+        "fortressOfNurnSetup": {
+            "args": [],
+            "message": "After all player decks are loaded, press Setup to complete the remainder of the setup.",
+            "options": [
+                {
+                    "label": "Setup",
+                    "hotkey": "S",
+                    "code": [
+                        ["COND", 
+                            ["NOT", "$GAME.allPlayerDecksLoaded"],
+                            [
+                                ["LOG", "Not all player decks are loaded. Load all player decks before running this function."],
+                                ["PROMPT", "player1", "fortressOfNurnSetup"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "{{$ALIAS_N}} finished setting up The Fortress of Nurn."],
+                                //["SET", "/groupById/sharedMap/onCardEnter/inPlay", false],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 0, 4, 1, [
+                                    ["VAR", "$STACK_ID", "$GAME.groupById.sharedMap.stackIds.[$I]"],
+                                    ["VAR", "$LEFT", ["CALC", "{{$I}}*22+3"]],
+                                    ["SET", "/stackById/$STACK_ID/left", "{{$LEFT}}%"],
+                                    ["SET", "/stackById/$STACK_ID/top", "25%"]
+                                ]],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 0, 4, 1, [
+                                    ["VAR", "$STACK_ID", "$GAME.groupById.sharedMap.stackIds.[$I]"],
+                                    ["VAR", "$LEFT", ["CALC", "{{$I}}*22+3"]],
+                                    ["VAR", "$PLAYER_INDEX", 0],
+                                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                                        ["VAR", "$STACK_ID", "$GAME.groupById.{{$PLAYER_I}}Deck.stackIds.[0]"],
+                                        ["MOVE_STACK", "$STACK_ID", "sharedMap", 0, {"allowFlip": false}],
+                                        ["VAR", "$LEFT", ["CALC", "{{$LEFT}}+{{$PLAYER_INDEX}}*3"]],
+                                        ["VAR", "$TOP",  ["CALC", "27"]],
+                                        ["SET", "/stackById/$STACK_ID/left", "{{$LEFT}}%"],
+                                        ["SET", "/stackById/$STACK_ID/top",  "{{$TOP}}%"],
+                                        ["VAR", "$PARENT_CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
+                                        ["FOR_EACH_START_STOP_STEP", "$J", 0, 7, 1, [
+                                            ["LOG_DEV", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[$J]"],
+                                            ["ATTACH_CARD", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[$J]", "$PARENT_CARD_ID", {"combine": "bottom", "allowFlip": false}]
+                                        ]],
+                                        ["INCREASE_VAR", "$PLAYER_INDEX", 1]
+                                    ]]
+                                ]],
+                                ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                                    ["VAR", "$STACK_ID", "$GAME.groupById.{{$PLAYER_I}}Deck.stackIds.[0]"],
+                                    ["MOVE_STACK", "$STACK_ID", "sharedMainQuest", -1, {"allowFlip": false}],
+                                    ["VAR", "$PARENT_CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
+                                    ["FOR_EACH_START_STOP_STEP", "$J", 0, 7, 1, [
+                                        ["ATTACH_CARD", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[0]", "$PARENT_CARD_ID", {"combine": "behind", "allowFlip": false}]
+                                    ]]
+                                ]],
+                                ["UPDATE_LAYOUT", "/layout/regions/sharedMap/visible", true],
+                                ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]  
+        },
         "mountGramSetup": {
             "args": [],
             "message": "To set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels, press Setup. IMPORTANT: Before running this function, flip facedown all heroes that are not starting heroes.",
@@ -69,11 +136,10 @@
                     "hotkey": "S",
                     "code": [
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
-
-                            ["LOG", "Performing Escape from Mount Gram setup for {{$GAME.playerInfo.$PLAYER_I.alias}}."],
+                            ["LOG", "Performing Escape from Mount Gram setup for ", ["GET_ALIAS", "$PLAYER_I"], "."],
                             ["VAR", "$FACEDOWN_HEROES", ["LIST"]],
                             ["VAR", "$FACEUP_HERO", null],
-                            ["MOVE_STACKS", "{{$PLAYER_I}}Hand", "{{$PLAYER_I}}Deck", 1000, "shuffle"],
+                            ["MOVE_STACKS", "{{$PLAYER_I}}Hand", "{{$PLAYER_I}}Deck", -1, "shuffle"],
                             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                                 ["COND",
                                     ["OR",
@@ -134,52 +200,9 @@
                 }
             ]
         },
-        "templeSetup": {
-            "args": [],
-            "message": "To set up the Island Map, press Setup.",
-            "options": [
-                {
-                    "label": "Setup",
-                    "hotkey": "S",
-                    "code": [
-                        ["SET", "/layoutId", "{{$GAME.layoutId}}Map"],
-                        ["VAR", "$TEMPLE_REGION", ["LIST", 1, 2, 3]],
-                        ["VAR", "$TEMPLE_INDEX", 0],
-                        ["VAR", "$NORMAL_REGION", ["LIST", 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]],
-                        ["VAR", "$NORMAL_INDEX", 0],
-                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
-                            ["COND",
-                                ["AND", ["EQUAL", "$CARD.sides.B.name", "Temple of the Deceived"], ["EQUAL", "$CARD.sides.B.type", "Location"]],
-                                [
-                                    ["MOVE_CARD", "$CARD.id", "sharedExtra{{$TEMPLE_REGION.[$TEMPLE_INDEX]}}", 0, 0, {"allowFlip": false}],
-                                    ["INCREASE_VAR", "$TEMPLE_INDEX", 1]
-                                ]
-                            ]
-                        ]],
-                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
-                            ["COND",
-                                ["AND", ["EQUAL", "$CARD.sides.B.name", "Lost Island"], ["EQUAL", "$CARD.sides.B.type", "Location"]],
-                                [
-                                    ["MOVE_CARD", "$CARD.id", "sharedExtra{{$NORMAL_REGION.[$NORMAL_INDEX]}}", 0, 0, {"allowFlip": false}],
-                                    ["INCREASE_VAR", "$NORMAL_INDEX", 1]
-                                ]
-                            ]
-                        ]],
-                        ["VAR", "$CORNER_CARD_ID_1", ["GET_CARD_ID", "sharedExtra1", 0, 0]],
-                        ["VAR", "$CORNER_CARD_ID_2", ["GET_CARD_ID", "sharedExtra3", 0, 0]],
-                        ["SET", "/cardById/$CORNER_CARD_ID_1/currentSide", "A"],
-                        ["SET", "/cardById/$CORNER_CARD_ID_2/currentSide", "A"]
-                    ]
-                },
-                {
-                    "label": "Cancel",
-                    "hotkey": "X"
-                }
-            ]
-        },
         "mapHotkeyReminder": {
             "args": [],
-            "message": "This quest uses a 'map'. Use the M key to toggle view of the map region.",
+            "message": "This quest uses an extra region. Use the 'M' key to toggle view of the extra region.",
             "options": [
                 {
                     "label": "Ok",

@@ -54,7 +54,14 @@
                     ["LOG", "└── ", "$PLAYER_N", " draws 6 cards."],
                     ["DRAW_CARD", 6]
                 ]
-            ]
+            ],
+            ["SET", "/allPlayerDecksLoaded", true],
+            ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                ["COND", 
+                    ["EQUAL", ["LENGTH", "$GAME.groupById.{{$PLAYER_I}}Deck.stackIds"], 0], 
+                    ["SET", "/allPlayerDecksLoaded", false]
+                ] 
+            ]]
         ],
         "gameRules": {
             "step_1.R": {
@@ -543,7 +550,58 @@
                     "templeOfTheDeceivedSetup": {
                         "type": "entersPlay",
                         "side": "A",
-                        "then": ["PROMPT", "player1", "templeSetup"]
+                        "then": [
+                            ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"],
+                            ["UPDATE_LAYOUT", "/layout/regions/sharedMap/visible", true],
+                            [
+                                ["VAR", "$TEMPLE_REGION_X", ["LIST", 5, 5, 5]],
+                                ["VAR", "$TEMPLE_REGION_Y", ["LIST", 1, 2, 3]],
+                                ["VAR", "$TEMPLE_INDEX", 0],
+                                ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
+                                    ["COND",
+                                        ["AND", ["EQUAL", "$CARD.sides.B.name", "Temple of the Deceived"], ["EQUAL", "$CARD.sides.B.type", "Location"]],
+                                        [
+                                            ["MOVE_CARD", "$CARD.id", "sharedMap", 0, 0, {"allowFlip": false}],
+                                            ["VAR", "$LEFT", ["CALC", "{{$TEMPLE_REGION_X.[$TEMPLE_INDEX]}}*15"]],
+                                            ["VAR", "$TOP",  ["CALC", "({{$TEMPLE_REGION_Y.[$TEMPLE_INDEX]}}-0.7)*25"]],
+                                            ["VAR", "$STACK_ID", "$GAME.cardById.{{$CARD.id}}.stackId"],
+                                            ["SET", "/stackById/$STACK_ID/left", "{{$LEFT}}%"],
+                                            ["SET", "/stackById/$STACK_ID/top", "{{$TOP}}%"],
+                                            ["INCREASE_VAR", "$TEMPLE_INDEX", 1]
+                                        ]
+                                    ]
+                                ]],
+                                ["VAR", "$NORMAL_REGION_Y", ["LIST", 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3]],
+                                ["VAR", "$NORMAL_REGION_X", ["LIST", 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]],
+                                ["VAR", "$NORMAL_INDEX", 0],
+                                ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
+                                    ["COND",
+                                        ["AND", ["EQUAL", "$CARD.sides.B.name", "Lost Island"], ["EQUAL", "$CARD.sides.B.type", "Location"]],
+                                        [
+                                            ["MOVE_CARD", "$CARD.id", "sharedMap", 0, 0, {"allowFlip": false}],
+                                            ["VAR", "$LEFT", ["CALC", "{{$NORMAL_REGION_X.[$NORMAL_INDEX]}}*15"]],
+                                            ["VAR", "$TOP",  ["CALC", "({{$NORMAL_REGION_Y.[$NORMAL_INDEX]}}-0.7)*25"]],
+                                            ["VAR", "$STACK_ID", "$GAME.cardById.{{$CARD.id}}.stackId"],
+                                            ["SET", "/stackById/$STACK_ID/left", "{{$LEFT}}%"],
+                                            ["SET", "/stackById/$STACK_ID/top", "{{$TOP}}%"],
+                                            ["COND", ["EQUAL", "$NORMAL_INDEX", 0], ["SET", "/cardById/{{$CARD.id}}/currentSide", "A"]],
+                                            ["COND", ["EQUAL", "$NORMAL_INDEX", 8], ["SET", "/cardById/{{$CARD.id}}/currentSide", "A"]],
+                                            ["INCREASE_VAR", "$NORMAL_INDEX", 1]
+                                        ]
+                                    ]
+                                ]]
+                            ]
+                        ]
+                    }
+                }
+            },
+            "b56f7d39-ca8d-4979-baa6-8a2f875d6463": {
+                "_comment": "The Fortress of Nurn",
+                "rules": {
+                    "theFortressOfNurnSetup": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": ["PROMPT", "player1", "fortressOfNurnSetup"]
                     }
                 }
             },
@@ -566,8 +624,8 @@
                                 ["SET", "/stackById/$STACK_ID/top", "{{$TOP}}%"],
                                 ["INCREASE_VAR", "$INDEX", 1]
                             ]],
-                            ["PROMPT", "player1", "glitteringSetup"],
-                            ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"]
+                            ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"],
+                            ["PROMPT", "player1", "glitteringSetup"]
                         ]
                     }
                 }

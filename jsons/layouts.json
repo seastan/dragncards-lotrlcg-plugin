@@ -5,7 +5,7 @@
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "4/5", "width": "23%", "height": "1/5"},
             "regions": {
-                "sharedMap":             {"groupId": "sharedMap",             "type": "free","direction": "horizontal", "left":  "30%","top": "10%", "width": "60%",  "height": "80%", "disableDroppableAttachments": true, "visible": false, "showMenu": false, "hideTitle":true, "layerIndex": 1, "style": {"background": "rgba(55, 65, 81)", "borderRadius": "1vh", "boxShadow": "0 0 0.5vh 0.5vh rgba(0, 0, 0, 1)"}},
+                "sharedMap":             {"groupId": "sharedMap",             "type": "free","direction": "horizontal", "left":  "30%","top": "10%", "width": "60%",  "height": "80%", "disableDroppableAttachments": true, "visible": false, "showMenu": false, "layerIndex": 1, "style": {"background": "rgba(55, 65, 81)", "borderRadius": "1vh", "boxShadow": "0 0 0.5vh 0.5vh rgba(0, 0, 0, 1)"}},
                 "sharedMainQuest":       {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%",  "height": "1/5"},
                 "sharedActiveLocation":  {"groupId": "sharedActiveLocation",  "type": "row", "direction": "horizontal", "left": "12%", "top":  "0%", "width": "11%",  "height": "1/5"},
                 "sharedStagingArea":     {"groupId": "sharedStagingArea",     "type": "row", "direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%",  "height": "1/5", "style": {"background": "rgba(30, 0, 0, 0.3)"}},
@@ -37,6 +37,7 @@
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "regions": {
+                "sharedMap":              {"groupId": "sharedMap",             "type": "free","direction": "horizontal", "left":  "30%","top": "10%", "width": "60%",  "height": "80%", "disableDroppableAttachments": true, "visible": false, "showMenu": false, "layerIndex": 1, "style": {"background": "rgba(55, 65, 81)", "borderRadius": "1vh", "boxShadow": "0 0 0.5vh 0.5vh rgba(0, 0, 0, 1)"}},
                 "sharedMainQuest":        {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "1/6"},
                 "sharedActiveLocation":   {"groupId": "sharedActiveLocation",  "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "1/6"},
                 "sharedStagingArea":      {"groupId": "sharedStagingArea",     "type": "row", "direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "1/6", "style": {"background": "rgba(30, 0, 0, 0.3)"}},
@@ -73,6 +74,7 @@
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "regions": {
+                "sharedMap":              {"groupId": "sharedMap",             "type": "free","direction": "horizontal", "left":  "30%","top": "10%", "width": "60%",  "height": "80%", "disableDroppableAttachments": true, "visible": false, "showMenu": false, "layerIndex": 1, "style": {"background": "rgba(55, 65, 81)", "borderRadius": "1vh", "boxShadow": "0 0 0.5vh 0.5vh rgba(0, 0, 0, 1)"}},
                 "sharedMainQuest":        {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "1/6"},
                 "sharedActiveLocation":   {"groupId": "sharedActiveLocation",  "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "1/6"},
                 "sharedStagingArea":      {"groupId": "sharedStagingArea",     "type": "row", "direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "1/6", "style": {"background": "rgba(30, 0, 0, 0.3)"}},
@@ -114,6 +116,7 @@
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "regions": {
+               "sharedMap":              {"groupId": "sharedMap",             "type": "free","direction": "horizontal", "left":  "30%","top": "10%", "width": "60%",  "height": "80%", "disableDroppableAttachments": true, "visible": false, "showMenu": false, "layerIndex": 1, "style": {"background": "rgba(55, 65, 81)", "borderRadius": "1vh", "boxShadow": "0 0 0.5vh 0.5vh rgba(0, 0, 0, 1)"}},
                "sharedMainQuest":        {"groupId": "sharedMainQuest",       "type": "row", "direction": "horizontal", "left":  "0%", "top":  "0%", "width": "12%", "height": "1/6"},
                "sharedActiveLocation":   {"groupId": "sharedActiveLocation",  "type": "row", "direction": "horizontal", "left":  "12%", "top":  "0%", "width": "11%", "height": "1/6"},
                "sharedStagingArea":      {"groupId": "sharedStagingArea",     "type": "row", "direction": "horizontal", "left": "23%", "top":  "0%", "width": "58%", "height": "1/6", "style": {"background": "rgba(30, 0, 0, 0.3)"}},
