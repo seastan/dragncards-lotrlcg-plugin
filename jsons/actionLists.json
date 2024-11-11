@@ -43,7 +43,7 @@
             ]
         ],
         "newRound": [
-            ["LOG", "{{ALIAS_N}} tried to start a new round (Shift+N), but this hotkey is no longer in use. Please have one player 'Advance the Round' (Shift+V) instead."]
+            ["LOG", "{{$ALIAS_N}} tried to start a new round (Shift+N), but this hotkey is no longer in use. Please have one player 'Advance the Round' (Shift+V) instead."]
         ],
         "refresh": [
             ["LOG", "{{ALIAS_N}} indicated that they would like to perform Refresh Actions. The next time 'Advance the Round' (Shift+V) is pressed, the round will stop at at step 7.R."],
@@ -127,6 +127,34 @@
                 [
                     ["SET", "/playerData/$PLAYER_N/layout/regions/sharedMap/visible", true],
                     ["LOG", "$ALIAS_N", " is looking at the map."]
+                ]
+            ]
+        ],
+        "toggleExtra": [
+            ["COND", 
+                "$GAME.playerData.$PLAYER_N.layout.regions.sharedExtra1.visible",
+                [
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra1/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra2/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra3/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra4/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra5/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra6/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra7/visible", false],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra8/visible", false],
+                    ["LOG", "$ALIAS_N", " hid the extra regions."]
+                ],
+                ["TRUE"],
+                [
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra1/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra2/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra3/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra4/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra5/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra6/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra7/visible", true],
+                    ["SET", "/playerData/$PLAYER_N/layout/regions/sharedExtra8/visible", true],
+                    ["LOG", "$ALIAS_N", " is looking at the extra regions."]
                 ]
             ]
         ],

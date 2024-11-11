@@ -3,7 +3,7 @@
         "sharedMap": {
             "groupType": "inPlay",
             "label": "id:map", 
-            "tableLabel": "",
+            "tableLabel": "id:pressMToShowHide",
             "onCardEnter": {
                 "controller": "shared"
             }
