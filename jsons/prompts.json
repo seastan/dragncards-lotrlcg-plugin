@@ -127,6 +127,98 @@
                 }
             ]  
         },
+        "foundationsOfStone3B": {
+            "args": [],
+            "message": "Press Automate to automate the stage 3B 'When Revealed' effects.",
+            "options": [
+                {
+                    "label": "Automate",
+                    "hotkey": "A",
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} started automation for the stage 3B 'When Revealed' effects."],
+                        ["LOG", "{{$ALIAS_N}} discarded all cards in play with the 'Item.', 'Armor.', 'Weapon.', or 'Light.' traits."],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND",
+                                    "$CARD.inPlay",
+                                    ["OR",
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Item."],
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Armor."],
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Weapon."],
+                                        ["IN_STRING", "$CARD.sides.A.traits", "Light."]
+                                    ]
+                                ],
+                                [
+                                    ["VAR", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                                    ["ACTION_LIST", "discardCard"]
+                                ]
+                            ]
+                        ]],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["EQUAL", "$CARD.sides.B.name", "encounter"],
+                                ["COND",
+                                    ["OR",
+                                        ["EQUAL", "$CARD.groupId", "sharedEncounterDeck2"],
+                                        ["AND",
+                                            ["EQUAL", "$CARD.groupId", "sharedEncounterDiscard"],
+                                            ["IN_LIST", ["LIST", "Enemy", "Treachery"], "$CARD.sides.A.type"]
+                                        ]
+                                    ],
+                                    [
+                                        ["LOG", "{{$ALIAS_N}} moved {{$CARD.sides.A.name}} from the discard pile to the new encounter deck."],
+                                        ["MOVE_CARD", "$CARD_ID", "sharedEncounterDeck", -1]
+                                    ],
+                                    ["TRUE"],
+                                    ["DELETE_CARD", "$CARD_ID"]
+                                ]
+                            ]
+                        ]],
+                        ["LOG", "{{$ALIAS_N}} deleted all other encounter cards."],
+                        ["VAR", "$STAGE_4_CARDS", 
+                            ["FILTER_CARDS", "$CARD", 
+                                ["AND", 
+                                    ["EQUAL", "$CARD.sides.A.type", "Quest"],
+                                    ["EQUAL", "$CARD.sides.A.cost", 4]
+                                ]
+                            ]
+                        ],
+                        ["UPDATE_VAR", "$STAGE_4_CARDS", ["SHUFFLE_LIST", "$STAGE_4_CARDS"]],
+                        ["FOR_EACH_START_STOP_STEP", "$I", 0, 4, 1, [
+                            ["COND",
+                                ["LESS_THAN", "$I", "$GAME.numPlayers"],
+                                [
+                                    ["VAR", "$PLAYER_I", "$PLAYER_ORDER.[$I]"],
+                                    ["VAR", "$EXTRA_REGION_NUM", ["ADD", "$I", 1]],
+                                    ["VAR", "$EXTRA_REGION_ID", "sharedExtra{{$EXTRA_REGION_NUM}}"],
+                                    ["LOG", "{{$ALIAS_N}} moved the Stage 4 card {{$STAGE_4_CARDS.[$I].sides.A.name}} to the extra region id:{{$EXTRA_REGION_ID}}."],
+                                    ["MOVE_CARD", "$STAGE_4_CARDS.[$I].id", "$EXTRA_REGION_ID", -1]
+                                ],
+                                ["TRUE"],
+                                [
+                                    ["LOG", "{{$ALIAS_N}} moved the Stage 4 card {{$STAGE_4_CARDS.[$I].sides.A.name}} to id:sharedQuestDiscard."],
+                                    ["MOVE_CARD", "$STAGE_4_CARDS.[$I].id", "sharedQuestDiscard", -1]
+                                ]
+                            ]
+                        ]],
+                        ["SHUFFLE_GROUP", "sharedEncounterDeck"],
+                        ["PROMPT", "$PLAYER_ORDER", "extraRegionHotkeyReminder"],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra1/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra2/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra3/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra4/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra5/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra6/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra7/visible", true],
+                        ["UPDATE_LAYOUT", "/layout/regions/sharedExtra8/visible", true]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]  
+        },
         "mountGramSetup": {
             "args": [],
             "message": "To set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels, press Setup. IMPORTANT: Before running this function, flip facedown all heroes that are not starting heroes.",

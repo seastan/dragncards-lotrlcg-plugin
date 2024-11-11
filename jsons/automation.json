@@ -605,6 +605,16 @@
                     }
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801212c9034": {
+                "_comment": "Foundations of Stone",
+                "rules": {
+                    "stage3B": {
+                        "type": "entersPlay",
+                        "side": "B",
+                        "then": ["PROMPT", "player1", "foundationsOfStone3B"]
+                    }
+                }
+            },
             "03a074ce-d581-4672-b6ea-ed97b7afd415": {
                 "_comment": "The Glittering Caves",
                 "rules": {
