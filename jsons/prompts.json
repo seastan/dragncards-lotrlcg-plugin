@@ -207,7 +207,18 @@
                 {
                     "label": "Ok",
                     "hotkey": "K"
-                }]
+                }
+            ]
+        },
+        "extraRegionHotkeyReminder": {
+            "args": [],
+            "message": "This quest uses extra regions. Use the ',' key to toggle view of the extra regions.",
+            "options": [
+                {
+                    "label": "Ok",
+                    "hotkey": "K"
+                }
+            ]
         },
         "glitteringSetup": {
             "args": [],

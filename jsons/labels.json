@@ -16,6 +16,10 @@
             "English": "Toggle the map",
             "Chinese": "切换地图"
         },
+        "toggleExtra": {
+            "English": "Toggle extra regions",
+            "Chinese": "切换额外区域"
+        },
         "advanceTheRound": {
             "English": "Advance the round",
             "Chinese": "推进回合"
