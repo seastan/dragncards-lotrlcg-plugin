@@ -135,6 +135,49 @@
               ["SET", "/cardById/$CARD_ID/targeting", {}]
             ]]
           ]
+        },
+        "SHOW_PLAYER_DECK_2": {
+          "args": ["$PLAYER_I", "$BOOL"],
+          "code": [
+            ["COND",
+              "$BOOL", 
+              [
+                ["COND",
+                  "$GAME.playerData.$PLAYER_I.layout.regions.playerNDeck2.visible",
+                  ["LOG", "{{$PLAYER_I}} tried to update their layout to show their second deck but it is already visible."],
+                  ["TRUE"],
+                  [
+                    ["LOG", "{{$PLAYER_I}} updated their layout to show their second deck."],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNDeck2/visible", true],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNHand/width", 
+                      ["SUBTRACT", "$GAME.playerData.$PLAYER_I.layout.regions.playerNHand.width", 0.095]],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNDeck/left", 
+                      ["SUBTRACT", "$GAME.playerData.$PLAYER_I.layout.regions.playerNDeck.left", 0.095]],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNDiscard/left", 
+                      ["SUBTRACT", "$GAME.playerData.$PLAYER_I.layout.regions.playerNDiscard.left", 0.095]]
+                  ]
+                ]
+              ],
+              ["TRUE"],
+              [
+                ["COND",
+                  "$GAME.playerData.$PLAYER_I.layout.regions.playerNDeck2.visible",
+                  [
+                    ["LOG", "{{$PLAYER_I}} updated their layout to hide their second deck."],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNDeck2/visible", false],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNHand/width", 
+                      ["ADD", "$GAME.playerData.$PLAYER_I.layout.regions.playerNHand.width", 0.095]],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNDeck/left", 
+                      ["ADD", "$GAME.playerData.$PLAYER_I.layout.regions.playerNDeck.left", 0.095]],
+                    ["SET", "/playerData/$PLAYER_I/layout/regions/playerNDiscard/left", 
+                      ["ADD", "$GAME.playerData.$PLAYER_I.layout.regions.playerNDiscard.left", 0.095]]
+                  ],
+                  ["TRUE"],
+                  ["LOG", "{{$PLAYER_I}} tried to update their layout to hide their second deck but it is already hidden."]
+                ]
+              ]
+            ]
+          ]
         }
     }
 }
