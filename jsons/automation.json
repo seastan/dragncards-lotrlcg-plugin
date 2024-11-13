@@ -595,6 +595,16 @@
                     }
                 }
             },
+            "0e0b125c-ffed-4473-9a64-7d709b16cca5": {
+                "_comment": "To Catch an Orc",
+                "rules": {
+                    "toCatchAnOrcSetup": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": ["PROMPT", "player1", "toCatchAnOrcSetup"]
+                    }
+                }
+            },
             "b56f7d39-ca8d-4979-baa6-8a2f875d6463": {
                 "_comment": "The Fortress of Nurn",
                 "rules": {

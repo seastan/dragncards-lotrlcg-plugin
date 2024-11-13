@@ -127,6 +127,51 @@
                 }
             ]  
         },
+        "toCatchAnOrcSetup": {
+            "args": [],
+            "message": "After all player decks are loaded, press Setup to complete the remainder of the setup.",
+            "options": [
+                {
+                    "label": "Setup",
+                    "hotkey": "S",
+                    "code": [
+                        ["COND", 
+                            ["NOT", "$GAME.allPlayerDecksLoaded"],
+                            [
+                                ["LOG", "Not all player decks are loaded. Load all player decks before running this function."],
+                                ["PROMPT", "player1", "toCatchAnOrcSetup"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "{{$ALIAS_N}} finished setting up To Catch An Orc."],
+                                ["VAR", "$MUGASH_CARDS", ["FILTER_CARDS", "$C",
+                                    ["AND",
+                                        ["EQUAL", "$C.groupId", "sharedSetAside"],
+                                        ["OR",
+                                            ["EQUAL", "$C.sides.A.name", "Mugash"],
+                                            ["EQUAL", "$C.sides.A.name", "Mugash's Guard"]
+                                        ]
+                                    ]
+                                ]],
+                                ["UPDATE_VAR", "$MUGASH_CARDS", ["SHUFFLE_LIST", "$MUGASH_CARDS"]],
+                                ["VAR", "$PLAYER_INDEX", 0],
+                                ["LOG", "{{$ALIAS_N}} created the secondary player decks."],
+                                ["LOG", "{{$ALIAS_N}} moved the Mugash cards to the secondary player decks."],
+                                ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                                    ["MOVE_CARD", "$MUGASH_CARDS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0],
+                                    ["MOVE_STACKS", "{{$PLAYER_I}}Deck", "{{$PLAYER_I}}Deck2", 20, "shuffle"],
+                                    ["INCREASE_VAR", "$PLAYER_INDEX", 1]
+                                ]]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]  
+        },
         "foundationsOfStone3B": {
             "args": [],
             "message": "Press Automate to automate the stage 3B 'When Revealed' effects.",
