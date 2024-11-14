@@ -1,5 +1,13 @@
 {
     "labels": {
+        "encounter2": {
+            "English": "Encounter 2",
+            "Chinese": "遭遇 2"
+        },
+        "discard2": {
+            "English": "Discard 2",
+            "Chinese": "弃除 2"
+        },
         "allPlayerDecksLoaded": {
             "English": "All player decks loaded",
             "Chinese": "所有玩家牌组已加载"

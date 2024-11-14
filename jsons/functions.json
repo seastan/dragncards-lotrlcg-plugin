@@ -178,6 +178,51 @@
               ]
             ]
           ]
+        },
+        "SHOW_ENCOUNTER_DECK_2": {
+          "args": ["$BOOL"],
+          "code": [
+            ["COND",
+              "$BOOL", 
+              [
+                ["COND",
+                  "$GAME.layout.regions.sharedEncounterDeck2.visible",
+                  ["LOG", "{{$PLAYER_N}} tried to update the layout to show the second encounter deck but it is already visible."],
+                  ["TRUE"],
+                  [
+                    ["LOG", "{{$PLAYER_N}} updated the layout to show the second encounter deck."],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDeck2/visible", true],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDiscard2/visible", true],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedStagingArea/width",
+                      ["SUBTRACT", "$GAME.layout.regions.sharedStagingArea.width", 0.19]],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDeck/left", 
+                      ["SUBTRACT", "$GAME.layout.regions.sharedEncounterDeck.left", 0.19]],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDiscard/left", 
+                      ["SUBTRACT", "$GAME.layout.regions.sharedEncounterDiscard.left", 0.19]]
+                  ]
+                ]
+              ],
+              ["TRUE"],
+              [
+                ["COND",
+                  "$GAME.layout.regions.sharedEncounterDeck2.visible",
+                  [
+                    ["LOG", "{{$PLAYER_N}} updated the layout to hide the second encounter deck."],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDeck2/visible", false],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDiscard2/visible", false],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedStagingArea/width",
+                      ["ADD", "$GAME.layout.regions.sharedStagingArea.width", 0.19]],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDeck/left", 
+                      ["ADD", "$GAME.layout.regions.sharedEncounterDeck.left", 0.19]],
+                    ["UPDATE_LAYOUT", "/layout/regions/sharedEncounterDiscard/left", 
+                      ["ADD", "$GAME.layout.regions.sharedEncounterDiscard.left", 0.19]]
+                  ],
+                  ["TRUE"],
+                  ["LOG", "{{$PLAYER_N}} tried to update the layout to hide the second encounter deck but it is already hidden."]
+                ]
+              ]
+            ]
+          ]
         }
     }
 }

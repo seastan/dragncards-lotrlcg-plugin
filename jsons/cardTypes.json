@@ -6,6 +6,7 @@
         "Hero":           {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints","questing"]},
         "Contract":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints","questing"]},
         "Objective Ally": {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints","questing"]},
+        "Objective Hero": {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","willpower","attack","defense","hitPoints","questing"]},
         "Treachery":      {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
         "Campaign":       {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},
         "Enemy":          {"width": 0.72, "height": 1.0, "tokens": ["resource","progress","damage","time","threat","attack","defense","hitPoints","questing"]},

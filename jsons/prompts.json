@@ -160,6 +160,7 @@
                                 ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                                     ["MOVE_CARD", "$MUGASH_CARDS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0],
                                     ["MOVE_STACKS", "{{$PLAYER_I}}Deck", "{{$PLAYER_I}}Deck2", 20, "shuffle"],
+                                    ["SHOW_PLAYER_DECK_2", "$PLAYER_I", true],
                                     ["INCREASE_VAR", "$PLAYER_INDEX", 1]
                                 ]]
                             ]
