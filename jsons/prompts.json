@@ -280,11 +280,14 @@
                             ["MOVE_STACKS", "{{$PLAYER_I}}Hand", "{{$PLAYER_I}}Deck", -1, "shuffle"],
                             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                                 ["COND",
-                                    ["OR",
-                                        ["EQUAL", "$CARD.sides.A.type", "Ally"],
-                                        ["IN_STRING", "$CARD.sides.A.traits", "Item."],
-                                        ["IN_STRING", "$CARD.sides.A.traits", "Mount."],
-                                        ["IN_STRING", "$CARD.sides.A.traits", "Artifact."]
+                                    ["AND",
+                                        ["EQUAL", "$CARD.groupById", "{{$PLAYER_I}}Deck"],
+                                        ["OR",
+                                            ["EQUAL", "$CARD.sides.A.type", "Ally"],
+                                            ["IN_STRING", "$CARD.sides.A.traits", "Item."],
+                                            ["IN_STRING", "$CARD.sides.A.traits", "Mount."],
+                                            ["IN_STRING", "$CARD.sides.A.traits", "Artifact."]
+                                        ]
                                     ],
                                     ["MOVE_CARD", "$CARD_ID", "{{$PLAYER_I}}Deck2", 0]
                                 ],

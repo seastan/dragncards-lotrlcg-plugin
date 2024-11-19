@@ -1,5 +1,13 @@
 {
     "labels": {
+        "advanceToNextPlanningPhaseStopAtTriggers": {
+            "English": "Advance to next planning phase (allow trigger reminders to interrupt)",
+            "Chinese": "推进到下一个计划环节（停在触发器处）"
+        },
+        "advanceToNextPlanningPhase": {
+            "English": "Advance to next planning phase (ignore trigger reminders)",
+            "Chinese": "推进到下一个计划环节"
+        },
         "encounter2": {
             "English": "Encounter 2",
             "Chinese": "遭遇 2"
@@ -331,22 +339,6 @@
         "siegeQuest": {
             "English": "Siege Quest",
             "Chinese": "围城探险模式"
-        },
-        "setupEscapeFromMountGram": {
-            "English": "Setup Escape from Mount Gram",
-            "Chinese": "设置「逃离格兰山」任务"
-        },
-        "setupToCatchAnOrc": {
-            "English": "Setup To Catch an Orc",
-            "Chinese": "设置「活捉半兽人」任务"
-        },
-        "setupGlitteringCaves": {
-            "English": "Setup The Glittering Caves",
-            "Chinese": "设置「晶辉洞」任务"
-        },
-        "setupTheFortressOfNurn": {
-            "English": "Setup The Fortress of Nurn",
-            "Chinese": "设置「诺恩要塞」任务"
         },
         "step-0.0": {
             "English": "0.0: Beginning of the round",

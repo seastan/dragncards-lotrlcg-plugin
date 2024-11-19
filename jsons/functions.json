@@ -1,5 +1,48 @@
 {
     "functions": {
+        "ADVANCE_TO_STEP_BUT_STOP_AT_TRIGGERS": {
+          "args": ["$STEP_ID"],
+          "code": [
+            ["VAR", "$HALT", false],
+            ["VAR", "$TRIGGER_NAMES", ["LIST"]],
+            ["CLEAR_ALL_TARGETS"],
+            ["WHILE", 
+              ["AND", 
+                ["NOT", "$HALT"],
+                ["NOT_EQUAL", "$GAME.stepId", "$STEP_ID"]
+              ],
+              [
+                ["NEXT_STEP"],
+                ["VAR", "$STEP", "$GAME.stepId"],
+                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                  ["COND",
+                    ["AND",
+                      ["EQUAL", "$CARD.inPlay", true],
+                      ["EQUAL", "$CARD.currentFace.triggers.$STEP", true]
+                    ],
+                    [
+                      ["TARGET", "$CARD_ID"],
+                      ["UPDATE_VAR", "$HALT", true],
+                      ["UPDATE_VAR", "$TRIGGER_NAMES", ["APPEND", "$TRIGGER_NAMES", ["LIST", "$CARD.currentFace.name"]]]
+                    ]
+                  ]
+                ]],
+                ["COND", 
+                  "$HALT", 
+                  ["LOG", "{{$ALIAS_N}} halted round advancement due to card triggers: {{$TRIGGER_NAMES}}. Once resolved, press Shift+V again to continue round advancement."]
+                ],
+                ["COND", 
+                  ["EQUAL", "$STEP", "$GAME.stopAtStep"],
+                  [
+                    ["LOG", "{{$ALIAS_N}} halted round advancement by request."],
+                    ["UPDATE_VAR", "$HALT", true],
+                    ["SET", "/stopAtStep", null]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
         "TOGGLE_TABLE_BUTTON": {
           "args": ["$SIDE_GROUP_ID"],
           "code": [
