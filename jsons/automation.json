@@ -12,7 +12,8 @@
                 ["COND", 
                     ["AND", 
                         ["EQUAL", "$CARD.sides.A.type", "Hero"],
-                        ["EQUAL", "$CARD.inPlay", true]
+                        ["EQUAL", "$CARD.inPlay", true],
+                        ["NOT_EQUAL", "$CARD.controller", "shared"]
                     ],
                     [
                         ["UPDATE_VAR", "$LOADED_PLAYER_DECK", true],
@@ -114,30 +115,7 @@
                 "type": "trigger",
                 "listenTo": ["/stepId"],
                 "condition": ["EQUAL", "$GAME.stepId", "6.2"],
-                "then": ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
-                    ["VAR", "$ENGAGED_CARDS", "$GAME.groupById.{{$PLAYER_I}}Engaged.parentCards"],
-                    ["VAR", "$SORTED_ENGAGED_CARDS", ["REVERSE_LIST", ["SORT_OBJ_LIST", "$ENGAGED_CARDS", "$CARD", "$CARD.sides.A.engagementCost"]]],
-                    ["FOR_EACH_VAL", "$CARD", "$SORTED_ENGAGED_CARDS", [
-                        ["VAR", "$CARD_ID", "$CARD.id"],
-                        ["COND",
-                            ["EQUAL", "$CARD.currentFace.type", "Enemy"],
-                            ["COND",
-                                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
-                                [
-                                    ["LOG", "$ALIAS_N", " tried to deal a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], " but the encounter deck is empty."]
-                                ],
-                                ["TRUE"],
-                                [
-                                    ["VAR", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                                    ["ATTACH_CARD", "$SHADOW_CARD_ID", "$CARD_ID"],
-                                    ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
-                                    ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
-                                    ["LOG", "$ALIAS_N", " dealt a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
-                                ]
-                            ]
-                        ]
-                    ]]
-                ]]
+                "then": ["DEAL_SHADOW_CARDS"]
             },
             "step_7.1": {
                 "_comment": "Trigger refresh phase framework effects",

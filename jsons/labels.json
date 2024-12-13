@@ -1,5 +1,21 @@
 {
     "labels": {
+        "toggleEngagedWithEachPlayer": {
+            "English": "Toggle Engaged With Each Player"
+        },
+        "skipToDealShadowsStep": {
+            "English": "Skip To Deal Shadows Step"
+        },
+        "skipToNextPlanningPhase": {
+            "English": "Skip To Next Planning Phase"
+        },
+        "advanceThroughRoundStopAtTriggers": {
+            "English": "Advance Through Round"
+        },
+        "noLongerInUse": {
+            "English": "No longer in use",
+            "Chinese": "不再使用"
+        },
         "advanceToNextPlanningPhaseStopAtTriggers": {
             "English": "Advance to next planning phase (allow trigger reminders to interrupt)",
             "Chinese": "推进到下一个计划环节（停在触发器处）"

@@ -1,16 +1,13 @@
 {
     "functions": {
-        "ADVANCE_TO_STEP_BUT_STOP_AT_TRIGGERS": {
-          "args": ["$STEP_ID"],
+        "ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS": {
+          "args": [],
           "code": [
             ["VAR", "$HALT", false],
             ["VAR", "$TRIGGER_NAMES", ["LIST"]],
             ["CLEAR_ALL_TARGETS"],
             ["WHILE", 
-              ["AND", 
-                ["NOT", "$HALT"],
-                ["NOT_EQUAL", "$GAME.stepId", "$STEP_ID"]
-              ],
+              ["NOT", "$HALT"],
               [
                 ["NEXT_STEP"],
                 ["VAR", "$STEP", "$GAME.stepId"],
@@ -23,7 +20,7 @@
                     [
                       ["TARGET", "$CARD_ID"],
                       ["UPDATE_VAR", "$HALT", true],
-                      ["UPDATE_VAR", "$TRIGGER_NAMES", ["APPEND", "$TRIGGER_NAMES", ["LIST", "$CARD.currentFace.name"]]]
+                      ["UPDATE_VAR", "$TRIGGER_NAMES", ["APPEND", "$TRIGGER_NAMES", "$CARD.currentFace.name"]]
                     ]
                   ]
                 ]],
@@ -38,10 +35,131 @@
                     ["UPDATE_VAR", "$HALT", true],
                     ["SET", "/stopAtStep", null]
                   ]
+                ],
+                ["COND", 
+                  ["EQUAL", "$STEP", "2.P"],
+                  [
+                    ["LOG", "{{$ALIAS_N}} halted round advancement at the special action window of the Planning phase."],
+                    ["UPDATE_VAR", "$HALT", true]
+                  ]
+                ],
+                ["COND", 
+                  ["AND",
+                    ["EQUAL", "$STEP", "5.2"],
+                    ["GREATER_THAN",
+                      ["LENGTH", ["FILTER_CARDS", "$C", 
+                        ["OR",
+                          ["EQUAL", "$C.groupId", "sharedStagingArea"],
+                          ["EQUAL", "$C.currentFace.type", "Enemy"]
+                        ]
+                      ]],
+                      0
+                    ]
+                  ],
+                  [
+                    ["LOG", "{{$ALIAS_N}} halted round advancement at the optional engagement step because there are enemies in the staging area."],
+                    ["UPDATE_VAR", "$HALT", true]
+                  ]
+                ],
+                ["COND", 
+                  ["EQUAL", "$STEP", "5.3"],
+                  [
+                    ["VAR", "$STAGING_ENEMIES", ["FILTER_CARDS", "$C", 
+                      ["AND",
+                        ["EQUAL", "$C.groupId", "sharedStagingArea"],
+                        ["EQUAL", "$C.currentFace.type", "Enemy"]
+                      ]
+                    ]],
+                    ["LOG_DEV", "$STAGING_ENEMIES"],
+                    ["COND", 
+                      ["GREATER_THAN", ["LENGTH", "$STAGING_ENEMIES"], 0],
+                      [
+                        ["VAR", "$PLAYERS_BY_THREAT", ["SORT_OBJ_LIST", "$PLAYER_ORDER", "$PLAYER_I", "$GAME.playerData.$PLAYER_I.threat"]],
+                        ["VAR", "$HIGHEST_THREAT", "$GAME.playerData.{{$PLAYERS_BY_THREAT.[-1]}}.threat"],
+                        ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$STAGING_ENEMIES", "$C", "$C.currentFace.engagementCost"]],
+                        ["VAR", "$LOWEST_ENG_COST", "$ENEMIES_BY_ENG_COST.[0].currentFace.engagementCost"],
+                        ["LOG_DEV", "$LOWEST_ENG_COST"],
+                        ["COND", 
+                          ["LESS_EQUAL", "$LOWEST_ENG_COST", "$HIGHEST_THREAT"],
+                          [
+                            ["LOG", "{{$ALIAS_N}} halted round advancement at the engagement step because there are enemies with forced engagement."],
+                            ["UPDATE_VAR", "$HALT", true]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                ["COND", 
+                  ["AND",
+                    ["EQUAL", "$STEP", "6.2"],
+                    ["GREATER_THAN",
+                      ["LENGTH", ["FILTER_CARDS", "$C", 
+                        ["OR",
+                          ["IN_STRING", "$C.groupId", "Engaged"],
+                          ["EQUAL", "$C.engagedWithEachPlayer", true]
+                        ]
+                      ]],
+                      0
+                    ]
+                  ],
+                  [
+                    ["LOG", "{{$ALIAS_N}} halted round advancement at the deal shadows step because there are engaged enemies."],
+                    ["UPDATE_VAR", "$HALT", true]
+                  ]
                 ]
               ]
             ]
           ]
+        },
+        "TOGGLE_ENGAGED_WITH_EACH_PLAYER": {
+          "args": ["$CARD", "$BOOL"],
+          "code": [
+            ["COND",
+              "$BOOL",
+              [
+                ["SET", "/cardById/$CARD.id/engagedWithEachPlayer", true],
+                ["LOG", "{{$ALIAS_N}} marked {{$CARD.currentFace.name}} as engaged with each player."]
+              ],
+              ["TRUE"],
+              [
+                ["SET", "/cardById/$CARD.id/engagedWithEachPlayer", false],
+                ["LOG", "{{$ALIAS_N}} removed the engaged with each player marker from {{$CARD.currentFace.name}}."]
+              ]
+            ]
+          ]
+        },
+        "DEAL_SHADOW_CARDS": {
+          "args": [],
+          "code": ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+            ["VAR", "$ENGAGED_WITH_ME", "$GAME.groupById.{{$PLAYER_I}}Engaged.parentCards"],
+            ["LOG_DEV", "$ENGAGED_WITH_ME"],
+            ["VAR", "$ENGAGED_WITH_ALL", ["FILTER_CARDS", "$C", ["EQUAL", "$C.engagedWithEachPlayer", true]]],
+            ["LOG_DEV", "$ENGAGED_WITH_ALL"],
+            ["VAR", "$ENGAGED_CARDS", ["CONCAT_LISTS", "$ENGAGED_WITH_ME", "$ENGAGED_WITH_ALL"]],
+            ["LOG_DEV", "$ENGAGED_CARDS"],
+            ["VAR", "$SORTED_ENGAGED_CARDS", ["REVERSE_LIST", ["SORT_OBJ_LIST", "$ENGAGED_CARDS", "$CARD", "$CARD.sides.A.engagementCost"]]],
+            ["FOR_EACH_VAL", "$CARD", "$SORTED_ENGAGED_CARDS", [
+                ["VAR", "$CARD_ID", "$CARD.id"],
+                ["COND",
+                    ["EQUAL", "$CARD.currentFace.type", "Enemy"],
+                    ["COND",
+                        ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+                        [
+                            ["LOG", "$ALIAS_N", " tried to deal a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], " but the encounter deck is empty."]
+                        ],
+                        ["TRUE"],
+                        [
+                            ["VAR", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
+                            ["ATTACH_CARD", "$SHADOW_CARD_ID", "$CARD_ID"],
+                            ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
+                            ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
+                            ["LOG", "$ALIAS_N", " dealt a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
+                        ]
+                    ]
+                ]
+            ]]
+          ]]
         },
         "TOGGLE_TABLE_BUTTON": {
           "args": ["$SIDE_GROUP_ID"],
