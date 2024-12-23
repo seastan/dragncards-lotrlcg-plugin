@@ -27,6 +27,11 @@
             "label": "id:alwaysDo",
             "type": "object", 
             "default": {}
+        },
+        "readyForNextPlanning": {
+            "label": "id:readyForNextPlanning",
+            "type": "boolean", 
+            "default": false
         }
     }
 }

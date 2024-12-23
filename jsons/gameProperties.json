@@ -33,15 +33,15 @@
           }
         ]
       },
-      "multiplayerHotkeys": {
-        "label": "id:multiplayerHotkeys",
-        "type": "boolean",
-        "default": false
-      },
       "allPlayerDecksLoaded": {
         "label": "id:allPlayerDecksLoaded",
         "type": "boolean",
         "default": false
+      },
+      "advanceButtonFunction": {
+        "label": "id:advanceButtonFunction",
+        "type": "any",
+        "default": "readyForNextPlanning"
       }
     }
 }

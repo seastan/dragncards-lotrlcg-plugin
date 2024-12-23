@@ -8,18 +8,15 @@
             ["{{$ALIAS_N}} advanced to the deal shadows step, ignoring trigger reminders."],
             ["ADVANCE_TO_STEP", "6.2"]
         ],
-        "advanceThroughRoundStopAtTriggers": [
-            ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS"]
+        "skipToRefreshPhase": [
+            ["{{$ALIAS_N}} advanced to the refresh phase, ignoring trigger reminders."],
+            ["ADVANCE_TO_STEP", "7.R"]
         ],
         "newRoundOld": [
             ["LOG", "{{$ALIAS_N}} tried to start a new round (Shift+N), but this hotkey is no longer in use. You can either move through the round with Shift+V (this is recommmended as it will halt at trigger reminders), or use Ctrl+Shift+N to skip directly to the next planning phase."]
         ],
         "dealShadowsOld": [
             ["LOG", "{{$ALIAS_N}} tried to deal all shadow cards (Shift+S), but this hotkey is no longer in use. You can either move through the round with Shift+V and shadows will be dealt when it comes to step 6.2, or use Ctrl+Shift+S to skip directly to this step."]
-        ],
-        "refresh": [
-            ["LOG", "{{$ALIAS_N}} indicated that they would like to perform Refresh Actions. The next time 'Advance Through Round' (Shift+V) is pressed, the round will stop at at step 7.R."],
-            ["SET", "/stopAtStep", "7.R"]
         ],
         "revealEncounterFaceup": [
             ["VAR", "$REVEAL_FACEDOWN", false],
@@ -225,18 +222,41 @@
             ]
         ],
         "toggleCommit": [
-            ["ACTION_LIST", "toggleCommitWithoutExhausting"],
             ["COND",
-                ["AND", "$ACTIVE_CARD.committed", "$ACTIVE_CARD.inPlay", ["NOT", "$ACTIVE_CARD.exhausted"]],
-                ["ACTION_LIST", "toggleExhaust"],
-                ["AND", ["NOT", "$ACTIVE_CARD.committed"], "$ACTIVE_CARD.inPlay", "$ACTIVE_CARD.exhausted"],
-                ["ACTION_LIST", "toggleExhaust"]
+                ["OR",
+                    ["EQUAL", "$ACTIVE_FACE.type", "Quest"],
+                    ["EQUAL", "$ACTIVE_FACE.type", "Side Quest"]
+                ],
+                [
+                    ["LOG", "{{$ALIAS_N}} selected {{$ACTIVE_FACE.name}} as the current quest."],
+                    ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"],
+                    ["COND", 
+                        ["EQUAL", "$GAME.advanceButtonFunction", "selectCurrentQuest"],
+                        [
+                            ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.1"],
+                            ["SET", "/advanceButtonFunction", "commitCharacters"]
+                        ]
+                    ]
+                ],
+                ["TRUE"],
+                [
+                    ["ACTION_LIST", "toggleCommitWithoutExhausting"],
+                    ["COND",
+                        ["AND", "$ACTIVE_CARD.committed", "$ACTIVE_CARD.inPlay", ["NOT", "$ACTIVE_CARD.exhausted"]],
+                        ["ACTION_LIST", "toggleExhaust"],
+                        ["AND", ["NOT", "$ACTIVE_CARD.committed"], "$ACTIVE_CARD.inPlay", "$ACTIVE_CARD.exhausted"],
+                        ["ACTION_LIST", "toggleExhaust"]
+                    ]
+                ]
             ]
         ],
         "toggleCommitWithoutExhausting": [
             ["COND", 
-                ["NOT_EQUAL", "$GAME.stepId", "3.2"],
-                ["ADVANCE_TO_STEP", "3.2"]
+                ["EQUAL", "$GAME.advanceButtonFunction", "commitCharacters"],
+                [
+                    ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.2"],
+                    ["SET", "/advanceButtonFunction", "advanceToStaging"]
+                ]
             ],
             ["COND",
                 ["AND", ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
@@ -424,32 +444,6 @@
             ["LOG", "{{$ALIAS_N}} swapped {{$ACTIVE_CARD.currentFace.name}} with the top card of {{$GAME.groupById.$DECK_GROUP_ID.label}}."],
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$TOP_CARD.deckGroupId", "$TOP_CARD.stackIndex", "$TOP_CARD.cardIndex"],
             ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"]
-        ],
-        "enableMultiplayerHotkeys": [
-            ["SET", "/multiplayerHotkeys", true],
-            ["LOG", "{{$ALIAS_N}} enabled multiplayer hotkeys."]
-        ],
-        "newRoundAll": [
-            ["COND",
-                "$GAME.multiplayerHotkeys",
-                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
-                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
-                    ["ACTION_LIST", "newRound"]
-                ]],
-                true,
-                ["LOG", "{{$ALIAS_N}} tried to start a new round for all players, but multiplayer hotkeys (Shift+L) are disabled."]
-            ]
-        ],
-        "refreshAll": [
-            ["COND",
-                "$GAME.multiplayerHotkeys",
-                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
-                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
-                    ["ACTION_LIST", "refresh"]
-                ]],
-                true,
-                ["LOG", "{{$ALIAS_N}} tried to start a new round for all players, but multiplayer hotkeys (Shift+L) are disabled."]
-            ]
         ],
         "raiseAllThreat": [
             ["COND",

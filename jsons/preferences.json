@@ -1,6 +1,6 @@
 {
     "preferences": {
-        "game": ["questingStat", "multiplayerHotkeys"],
+        "game": ["questingStat"],
         "player": ["cardsDrawn"]
     }
 }

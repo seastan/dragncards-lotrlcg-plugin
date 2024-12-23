@@ -101,7 +101,6 @@
                                         ["SET", "/stackById/$STACK_ID/top",  "{{$TOP}}%"],
                                         ["VAR", "$PARENT_CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
                                         ["FOR_EACH_START_STOP_STEP", "$J", 0, 7, 1, [
-                                            ["LOG_DEV", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[$J]"],
                                             ["ATTACH_CARD", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[$J]", "$PARENT_CARD_ID", {"combine": "bottom", "allowFlip": false}]
                                         ]],
                                         ["INCREASE_VAR", "$PLAYER_INDEX", 1]
@@ -402,12 +401,10 @@
                             ["VAR", "$STACK_ID", "$SORTED_BY_TOP.[$I]"],
                             ["VAR", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
                             ["SET" , "/cardById/$CARD_ID/row", "$ROW"],
-                            ["LOG_DEV", "{{$GAME.cardById.$CARD_ID.sides.A.name}}: row {{$ROW}}"],
                             ["VAR", "$COL", ["TO_INT", ["DIVIDE", "$I", 3]] ],
                             ["VAR", "$STACK_ID", "$SORTED_BY_LEFT.[$I]"],
                             ["VAR", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
-                            ["SET" , "/cardById/$CARD_ID/col", "$COL"],
-                            ["LOG_DEV", "{{$GAME.cardById.$CARD_ID.sides.A.name}}: col {{$COL}}"]
+                            ["SET" , "/cardById/$CARD_ID/col", "$COL"]
                         ]],
                         ["WHILE", ["NOT_EQUAL", "$COORDS.[0].[1]", 3], ["UPDATE_VAR", "$COORDS", ["SHUFFLE_LIST", "$COORDS"]]],
                         ["FOR_EACH_START_STOP_STEP", "$I", 0, "$NUM_CLUES", 1, [

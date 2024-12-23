@@ -1,5 +1,14 @@
 {
     "labels": {
+        "advanceButtonFunction": {
+            "English": "Advance Button Function"
+        },
+        "readyForNextPlanning": {
+            "English": "Ready For Next Planning"
+        },
+        "skipToRefreshPhase": {
+            "English": "Skip To Refresh Phase"
+        },
         "toggleEngagedWithEachPlayer": {
             "English": "Toggle Engaged With Each Player"
         },
@@ -8,6 +17,9 @@
         },
         "skipToNextPlanningPhase": {
             "English": "Skip To Next Planning Phase"
+        },
+        "skipToNextRefreshPhase": {
+            "English": "Skip To Refresh Phase"
         },
         "advanceThroughRoundStopAtTriggers": {
             "English": "Advance Through Round"

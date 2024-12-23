@@ -1,7 +1,7 @@
 {
     "functions": {
         "ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS": {
-          "args": [],
+          "args": ["$STOP_STEP_ID"],
           "code": [
             ["VAR", "$HALT", false],
             ["VAR", "$TRIGGER_NAMES", ["LIST"]],
@@ -29,86 +29,111 @@
                   ["LOG", "{{$ALIAS_N}} halted round advancement due to card triggers: {{$TRIGGER_NAMES}}. Once resolved, press Shift+V again to continue round advancement."]
                 ],
                 ["COND", 
-                  ["EQUAL", "$STEP", "$GAME.stopAtStep"],
-                  [
-                    ["LOG", "{{$ALIAS_N}} halted round advancement by request."],
-                    ["UPDATE_VAR", "$HALT", true],
-                    ["SET", "/stopAtStep", null]
-                  ]
-                ],
-                ["COND", 
-                  ["EQUAL", "$STEP", "2.P"],
-                  [
-                    ["LOG", "{{$ALIAS_N}} halted round advancement at the special action window of the Planning phase."],
-                    ["UPDATE_VAR", "$HALT", true]
-                  ]
-                ],
-                ["COND", 
-                  ["AND",
-                    ["EQUAL", "$STEP", "5.2"],
-                    ["GREATER_THAN",
-                      ["LENGTH", ["FILTER_CARDS", "$C", 
-                        ["OR",
-                          ["EQUAL", "$C.groupId", "sharedStagingArea"],
-                          ["EQUAL", "$C.currentFace.type", "Enemy"]
-                        ]
-                      ]],
-                      0
-                    ]
-                  ],
-                  [
-                    ["LOG", "{{$ALIAS_N}} halted round advancement at the optional engagement step because there are enemies in the staging area."],
-                    ["UPDATE_VAR", "$HALT", true]
-                  ]
-                ],
-                ["COND", 
-                  ["EQUAL", "$STEP", "5.3"],
-                  [
-                    ["VAR", "$STAGING_ENEMIES", ["FILTER_CARDS", "$C", 
-                      ["AND",
-                        ["EQUAL", "$C.groupId", "sharedStagingArea"],
-                        ["EQUAL", "$C.currentFace.type", "Enemy"]
-                      ]
-                    ]],
-                    ["LOG_DEV", "$STAGING_ENEMIES"],
-                    ["COND", 
-                      ["GREATER_THAN", ["LENGTH", "$STAGING_ENEMIES"], 0],
-                      [
-                        ["VAR", "$PLAYERS_BY_THREAT", ["SORT_OBJ_LIST", "$PLAYER_ORDER", "$PLAYER_I", "$GAME.playerData.$PLAYER_I.threat"]],
-                        ["VAR", "$HIGHEST_THREAT", "$GAME.playerData.{{$PLAYERS_BY_THREAT.[-1]}}.threat"],
-                        ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$STAGING_ENEMIES", "$C", "$C.currentFace.engagementCost"]],
-                        ["VAR", "$LOWEST_ENG_COST", "$ENEMIES_BY_ENG_COST.[0].currentFace.engagementCost"],
-                        ["LOG_DEV", "$LOWEST_ENG_COST"],
-                        ["COND", 
-                          ["LESS_EQUAL", "$LOWEST_ENG_COST", "$HIGHEST_THREAT"],
-                          [
-                            ["LOG", "{{$ALIAS_N}} halted round advancement at the engagement step because there are enemies with forced engagement."],
-                            ["UPDATE_VAR", "$HALT", true]
-                          ]
-                        ]
-                      ]
-                    ]
-                  ]
-                ],
-                ["COND", 
-                  ["AND",
-                    ["EQUAL", "$STEP", "6.2"],
-                    ["GREATER_THAN",
-                      ["LENGTH", ["FILTER_CARDS", "$C", 
-                        ["OR",
-                          ["IN_STRING", "$C.groupId", "Engaged"],
-                          ["EQUAL", "$C.engagedWithEachPlayer", true]
-                        ]
-                      ]],
-                      0
-                    ]
-                  ],
-                  [
-                    ["LOG", "{{$ALIAS_N}} halted round advancement at the deal shadows step because there are engaged enemies."],
-                    ["UPDATE_VAR", "$HALT", true]
-                  ]
+                  ["EQUAL", "$STEP", "$STOP_STEP_ID"],
+                  ["UPDATE_VAR", "$HALT", true]
                 ]
               ]
+            ]
+          ]
+        },
+        "GET_STAGING_ENEMIES": {
+          "args": [],
+          "code": [
+            ["FILTER_CARDS", "$C", 
+              ["AND",
+                ["EQUAL", "$C.groupId", "sharedStagingArea"],
+                ["EQUAL", "$C.currentFace.type", "Enemy"]
+              ]
+            ]
+          ]
+        },
+        "ENEMIES_IN_STAGING_AREA": {
+          "args": [],
+          "code": ["GREATER_THAN",
+              ["LENGTH", ["GET_STAGING_ENEMIES"]],
+              0
+          ]
+        },
+        "GET_SIDE_QUESTS_IN_PLAY": {
+          "args": [],
+          "code": [
+            ["FILTER_CARDS", "$C", 
+              ["AND",
+                ["EQUAL", "$C.inPlay", true],
+                ["EQUAL", "$C.currentFace.type", "Side Quest"]
+              ]
+            ]
+          ]
+        },
+        "SIDE_QUESTS_IN_PLAY": {
+          "args": [],
+          "code": ["GREATER_THAN",
+              ["LENGTH", ["GET_SIDE_QUESTS_IN_PLAY"]],
+              0
+          ]
+        },
+        "GET_ACTIVE_LOACTIONS": {
+          "args": [],
+          "code": [
+            ["FILTER_CARDS", "$C", 
+              ["AND",
+                ["EQUAL", "$C.groupId", "sharedActiveLocation"],
+                ["EQUAL", "$C.currentFace.type", "Location"]
+              ]
+            ]
+          ]
+        },
+        "NO_ACTIVE_LOCATION": {
+          "args": [],
+          "code": [
+            ["EQUAL", ["LENGTH", ["GET_ACTIVE_LOACTIONS"]], 0]
+          ]
+        },
+        "GET_CURRENT_QUEST": {
+          "args": [],
+          "code": [
+            ["COND", 
+              ["DEFINED", "$GAME.currentQuestCardId"],
+              "$GAME.cardById.{{$GAME.currentQuestCardId}}",
+              ["TRUE"],
+              ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.currentFace.type", "Quest"], ["EQUAL", "$C.inPlay", true]]]
+            ]
+          ]
+        },
+        "ENEMIES_IN_STAGING_AREA_FORCED": {
+          "args": [],
+          "code": [
+            ["VAR", "$STAGING_ENEMIES", ["GET_STAGING_ENEMIES"]],
+            ["COND", 
+              ["GREATER_THAN", ["LENGTH", "$STAGING_ENEMIES"], 0],
+              [
+                ["VAR", "$PLAYERS_BY_THREAT", ["SORT_OBJ_LIST", "$PLAYER_ORDER", "$PLAYER_I", "$GAME.playerData.$PLAYER_I.threat"]],
+                ["VAR", "$HIGHEST_THREAT", "$GAME.playerData.{{$PLAYERS_BY_THREAT.[-1]}}.threat"],
+                ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$STAGING_ENEMIES", "$C", "$C.currentFace.engagementCost"]],
+                ["VAR", "$LOWEST_ENG_COST", "$ENEMIES_BY_ENG_COST.[0].currentFace.engagementCost"],
+                ["COND", 
+                  ["LESS_EQUAL", "$LOWEST_ENG_COST", "$HIGHEST_THREAT"],
+                  true,
+                  ["TRUE"],
+                  false
+                ]
+              ],
+              ["TRUE"],
+              false
+            ]
+          ]
+        },
+        "ENEMIES_ARE_ENGAGED": {
+          "args": [],
+          "code": [
+            ["GREATER_THAN",
+              ["LENGTH", ["FILTER_CARDS", "$C", 
+                ["OR",
+                  ["IN_STRING", "$C.groupId", "Engaged"],
+                  ["EQUAL", "$C.engagedWithEachPlayer", true]
+                ]
+              ]],
+              0
             ]
           ]
         },
@@ -133,11 +158,8 @@
           "args": [],
           "code": ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
             ["VAR", "$ENGAGED_WITH_ME", "$GAME.groupById.{{$PLAYER_I}}Engaged.parentCards"],
-            ["LOG_DEV", "$ENGAGED_WITH_ME"],
             ["VAR", "$ENGAGED_WITH_ALL", ["FILTER_CARDS", "$C", ["EQUAL", "$C.engagedWithEachPlayer", true]]],
-            ["LOG_DEV", "$ENGAGED_WITH_ALL"],
             ["VAR", "$ENGAGED_CARDS", ["CONCAT_LISTS", "$ENGAGED_WITH_ME", "$ENGAGED_WITH_ALL"]],
-            ["LOG_DEV", "$ENGAGED_CARDS"],
             ["VAR", "$SORTED_ENGAGED_CARDS", ["REVERSE_LIST", ["SORT_OBJ_LIST", "$ENGAGED_CARDS", "$CARD", "$CARD.sides.A.engagementCost"]]],
             ["FOR_EACH_VAL", "$CARD", "$SORTED_ENGAGED_CARDS", [
                 ["VAR", "$CARD_ID", "$CARD.id"],
@@ -239,7 +261,6 @@
                   ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
                   ["INCREASE_VAR", "$STAGING_THREAT", ["ADD", "$CARD.currentFace.threat", "$CARD.tokens.threat"]]
               ]],
-              ["LOG", "└── ", "Staging threat is now ", "$STAGING_THREAT", "."],
               ["SET", "/stagingThreat", "$STAGING_THREAT"]
           ]
         },
@@ -382,6 +403,104 @@
                   ["LOG", "{{$PLAYER_N}} tried to update the layout to hide the second encounter deck but it is already hidden."]
                 ]
               ]
+            ]
+          ]
+        },
+        "UPDATE_ADVANCE_BUTTON": {
+          "args": [],
+          "code": [
+            ["COND",
+              ["EQUAL", "$GAME.stepId", "0.0"],
+              ["SET", "/advanceButtonFunction", "readyForNextPlanning"],
+              ["EQUAL", "$GAME.stepId", "2.P"],
+              ["COND",
+                ["SIDE_QUESTS_IN_PLAY"],
+                ["SET", "/advanceButtonFunction", "selectCurrentQuest"],
+                ["TRUE"],
+                ["SET", "/advanceButtonFunction", "commitCharacters"]
+              ],
+              ["EQUAL", "$GAME.stepId", "3.2"],
+              ["SET", "/advanceButtonFunction", "commitCharacters"],
+              ["EQUAL", "$GAME.stepId", "3.3"],
+              ["SET", "/advanceButtonFunction", "resolveQuest"],
+              ["EQUAL", "$GAME.stepId", "3.4"],
+              ["COND", 
+                ["NO_ACTIVE_LOCATION"],
+                ["SET", "/advanceButtonFunction", "advanceToTravel"],
+                ["ENEMIES_IN_STAGING_AREA"],
+                ["SET", "/advanceButtonFunction", "advanceToOptionalEngagement"],
+                ["ENEMIES_ARE_ENGAGED"],
+                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["TRUE"],
+                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+              ],
+              ["EQUAL", "$GAME.stepId", "4.2"],
+              ["COND", 
+                ["ENEMIES_IN_STAGING_AREA"],
+                ["SET", "/advanceButtonFunction", "advanceToOptionalEngagement"],
+                ["ENEMIES_ARE_ENGAGED"],
+                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["TRUE"],
+                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+              ],
+              ["EQUAL", "$GAME.stepId", "5.2"],
+              ["COND", 
+                ["ENEMIES_IN_STAGING_AREA_FORCED"],
+                ["SET", "/advanceButtonFunction", "resolveEngagementChecks"],
+                ["ENEMIES_ARE_ENGAGED"],
+                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["TRUE"],
+                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+              ],
+              ["EQUAL", "$GAME.stepId", "5.3"],
+              ["COND", 
+                ["ENEMIES_ARE_ENGAGED"],
+                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["TRUE"],
+                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+              ],
+              ["EQUAL", "$GAME.stepId", "6.2"],
+              ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+            ]
+          ]
+        },
+        "DO_ADVANCE_BUTTON": {
+          "args": [],
+          "code": [
+            ["COND",
+              ["EQUAL", "$GAME.advanceButtonFunction", "readyForNextPlanning"],
+              [
+                ["LOG", "{{$ALIAS_N}} is ready to advance to the next planning phase."],
+                ["SET", "/playerData/$PLAYER_N/readyForNextPlanning", true],
+                ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_N}}Play1/style", {"background": "rgba(0, 255, 0, 0.2)"}],
+                ["VAR", "$DO_ADVANCE", true],
+                ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
+                  ["COND",
+                    ["NOT_EQUAL", "$GAME.playerData.$PLAYER_I.readyForNextPlanning", true],
+                    ["UPDATE_VAR", "$DO_ADVANCE", false]
+                  ]
+                ],
+                ["COND",
+                  "$DO_ADVANCE",
+                  ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "2.P"]
+                ]
+              ],
+              ["EQUAL", "$GAME.advanceButtonFunction", "selectCurrentQuest"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.1"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "commitCharacters"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToStaging"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "resolveQuest"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.4"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToTravel"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "4.2"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToOptionalEngagement"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "5.2"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "resolveEngagementChecks"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "5.3"],
+              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToCombat"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "6.2"]
             ]
           ]
         }
