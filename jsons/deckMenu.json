@@ -1118,7 +1118,7 @@
                 ]
             },
             {
-                "label": "id:Campaign",
+                "label": "id:campaignCards",
                 "deckLists": [
                     {
                         "label": "id:The Hobbit",
@@ -1133,8 +1133,20 @@
                         "deckListId": "CCC.1"
                     },
                     {
-                        "label": "id:Angmar Awakened",
+                        "label": "id:The Dark of Mirkwood",
                         "deckListId": "CCC.2"
+                    },
+                    {
+                        "label": "id:Angmar Awakened",
+                        "deckListId": "CCC.3"
+                    },
+                    {
+                        "label": "id:The Dream-chaser",
+                        "deckListId": "CCC.4"
+                    },
+                    {
+                        "label": "id:Ered Mithrin",
+                        "deckListId": "CCC.5"
                     }
                 ]
             }
