@@ -43,7 +43,7 @@
         },
         "layout2Player": {
             "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
-            "cardSize": 14,
+            "cardSize": 13,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "regions": {
@@ -89,7 +89,7 @@
         },
         "layout3Player": {
             "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
-            "cardSize": 14,
+            "cardSize": 13,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
             "regions": {
@@ -140,7 +140,7 @@
         },
         "layout4Player": {
             "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
-            "cardSize": 12,
+            "cardSize": 11,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "6/7", "width": "23%", "height": "1/7"},
             "regions": {

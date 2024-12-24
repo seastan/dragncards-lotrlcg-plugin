@@ -172,7 +172,7 @@
                                     ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", "$ACTIVE_LOCATION.currentFace.questPoints", "$ACTIVE_LOCATION.tokens.progress"]],
                                     ["LOG", "├── {{$PROGRESS_MADE}} progress was placed on the active location."],
                                     ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
-                                    ["DECREASE_VAR", "$PROGRESS_MADE", "REMAINING_LOCATION_PROGRESS"]
+                                    ["DECREASE_VAR", "$PROGRESS_MADE", "$REMAINING_LOCATION_PROGRESS"]
                                 ]
                             ],
                             ["COND",
@@ -277,11 +277,11 @@
                 "condition": ["EQUAL", "$GAME.stepId", "6.2"],
                 "then": ["DEAL_SHADOW_CARDS"]
             },
-            "step_7.1": {
+            "step_7.R": {
                 "_comment": "Trigger refresh phase framework effects",
                 "type": "trigger",
                 "listenTo": ["/stepId"],
-                "condition": ["EQUAL", "$GAME.stepId", "7.1"],
+                "condition": ["EQUAL", "$GAME.stepId", "7.R"],
                 "then": [
                     ["VAR", "$NEXT_PLAYER", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
                     ["LOG", "├── The first player is now {{$NEXT_PLAYER}}"],
@@ -442,6 +442,24 @@
                 ],
                 "offDo": [
                     ["SET", "/cardById/$TARGET_ID/borderColor", null]
+                ]
+            },
+            "turnCurrentQuestBlue": { 
+                "_comment": "Turn cards green when they have 0 quest points left",
+                "type": "trigger", 
+                "listenTo": ["/currentQuestCardId"],
+                "condition": ["TRUE"],
+                "then": [
+                    ["VAR", "$PREV_CURRENT_QUEST_CARD_ID", ["PREV", "$GAME.currentQuestCardId"]],
+                    ["VAR", "$CURRENT_QUEST_CARD_ID", "$GAME.currentQuestCardId"],
+                    ["COND",
+                        ["DEFINED", "$PREV_CURRENT_QUEST_CARD_ID"],
+                        ["SET", "/cardById/$PREV_CURRENT_QUEST_CARD_ID/borderColor", null]
+                    ],
+                    ["COND",
+                        ["DEFINED", "$CURRENT_QUEST_CARD_ID"],
+                        ["SET", "/cardById/$CURRENT_QUEST_CARD_ID/borderColor", "blue"]
+                    ]
                 ]
             }
         },

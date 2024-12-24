@@ -54,6 +54,24 @@
               0
           ]
         },
+        "GET_STAGING_LOCATIONS": {
+          "args": [],
+          "code": [
+            ["FILTER_CARDS", "$C", 
+              ["AND",
+                ["EQUAL", "$C.groupId", "sharedStagingArea"],
+                ["EQUAL", "$C.currentFace.type", "Location"]
+              ]
+            ]
+          ]
+        },
+        "LOCATIONS_IN_STAGING_AREA": {
+          "args": [],
+          "code": ["GREATER_THAN",
+              ["LENGTH", ["GET_STAGING_LOCATIONS"]],
+              0
+          ]
+        },
         "GET_SIDE_QUESTS_IN_PLAY": {
           "args": [],
           "code": [
@@ -425,7 +443,7 @@
               ["SET", "/advanceButtonFunction", "resolveQuest"],
               ["EQUAL", "$GAME.stepId", "3.4"],
               ["COND", 
-                ["NO_ACTIVE_LOCATION"],
+                ["AND", ["NO_ACTIVE_LOCATION"], ["LOCATIONS_IN_STAGING_AREA"]],
                 ["SET", "/advanceButtonFunction", "advanceToTravel"],
                 ["ENEMIES_IN_STAGING_AREA"],
                 ["SET", "/advanceButtonFunction", "advanceToOptionalEngagement"],

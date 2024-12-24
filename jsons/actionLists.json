@@ -1,22 +1,22 @@
 {
     "actionLists": {
         "skipToNextPlanningPhase": [
-            ["{{$ALIAS_N}} advanced to the next planning phase, ignoring trigger reminders."],
-            ["ADVANCE_TO_STEP", "2.P"]
+            ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
+            ["COND",
+                ["NOT_EQUAL", "$GAME.phaseId", "Refresh"],
+                ["ACTION_LIST", "skipToRefreshPhase"]
+            ],
+            ["INCREASE_VAL", "/roundNumber", 1],
+            ["SET", "/stepId", "1.R"],
+            ["SET", "/stepId", "2.P"]
         ],
         "skipToDealShadowsStep": [
-            ["{{$ALIAS_N}} advanced to the deal shadows step, ignoring trigger reminders."],
-            ["ADVANCE_TO_STEP", "6.2"]
+            ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
+            ["SET", "/stepId", "6.2"]
         ],
         "skipToRefreshPhase": [
-            ["{{$ALIAS_N}} advanced to the refresh phase, ignoring trigger reminders."],
-            ["ADVANCE_TO_STEP", "7.R"]
-        ],
-        "newRoundOld": [
-            ["LOG", "{{$ALIAS_N}} tried to start a new round (Shift+N), but this hotkey is no longer in use. You can either move through the round with Shift+V (this is recommmended as it will halt at trigger reminders), or use Ctrl+Shift+N to skip directly to the next planning phase."]
-        ],
-        "dealShadowsOld": [
-            ["LOG", "{{$ALIAS_N}} tried to deal all shadow cards (Shift+S), but this hotkey is no longer in use. You can either move through the round with Shift+V and shadows will be dealt when it comes to step 6.2, or use Ctrl+Shift+S to skip directly to this step."]
+            ["LOG", "{{$ALIAS_N}} advanced to the refresh phase."],
+            ["SET", "/stepId", "7.R"]
         ],
         "revealEncounterFaceup": [
             ["VAR", "$REVEAL_FACEDOWN", false],
