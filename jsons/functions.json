@@ -26,7 +26,7 @@
                 ]],
                 ["COND", 
                   "$HALT", 
-                  ["LOG", "{{$ALIAS_N}} halted round advancement due to card triggers: {{$TRIGGER_NAMES}}. Once resolved, press Shift+V again to continue round advancement."]
+                  ["LOG", "{{$ALIAS_N}} halted round advancement due to card triggers: {{$TRIGGER_NAMES}}."]
                 ],
                 ["COND", 
                   ["EQUAL", "$STEP", "$STOP_STEP_ID"],
