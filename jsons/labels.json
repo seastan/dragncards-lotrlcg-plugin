@@ -1,5 +1,17 @@
 {
     "labels": {
+        "campaignCards": {
+            "English": "Campaign Cards"
+        },
+        "Ered Mithrin": {
+            "English": "Ered Mithrin"
+        },
+        "The Dream-chaser": {
+            "English": "The Dream-chaser"
+        },
+        "The Dark of Mirkwood": {
+            "English": "The Dark of Mirkwood"
+        },
         "advanceButtonFunction": {
             "English": "Advance Button Function"
         },
