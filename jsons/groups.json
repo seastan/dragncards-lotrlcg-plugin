@@ -83,7 +83,7 @@
         "sharedEncounterDeck2": {
             "groupType": "deck",
             "label": "id:sharedEncounterDeck2", 
-            "tableLabel": "id:sharedEncounterDeck2",
+            "tableLabel": "id:encounter2",
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedEncounterDeck2",
@@ -92,8 +92,8 @@
         },
         "sharedEncounterDiscard2": {
             "groupType": "discard",
-            "label": "id:sharedEncounterDiscard2", 
-            "tableLabel": "id:sharedEncounterDiscard2",
+            "label": "id:sharedEncounterDiscard2",
+            "tableLabel": "id:discard2",
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedEncounterDeck2",

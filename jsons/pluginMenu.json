@@ -16,22 +16,6 @@
             {
                 "label": "id:siegeQuest",
                 "actionList": "setQuestSiege"
-            },
-            {
-                "label": "id:setupEscapeFromMountGram",
-                "actionList": "setupEscapeFromMountGram"
-            },
-            {
-                "label": "id:setupToCatchAnOrc",
-                "actionList": "setupToCatchAnOrc"
-            },
-            {
-                "label": "id:setupGlitteringCaves",
-                "actionList": "setupGlitteringCaves"
-            },
-            {
-                "label": "id:setupTheFortressOfNurn",
-                "actionList": "setupTheFortressOfNurn"
             }
         ]
     }

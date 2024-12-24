@@ -34,6 +34,7 @@
         {"faceProperty": "keywords", "regex": "at the beginning of (each|the) travel phase", "stepId": "4.1"},
         {"faceProperty": "keywords", "regex": "at the beginning of (each|the) encounter phase", "stepId": "5.1"},
         {"faceProperty": "keywords", "regex": "at the beginning of (each|the) combat phase", "stepId": "6.1"},
+        {"faceProperty": "keywords", "regex": "Archery .\\.", "stepId": "6.1"},
         {"faceProperty": "keywords", "regex": "at the beginning of (each|the) refresh phase", "stepId": "7.1"},
         {"faceProperty": "keywords", "regex": "at the end of (each|the) round", "stepId": "0.1"},
         {"faceProperty": "keywords", "regex": "at the end of (each|the) resource phase", "stepId": "1.4"},
