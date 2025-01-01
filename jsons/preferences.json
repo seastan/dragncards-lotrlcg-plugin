@@ -1,6 +1,6 @@
 {
     "preferences": {
-        "game": ["questingStat"],
+        "game": ["questingStat", "gameStepAutomation"],
         "player": ["cardsDrawn"]
     }
 }
