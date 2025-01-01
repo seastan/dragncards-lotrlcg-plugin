@@ -542,6 +542,10 @@
           "args": [],
           "code": [
             ["COND",
+              ["EQUAL", "$GAME.gameStepAutomation", false],
+              ["ABORT", "{{$ALIAS_N}} tried to advance the round but game step automation is turned off. Turn it on in preferences."]
+            ],
+            ["COND",
               ["EQUAL", "$GAME.roundAdvancementFunction", "goToFirstPlanning"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "2.P"],
               ["EQUAL", "$GAME.roundAdvancementFunction", "readyForNextPlanning"],
