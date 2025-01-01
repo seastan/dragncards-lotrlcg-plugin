@@ -388,8 +388,28 @@
                         ],
                         [
                             ["TOGGLE_EXHAUST", "$THIS"],
-                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS.parentCardId"],
+                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
+                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Play1", -1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "65608b5c-4420-4d76-a458-71a8b32e4159": {
+                "_comment": "Vilya",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            ["NOT", "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"],
+                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
+                        ],
+                        [
                             ["TOGGLE_EXHAUST", "$THIS"],
+                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"],
                             ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
                             ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Play1", -1]
                         ],
@@ -554,6 +574,42 @@
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/progress", 1]
                                 ]]
                             ]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9057": {
+                "_comment": "Unexpected Courage",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "e718605c-622d-4fd5-b1a1-b9fe467f09c5": {
+                "_comment": "Unexpected Courage",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
