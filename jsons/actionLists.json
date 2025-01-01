@@ -3,12 +3,26 @@
         "skipToNextPlanningPhase": [
             ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
             ["COND",
+                ["EQUAL", "$GAME.roundNumber", 0],
+                [
+                    ["INCREASE_VAL", "/roundNumber", 1],
+                    ["SET", "/stepId", "1.R"],
+                    ["SET", "/stepId", "2.P"]
+                ],
                 ["NOT_EQUAL", "$GAME.phaseId", "Refresh"],
-                ["ACTION_LIST", "skipToRefreshPhase"]
-            ],
-            ["INCREASE_VAL", "/roundNumber", 1],
-            ["SET", "/stepId", "1.R"],
-            ["SET", "/stepId", "2.P"]
+                [
+                    ["ACTION_LIST", "skipToRefreshPhase"],
+                    ["SET", "/stepId", "0.0"],
+                    ["SET", "/stepId", "1.R"],
+                    ["SET", "/stepId", "2.P"]
+                ],
+                ["TRUE"],
+                [
+                    ["SET", "/stepId", "0.0"],
+                    ["SET", "/stepId", "1.R"],
+                    ["SET", "/stepId", "2.P"]
+                ]
+            ]
         ],
         "skipToDealShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
@@ -183,24 +197,8 @@
                     ]
 
                 ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 90], "$ACTIVE_CARD.inPlay"],
-                [
-                    ["LOG", "$ALIAS_N", " readied ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
-                ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], "$ACTIVE_CARD.inPlay"],
-                [
-                    ["LOG", "$ALIAS_N", " exhausted ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true]
-                ],
-                ["AND", "$ACTIVE_CARD.inPlay"],
-                [
-                    ["LOG", "$ALIAS_N", " straightened ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
-                ]
+                ["TRUE"],
+                ["TOGGLE_EXHAUST", "$ACTIVE_CARD"]
             ]
         ],
         "flipCard": [
@@ -249,9 +247,9 @@
                     ["ACTION_LIST", "toggleCommitWithoutExhausting"],
                     ["COND",
                         ["AND", "$ACTIVE_CARD.committed", "$ACTIVE_CARD.inPlay", ["NOT", "$ACTIVE_CARD.exhausted"]],
-                        ["ACTION_LIST", "toggleExhaust"],
+                        ["TOGGLE_EXHAUST", "$ACTIVE_CARD"],
                         ["AND", ["NOT", "$ACTIVE_CARD.committed"], "$ACTIVE_CARD.inPlay", "$ACTIVE_CARD.exhausted"],
-                        ["ACTION_LIST", "toggleExhaust"]
+                        ["TOGGLE_EXHAUST", "$ACTIVE_CARD"]
                     ]
                 ]
             ]

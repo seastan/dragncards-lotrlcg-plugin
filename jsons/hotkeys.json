@@ -13,7 +13,7 @@
         ],
         "game": [
             {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},
-            {"key": "E", "actionList": "revealEncounterFaceup", "label": "id:revealEncounterCard"},
+            {"key": "E", "actionList": "hotkeyE", "label": "id:revealEncounterCard"},
             {"key": "Shift+E", "actionList": "revealEncounterFacedown", "label": "id:revealFacedownEncounterCard"},
             {"key": "K", "actionList": "revealSecondaryFaceup", "label": "id:revealCardFromSecondEncounterDeck"},
             {"key": "M", "actionList": "toggleMap", "label": "id:toggleTheMap"},
@@ -29,12 +29,12 @@
             {"key": "Shift+X", "actionList": "discardShadows", "label": "id:discardAllShadowCards"},
             {"key": "U", "actionList": "increaseThreat", "label": "id:raiseThreatBy1"},
             {"key": "J", "actionList": "decreaseThreat", "label": "id:raiseThreatBy1"},
-            {"key": "Ctrl+U", "actionList": "raiseAllThreat", "label": "id:raiseThreatBy1ForAllPlayers"},
-            {"key": "Ctrl+J", "actionList": "reduceAllThreat", "label": "id:reduceThreatBy1ForAllPlayers"},
+            {"key": "Shift+U", "actionList": "raiseAllThreat", "label": "id:raiseThreatBy1ForAllPlayers"},
+            {"key": "Shift+J", "actionList": "reduceAllThreat", "label": "id:reduceThreatBy1ForAllPlayers"},
             {"key": "Shift+D", "actionList": "drawNextPlayer", "label": "id:drawCardOnBehalfOfNextEmptySeat"}
         ],
         "card": [
-            {"key": "A", "actionList": "toggleExhaust", "label": "id:exhaustReadyIfLocationMakeActive"},
+            {"key": "A", "actionList": "hotkeyA", "label": "id:exhaustReadyIfLocationMakeActive"},
             {"key": "C", "actionList": "detach", "label": "id:detach"},
             {"key": "F", "actionList": "flipCard", "label": "id:flip"},
             {"key": "C", "actionList": "detach", "label": "id:detach"},

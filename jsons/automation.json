@@ -141,6 +141,16 @@
                     ["UPDATE_ADVANCE_BUTTON"]
                 ]
             },
+            "step_0.0": {
+                "_comment": "Trigger start of round framework effects",
+                "type": "trigger",
+                "listenTo": ["/stepId"],
+                "condition": ["EQUAL", "$GAME.stepId", "0.0"],
+                "then": [
+                    ["LOG", "{{$ALIAS_N}} started round {{$GAME.roundNumber}}."],
+                    ["INCREASE_VAL", "/roundNumber", 1]
+                ]
+            },
             "step_1.R": {
                 "_comment": "Trigger resource phase framework effects",
                 "type": "trigger",

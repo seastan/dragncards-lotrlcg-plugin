@@ -387,9 +387,9 @@
                             ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
                         ],
                         [
-                            ["ACTION_LIST", "toggleExhaust"],
+                            ["TOGGLE_EXHAUST", "$THIS"],
                             ["DEFINE", "$ACTIVE_CARD_ID", "$THIS.parentCardId"],
-                            ["ACTION_LIST", "toggleExhaust"],
+                            ["TOGGLE_EXHAUST", "$THIS"],
                             ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
                             ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Play1", -1]
                         ],
@@ -398,7 +398,7 @@
                     ]
                 }
             },
-            "7ce49caa-c7ac-455e-b35f-217055be34ed": {
+            "51223bd0-ffd1-11df-a976-0801200c9026": {
                 "_comment": "Steward of Gondor",
                 "ability": {
                     "A": ["COND",
@@ -407,10 +407,9 @@
                             ["NOT", "$THIS.exhausted"]
                         ],
                         [
-                            ["ACTION_LIST", "toggleExhaust"],
-                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS.parentCardId"],
-                            ["ACTION_LIST", "toggleExhaust"],
-                            ["INCREASE_VAR", "/cardById/{{$THIS.parentCardId}}/tokens/resources", 2]
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["TOGGLE_EXHAUST", "$THIS.parentCard"],
+                            ["INCREASE_VAL", "/cardById/{{$THIS.parentCardId}}/tokens/resources", 2]
                         ]
                     ]
                 }
