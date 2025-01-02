@@ -38,10 +38,15 @@
         "type": "boolean",
         "default": false
       },
-      "advanceButtonFunction": {
-        "label": "id:advanceButtonFunction",
+      "roundAdvancementFunction": {
+        "label": "id:roundAdvancementFunction",
         "type": "any",
         "default": "readyForNextPlanning"
+      },
+      "gameStepAutomation": {
+        "label": "id:gameStepAutomation",
+        "type": "boolean",
+        "default": false
       }
     }
 }

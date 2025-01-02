@@ -83,12 +83,12 @@
           "condition": ["EQUAL", "$ACTIVE_FACE.type", "Event"]
         },
         {
-          "actionList": "toggleExhaust",
+          "actionList": ["TOGGLE_EXHAUST", "$ACTIVE_CARD"],
           "label": "id:exhaust",
           "condition": ["EQUAL", "$ACTIVE_CARD.rotation", 0]
         },
         {
-          "actionList": "toggleExhaust",
+          "actionList": ["TOGGLE_EXHAUST", "$ACTIVE_CARD"],
           "label": "id:ready",
           "condition": ["EQUAL", "$ACTIVE_CARD.rotation", 90]
         }

@@ -3,12 +3,26 @@
         "skipToNextPlanningPhase": [
             ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
             ["COND",
+                ["EQUAL", "$GAME.roundNumber", 0],
+                [
+                    ["INCREASE_VAL", "/roundNumber", 1],
+                    ["SET", "/stepId", "1.R"],
+                    ["SET", "/stepId", "2.P"]
+                ],
                 ["NOT_EQUAL", "$GAME.phaseId", "Refresh"],
-                ["ACTION_LIST", "skipToRefreshPhase"]
-            ],
-            ["INCREASE_VAL", "/roundNumber", 1],
-            ["SET", "/stepId", "1.R"],
-            ["SET", "/stepId", "2.P"]
+                [
+                    ["ACTION_LIST", "skipToRefreshPhase"],
+                    ["SET", "/stepId", "0.0"],
+                    ["SET", "/stepId", "1.R"],
+                    ["SET", "/stepId", "2.P"]
+                ],
+                ["TRUE"],
+                [
+                    ["SET", "/stepId", "0.0"],
+                    ["SET", "/stepId", "1.R"],
+                    ["SET", "/stepId", "2.P"]
+                ]
+            ]
         ],
         "skipToDealShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
@@ -18,55 +32,30 @@
             ["LOG", "{{$ALIAS_N}} advanced to the refresh phase."],
             ["SET", "/stepId", "7.R"]
         ],
-        "revealEncounterFaceup": [
-            ["VAR", "$REVEAL_FACEDOWN", false],
-            ["ACTION_LIST", "revealEncounter"]
-        ],
         "revealEncounterFacedown": [
-            ["VAR", "$REVEAL_FACEDOWN", true],
-            ["ACTION_LIST", "revealEncounter"]
-        ],
-        "revealSecondaryFaceup": [
-            ["VAR", "$REVEAL_FACEDOWN", false],
-            ["ACTION_LIST", "revealSecondary"]
+            ["REVEAL_ENCOUNTER", "B"]
         ],
         "revealSecondaryFacedown": [
             ["VAR", "$REVEAL_FACEDOWN", true],
             ["ACTION_LIST", "revealSecondary"]
         ],
-        "revealEncounter": [
-            ["COND",
-                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
-                ["COND",
-                    ["EQUAL", "$GAME.phaseId", "Quest"],
-                    [
-                        ["LOG", "$ALIAS_N"," shuffled the encounter discard pile into the encounter deck."],
-                        ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"]
-                    ],
-                    true,
-                    ["LOG", "$ALIAS_N", "tried to reveal a card, but the encounter deck is empty and it's not the quest phase."]
-                ],
-                true,
-                [
-                    ["VAR", "$STACK_ID", "$GAME.groupById.sharedEncounterDeck.stackIds.[0]"],
-                    ["LOG", "$ALIAS_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"], "."],
-                    ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1],
-                    ["COND",
-                        "$REVEAL_FACEDOWN",
-                        ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
-                            ["SET", "/cardById/$CARD_ID/currentSide", "B"]
-                        ]
+        "hotkeyE": [
+            ["COND", 
+                ["AND", "$GAME.gameStepAutomation", 
+                    ["OR",
+                        ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"],
+                        ["EQUAL", "$GAME.roundAdvancementFunction", "commitOrReveal"]
                     ]
-                ]
-            ],
-            ["COND",
-                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
-                [
-                    ["LOG", "$ALIAS_N"," shuffled the encounter discard pile into the encounter deck."],
-                    ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"]
                 ],
-                true,
-                "$GAME"
+                [
+                    ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
+                    ["COND", 
+                        ["EQUAL", "$GAME.stepId", "3.3"],
+                        ["REVEAL_ENCOUNTER", "A"]
+                    ]
+                ],
+                ["TRUE"],
+                ["REVEAL_ENCOUNTER", "A"]
             ]
         ],
         "revealSecondary": [
@@ -180,31 +169,32 @@
             ["SET", "/cardById/$ACTIVE_CARD_ID/tokens", {}],
             ["LOG", "$ALIAS_N", " removed all tokens from ", "$ACTIVE_FACE.name", "."]
         ],
-        "toggleExhaust": [
+        "hotkeyA": [
             ["COND",
                 ["EQUAL", "$ACTIVE_FACE.type", "Location"],
                 [
-                    ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
-                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                    ["COND", 
+                        ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToTravel"]],
+                        [
+                            ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "4.2"],
+                            ["COND",
+                                ["EQUAL", "$GAME.stepId", "4.2"],
+                                [
+                                    ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
+                                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                                ]
+                            ]
+                        ],
+                        ["TRUE"],
+                        [
+                            ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
+                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                        ]
+                    ]
+
                 ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 90], "$ACTIVE_CARD.inPlay"],
-                [
-                    ["LOG", "$ALIAS_N", " readied ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
-                ],
-                ["AND", ["EQUAL", "$ACTIVE_CARD.rotation", 0], "$ACTIVE_CARD.inPlay"],
-                [
-                    ["LOG", "$ALIAS_N", " exhausted ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 90],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", true]
-                ],
-                ["AND", "$ACTIVE_CARD.inPlay"],
-                [
-                    ["LOG", "$ALIAS_N", " straightened ", "$ACTIVE_FACE.name", "."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/rotation", 0],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/exhausted", false]
-                ]
+                ["TRUE"],
+                ["TOGGLE_EXHAUST", "$ACTIVE_CARD"]
             ]
         ],
         "flipCard": [
@@ -228,13 +218,22 @@
                     ["EQUAL", "$ACTIVE_FACE.type", "Side Quest"]
                 ],
                 [
-                    ["LOG", "{{$ALIAS_N}} selected {{$ACTIVE_FACE.name}} as the current quest."],
-                    ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"],
                     ["COND", 
-                        ["EQUAL", "$GAME.advanceButtonFunction", "selectCurrentQuest"],
+                        ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.roundAdvancementFunction", "selectCurrentQuest"]],
                         [
                             ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.1"],
-                            ["SET", "/advanceButtonFunction", "commitCharacters"]
+                            ["COND", 
+                                ["EQUAL", "$GAME.stepId", "3.1"],
+                                [
+                                    ["LOG", "$ALIAS_N", " selected ", "$ACTIVE_FACE.name", " as the current quest."],
+                                    ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"]
+                                ]
+                            ]
+                        ],
+                        ["TRUE"],
+                        [
+                            ["LOG", "{{$ALIAS_N}} selected {{$ACTIVE_FACE.name}} as the current quest."],
+                            ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"]
                         ]
                     ]
                 ],
@@ -243,20 +242,17 @@
                     ["ACTION_LIST", "toggleCommitWithoutExhausting"],
                     ["COND",
                         ["AND", "$ACTIVE_CARD.committed", "$ACTIVE_CARD.inPlay", ["NOT", "$ACTIVE_CARD.exhausted"]],
-                        ["ACTION_LIST", "toggleExhaust"],
+                        ["TOGGLE_EXHAUST", "$ACTIVE_CARD"],
                         ["AND", ["NOT", "$ACTIVE_CARD.committed"], "$ACTIVE_CARD.inPlay", "$ACTIVE_CARD.exhausted"],
-                        ["ACTION_LIST", "toggleExhaust"]
+                        ["TOGGLE_EXHAUST", "$ACTIVE_CARD"]
                     ]
                 ]
             ]
         ],
         "toggleCommitWithoutExhausting": [
             ["COND", 
-                ["EQUAL", "$GAME.advanceButtonFunction", "commitCharacters"],
-                [
-                    ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.2"],
-                    ["SET", "/advanceButtonFunction", "advanceToStaging"]
-                ]
+                ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"]],
+                ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.2"]
             ],
             ["COND",
                 ["AND", ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],

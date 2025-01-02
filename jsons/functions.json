@@ -172,6 +172,69 @@
             ]
           ]
         },
+        "TOGGLE_EXHAUST": {
+          "args": ["$CARD"],
+          "code": [
+            ["COND",
+              ["AND", ["EQUAL", "$CARD.rotation", 90], "$CARD.inPlay"],
+              [
+                ["LOG", "$ALIAS_N", " readied ", "$ACTIVE_FACE.name", "."],
+                ["SET", "/cardById/$CARD.id/rotation", 0],
+                ["SET", "/cardById/$CARD.id/exhausted", false]
+              ],
+              ["AND", ["EQUAL", "$CARD.rotation", 0], "$CARD.inPlay"],
+              [
+                ["LOG", "$ALIAS_N", " exhausted ", "$ACTIVE_FACE.name", "."],
+                ["SET", "/cardById/$CARD.id/rotation", 90],
+                ["SET", "/cardById/$CARD.id/exhausted", true]
+              ],
+              ["AND", "$ACTIVE_CARD.inPlay"],
+              [
+                ["LOG", "$ALIAS_N", " straightened ", "$ACTIVE_FACE.name", "."],
+                ["SET", "/cardById/$CARD.id/rotation", 0],
+                ["SET", "/cardById/$CARD.id/exhausted", false]
+              ]
+            ]
+          ]
+        },
+        "REVEAL_ENCOUNTER": {
+          "args": ["$SIDE"],
+          "code": [
+            ["COND",
+              ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+              ["COND",
+                  ["EQUAL", "$GAME.phaseId", "Quest"],
+                  [
+                    ["LOG", "$ALIAS_N"," shuffled the encounter discard pile into the encounter deck."],
+                    ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"]
+                  ],
+                  true,
+                  ["LOG", "$ALIAS_N", "tried to reveal a card, but the encounter deck is empty and it's not the quest phase."]
+              ],
+              true,
+              [
+                ["VAR", "$STACK_ID", "$GAME.groupById.sharedEncounterDeck.stackIds.[0]"],
+                ["LOG", "$ALIAS_N", " revealed ", ["FACEUP_NAME_FROM_STACK_ID", "$STACK_ID"], "."],
+                ["MOVE_STACK", "$STACK_ID", "sharedStagingArea", -1],
+                ["COND",
+                  ["EQUAL", "$SIDE", "B"],
+                  ["FOR_EACH_VAL", "$CARD_ID", "$GAME.stackById.$STACK_ID.cardIds", 
+                    ["SET", "/cardById/$CARD_ID/currentSide", "B"]
+                  ]
+                ]
+              ]
+            ],
+            ["COND",
+              ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+              [
+                ["LOG", "$ALIAS_N"," shuffled the encounter discard pile into the encounter deck."],
+                ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"]
+              ],
+              true,
+              "$GAME"
+            ]
+          ]
+        },
         "DEAL_SHADOW_CARDS": {
           "args": [],
           "code": ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
@@ -286,7 +349,7 @@
           "args": ["$CARD", "$X"],
           "code": ["ACTION_LIST_TO_LOOK_AT_X", 
               ["AND", "$CARD.inPlay", ["NOT", "$CARD.exhausted"]], 
-              "toggleExhaust", 
+              ["LIST", "TOGGLE_EXHAUST", "$CARD"], 
               "$CARD",
               "{{$CARD.controller}}Deck",
               "$X"
@@ -428,57 +491,59 @@
           "args": [],
           "code": [
             ["COND",
+              ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", "$GAME.stepId", "0.0"]],
+              ["SET", "/roundAdvancementFunction", "goToFirstPlanning"],
               ["EQUAL", "$GAME.stepId", "0.0"],
-              ["SET", "/advanceButtonFunction", "readyForNextPlanning"],
+              ["SET", "/roundAdvancementFunction", "readyForNextPlanning"],
               ["EQUAL", "$GAME.stepId", "2.P"],
               ["COND",
                 ["SIDE_QUESTS_IN_PLAY"],
-                ["SET", "/advanceButtonFunction", "selectCurrentQuest"],
+                ["SET", "/roundAdvancementFunction", "selectCurrentQuest"],
                 ["TRUE"],
-                ["SET", "/advanceButtonFunction", "commitCharacters"]
+                ["SET", "/roundAdvancementFunction", "commitCharacters"]
               ],
+              ["EQUAL", "$GAME.stepId", "3.1"],
+              ["SET", "/roundAdvancementFunction", "commitCharacters"],
               ["EQUAL", "$GAME.stepId", "3.2"],
-              ["SET", "/advanceButtonFunction", "commitCharacters"],
+              ["SET", "/roundAdvancementFunction", "commitOrReveal"],
               ["EQUAL", "$GAME.stepId", "3.3"],
-              ["SET", "/advanceButtonFunction", "resolveQuest"],
+              ["SET", "/roundAdvancementFunction", "revealOrResolve"],
               ["EQUAL", "$GAME.stepId", "3.4"],
               ["COND", 
                 ["AND", ["NO_ACTIVE_LOCATION"], ["LOCATIONS_IN_STAGING_AREA"]],
-                ["SET", "/advanceButtonFunction", "advanceToTravel"],
+                ["SET", "/roundAdvancementFunction", "advanceToTravel"],
                 ["ENEMIES_IN_STAGING_AREA"],
-                ["SET", "/advanceButtonFunction", "advanceToOptionalEngagement"],
+                ["SET", "/roundAdvancementFunction", "advanceToEncounter"],
                 ["ENEMIES_ARE_ENGAGED"],
-                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["SET", "/roundAdvancementFunction", "advanceToCombat"],
                 ["TRUE"],
-                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+                ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
               ],
               ["EQUAL", "$GAME.stepId", "4.2"],
               ["COND", 
                 ["ENEMIES_IN_STAGING_AREA"],
-                ["SET", "/advanceButtonFunction", "advanceToOptionalEngagement"],
+                ["SET", "/roundAdvancementFunction", "advanceToEncounter"],
                 ["ENEMIES_ARE_ENGAGED"],
-                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["SET", "/roundAdvancementFunction", "advanceToCombat"],
                 ["TRUE"],
-                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+                ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
               ],
               ["EQUAL", "$GAME.stepId", "5.2"],
               ["COND", 
                 ["ENEMIES_IN_STAGING_AREA_FORCED"],
-                ["SET", "/advanceButtonFunction", "resolveEngagementChecks"],
-                ["ENEMIES_ARE_ENGAGED"],
-                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["SET", "/roundAdvancementFunction", "resolveEngagementChecks"],
                 ["TRUE"],
-                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+                ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
               ],
               ["EQUAL", "$GAME.stepId", "5.3"],
               ["COND", 
                 ["ENEMIES_ARE_ENGAGED"],
-                ["SET", "/advanceButtonFunction", "advanceToCombat"],
+                ["SET", "/roundAdvancementFunction", "advanceToCombat"],
                 ["TRUE"],
-                ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+                ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
               ],
               ["EQUAL", "$GAME.stepId", "6.2"],
-              ["SET", "/advanceButtonFunction", "readyForNextPlanning"]
+              ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
             ]
           ]
         },
@@ -486,7 +551,13 @@
           "args": [],
           "code": [
             ["COND",
-              ["EQUAL", "$GAME.advanceButtonFunction", "readyForNextPlanning"],
+              ["EQUAL", "$GAME.gameStepAutomation", false],
+              ["ABORT", "{{$ALIAS_N}} tried to advance the round but game step automation is turned off. Turn it on in preferences."]
+            ],
+            ["COND",
+              ["EQUAL", "$GAME.roundAdvancementFunction", "goToFirstPlanning"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "2.P"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "readyForNextPlanning"],
               [
                 ["LOG", "{{$ALIAS_N}} is ready to advance to the next planning phase."],
                 ["SET", "/playerData/$PLAYER_N/readyForNextPlanning", true],
@@ -503,21 +574,19 @@
                   ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "2.P"]
                 ]
               ],
-              ["EQUAL", "$GAME.advanceButtonFunction", "selectCurrentQuest"],
-              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.1"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "commitCharacters"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToStaging"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "commitOrReveal"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "resolveQuest"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "revealOrResolve"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.4"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToTravel"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToTravel"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "4.2"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToOptionalEngagement"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToEncounter"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "5.2"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "resolveEngagementChecks"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "resolveEngagementChecks"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "5.3"],
-              ["EQUAL", "$GAME.advanceButtonFunction", "advanceToCombat"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToCombat"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "6.2"]
             ]
           ]

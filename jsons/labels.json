@@ -1,5 +1,8 @@
 {
     "labels": {
+        "gameStepAutomation": {
+            "English": "Game Step Automation"
+        },
         "campaignCards": {
             "English": "Campaign Cards"
         },
@@ -12,8 +15,8 @@
         "The Dark of Mirkwood": {
             "English": "The Dark of Mirkwood"
         },
-        "advanceButtonFunction": {
-            "English": "Advance Button Function"
+        "roundAdvancementFunction": {
+            "English": "Advance through the round"
         },
         "readyForNextPlanning": {
             "English": "Ready For Next Planning"
@@ -421,8 +424,8 @@
             "Chinese": "3.3: 探查 - 然后玩家行动"
         },
         "step-3.4": {
-            "English": "3.4: Quest resolution - <u>then player actions</u>",
-            "Chinese": "3.4: 结算探险 - <u>然后玩家行动</u>"
+            "English": "3.4: Quest resolution - then player actions",
+            "Chinese": "3.4: 结算探险 - 然后玩家行动"
         },
         "step-3.5": {
             "English": "3.5: End of the Quest phase",
@@ -433,8 +436,8 @@
             "Chinese": "4.1: 游历环节"
         },
         "step-4.2": {
-            "English": "4.2: Travel opportunity - <u>then player actions</u>",
-            "Chinese": "4.2: 游历机会 - <u>然后玩家行动</u>"
+            "English": "4.2: Travel opportunity - then player actions",
+            "Chinese": "4.2: 游历机会 - 然后玩家行动"
         },
         "step-4.3": {
             "English": "4.3: End of the Travel phase",
@@ -445,12 +448,12 @@
             "Chinese": "5.1: 遭遇环节开始"
         },
         "step-5.2": {
-            "English": "5.2: Optional engagement - <u>then player actions</u>",
-            "Chinese": "5.2: 主动交战 - <u>然后玩家行动</u>"
+            "English": "5.2: Optional engagement - then player actions",
+            "Chinese": "5.2: 主动交战 - 然后玩家行动"
         },
         "step-5.3": {
-            "English": "5.3: Engagement checks - <u>then player actions</u>",
-            "Chinese": "5.3: 交战检定 - <u>然后玩家行动</u>"
+            "English": "5.3: Engagement checks - then player actions",
+            "Chinese": "5.3: 交战检定 - 然后玩家行动"
         },
         "step-5.4": {
             "English": "5.4: End of the Encounter phase",
@@ -481,8 +484,8 @@
             "Chinese": "7.1: 恢复环节开始"
         },
         "step-7.2-7.4": {
-            "English": "7.2-7.4: Ready cards, raise threat, pass P1 token - <u>then player actions</u>",
-            "Chinese": "7.2-7.4: 重整卡牌，增加威胁，传递起始玩家标记 - <u>然后玩家行动</u>"
+            "English": "7.2-7.4: Ready cards, raise threat, pass P1 token - then player actions",
+            "Chinese": "7.2-7.4: 重整卡牌，增加威胁，传递起始玩家标记 - 然后玩家行动"
         },
         "step-7.5": {
             "English": "7.5: End of the Refresh phase",
