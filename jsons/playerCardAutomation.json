@@ -5,7 +5,7 @@
                 "_comment": "Celeborn",
                 "rules": {
                     "celebornEnterPlayTokens": {
-                        "_comment": "Add tokens to Silvan allies that enter play if Celeborn is in play.",
+                        "_comment": "If Celeborn is in play, add tokens to Silvan allies that enter play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
@@ -82,47 +82,44 @@
                 }
             },
             "052b1f85-8b9c-4bb0-a735-bdbd5ac1b2c4": {
-                "_comment": "Merry (Hero)",
+                "_comment": "Merry",
                 "rules": {
-                    "merryOtherHobbitEnterPlayTokens": {
-                        "_comment": "Add attack to Merry when a Hobbit hero enters the owner's control.",
-                        "type": "trigger",
+                    "merryOtherHobbitEnterLeavePlayTokens": {
+                        "_comment": "Add/remove attack tokens to Merry when other Hobbit heroes enter/leave the owner's control.",
+                        "type": "whileInPlay", 
+                        "side": "A",
                         "listenTo": ["/cardById/*/inPlay", "/cardById/*/controller"],
-                        "condition": ["AND",
-                                        "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"],
-                                        "$TARGET.inPlay", ["EQUAL", "$TARGET.controller", "$PLAYER_N"],
-                                        ["OR", ["PREV", ["NOT", "$TARGET.inPlay"]], ["PREV", ["NOT", ["EQUAL", "$TARGET.controller", "$PLAYER_N"]]]],
-                                        ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                        ["EQUAL", "$TARGET.currentFace.type", "Hero"],
-                                        ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
-                                    ],
-                        "then": [
-                            ["LOG", "└── ", "$TARGET.controller", " added 1 attack to Merry."],
-                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
+                        "condition": [
+                            "AND", 
+                                "$TARGET.inPlay",
+                                ["EQUAL", "$TARGET.controller", "$PLAYER_N"]
+                        ],
+                        "onDo": ["COND",
+                            ["AND",
+                                ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
+                                ["EQUAL", "$TARGET.currentFace.type", "Hero"],
+                                ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
+                            ],
+                            [
+                                ["LOG", "└── ", "Added 1 attack to Merry."],
+                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
+                            ]
+                        ],
+                        "offDo": ["COND",
+                            ["AND",
+                                ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
+                                ["EQUAL", "$TARGET.currentFace.type", "Hero"],
+                                ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
+                            ],
+                            [
+                                ["LOG", "└── ", "Removed 1 attack from Merry."],
+                                ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
+                            ]
                         ]
                     },
-                    "merryOtherHobbitLeavePlayTokens": {
-                        "_comment": "Remove attack from Merry when a Hobbit hero leaves the owner's control.",
-                        "type": "trigger",
-                        "listenTo": ["/cardById/*/inPlay", "/cardById/*/controller"],
-                        "condition": ["AND",
-                                        "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"],
-                                        ["OR",
-                                            ["AND", ["NOT", "$TARGET.inPlay"], ["PREV", "$TARGET.inPlay"]],
-                                            ["AND", ["NOT", ["EQUAL", "$TARGET.controller", "$PLAYER_N"]], ["PREV", ["EQUAL", "$TARGET.controller", "$PLAYER_N"]]]
-                                        ],
-                                        ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                        ["EQUAL", "$TARGET.currentFace.type", "Hero"],
-                                        ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
-                                    ],
-                        "then": [
-                            ["LOG", "└── ", "$TARGET.controller", " removed 1 attack from Merry."],
-                            ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
-                        ]
-                    },
-                    "merryEnterLeavePlayAttack": {
-                        "_comment": "Add attack when Merry enters play.",
-                        "type": "passive", 
+                    "merryEnterLeavePlayTokens": {
+                        "_comment": "Add attack to Merry when Merry enters play.",
+                        "type": "passive",
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
                         "condition": [
                             "AND", 
@@ -132,7 +129,14 @@
                         "onDo": [
                             ["VAR", "$NUM_HOBBITS",
                                 ["LENGTH",
-                                    ["FILTER_CARDS", "$CARD", ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."], ["EQUAL", "$CARD.currentFace.type", "Hero"]]]
+                                    ["FILTER_CARDS", "$CARD", [
+                                        "AND",
+                                            "$CARD.inPlay",
+                                            ["EQUAL", "$CARD.controller", "$PLAYER_N"],
+                                            ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
+                                            ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                        ]
+                                    ]
                                 ]
                             ],
                             ["LOG", "└── ", "$THIS.controller", " added {{$NUM_HOBBITS}} attack to Merry."],
@@ -144,7 +148,15 @@
                                 [
                                     ["VAR", "$NUM_HOBBITS",
                                         ["LENGTH",
-                                            ["PREV", ["FILTER_CARDS", "$CARD", ["AND", "$CARD.inPlay", ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."], ["EQUAL", "$CARD.currentFace.type", "Hero"]]]]
+                                            ["PREV", ["FILTER_CARDS", "$CARD", [
+                                                        "AND",
+                                                            "$CARD.inPlay",
+                                                            ["EQUAL", "$CARD.controller", "$PLAYER_N"],
+                                                            ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
+                                                            ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                                        ]
+                                                    ]
+                                            ]
                                         ]
                                     ],
                                     ["LOG", "└── ", "$THIS.controller", " removed {{$NUM_HOBBITS}} attack to Merry."],
