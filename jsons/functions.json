@@ -502,6 +502,8 @@
                 ["TRUE"],
                 ["SET", "/roundAdvancementFunction", "commitCharacters"]
               ],
+              ["EQUAL", "$GAME.stepId", "3.1"],
+              ["SET", "/roundAdvancementFunction", "commitCharacters"],
               ["EQUAL", "$GAME.stepId", "3.2"],
               ["SET", "/roundAdvancementFunction", "commitOrReveal"],
               ["EQUAL", "$GAME.stepId", "3.3"],
@@ -523,6 +525,13 @@
                 ["SET", "/roundAdvancementFunction", "advanceToEncounter"],
                 ["ENEMIES_ARE_ENGAGED"],
                 ["SET", "/roundAdvancementFunction", "advanceToCombat"],
+                ["TRUE"],
+                ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
+              ],
+              ["EQUAL", "$GAME.stepId", "5.2"],
+              ["COND", 
+                ["ENEMIES_IN_STAGING_AREA_FORCED"],
+                ["SET", "/roundAdvancementFunction", "resolveEngagementChecks"],
                 ["TRUE"],
                 ["SET", "/roundAdvancementFunction", "readyForNextPlanning"]
               ],
@@ -565,6 +574,10 @@
                   ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "2.P"]
                 ]
               ],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "commitOrReveal"],
+              ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
               ["EQUAL", "$GAME.roundAdvancementFunction", "revealOrResolve"],
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.4"],
               ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToTravel"],

@@ -51,10 +51,7 @@
                     ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.3"],
                     ["COND", 
                         ["EQUAL", "$GAME.stepId", "3.3"],
-                        [
-                            ["UPDATE_ADVANCE_BUTTON"],
-                            ["REVEAL_ENCOUNTER", "A"]
-                        ]
+                        ["REVEAL_ENCOUNTER", "A"]
                     ]
                 ],
                 ["TRUE"],
@@ -184,8 +181,7 @@
                                 ["EQUAL", "$GAME.stepId", "4.2"],
                                 [
                                     ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
-                                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0],
-                                    ["UPDATE_ADVANCE_BUTTON"]
+                                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
                                 ]
                             ]
                         ],
@@ -230,8 +226,7 @@
                                 ["EQUAL", "$GAME.stepId", "3.1"],
                                 [
                                     ["LOG", "$ALIAS_N", " selected ", "$ACTIVE_FACE.name", " as the current quest."],
-                                    ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"],
-                                    ["UPDATE_ADVANCE_BUTTON"]
+                                    ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"]
                                 ]
                             ]
                         ],
@@ -257,17 +252,7 @@
         "toggleCommitWithoutExhausting": [
             ["COND", 
                 ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"]],
-                [
-                    ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.2"],
-                    ["COND", 
-                        ["EQUAL", "$GAME.stepId", "3.2"],
-                        [
-                            ["LOG", "$ALIAS_N", " selected ", "$ACTIVE_FACE.name", " as the current quest."],
-                            ["SET", "/currentQuestCardId", "$ACTIVE_CARD_ID"],
-                            ["UPDATE_ADVANCE_BUTTON"]
-                        ]
-                    ]
-                ]
+                ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "3.2"]
             ],
             ["COND",
                 ["AND", ["EQUAL", "$ACTIVE_CARD.committed", false], "$ACTIVE_CARD.inPlay"],
