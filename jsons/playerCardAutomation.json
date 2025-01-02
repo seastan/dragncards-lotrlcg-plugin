@@ -36,6 +36,68 @@
                     }
                 }
             },
+            "bbab76d6-7554-40da-af74-fb502d08d9a8": {
+                "_comment": "Tom Cotton",
+                "rules": {
+                    "tomCottonEnterPlayTokens": {
+                        "_comment": "If Tom Cotton is in play, add tokens to Hobbit allies that enter play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                        "then": [
+                            ["LOG", "└── ", "Tom Cotton added 2 attack to ", "$TARGET.currentFace.name", "."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 2],
+                            ["SET", "/cardById/$TARGET_ID/hasTomCottonTokens", true]
+                        ]
+                    },
+                    "tomCottonRoundEndTokens": {
+                        "type": "trigger",
+                        "listenTo": ["/roundNumber"],
+                        "condition": ["TRUE"],
+                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.hasTomCottonTokens", "$CARD.inPlay"],
+                                [
+                                    ["LOG", "└── ", "Tom Cotton removed 2 attack from ", "$CARD.currentFace.name", "."],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 2],
+                                    ["SET", "/cardById/$CARD_ID/hasTomCottonTokens", false]
+                                ]
+                            ]
+                        ]]
+                    }
+                }
+            },
+            "4124136c-8c86-4f86-830c-94c8c76df161": {
+                "_comment": "Sam Gamgee",
+                "ability": {
+                    "A": [
+                        ["COND", "$THIS.exhausted", ["TOGGLE_EXHAUST", "$THIS"]],
+                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/willpower", 1],
+                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1],
+                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/defense", 1],
+                        ["INCREASE_VAL", "/cardById/$THIS_ID/samBonusesThisRound", 1]
+                    ]
+                },
+                "rules": {
+                    "samRoundEndTokens": {
+                        "type": "trigger",
+                        "listenTo": ["/roundNumber"],
+                        "condition": ["TRUE"],
+                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["GREATER_THAN", "$CARD.samBonusesThisRound", 0],
+                                [
+                                    ["LOG", "└── ", "Removed {{$CARD.samBonusesThisRound}} willpower, {{$CARD.samBonusesThisRound}} attack, and {{$CARD.samBonusesThisRound}} defense token from ", "$CARD.currentFace.name", "."],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", "$CARD.samBonusesThisRound"],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", "$CARD.samBonusesThisRound"],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", "$CARD.samBonusesThisRound"],
+                                    ["SET", "/cardById/$CARD_ID/samBonusesThisRound", 0]
+                                ]
+                            ]
+                        ]]
+                    }
+                }
+            },
             "51223bd0-ffd1-11df-a976-0801206c9005": {
                 "_comment": "Leadership Dain Ironfoot",
                 "rules": {
