@@ -80,29 +80,19 @@ local conditionalAttachment(name, bonusList) = {
                 {name: "attachmentBasicPassiveTokens", defense: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Gondor."]]]},
                 {name: "attachmentConditionalPassiveTokens", defense: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Gondor."]]}
             ]),
-            "fa1aa093-59e5-4919-8c06-86864848a89e": conditionalAttachment("Gondorian Shield", [
-                {name: "attachmentBasicPassiveTokens", defense: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Gondor."]]]},
-                {name: "attachmentConditionalPassiveTokens", defense: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Gondor."]]}
-            ]),
+            "fa1aa093-59e5-4919-8c06-86864848a89e": self["09134509-191b-4903-b4b5-5e650f8143c1"],
             "0ee1f1e6-1952-4bad-8ecd-631e80f4ccc0": conditionalAttachment("Firefoot", [
                 {name: "attachmentBasicPassiveTokens", attack: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]]},  // Matches both Éomer and Eomer
                 {name: "attachmentConditionalPassiveTokens", attack: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]}
             ]),
-            "9bf3f0fd-6eff-4560-8d65-c5ba79cf155f": conditionalAttachment("Firefoot", [
-                {name: "attachmentBasicPassiveTokens", attack: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]]},
-                {name: "attachmentConditionalPassiveTokens", attack: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]}
-            ]),
+            "9bf3f0fd-6eff-4560-8d65-c5ba79cf155f": self["0ee1f1e6-1952-4bad-8ecd-631e80f4ccc0"],
             "f40cc90c-02df-464b-a401-6640aa93e2f8": staticAttachment("Cloak of Lorien", defense=1),  // TODO make dynamic based on active location having forest trait
             "47deb269-e02b-426d-b64a-34a4adff44de": staticAttachment("Valiant Sword", attack=1),
-            "bfc41b26-7986-4bca-9e77-052abac32603": staticAttachment("Valiant Sword", attack=1),
             //"47deb269-e02b-426d-b64a-34a4adff44de": dynamicAttachment("Valiant Sword", [
             //    {name: "attachmentBasicPassiveTokens", attack: 1, listenTo: ["playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.player1.threat", 40]]},
             //    {name: "attachmentConditionalPassiveTokens", attack: 2, listenTo: ["playerData/*/threat"], condition: [["GREATER_EQUAL", "$GAME.playerData.player1.threat", 40]]}
             //]),
-            //"bfc41b26-7986-4bca-9e77-052abac32603": dynamicAttachment("Valiant Sword", [
-            //    {name: "attachmentBasicPassiveTokens", attack: 1, listenTo: ["playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.player1.threat", 40]]},
-            //    {name: "attachmentConditionalPassiveTokens", attack: 2, listenTo: ["playerData/*/threat"], condition: [["GREATER_EQUAL", "$GAME.playerData.player1.threat", 40]]}
-            //]),
+            "bfc41b26-7986-4bca-9e77-052abac32603": self["47deb269-e02b-426d-b64a-34a4adff44de"],
             "418e6de7-af19-4ea7-bfbe-2a02838c6de4": staticAttachment("Dagger of Westernesse", attack=1),
 
             "51223bd0-ffd1-11df-a976-0801200c9027": staticAttachment("Celebrían's Stone", willpower=2),
