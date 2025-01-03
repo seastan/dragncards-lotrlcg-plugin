@@ -580,7 +580,7 @@
                         ],
                         [
                             ["TOGGLE_EXHAUST", "$THIS"],
-                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Discard", 0, 0]],
                             ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Deck", -1]
                         ],
                         ["TRUE"],
