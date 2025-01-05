@@ -442,26 +442,16 @@
             ["MOVE_CARD", "$TOP_CARD_ID", "$ORIG_GROUP_ID", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD_INDEX"]
         ],
         "raiseAllThreat": [
-            ["COND",
-                "$GAME.multiplayerHotkeys",
-                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
-                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
-                    ["ACTION_LIST", "increaseThreat"]
-                ]],
-                true,
-                ["LOG", "{{$ALIAS_N}} tried to raise all players' threat, but multiplayer hotkeys (Shift+L) are disabled."]
-            ]
+            ["LOG", "{{$ALIAS_N}} raised each player's threat by 1."],
+            ["FOR_EACH_VAL", "$PLAYER_I", "$$PLAYER_ORDER", [
+                ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", 1]
+            ]]
         ],
         "reduceAllThreat": [
-            ["COND",
-                "$GAME.multiplayerHotkeys",
-                ["FOR_EACH_KEY_VAL", "$PLAYER_I", "$PLAYER_I_DATA", "$GAME.playerData", [
-                    ["DEFINE", "$PLAYER_N", "$PLAYER_I"],
-                    ["ACTION_LIST", "decreaseThreat"]
-                ]],
-                true,
-                ["LOG", "{{$ALIAS_N}} tried to lower all players' threat, but multiplayer hotkeys (Shift+L) are disabled."]
-            ]
+            ["LOG", "{{$ALIAS_N}} reduced each player's threat by 1."],
+            ["FOR_EACH_VAL", "$PLAYER_I", "$$PLAYER_ORDER", [
+                ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", -1]
+            ]]
         ],
         "setCardsDrawn": [
             ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
