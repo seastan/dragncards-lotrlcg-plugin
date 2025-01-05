@@ -46,7 +46,7 @@
       "gameStepAutomation": {
         "label": "id:gameStepAutomation",
         "type": "boolean",
-        "default": false
+        "default": true
       }
     }
 }
