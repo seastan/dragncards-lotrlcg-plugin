@@ -611,6 +611,26 @@
                     ]
                 }
             },
+            "41b56fc4-6ecd-4c9a-80d4-3074c267e823": {
+                "_comment": "Silver Harp",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Discard.stackIds"], 0]
+                        ],
+                        [
+                            ["LOG", "└── ", "Returned top card of discard pile to hand."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Discard", 0, 0]],
+                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Hand", -1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
             "51223bd0-ffd1-11df-a976-0801213c9027": {
                 "_comment": "Vilya",
                 "ability": {
@@ -653,6 +673,310 @@
                     ]
                 }
             },
+            "b9e3d591-5973-4f35-90b8-d74d0aeabcc7": {
+                "_comment": "Legacy of Numenor",
+                "ability": {
+                    "A": [
+                        ["LOG", "└── ", "Raised each player's threat by 4."],
+                        ["LOG", "└── ", "Added a resource to each hero's resource pool."],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", 4]
+                        ]],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                            ["COND",
+                                ["AND",
+                                    ["EQUAL", "$CARD.inPlay", true],
+                                    ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                ],
+                                [
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
+                                ]
+                            ]
+                        ]],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "79cb32f4-053c-47e1-983d-59d64b493a76": {
+                "_comment": "Waters of Nimrodel",
+                "ability": {
+                    "A": [
+                        ["LOG", "└── ", "Raised each player's threat by 3."],
+                        ["LOG", "└── ", "Healing all damage on each character in play."],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", 3]
+                        ]],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                            ["COND",
+                                ["AND",
+                                    ["EQUAL", "$CARD.inPlay", true],
+                                    ["OR", ["EQUAL", "$CARD.currentFace.type", "Hero"], ["EQUAL", "$CARD.currentFace.type", "Ally"]]
+                                ],
+                                [
+                                    ["SET", "/cardById/$CARD_ID/tokens/damage", 0]
+                                ]
+                            ]
+                        ]],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "cfba1adb-5d73-4d46-b10b-b3af003f0e90": {
+                "_comment": "Deep Knowledge",
+                "ability": {
+                    "A": [
+                        ["LOG", "└── ", "Raise each player's threat by 2."],
+                        ["LOG", "└── ", "Each player draws 2 cards."],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", 2],
+                            ["DRAW_CARD", 2, "$PLAYER_I"]
+                        ]],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801201c9003": {
+                "_comment": "Campfire Tales",
+                "ability": {
+                    "A": [
+                        ["LOG", "└── ", "Each player draws a card."],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["DRAW_CARD", 1, "$PLAYER_I"]
+                        ]],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1": {
+                "_comment": "Galadriel",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["COND",
+                                ["GREATER_THAN", "$GAME.numPlayers", 1],
+                                [
+                                    ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                    ["VAR", "$I", 1],
+                                    ["WHILE",
+                                        ["LESS_EQUAL", "$I", "$GAME.numPlayers"],
+                                        [
+                                            ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], ["LABEL", "$I"], ["LIST",
+                                                ["LIST", "LOG", "└── ", ["GET_ALIAS", "player{{$I}}"], " reduces threat by 1 and draws a card."],
+                                                ["LIST", "DRAW_CARD", 1, "player{{$I}}"],
+                                                ["DECREASE_VAL", "/playerData/player{{$I}}/threat", 1]
+                                            ]],
+                                            ["UPDATE_VAR", "$I", ["ADD", "$I", 1]]    
+                                        ]
+                                    ]
+                                ],
+                                ["TRUE"],
+                                [
+                                    ["LOG", "└── ", ["GET_ALIAS", "player1"], " reduces threat by 1 and draws a card"],
+                                    ["DRAW_CARD", 1],
+                                    ["DECREASE_VAL", "/playerData/player1}/threat", 1]
+                                ]
+                            ]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "8ccfbcf2-676c-4e24-ab5e-fa479343ab39": {"_comment": "Galadriel", "inheritFrom": "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1"},
+            "51223bd0-ffd1-11df-a976-0801200c9012": {
+                "_comment": "Beravor",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["COND",
+                                ["GREATER_THAN", "$GAME.numPlayers", 1],
+                                [
+                                    ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                    ["VAR", "$I", 1],
+                                    ["WHILE",
+                                        ["LESS_EQUAL", "$I", "$GAME.numPlayers"],
+                                        [
+                                            ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], ["LABEL", "$I"], ["POINTER", [
+                                                ["LOG", "└── ", ["GET_ALIAS", "player{{$I}}"], " draws 2 cards."],
+                                                ["DRAW_CARD", 2, "player{{$I}}"]
+                                            ]]],
+                                            ["UPDATE_VAR", "$I", ["ADD", "$I", 1]]    
+                                        ]
+                                    ]
+                                ],
+                                ["TRUE"],
+                                [
+                                    ["LOG", "└── ", ["GET_ALIAS", "player1"], " draws 2 cards"],
+                                    ["DRAW_CARD", 2]
+                                ]
+                            ]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9062": {
+                "_comment": "Gleowine",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["COND",
+                                ["GREATER_THAN", "$GAME.numPlayers", 1],
+                                [
+                                    ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                    ["VAR", "$I", 1],
+                                    ["WHILE",
+                                        ["LESS_EQUAL", "$I", "$GAME.numPlayers"],
+                                        [
+                                            ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], ["LABEL", "$I"], ["LIST",
+                                                ["LIST", "LOG", "└── ", ["GET_ALIAS", "player{{$I}}"], " draws a card."],
+                                                ["LIST", "DRAW_CARD", 1, "player{{$I}}"]
+                                            ]],
+                                            ["UPDATE_VAR", "$I", ["ADD", "$I", 1]]    
+                                        ]
+                                    ]
+                                ],
+                                ["TRUE"],
+                                [
+                                    ["LOG", "└── ", ["GET_ALIAS", "player1"], " draws a card."],
+                                    ["DRAW_CARD", 1]
+                                ]
+                            ]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9046": {
+                "_comment": "The Galadhrim's Greeting",
+                "ability": {
+                    "A": [["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "basePrompt", "Choose an option"],
+                                ["PROMPT_ADD_OPTION", "$PLAYER_N", "Reduce each player's threat by 2", "E", ["POINTER", [
+                                    ["LOG", "└── ", "Reduced each player's threat by 2."],
+                                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
+                                        ["DECREASE_VAL", "/playerData/$PLAYER_I/threat", 2]
+                                    ]
+                                ]]],
+                                ["VAR", "$I", 1],
+                                ["WHILE",
+                                    ["LESS_EQUAL", "$I", "$GAME.numPlayers"],
+                                    [
+                                        ["PROMPT_ADD_OPTION", "$PLAYER_N", ["FORMAT", "Reduce {0}'s threat by 6","player{{$I}}"], ["LABEL", "$I"], ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "PLAYER_ID"], " Reduced their threat by 6."],
+                                            ["DECREASE_VAL", "/playerData/PLAYER_ID/threat", 6]
+                                        ]], "PLAYER_ID", "player{{$I}}"
+                                        ]],
+                                        ["UPDATE_VAR", "$I", ["ADD", "$I", 1]]    
+                                    ]
+                                ]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " reduced their threat by 6."],
+                                ["DECREASE_VAL", "/playerData/$PLAYER_N/threat", 6]
+                            ]
+                        ],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9014": {
+                "_comment": "Faramir",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["COND",
+                                ["GREATER_THAN", "$GAME.numPlayers", 1],
+                                [
+                                    ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                    ["VAR", "$I", 1],
+                                    ["WHILE",
+                                        ["LESS_EQUAL", "$I", "$GAME.numPlayers"],
+                                        [
+                                            ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], ["LABEL", "$I"], ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                                ["LOG", "└── ", "Added 1 willpower to each character controlled by ", ["GET_ALIAS", "PLAYER_ID"], "."],
+                                                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                                                    ["COND",
+                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "PLAYER_ID"]],
+                                                        [
+                                                            ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
+                                                            ["INCREASE_VAL", "/cardById/$CARD_ID/faramirTokens", 1]
+                                                        ]
+                                                    ]
+                                                ]]
+                                            ]], "PLAYER_ID", "player{{$I}}"
+                                            ]],
+                                            ["UPDATE_VAR", "$I", ["ADD", "$I", 1]]    
+                                        ]
+                                    ]
+                                ],
+                                ["TRUE"],
+                                [
+                                    ["LOG", "└── ", "Added 1 willpower to each character."],
+                                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                                        ["COND",
+                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"]],
+                                            [
+                                                ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
+                                                ["INCREASE_VAL", "/cardById/$CARD_ID/faramirTokens", 1]
+                                            ]
+                                    ]]]
+                                ]
+                            ]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                },
+                "rules": {
+                    "faramirPhaseEndTokens": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["OR",
+                            ["EQUAL", "$GAME.stepId", "1.1"],
+                            ["EQUAL", "$GAME.stepId", "2.1"],
+                            ["EQUAL", "$GAME.stepId", "3.1"],
+                            ["EQUAL", "$GAME.stepId", "4.1"],
+                            ["EQUAL", "$GAME.stepId", "5.1"],
+                            ["EQUAL", "$GAME.stepId", "6.1"],
+                            ["EQUAL", "$GAME.stepId", "7.1"]
+                        ],
+                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["COND",
+                                ["AND", "$CARD.inPlay", ["GREATER_THAN", "$CARD.faramirTokens", 0]],
+                                [
+                                    ["LOG", "└── ", "Removed ", "$CARD.faramirTokens", " willpower from ", "$CARD.currentFace.name", "."],
+                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", "$CARD.faramirTokens"]
+                                ]
+                            ],
+                            ["SET", "/cardById/$CARD_ID/faramirTokens", 0]
+                        ]]
+                    }
+                }
+            },
+            "05419721-91bd-4851-ac95-cdc079a2c036": {"_comment": "Faramir", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9014"},
+            "47253ed8-2376-495a-a9b2-8f829c66e3bf": {"_comment": "Faramir", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9014"},
             "51223bd0-ffd1-11df-a976-0801212c9019": {
                 "_comment": "Imladris Stargazer",
                 "ability": {
@@ -673,6 +997,12 @@
             },
             "a17465f5-e6f5-4699-b0d7-79355286a065": {
                 "_comment": "Entmoot",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
+                }
+            },
+            "bd20ff6a-d77f-47d8-81dd-202e5f21cfaf": {
+                "_comment": "Timely Aid",
                 "ability": {
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
                 }
@@ -711,6 +1041,19 @@
                 "_comment": "Raise the Shire",
                 "ability": {
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
+                }
+            },
+            "9152834a-5355-42ba-9592-1a3c1940d1a8": {
+                "_comment": "King under the Mountain",
+                "ability": {
+                    "A": ["EXHAUST_TO_LOOK_AT_X", "$THIS", 2]
+                }
+            },
+            "2609f225-615b-4dc4-a451-424fdedf685d": {"_comment": "King under the Mountain", "inheritFrom": "9152834a-5355-42ba-9592-1a3c1940d1a8"},
+            "51223bd0-ffd1-11df-a976-1801204c9019": {
+                "_comment": "Bofur (Tactics)",
+                "ability": {
+                    "A": ["EXHAUST_TO_LOOK_AT_X", "$THIS", 5]
                 }
             },
             "ed2a2959-7070-4f23-bb37-d6a0a19217c9": {
@@ -1038,6 +1381,59 @@
                     ]
                 }
             },
+            "c984e8e8-94a6-4af6-9455-824ad2cf46f9": {
+                "_comment": "Magic Ring",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["VAR", "$PARENT_CARD", "$GAME.cardById.{{$THIS.parentCardId}}"],
+                            ["LOG", "└── ", "Raised threat by 1."],
+                            ["COND",
+                                ["AND", ["NOT", "$PARENT_CARD.exhausted"], ["EQUAL", "$PARENT_CARD.tokens.damage", 0]],
+                                [
+                                    ["LOG", "└── ", "Added a resource to ", "$PARENT_CARD.currentFace.name","."],
+                                    ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
+                                ],
+                                ["TRUE"],
+                                [
+                                    ["PROMPT", "$PLAYER_N", "basePrompt", "Choose an option"],
+                                    ["COND",
+                                        ["GREATER_THAN", "$GAME.cardById.{{$PARENT_CARD.id}}.tokens.damage", 0],
+                                        ["PROMPT_ADD_OPTION", "$PLAYER_N", "Heal 1 damage", "1", ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", "Healed 1 damage from PARENT_CARD_NAME."],
+                                            ["DECREASE_VAL", "/cardById/{{PARENT_CARD_ID}}/tokens/damage", 1]
+                                        ]], "PARENT_CARD_NAME", "$PARENT_CARD.currentFace.name"], "PARENT_CARD_ID", "$PARENT_CARD.id"]
+                                        ]
+                                    ],
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", "Add 1 resource", "2", ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                        ["LOG", "└── ", "Added 1 resource to PARENT_CARD_NAME."],
+                                        ["INCREASE_VAL", "/cardById/{{PARENT_CARD_ID}}/tokens/resource", 1]
+                                    ]], "PARENT_CARD_NAME", "$PARENT_CARD.currentFace.name"], "PARENT_CARD_ID", "$PARENT_CARD.id"]
+                                    ],
+                                    ["COND",
+                                        "$PARENT_CARD.exhausted",
+                                        ["PROMPT_ADD_OPTION", "$PLAYER_N", "Ready hero", "3", ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", "Readied PARENT_CARD_NAME."],
+                                            ["SET", "/cardById/{{PARENT_CARD_ID}}/rotation", 0],
+                                            ["SET", "/cardById/{{PARENT_CARD_ID}}/exhausted", false]
+                                        ]], "PARENT_CARD_NAME", "$PARENT_CARD.currentFace.name"], "PARENT_CARD_ID", "$PARENT_CARD.id"]
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
+                            ["TOGGLE_EXHAUST", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "fa030621-5b1d-4955-8d5e-3e515f546981": {"_comment": "Magic Ring", "inheritFrom": "c984e8e8-94a6-4af6-9455-824ad2cf46f9"},
             "peekAtTopCardOfEncounter": {
                 "abstract": true,
                 "ability": {
