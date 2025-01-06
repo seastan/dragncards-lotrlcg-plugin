@@ -1,7 +1,8 @@
 {
     "automation": {
         "postNewGameActionList": [
-            ["PROMPT", "player1", "setPlayerCount"]
+            ["PROMPT", "player1", "setPlayerCount"],
+            ["UPDATE_HELPER_TEXT_VISIBILITY"]
         ],
         "postLoadActionList": [
             ["VAR", "$LOADED_PLAYER_DECK", false],
@@ -17,9 +18,7 @@
                     ],
                     [
                         ["UPDATE_VAR", "$LOADED_PLAYER_DECK", true],
-                        ["VAR", "$CONTROLLER", "$CARD.controller"],
-                        ["INCREASE_VAR", "$THREAT_RAISE", "$CARD.sides.A.cost"],
-                        ["SET", "/playerData/$CONTROLLER/threat", 0]
+                        ["INCREASE_VAR", "$THREAT_RAISE", "$CARD.sides.A.cost"]
                     ]
                 ],
                 ["COND",
@@ -47,7 +46,10 @@
                 ]
             ]],
             ["COND",
-                "$LOADED_PLAYER_DECK",
+                ["AND",
+                    "$LOADED_PLAYER_DECK",
+                    ["EQUAL", "$GAME.roundNumber", 0]
+                ],
                 [
                     ["LOG", "$ALIAS_N", " set their starting threat to ", "$THREAT_RAISE", "."],
                     ["SET", "/playerData/$PLAYER_N/threat", "$THREAT_RAISE"]
@@ -69,17 +71,12 @@
             ]]
         ],
         "gameRules": {
-            "hideButtonVisibility": {
-                "_comment": "Hide the visibility of the advance button",
+            "roundAdvancementTextVisibility": {
+                "_comment": "Hide the visibility of the advancement text",
                 "type": "trigger",
                 "listenTo": ["/gameStepAutomation"],
                 "condition": ["TRUE"],
-                "then": ["COND",
-                    ["EQUAL", "$GAME.gameStepAutomation", false],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/visible", false],
-                    ["TRUE"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/visible", true]
-                ]
+                "then": ["UPDATE_HELPER_TEXT_VISIBILITY"]
             },
             "updateAdvanceButton": {
                 "_comment": "Update the advance button",
@@ -255,19 +252,7 @@
                 "condition": ["EQUAL", "$GAME.stepId", "3.5"],
                 "then": [
                     ["LOG", "└── ", "All characters were removed from the quest."],
-                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
-                        ["COND",
-                            ["EQUAL", "$CARD.committed", true],
-                            [
-                                ["SET", "/cardById/$CARD_ID/committed", false],
-                                ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
-                            ]
-                        ]
-                    ]],
-                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
-                        ["SET", "/playerData/$PLAYER_I/willpower", 0]
-                    ]],
-                    ["SET", "/currentQuestCardId", null]
+                    ["END_THE_QUEST_PHASE"]
                 ]
             },
             "step_5.3": {
@@ -298,9 +283,9 @@
                                     ["LOG", "├── ", "{{$ALIAS_I}} engages ", "$ENEMY_TO_ENGAGE.currentFace.name", "."],
                                     ["MOVE_STACK", "$ENEMY_TO_ENGAGE.stackId", "{{$CURRENT_PLAYER}}Engaged", -1]
                                 ]
-                            ]
-                        ],
-                        ["UPDATE_VAR", "$CURRENT_PLAYER", ["NEXT_PLAYER", "$CURRENT_PLAYER"]]
+                            ],
+                            ["UPDATE_VAR", "$CURRENT_PLAYER", ["NEXT_PLAYER", "$CURRENT_PLAYER"]]
+                        ]
                     ],
                     ["LOG", "└── ", "Engagement checks are complete."]
                 ],
