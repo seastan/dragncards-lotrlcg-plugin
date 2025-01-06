@@ -2,6 +2,7 @@
     "actionLists": {
         "skipToNextPlanningPhase": [
             ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
+            ["END_THE_QUEST_PHASE"],
             ["COND",
                 ["EQUAL", "$GAME.roundNumber", 0],
                 [
@@ -30,6 +31,7 @@
         ],
         "skipToRefreshPhase": [
             ["LOG", "{{$ALIAS_N}} advanced to the refresh phase."],
+            ["END_THE_QUEST_PHASE"],
             ["SET", "/stepId", "7.R"]
         ],
         "revealEncounterFacedown": [

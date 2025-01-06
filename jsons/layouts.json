@@ -1,7 +1,7 @@
 {
     "layouts": {
         "layout1Player": {
-            "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
+            "postSetActionList": ["POST_SET_LAYOUT"],
             "cardSize": 16,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "4/5", "width": "23%", "height": "1/5"},
@@ -45,7 +45,7 @@
             }
         },
         "layout2Player": {
-            "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
+            "postSetActionList": ["POST_SET_LAYOUT"],
             "cardSize": 13,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
@@ -95,7 +95,7 @@
             }
         },
         "layout3Player": {
-            "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
+            "postSetActionList": ["POST_SET_LAYOUT"],
             "cardSize": 13,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "5/6", "width": "23%", "height": "1/6"},
@@ -151,7 +151,7 @@
             }
         },
         "layout4Player": {
-            "postSetActionList": ["UPDATE_ADVANCE_BUTTON"],
+            "postSetActionList": ["POST_SET_LAYOUT"],
             "cardSize": 11,
             "rowSpacing": 3,
             "chat": {"left": "75%", "top": "6/7", "width": "23%", "height": "1/7"},
