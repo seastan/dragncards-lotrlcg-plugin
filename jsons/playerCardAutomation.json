@@ -36,6 +36,10 @@
                     }
                 }
             },
+            "afec8b6f-6838-442e-b2a8-71537a25e05d": {
+                "_comment": "Celeborn",
+                "inheritFrom": "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b"
+            },
             "bbab76d6-7554-40da-af74-fb502d08d9a8": {
                 "_comment": "Tom Cotton",
                 "rules": {
@@ -1034,41 +1038,32 @@
                     ]
                 }
             },
-            "51223bd0-ffd1-11df-a976-0801200c9060": {
-                "_comment": "Henamarth Riversong",
+            "peekAtTopCardOfEncounter": {
+                "abstract": true,
                 "ability": {
-                    "A": ["ACTION_LIST_TO_LOOK_AT_X", 
-                        ["AND", "$THIS.inPlay", ["NOT", "$THIS.exhausted"]], 
-                        ["LIST", "TOGGLE_EXHAUST", "$THIS"],
-                        "$THIS",
-                        "sharedEncounterDeck",
-                        1
+                    "A": ["COND",
+                        ["GROUP_EMPTY", "sharedEncounterDeck"],
+                        ["LOG", "{{$ALIAS_N}} tried to peek at the top of the encounter deck, but it was empty."],
+                        ["TRUE"],
+                        [
+                            ["LOG", "{{$ALIAS_N}} peeked at the top of the encounter deck"],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
+                            ["SET", "/cardById/$TOP_CARD_ID/peeking/$PLAYER_N", true]
+                        ]
                     ]
                 }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9060": {
+                "_comment": "Henamarth Riversong",
+                "inheritFrom": "peekAtTopCardOfEncounter"
             },
             "12951d4e-ad35-4103-8cb5-964cb1f7bfd2": {
                 "_comment": "Henamarth Riversong",
-                "ability": {
-                    "A": ["ACTION_LIST_TO_LOOK_AT_X", 
-                        ["AND", "$THIS.inPlay", ["NOT", "$THIS.exhausted"]], 
-                        ["LIST", "TOGGLE_EXHAUST", "$THIS"],
-                        "$THIS",
-                        "sharedEncounterDeck",
-                        1
-                    ]
-                }
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9060"
             },
             "e7ee6a7e-d0bb-4a6d-8999-3c3e51032ca5": {
                 "_comment": "Henamarth Riversong",
-                "ability": {
-                    "A": ["ACTION_LIST_TO_LOOK_AT_X", 
-                        ["AND", "$THIS.inPlay", ["NOT", "$THIS.exhausted"]], 
-                        ["LIST", "TOGGLE_EXHAUST", "$THIS"],
-                        "$THIS",
-                        "sharedEncounterDeck",
-                        1
-                    ]
-                }
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9060"
             }
         }
     }
