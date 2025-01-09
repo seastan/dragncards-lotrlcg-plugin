@@ -147,6 +147,10 @@
                     }
                 }
             },
+            "347fa1ce-ec8d-43d9-a407-bc26d041b45e": {
+                "_comment": "Leadership Dain Ironfoot",
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801206c9005"
+            },
             "052b1f85-8b9c-4bb0-a735-bdbd5ac1b2c4": {
                 "_comment": "Merry",
                 "rules": {
@@ -158,7 +162,7 @@
                         "condition": [
                             "AND", 
                                 "$TARGET.inPlay",
-                                ["EQUAL", "$TARGET.controller", "$PLAYER_N"]
+                                ["EQUAL", "$TARGET.controller", "$THIS.controller"]
                         ],
                         "onDo": ["COND",
                             ["AND",
@@ -198,7 +202,7 @@
                                     ["FILTER_CARDS", "$CARD", [
                                         "AND",
                                             "$CARD.inPlay",
-                                            ["EQUAL", "$CARD.controller", "$PLAYER_N"],
+                                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                             ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
                                             ["EQUAL", "$CARD.currentFace.type", "Hero"]
                                         ]
@@ -217,7 +221,7 @@
                                             ["PREV", ["FILTER_CARDS", "$CARD", [
                                                         "AND",
                                                             "$CARD.inPlay",
-                                                            ["EQUAL", "$CARD.controller", "$PLAYER_N"],
+                                                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                                             ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
                                                             ["EQUAL", "$CARD.currentFace.type", "Hero"]
                                                         ]
@@ -421,8 +425,8 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"], "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]],
                         "then": [
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/hitPoints", 1],
-                            ["LOG", "└── ", "$TARGET.controller", " added 1 hit point to ", "$TARGET.currentFace.name", "."]
+                            ["LOG", "└── ", "$TARGET.controller", " added 1 hit point to ", "$TARGET.currentFace.name", "."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/hitPoints", 1]
                         ]
                     },
                     "billPassiveTokens": {
@@ -580,12 +584,14 @@
                         ["AND", 
                             ["GREATER_THAN", "$THIS.cardIndex", 0],
                             ["NOT", "$THIS.exhausted"],
-                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
+                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$THIS.controller}}Discard.stackIds"], 0]
                         ],
                         [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Discard", 0, 0]],
-                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Deck", -1]
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$THIS.controller}}Discard", 0, 0]],
+                            ["LOG", "└── ", "Dwarf pipe moved ", "$GAME.cardById.{{$TOP_CARD_ID}}.currentFace.name"," from {{$ALIAS}}'s discard to bottom of deck."],
+                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$THIS.controller}}Deck", -1],
+                            ["TOGGLE_EXHAUST", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -594,22 +600,7 @@
             },
             "86e1977f-0a24-46c8-a7ee-d5d78410f1a3": {
                 "_comment": "Dwarf Pipe",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Discard", 0, 0]],
-                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Deck", -1]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "2b28d8ba-23b9-4f48-9808-3bbe2ed0a8fc"
             },
             "51223bd0-ffd1-11df-a976-0801213c9027": {
                 "_comment": "Vilya",
@@ -619,13 +610,15 @@
                             ["GREATER_THAN", "$THIS.cardIndex", 0],
                             ["NOT", "$THIS.exhausted"],
                             ["NOT", "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"],
-                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
+                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$THIS.controller}}Deck.stackIds"], 0]
                         ],
                         [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$THIS.controller}}Deck", 0, 0]],
+                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$THIS.controller}}Play1", -1],
+                            ["LOG", "└── ", "Vilya moved ", "$GAME.cardById.{{$TOP_CARD_ID}}.currentFace.name"," from {{$ALIAS}}'s deck into play area."],
                             ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"],
-                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
-                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Play1", -1]
+                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -634,24 +627,7 @@
             },
             "65608b5c-4420-4d76-a458-71a8b32e4159": {
                 "_comment": "Vilya",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            ["NOT", "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"],
-                            ["GREATER_THAN", ["LENGTH", "$GAME.groupById.{{$PLAYER_N}}Deck.stackIds"], 0]
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"],
-                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "{{$PLAYER_N}}Deck", 0, 0]],
-                            ["MOVE_CARD", "$TOP_CARD_ID", "{{$PLAYER_N}}Play1", -1]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801213c9027"
             },
             "51223bd0-ffd1-11df-a976-0801212c9019": {
                 "_comment": "Imladris Stargazer",
@@ -685,9 +661,7 @@
             },
             "0567c2df-677c-4529-985a-54621088fe58": {
                 "_comment": "Horse-breeder",
-                "ability": {
-                    "A": ["EXHAUST_TO_LOOK_AT_X", "$THIS", 10]
-                }
+                "inheritFrom": "51e0054c-c48d-4fc7-9737-30bf12d4b52a"
             },
             "51223bd0-ffd1-11df-a976-0801201c9008": {
                 "_comment": "The Eagles Are Coming",
@@ -775,6 +749,7 @@
                             ["NOT", "$THIS.exhausted"]
                         ],
                         [
+                            ["LOG", "└── ", "Added 2 resources to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 2]
                         ],
@@ -785,37 +760,11 @@
             },
             "7ce49caa-c7ac-455e-b35f-217055be34ed": {
                 "_comment": "Steward of Gondor",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"]
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 2]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
             },
             "aef31639-1962-4d41-912c-bea70e1be83e": {
                 "_comment": "Steward of Gondor",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"]
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 2]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
             },
             "51223bd0-ffd1-11df-a976-0801200c9045": {
                 "_comment": "Northern Tracker",
@@ -827,6 +776,7 @@
                             "$THIS.inPlay"
                         ],
                         [
+                            ["LOG", "└── ", "Northern Tracker added 1 progress to each location in the staging area."],
                             ["ACTION_LIST", "toggleCommit"],
                             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                 ["COND",
@@ -840,8 +790,8 @@
                     ]
                 }
             },
-            "51223bd0-ffd1-11df-a976-0801200c9057": {
-                "_comment": "Unexpected Courage",
+            "exhaustToReadyAttachedCharacter": {
+                "abstract": true,
                 "ability": {
                     "A": ["COND",
                         ["AND", 
@@ -850,193 +800,60 @@
                             "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
                         ],
                         [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
+                            ["LOG", "└── ", "Exhausted ", "$THIS.currentFace.name", " and readied ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
+                            ["SET", "/cardById/$THIS.id/rotation", 90],
+                            ["SET", "/cardById/$THIS.id/exhausted", true],
+                            ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
+                            ["SET", "/cardById/$THIS.parentCardId/exhausted", false]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
                 }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9057": {
+                "_comment": "Unexpected Courage",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "e718605c-622d-4fd5-b1a1-b9fe467f09c5": {
                 "_comment": "Unexpected Courage",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9057"
             },
             "51223bd0-ffd1-11df-a976-0801205c9006": {
                 "_comment": "Fast Hitch",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "6f8508d7-bb11-4d5c-a077-80a35e00105e": {
                 "_comment": "Rohan Warhorse",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "0dfb0828-62d4-4f53-b6fe-600b524f84e1": {
                 "_comment": "Rohan Warhorse",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "6f8508d7-bb11-4d5c-a077-80a35e00105e"
             },
             "83842580-bfe9-4d56-addf-e1d290eb7bcf": {
                 "_comment": "Heir of Mardil",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "ed245036-ca8c-4ed7-8441-4b2019263bf5": {
                 "_comment": "Heir of Mardil",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "83842580-bfe9-4d56-addf-e1d290eb7bcf"
             },
             "e7df2c09-6d38-4f92-9279-eba5f41370cd": {
                 "_comment": "Steed of the North",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "f347a30b-44d9-4ddd-af69-798e96b68b65": {
                 "_comment": "Leather Boots",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "17cb8a9a-6369-4ea9-a614-02908bd7b77f": {
                 "_comment": "Wingfoot",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "c155a832-e771-4f51-8c99-7356babb84b1": {
                 "_comment": "Wingfoot",
-                "ability": {
-                    "A": ["COND",
-                        ["AND", 
-                            ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
-                        ],
-                        [
-                            ["TOGGLE_EXHAUST", "$THIS"],
-                            ["TOGGLE_EXHAUST", "$GAME.cardById.{{$THIS.parentCardId}}"]
-                        ],
-                        ["TRUE"],
-                        ["LOG", "└── ", "The ability's conditions are not met."]
-                    ]
-                }
+                "inheritFrom": "17cb8a9a-6369-4ea9-a614-02908bd7b77f"
             },
             "peekAtTopCardOfEncounter": {
                 "abstract": true,
