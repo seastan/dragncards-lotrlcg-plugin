@@ -11,14 +11,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -38,7 +38,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 willpower from ",
+                        "Removed 2 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -75,14 +75,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -102,7 +102,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -130,6 +130,70 @@
                }
             }
          },
+         "01a43351-0e36-4175-9a94-693ff91404ad": {
+            "_comment": "Overgrown",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "09134509-191b-4903-b4b5-5e650f8143c1": {
             "_comment": "Gondorian Shield",
             "rules": {
@@ -139,14 +203,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "NOT",
@@ -174,7 +238,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -206,14 +270,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "IN_STRING",
@@ -238,7 +302,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -266,19 +330,14 @@
                }
             }
          },
-         "0b179f39-f202-4fe7-b930-0f3db582bc3e": {
-            "_comment": "The Red Arrow",
+         "09993d97-ebf8-4c2c-b051-2691b175a2aa": {
+            "_comment": "Black Key (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
                      "$THIS.inPlay",
-                     [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -302,7 +361,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "0b179f39-f202-4fe7-b930-0f3db582bc3e": {
+            "_comment": "The Red Arrow",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -339,14 +462,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "NOT",
@@ -374,7 +497,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -406,14 +529,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "IN_STRING",
@@ -438,7 +561,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -475,14 +598,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -502,7 +625,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 threat from ",
+                        "Removed 1 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -514,7 +637,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -526,7 +649,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -587,14 +710,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -614,7 +737,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -651,14 +774,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -678,7 +801,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -690,7 +813,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -739,14 +862,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -766,7 +889,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -778,7 +901,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -790,7 +913,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -851,14 +974,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -878,7 +1001,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 threat from ",
+                        "Removed 1 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -890,7 +1013,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -902,7 +1025,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -963,14 +1086,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -990,7 +1113,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 threat from ",
+                        "Removed 1 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1002,7 +1125,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1014,7 +1137,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1075,14 +1198,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1102,7 +1225,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1139,14 +1262,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1166,7 +1289,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1203,14 +1326,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1230,7 +1353,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1267,14 +1390,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1294,7 +1417,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1306,7 +1429,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1355,14 +1478,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1382,7 +1505,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1394,7 +1517,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1406,7 +1529,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1467,14 +1590,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1494,7 +1617,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 threat from ",
+                        "Removed 1 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1506,7 +1629,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1518,7 +1641,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1530,7 +1653,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1603,14 +1726,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1630,7 +1753,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 threat from ",
+                        "Removed 2 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1642,7 +1765,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1654,7 +1777,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1666,7 +1789,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1730,8 +1853,8 @@
                }
             }
          },
-         "28bc6296-217d-460a-96b1-47714daf3817": {
-            "_comment": "Silver Circlet",
+         "27f961dd-c360-418e-9aac-6756d3a46dde": {
+            "_comment": "Poison-darts",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -1739,14 +1862,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1766,7 +1889,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 willpower from ",
+                        "Removed 2 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "28bc6296-217d-460a-96b1-47714daf3817": {
+            "_comment": "Silver Circlet",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1803,14 +1990,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1830,7 +2017,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1867,14 +2054,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1908,7 +2095,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 willpower from ",
+                        "Removed 2 willpower from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -1931,14 +2118,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -1958,7 +2145,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1970,7 +2157,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -1982,7 +2169,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2043,14 +2230,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2070,7 +2257,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2107,14 +2294,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2134,7 +2321,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2171,14 +2358,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2236,7 +2423,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -2248,7 +2435,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -2260,7 +2447,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -2283,14 +2470,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2310,7 +2497,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2347,14 +2534,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2400,7 +2587,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -2412,7 +2599,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -2426,8 +2613,8 @@
                }
             }
          },
-         "477ca0c8-7922-4c17-bba2-6d7c4718c49d": {
-            "_comment": "Hauberk of Mail",
+         "46b11215-59ee-46ac-8154-693ce9fff971": {
+            "_comment": "Orders from Angmar (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -2435,14 +2622,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2462,7 +2649,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "477ca0c8-7922-4c17-bba2-6d7c4718c49d": {
+            "_comment": "Hauberk of Mail",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2499,14 +2750,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2526,7 +2777,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2563,14 +2814,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2590,7 +2841,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2618,8 +2869,8 @@
                }
             }
          },
-         "48eb743b-454a-43b7-96bf-27d468ad858a": {
-            "_comment": "Wild Stallion",
+         "4823aae3-46ef-4a75-89f9-cbd3aa1b9071": {
+            "_comment": "Ranger Spikes",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -2627,14 +2878,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2654,7 +2905,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Added 2 threat to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 threat from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "48eb743b-454a-43b7-96bf-27d468ad858a": {
+            "_comment": "Wild Stallion",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2666,7 +2981,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2678,7 +2993,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2690,7 +3005,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2763,14 +3078,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2790,7 +3105,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2827,14 +3142,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2854,7 +3169,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2891,14 +3206,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -2918,7 +3233,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2930,7 +3245,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -2942,7 +3257,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3003,14 +3318,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3030,7 +3345,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3067,14 +3382,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3094,7 +3409,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 threat from ",
+                        "Removed 2 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3106,7 +3421,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3118,7 +3433,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3170,8 +3485,8 @@
                }
             }
          },
-         "51223bd0-ffd1-11df-a976-0801200c9027": {
-            "_comment": "Celebrían's Stone",
+         "50e62ade-1958-439d-9314-383d8621ecf5": {
+            "_comment": "The Serpent's Garb",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -3179,14 +3494,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3206,7 +3521,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 willpower from ",
+                        "Removed 2 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801200c9027": {
+            "_comment": "Celebrían's Stone",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3243,14 +3622,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3270,7 +3649,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -4 hitPoints from ",
+                        "Removed 4 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3307,14 +3686,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "NOT",
@@ -3342,7 +3721,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3374,14 +3753,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "IN_STRING",
@@ -3406,7 +3785,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3443,14 +3822,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3470,7 +3849,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3498,6 +3877,70 @@
                }
             }
          },
+         "51223bd0-ffd1-11df-a976-0801200c9056": {
+            "_comment": "Power in the Earth",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 threat to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 threat from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "51223bd0-ffd1-11df-a976-0801200c9071": {
             "_comment": "Dark Knowledge",
             "rules": {
@@ -3507,14 +3950,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3548,7 +3991,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
@@ -3571,14 +4014,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3598,7 +4041,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3635,14 +4078,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3662,7 +4105,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3699,14 +4142,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3726,7 +4169,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3763,14 +4206,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3790,7 +4233,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3827,14 +4270,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3854,7 +4297,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3891,14 +4334,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -3918,7 +4361,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3930,7 +4373,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -3979,14 +4422,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4006,7 +4449,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -3 attack from ",
+                        "Removed 3 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4043,14 +4486,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4070,7 +4513,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4107,14 +4550,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4134,7 +4577,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4171,14 +4614,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4198,7 +4641,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4210,7 +4653,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4222,7 +4665,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4274,8 +4717,8 @@
                }
             }
          },
-         "565ab52d-0390-4f39-8e6d-7809444b53af": {
-            "_comment": "Mirkwood Long-knife ",
+         "53c01bdc-2761-4f8f-90bc-1eedd14ca376": {
+            "_comment": "Easterling Horse",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -4283,14 +4726,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4310,7 +4753,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 2 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "565ab52d-0390-4f39-8e6d-7809444b53af": {
+            "_comment": "Mirkwood Long-knife ",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4322,7 +4829,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4371,14 +4878,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4398,7 +4905,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 threat from ",
+                        "Removed 1 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4410,7 +4917,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4422,7 +4929,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4474,8 +4981,8 @@
                }
             }
          },
-         "66d8e628-8ca8-4605-9017-aece027f054f": {
-            "_comment": "Spear of the Mark",
+         "58aa1ac7-961f-4a44-ad11-7613d87d4eab": {
+            "_comment": "The Cabal's Champion",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -4483,10 +4990,141 @@
                      "AND",
                      "$THIS.inPlay",
                      [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
                      ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "5a194ef3-94dc-46aa-af0e-7653a9955539": {
+            "_comment": "Black Key (Burden)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -4510,7 +5148,247 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "5d1d5894-7ff0-4e23-8cd6-9dd132b0616c": {
+            "_comment": "Stalwart (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "66d8e628-8ca8-4605-9017-aece027f054f": {
+            "_comment": "Spear of the Mark",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "66e7a60b-ab6d-48ed-a28c-0595521ebec3": {
+            "_comment": "Ruthless (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4547,14 +5425,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4574,7 +5452,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4611,14 +5489,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4638,7 +5516,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 threat from ",
+                        "Removed 1 threat from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4650,7 +5528,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4662,7 +5540,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4723,14 +5601,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4750,7 +5628,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4787,14 +5665,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4814,7 +5692,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4826,7 +5704,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4838,7 +5716,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4890,8 +5768,8 @@
                }
             }
          },
-         "7bae4f1a-42b7-46ab-bfbb-0078ed0842a4": {
-            "_comment": "Sword of Belegost",
+         "7a8a2dbe-5a97-42da-a3c9-283724783145": {
+            "_comment": "Secret Vigil",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -4899,14 +5777,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4926,7 +5804,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -4 attack from ",
+                        "Added 1 threat to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 threat from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "7bae4f1a-42b7-46ab-bfbb-0078ed0842a4": {
+            "_comment": "Sword of Belegost",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 4 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -4954,8 +5896,8 @@
                }
             }
          },
-         "7cde0efa-22e2-41c3-a167-e36da4de092d": {
-            "_comment": "Bow of the Galadhrim",
+         "7cb17939-363a-437d-840f-feac38489b8f": {
+            "_comment": "Hardy (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -4963,14 +5905,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -4990,7 +5932,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 3 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        3
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 3 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        3
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "7cde0efa-22e2-41c3-a167-e36da4de092d": {
+            "_comment": "Bow of the Galadhrim",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5027,14 +6033,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5054,7 +6060,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5091,14 +6097,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5118,7 +6124,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5146,8 +6152,8 @@
                }
             }
          },
-         "857d6dc8-ba1e-4839-8e96-a8a0136a2302": {
-            "_comment": "Thror's Battle Axe (Treasure)",
+         "81d0fb8f-1d63-49c9-95e5-ce8432a65020": {
+            "_comment": "Resolute (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -5155,14 +6161,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5182,7 +6188,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "857d6dc8-ba1e-4839-8e96-a8a0136a2302": {
+            "_comment": "Thror's Battle Axe (Treasure)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5219,14 +6289,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5246,7 +6316,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5283,14 +6353,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5310,7 +6380,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5347,14 +6417,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5374,7 +6444,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5411,14 +6481,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5438,7 +6508,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5466,8 +6536,8 @@
                }
             }
          },
-         "90a3a467-a8a0-4394-9996-127b459deb58": {
-            "_comment": "Dwarrowdelf Axe",
+         "8d99a2be-18d6-4bfb-85ab-7be54a18e6b7": {
+            "_comment": "Black Mare",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -5475,14 +6545,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5502,7 +6572,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 3 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        3
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 3 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        3
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "90a3a467-a8a0-4394-9996-127b459deb58": {
+            "_comment": "Dwarrowdelf Axe",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5539,14 +6673,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5566,7 +6700,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5594,19 +6728,14 @@
                }
             }
          },
-         "9a39a6b1-d480-4ced-8590-d3748b076208": {
-            "_comment": "Well Preserved",
+         "930cdcbc-a3f4-4eb8-92d0-42e2af7a8184": {
+            "_comment": "Extra Sails (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
                      "$THIS.inPlay",
-                     [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -5630,7 +6759,135 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "969e2d92-da4f-4257-8833-0cc4c19ea10d": {
+            "_comment": "Heirloom of Iarchon (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "9a39a6b1-d480-4ced-8590-d3748b076208": {
+            "_comment": "Well Preserved",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5667,14 +6924,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "NOT",
@@ -5702,7 +6959,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5734,14 +6991,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "IN_STRING",
@@ -5766,7 +7023,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5803,14 +7060,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5830,7 +7087,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5858,8 +7115,8 @@
                }
             }
          },
-         "ac8089a9-6dee-4c11-8c6c-4ef528400b39": {
-            "_comment": "Celebrían's Stone",
+         "a539e3f4-4387-4569-a14e-fea235ad447c": {
+            "_comment": "Raiment of the Second Age (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -5867,14 +7124,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5894,7 +7151,95 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 willpower from ",
+                        "Removed 2 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        2
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        2
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "ac8089a9-6dee-4c11-8c6c-4ef528400b39": {
+            "_comment": "Celebrían's Stone",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5931,14 +7276,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -5958,7 +7303,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 hitPoints from ",
+                        "Removed 1 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -5995,14 +7340,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6022,7 +7367,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6059,14 +7404,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6086,7 +7431,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6123,14 +7468,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6150,7 +7495,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6187,14 +7532,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6214,7 +7559,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6242,8 +7587,8 @@
                }
             }
          },
-         "be4ccbc9-1d4c-461f-a44d-582c52d353e6": {
-            "_comment": "Durin's Axe",
+         "b98de754-08e1-4a78-970e-384350d2961c": {
+            "_comment": "Daechanar's Brand (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -6251,10 +7596,69 @@
                      "AND",
                      "$THIS.inPlay",
                      [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
                      ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "be24f0fa-17fe-4bad-9334-52396925f5da": {
+            "_comment": "Enlarged Quarters (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -6278,7 +7682,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 1 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "be4ccbc9-1d4c-461f-a44d-582c52d353e6": {
+            "_comment": "Durin's Axe",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6315,14 +7783,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6342,7 +7810,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6379,14 +7847,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6406,7 +7874,135 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "c06f0513-459b-48ae-9e40-9a1a56e845ef": {
+            "_comment": "Shining Shield",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "c7c7761f-a4dd-4f09-ac10-f0483d0c931d": {
+            "_comment": "Flaming Sword",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6443,14 +8039,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6470,7 +8066,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 attack from ",
+                        "Removed 2 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6498,19 +8094,14 @@
                }
             }
          },
-         "dbfe5919-9198-47a7-a268-52103803706d": {
-            "_comment": "The Steadfast (Boon)",
+         "cf6bc361-8dbb-40f6-b6e6-3762ce390b0a": {
+            "_comment": "Throwing Axe (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
                      "$THIS.inPlay",
-                     [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -6534,7 +8125,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "dbfe5919-9198-47a7-a268-52103803706d": {
+            "_comment": "The Steadfast (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6562,8 +8217,8 @@
                }
             }
          },
-         "dd1a7167-8988-4ec7-a9ae-8e3becbc58d0": {
-            "_comment": "Haradrim Spear",
+         "dc2da597-7d44-4654-a3f4-860e3f7117d6": {
+            "_comment": "Fiery Whip",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -6571,14 +8226,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6598,7 +8253,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "dd1a7167-8988-4ec7-a9ae-8e3becbc58d0": {
+            "_comment": "Haradrim Spear",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6635,14 +8354,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6662,7 +8381,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6690,19 +8409,14 @@
                }
             }
          },
-         "e11e74bb-80c4-4766-ad89-7bdd22ecad5b": {
-            "_comment": "Ancestral Armor",
+         "dfa5000e-07a5-4694-82b5-f9a5347d0961": {
+            "_comment": "Parrying Cutlass (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
                      "$THIS.inPlay",
-                     [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -6726,7 +8440,135 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "dff70cc7-d8a4-4fd5-b856-56d2203d007d": {
+            "_comment": "Mail of Earuor (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "e11e74bb-80c4-4766-ad89-7bdd22ecad5b": {
+            "_comment": "Ancestral Armor",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6738,7 +8580,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6787,14 +8629,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6814,7 +8656,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6842,19 +8684,14 @@
                }
             }
          },
-         "e921ca47-eeb2-4e5f-97ae-d4b22093acb9": {
-            "_comment": "Gondolin Shield (Boon)",
+         "e6f3f717-5348-463c-8cdf-dff28ee89d92": {
+            "_comment": "Ballista (Boon)",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
                      "$THIS.inPlay",
-                     [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -6878,7 +8715,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "e921ca47-eeb2-4e5f-97ae-d4b22093acb9": {
+            "_comment": "Gondolin Shield (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6915,14 +8816,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -6942,7 +8843,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 willpower from ",
+                        "Removed 1 willpower from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -6979,10 +8880,69 @@
                      "AND",
                      "$THIS.inPlay",
                      [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
                      ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "f31e3b0f-bb24-4c6d-856f-4805db1bbf4b": {
+            "_comment": "Armor Plating (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
                      [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
@@ -7006,7 +8966,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -7043,14 +9003,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -7070,7 +9030,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -7098,8 +9058,8 @@
                }
             }
          },
-         "fa152f5a-de4d-42e2-a949-e9fc4fde16aa": {
-            "_comment": "Helm of Heroes (Boon)",
+         "f5f63ad3-e6cc-4827-8674-f81ff7a6e7d7": {
+            "_comment": "Ranger Spikes",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -7107,14 +9067,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -7134,7 +9094,71 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Added 2 threat to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 threat from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "fa152f5a-de4d-42e2-a949-e9fc4fde16aa": {
+            "_comment": "Helm of Heroes (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -7171,14 +9195,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "NOT",
@@ -7206,7 +9230,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 defense from ",
+                        "Removed 1 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -7238,14 +9262,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ],
                      [
                         "IN_STRING",
@@ -7270,7 +9294,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -2 defense from ",
+                        "Removed 2 defense from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -7307,14 +9331,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -7334,7 +9358,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
@@ -7371,14 +9395,14 @@
                      "AND",
                      "$THIS.inPlay",
                      [
-                        "EQUAL",
-                        "$THIS.currentSide",
-                        "A"
-                     ],
-                     [
                         "GREATER_THAN",
                         "$THIS.cardIndex",
                         0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
                      ]
                   ],
                   "listenTo": [
@@ -7398,7 +9422,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed -1 attack from ",
+                        "Removed 1 attack from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
