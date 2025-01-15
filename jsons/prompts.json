@@ -147,20 +147,23 @@
                             ["TRUE"],
                             [
                                 ["LOG", "{{$ALIAS_N}} finished setting up To Catch An Orc."],
-                                ["VAR", "$MUGASH_CARDS", ["FILTER_CARDS", "$C",
+                                ["VAR", "$MUGASH_CARD", ["FILTER_CARDS", "$C",
                                     ["AND",
                                         ["EQUAL", "$C.groupId", "sharedSetAside"],
-                                        ["OR",
-                                            ["EQUAL", "$C.sides.A.name", "Mugash"],
-                                            ["EQUAL", "$C.sides.A.name", "Mugash's Guard"]
-                                        ]
+                                        ["EQUAL", "$C.sides.A.name", "Mugash"]
                                     ]
                                 ]],
-                                ["UPDATE_VAR", "$MUGASH_CARDS", ["SHUFFLE_LIST", "$MUGASH_CARDS"]],
+                                ["VAR", "$MUGASH_GUARDS", ["FILTER_CARDS", "$C",
+                                    ["AND",
+                                        ["EQUAL", "$C.groupId", "sharedSetAside"],
+                                        ["EQUAL", "$C.sides.A.name", "Mugash's Guard"]
+                                    ]
+                                ]],
+                                ["VAR", "$MUGASH_CARDS", ["CONCAT_LISTS", "$MUGASH_CARD", "$MUGASH_GUARDS"]],
                                 ["VAR", "$PLAYER_INDEX", 0],
                                 ["LOG", "{{$ALIAS_N}} created the secondary player decks."],
                                 ["LOG", "{{$ALIAS_N}} moved the Mugash cards to the secondary player decks."],
-                                ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                                ["FOR_EACH_VAL", "$PLAYER_I", ["SHUFFLE_LIST", "$PLAYER_ORDER"], [
                                     ["MOVE_CARD", "$MUGASH_CARDS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0],
                                     ["MOVE_STACKS", "{{$PLAYER_I}}Deck", "{{$PLAYER_I}}Deck2", 20, "shuffle"],
                                     ["SHOW_PLAYER_DECK_2", "$PLAYER_I", true],
