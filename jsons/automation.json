@@ -207,7 +207,7 @@
                                     ["VAR", "$CURRENT_QUEST", ["GET_CURRENT_QUEST"]],
                                     ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", "$CURRENT_QUEST.currentFace.questPoints", "$CURRENT_QUEST.tokens.progress"]],
                                     ["LOG", "└── {{$PROGRESS_MADE}} progress was placed on the current quest, {{$CURRENT_QUEST.currentFace.name}}."],
-                                    ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_QUEST_PROGRESS", "$PROGRESS_MADE"]]]
+                                    ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$REMAINING_QUEST_PROGRESS"]
                                 ]
                             ]
                         ],
