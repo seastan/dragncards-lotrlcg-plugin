@@ -144,15 +144,6 @@
                 "listenTo": ["/stepId"],
                 "abstract": true
             },
-            "step_0.0": {
-                "_comment": "Trigger start of round framework effects",
-                "inheritFrom": "stepTrigger",
-                "condition": ["EQUAL", "$GAME.stepId", "0.0"],
-                "then": [
-                    ["LOG", "{{$ALIAS_N}} started round {{$GAME.roundNumber}}."],
-                    ["INCREASE_VAL", "/roundNumber", 1]
-                ]
-            },
             "step_1.R": {
                 "_comment": "Trigger resource phase framework effects",
                 "inheritFrom": "stepTrigger",
@@ -365,7 +356,8 @@
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
                     ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
-                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
+                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
+                    ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
             },
             "adjustCommittedAttack": { 
@@ -376,7 +368,8 @@
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.attack", ["PREV", "$TARGET.tokens.attack"]]],
                     ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
-                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
+                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
+                    ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
             },
             "adjustCommittedDefense": { 
@@ -387,7 +380,8 @@
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.defense", ["PREV", "$TARGET.tokens.defense"]]],
                     ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
-                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"]
+                    ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
+                    ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
             },
             "adjustStagingThreatWhenCardAddedRemoved": { 

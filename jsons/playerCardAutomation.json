@@ -719,6 +719,26 @@
                     "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
                 }
             },
+            "1200dd24-3d0a-485d-baa3-6eac91f87779": {
+                "_comment": "Messenger of the King",
+                "rules": {
+                    "makeIntoHero": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "promptYN",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Grant the hero type to {{$THIS.parentCard.sides.A.name}}?"
+                        },
+                        "listenTo": ["/cardById/$THIS_ID/cardIndex"],
+                        "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
+                            ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Hero"]
+                        ]
+                    }
+                }
+            },
             "c266126d-cf2d-4a61-aac7-28bac2d1ea0d": {
                 "_comment": "Treebeard",
                 "rules": {
