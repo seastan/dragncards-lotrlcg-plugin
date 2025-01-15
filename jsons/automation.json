@@ -252,7 +252,7 @@
                 "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "5.3"],
                 "then": [
-                    ["VAR", "$CURRENT_PLAYER", "player1"],
+                    ["VAR", "$CURRENT_PLAYER", "$GAME.firstPlayer"],
                     ["WHILE", 
                         ["ENEMIES_IN_STAGING_AREA_FORCED"],
                         [
