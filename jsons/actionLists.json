@@ -190,7 +190,7 @@
                         ["TRUE"],
                         [
                             ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
-                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                            ["MOVE_STACK", "$ACTIVE_CARD.stackId", "sharedActiveLocation", 0]
                         ]
                     ]
 
