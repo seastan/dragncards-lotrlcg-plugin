@@ -81,7 +81,7 @@
             "updateAdvanceButton": {
                 "_comment": "Update the advance button",
                 "type": "trigger",
-                "listenTo": ["/stepId"],
+                "listenTo": ["/stepId", "/groupById/sharedStagingArea/stackIds"],
                 "condition": ["TRUE"],
                 "then": ["UPDATE_ADVANCE_BUTTON"],
                 "priority": 2
@@ -138,10 +138,15 @@
                     ["UPDATE_ADVANCE_BUTTON"]
                 ]
             },
-            "step_0.0": {
-                "_comment": "Trigger start of round framework effects",
+            "stepTrigger": {
+                "_comment": "Abstract class to trigger game step effects",
                 "type": "trigger",
                 "listenTo": ["/stepId"],
+                "abstract": true
+            },
+            "step_0.0": {
+                "_comment": "Trigger start of round framework effects",
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "0.0"],
                 "then": [
                     ["LOG", "{{$ALIAS_N}} started round {{$GAME.roundNumber}}."],
@@ -150,8 +155,7 @@
             },
             "step_1.R": {
                 "_comment": "Trigger resource phase framework effects",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "1.R"],
                 "then": [
                     ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
@@ -170,8 +174,7 @@
             },
             "step_2.P": {
                 "_comment": "Special planning action window",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "2.P"],
                 "then": [
                     ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
@@ -182,8 +185,7 @@
             },
             "step_3.4": {
                 "_comment": "Resolve the quest",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "3.4"],
                 "then": [
                     ["VAR", "$PROGRESS_MADE", "$GAME.questProgress"],
@@ -247,8 +249,7 @@
             },
             "step_3.5": {
                 "_comment": "Trigger end of quest phase framework effects",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "3.5"],
                 "then": [
                     ["LOG", "└── ", "All characters were removed from the quest."],
@@ -257,8 +258,7 @@
             },
             "step_5.3": {
                 "_comment": "Forced engagement checks",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "5.3"],
                 "then": [
                     ["VAR", "$CURRENT_PLAYER", "player1"],
@@ -291,17 +291,21 @@
                 ],
                 "priority": 1
             },
-            "step_6.1": {
+            "step_6.2": {
                 "_comment": "Deal shadow cards",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "6.2"],
                 "then": ["DEAL_SHADOW_CARDS"]
             },
+            "step_6.11": {
+                "_comment": "Discard shadow cards",
+                "inheritFrom": "stepTrigger",
+                "condition": ["EQUAL", "$GAME.stepId", "6.11"],
+                "then": ["ACTION_LIST", "discardShadows"]
+            },
             "step_7.R": {
                 "_comment": "Trigger refresh phase framework effects",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "7.R"],
                 "then": [
                     ["VAR", "$NEXT_PLAYER", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
@@ -328,8 +332,7 @@
             },
             "triggerGameStepEffects": {
                 "_comment": "Trigger card effects for a given game step",
-                "type": "trigger",
-                "listenTo": ["/stepId"],
+                "inheritFrom": "stepTrigger",
                 "condition": ["TRUE"],
                 "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                     ["COND",

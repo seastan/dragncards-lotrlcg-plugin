@@ -178,19 +178,19 @@
             ["COND",
               ["AND", ["EQUAL", "$CARD.rotation", 90], "$CARD.inPlay"],
               [
-                ["LOG", "$ALIAS_N", " readied ", "$ACTIVE_FACE.name", "."],
+                ["LOG", "$ALIAS_N", " readied ", "$CARD.currentFace.name", "."],
                 ["SET", "/cardById/$CARD.id/rotation", 0],
                 ["SET", "/cardById/$CARD.id/exhausted", false]
               ],
               ["AND", ["EQUAL", "$CARD.rotation", 0], "$CARD.inPlay"],
               [
-                ["LOG", "$ALIAS_N", " exhausted ", "$ACTIVE_FACE.name", "."],
+                ["LOG", "$ALIAS_N", " exhausted ", "$CARD.currentFace.name", "."],
                 ["SET", "/cardById/$CARD.id/rotation", 90],
                 ["SET", "/cardById/$CARD.id/exhausted", true]
               ],
-              ["AND", "$ACTIVE_CARD.inPlay"],
+              ["AND", "$CARD.inPlay"],
               [
-                ["LOG", "$ALIAS_N", " straightened ", "$ACTIVE_FACE.name", "."],
+                ["LOG", "$ALIAS_N", " straightened ", "$CARD.currentFace.name", "."],
                 ["SET", "/cardById/$CARD.id/rotation", 0],
                 ["SET", "/cardById/$CARD.id/exhausted", false]
               ]

@@ -47,6 +47,11 @@
                 }
             ]
         },
+        "executeForTargetPlayer": {
+            "args": [],
+            "message": "Which player would you like to target?",
+            "options": []
+        },
         "victoryDisplay": {
             "args": ["$CARD_ID"],
             "message": "This card you discarded had victory points. Move it to the victory display instead?",
@@ -81,7 +86,6 @@
                             ["TRUE"],
                             [
                                 ["LOG", "{{$ALIAS_N}} finished setting up The Fortress of Nurn."],
-                                //["SET", "/groupById/sharedMap/onCardEnter/inPlay", false],
                                 ["FOR_EACH_START_STOP_STEP", "$I", 0, 4, 1, [
                                     ["VAR", "$STACK_ID", "$GAME.groupById.sharedMap.stackIds.[$I]"],
                                     ["VAR", "$LEFT", ["CALC", "{{$I}}*22+3"]],
