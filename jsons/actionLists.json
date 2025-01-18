@@ -3,23 +3,21 @@
         "skipToNextPlanningPhase": [
             ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
             ["END_THE_QUEST_PHASE"],
+            ["INCREASE_VAL", "/roundNumber", 1],
             ["COND",
                 ["EQUAL", "$GAME.roundNumber", 0],
                 [
-                    ["INCREASE_VAL", "/roundNumber", 1],
                     ["SET", "/stepId", "1.R"],
                     ["SET", "/stepId", "2.P"]
                 ],
                 ["NOT_EQUAL", "$GAME.phaseId", "Refresh"],
                 [
                     ["ACTION_LIST", "skipToRefreshPhase"],
-                    ["SET", "/stepId", "0.0"],
                     ["SET", "/stepId", "1.R"],
                     ["SET", "/stepId", "2.P"]
                 ],
                 ["TRUE"],
                 [
-                    ["SET", "/stepId", "0.0"],
                     ["SET", "/stepId", "1.R"],
                     ["SET", "/stepId", "2.P"]
                 ]

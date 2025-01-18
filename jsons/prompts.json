@@ -44,6 +44,15 @@
                         ["SET_LAYOUT", "shared", "layout4Player"],
                         ["SET", "/numPlayers", 4]
                     ]
+                },
+                {
+                    "label": "Two-handed",
+                    "hotkey": "Alt+2",
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} set the layout for 2-handed."],
+                        ["SET_LAYOUT", "shared", "layout2Handed"],
+                        ["SET", "/numPlayers", 2]
+                    ]
                 }
             ]
         },

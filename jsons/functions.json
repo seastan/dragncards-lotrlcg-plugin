@@ -356,6 +356,17 @@
             ]]
           ]
         },
+        "SHOW_MULTI_HANDED_GROUP": {
+          "args": ["$PLAYER_I", "$SUFFIX"],
+          "code": [
+            ["VAR", "$GROUP_ID_TO_SHOW", "{{$PLAYER_I}}{{$SUFFIX}}"],
+            ["LOG", "{{$ALIAS_N}} updated the layout to show ", ["LABEL", "$GROUP_ID_TO_SHOW"], "."],
+            ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Deck/visible", false],
+            ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Discard/visible", false],
+            ["UPDATE_LAYOUT", "/layout/regions/{{$PLAYER_I}}Deck2/visible", false],
+            ["UPDATE_LAYOUT", "/layout/regions/{{$GROUP_ID_TO_SHOW}}/visible", true]
+          ]
+        },
         "DISCARD_UNTIL": {
           "args": ["$GROUP_ID", "$TYPE"],
           "code": [
@@ -459,6 +470,8 @@
           "args": ["$PLAYER_I", "$BOOL"],
           "code": [
             ["COND",
+              ["IN_STRING", "$GAME.layoutId", "Handed"],
+              "$GAME",
               "$BOOL", 
               [
                 ["COND",
