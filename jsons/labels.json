@@ -1,5 +1,8 @@
 {
     "labels": {
+        "2-handed": {
+            "English": "2-handed"
+        },
         "gameStepAutomation": {
             "English": "Game Step Automation"
         },

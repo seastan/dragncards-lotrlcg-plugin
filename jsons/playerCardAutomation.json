@@ -11,28 +11,10 @@
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
                             ["LOG", "└── ", "Added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
-                            ["SET", "/cardById/$TARGET_ID/hasCelebornTokens", true]
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "willpower", 1],
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 1],
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "defense", 1]
                         ]
-                    },
-                    "celebornRoundEndTokens": {
-                        "type": "trigger",
-                        "listenTo": ["/roundNumber"],
-                        "condition": ["TRUE"],
-                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.hasCelebornTokens", "$CARD.inPlay"],
-                                [
-                                    ["LOG", "└── ", "Removed 1 willpower, 1 attack, and 1 defense token from ", "$CARD.currentFace.name", "."],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1],
-                                    ["SET", "/cardById/$CARD_ID/hasCelebornTokens", false]
-                                ]
-                            ]
-                        ]]
                     }
                 }
             },

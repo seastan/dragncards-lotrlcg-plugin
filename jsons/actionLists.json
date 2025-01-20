@@ -5,7 +5,7 @@
             ["END_THE_QUEST_PHASE"],
             ["INCREASE_VAL", "/roundNumber", 1],
             ["COND",
-                ["EQUAL", "$GAME.roundNumber", 0],
+                ["EQUAL", "$GAME.roundNumber", 1],
                 [
                     ["SET", "/stepId", "1.R"],
                     ["SET", "/stepId", "2.P"]
