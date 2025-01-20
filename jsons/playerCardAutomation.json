@@ -10,7 +10,7 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
-                            ["LOG", "└── ", "Added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."],
+                            ["LOG", "└── ", "Celeborn added 1 willpower, 1 attack, and 1 defense to ", "$TARGET.currentFace.name", " until the end of the round."],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "willpower", 1],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 1],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "defense", 1]
@@ -31,25 +31,9 @@
                         "listenTo": ["/cardById/*/inPlay"],
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
-                            ["LOG", "└── ", "Tom Cotton added 2 attack to ", "$TARGET.currentFace.name", "."],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 2],
-                            ["SET", "/cardById/$TARGET_ID/hasTomCottonTokens", true]
+                            ["LOG", "└── ", "Tom Cotton added 2 attack to ", "$TARGET.currentFace.name", " until the end of the round."],
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 2]
                         ]
-                    },
-                    "tomCottonRoundEndTokens": {
-                        "type": "trigger",
-                        "listenTo": ["/roundNumber"],
-                        "condition": ["TRUE"],
-                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.hasTomCottonTokens", "$CARD.inPlay"],
-                                [
-                                    ["LOG", "└── ", "Tom Cotton removed 2 attack from ", "$CARD.currentFace.name", "."],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 2],
-                                    ["SET", "/cardById/$CARD_ID/hasTomCottonTokens", false]
-                                ]
-                            ]
-                        ]]
                     }
                 }
             },
@@ -57,31 +41,45 @@
                 "_comment": "Sam Gamgee",
                 "ability": {
                     "A": [
+                        ["LOG", "└── ", "Readied Sam Gamgee and added 1 willpower, 1 attack, and 1 defense until the end of the round."],
                         ["COND", "$THIS.exhausted", ["TOGGLE_EXHAUST", "$THIS"]],
-                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/willpower", 1],
-                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1],
-                        ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/defense", 1],
-                        ["INCREASE_VAL", "/cardById/$THIS_ID/samBonusesThisRound", 1]
-                    ]
-                },
+                        ["ADD_TEMP_TOKEN", "round", "$THIS_ID", "willpower", 1],
+                        ["ADD_TEMP_TOKEN", "round", "$THIS_ID", "attack", 1],
+                        ["ADD_TEMP_TOKEN", "round", "$THIS_ID", "defense", 1]
+                ]
+                }
+            },
+            "6dc19efc-af54-4eff-b9ee-ee45e9fd4072": {
+                "_comment": "Éowyn (Tactics)",
                 "rules": {
-                    "samRoundEndTokens": {
-                        "type": "trigger",
-                        "listenTo": ["/roundNumber"],
-                        "condition": ["TRUE"],
-                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["GREATER_THAN", "$CARD.samBonusesThisRound", 0],
-                                [
-                                    ["LOG", "└── ", "Removed {{$CARD.samBonusesThisRound}} willpower, {{$CARD.samBonusesThisRound}} attack, and {{$CARD.samBonusesThisRound}} defense token from ", "$CARD.currentFace.name", "."],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", "$CARD.samBonusesThisRound"],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", "$CARD.samBonusesThisRound"],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", "$CARD.samBonusesThisRound"],
-                                    ["SET", "/cardById/$CARD_ID/samBonusesThisRound", 0]
-                                ]
-                            ]
-                        ]]
+                    "eowynSetup": {
+                        "_comment": "Reduce starting threat by 3.",
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["LOG", "└── ", "Éowyn reduced starting threat by 3."],
+                            ["DECREASE_VAL", "/playerData/{{$TARGET.controller}}/threat", 3],
+                            ["SET", "/cardById/$TARGET_ID/usedEowynAbility", false]
+                        ]
                     }
+                },
+                "ability": {
+                    "A": ["COND",
+                    ["AND", 
+                        "$THIS.inPlay",
+                        ["NOT", "$TARGET.usedEowynAbility"]
+                    ],
+                    [
+                        ["LOG", "└── ", "Readied Éowyn, increased threat by 3, and added 9 attack until the end of the phase."],
+                        ["INCREASE_VAL", "/playerData/{{$TARGET.controller}}/threat", 3],
+                        ["COND", "$THIS.exhausted", ["TOGGLE_EXHAUST", "$THIS"]],
+                        ["COND", "$THIS.exhausted", ["TOGGLE_EXHAUST", "$THIS"]],
+                        ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 9],
+                        ["SET", "/cardById/$TARGET_ID/usedEowynAbility", true]
+                    ],
+                    ["TRUE"],
+                    ["LOG", "└── ", "The ability's conditions are not met."]
+                ]
                 }
             },
             "51223bd0-ffd1-11df-a976-0801206c9005": {
@@ -742,13 +740,12 @@
                                     ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
                                         ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
                                             ["REPLACE_STRING_IN_LIST", ["POINTER", [
-                                                ["LOG", "└── ", "Added 1 willpower to each character controlled by ", ["GET_ALIAS", "player{I}"], "."],
+                                                ["LOG", "└── ", "Added 1 willpower to each character controlled by ", ["GET_ALIAS", "player{I}"], " until the end of the phase."],
                                                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                                     ["COND",
                                                         ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"]],
                                                         [
-                                                            ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
-                                                            ["INCREASE_VAL", "/cardById/$CARD_ID/faramirTokens", 1]
+                                                            ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                                         ]
                                                     ]
                                                 ]]
@@ -758,13 +755,12 @@
                                 ],
                                 ["TRUE"],
                                 [
-                                    ["LOG", "└── ", "Added 1 willpower to each character."],
+                                    ["LOG", "└── ", "Added 1 willpower to each character until the end of the phase."],
                                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                         ["COND",
                                             ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"]],
                                             [
-                                                ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
-                                                ["INCREASE_VAL", "/cardById/$CARD_ID/faramirTokens", 1]
+                                                ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                             ]
                                     ]]]
                                 ]
@@ -773,31 +769,6 @@
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
-                },
-                "rules": {
-                    "faramirPhaseEndTokens": {
-                        "type": "trigger",
-                        "listenTo": ["/stepId"],
-                        "condition": ["OR",
-                            ["EQUAL", "$GAME.stepId", "1.1"],
-                            ["EQUAL", "$GAME.stepId", "2.1"],
-                            ["EQUAL", "$GAME.stepId", "3.1"],
-                            ["EQUAL", "$GAME.stepId", "4.1"],
-                            ["EQUAL", "$GAME.stepId", "5.1"],
-                            ["EQUAL", "$GAME.stepId", "6.1"],
-                            ["EQUAL", "$GAME.stepId", "7.1"]
-                        ],
-                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.inPlay", ["GREATER_THAN", "$CARD.faramirTokens", 0]],
-                                [
-                                    ["LOG", "└── ", "Removed ", "$CARD.faramirTokens", " willpower from ", "$CARD.currentFace.name", "."],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", "$CARD.faramirTokens"]
-                                ]
-                            ],
-                            ["SET", "/cardById/$CARD_ID/faramirTokens", 0]
-                        ]]
-                    }
                 }
             },
             "05419721-91bd-4851-ac95-cdc079a2c036": {"_comment": "Faramir", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9014"},
@@ -1066,6 +1037,112 @@
             "c155a832-e771-4f51-8c99-7356babb84b1": {
                 "_comment": "Wingfoot",
                 "inheritFrom": "17cb8a9a-6369-4ea9-a614-02908bd7b77f"
+            },
+            "29b76593-0ef3-410b-aa85-1c282d4b1582": {
+                "_comment": "Captain of Gondor",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", "Added 1 attack and 1 defense to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the round."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["ADD_TEMP_TOKEN", "round", "$THIS.parentCardId", "attack", 1],
+                            ["ADD_TEMP_TOKEN", "round", "$THIS.parentCardId", "defense", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "49cc6b92-e841-4a48-af12-484011996695": {
+                "_comment": "Captain of Gondor",
+                "inheritFrom": "29b76593-0ef3-410b-aa85-1c282d4b1582"
+            },
+            "69a257ff-3223-4511-a20f-81cb08655081": {
+                "_comment": "Song of Hope",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resources", 0]
+                        ],
+                        [
+                            ["LOG", "└── ", "Spent 1 resource to add 1 willpower to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the phase."],
+                            ["DECREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS.parentCardId", "willpower", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "a7f12d87-5f28-46ca-a301-0ac48ca5e471": {
+                "_comment": "Gondorian Fire",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resources", 0]
+                        ],
+                        [
+                            ["VAR", "$RESOURCE_COUNT", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resources"],
+                            ["DECREASE_VAR", "$RESOURCE_COUNT", 1],
+                            ["LOG", "└── ", "Spent 1 resource to add {{$RESOURCE_COUNT}} attack to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the phase."],
+                            ["DECREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS.parentCardId", "attack", "$RESOURCE_COUNT"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "4823aae3-46ef-4a75-89f9-cbd3aa1b9007": {
+                "_comment": "Blood of Numenor",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resources", 0]
+                        ],
+                        [
+                            ["VAR", "$RESOURCE_COUNT", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resources"],
+                            ["DECREASE_VAR", "$RESOURCE_COUNT", 1],
+                            ["LOG", "└── ", "Spent 1 resource to add {{$RESOURCE_COUNT}} defense to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the phase."],
+                            ["DECREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS.parentCardId", "defense", "$RESOURCE_COUNT"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "94f6738a-c946-4415-9b38-0ce3a443fa33": {
+                "_comment": "Treebeard (Hero)",
+                "ability": {
+                    "A": [
+                            ["LOG", "└── ", "Dealt 1 damage to ", "$THIS.currentFace.name", " to add 1 willpower and 1 attack until the end of the phase."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/damage", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "willpower", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1]
+                        ]
+                }
+            },
+            "21cfb9e9-6777-4bc6-ace6-08fe68e949a4": {
+                "_comment": "Éomer (Hero, Tactics)",
+                "ability": {
+                    "A": [
+                            ["LOG", "└── ", "Added 2 attack to ", "$THIS.currentFace.name", " until the end of the round."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["ADD_TEMP_TOKEN", "round", "$THIS_ID", "attack", 2]
+                        ]
+                }
+            },
+            "e87c3473-e107-40dd-9af7-b01f35176ea0": {
+                "_comment": "Éomer (Hero, Tactics)",
+                "inheritFrom": "21cfb9e9-6777-4bc6-ace6-08fe68e949a4"
             },
             "c984e8e8-94a6-4af6-9455-824ad2cf46f9": {
                 "_comment": "Magic Ring",
