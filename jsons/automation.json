@@ -103,7 +103,7 @@
                     ["EQUAL", "$GAME.roundAdvancementFunction", "commitOrReveal"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: Q to commit character. Next: E to reveal or W to skip"],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "revealOrResolve"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: E to reveal. Next: Q to resolve quest or W to skip."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "When done revealing, Shift+Q to resolve quest or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToTravel"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: A to travel or W to decline."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToEncounter"],
@@ -174,70 +174,6 @@
                     ]]
                 ]
             },
-            "step_3.4": {
-                "_comment": "Resolve the quest",
-                "inheritFrom": "stepTrigger",
-                "condition": ["EQUAL", "$GAME.stepId", "3.4"],
-                "then": [
-                    ["VAR", "$PROGRESS_MADE", "$GAME.questProgress"],
-                    ["COND",
-                        ["EQUAL", "$PROGRESS_MADE", 0],
-                        ["LOG", "The players did not quest successfully or unsuccessfully."],
-                        ["GREATER_THAN", "$PROGRESS_MADE", 0],
-                        [
-                            ["LOG", "├── The players quested successfully."],
-                            ["LOG", "├── The players made {{$PROGRESS_MADE}} progress."],
-                            ["VAR", "$ACTIVE_LOCATIONS", ["FILTER_CARDS", "$C", ["AND", ["EQUAL", "$C.groupId", "sharedActiveLocation"], ["EQUAL", "$C.currentFace.type", "Location"]]]],
-                            ["VAR", "$NUM_ACTIVE_LOCATIONS", ["LENGTH", "$ACTIVE_LOCATIONS"]],
-                            ["COND",
-                                ["GREATER_THAN", "$NUM_ACTIVE_LOCATIONS", 1],
-                                ["LOG", "└── More than 1 active location detected. You will need to distribute the progress yourself."],
-                                ["EQUAL", "$NUM_ACTIVE_LOCATIONS", 1],
-                                [
-                                    ["VAR", "$ACTIVE_LOCATION", "$ACTIVE_LOCATIONS.[0]"],
-                                    ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", "$ACTIVE_LOCATION.currentFace.questPoints", "$ACTIVE_LOCATION.tokens.progress"]],
-                                    ["LOG", "├── {{$PROGRESS_MADE}} progress was placed on the active location."],
-                                    ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
-                                    ["DECREASE_VAR", "$PROGRESS_MADE", "$REMAINING_LOCATION_PROGRESS"]
-                                ]
-                            ],
-                            ["COND",
-                                ["GREATER_THAN", "$PROGRESS_MADE", 0], 
-                                [
-                                    ["VAR", "$CURRENT_QUEST", ["GET_CURRENT_QUEST"]],
-                                    ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", "$CURRENT_QUEST.currentFace.questPoints", "$CURRENT_QUEST.tokens.progress"]],
-                                    ["LOG", "└── {{$PROGRESS_MADE}} progress was placed on the current quest, {{$CURRENT_QUEST.currentFace.name}}."],
-                                    ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$REMAINING_QUEST_PROGRESS"]
-                                ]
-                            ]
-                        ],
-                        ["TRUE"],
-                        [
-                            ["VAR", "$THREAT_RAISE", ["SUBTRACT", 0, "$PROGRESS_MADE"]],
-                            ["LOG", "├── The players quested unsuccessfully."],
-                            ["LOG", "└── Each player raises their threat by {{$THREAT_RAISE}}."],
-                            ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
-                                ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", "$THREAT_RAISE"]
-                            ]
-                        ],
-                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND",
-                                    "$CARD.committed",
-                                    ["EQUAL", "$CARD.currentFace.type", "Hero"]
-                                ],
-                                [
-                                    ["SET", "/cardById/$CARD_ID/committed", false],
-                                    ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
-                                ]
-                            ]
-                        ]],
-                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
-                            ["SET", "/playerData/$PLAYER_I/willpower", 0]
-                        ]
-                    ]
-                ]
-            },
             "step_3.5": {
                 "_comment": "Trigger end of quest phase framework effects",
                 "inheritFrom": "stepTrigger",
@@ -247,40 +183,16 @@
                     ["END_THE_QUEST_PHASE"]
                 ]
             },
-            "step_5.3": {
+            "step_5.4": {
                 "_comment": "Forced engagement checks",
                 "inheritFrom": "stepTrigger",
-                "condition": ["EQUAL", "$GAME.stepId", "5.3"],
+                "condition": ["EQUAL", "$GAME.stepId", "5.4"],
                 "then": [
-                    ["VAR", "$CURRENT_PLAYER", "$GAME.firstPlayer"],
-                    ["WHILE", 
+                    ["COND",
                         ["ENEMIES_IN_STAGING_AREA_FORCED"],
-                        [
-                            ["VAR", "$ALIAS_I", ["GET_ALIAS", "$CURRENT_PLAYER"]],
-                            ["LOG", "├── {{$ALIAS_I}} makes engagement checks."],
-                            ["VAR", "$CANDIDATES", ["FILTER_CARDS", "$C", [
-                                "AND",
-                                ["EQUAL", "$C.groupId", "sharedStagingArea"],
-                                ["EQUAL", "$C.currentFace.type", "Enemy"],
-                                ["GREATER_EQUAL", "$GAME.playerData.$CURRENT_PLAYER.threat", "$C.currentFace.engagementCost"]
-                            ]]],
-                            ["COND",
-                                ["EQUAL", ["LENGTH", "$CANDIDATES"], 0],
-                                ["LOG", "├── ", "{{$ALIAS_I}} has no enemies in the staging area that they must engage."],
-                                ["TRUE"],
-                                [
-                                    ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$CANDIDATES", "$C", "$C.currentFace.engagementCost"]],
-                                    ["VAR", "$ENEMY_TO_ENGAGE", "$ENEMIES_BY_ENG_COST.[-1]"],
-                                    ["LOG", "├── ", "{{$ALIAS_I}} engages ", "$ENEMY_TO_ENGAGE.currentFace.name", "."],
-                                    ["MOVE_STACK", "$ENEMY_TO_ENGAGE.stackId", "{{$CURRENT_PLAYER}}Engaged", -1]
-                                ]
-                            ],
-                            ["UPDATE_VAR", "$CURRENT_PLAYER", ["NEXT_PLAYER", "$CURRENT_PLAYER"]]
-                        ]
-                    ],
-                    ["LOG", "└── ", "Engagement checks are complete."]
-                ],
-                "priority": 1
+                        ["PROMPT", "player1", "There is at least 1 enemy in the staging area that has lower engagement cost that a player's threat."]
+                    ]
+                ]
             },
             "step_6.2": {
                 "_comment": "Deal shadow cards",
@@ -321,20 +233,20 @@
                     ]
                 ]
             },
-            "triggerGameStepEffects": {
-                "_comment": "Trigger card effects for a given game step",
-                "inheritFrom": "stepTrigger",
-                "condition": ["TRUE"],
-                "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                    ["COND",
-                        ["AND",
-                            ["DEFINED", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}"],
-                            ["EQUAL", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}.enabled", true]
-                        ],
-                        ["ACTION_LIST", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}.actionList"]
-                    ]
-                ]]
-            },
+            // "triggerGameStepEffects": {
+            //     "_comment": "Trigger card effects for a given game step",
+            //     "inheritFrom": "stepTrigger",
+            //     "condition": ["TRUE"],
+            //     "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+            //         ["COND",
+            //             ["AND",
+            //                 ["DEFINED", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}"],
+            //                 ["EQUAL", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}.enabled", true]
+            //             ],
+            //             ["ACTION_LIST", "$CARD.currentFace.gameStepEffects.{{$GAME.stepId}}.actionList"]
+            //         ]
+            //     ]]
+            // },
             "removeCommittedWillpower": {  
                 "_comment": "Remove committed willpower from a character leaving play",
                 "type": "trigger", 
