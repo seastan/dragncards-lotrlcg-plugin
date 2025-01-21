@@ -11,28 +11,10 @@
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
                         "then": [
                             ["LOG", "└── ", "Added 1 willpower, 1 attack, and 1 defense token to ", "$TARGET.currentFace.name", "."],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", 1],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/defense", 1],
-                            ["SET", "/cardById/$TARGET_ID/hasCelebornTokens", true]
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "willpower", 1],
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 1],
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "defense", 1]
                         ]
-                    },
-                    "celebornRoundEndTokens": {
-                        "type": "trigger",
-                        "listenTo": ["/roundNumber"],
-                        "condition": ["TRUE"],
-                        "then": ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.hasCelebornTokens", "$CARD.inPlay"],
-                                [
-                                    ["LOG", "└── ", "Removed 1 willpower, 1 attack, and 1 defense token from ", "$CARD.currentFace.name", "."],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/attack", 1],
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1],
-                                    ["SET", "/cardById/$CARD_ID/hasCelebornTokens", false]
-                                ]
-                            ]
-                        ]]
                     }
                 }
             },
@@ -1034,6 +1016,26 @@
                 "_comment": "Odo Proudfoot",
                 "ability": {
                     "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                }
+            },
+            "1200dd24-3d0a-485d-baa3-6eac91f87779": {
+                "_comment": "Messenger of the King",
+                "rules": {
+                    "makeIntoHero": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "promptYN",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Grant the hero type to {{$THIS.parentCard.sides.A.name}}?"
+                        },
+                        "listenTo": ["/cardById/$THIS_ID/cardIndex"],
+                        "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
+                            ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Hero"]
+                        ]
+                    }
                 }
             },
             "c266126d-cf2d-4a61-aac7-28bac2d1ea0d": {

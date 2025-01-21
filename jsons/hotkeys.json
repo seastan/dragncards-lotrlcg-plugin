@@ -21,6 +21,8 @@
             {"key": "Shift+K", "actionList": "revealSecondaryFacedown", "label": "id:revealFacedownCardFromSecondEncounterDeck"},
             {"key": "Shift+M", "actionList": "mulligan", "label": "id:mulligan"},
             {"key": "W", "actionList": ["DO_ADVANCE_BUTTON"], "label": "id:advanceThroughRoundStopAtTriggers"},
+            {"key": "Shift+Q", "actionList": ["RESOLVE_QUEST"], "label": "id:resolveTheQuest"},
+            {"key": "G", "actionList": ["RESOLVE_ENGAGEMENT_CHECKS"], "label": "id:resolveEngagementChecks"},
             {"key": "Shift+N", "actionList": "skipToNextPlanningPhase", "label": "id:skipToNextPlanningPhase"},
             {"key": "Shift+S", "actionList": "skipToDealShadowsStep", "label": "id:skipToDealShadowsStep"},
             {"key": "Shift+R", "actionList": "skipToRefreshPhase", "label": "id:skipToRefreshPhase"},

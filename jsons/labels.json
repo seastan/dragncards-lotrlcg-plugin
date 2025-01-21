@@ -1,5 +1,14 @@
 {
     "labels": {
+        "resolveEngagementChecks": {
+            "English": "Resolve Engagement Checks"
+        },
+        "resolveTheQuest": {
+            "English": "Resolve The Quest"
+        },
+        "2-handed": {
+            "English": "2-handed"
+        },
         "gameStepAutomation": {
             "English": "Game Step Automation"
         },
