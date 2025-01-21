@@ -90,7 +90,7 @@
               0
           ]
         },
-        "GET_ACTIVE_LOACTIONS": {
+        "GET_ACTIVE_LOCATIONS": {
           "args": [],
           "code": [
             ["FILTER_CARDS", "$C", 
@@ -104,7 +104,7 @@
         "NO_ACTIVE_LOCATION": {
           "args": [],
           "code": [
-            ["EQUAL", ["LENGTH", ["GET_ACTIVE_LOACTIONS"]], 0]
+            ["EQUAL", ["LENGTH", ["GET_ACTIVE_LOCATIONS"]], 0]
           ]
         },
         "GET_CURRENT_QUEST": {
@@ -432,6 +432,26 @@
               "$X"
           ]
         },
+        "EXHAUST_TO_LOOK_AT_ENCOUNTER_X": {
+          "args": ["$CARD", "$X"],
+          "code": ["ACTION_LIST_TO_LOOK_AT_X", 
+              ["AND", "$CARD.inPlay", ["NOT", "$CARD.exhausted"]], 
+              ["LIST", "TOGGLE_EXHAUST", "$CARD"], 
+              "$CARD",
+              "sharedEncounterDeck",
+              "$X"
+          ]
+        },
+        "DISCARD_TO_LOOK_AT_ENCOUNTER_X": {
+          "args": ["$CARD", "$X"],
+          "code": ["ACTION_LIST_TO_LOOK_AT_X", 
+              ["IN_STRING", "$CARD.groupId", "Hand"], 
+              "discardCard", 
+              "$CARD",
+              "sharedEncounterDeck",
+              "$X"
+          ]
+        },
         "ACTION_LIST_TO_LOOK_AT_X": {
           "args": ["$CONDITION", "$ACTION_LIST", "$CARD", "$GROUP_ID", "$X"],
           "code": ["COND",
@@ -439,12 +459,18 @@
               [   
                   ["VAR", "$ACTIVE_CARD_ID", "$CARD.id"],
                   ["ACTION_LIST", "$ACTION_LIST"],
-                  ["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
-                  ["LOG", "└── {{$ALIAS_N}} is looking at the top {{$X}} cards of {{$GROUP.label}}."],
-                  ["LOOK_AT", "$PLAYER_N", "$GROUP_ID", "$X", true]
+                  ["LOOK_AT_X", "$GROUP_ID", "$X"]
               ],
               ["TRUE"],
               ["LOG", "└── ", "The ability's conditions are not met."]
+          ]
+        },
+        "LOOK_AT_X": {
+          "args": ["$GROUP_ID", "$X"],
+          "code": [
+            ["VAR", "$GROUP", "$GAME.groupById.$GROUP_ID"],
+            ["LOG", "└── {{$ALIAS_N}} is looking at the top {{$X}} cards of {{$GROUP.label}}."],
+            ["LOOK_AT", "$PLAYER_N", "$GROUP_ID", "$X", true]
           ]
         },
         "GET_STAGE_NUM": {
@@ -567,7 +593,7 @@
                 [
                     ["LOG", "├── The players quested successfully."],
                     ["LOG", "├── The players made {{$PROGRESS_MADE}} progress."],
-                    ["VAR", "$ACTIVE_LOCATIONS", ["FILTER_CARDS", "$C", ["AND", ["EQUAL", "$C.groupId", "sharedActiveLocation"], ["EQUAL", "$C.currentFace.type", "Location"]]]],
+                    ["VAR", "$ACTIVE_LOCATIONS", ["GET_ACTIVE_LOCATIONS"]],
                     ["VAR", "$NUM_ACTIVE_LOCATIONS", ["LENGTH", "$ACTIVE_LOCATIONS"]],
                     ["COND",
                         ["GREATER_THAN", "$NUM_ACTIVE_LOCATIONS", 1],
@@ -791,6 +817,43 @@
               ["INCREASE_VAR", "$DWARF_COUNT", 1]
             ]],
             ["GREATER_EQUAL", "$DWARF_COUNT", 5]   
+          ]
+        },
+        "ACTIVE_LOCATION_HAS_TRAIT": {
+          "args": ["$TRAIT"],
+          "code": [
+            ["VAR", "$ACTIVE_LOCATIONS_WITH_TRAIT", ["FILTER_CARDS", "$C", [
+              "AND",
+                  ["EQUAL", "$C.groupId", "sharedActiveLocation"],
+                  ["EQUAL", "$C.currentFace.type", "Location"],
+                  ["IN_STRING", "$C.currentFace.traits", "$TRAIT"]
+            ]]],
+            ["GREATER_THAN", ["LENGTH", "$ACTIVE_LOCATIONS_WITH_TRAIT"], 0]
+          ]
+        },
+        "DOOMED": {
+          "args": ["$X"],
+          "code": [
+            ["LOG", "└── ", "Raised each player's threat by $X."],
+            ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+              ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", "$X"]
+            ]]
+          ]
+        },
+        "IS_PLAYER_IN_VALOUR": {
+          "args": ["$PLAYER"],
+          "code": [
+            "GREATER_EQUAL", "$GAME.playerData.{{$PLAYER}}.threat", 40
+          ]
+        },
+        "IS_CHARACTER": {
+          "args": ["$CARD"],
+          "code": ["OR",
+            ["EQUAL", "$CARD.currentFace.type", "Hero"],
+            ["EQUAL", "$CARD.currentFace.type", "Ally"],
+            ["EQUAL", "$CARD.currentFace.type", "Objective Hero"],
+            ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
+            ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
           ]
         }
     }

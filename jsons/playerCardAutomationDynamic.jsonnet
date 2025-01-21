@@ -93,7 +93,10 @@ local conditionalAttachment(name, bonusList) = {
                 {name: "attachmentConditionalPassiveTokens", attack: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]}
             ]),
             "9bf3f0fd-6eff-4560-8d65-c5ba79cf155f": self["0ee1f1e6-1952-4bad-8ecd-631e80f4ccc0"],
-            "f40cc90c-02df-464b-a401-6640aa93e2f8": staticAttachment("Cloak of Lorien", defense=1),  // TODO make dynamic based on active location having forest trait
+            "f40cc90c-02df-464b-a401-6640aa93e2f8": conditionalAttachment("Cloak of Lorien", [
+                {name: "attachmentBasicPassiveTokens", defense: 1, listenTo: ["/groupById/sharedActiveLocation/stackIds"], condition: ["NOT", ["ACTIVE_LOCATION_HAS_TRAIT", "Forest."]]},
+                {name: "attachmentConditionalPassiveTokens", defense: 2, listenTo: ["/groupById/sharedActiveLocation/stackIds"], condition: ["ACTIVE_LOCATION_HAS_TRAIT", "Forest."]}
+            ]),
             "47deb269-e02b-426d-b64a-34a4adff44de": staticAttachment("Valiant Sword", attack=1),  // TODO make dynamic based on threat >= 40
             //"47deb269-e02b-426d-b64a-34a4adff44de": dynamicAttachment("Valiant Sword", [
             //    {name: "attachmentBasicPassiveTokens", attack: 1, listenTo: ["playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.player1.threat", 40]]},
