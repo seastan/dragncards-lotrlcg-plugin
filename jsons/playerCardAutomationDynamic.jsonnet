@@ -151,6 +151,8 @@ local conditionalAttachment(name, bonusList) = {
             "48eb743b-454a-43b7-96bf-27d468ad858a": staticAttachment("Wild Stallion", willpower=1, attack=1, defense=1, hitPoints=1),
             "80bb3d6a-c730-4994-badc-52fed8d92730": staticAttachment("Orcrist", attack=2),
             "4c23f4d0-fbf4-4c07-bb1d-0f5507647e0f": staticAttachment("Sting", willpower=1, attack=1, defense=1),
+            "b1cc99c3-09a7-4418-85c4-e368f44adf1d": staticAttachment("Necklace of Girion", willpower=2),
+            "d45259f1-a551-466c-8352-cc466e1670c2": staticAttachment("Stone of Elostirion", willpower=2),
             "4c77565a-475e-4f57-9360-8f0a2916607f": staticAttachment("Armor of Erebor", defense=1),
             "b897b63d-86ac-417c-88d2-1a594f3674f1": staticAttachment("Sword of Rhûn", attack=2),
             "53c01bdc-2761-4f8f-90bc-1eedd14ca376": staticAttachment("Easterling Horse", threat=2),

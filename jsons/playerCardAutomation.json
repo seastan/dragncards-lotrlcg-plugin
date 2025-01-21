@@ -921,13 +921,13 @@
                 }
             },
             "51e0054c-c48d-4fc7-9737-30bf12d4b52a": {
-                "_comment": "Horse-breeder",
+                "_comment": "Westfold Horse-breeder",
                 "ability": {
-                    "A": ["EXHAUST_TO_LOOK_AT_X", "$THIS", 10]
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 10, true]
                 }
             },
             "0567c2df-677c-4529-985a-54621088fe58": {
-                "_comment": "Horse-breeder",
+                "_comment": "Westfold Horse-breeder",
                 "inheritFrom": "51e0054c-c48d-4fc7-9737-30bf12d4b52a"
             },
             "51223bd0-ffd1-11df-a976-0801201c9008": {
@@ -954,6 +954,26 @@
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
                 }
             },
+            "f39eaad9-134d-406b-9111-e03c33e0cd16": {
+                "_comment": "The Tree People",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
+                }
+            },
+            "cae49f93-1a11-4bef-bed2-8305e91c3c2a": {"_comment": "The Tree People", "inheritFrom": "f39eaad9-134d-406b-9111-e03c33e0cd16"},
+            "51223bd0-ffd1-11df-a976-0801201c9004": {
+                "_comment": "Mustering the Rohirrm",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 10]
+                }
+            },
+            "8047c8c2-1569-428c-865e-0459c2733db3": {
+                "_comment":  "The Muster of Rohan",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 10]
+                }
+            },
+            "439f1d94-3098-4b4a-9ceb-3b28a6eac804": {"_comment": "The Muster of Rohan", "inheritFrom": "8047c8c2-1569-428c-865e-0459c2733db3"},
             "9152834a-5355-42ba-9592-1a3c1940d1a8": {
                 "_comment": "King under the Mountain",
                 "ability": {
@@ -973,22 +993,127 @@
                     "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
                 }
             },
-            "1200dd24-3d0a-485d-baa3-6eac91f87779": {
-                "_comment": "Messenger of the King",
+            "ad26f445-5cba-461c-8226-26a75cdf1891": {
+                "_comment": "Spare Pipe",
+                "ability": {
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                }
+            },
+            "b313de3d-897e-4e74-afc5-d31fceaa6162": {
+                "_comment": "Weather Hills Watchman",
+                "ability": {
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                }
+            },
+            "27c06f1e-7be0-417e-9029-f5a71c93e3c5": {
+                "_comment": "Long Lake Fisherman",
+                "ability": {
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                }
+            },
+            "8cd14645-20ad-4316-94cd-2381e828c68d": {
+                "_comment": "Haleth",
+                "ability": {
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                }
+            },
+            "bd81ff6a-9c8f-415e-85fb-da84c21ef2a4": {
+                "_comment": "Galadhrim Minstrel",
+                "ability": {
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                }
+            },
+            "c691690d-16ff-4aea-8639-a9655a30216c": {"_comment": "Galadhrim Minstrel", "inheritFrom": "bd81ff6a-9c8f-415e-85fb-da84c21ef2a4"},
+            "dceb6fc5-2ba6-4fe1-8c8c-9ab328e16698": {"_comment": "Galadhrim Minstrel", "inheritFrom": "bd81ff6a-9c8f-415e-85fb-da84c21ef2a4"},
+            "3d09a998-9ad0-4b98-9c42-50c4226cc73b": {
+                "_comment": "Galadriel (Ally)",
+                "ability": {
+                    "A": ["LOOK_AT", "$PLAYER_N", "{{$THIS.controller}}Deck", 5, true]
+                },
                 "rules": {
-                    "makeIntoHero": {
+                    "galadrielDiscard": {
                         "type": "trigger",
-                        "autoRun": {
-                            "status": "promptYN",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Grant the hero type to {{$THIS.parentCard.sides.A.name}}?"
-                        },
-                        "listenTo": ["/cardById/$THIS_ID/cardIndex"],
-                        "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["ACTION_LIST", "discardCard"]
+                        ]
+                    }
+                }
+            },
+            "b20bd2b6-c4b8-464d-81ed-c1285c99ae7e": {"_comment": "Galadriel (Ally)", "inheritFrom": "3d09a998-9ad0-4b98-9c42-50c4226cc73b"},
+            "66cf39b5-015f-4bae-b304-4a61b5d1bedf": {
+                "_comment": "Prince Imrahil (Tactics Hero)",
+                "ability": {
+                    "A": ["ACTION_LIST_TO_LOOK_AT_X", 
+                        ["AND", "$THIS.inPlay", ["GREATER_THAN", "$THIS.tokens.resources", 0]],
+                        ["LIST", "DECREASE_VAL", "/cardById/$THIS_ID/tokens/damage", 1],
+                        "$THIS",
+                        "deck",
+                        5
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-1801204c9065": {
+                "_comment": "Ori",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["HAS_5_OR_MORE_DWARVES", "$THIS.controller"]
+                        ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
-                            ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Hero"]
+                            ["LOG", "{{$ALIAS}} drew 1 additional card from Ori."],
+                            ["DRAW_CARD"]
+                        ]
+                    }
+                }
+            },
+            "3f1fe728-ecc6-4aff-a056-31e3731e39c2": {"_comment": "Ori", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9065"},
+            "d45259f1-a551-466c-8352-cc466e1670c2": {
+                "_comment": "Stone of Elostirion",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "{{$ALIAS}} drew 1 additional card from Stone of Elostirion."],
+                            ["DRAW_CARD"]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801201c9001": {
+                "_comment": "Bilbo Baggins (Hero, Lore)",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
+                            ["LOG", "{{$ALIAS}} drew 1 additional card from Bilbo Baggins."],
+                            ["DRAW_CARD", 1, "$GAME.firstPlayer"]
                         ]
                     }
                 }
@@ -1017,28 +1142,52 @@
                     }
                 }
             },
-            "51223bd0-ffd1-11df-a976-0801210c9012": {
-                "_comment": "Resourceful",
+            "51223bd0-ffd1-11df-a976-1801204c9083": {
+                "_comment": "Thorin Oakenshield",
                 "rules": {
-                    "resourcefulResource": {
+                    "thorinResource": {
                         "type": "trigger",
-                        "autoRun": {
-                            "status": "prompt",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Add 1 resource to Resourceful's attached hero?"
-                        },
                         "listenTo": ["/stepId"],
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
-                            ["EQUAL", "$THIS.inPlay", true]
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["HAS_5_OR_MORE_DWARVES", "$THIS.controller"]
                         ],
                         "then": [
-                            ["LOG", "{{$ALIAS_N}} added 1 resource to Resourceful's attached hero."],
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} added 1 additional resource to Thorin Oakenshield."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
+                        ]
+                    }
+                }
+            },
+            "attachedHeroGainsOneResourceInResourcePhase": {
+                "abstract": true,
+                "rules": {
+                    "collectAdditionalResource": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        "then": [
+                            ["LOG", "├── ", "{{$ALIAS_N}} added 1 resource to ", "$THIS.currentFace.name", "'s attached hero."],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
                         ]
                     }
                 }
+            },
+            "51223bd0-ffd1-11df-a976-0801210c9012": {
+                "_comment": "Resourceful",
+                "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
+            },
+            "b1cc99c3-09a7-4418-85c4-e368f44adf1d": {
+                "_comment": "Necklace of Girion",
+                "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
             },
             "51223bd0-ffd1-11df-a976-0801200c9026": {
                 "_comment": "Steward of Gondor",
@@ -1065,6 +1214,56 @@
             "aef31639-1962-4d41-912c-bea70e1be83e": {
                 "_comment": "Steward of Gondor",
                 "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
+            },
+            "exhaustToAddOneResourceToAttachedCharacter": {
+                "abstract": true,
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", "Added 1 resource to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "8a6566b1-2425-442b-8e44-f8a3aa4590fe": {
+                "_comment": "Sword of Numenor",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "51223bd0-ffd1-11df-a976-0801211c9019": {
+                "_comment": "Love of Tales",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "e6ee53f4-36e4-4671-9d76-8974134d052e": {
+                "_comment": "Keys of Orthanc",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "5d1c8757-7409-41da-9e12-454af06e8946": {
+                "_comment": "The Day's Rising",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "5c6b9d23-79fe-482c-8122-66b185cd476e": {
+                "_comment": "Rune-master",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "9ccbe47b-b30f-468a-a867-60314e3b5d61": {
+                "_comment": "Dwarven Shield",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "1cb9b7ce-c138-4de6-b983-68485fb4ea0b": {
+                "_comment": "Red Book of Westmarch",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "3892b2e4-358c-42af-b5be-2f54d252ea2a": {
+                "_comment": "Leader of Men (Boon)",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
             },
             "51223bd0-ffd1-11df-a976-0801200c9045": {
                 "_comment": "Northern Tracker",
@@ -1154,6 +1353,10 @@
             "c155a832-e771-4f51-8c99-7356babb84b1": {
                 "_comment": "Wingfoot",
                 "inheritFrom": "17cb8a9a-6369-4ea9-a614-02908bd7b77f"
+            },
+            "9f61eee8-cff2-43ad-8f82-7c4efb5ed9b8": {
+                "_comment": "Shadowfax",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "29b76593-0ef3-410b-aa85-1c282d4b1582": {
                 "_comment": "Captain of Gondor",
@@ -1314,24 +1517,17 @@
                 }
             },
             "fa030621-5b1d-4955-8d5e-3e515f546981": {"_comment": "Magic Ring", "inheritFrom": "c984e8e8-94a6-4af6-9455-824ad2cf46f9"},
-            "peekAtTopCardOfEncounter": {
-                "abstract": true,
-                "ability": {
-                    "A": ["COND",
-                        ["GROUP_EMPTY", "sharedEncounterDeck"],
-                        ["LOG", "{{$ALIAS_N}} tried to peek at the top of the encounter deck, but it was empty."],
-                        ["TRUE"],
-                        [
-                            ["LOG", "{{$ALIAS_N}} peeked at the top of the encounter deck"],
-                            ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                            ["SET", "/cardById/$TOP_CARD_ID/peeking/$PLAYER_N", true]
-                        ]
-                    ]
-                }
-            },
             "51223bd0-ffd1-11df-a976-0801200c9060": {
                 "_comment": "Henamarth Riversong",
-                "inheritFrom": "peekAtTopCardOfEncounter"
+                "ability": {
+                     "A": ["ACTION_LIST_TO_LOOK_AT_X", 
+                         ["AND", "$THIS.inPlay", ["NOT", "$THIS.exhausted"]], 
+                         ["LIST", "TOGGLE_EXHAUST", "$THIS"],
+                         "$THIS",
+                         "sharedEncounterDeck",
+                         1
+                     ]
+                 }
             },
             "12951d4e-ad35-4103-8cb5-964cb1f7bfd2": {
                 "_comment": "Henamarth Riversong",
@@ -1340,6 +1536,34 @@
             "e7ee6a7e-d0bb-4a6d-8999-3c3e51032ca5": {
                 "_comment": "Henamarth Riversong",
                 "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9060"
+            },
+            "parentCardGainsHeroType": {
+                "abstract": true,
+                "rules": {
+                    "makeIntoHero": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "promptYN",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Grant the hero type to {{$THIS.parentCard.sides.A.name}}?"
+                        },
+                        "listenTo": ["/cardById/$THIS_ID/cardIndex"],
+                        "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
+                            ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Hero"]
+                        ]
+                    }
+                }
+            },
+            "1200dd24-3d0a-485d-baa3-6eac91f87779": {
+                "_comment": "Messenger of the King",
+                "inheritFrom": "parentCardGainsHeroType"
+            },
+            "59cd2c5f-1986-4065-ad2c-8423d6b200e2": {
+                "_comment": "Sword-thain",
+                "inheritFrom": "parentCardGainsHeroType"
             }
         }
     }

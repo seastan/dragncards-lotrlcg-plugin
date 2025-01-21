@@ -764,6 +764,34 @@
               ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "6.2"]
             ]
           ]
+        },
+        "HAS_5_OR_MORE_DWARVES": {
+          "args": ["$PLAYER"],
+          "code": [
+            ["VAR", "$DWARF_COUNT", 0],
+            ["VAR", "$DWARF_CARDS",
+              ["FILTER_CARDS",
+                "$CARD",
+                ["AND",
+                  ["EQUAL", "$CARD.controller", "$PLAYER"],
+                  ["EQUAL", "$CARD.inPlay", true],
+                  ["IN_STRING", "$CARD.currentFace.traits", "Dwarf."],
+                  ["EQUAL", "$CARD.currentSide", "A"]
+                ]
+              ]
+            ],
+            ["FOR_EACH_VAL", "$DWARF_CARD", "$DWARF_CARDS", [
+              "COND",
+              ["AND",
+                ["EQUAL", "$DWARF_CARD.currentFace.name", "Bombur"],
+                ["EQUAL", "$DWARF_CARD.sides.A.type", "Hero"]
+              ],
+              ["INCREASE_VAR", "$DWARF_COUNT", 2],
+              ["TRUE"],
+              ["INCREASE_VAR", "$DWARF_COUNT", 1]
+            ]],
+            ["GREATER_EQUAL", "$DWARF_COUNT", 5]   
+          ]
         }
     }
 }

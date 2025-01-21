@@ -7395,6 +7395,70 @@
                }
             }
          },
+         "b1cc99c3-09a7-4418-85c4-e368f44adf1d": {
+            "_comment": "Necklace of Girion",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "b41ed6a0-17bc-4cbc-a654-d4d9538eed62": {
             "_comment": "Inner Strength",
             "rules": {
@@ -8147,6 +8211,70 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/attack",
                         1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "d45259f1-a551-466c-8352-cc466e1670c2": {
+            "_comment": "Stone of Elostirion",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        2
                      ]
                   ],
                   "type": "passive"
