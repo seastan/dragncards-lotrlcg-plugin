@@ -67,15 +67,15 @@
                     "A": ["COND",
                     ["AND", 
                         "$THIS.inPlay",
-                        ["NOT", "$TARGET.usedEowynAbility"]
+                        ["NOT", "$THIS.usedEowynAbility"]
                     ],
                     [
                         ["LOG", "└── ", "Readied Éowyn, increased threat by 3, and added 9 attack until the end of the phase."],
-                        ["INCREASE_VAL", "/playerData/{{$TARGET.controller}}/threat", 3],
+                        ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 3],
                         ["COND", "$THIS.exhausted", ["TOGGLE_EXHAUST", "$THIS"]],
                         ["COND", "$THIS.exhausted", ["TOGGLE_EXHAUST", "$THIS"]],
                         ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 9],
-                        ["SET", "/cardById/$TARGET_ID/usedEowynAbility", true]
+                        ["SET", "/cardById/$THIS_ID/usedEowynAbility", true]
                     ],
                     ["TRUE"],
                     ["LOG", "└── ", "The ability's conditions are not met."]
@@ -280,8 +280,8 @@
                         "_comment": "Add/remove tokens on enemies when Aragorn enters/leaves play.",
                         "type": "whileInPlay", 
                         "side": "A",
-                        "listenTo": ["/cardById/$THIS_ID/tokens/resource"],
-                        "condition": ["GREATER_THAN", "$THIS.tokens.resource", 0],
+                        "listenTo": ["/cardById/$THIS_ID/inPlay"],
+                        "condition": ["$THIS.inPlay"],
                         "onDo": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "└── ", "Removed 1 defense from each enemy engaged with {{$ALIAS}}."],
@@ -1273,8 +1273,8 @@
                 "_comment": "Prince Imrahil (Tactics Hero)",
                 "ability": {
                     "A": ["ACTION_LIST_TO_LOOK_AT_X", 
-                        ["AND", "$THIS.inPlay", ["GREATER_THAN", "$THIS.tokens.resources", 0]],
-                        ["LIST", "DECREASE_VAL", "/cardById/$THIS_ID/tokens/damage", 1],
+                        ["AND", "$THIS.inPlay", ["GREATER_THAN", "$THIS.tokens.resource", 0]],
+                        ["LIST", "DECREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
                         "$THIS",
                         "deck",
                         5
@@ -1599,7 +1599,7 @@
                             ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to ready ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
-                            ["discardCard"]
+                            ["ACTION_LIST", "discardCard"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1621,7 +1621,7 @@
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
                             ["DECREASE_VAL", "/cardById/$THIS.parentCardId/tokens/damage", 3],
-                            ["discardCard"]
+                            ["ACTION_LIST", "discardCard"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
