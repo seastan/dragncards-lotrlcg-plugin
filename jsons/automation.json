@@ -190,7 +190,7 @@
                 "then": [
                     ["COND",
                         ["ENEMIES_IN_STAGING_AREA_FORCED"],
-                        ["PROMPT", "player1", "There is at least 1 enemy in the staging area that has lower engagement cost that a player's threat."]
+                        ["PROMPT", "player1", "notify", "There is at least 1 enemy in the staging area that has lower engagement cost that a player's threat."]
                     ]
                 ]
             },

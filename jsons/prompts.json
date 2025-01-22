@@ -1,5 +1,15 @@
 {
     "prompts": {
+        "notify": {
+            "args": ["$MESSAGE"],
+            "message": "{{$MESSAGE}}",
+            "options": [
+                {
+                    "label": "OK",
+                    "hotkey": "K"
+                }
+            ]
+        },
         "basePrompt": {
             "args": ["$MESSAGE"],
             "message": "$MESSAGE",
