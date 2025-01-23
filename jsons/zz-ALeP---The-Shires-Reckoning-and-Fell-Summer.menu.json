@@ -1,0 +1,50 @@
+{
+    "deckMenu": {
+        "subMenus": [
+            {
+                "label": "ALeP - The Shire's Reckoning & Fell Summer",
+                "subMenus": [
+                    {
+                        "label": "ALeP Pies for the Party",
+                        "deckLists": [
+                            {
+                                "label": "id:easy",
+                                "deckListId": "EA2.1"
+                            },
+                            {
+                                "label": "id:normal",
+                                "deckListId": "QA2.1"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "ALeP Sundown on the Shire",
+                        "deckLists": [
+                            {
+                                "label": "id:easy",
+                                "deckListId": "EA2.2"
+                            },
+                            {
+                                "label": "id:normal",
+                                "deckListId": "QA2.2"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "ALeP Secrets of the Old Forest",
+                        "deckLists": [
+                            {
+                                "label": "id:easy",
+                                "deckListId": "EA2.3"
+                            },
+                            {
+                                "label": "id:normal",
+                                "deckListId": "QA2.3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

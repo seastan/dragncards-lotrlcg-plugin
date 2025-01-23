@@ -1,0 +1,40 @@
+{
+    "deckMenu": {
+        "subMenus": [
+            {
+                "label": "ALeP - Print on Demand",
+                "subMenus": [
+                    {
+                        "label": "ALeP The Scouring of the Shire",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "E99.16"},
+                            {"label": "id:normal", "deckListId": "Q99.16"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Nine are Abroad",
+                        "deckLists": [
+                            {"label": "id:normal", "deckListId": "Q99.17"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Siege of Erebor",
+                        "deckLists": [
+                            {"label": "id:normal", "deckListId": "Q99.18"}
+                        ]
+                    },
+		    {
+                        "label": "ALeP The Hobbit",
+                        "deckLists": [
+                            {
+                                "label": "id:normal",
+                                "deckListId": "Q99.19"
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        ]
+    }
+}

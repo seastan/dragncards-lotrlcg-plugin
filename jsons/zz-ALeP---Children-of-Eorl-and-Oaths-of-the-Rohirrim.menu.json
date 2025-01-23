@@ -1,0 +1,74 @@
+{
+    "deckMenu": {
+        "subMenus": [
+            {
+                "label": "ALeP - Children of Eorl & Oaths of the Rohirrim",
+                "subMenus": [
+                    {
+                        "label": "ALeP Ambush at Erelas",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.1"},
+                            {"label": "id:normal", "deckListId": "QA1.1"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Battle for the Beacon",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.2"},
+                            {"label": "id:normal", "deckListId": "QA1.2"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Horse Lord\u2019s Ire",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.3"},
+                            {"label": "id:normal", "deckListId": "QA1.3"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Aldburg Plot",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.4"},
+                            {"label": "id:normal", "deckListId": "QA1.4"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP Fire on the Eastemnet",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.5"},
+                            {"label": "id:normal", "deckListId": "QA1.5"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Gap of Rohan",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.6"},
+                            {"label": "id:normal", "deckListId": "QA1.6"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP The Glittering Caves",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.7"},
+                            {"label": "id:normal", "deckListId": "QA1.7"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP Mustering of the Rohirrim",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.8"},
+                            {"label": "id:normal", "deckListId": "QA1.8"}
+                        ]
+                    },
+                    {
+                        "label": "ALeP Blood in the Isen",
+                        "deckLists": [
+                            {"label": "id:easy", "deckListId": "EA1.9"},
+                            {"label": "id:normal", "deckListId": "QA1.9"}
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "preBuiltDecks": {
+        "QA2.1": {
+            "label": "ALeP Pies for the Party",
+            "cards": [
+                {"databaseId": "6b4f3c08-d0fa-4f15-9a68-ec1a6a0f1ad1", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "It\u2019s for the Party!"},
+                {"databaseId": "c295f45b-a4b5-4810-8981-037ac23c8ed8", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Hobbiton Bakery"},
+                {"databaseId": "3216e01e-cff0-4e91-a645-bb6a3f32423f", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Ruffians on the Rise"},
+                {"databaseId": "4aed80a2-d389-4337-a1e7-d59c0c16232b", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Sneering Snooper"},
+                {"databaseId": "ecb17bde-2193-48da-8e1c-d1d67df7fc2e", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Thuggish Thrower"},
+                {"databaseId": "67fb7a9b-b277-4297-a8c2-7487ffe40659", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Girded Gangster"},
+                {"databaseId": "ff1092cf-ea1a-4063-8255-fcd2c70fa982", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Burly Bouncer"},
+                {"databaseId": "bc46eabb-fccb-440a-a638-cae234c46531", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Tattling Took"},
+                {"databaseId": "3649d4d1-2797-4817-9dca-3c5d76e9185f", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Bywater Burglar"},
+                {"databaseId": "aa1a9d67-c5b1-45f5-9346-fed72afadd0c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Hankering Hobbit"},
+                {"databaseId": "c5e1fdf7-5b68-4951-abc5-60ce9bd4cceb", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Sleepy Hillside"},
+                {"databaseId": "63d12a48-4a9e-4e35-ba0b-22a2b00d0447", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Tookland Tavern"},
+                {"databaseId": "a32568df-32ed-45a2-955f-8f36d9dc63f6", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Perfect Smoke Spot"},
+                {"databaseId": "faf312cf-098d-40c6-88ef-2afbba3ecec1", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "The East Road"},
+                {"databaseId": "f660e230-c23d-4b0b-81cd-6e14b0c1c3ce", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Waymeet Market"},
+                {"databaseId": "f433c191-f9e3-45c6-90fb-e74eb8e3584a", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "We\u2019ve Got Time!"},
+                {"databaseId": "6b61c35a-d325-4cd8-a554-400bd1d1956b", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Protector of the Pies"},
+                {"databaseId": "b491addf-7373-4dc5-a3cd-7a5ea3d0e871", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "East Road Toll"},
+                {"databaseId": "3ca713f2-619c-43c5-948a-c78879140c87", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Shire\u2019s Reckoning Rules 1"},
+                {"databaseId": "fd13f8ff-cde6-4db5-98c9-e4758108df01", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Shire\u2019s Reckoning Rules 2"},
+                {"databaseId": "5b4bf230-4470-49f1-b45d-4123a3ae2c09", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Shire\u2019s Reckoning Rules 3"},
+                {"databaseId": "03224973-3134-4cf2-a4f9-8087f25e4b6b", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Shire\u2019s Reckoning Rules 4"},
+                {"databaseId": "230aac5b-1e37-4cd0-9aab-cb415c1f2585", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Pies for the Party 1"},
+                {"databaseId": "53ffc48b-8626-466d-897a-402b7566336f", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Pies for the Party 2"},
+                {"databaseId": "6f1f539c-98a3-4e24-91d5-6c7f4bcb806c", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Pies for the Party 3"},
+                {"databaseId": "500f721d-de8d-4dc8-8086-1862d3d92d83", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Pies for the Party 4"},
+                {"databaseId": "9fe96059-8848-41cd-87aa-b2cd1feef93c", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Party Tree"},
+                {"databaseId": "54962ee8-1096-4ad9-9242-275e3dcf533e", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Mince Pies"},
+                {"databaseId": "1bb4c165-f9b3-4d2f-ac53-3d1c5f8f011d", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Berry Pies"},
+                {"databaseId": "8eab630c-2b03-4b69-b57c-b8ad4d5ce3d4", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Pork Pies"},
+                {"databaseId": "2cbc1d1f-42d1-46a2-9268-29f22a9ef052", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Cottage Pies"},
+                {"databaseId": "2203c5af-1b05-4f3e-a3a4-6ddf6cb4fd93", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Mutton Pies"},
+                {"databaseId": "12ea5af2-7973-43ea-8211-eb12bf3f1fa6", "quantity": 4, "loadGroupId": "sharedStagingArea", "_name": "Westfarthing Rascals"},
+                {"databaseId": "faf312cf-098d-40c6-88ef-2afbba3ecec1", "quantity": 2, "loadGroupId": "sharedStagingArea", "_name": "The East Road"}
+            ]
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "preBuiltDecks": {
+        "EA1.1": {
+            "label": "ALeP Ambush at Erelas (Easy)",
+            "cards": [
+                {"databaseId": "5bf68a8a-53ee-492c-9a74-654391a9088a", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Drive Them Away"},
+                {"databaseId": "34f9c6a0-3e6c-4ff6-9794-2d47ad3c9511", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Ambush!"},
+                {"databaseId": "6d2923be-bccf-413c-89a3-ba1393587d13", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Exposed to the Elements"},
+                {"databaseId": "13f396ac-ad34-4f11-bd92-3b372c529420", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Stockpile Barricade"},
+                {"databaseId": "b89064bc-1dd9-4c9a-9dc8-39b25e8ec67e", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Pillaging Swordsman"},
+                {"databaseId": "a8fd80fa-a2fe-4c29-885e-11fd6b86c03a", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Grasping Slaver"},
+                {"databaseId": "2c1f057f-b355-4d9d-b3bc-a6374acf23f8", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Vengeful Bowman"},
+                {"databaseId": "834e1b11-c4a0-481d-9739-01b9477b2e75", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Sneaky Thief"},
+                {"databaseId": "5bea4f50-d569-4da3-94e5-ad0d2574b3fb", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Old Farmhouse"},
+                {"databaseId": "9108bfe5-30b1-42e5-8866-1df5936f8d4a", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Abandoned Mill"},
+                {"databaseId": "f05e2dd2-8e13-4d5b-ae48-601575927039", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Erelas Gates"},
+                {"databaseId": "99edecda-3072-43e1-80bf-7a409774474a", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Crossroads"},
+                {"databaseId": "9ce9288e-9735-415d-b30d-b3880aec55bb", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Erelas Stables"},
+                {"databaseId": "12f174af-abb0-42e8-be1c-d3c7493fd0a6", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Cold from the Mountains"},
+                {"databaseId": "932a906a-e73f-43f7-bc97-84459611a7c1", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Exhausting Winds"},
+                {"databaseId": "a84e0b4f-a80e-48f9-9c37-f7071aa115e9", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Tired and Hungry"},
+                {"databaseId": "310bd34e-ac55-4bfe-a8b4-90e304449312", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Chaos in the Hills"},
+                {"databaseId": "26cde939-6edc-4ad6-9480-fd4811aa0d38", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Looted Weapons"},
+                {"databaseId": "c8fc048c-819a-443f-ab69-44ef26e2b0eb", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Children of Eorl Rules 1"},
+                {"databaseId": "f6d3edc2-850c-4c82-b4dd-7fac8237cdd5", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Children of Eorl Rules 2"},
+                {"databaseId": "41e4b5d9-2959-4e77-ac3d-48022d8b4ba4", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Ambush at Erelas 1"},
+                {"databaseId": "dad84783-62b4-4aea-841e-90dadddd34cf", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Ambush at Erelas 2"},
+                {"databaseId": "d8ab2b1f-2469-44a6-a032-707ed7e6a35c", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Ambush at Erelas 3"},
+                {"databaseId": "a79779cb-9c01-4b29-8294-0ec636ee623a", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Ambush at Erelas 4"},
+                {"databaseId": "4a85582a-760d-45e0-9bb4-e3003d699e17", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Ambush at Erelas 5"},
+                {"databaseId": "2e8b1510-6c25-4986-9d6a-a703a01f9855", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Loot Piles and Looter X"},
+                {"databaseId": "747e75fd-5729-405e-a4b7-151c01f4d69d", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Ambush at Erelas 6"},
+                {"databaseId": "f558494f-24e7-4f4c-8211-34d3053e4766", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Brigand Ringleader"},
+                {"databaseId": "b89064bc-1dd9-4c9a-9dc8-39b25e8ec67e", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Pillaging Swordsman"},
+                {"databaseId": "a8fd80fa-a2fe-4c29-885e-11fd6b86c03a", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Grasping Slaver"},
+                {"databaseId": "2c1f057f-b355-4d9d-b3bc-a6374acf23f8", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Vengeful Bowman"},
+                {"databaseId": "834e1b11-c4a0-481d-9739-01b9477b2e75", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Sneaky Thief"},
+                {"databaseId": "1b03ab62-3c05-4ec3-84d0-28b41035cf07", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Plundered Goods"}
+            ]
+        }
+    }
+}

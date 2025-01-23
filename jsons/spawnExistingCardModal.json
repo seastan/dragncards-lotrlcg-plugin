@@ -1,6 +1,0 @@
-{
-    "spawnExistingCardModal": {
-        "columnProperties": ["name", "packName"],
-        "loadGroupIds": ["sharedStagingArea","player1Play1","player2Play1","player3Play1","player4Play1"]
-    }
-}

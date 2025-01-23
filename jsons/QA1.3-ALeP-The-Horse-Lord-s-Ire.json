@@ -1,0 +1,42 @@
+{
+    "preBuiltDecks": {
+        "QA1.3": {
+            "label": "ALeP The Horse Lord\u2019s Ire",
+            "cards": [
+                {"databaseId": "38d451f7-8e44-429a-83e0-0980ca7ca043", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Thieves and Coursers"},
+                {"databaseId": "8853b3c5-0a24-441c-bc3f-c5806232f740", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "The King\u2019s Stallion"},
+                {"databaseId": "566eb7ed-96b5-49ad-bc74-e2c6b45e176f", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "The Sweeping Tide"},
+                {"databaseId": "e969e8b5-e9cb-4780-b2cf-b023e68fb9d7", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "The Green Sea"},
+                {"databaseId": "c6cc05a1-deef-4276-afc9-d908f6d7aa4b", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "White Mountain Reinforcements"},
+                {"databaseId": "a9b1fc82-7d77-46b5-8bb7-f1504307b1df", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Saddle-slasher"},
+                {"databaseId": "1e15bc37-aa5e-4659-946f-e3d43b6acd93", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Rein-ripper"},
+                {"databaseId": "4527d251-6e28-4b56-9afd-001bd87467f5", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Bridle-biter"},
+                {"databaseId": "9ac6e1a2-baba-468f-a049-2d0d4587b20c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Pommel-pouncer"},
+                {"databaseId": "a262dacd-cd61-4094-8b3f-179568470d53", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Wild Country"},
+                {"databaseId": "06d01a0b-c0da-4a02-b14d-5ed3c85cc703", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Endless Grasslands"},
+                {"databaseId": "86baad6a-1311-4937-8c64-f102df5793b7", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Windworn Villages"},
+                {"databaseId": "9fae1363-c207-4b52-86a1-58f16f76b857", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Humpbacked Downs"},
+                {"databaseId": "e9f7be18-e9dd-4856-9d80-fa3a30bd8cb2", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Spoiled Pasture"},
+                {"databaseId": "7dbad5b2-4479-44c2-8066-d1c8c3e4d9d2", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Horse Thieves\u2019 Hovel"},
+                {"databaseId": "810f765c-981b-4ac6-8de7-2b177d120477", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Horse Lord\u2019s Lodge"},
+                {"databaseId": "c267f288-46e9-480f-bf3f-20aa65e925a5", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Ride Through the Night"},
+                {"databaseId": "102d881a-2e4c-458d-b60d-d07eca90cf9d", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Crimson Banner"},
+                {"databaseId": "4fbf623c-61ab-4173-861c-8fdb35bbbdfe", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Thirst for Horse Blood"},
+                {"databaseId": "55f52599-49c5-4a37-bb50-5672f254e5b4", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Overburdened"},
+                {"databaseId": "caf0280a-be69-4ddd-9c57-ff5f3a0658fb", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Orc Battalion"},
+                {"databaseId": "1e93aacb-09e4-43cd-b7e2-566e88acfdad", "quantity": 3, "loadGroupId": "sharedEncounterDeck2", "_name": "Servant of the Eye"},
+                {"databaseId": "7aea9d7a-39e9-45f8-9639-501577b63312", "quantity": 2, "loadGroupId": "sharedEncounterDeck2", "_name": "Black Land Scouts"},
+                {"databaseId": "a30a334b-9045-48c0-ad31-7dd90fccbb6b", "quantity": 2, "loadGroupId": "sharedEncounterDeck2", "_name": "Orcish Horse-butcher"},
+                {"databaseId": "fd570b51-d92d-49c9-9982-aa15e0a52222", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Horse Lord\u2019s Ire 1"},
+                {"databaseId": "090a8493-8d31-40eb-8a65-0640d1bf48e8", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Horse Lord\u2019s Ire 2"},
+                {"databaseId": "431c22ec-2b2a-42af-ab5f-c7710ed2e627", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Horse Lord\u2019s Ire 3"},
+                {"databaseId": "56d94ac2-c651-4408-a398-54b9c81cee2d", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Horse Lord\u2019s Ire 4"},
+                {"databaseId": "1ee6f7ce-7d0d-4f01-afeb-c08abbf197d6", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Thruk"},
+                {"databaseId": "7d0bcdf9-505a-42a5-a8b9-415da358db52", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Felar\u00f3f"},
+                {"databaseId": "974730af-0ef0-4604-a390-65c0b73c45ee", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Stolen Steeds"},
+                {"databaseId": "65f15c99-d34e-4496-9ad3-4036114dc333", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Flinthoof"},
+                {"databaseId": "608a1135-3b40-4189-b498-b9eff3a3f7ce", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Brightmane"}
+            ]
+        }
+    }
+}

@@ -1,8 +1,0 @@
-{
-    "cardProperties": {
-        "committed": {"type": "boolean", "default": false},
-        "exhausted": {"type": "boolean", "default": false},
-        "preventRefresh": {"type": "boolean", "default": false},
-        "extraResources": {"type": "integer", "default": 0}
-    }
-}

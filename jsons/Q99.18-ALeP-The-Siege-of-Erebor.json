@@ -1,0 +1,50 @@
+{
+    "preBuiltDecks": {
+        "Q99.18": {
+            "label": "ALeP The Siege of Erebor",
+            "cards": [
+                {"databaseId": "6b05ecf4-f567-45f7-a513-2e30f5d5fcdf", "quantity": 1, "loadGroupId": "sharedMainQuest", "_name": "The Siege of Erebor"},
+                {"databaseId": "0184def7-ee57-4de5-baaf-af0c35b2b185", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Dale Besieger"},
+                {"databaseId": "5084a6ef-bdfe-4f38-b3ee-b3335114eb4e", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Erebor Besieger"},
+                {"databaseId": "77164372-2957-4b96-9378-8650997d24e6", "quantity": 4, "loadGroupId": "sharedEncounterDeck", "_name": "Rh\u00fbn Vanguard"},
+                {"databaseId": "36b0de44-5799-4ad3-b48a-c5900352e7d3", "quantity": 4, "loadGroupId": "sharedEncounterDeck", "_name": "Wainriders"},
+                {"databaseId": "9999df5f-63f1-496e-b127-4acaf1b38a4d", "quantity": 4, "loadGroupId": "sharedEncounterDeck", "_name": "Rh\u00fbn Rearguard"},
+                {"databaseId": "47422a73-d0c7-4d61-b096-9024caa064ce", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Balchoth Avenger"},
+                {"databaseId": "7ef09019-9e06-4a35-9186-5fbfa0a64600", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Easterling Archer"},
+                {"databaseId": "738e7b48-ed1f-4818-8f15-e1c4874cbbe5", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Esgaroth"},
+                {"databaseId": "15bf567e-92a0-4de0-9b10-c70d801e4646", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Ravenhill"},
+                {"databaseId": "6b427722-3bc8-4b32-9ddd-6c4f5ec42abd", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "City Walls"},
+                {"databaseId": "f6b812b2-32a4-4415-803e-2fa76a3dbe48", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Easterling Supply Camp"},
+                {"databaseId": "485c41f6-6850-42f8-a880-6e68444896ef", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "The River Running"},
+                {"databaseId": "ca5a9846-7aaf-4468-956d-577f8b855a34", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Eaves of Mirkwood"},
+                {"databaseId": "0138f482-9d94-447d-ab67-65cd7b7a92ab", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "The Desolation of Smaug"},
+                {"databaseId": "0db50607-9724-4f04-b3b6-0e18b7d63087", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "City Gates"},
+                {"databaseId": "9dfb5c34-c917-492b-88b1-ed045c7a049c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "City Streets"},
+                {"databaseId": "c1a40bb9-2f12-4ca3-a487-e7dd51c17ae1", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Treasure Hoard"},
+                {"databaseId": "4b23cb70-2a7d-46be-8efa-faf08cffdd54", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Lonely Mountain Armoury"},
+                {"databaseId": "9afaff91-0388-4461-883c-e5be564bad6d", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Flanked!"},
+                {"databaseId": "4f86c63e-edbe-476b-97f0-259d2d7d261d", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "The North Burns"},
+                {"databaseId": "80aabeee-d51b-4981-a0d5-06ca02d5dfbe", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Driven by the Eye"},
+                {"databaseId": "76a49373-b5a7-46f7-8a04-d9900488c87c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Fight or Flight"},
+                {"databaseId": "029dd1e2-decb-4d23-8b61-267fe63909aa", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Focused Onslaught"},
+                {"databaseId": "aef513ca-a539-4eca-b08f-d3cba98721a3", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "News from the South"},
+                {"databaseId": "cfed9c26-5a1d-4490-abaf-6749c625c50f", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Siege of Erebor Rules"},
+                {"databaseId": "5523a913-4c4b-42e9-b6b4-88bea3d019c4", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Siege of Erebor 1"},
+                {"databaseId": "da8f6184-e7f4-4fb4-be00-b1b4ec0802b9", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Siege of Erebor 2"},
+                {"databaseId": "4412a782-1fd7-48ac-bec4-d862a61b62a6", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Siege of Erebor 3"},
+                {"databaseId": "fffef3d7-847b-427b-ac35-17c4cc8dd451", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Siege of Erebor 4"},
+                {"databaseId": "2485ec55-54eb-431d-a5bc-e24f3314da12", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Siege of Erebor 5"},
+                {"databaseId": "6b427722-3bc8-4b32-9ddd-6c4f5ec42abd", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "City Walls"},
+                {"databaseId": "62b43c4e-fa97-48ee-9e9c-15a411b23c72", "quantity": 2, "loadGroupId": "sharedSetAside", "_name": "Iron Hills Reinforcements"},
+                {"databaseId": "3d4ce62a-997e-4a40-b445-f98cab1646f2", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Gate of Erebor"},
+                {"databaseId": "3cabe7f6-242e-4662-ac54-3e6d4030567b", "quantity": 1, "loadGroupId": "sharedExtra1", "_name": "The Eastern Defenses"},
+                {"databaseId": "0138f482-9d94-447d-ab67-65cd7b7a92ab", "quantity": 1, "loadGroupId": "sharedExtra2", "_name": "The Desolation of Smaug"},
+                {"databaseId": "5d105edb-ba7e-42a9-95b4-9dec2aedd4b4", "quantity": 1, "loadGroupId": "sharedExtra2", "_name": "The Riverlands"},
+                {"databaseId": "bea10dcc-2f61-465c-a067-6c4e4ae26193", "quantity": 1, "loadGroupId": "sharedExtra3", "_name": "Dale"},
+                {"databaseId": "a0fbaffd-e05d-4122-b246-f62714536f36", "quantity": 1, "loadGroupId": "sharedExtra4", "_name": "Erebor"},
+                {"databaseId": "65911e3b-cb43-49ba-b85b-488db393a53f", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Hold the North"},
+                {"databaseId": "32e664ad-0f55-4899-9779-46aa15ce7cc5", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Eastern Assault"}
+            ]
+        }
+    }
+}

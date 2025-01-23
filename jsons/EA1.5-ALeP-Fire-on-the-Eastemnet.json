@@ -1,0 +1,44 @@
+{
+    "preBuiltDecks": {
+        "EA1.5": {
+            "label": "ALeP Fire on the Eastemnet (Easy)",
+            "cards": [
+                {"databaseId": "1af09a96-ab67-460d-982f-b457223ae3a6", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Poachers in the Night"},
+                {"databaseId": "583e6528-a108-4bc8-8d8f-bad436b32f76", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Relentless Forces"},
+                {"databaseId": "3c33be3e-a82f-4ec9-85ee-67f215b9b4cb", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "To the River!"},
+                {"databaseId": "c6cc05a1-deef-4276-afc9-d908f6d7aa4b", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "White Mountain Reinforcements"},
+                {"databaseId": "f4ef5702-edfe-444f-b8a8-11562e39d1ad", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Expanded Search"},
+                {"databaseId": "1e93aacb-09e4-43cd-b7e2-566e88acfdad", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Servant of the Eye"},
+                {"databaseId": "7aea9d7a-39e9-45f8-9639-501577b63312", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Black Land Scouts"},
+                {"databaseId": "a30a334b-9045-48c0-ad31-7dd90fccbb6b", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Orcish Horse-butcher"},
+                {"databaseId": "be74d46d-7b6d-467c-8254-05c988249ef8", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "White Mountain Beastmaster"},
+                {"databaseId": "34ae9cbf-fdd1-4d91-a802-a8667d23a55c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Orc Lookout"},
+                {"databaseId": "3b877f33-8deb-45f4-a875-ca2b381b03eb", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Orcish Wrangler"},
+                {"databaseId": "54a0477e-7c15-4950-b7c3-932976c264b1", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Open Meadows"},
+                {"databaseId": "97f3bf9b-f644-4a60-b343-c3e2018d0627", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Entwash Crossings"},
+                {"databaseId": "2762c0d6-0c31-4a0a-9215-993dbfa4dcb1", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Eastemnet Pasture"},
+                {"databaseId": "0d3eddb1-08db-4917-b0d6-5afdaa8f86e1", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Pillaged Stables"},
+                {"databaseId": "99871582-7c31-4688-a26d-30f4269756d4", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Hidden Orc Camp"},
+                {"databaseId": "102d881a-2e4c-458d-b60d-d07eca90cf9d", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Crimson Banner"},
+                {"databaseId": "7af213f1-aa1b-4588-b51f-257cb6f41a46", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Panicked Horses"},
+                {"databaseId": "e5928174-74ff-4aff-9c59-5f4fb684ec7b", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Cracking Horse Whip"},
+                {"databaseId": "64a80a7e-882b-472c-85f8-aa5473f9c831", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Exhausted Pursuit"},
+                {"databaseId": "69f4985c-33b2-4526-b750-aa3b64335dfb", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet Rules"},
+                {"databaseId": "54329e02-76ff-4e12-b4d4-56b06532a0a7", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 1"},
+                {"databaseId": "f28e770b-16e1-4d21-872f-6a5791df8195", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 2"},
+                {"databaseId": "f032916a-93e9-4e7b-8533-772ddd13dc75", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 3"},
+                {"databaseId": "49f198db-c305-41a3-8d0b-7438fe59e14a", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 4"},
+                {"databaseId": "2dffd100-ceea-4a0a-b740-f7c4d0ac1135", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 5"},
+                {"databaseId": "ff60c96e-f31c-4470-80ad-1ae264e45b82", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 6"},
+                {"databaseId": "7209f202-cddb-4544-9e09-5b9e05c59679", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fire on the Eastemnet 7"},
+                {"databaseId": "caf0280a-be69-4ddd-9c57-ff5f3a0658fb", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Orc Battalion"},
+                {"databaseId": "b9f9a991-9b5e-465b-9de6-2f0dc7f9a4c7", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Morgahk"},
+                {"databaseId": "0c4d793d-5455-40f0-8497-a8bd84172fa4", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Shores of Anduin"},
+                {"databaseId": "2762c0d6-0c31-4a0a-9215-993dbfa4dcb1", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Eastemnet Pasture"},
+                {"databaseId": "73987379-d15b-4539-a237-3ce11127fe8f", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Wild Steeds"},
+                {"databaseId": "411d8285-0ddf-4a64-bbea-c3f2cc610e83", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Captured Steeds"},
+                {"databaseId": "0d3eddb1-08db-4917-b0d6-5afdaa8f86e1", "quantity": 1, "loadGroupId": "sharedActiveLocation", "_name": "Pillaged Stables"}
+            ]
+        }
+    }
+}

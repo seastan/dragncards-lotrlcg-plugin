@@ -1,0 +1,38 @@
+{
+    "preBuiltDecks": {
+        "EA1.2": {
+            "label": "ALeP The Battle for the Beacon (Easy)",
+            "cards": [
+                {"databaseId": "5866cf9b-6f5d-4929-bb90-a8875e92277b", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Battle for the Hill"},
+                {"databaseId": "72a2a2e9-dfff-4358-847b-a4fcd72f29be", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Hold the Hilltop"},
+                {"databaseId": "ec28d3c0-20da-4533-baba-a6551367480e", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "The Last Push"},
+                {"databaseId": "1e3c2326-a08f-4fea-ac66-9c4af1c11cd3", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "A History of Strife"},
+                {"databaseId": "983b8cbc-9076-4e78-a9c3-e9b80fe91448", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Dunland Chieftain"},
+                {"databaseId": "e9636ed5-dec9-42b5-864e-21f5c07bb975", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Wild Ravager"},
+                {"databaseId": "9cba1e58-ddd3-4839-9669-e8a27e56d8db", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Dunlending Berserker"},
+                {"databaseId": "f63a916e-19eb-4bec-8da4-388c75b331c8", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Hillman Scout"},
+                {"databaseId": "29e93b1e-ebc7-4a57-8a23-eb7ecaf915f5", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Recreant Rider"},
+                {"databaseId": "0fa296fc-3e23-4b9f-8dce-fb1244f63aeb", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Deadly Defector"},
+                {"databaseId": "14dc5586-0684-4646-8538-f9768c3e5c7d", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Bald Hill"},
+                {"databaseId": "41ce70c2-f0be-423f-829d-2f5c4842f3ac", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Wooden Barricade"},
+                {"databaseId": "ef5fe059-002a-4485-a17c-d73123a601cb", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Rocky Slope"},
+                {"databaseId": "0664def5-37d1-42f0-a2a6-f3d72b35de87", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Surrounding Grassland"},
+                {"databaseId": "3de7be98-9bc8-4bec-b6c2-298fb7b44427", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Narrow Stair"},
+                {"databaseId": "1769384c-47f0-49ed-81ef-2d34fbdeca61", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Surprise Attack"},
+                {"databaseId": "b07567e2-1ada-4b51-b767-e5ce882a0741", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "From All Sides"},
+                {"databaseId": "27afff09-d1f0-488d-b5ce-b8a70cbd98da", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Another Wave"},
+                {"databaseId": "62113d7c-c919-4767-bf9a-8766d23f3da4", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Assault Upon Erelas"},
+                {"databaseId": "b5c1b317-0db5-4ae2-81be-5639c332305d", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Battle for the Beacon 1"},
+                {"databaseId": "e9860b32-8bff-4217-be96-debedce09aae", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Battle for the Beacon 2"},
+                {"databaseId": "26358dc8-d50d-4809-ba45-f4ef921147f8", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Battle for the Beacon 3"},
+                {"databaseId": "cf4d1463-8c63-4650-b3ba-e1f717180628", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Battle for the Beacon 4"},
+                {"databaseId": "9e9d5155-c037-41c2-ba44-be6ef46624ba", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Battle for the Beacon 5"},
+                {"databaseId": "aec6142a-e870-4dee-b112-902b2d59e9be", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Host of Rohan"},
+                {"databaseId": "53dcedb3-3640-4655-a150-9d0dd534a126", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Reclaim the Beacon"},
+                {"databaseId": "f0cf6716-96a4-4d2a-bc3e-80d0cf5add77", "quantity": 4, "loadGroupId": "sharedStagingArea", "_name": "Enraged Dunlending"},
+                {"databaseId": "88fa54fc-d94b-429b-8021-6ece29a5cea8", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Erelas Beacon"},
+                {"databaseId": "0664def5-37d1-42f0-a2a6-f3d72b35de87", "quantity": 1, "loadGroupId": "sharedActiveLocation", "_name": "Surrounding Grassland"}
+            ]
+        }
+    }
+}
