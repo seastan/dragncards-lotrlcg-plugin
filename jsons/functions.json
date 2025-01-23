@@ -855,6 +855,17 @@
             ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
             ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
           ]
+        },
+        "HEAL": {
+          "args": ["$CARD_ID", "$X"],
+          "code": [
+            ["COND",
+              ["GREATER_THAN", "$GAME.cardById.$CARD_ID.tokens.damage", "$X"],
+                ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/damage", "$X"],
+              true,
+                ["SET", "/cardById/$CARD_ID/tokens/damage", 0]
+            ]
+          ]
         }
     }
 }

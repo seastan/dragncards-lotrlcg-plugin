@@ -2808,7 +2808,7 @@
          "47deb269-e02b-426d-b64a-34a4adff44de": {
             "_comment": "Valiant Sword",
             "rules": {
-               "attachmentStaticPassiveTokens": {
+               "attachmentBasicPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
@@ -2822,12 +2822,18 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "LESS_THAN",
+                        "$GAME.playerData.{{$THIS.controller}}.threat",
+                        40
                      ]
                   ],
                   "listenTo": [
                      "/cardById/$THIS_ID/inPlay",
                      "/cardById/$THIS_ID/currentSide",
-                     "/cardById/$THIS_ID/cardIndex"
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/playerData/*/threat"
                   ],
                   "offDo": [
                      [
@@ -2863,6 +2869,71 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/attack",
                         1
+                     ]
+                  ],
+                  "type": "passive"
+               },
+               "attachmentConditionalPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "GREATER_EQUAL",
+                        "$GAME.playerData.{{$THIS.controller}}.threat",
+                        40
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/playerData/*/threat"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        2
                      ]
                   ],
                   "type": "passive"
@@ -7905,7 +7976,7 @@
          "bfc41b26-7986-4bca-9e77-052abac32603": {
             "_comment": "Valiant Sword",
             "rules": {
-               "attachmentStaticPassiveTokens": {
+               "attachmentBasicPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
@@ -7919,12 +7990,18 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "LESS_THAN",
+                        "$GAME.playerData.{{$THIS.controller}}.threat",
+                        40
                      ]
                   ],
                   "listenTo": [
                      "/cardById/$THIS_ID/inPlay",
                      "/cardById/$THIS_ID/currentSide",
-                     "/cardById/$THIS_ID/cardIndex"
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/playerData/*/threat"
                   ],
                   "offDo": [
                      [
@@ -7963,13 +8040,8 @@
                      ]
                   ],
                   "type": "passive"
-               }
-            }
-         },
-         "c06f0513-459b-48ae-9e40-9a1a56e845ef": {
-            "_comment": "Shining Shield",
-            "rules": {
-               "attachmentStaticPassiveTokens": {
+               },
+               "attachmentConditionalPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
@@ -7983,12 +8055,88 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "GREATER_EQUAL",
+                        "$GAME.playerData.{{$THIS.controller}}.threat",
+                        40
                      ]
                   ],
                   "listenTo": [
                      "/cardById/$THIS_ID/inPlay",
                      "/cardById/$THIS_ID/currentSide",
-                     "/cardById/$THIS_ID/cardIndex"
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/playerData/*/threat"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "c06f0513-459b-48ae-9e40-9a1a56e845ef": {
+            "_comment": "Shining Shield",
+            "rules": {
+               "attachmentBasicPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "LESS_THAN",
+                        "$GAME.playerData.{{$THIS.controller}}.threat",
+                        40
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/playerData/*/threat"
                   ],
                   "offDo": [
                      [
@@ -8024,6 +8172,71 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/defense",
                         1
+                     ]
+                  ],
+                  "type": "passive"
+               },
+               "attachmentConditionalPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "GREATER_EQUAL",
+                        "$GAME.playerData.{{$THIS.controller}}.threat",
+                        40
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/playerData/*/threat"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        2
                      ]
                   ],
                   "type": "passive"
@@ -9140,10 +9353,12 @@
                         "$THIS.currentSide",
                         "A"
                      ],
-                     "NOT",
                      [
-                        "ACTIVE_LOCATION_HAS_TRAIT",
-                        "Forest."
+                        "NOT",
+                        [
+                           "ACTIVE_LOCATION_HAS_TRAIT",
+                           "Forest."
+                        ]
                      ]
                   ],
                   "listenTo": [
@@ -9205,8 +9420,10 @@
                         "$THIS.currentSide",
                         "A"
                      ],
-                     "ACTIVE_LOCATION_HAS_TRAIT",
-                     "Forest."
+                     [
+                        "ACTIVE_LOCATION_HAS_TRAIT",
+                        "Forest."
+                     ]
                   ],
                   "listenTo": [
                      "/cardById/$THIS_ID/inPlay",

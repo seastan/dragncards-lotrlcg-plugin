@@ -54,12 +54,15 @@
                 "rules": {
                     "eowynSetup": {
                         "_comment": "Reduce starting threat by 3.",
-                        "type": "entersPlay",
+                        "type": "trigger",
                         "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/threat"],
+                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
                         "then": [
-                            ["LOG", "└── ", "Éowyn reduced starting threat by 3."],
-                            ["DECREASE_VAL", "/playerData/{{$TARGET.controller}}/threat", 3],
-                            ["SET", "/cardById/$TARGET_ID/usedEowynAbility", false]
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 3]],
+                            ["LOG", "└── ", "Éowyn reduced starting threat by 3 to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 3],
+                            ["SET", "/cardById/$THIS_ID/usedEowynAbility", false]
                         ]
                     }
                 },
@@ -278,10 +281,13 @@
                     },
                     "aragornPassiveTokens": { 
                         "_comment": "Add/remove tokens on enemies when Aragorn enters/leaves play.",
-                        "type": "whileInPlay", 
-                        "side": "A",
-                        "listenTo": ["/cardById/$THIS_ID/inPlay"],
-                        "condition": ["$THIS.inPlay"],
+                        "type": "trigger", 
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": [
+                            "AND", 
+                                "$THIS.inPlay",
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                        ],
                         "onDo": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "└── ", "Removed 1 defense from each enemy engaged with {{$ALIAS}}."],
@@ -1418,12 +1424,13 @@
                     "A": ["COND",
                         ["AND", 
                             ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            ["NOT", "$THIS.exhausted"]
+                            ["NOT", "$THIS.exhausted"],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.damage", 0]
                         ],
                         [
                             ["LOG", "└── ", "Healed 2 damage from ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
-                            ["DECREASE_VAL", "/cardById/$THIS.parentCardId/tokens/damage", 2]
+                            ["HEAL", "$THIS.parentCardId", 2]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1614,13 +1621,16 @@
                     "A": ["COND",
                         ["AND", 
                             ["GREATER_THAN", "$THIS.cardIndex", 0],
-                            "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"
+                            ["OR",
+                                "$GAME.cardById.{{$THIS.parentCardId}}.exhausted",
+                                ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.damage", 0]
+                            ]
                         ],
                         [
                             ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to ready ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " and heal 3 damage from it."],
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
-                            ["DECREASE_VAL", "/cardById/$THIS.parentCardId/tokens/damage", 3],
+                            ["HEAL", "$THIS.parentCardId", 3],
                             ["ACTION_LIST", "discardCard"]
                         ],
                         ["TRUE"],
