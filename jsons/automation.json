@@ -23,6 +23,13 @@
                     ]
                 ],
                 ["COND",
+                    ["DEFINED", "$GAME_DEF.automation.{{$CARD.databaseId}}"],
+                    [
+                        ["SET", "/cardById/$CARD_ID/sides/A/triggers", {}],
+                        ["SET", "/cardById/$CARD_ID/sides/B/triggers", {}]
+                    ]
+                ],
+                ["COND",
                     ["IN_STRING", "$CARD.groupId", "Play1"],
                     [
                         ["SET", "/cardById/$CARD_ID/deckGroupId", ["JOIN_STRING", "$PLAYER_N", "Deck"]],
