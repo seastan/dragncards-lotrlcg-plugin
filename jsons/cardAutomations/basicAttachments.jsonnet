@@ -1,6 +1,6 @@
 /*
 To compile:
-> jsonnet jsons/playerCardAutomationDynamic.jsonnet > jsons/playerCardAutomationDynamic.json
+> jsonnet jsons/cardAutomations/basicAttachments.jsonnet > jsons/cardAutomations/basicAttachments-GENERATED.json
 */
 
 local modifyToken(card_id, tokenName, amount) =
