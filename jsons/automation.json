@@ -6,6 +6,7 @@
         ],
         "postLoadActionList": [
             ["VAR", "$LOADED_PLAYER_DECK", false],
+            ["VAR", "$LOADED_ENCOUNTER_DECK", false],
             ["VAR", "$LOADED_ENCOUNTER_DECK_2", false],
             ["VAR", "$THREAT_RAISE", 0],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
@@ -35,16 +36,31 @@
                 ],
                 ["COND",
                     ["EQUAL", "$CARD.groupId", "sharedEncounterDeck2"],
-                    ["SHOW_ENCOUNTER_DECK_2", true]
+                    ["UPDATE_VAR", "$LOADED_ENCOUNTER_DECK_2", true]
                 ],
                 ["COND", 
                     ["AND", ["EQUAL", "$CARD.sides.A.type", "Quest"], ["EQUAL", "$CARD.sides.A.cost", 1]],
                     [
                         ["LOG", "$ALIAS_N", " made ", "$CARD.sides.A.name", " the main quest."],
-                        ["MOVE_CARD", "$CARD_ID", "sharedMainQuest", 0]
+                        ["MOVE_CARD", "$CARD_ID", "sharedMainQuest", 0],
+                        ["UPDATE_VAR", "$LOADED_ENCOUNTER_DECK", true]
                     ]
                 ]
             ]],
+            ["COND",
+                "$LOADED_ENCOUNTER_DECK_2",
+                ["SHOW_ENCOUNTER_DECK_2", true]
+            ],
+            ["COND",
+                "$LOADED_ENCOUNTER_DECK",
+                [
+                    ["SET", "/encounterDeckLoaded", true],
+                    ["COND",
+                        ["EQUAL", "$GAME.roundAdvancementFunction", "loadEncounterDeck"],
+                        ["UPDATE_ADVANCE_BUTTON"]
+                    ]
+                ]
+            ],
             ["COND",
                 ["AND",
                     "$LOADED_PLAYER_DECK",
@@ -62,13 +78,23 @@
                     ["DRAW_CARD", 6]
                 ]
             ],
-            ["SET", "/allPlayerDecksLoaded", true],
+            ["VAR", "$ALL_PLAYER_DECKS_LOADED", true],
             ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                 ["COND", 
                     ["EQUAL", ["LENGTH", "$GAME.groupById.{{$PLAYER_I}}Deck.stackIds"], 0], 
-                    ["SET", "/allPlayerDecksLoaded", false]
+                    ["UPDATE_VAR", "$ALL_PLAYER_DECKS_LOADED", false]
                 ] 
-            ]]
+            ]],
+            ["COND",
+                "$ALL_PLAYER_DECKS_LOADED",
+                [
+                    ["SET", "/allPlayerDecksLoaded", true],
+                    ["COND",
+                        ["EQUAL", "$GAME.roundAdvancementFunction", "loadPlayerDecks"],
+                        ["UPDATE_ADVANCE_BUTTON"]
+                    ]
+                ]
+            ]
         ],
         "gameRules": {
             "roundAdvancementTextVisibility": {
@@ -92,26 +118,30 @@
                 "listenTo": ["/roundAdvancementFunction"],
                 "condition": ["TRUE"],
                 "then": ["COND",
+                    ["EQUAL", "$GAME.roundAdvancementFunction", "loadPlayerDecks"],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Menu->Load to load player decks or W to skip."],
+                    ["EQUAL", "$GAME.roundAdvancementFunction", "loadEncounterDeck"],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Menu->Load to load encounter deck or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "goToFirstPlanning"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: setup. Next: W to advance to planning phase."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Setup. Next: W to advance to planning phase."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "readyForNextPlanning"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: actions. Next: W to advance to planning phase."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: W to advance to planning phase."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "selectCurrentQuest"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: actions. Next: Q to pick current quest or W to skip."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: Q to pick current quest or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: actions. Next: Q to commit character or W to skip."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: Q to commit character or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "commitOrReveal"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: Q to commit character. Next: E to reveal or W to skip"],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Q to commit character. Next: E to reveal or W to skip"],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "revealOrResolve"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "When done revealing, Shift+Q to resolve quest or W to skip."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "After revealing, Z to resolve quest or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToTravel"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: A to travel or W to decline."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: A to travel or W to decline."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToEncounter"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: actions. Next: W to advance to encounter phase."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: W to advance to encounter phase."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "resolveEngagementChecks"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: drag to engage. Next: G for checks or W to skip."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Drag to engage. Next: G for checks or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToCombat"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Now: actions. Next: W to advance to combat phase."]
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: W to advance to combat phase."]
                 ]
             },
             "updateAdvanceButtonOnCardEnterPlay": {

@@ -1,5 +1,8 @@
 {
     "labels": {
+        "encounterDeckLoaded": {
+            "English": "Encounter Deck Loaded"
+        },
         "resolveEngagementChecks": {
             "English": "Resolve Engagement Checks"
         },

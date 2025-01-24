@@ -617,7 +617,7 @@
                 ]
             ],
             ["COND",
-              ["EQUAL", "$GAME.gameStepAutomation", false],
+              "$GAME.gameStepAutomation",
               ["DO_ADVANCE_BUTTON"]            
             ]
           ]
@@ -661,7 +661,14 @@
         "UPDATE_ADVANCE_BUTTON": {
           "args": [],
           "code": [
+            // ["LOG_DEV", "{{$GAME.roundAdvancementFunction}}"],
+            // ["LOG_DEV", "$GAME.allPlayerDecksLoaded"],
+            // ["LOG_DEV", "$GAME.encounterDeckLoaded"],
             ["COND",
+              ["EQUAL", "$GAME.allPlayerDecksLoaded", false],
+              ["SET", "/roundAdvancementFunction", "loadPlayerDecks"],
+              ["EQUAL", "$GAME.encounterDeckLoaded", false],
+              ["SET", "/roundAdvancementFunction", "loadEncounterDeck"],
               ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["EQUAL", "$GAME.stepId", "0.0"]],
               ["SET", "/roundAdvancementFunction", "goToFirstPlanning"],
               ["EQUAL", "$GAME.stepId", "0.0"],
@@ -723,9 +730,19 @@
           "code": [
             ["COND",
               ["EQUAL", "$GAME.gameStepAutomation", false],
-              ["ABORT", "{{$ALIAS_N}} tried to advance the round but game step automation is turned off. Turn it on in preferences."]
+              ["ABORT", "{{$ALIAS_N}} tried to automatically advance through the round, but game step automation is turned off. Turn it on in preferences."]
             ],
             ["COND",
+              ["EQUAL", "$GAME.roundAdvancementFunction", "loadPlayerDecks"],
+              [
+                ["SET", "/allPlayerDecksLoaded", true],
+                ["SET", "/roundAdvancementFunction", "loadEncounterDeck"]
+              ],
+              ["EQUAL", "$GAME.roundAdvancementFunction", "loadEncounterDeck"],
+              [
+                ["SET", "/encounterDeckLoaded", true],
+                ["SET", "/roundAdvancementFunction", "goToFirstPlanning"]
+              ],
               ["EQUAL", "$GAME.roundAdvancementFunction", "goToFirstPlanning"],
               [
                 ["INCREASE_VAL", "/roundNumber", 1],
