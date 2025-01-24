@@ -281,7 +281,7 @@
                     },
                     "aragornPassiveTokens": { 
                         "_comment": "Add/remove tokens on enemies when Aragorn enters/leaves play.",
-                        "type": "trigger", 
+                        "type": "passive", 
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
                         "condition": [
                             "AND", 
@@ -307,92 +307,6 @@
                                 ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Engaged"], ["EQUAL", "$CARD.currentFace.type", "Enemy"]],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/defense", 1]
-                                ]
-                            ]]]
-                        ]
-                    }
-                }
-            },
-            "4823aae3-51223bd0-ffd1-11df-a976-0801210c9018": {
-                "_comment": "Sword that was Broken",
-                "rules": {
-                    "swordThatWasBrokenTargetChangeTokens": {
-                        "_comment": "Add/remove tokens on characters that enter/exit play or change controller.",
-                        "type": "whileInPlay",
-                        "listenTo": ["/cardById/*/inPlay", "/cardById/*/controller"],
-                        "condition": ["AND",
-                            "$TARGET.inPlay",
-                            ["EQUAL", "$TARGET.controller", "$THIS.controller"],
-                            ["IS_CHARACTER", "$TARGET"]
-                        ],
-                        "onDo": ["COND",
-                            ["AND", "$THIS.inPlay", ["GREATER_THAN", "$THIS.cardIndex", 0], ["EQUAL", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "Aragorn"]],
-                            [
-                                ["LOG", "└── ", "Sword that was Broken added 1 willpower to ", "$TARGET.currentFace.name", "."],
-                                ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1]
-                            ]
-                        ],
-                        "offDo": ["COND",
-                            ["AND", "$TARGET.inPlay", "$THIS.inPlay", ["GREATER_THAN", "$THIS.cardIndex", 0], ["EQUAL", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "Aragorn"]],
-                            [
-                                ["LOG", "└── ", "Sword that was Broken removed 1 willpower from ", "$TARGET.currentFace.name", "."],
-                                ["DECREASE_VAL", "/cardById/$TARGET_ID/tokens/willpower", 1]
-                            ]
-                        ]
-                    },
-                    "swordThatWasBrokenPassiveTokens": { 
-                        "_comment": "Add/remove tokens on characters on characters depending on whether Sword is attached to Aragorn.",
-                        "type": "whileInPlay", 
-                        "side": "A",
-                        "listenTo": ["/cardById/$THIS_ID/cardIndex"],
-                        "condition": ["AND", ["GREATER_THAN", "$THIS.cardIndex", 0], ["EQUAL", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "Aragorn"]],
-                        "onDo": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "└── ", "Added 1 willpower to each character controlled by {{$ALIAS}}."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.inPlay", ["IS_CHARACTER", "$TARGET"], ["EQUAL", "$CARD.controller", "$THIS.controller"]],
-                                [
-                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
-                                ]
-                            ]]]
-                        ],
-                        "offDo": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "└── ", "Removed 1 willpower from each character controlled by {{$ALIAS}}."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.inPlay", ["IS_CHARACTER", "$TARGET"], ["EQUAL", "$CARD.controller", "$THIS.controller"]],
-                                [
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
-                                ]
-                            ]]]
-                        ]
-                    },
-                    "swordThatWasBrokenChangeControllerTokens": { 
-                        "_comment": "Add/remove tokens on characters on characters when Sword changes controller.",
-                        "type": "trigger", 
-                        "side": "A",
-                        "listenTo": ["/cardById/$THIS_ID/controller"],
-                        "condition": ["AND", ["GREATER_THAN", "$THIS.cardIndex", 0], ["EQUAL", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "Aragorn"]],
-                        "then": [
-                            ["VAR", "$PREV_CONTROLLER", ["PREV", "$THIS.controller"]],
-                            ["VAR", "$PREV_ALIAS", ["GET_ALIAS", "$PREV_CONTROLLER"]],
-                            ["LOG", "└── ", "Removed 1 willpower from each character controlled by {{$PREV_ALIAS}}."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.inPlay", ["IS_CHARACTER", "$TARGET"], ["EQUAL", "$CARD.controller", "$PREV_CONTROLLER"]],
-                                [
-                                    ["DECREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
-                                ]
-                            ]]],
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "└── ", "Added 1 willpower to each character controlled by {{$ALIAS}}."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                            ["COND",
-                                ["AND", "$CARD.inPlay", ["IS_CHARACTER", "$TARGET"], ["EQUAL", "$CARD.controller", "$THIS.controller"]],
-                                [
-                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/willpower", 1]
                                 ]
                             ]]]
                         ]
