@@ -27,6 +27,10 @@
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
             ["SET", "/stepId", "6.2"]
         ],
+        "skipToDiscardShadowsStep": [
+            ["LOG", "{{$ALIAS_N}} advanced to the end of the combat phase."],
+            ["SET", "/stepId", "6.11"]
+        ],
         "skipToRefreshPhase": [
             ["LOG", "{{$ALIAS_N}} advanced to the refresh phase."],
             ["END_THE_QUEST_PHASE"],

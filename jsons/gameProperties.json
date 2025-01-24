@@ -38,6 +38,11 @@
         "type": "boolean",
         "default": false
       },
+      "encounterDeckLoaded": {
+        "label": "id:encounterDeckLoaded",
+        "type": "boolean",
+        "default": false
+      },
       "roundAdvancementFunction": {
         "label": "id:roundAdvancementFunction",
         "type": "any",
