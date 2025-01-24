@@ -93,14 +93,19 @@ local conditionalAttachment(name, bonusList) = {
                 {name: "attachmentConditionalPassiveTokens", attack: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]}
             ]),
             "9bf3f0fd-6eff-4560-8d65-c5ba79cf155f": self["0ee1f1e6-1952-4bad-8ecd-631e80f4ccc0"],
-            "f40cc90c-02df-464b-a401-6640aa93e2f8": staticAttachment("Cloak of Lorien", defense=1),  // TODO make dynamic based on active location having forest trait
-            "47deb269-e02b-426d-b64a-34a4adff44de": staticAttachment("Valiant Sword", attack=1),  // TODO make dynamic based on threat >= 40
-            //"47deb269-e02b-426d-b64a-34a4adff44de": dynamicAttachment("Valiant Sword", [
-            //    {name: "attachmentBasicPassiveTokens", attack: 1, listenTo: ["playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.player1.threat", 40]]},
-            //    {name: "attachmentConditionalPassiveTokens", attack: 2, listenTo: ["playerData/*/threat"], condition: [["GREATER_EQUAL", "$GAME.playerData.player1.threat", 40]]}
-            //]),
+            "f40cc90c-02df-464b-a401-6640aa93e2f8": conditionalAttachment("Cloak of Lorien", [  // TODO fix listenTo trigger not firing
+                {name: "attachmentBasicPassiveTokens", defense: 1, listenTo: ["/groupById/sharedActiveLocation/stackIds"], condition: [["NOT", ["ACTIVE_LOCATION_HAS_TRAIT", "Forest."]]]},
+                {name: "attachmentConditionalPassiveTokens", defense: 2, listenTo: ["/groupById/sharedActiveLocation/stackIds"], condition: [["ACTIVE_LOCATION_HAS_TRAIT", "Forest."]]}
+            ]),
+            "47deb269-e02b-426d-b64a-34a4adff44de": conditionalAttachment("Valiant Sword", [
+                {name: "attachmentBasicPassiveTokens", attack: 1, listenTo: ["/playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.{{$THIS.controller}}.threat", 40]]},
+                {name: "attachmentConditionalPassiveTokens", attack: 2, listenTo: ["/playerData/*/threat"], condition: [["GREATER_EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 40]]}
+            ]),
             "bfc41b26-7986-4bca-9e77-052abac32603": self["47deb269-e02b-426d-b64a-34a4adff44de"],
-            "c06f0513-459b-48ae-9e40-9a1a56e845ef": staticAttachment("Shining Shield", defense=1),  // TODO make dynamic based on threat >= 40
+            "c06f0513-459b-48ae-9e40-9a1a56e845ef": conditionalAttachment("Shining Shield", [
+                {name: "attachmentBasicPassiveTokens", defense: 1, listenTo: ["/playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.{{$THIS.controller}}.threat", 40]]},
+                {name: "attachmentConditionalPassiveTokens", defense: 2, listenTo: ["/playerData/*/threat"], condition: [["GREATER_EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 40]]}
+            ]),
             "418e6de7-af19-4ea7-bfbe-2a02838c6de4": staticAttachment("Dagger of Westernesse", attack=1),  // TODO make dynamic based on engaged enemy engagement cost
 
             "51223bd0-ffd1-11df-a976-0801200c9027": staticAttachment("Celebrían's Stone", willpower=2),
@@ -151,6 +156,8 @@ local conditionalAttachment(name, bonusList) = {
             "48eb743b-454a-43b7-96bf-27d468ad858a": staticAttachment("Wild Stallion", willpower=1, attack=1, defense=1, hitPoints=1),
             "80bb3d6a-c730-4994-badc-52fed8d92730": staticAttachment("Orcrist", attack=2),
             "4c23f4d0-fbf4-4c07-bb1d-0f5507647e0f": staticAttachment("Sting", willpower=1, attack=1, defense=1),
+            "b1cc99c3-09a7-4418-85c4-e368f44adf1d": staticAttachment("Necklace of Girion", willpower=2),
+            "d45259f1-a551-466c-8352-cc466e1670c2": staticAttachment("Stone of Elostirion", willpower=2),
             "4c77565a-475e-4f57-9360-8f0a2916607f": staticAttachment("Armor of Erebor", defense=1),
             "b897b63d-86ac-417c-88d2-1a594f3674f1": staticAttachment("Sword of Rhûn", attack=2),
             "53c01bdc-2761-4f8f-90bc-1eedd14ca376": staticAttachment("Easterling Horse", threat=2),
