@@ -42,6 +42,19 @@
                                 "deckListId": "QA2.3"
                             }
                         ]
+                    },
+                    {
+                        "label": "ALeP Strange News in Bree",
+                        "deckLists": [
+                            {
+                                "label": "id:easy",
+                                "deckListId": "EA2.4"
+                            },
+                            {
+                                "label": "id:normal",
+                                "deckListId": "QA2.4"
+                            }
+                        ]
                     }
                 ]
             }

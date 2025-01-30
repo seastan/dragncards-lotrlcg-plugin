@@ -1,0 +1,50 @@
+{
+    "preBuiltDecks": {
+        "EA2.4": {
+            "label": "ALeP Strange News in Bree (Easy)",
+            "cards": [
+                {"databaseId": "a24f6f25-e73d-4bc8-a4a0-f95813382186", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Something\u2019s Amiss"},
+                {"databaseId": "9d941234-fb33-473c-96a2-7797e7eaa00e", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Creeping Shadow"},
+                {"databaseId": "0ef17cb5-f075-4abc-8631-a0acf08d07e0", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "The Final Plot"},
+                {"databaseId": "8693155b-7832-4cf4-acbf-463dabecf393", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Droppin\u2019 Eaves"},
+                {"databaseId": "47d6dddc-2f58-49a2-991b-121328cec3ed", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Bree Vigilante"},
+                {"databaseId": "e82b7a37-c4e2-4cae-a879-7a636ccdafda", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Shady Collector"},
+                {"databaseId": "ecefcf1e-87e3-4c8a-8ce6-6dc969a46e59", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Twilight Harbinger"},
+                {"databaseId": "f89f242a-7212-4f33-9651-b41648bd7d0e", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Shire Stalker"},
+                {"databaseId": "95dd05f1-1739-4cf7-8994-591a636131d5", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Barrow-thief"},
+                {"databaseId": "0b8de903-4b55-4a37-a81d-2c6c1482174a", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Wolf Priestess"},
+                {"databaseId": "f23c93ea-a1e7-4c52-80ec-597484f7d5d3", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Dark Alleyway"},
+                {"databaseId": "70bbb5f3-d7a0-435b-9849-301cb8965192", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Bree Market"},
+                {"databaseId": "33aa415b-3f98-475d-bb0a-dd9eece1cc51", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Bree Guardhouse"},
+                {"databaseId": "a68a2382-2a5b-445f-b06d-9de3212bf816", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Town Square"},
+                {"databaseId": "e932724f-acc7-4cb3-93e0-e6915b43454c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Rumors of Gaur"},
+                {"databaseId": "5e3b1a71-5899-4fe4-baf4-46c56c20711b", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "All According to Plan"},
+                {"databaseId": "e132a230-9a4c-441c-8a71-0732437c2051", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Drawing Attention"},
+                {"databaseId": "9b3a8003-68f0-4166-99a3-0f2a322971dc", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Get Off the Road!"},
+                {"databaseId": "99ac5b3f-219b-4a63-bc84-aba815c17857", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Hasty Retreat"},
+                {"databaseId": "b6b9276b-8f11-4c21-a06b-3bfbfc1415a8", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "A Web of Lies"},
+                {"databaseId": "f45fa710-2e47-41f8-b9ea-b39dbab460a3", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Control the Market"},
+                {"databaseId": "8219a3b7-3bd3-4752-9c81-690d2f7b4d43", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Isolated and Lost"},
+                {"databaseId": "847a1012-1426-4156-a85f-a74547cbc2c8", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Seditious Rumors"},
+                {"databaseId": "db019d4c-441a-4013-bc2a-20114ed31d2c", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "They\u2019re Everywhere!"},
+                {"databaseId": "f5fe6747-ff85-440d-b80a-76c6b7e71b2b", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Thieves in the Night"},
+                {"databaseId": "24e7a684-b6a8-4c33-afe1-090a7e275698", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree Rules"},
+                {"databaseId": "04bd54d0-ed0b-469e-8413-e40aa0b471a5", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 1"},
+                {"databaseId": "3514761c-0c8a-4cb4-954e-f561e3fd1a3b", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 2"},
+                {"databaseId": "7ccc00bc-eb40-45b6-bdf8-2367a43adef6", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 3"},
+                {"databaseId": "1e5ead16-882b-4f4b-a2e1-a1358dee0b51", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 4"},
+                {"databaseId": "5cf7b5c4-922c-42c9-a292-11a4781d9c13", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 5"},
+                {"databaseId": "68368e07-db0b-4b03-a1df-ec1a044526c4", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 6"},
+                {"databaseId": "f7acc2ad-090a-45e9-af8c-7eebe0f9cd90", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 7"},
+                {"databaseId": "8225a4bf-fb39-4228-b8a4-7ce45d18797e", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 8"},
+                {"databaseId": "97c15e20-5b00-47b1-bde7-5a832bc142a2", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Strange News in Bree 9"},
+                {"databaseId": "2239d4b7-d315-49e8-97e6-c7f48a02d3b7", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Tribute to Gaur"},
+                {"databaseId": "4994de90-9c53-41b1-a5a6-dd3f49104a06", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Susie the Spider"},
+                {"databaseId": "1970c4aa-bb02-48cd-ab9e-48b12870a3ef", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Orc-eyes"},
+                {"databaseId": "d5bbf796-9f84-4199-89df-7138442ea1b9", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Control the Town"},
+                {"databaseId": "4c2d1866-5caf-4846-909d-707e550e4f40", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Bree Crowd"},
+                {"databaseId": "01969240-b57e-4b66-ae73-9d2fd09ae278", "quantity": 1, "loadGroupId": "sharedActiveLocation", "_name": "The Prancing Pony"}
+            ]
+        }
+    }
+}
