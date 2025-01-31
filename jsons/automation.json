@@ -338,8 +338,8 @@
                 "type": "trigger", 
                 "listenTo": ["/cardById/*/groupId"],
                 "condition": ["OR", 
-                                ["AND", ["NOT_EQUAL", "$TARGET.currentSide", null], ["GREATER_THAN", "$TARGET.currentFace.threat", 0], ["NOT_EQUAL", "$TARGET.groupId", "sharedStagingArea"], ["PREV", ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]]],
-                                ["AND", ["NOT_EQUAL", "$TARGET.currentSide", null], ["GREATER_THAN", "$TARGET.currentFace.threat", 0], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"], ["PREV", ["NOT_EQUAL", "$TARGET.groupId", "sharedStagingArea"]]]
+                                ["EQUAL", "$TARGET.groupId", "sharedStagingArea"],
+                                ["PREV", ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]]
                             ],
                 "then": ["COMPUTE_STAGING_THREAT"] 
             },
