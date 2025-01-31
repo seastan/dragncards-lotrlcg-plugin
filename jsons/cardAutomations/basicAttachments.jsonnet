@@ -239,6 +239,28 @@ local conditionalAttachment(name, bonusList) = {
             "969e2d92-da4f-4257-8833-0cc4c19ea10d": staticAttachment("Heirloom of Iarchon (Boon)", willpower=1),
             "46b11215-59ee-46ac-8154-693ce9fff971": staticAttachment("Orders from Angmar (Boon)", defense=1),
             "a539e3f4-4387-4569-a14e-fea235ad447c": staticAttachment("Raiment of the Second Age (Boon)", attack=2, hitPoints=2),
+
+            // ALeP
+            "65f15c99-d34e-4496-9ad3-4036114dc333": staticAttachment("Flinthoof", attack=1),
+            "608a1135-3b40-4189-b498-b9eff3a3f7ce": staticAttachment("Brightmane", willpower=1, threat=1),
+            "097f57fe-63f3-4494-ab39-a907fe6f089c": staticAttachment("Bree Pony", hitPoints=1),
+            "f0ceca81-907d-4c7f-a8e3-0842bf11b80d": staticAttachment("Relic of Nargothrond", defense=1),
+            "ba8a2808-f29b-404d-84dd-18d2483d9c97": staticAttachment("Subdued", attack=-4),
+            "4a2566d3-9af7-455a-bb5a-d9dafe62c636": staticAttachment("Anduril", willpower=1, attack=1, defense=1),
+            "8c504bd4-31c7-4269-a034-3007cf3cba9e": staticAttachment("Let Us Sing Together", willpower=1),
+            "cc5a34e3-d7b0-4f7f-82bf-d4f4c8778dd5": staticAttachment("Claw Marks", threat=2),
+            "f894c32c-5dfa-45f9-a5a3-122f3c171b89": staticAttachment("Star-like Gem (Boon)", willpower=1),
+            "9b5119ec-5bc1-4421-8da7-1407b8279f67": staticAttachment("Longing for Home", willpower=-2),
+            "530d5c75-bf6d-46c3-bd75-f39fb63a4d37": staticAttachment("Wolf Tracks", questPoints=10),
+
+            "ec138f38-054b-4d34-80f6-bd058c5483e7": conditionalAttachment("Bright Mail (Boon)", [
+                {name: "attachmentBasicPassiveTokens", defense: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Hobbit."]]]},
+                {name: "attachmentConditionalPassiveTokens", defense: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Hobbit."]]}
+            ]),
+            "aaea207b-e0af-4865-89c9-16985543ef9a": conditionalAttachment("Heightened Stature (Boon)", [
+                {name: "attachmentBasicPassiveTokens", hitPoints: 2, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Hobbit."]]]},
+                {name: "attachmentConditionalPassiveTokens", hitPoints: 3, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Hobbit."]]}
+            ]),
         }
     }
 }

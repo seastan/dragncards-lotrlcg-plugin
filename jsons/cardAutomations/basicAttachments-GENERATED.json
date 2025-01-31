@@ -330,6 +330,70 @@
                }
             }
          },
+         "097f57fe-63f3-4494-ab39-a907fe6f089c": {
+            "_comment": "Bree Pony",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "09993d97-ebf8-4c2c-b051-2691b175a2aa": {
             "_comment": "Black Key (Boon)",
             "rules": {
@@ -3268,6 +3332,118 @@
                }
             }
          },
+         "4a2566d3-9af7-455a-bb5a-d9dafe62c636": {
+            "_comment": "Anduril",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "4b36df3f-d75b-4b3a-9324-9ab31c10d7b9": {
             "_comment": "Pale Blade",
             "rules": {
@@ -4852,6 +5028,70 @@
                }
             }
          },
+         "530d5c75-bf6d-46c3-bd75-f39fb63a4d37": {
+            "_comment": "Wolf Tracks",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 10 questPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/questPoints",
+                        10
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 10 questPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/questPoints",
+                        10
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "53c01bdc-2761-4f8f-90bc-1eedd14ca376": {
             "_comment": "Easterling Horse",
             "rules": {
@@ -5423,6 +5663,94 @@
                }
             }
          },
+         "608a1135-3b40-4189-b498-b9eff3a3f7ce": {
+            "_comment": "Brightmane",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "60c7ba84-8d59-48c6-ab81-0639ab55a8bf": {
             "_comment": "Elf-stone",
             "rules": {
@@ -5545,6 +5873,70 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/questPoints",
                         2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "65f15c99-d34e-4496-9ad3-4036114dc333": {
+            "_comment": "Flinthoof",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 attack from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 attack to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        1
                      ]
                   ],
                   "type": "passive"
@@ -6951,6 +7343,70 @@
                }
             }
          },
+         "8c504bd4-31c7-4269-a034-3007cf3cba9e": {
+            "_comment": "Let Us Sing Together",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "8d99a2be-18d6-4bfb-85ab-7be54a18e6b7": {
             "_comment": "Black Mare",
             "rules": {
@@ -7330,6 +7786,70 @@
                }
             }
          },
+         "9b5119ec-5bc1-4421-8da7-1407b8279f67": {
+            "_comment": "Longing for Home",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 willpower to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 willpower from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "9bb32f2c-29fb-43ba-b7ba-2227b28f7b58": {
             "_comment": "Elf-stone",
             "rules": {
@@ -7676,6 +8196,142 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/hitPoints",
                         2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "aaea207b-e0af-4865-89c9-16985543ef9a": {
+            "_comment": "Heightened Stature (Boon)",
+            "rules": {
+               "attachmentBasicPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "NOT",
+                        [
+                           "IN_STRING",
+                           "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits",
+                           "Hobbit."
+                        ]
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               },
+               "attachmentConditionalPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "IN_STRING",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits",
+                        "Hobbit."
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 3 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        3
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 3 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
+                        3
                      ]
                   ],
                   "type": "passive"
@@ -8188,6 +8844,70 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/attack",
                         1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "ba8a2808-f29b-404d-84dd-18d2483d9c97": {
+            "_comment": "Subdued",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 4 attack to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/attack",
+                        4
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 4 attack from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/attack",
+                        4
                      ]
                   ],
                   "type": "passive"
@@ -8772,6 +9492,70 @@
                      [
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/attack",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "cc5a34e3-d7b0-4f7f-82bf-d4f4c8778dd5": {
+            "_comment": "Claw Marks",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 threat from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/threat",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 threat to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/threat",
                         2
                      ]
                   ],
@@ -9620,6 +10404,142 @@
                }
             }
          },
+         "ec138f38-054b-4d34-80f6-bd058c5483e7": {
+            "_comment": "Bright Mail (Boon)",
+            "rules": {
+               "attachmentBasicPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "NOT",
+                        [
+                           "IN_STRING",
+                           "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits",
+                           "Hobbit."
+                        ]
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               },
+               "attachmentConditionalPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "IN_STRING",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits",
+                        "Hobbit."
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 2 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        2
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 2 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "ee8d4a1a-6f19-4d00-a266-a4241e168cae": {
             "_comment": "Jewels of Wilder (Boon)",
             "rules": {
@@ -9686,6 +10606,70 @@
          },
          "ef014a91-c2d9-44ca-acd0-cc1a339c051f": {
             "_comment": "Tireless Ranger",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "f0ceca81-907d-4c7f-a8e3-0842bf11b80d": {
+            "_comment": "Relic of Nargothrond",
             "rules": {
                "attachmentStaticPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
@@ -10001,6 +10985,70 @@
                         "DECREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/threat",
                         2
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
+         "f894c32c-5dfa-45f9-a5a3-122f3c171b89": {
+            "_comment": "Star-like Gem (Boon)",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/willpower",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/willpower",
+                        1
                      ]
                   ],
                   "type": "passive"

@@ -85,6 +85,23 @@
                 ]
                 }
             },
+            "151ba48a-1efd-451e-bba0-b49fa0566596": {
+                "_comment": "Fatty Bolger (Lore, ALeP)",
+                "rules": {
+                    "fattySetup": {
+                        "_comment": "Reduce starting threat by 2.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/threat"],
+                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "then": [
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 2]],
+                            ["LOG", "└── ", "Fatty Bolger reduced starting threat by 2 to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 2]
+                        ]
+                    }
+                }
+            },
             "51223bd0-ffd1-11df-a976-0801206c9005": {
                 "_comment": "Leadership Dain Ironfoot",
                 "rules": {
@@ -1028,6 +1045,24 @@
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 10]
                 }
             },
+            "52f54faa-5db0-4b11-bd8b-5ee85dec5b97": {
+                "_comment":  "An Unexpected Party",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 10]
+                }
+            },
+            "e42cb28b-0f2e-4510-962b-d96f19006be2": {
+                "_comment":  "Open the Gates",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
+                }
+            },
+            "793df72d-dce6-48fe-9d6c-24a2cf289d5f": {
+                "_comment":  "Need Brooks no Delay",
+                "ability": {
+                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 10]
+                }
+            },
             "439f1d94-3098-4b4a-9ceb-3b28a6eac804": {"_comment": "The Muster of Rohan", "inheritFrom": "8047c8c2-1569-428c-865e-0459c2733db3"},
             "9152834a-5355-42ba-9592-1a3c1940d1a8": {
                 "_comment": "King under the Mountain",
@@ -1331,6 +1366,10 @@
                 "_comment": "Necklace of Girion",
                 "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
             },
+            "59201982-0c04-45a4-8675-755f90932b88": {
+                "_comment": "Bilbo's Spoons",
+                "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
+            },
             "51223bd0-ffd1-11df-a976-0801200c9072": {
                 "_comment": "Self Preservation",
                 "ability": {
@@ -1344,6 +1383,44 @@
                             ["LOG", "└── ", "Healed 2 damage from ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
                             ["HEAL", "$THIS.parentCardId", 2]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "74522565-cb89-4a49-aee0-66840fd077e5": {
+                "_comment": "Pint",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.damage", 0]
+                        ],
+                        [
+                            ["LOG", "└── ", "Healed 1 damage from ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["HEAL", "$THIS.parentCardId", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "aaea207b-e0af-4865-89c9-16985543ef9a": {
+                "_comment": "Heightened Stature (Boon)",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.damage", 0]
+                        ],
+                        [
+                            ["LOG", "└── ", "Healed 1 damage from ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["HEAL", "$THIS.parentCardId", 1]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1424,6 +1501,10 @@
             },
             "3892b2e4-358c-42af-b5be-2f54d252ea2a": {
                 "_comment": "Leader of Men (Boon)",
+                "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
+            },
+            "bcc1ca6e-5bd7-48ec-99ee-bbec6e78e7ed": {
+                "_comment": "Beorn's Welcome",
                 "inheritFrom": "exhaustToAddOneResourceToAttachedCharacter"
             },
             "51223bd0-ffd1-11df-a976-0801200c9045": {
@@ -1507,6 +1588,14 @@
                 "_comment": "Shadowfax",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
+            "4a2566d3-9af7-455a-bb5a-d9dafe62c636": {
+                "_comment": "Anduril (ALep)",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
+            "77721e76-80a6-41b0-a71a-9cd533954250": {
+                "_comment": "Onward Into Battle",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
             "51223bd0-ffd1-11df-a976-1801204c9024": {
                 "_comment": "Cram",
                 "ability": {
@@ -1553,6 +1642,21 @@
             },
             "9fa0e4f8-4abf-4552-bb46-94c4b1f0bc15": {"_comment": "Lembas", "inheritFrom": "f86ea37a-d70d-4ff2-ac36-2a0ff1f7ffa9"},
             "28938e58-2900-45d9-b9d9-7d05b7088cc9": {"_comment": "Lembas", "inheritFrom": "f86ea37a-d70d-4ff2-ac36-2a0ff1f7ffa9"},
+            "f0ceca81-907d-4c7f-a8e3-0842bf11b80d": {
+                "_comment": "Relic of Nargothrond",
+                "ability": {
+                    "A": ["COND",
+                        ["GREATER_THAN", "$THIS.cardIndex", 0],
+                        [
+                            ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to add 2 defense to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the round."],
+                            ["ADD_TEMP_TOKEN", "round", "$THIS.parentCardId", "defense", 2],
+                            ["ACTION_LIST", "discardCard"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
             "29b76593-0ef3-410b-aa85-1c282d4b1582": {
                 "_comment": "Captain of Gondor",
                 "ability": {
@@ -1751,6 +1855,32 @@
             "59cd2c5f-1986-4065-ad2c-8423d6b200e2": {
                 "_comment": "Sword-thain",
                 "inheritFrom": "parentCardGainsHeroType"
+            },
+            "a4a86a9e-050a-4df4-9403-04bf68a7dc99": {
+                "_comment": "Word of Persuasion",
+                "rules": {
+                    "makeIntoAlly": {
+                        "type": "passive",
+                        "autoRun": {
+                            "status": "promptYN",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Apply the new card type to {{$THIS.parentCard.sides.A.name}}?"
+                        },
+                        "listenTo": ["/cardById/$THIS_ID/cardIndex"],
+                        "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
+                        "onDo": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} gave the ally type to {{$THIS.parentCard.sides.A.name}}."],
+                            ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Ally"]
+                        ],
+                        "offDo": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["VAR", "$PREV_PARENT", ["PREV", "$THIS.parentCard"]],
+                            ["LOG", "{{$ALIAS}} removed the ally type from {{$PREV_PARENT.sides.A.name}}."],
+                            ["SET", "/cardById/{{$PREV_PARENT.id}}/sides/A/type", "Enemy"]
+                        ]
+                    }
+                }
             }
         }
     }
