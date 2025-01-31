@@ -79,11 +79,12 @@
                     "label": "Yes",
                     "hotkey": "Y",
                     "code": [
+                        ["LOG", "{{$ALIAS_N}} added ", "$GAME.cardById.{{$CARD_ID}}.currentFace.name", " to the victory display."],
                         ["MOVE_CARD", "$CARD_ID", "sharedVictory", 0]
                     ]
                 },
                 {
-                    "label": "NO",
+                    "label": "No",
                     "hotkey": "N"
                 }
             ]
