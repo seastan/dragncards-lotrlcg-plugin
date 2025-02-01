@@ -33,20 +33,17 @@
         "readyForNextPlanning": {
             "English": "Ready For Next Planning"
         },
-        "skipToRefreshPhase": {
-            "English": "Skip To Refresh Phase"
-        },
         "toggleEngagedWithEachPlayer": {
             "English": "Toggle Engaged With Each Player"
         },
-        "skipToDealShadowsStep": {
-            "English": "Skip To Deal Shadows Step"
-        },
         "skipToNextPlanningPhase": {
-            "English": "Skip To Next Planning Phase"
+            "English": "Skip to Next Planning Phase"
         },
-        "skipToNextRefreshPhase": {
-            "English": "Skip To Refresh Phase"
+        "skipToDealShadowsStep": {
+            "English": "Skip to Deal Shadows Step"
+        },
+        "skipToRefreshPhase": {
+            "English": "Skip to Refresh Phase"
         },
         "advanceThroughRoundStopAtTriggers": {
             "English": "Advance Through Round"
@@ -170,6 +167,9 @@
         "raiseThreatBy1": {
             "English": "Raise threat by 1",
             "Chinese": "威胁增加1"
+        },
+        "reduceThreatBy1": {
+            "English": "Reduce threat by 1"
         },
         "saveGame": {
             "English": "Save game",
@@ -1236,7 +1236,7 @@
             "Chinese": "探险牌组"
         },
         "sharedQuestDeck2": {
-            "English": "Quest Deck",
+            "English": "Quest Deck 2",
             "Chinese": "探险牌组"
         },
         "sharedActiveLocation": {
@@ -1260,35 +1260,35 @@
             "Chinese": "遭遇牌组3"
         },
         "sharedExtra1": {
-            "English": "Extra1",
+            "English": "Extra 1",
             "Chinese": "额外区域 1"
         },
         "sharedExtra2": {
-            "English": "Extra2",
+            "English": "Extra 2",
             "Chinese": "额外区域 2"
         },
         "sharedExtra3": {
-            "English": "Extra3",
+            "English": "Extra 3",
             "Chinese": "额外区域 3"
         },
         "sharedExtra4": {
-            "English": "Extra4",
+            "English": "Extra 4",
             "Chinese": "额外区域 4"
         },
         "sharedExtra5": {
-            "English": "Extra5",
+            "English": "Extra 5",
             "Chinese": "额外区域 5"
         },
         "sharedExtra6": {
-            "English": "Extra6",
+            "English": "Extra 6",
             "Chinese": "额外区域 6"
         },
         "sharedExtra7": {
-            "English": "Extra7",
+            "English": "Extra 7",
             "Chinese": "额外区域 7"
         },
         "sharedExtra8": {
-            "English": "Extra8",
+            "English": "Extra 8",
             "Chinese": "额外区域 8"
         },
         "damage": {
@@ -1636,19 +1636,19 @@
             "Chinese": "主要探险"
         },
         "player1Deck2": {
-            "English": "Player1 Deck2",
+            "English": "Player 1 Deck 2",
             "Chinese": "玩家 1 第二牌库"
         },
         "player2Deck2": {
-            "English": "Player2 Deck2",
+            "English": "Player 2 Deck 2",
             "Chinese": "玩家 2 第二牌库"
         },
         "player3Deck2": {
-            "English": "Player3 Deck2",
+            "English": "Player 3 Deck 2",
             "Chinese": "玩家 3 第二牌库"
         },
         "player4Deck2": {
-            "English": "Player4 Deck2",
+            "English": "Player 4 Deck 2",
             "Chinese": "玩家 4 第二牌库"
         },
         "exhaustReady": {

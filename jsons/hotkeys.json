@@ -13,12 +13,12 @@
         ],
         "game": [
             {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},
-            {"key": "E", "actionList": "hotkeyE", "label": "id:revealEncounterCard"},
+            {"key": "E", "actionList": "revealEncounter", "label": "id:revealEncounterCard"},
             {"key": "Shift+E", "actionList": "revealEncounterFacedown", "label": "id:revealFacedownEncounterCard"},
-            {"key": "K", "actionList": "revealSecondaryFaceup", "label": "id:revealCardFromSecondEncounterDeck"},
+            {"key": "K", "actionList": "revealSecondary", "label": "id:revealCardFromSecondEncounterDeck"},
+            {"key": "Shift+K", "actionList": "revealSecondaryFacedown", "label": "id:revealFacedownCardFromSecondEncounterDeck"},
             {"key": "M", "actionList": "toggleMap", "label": "id:toggleTheMap"},
             {"key": ",", "actionList": "toggleExtra", "label": "id:toggleExtra"},
-            {"key": "Shift+K", "actionList": "revealSecondaryFacedown", "label": "id:revealFacedownCardFromSecondEncounterDeck"},
             {"key": "Shift+M", "actionList": "mulligan", "label": "id:mulligan"},
             {"key": "W", "actionList": ["DO_ADVANCE_BUTTON"], "label": "id:advanceThroughRoundStopAtTriggers"},
             {"key": "Z", "actionList": ["RESOLVE_QUEST"], "label": "id:resolveTheQuest"},
@@ -30,14 +30,13 @@
             {"key": "Shift+S", "actionList": "skipToDealShadowsStep", "label": "id:dealAllShadowCards"},
             {"key": "Shift+X", "actionList": "skipToDiscardShadowsStep", "label": "id:discardAllShadowCards"},
             {"key": "U", "actionList": "increaseThreat", "label": "id:raiseThreatBy1"},
-            {"key": "J", "actionList": "decreaseThreat", "label": "id:raiseThreatBy1"},
+            {"key": "J", "actionList": "decreaseThreat", "label": "id:reduceThreatBy1"},
             {"key": "Shift+U", "actionList": "raiseAllThreat", "label": "id:raiseThreatBy1ForAllPlayers"},
             {"key": "Shift+J", "actionList": "reduceAllThreat", "label": "id:reduceThreatBy1ForAllPlayers"},
-            {"key": "Shift+D", "actionList": "drawNextPlayer", "label": "id:drawCardOnBehalfOfNextEmptySeat"}
+            {"key": "Shift+D", "actionList": "drawNextSeat", "label": "id:drawCardOnBehalfOfNextEmptySeat"}
         ],
         "card": [
             {"key": "A", "actionList": "hotkeyA", "label": "id:exhaustReadyIfLocationMakeActive"},
-            {"key": "C", "actionList": "detach", "label": "id:detach"},
             {"key": "F", "actionList": "flipCard", "label": "id:flip"},
             {"key": "C", "actionList": "detach", "label": "id:detach"},
             {"key": "H", "actionList": "shuffleIntoDeck", "label": "id:shuffleIntoOwnerSDeck"},
@@ -47,7 +46,7 @@
             {"key": "V", "actionList": "addToVictoryDisplay", "label": "id:addToVictoryDisplay"},
             {"key": "Q", "actionList": "toggleCommit", "label": "id:commitUncommitFromQuest"},
             {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
-            {"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
+            //{"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
             {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
             {"key": "Shift+T", "actionList": "swapWithTop", "label": "id:swapWithTop"}
         ]
