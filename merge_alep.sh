@@ -7,7 +7,7 @@ MERGE_DIR_TSV="/var/www/dragncards.com/dragncards-lotrlcg-plugin/tsvs_merged"
 
 # Ensure repo is updated
 cd "$REPO_DIR"
-git fetch
+git pull
 
 # Merge JSONs from both branches
 mkdir -p "$MERGE_DIR_JSON"
@@ -18,7 +18,7 @@ cp -r jsons/* "$MERGE_DIR_JSON/"
 cp -r tsvs/* "$MERGE_DIR_TSV/"
 
 git checkout alep
-git fetch
+git pull
 cp -r -n jsons/* "$MERGE_DIR_JSON/"
 cp -r -n tsvs/* "$MERGE_DIR_TSV/"
 
