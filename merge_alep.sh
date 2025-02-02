@@ -18,6 +18,7 @@ cp -r jsons/* "$MERGE_DIR_JSON/"
 cp -r tsvs/* "$MERGE_DIR_TSV/"
 
 git checkout alep
+git fetch
 cp -r -n jsons/* "$MERGE_DIR_JSON/"
 cp -r -n tsvs/* "$MERGE_DIR_TSV/"
 
