@@ -984,8 +984,7 @@
                     "A": ["LOOK_AT_X", "{{$THIS.controller}}Deck", 10]
                 }
             },
-            "0567c2df-677c-4529-985a-54621088fe58": {"_comment": "Westfold Horse-breeder", "inheritFrom": "51e0054c-c48d-4fc7-9737-30bf12d4b52a"
-},
+            "0567c2df-677c-4529-985a-54621088fe58": {"_comment": "Westfold Horse-breeder", "inheritFrom": "51e0054c-c48d-4fc7-9737-30bf12d4b52a"},
             "51223bd0-ffd1-11df-a976-0801201c9008": {
                 "_comment": "The Eagles Are Coming",
                 "ability": {
@@ -1216,7 +1215,7 @@
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "{{$ALIAS}} drew 1 additional card from Ori."],
-                            ["DRAW_CARD"]
+                            ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
                 }
@@ -1237,7 +1236,7 @@
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "├── ", "{{$ALIAS}} drew 1 additional card from Stone of Elostirion."],
-                            ["DRAW_CARD"]
+                            ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
                 }

@@ -43,7 +43,7 @@
             ["VAR", "$REVEAL_FACEDOWN", true],
             ["ACTION_LIST", "revealSecondary"]
         ],
-        "hotkeyE": [
+        "revealEncounter": [
             ["COND", 
                 ["AND", "$GAME.gameStepAutomation", 
                     ["OR",
@@ -71,7 +71,7 @@
                     ["VAR", "$CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck2", 0, 0]],
                     ["MOVE_CARD", "$CARD_ID", "sharedStagingArea", -1, 0], 
                     ["COND",
-                        "$REVEAL_FACEDOWN",
+                        ["DEFINED", "$REVEAL_FACEDOWN"],
                         ["SET", "/cardById/$CARD_ID/currentSide", "B"]
                     ],
                     ["LOG", "{{$ALIAS_N}} revealed {{$GAME.cardById.$CARD_ID.currentFace.name}}."]
@@ -138,6 +138,7 @@
             ]
         ],
         "mulligan": [
+            ["LOG", "$ALIAS_N", " performed a mulligan."],
             ["VAR", "$HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
             ["VAR", "$DECK_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Deck"]],
             ["VAR", "$HAND_SIZE", ["LENGTH", "$GAME.groupById.$HAND_GROUP_ID.stackIds"]],
@@ -299,13 +300,21 @@
             ["COND",
                 ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
                 [            
-                ["VAR", "$ACTIVE_GROUP_ID", "$ACTIVE_CARD.groupId"],
-                ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
-                ["VAR", "$CARD_ID", ["GET_CARD_ID", "$ACTIVE_GROUP_ID", "$ACTIVE_STACK_INDEX", 0]],
-                ["ATTACH_CARD", "$ACTIVE_CARD_ID", "$CARD_ID"],
-                ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_FACE.name}}."]
+                    ["VAR", "$ACTIVE_GROUP_ID", "$ACTIVE_CARD.groupId"],
+                    ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
+                    ["VAR", "$CARD_ID", ["GET_CARD_ID", "$ACTIVE_GROUP_ID", "$ACTIVE_STACK_INDEX", 0]],
+                    ["ATTACH_CARD", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                    ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_FACE.name}}."]
                 ]
             ]
+        ],
+        "addDamage": [
+            ["INCREASE_VAL", "/cardById/$ACTIVE_CARD_ID/tokens/damage", 1],
+            ["LOG", "$ALIAS_N", " added 1 damage to ", "$ACTIVE_FACE.name", "."]
+        ],
+        "addProgress": [
+            ["INCREASE_VAL", "/cardById/$ACTIVE_CARD_ID/tokens/progress", 1],
+            ["LOG", "$ALIAS_N", " added 1 progress to ", "$ACTIVE_FACE.name", "."]
         ],
         "addToVictoryDisplay": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
@@ -398,7 +407,11 @@
                     true,
                     [
                         ["MOVE_STACK", ["GET_STACK_ID", "sharedQuestDeck", 0], "sharedMainQuest", 0],
-                        ["LOG", "$ALIAS_N", " advanced the quest."]
+                        ["LOG", "$ALIAS_N", " advanced the quest."],
+                        ["COND",
+                            ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                            ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
+                        ]
                     ]
                 ]
             ]

@@ -612,7 +612,7 @@
                 ]
             },
             {
-                "label": "id:A Shadow in the East & Vengenace of Mordor",
+                "label": "id:A Shadow in the East & Vengeance of Mordor",
                 "subMenus": [
                 {
                     "label": "id:The River Running",
@@ -816,7 +816,7 @@
                     ]
                 },
                 {
-                    "label": "id:Journey to the Cross roads",
+                    "label": "id:Journey to the Cross-roads",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E0B.11"},
                         {"label": "id:normal", "deckListId": "Q0B.11"},
@@ -959,7 +959,7 @@
                     ]
                 },
                 {
-                    "label": "id:Journey to the Cross roads",
+                    "label": "id:Journey to the Cross-roads",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E0C.11"},
                         {"label": "id:normal", "deckListId": "Q0C.11"},
