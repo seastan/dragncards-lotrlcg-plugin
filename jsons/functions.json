@@ -597,7 +597,10 @@
                     ["VAR", "$NUM_ACTIVE_LOCATIONS", ["LENGTH", "$ACTIVE_LOCATIONS"]],
                     ["COND",
                         ["GREATER_THAN", "$NUM_ACTIVE_LOCATIONS", 1],
-                        ["LOG", "└── More than 1 active location detected. You will need to distribute the progress yourself."],
+                        [
+                          ["LOG", "└── More than 1 active location detected. You will need to distribute the progress yourself."],
+                          ["UPDATE_VAR", "$PROGRESS_MADE", 0]
+                        ],
                         ["EQUAL", "$NUM_ACTIVE_LOCATIONS", 1],
                         [
                             ["VAR", "$ACTIVE_LOCATION", "$ACTIVE_LOCATIONS.[0]"],

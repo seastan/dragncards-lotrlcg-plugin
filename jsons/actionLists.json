@@ -300,13 +300,21 @@
             ["COND",
                 ["GREATER_THAN", "$ACTIVE_CARD.cardIndex", 0],
                 [            
-                ["VAR", "$ACTIVE_GROUP_ID", "$ACTIVE_CARD.groupId"],
-                ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
-                ["VAR", "$CARD_ID", ["GET_CARD_ID", "$ACTIVE_GROUP_ID", "$ACTIVE_STACK_INDEX", 0]],
-                ["ATTACH_CARD", "$ACTIVE_CARD_ID", "$CARD_ID"],
-                ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_FACE.name}}."]
+                    ["VAR", "$ACTIVE_GROUP_ID", "$ACTIVE_CARD.groupId"],
+                    ["VAR", "$ACTIVE_STACK_INDEX", "$ACTIVE_CARD.stackIndex"],
+                    ["VAR", "$CARD_ID", ["GET_CARD_ID", "$ACTIVE_GROUP_ID", "$ACTIVE_STACK_INDEX", 0]],
+                    ["ATTACH_CARD", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                    ["LOG", "{{$ALIAS_N}} moved {{$ACTIVE_FACE.name}}."]
                 ]
             ]
+        ],
+        "addDamage": [
+            ["INCREASE_VAL", "/cardById/$ACTIVE_CARD_ID/tokens/damage", 1],
+            ["LOG", "$ALIAS_N", " added 1 damage to ", "$ACTIVE_FACE.name", "."]
+        ],
+        "addProgress": [
+            ["INCREASE_VAL", "/cardById/$ACTIVE_CARD_ID/tokens/progress", 1],
+            ["LOG", "$ALIAS_N", " added 1 progress to ", "$ACTIVE_FACE.name", "."]
         ],
         "addToVictoryDisplay": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],

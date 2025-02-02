@@ -1,1770 +1,4080 @@
 {
     "labels": {
+        "W-Skip": {
+            "English": "W / Skip",
+            "French": "W / Passer",
+            "Spanish": "W / Saltar",
+            "Portuguese": "W / Pular",
+            "Italian": "W / Salta",
+            "German": "W / Überspringen",
+            "Chinese": "W / 跳过"
+        },
+        "E-Reveal": {
+            "English": "E / Reveal",
+            "French": "E / Révéler",
+            "Spanish": "E / Revelar",
+            "Portuguese": "E / Revelar",
+            "Italian": "E / Scopri",
+            "German": "E / Aufdecken",
+            "Chinese": "E / 揭示"
+        },
+        "Q-Commit": {
+            "English": "Q / Commit",
+            "French": "Q / Engager",
+            "Spanish": "Q / Comprometer",
+            "Portuguese": "Q / Comprometer",
+            "Italian": "Q / Impegna",
+            "German": "Q / Engagieren",
+            "Chinese": "Q / 承诺"
+        },
+        "Z-Rezolve": {
+            "English": "Z / Resolve",
+            "French": "Z / Résoudre",
+            "Spanish": "Z / Resolver",
+            "Portuguese": "Z / Resolver",
+            "Italian": "Z / Risolvi",
+            "German": "Z / Auflösen",
+            "Chinese": "Z / 解决"
+        },
+        "G-Engage": {
+            "English": "G / Engage",
+            "French": "G / Engager",
+            "Spanish": "G / Comprometer",
+            "Portuguese": "G / Engajar",
+            "Italian": "G / Impegna",
+            "German": "G / Engagieren",
+            "Chinese": "G / 承诺"
+        },
         "encounterDeckLoaded": {
-            "English": "Encounter Deck Loaded"
+            "English": "Encounter Deck Loaded",
+            "French": "Paquet de Rencontre Chargé",
+            "Spanish": "Mazo de Encuentro Cargado",
+            "Portuguese": "Baralho de Encontro Carregado",
+            "Italian": "Mazzo di Incontro Caricato",
+            "German": "Begegnungskarten geladen",
+            "Chinese": "遭遇牌组已加载"
         },
         "resolveEngagementChecks": {
-            "English": "Resolve Engagement Checks"
+            "English": "Resolve Engagement Checks",
+            "French": "Résoudre les Vérifications d'Engagement",
+            "Spanish": "Resolver las Comprobaciones de Compromiso",
+            "Portuguese": "Resolver Verificações de Engajamento",
+            "Italian": "Risolvi i Controlli di Impegno",
+            "German": "Engagement-Prüfungen auflösen",
+            "Chinese": "解决交战检查"
         },
         "resolveTheQuest": {
-            "English": "Resolve The Quest"
+            "English": "Resolve The Quest",
+            "French": "Résoudre la Quête",
+            "Spanish": "Resolver la Misión",
+            "Portuguese": "Resolver a Missão",
+            "Italian": "Risolvi la Quest",
+            "German": "Die Quest abschließen",
+            "Chinese": "解决任务"
         },
         "2-handed": {
-            "English": "2-handed"
+            "English": "2-handed",
+            "French": "Deux Mains",
+            "Spanish": "Con Dos Manos",
+            "Portuguese": "Com Duas Mãos",
+            "Italian": "Con Due Mani",
+            "German": "Zweihändig",
+            "Chinese": "双手"
         },
         "gameStepAutomation": {
-            "English": "Game Step Automation"
+            "English": "Game Step Automation",
+            "French": "Automatisation des Étapes du Jeu",
+            "Spanish": "Automatización de Pasos del Juego",
+            "Portuguese": "Automação das Etapas do Jogo",
+            "Italian": "Automazione dei Passi del Gioco",
+            "German": "Spielschritt-Automatisierung",
+            "Chinese": "游戏步骤自动化"
         },
         "campaignCards": {
-            "English": "Campaign Cards"
+            "English": "Campaign Cards",
+            "French": "Cartes de Campagne",
+            "Spanish": "Cartas de Campaña",
+            "Portuguese": "Cartas de Campanha",
+            "Italian": "Carte della Campagna",
+            "German": "Kampagnenkarten",
+            "Chinese": "战役卡"
         },
         "Ered Mithrin": {
-            "English": "Ered Mithrin"
+            "English": "Ered Mithrin",
+            "French": "Ered Mithrin",
+            "Spanish": "Ered Mithrin",
+            "Portuguese": "Ered Mithrin",
+            "Italian": "Ered Mithrin",
+            "German": "Ered Mithrin",
+            "Chinese": "厄瑞德·米斯林"
         },
         "The Dream-chaser": {
-            "English": "The Dream-chaser"
+            "English": "The Dream-chaser",
+            "French": "Le Chasseur de Rêves",
+            "Spanish": "El Cazador de Sueños",
+            "Portuguese": "O Caçador de Sonhos",
+            "Italian": "Il Cacciatore di Sogni",
+            "German": "Der Traumjäger",
+            "Chinese": "追梦者"
         },
         "The Dark of Mirkwood": {
-            "English": "The Dark of Mirkwood"
+            "English": "The Dark of Mirkwood",
+            "French": "Les Ténèbres de Mirkwood",
+            "Spanish": "La Oscuridad de Mirkwood",
+            "Portuguese": "A Escuridão de Mirkwood",
+            "Italian": "Le Tenebre di Mirkwood",
+            "German": "Die Dunkelheit von Mirkwood",
+            "Chinese": "米尔克伍德的黑暗"
         },
         "roundAdvancementFunction": {
-            "English": "Advance through the round"
+            "English": "Advance through the round",
+            "French": "Avancer à travers le tour",
+            "Spanish": "Avanzar en el turno",
+            "Portuguese": "Avançar pelo turno",
+            "Italian": "Avanza attraverso il turno",
+            "German": "Durch die Runde fortschreiten",
+            "Chinese": "推进到回合"
         },
         "readyForNextPlanning": {
-            "English": "Ready For Next Planning"
+            "English": "Ready For Next Planning",
+            "French": "Prêt pour la Prochaine Planification",
+            "Spanish": "Listo para la Próxima Planificación",
+            "Portuguese": "Pronto para o Próximo Planejamento",
+            "Italian": "Pronto per la Prossima Pianificazione",
+            "German": "Bereit für die nächste Planung",
+            "Chinese": "准备好进行下次规划"
         },
         "toggleEngagedWithEachPlayer": {
-            "English": "Toggle Engaged With Each Player"
+            "English": "Toggle Engaged With Each Player",
+            "French": "Basculer l'Engagement avec Chaque Joueur",
+            "Spanish": "Alternar Compromiso con Cada Jugador",
+            "Portuguese": "Alternar Engajamento com Cada Jogador",
+            "Italian": "Alterna l'Impegno con Ogni Giocatore",
+            "German": "Engagement mit jedem Spieler umschalten",
+            "Chinese": "切换与每个玩家的交战状态"
         },
         "skipToNextPlanningPhase": {
-            "English": "Skip to Next Planning Phase"
+            "English": "Skip to Next Planning Phase",
+            "French": "Passer à la Prochaine Phase de Planification",
+            "Spanish": "Saltar a la Próxima Fase de Planificación",
+            "Portuguese": "Pular para a Próxima Fase de Planejamento",
+            "Italian": "Salta alla Prossima Fase di Pianificazione",
+            "German": "Zur nächsten Planungsphase überspringen",
+            "Chinese": "跳到下一个规划阶段"
         },
         "skipToDealShadowsStep": {
-            "English": "Skip to Deal Shadows Step"
+            "English": "Skip to Deal Shadows Step",
+            "French": "Passer à l'Étape des Ombres",
+            "Spanish": "Saltar a la Etapa de Tratar Sombras",
+            "Portuguese": "Pular para a Etapa de Tratar Sombras",
+            "Italian": "Salta alla Fase di Gestire Ombre",
+            "German": "Zum Schritt „Schatten verteilen“ überspringen",
+            "Chinese": "跳到分发阴影步骤"
         },
         "skipToRefreshPhase": {
-            "English": "Skip to Refresh Phase"
+            "English": "Skip to Refresh Phase",
+            "French": "Passer à la Phase de Rafraîchissement",
+            "Spanish": "Saltar a la Fase de Refrescamiento",
+            "Portuguese": "Pular para a Fase de Recarregamento",
+            "Italian": "Salta alla Fase di Ricarica",
+            "German": "Zur Erneuerungsphase überspringen",
+            "Chinese": "跳到刷新阶段"
         },
         "advanceThroughRoundStopAtTriggers": {
-            "English": "Advance Through Round"
+            "English": "Advance Through Round",
+            "French": "Avancer à Travers le Tour",
+            "Spanish": "Avanzar a Través del Turno",
+            "Portuguese": "Avançar pelo Turno",
+            "Italian": "Avanza nel Turno",
+            "German": "Durch die Runde fortschreiten",
+            "Chinese": "推进到回合"
         },
         "noLongerInUse": {
             "English": "No longer in use",
-            "Chinese": "不再使用"
+            "Chinese": "不再使用",
+            "French": "Plus en usage",
+            "Spanish": "Ya no está en uso",
+            "Portuguese": "Não está mais em uso",
+            "Italian": "Non più in uso",
+            "German": "Nicht mehr in Gebrauch"
         },
         "advanceToNextPlanningPhaseStopAtTriggers": {
             "English": "Advance to next planning phase (allow trigger reminders to interrupt)",
+            "French": "Avancer à la prochaine phase de planification (permettre aux rappels de déclencheurs d'interrompre)",
+            "Spanish": "Avanzar a la siguiente fase de planificación (permitir que los recordatorios de disparadores interrumpan)",
+            "Portuguese": "Avançar para a próxima fase de planejamento (permitir que os lembretes de gatilho interrompam)",
+            "Italian": "Avanza alla prossima fase di pianificazione (consenti che i promemoria di attivazione interrompano)",
+            "German": "Zur nächsten Planungsphase fortschreiten (Trigger-Erinnerungen zulassen)",
             "Chinese": "推进到下一个计划环节（停在触发器处）"
         },
         "advanceToNextPlanningPhase": {
             "English": "Advance to next planning phase (ignore trigger reminders)",
+            "French": "Avancer à la prochaine phase de planification (ignorer les rappels de déclencheurs)",
+            "Spanish": "Avanzar a la siguiente fase de planificación (ignorar los recordatorios de disparadores)",
+            "Portuguese": "Avançar para a próxima fase de planejamento (ignorar os lembretes de gatilho)",
+            "Italian": "Avanza alla prossima fase di pianificazione (ignora i promemoria di attivazione)",
+            "German": "Zur nächsten Planungsphase fortschreiten (Trigger-Erinnerungen ignorieren)",
             "Chinese": "推进到下一个计划环节"
         },
         "encounter2": {
             "English": "Encounter 2",
+            "French": "Rencontre 2",
+            "Spanish": "Encuentro 2",
+            "Portuguese": "Encontro 2",
+            "Italian": "Incontro 2",
+            "German": "Begegnung 2",
             "Chinese": "遭遇 2"
         },
         "discard2": {
             "English": "Discard 2",
+            "French": "Défausser 2",
+            "Spanish": "Descartar 2",
+            "Portuguese": "Descartar 2",
+            "Italian": "Scartare 2",
+            "German": "Abwerfen 2",
             "Chinese": "弃除 2"
         },
         "allPlayerDecksLoaded": {
             "English": "All player decks loaded",
+            "French": "Tous les paquets de joueurs chargés",
+            "Spanish": "Todos los mazos de jugadores cargados",
+            "Portuguese": "Todos os baralhos de jogadores carregados",
+            "Italian": "Tutti i mazzi dei giocatori caricati",
+            "German": "Alle Spielerdecks geladen",
             "Chinese": "所有玩家牌组已加载"
-        },
+        },        
         "pressMToShowHide": {
             "English": "Press M to show/hide",
+            "French": "Appuyez sur M pour afficher/masquer",
+            "Spanish": "Presiona M para mostrar/ocultar",
+            "Portuguese": "Pressione M para mostrar/ocultar",
+            "Italian": "Premi M per mostrare/nascondere",
+            "German": "Drücke M, um anzuzeigen/auszublenden",
             "Chinese": "按 M 键显示/隐藏"
         },
         "map": {
             "English": "Map",
+            "French": "Carte",
+            "Spanish": "Mapa",
+            "Portuguese": "Mapa",
+            "Italian": "Mappa",
+            "German": "Karte",
             "Chinese": "地图"
         },
         "toggleTheMap": {
             "English": "Toggle the map",
+            "French": "Basculer la carte",
+            "Spanish": "Alternar el mapa",
+            "Portuguese": "Alternar o mapa",
+            "Italian": "Alterna la mappa",
+            "German": "Karte umschalten",
             "Chinese": "切换地图"
         },
         "toggleExtra": {
             "English": "Toggle extra regions",
+            "French": "Basculer les régions supplémentaires",
+            "Spanish": "Alternar regiones extra",
+            "Portuguese": "Alternar regiões extras",
+            "Italian": "Alterna le regioni extra",
+            "German": "Zusätzliche Regionen umschalten",
             "Chinese": "切换额外区域"
         },
         "advanceTheRound": {
             "English": "Advance the round",
+            "French": "Avancer le tour",
+            "Spanish": "Avanzar el turno",
+            "Portuguese": "Avançar o turno",
+            "Italian": "Avanza il turno",
+            "German": "Runde fortschreiten",
             "Chinese": "推进回合"
         },
         "yes": {
             "English": "Yes",
+            "French": "Oui",
+            "Spanish": "Sí",
+            "Portuguese": "Sim",
+            "Italian": "Sì",
+            "German": "Ja",
             "Chinese": "是"
         },
         "no": {
             "English": "No",
+            "French": "Non",
+            "Spanish": "No",
+            "Portuguese": "Não",
+            "Italian": "No",
+            "German": "Nein",
             "Chinese": "否"
         },
         "alwaysDo": {
             "English": "Always do",
+            "French": "Toujours faire",
+            "Spanish": "Hacer siempre",
+            "Portuguese": "Sempre fazer",
+            "Italian": "Sempre fare",
+            "German": "Immer tun",
             "Chinese": "总是执行"
         },
         "always": {
             "English": "Always",
+            "French": "Toujours",
+            "Spanish": "Siempre",
+            "Portuguese": "Sempre",
+            "Italian": "Sempre",
+            "German": "Immer",
             "Chinese": "总是"
         },
         "sharedQuestDiscard": {
             "English": "Shared Quest Discard",
+            "French": "Défausse de Quête Partagée",
+            "Spanish": "Descartar Misión Compartida",
+            "Portuguese": "Descartar Missão Compartilhada",
+            "Italian": "Scarta Missione Condivisa",
+            "German": "Geteilte Quest-Abwurf",
             "Chinese": "共享探险弃牌"
         },
         "sharedQuestDiscard2": {
             "English": "Shared Quest Discard 2",
+            "French": "Défausse de Quête Partagée 2",
+            "Spanish": "Descartar Misión Compartida 2",
+            "Portuguese": "Descartar Missão Compartilhada 2",
+            "Italian": "Scarta Missione Condivisa 2",
+            "German": "Geteilte Quest-Abwurf 2",
             "Chinese": "共享探险弃牌 2"
         },
         "showOnePlayer": {
             "English": "Show 1 player area at a time",
+            "French": "Afficher une zone de joueur à la fois",
+            "Spanish": "Mostrar el área de un jugador a la vez",
+            "Portuguese": "Mostrar área de 1 jogador por vez",
+            "Italian": "Mostra l'area di un giocatore alla volta",
+            "German": "Zeige jeweils einen Spielerbereich",
             "Chinese": "一次只显示一个玩家区域"
         },
         "multiplayerHotkeys": {
             "English": "Multiplayer Hotkeys",
+            "French": "Touches de Raccourci Multijoueur",
+            "Spanish": "Teclas de acceso rápido multijugador",
+            "Portuguese": "Teclas de atalho multiplayer",
+            "Italian": "Tasti di scelta rapida multiplayer",
+            "German": "Multiplayer-Tastenkombinationen",
             "Chinese": "多人模式快捷键"
         },
         "drawACard": {
             "English": "Draw a card",
+            "French": "Piochez une carte",
+            "Spanish": "Robar una carta",
+            "Portuguese": "Puxar uma carta",
+            "Italian": "Pesca una carta",
+            "German": "Eine Karte ziehen",
             "Chinese": "抽取一张卡牌"
         },
         "revealEncounterCard": {
             "English": "Reveal encounter card",
+            "French": "Révéler la carte de rencontre",
+            "Spanish": "Revelar la carta de encuentro",
+            "Portuguese": "Revelar carta de encontro",
+            "Italian": "Scoprire la carta di incontro",
+            "German": "Begegnungskarte aufdecken",
             "Chinese": "翻开遭遇卡牌"
         },
         "revealFacedownEncounterCard": {
             "English": "Reveal facedown encounter card",
+            "French": "Révéler la carte de rencontre face cachée",
+            "Spanish": "Revelar la carta de encuentro boca abajo",
+            "Portuguese": "Revelar carta de encontro virada para baixo",
+            "Italian": "Scoprire la carta di incontro a faccia in giù",
+            "German": "Umgekehrte Begegnungskarte aufdecken",
             "Chinese": "面朝下翻开遭遇卡牌"
         },
         "revealCardFromSecondEncounterDeck": {
             "English": "Reveal card from second encounter deck",
+            "French": "Révéler une carte du deuxième paquet de rencontre",
+            "Spanish": "Revelar carta del segundo mazo de encuentro",
+            "Portuguese": "Revelar carta do segundo baralho de encontro",
+            "Italian": "Scoprire carta dal secondo mazzo di incontro",
+            "German": "Karte aus dem zweiten Begegnungsdeck aufdecken",
             "Chinese": "从第二遭遇牌库翻开卡牌"
         },
         "revealFacedownCardFromSecondEncounterDeck": {
             "English": "Reveal facedown card from second encounter deck",
+            "French": "Révéler la carte face cachée du deuxième paquet de rencontre",
+            "Spanish": "Revelar carta boca abajo del segundo mazo de encuentro",
+            "Portuguese": "Revelar carta virada para baixo do segundo baralho de encontro",
+            "Italian": "Scoprire carta a faccia in giù dal secondo mazzo di incontro",
+            "German": "Umgekehrte Karte aus dem zweiten Begegnungsdeck aufdecken",
             "Chinese": "从第二遭遇牌库翻开遭遇卡牌"
         },
         "drawCardAndGainResourcesIfHostIncrementRound": {
             "English": "Draw card and gain resources. If host, increment round.",
+            "French": "Piochez une carte et gagnez des ressources. Si hôte, incrémentez le tour.",
+            "Spanish": "Robar carta y ganar recursos. Si eres el anfitrión, incrementar turno.",
+            "Portuguese": "Puxar uma carta e ganhar recursos. Se for o host, incrementar o turno.",
+            "Italian": "Pesca una carta e guadagna risorse. Se sei l'ospite, incrementa il turno.",
+            "German": "Eine Karte ziehen und Ressourcen erhalten. Wenn Gastgeber, Runde erhöhen.",
             "Chinese": "抽取卡牌并获得资源。如果当前为主机，回合数+1。"
-        },
+        },   
         "calculateScore": {
             "English": "Calculate score",
+            "French": "Calculer le score",
+            "Spanish": "Calcular puntuación",
+            "Portuguese": "Calcular pontuação",
+            "Italian": "Calcolare il punteggio",
+            "German": "Punkte berechnen",
             "Chinese": "计算分数"
         },
         "refreshAndRaiseThreatIfHostMove1StPlayerToken": {
             "English": "Refresh and raise threat. If host, move 1st player token.",
+            "French": "Rafraîchir et augmenter la menace. Si hôte, déplacer le jeton du premier joueur.",
+            "Spanish": "Recargar y aumentar la amenaza. Si es el anfitrión, mover el token del primer jugador.",
+            "Portuguese": "Recarregar e aumentar a ameaça. Se for o anfitrião, mova o token do primeiro jogador.",
+            "Italian": "Ricarica e aumenta la minaccia. Se è l'host, sposta il token del primo giocatore.",
+            "German": "Erfrischen und Bedrohung erhöhen. Wenn Host, verschiebe das Token des ersten Spielers.",
             "Chinese": "重整并提高威胁。如果当前为主机，移动起始玩家标记。"
         },
         "dealAllShadowCards": {
             "English": "Deal all shadow cards",
+            "French": "Distribuer toutes les cartes d'ombre",
+            "Spanish": "Repartir todas las cartas de sombra",
+            "Portuguese": "Distribuir todas as cartas de sombra",
+            "Italian": "Distribuisci tutte le carte ombra",
+            "German": "Alle Schattenkarten verteilen",
             "Chinese": "分发所有魔影卡牌"
         },
         "discardAllShadowCards": {
             "English": "Discard all shadow cards",
+            "French": "Défausser toutes les cartes d'ombre",
+            "Spanish": "Descartar todas las cartas de sombra",
+            "Portuguese": "Descarte todas as cartas de sombra",
+            "Italian": "Scarta tutte le carte ombra",
+            "German": "Alle Schattenkarten abwerfen",
             "Chinese": "弃除所有魔影卡牌"
         },
         "raiseThreatBy1": {
             "English": "Raise threat by 1",
+            "French": "Augmenter la menace de 1",
+            "Spanish": "Aumentar la amenaza en 1",
+            "Portuguese": "Aumentar a ameaça em 1",
+            "Italian": "Aumenta la minaccia di 1",
+            "German": "Bedrohung um 1 erhöhen",
             "Chinese": "威胁增加1"
         },
         "reduceThreatBy1": {
-            "English": "Reduce threat by 1"
+            "English": "Reduce threat by 1",
+            "French": "Réduire la menace de 1",
+            "Spanish": "Reducir la amenaza en 1",
+            "Portuguese": "Reduzir a ameaça em 1",
+            "Italian": "Riduci la minaccia di 1",
+            "German": "Bedrohung um 1 verringern",
+            "Chinese": "降低威胁1"
         },
         "saveGame": {
             "English": "Save game",
+            "French": "Sauvegarder la partie",
+            "Spanish": "Guardar partida",
+            "Portuguese": "Salvar o jogo",
+            "Italian": "Salva la partita",
+            "German": "Spiel speichern",
             "Chinese": "保存游戏"
         },
         "clearTargetsArrows": {
             "English": "Clear targets/arrows",
+            "French": "Effacer les cibles/flèches",
+            "Spanish": "Borrar objetivos/flechas",
+            "Portuguese": "Limpar alvos/setas",
+            "Italian": "Cancella obiettivi/frecce",
+            "German": "Ziele/Pfeile löschen",
             "Chinese": "清除目标/箭头"
         },
         "undoOneAction": {
             "English": "Undo one action",
+            "French": "Annuler une action",
+            "Spanish": "Deshacer una acción",
+            "Portuguese": "Desfazer uma ação",
+            "Italian": "Annulla un'azione",
+            "German": "Eine Aktion rückgängig machen",
             "Chinese": "撤销一项操作"
         },
         "redoOneAction": {
             "English": "Redo one action",
+            "French": "Refaire une action",
+            "Spanish": "Rehacer una acción",
+            "Portuguese": "Refazer uma ação",
+            "Italian": "Rifai un'azione",
+            "German": "Eine Aktion wiederholen",
             "Chinese": "重做一项操作"
         },
         "moveToPreviousGameStep": {
             "English": "Move to previous game step",
+            "French": "Passer à l'étape précédente du jeu",
+            "Spanish": "Moverse al paso anterior del juego",
+            "Portuguese": "Mover para o passo anterior do jogo",
+            "Italian": "Passa al passo di gioco precedente",
+            "German": "Zum vorherigen Spielschritt wechseln",
             "Chinese": "移动到上一个游戏步骤"
         },
         "moveToNextGameStep": {
             "English": "Move to next game step",
+            "French": "Passer à l'étape suivante du jeu",
+            "Spanish": "Moverse al siguiente paso del juego",
+            "Portuguese": "Mover para o próximo passo do jogo",
+            "Italian": "Passa al passo di gioco successivo",
+            "German": "Zum nächsten Spielschritt wechseln",
             "Chinese": "移动到下一个游戏步骤"
         },
         "moveToPreviousPhase": {
             "English": "Move to previous phase",
+            "French": "Passer à la phase précédente",
+            "Spanish": "Moverse a la fase anterior",
+            "Portuguese": "Mover para a fase anterior",
+            "Italian": "Passa alla fase precedente",
+            "German": "Zur vorherigen Phase wechseln",
             "Chinese": "移动到上一个环节"
         },
         "moveToNextPhase": {
             "English": "Move to next phase",
+            "French": "Passer à la phase suivante",
+            "Spanish": "Moverse a la siguiente fase",
+            "Portuguese": "Mover para a próxima fase",
+            "Italian": "Passa alla fase successiva",
+            "German": "Zur nächsten Phase wechseln",
             "Chinese": "移动到下一个环节"
         },
         "ifHostEnableMultiplayerHotkeys": {
             "English": "If host, enable multiplayer hotkeys",
+            "French": "Si hôte, activer les raccourcis clavier multijoueurs",
+            "Spanish": "Si es el anfitrión, habilite las teclas rápidas para multijugador",
+            "Portuguese": "Se for o anfitrião, ative as teclas de atalho para multijogador",
+            "Italian": "Se sei l'host, abilita le scorciatoie da tastiera per multiplayer",
+            "German": "Wenn Host, aktiviere Mehrspieler-Hotkeys",
             "Chinese": "如果当前为主机，启用多人模式快捷键"
         },
         "pressShiftNForAllPlayers": {
             "English": "Press Shift+N for all players",
+            "French": "Appuyez sur Maj+N pour tous les joueurs",
+            "Spanish": "Presiona Shift+N para todos los jugadores",
+            "Portuguese": "Pressione Shift+N para todos os jogadores",
+            "Italian": "Premi Shift+N per tutti i giocatori",
+            "German": "Drücke Shift+N für alle Spieler",
             "Chinese": "相当于为所有玩家按 Shift+N 键"
         },
         "pressShiftRForAllPlayers": {
             "English": "Press Shift+R for all players",
+            "French": "Appuyez sur Maj+R pour tous les joueurs",
+            "Spanish": "Presiona Shift+R para todos los jugadores",
+            "Portuguese": "Pressione Shift+R para todos os jogadores",
+            "Italian": "Premi Shift+R per tutti i giocatori",
+            "German": "Drücke Shift+R für alle Spieler",
             "Chinese": "相当于为所有玩家按 Shift+R 键"
         },
         "raiseThreatBy1ForAllPlayers": {
             "English": "Raise threat by 1 for all players",
+            "French": "Augmenter la menace de 1 pour tous les joueurs",
+            "Spanish": "Aumentar la amenaza en 1 para todos los jugadores",
+            "Portuguese": "Aumentar a ameaça em 1 para todos os jogadores",
+            "Italian": "Aumenta la minaccia di 1 per tutti i giocatori",
+            "German": "Erhöhe die Bedrohung um 1 für alle Spieler",
             "Chinese": "为所有玩家提高威胁1"
         },
         "reduceThreatBy1ForAllPlayers": {
             "English": "Reduce threat by 1 for all players",
+            "French": "Réduire la menace de 1 pour tous les joueurs",
+            "Spanish": "Reducir la amenaza en 1 para todos los jugadores",
+            "Portuguese": "Reduzir a ameaça em 1 para todos os jogadores",
+            "Italian": "Riduci la minaccia di 1 per tutti i giocatori",
+            "German": "Reduziere die Bedrohung um 1 für alle Spieler",
             "Chinese": "为所有玩家减少威胁1"
         },
         "drawCardOnBehalfOfNextEmptySeat": {
             "English": "Draw card on behalf of next empty seat",
+            "French": "Tirer une carte pour le prochain siège vide",
+            "Spanish": "Robar carta en nombre del siguiente asiento vacío",
+            "Portuguese": "Comprar carta em nome do próximo assento vazio",
+            "Italian": "Pesca una carta per il prossimo posto vuoto",
+            "German": "Ziehe eine Karte für den nächsten freien Platz",
             "Chinese": "替下一个空位抽取卡牌"
         },
         "exhaustReadyIfLocationMakeActive": {
             "English": "Exhaust / ready. If location, make active.",
+            "French": "Épuiser / Préparer. Si c'est un lieu, rendre actif.",
+            "Spanish": "Agotar / Preparar. Si es una ubicación, hacerla activa.",
+            "Portuguese": "Exaurir / Preparar. Se for uma localização, torná-la ativa.",
+            "Italian": "Esaurisci / Rendi pronto. Se è una posizione, rendila attiva.",
+            "German": "Erschöpfen / Bereit. Wenn es ein Ort ist, mache ihn aktiv.",
             "Chinese": "横置 / 重整。如果是地区，则置为当前地区。"
         },
         "detach": {
             "English": "Detach",
+            "French": "Détacher",
+            "Spanish": "Desprender",
+            "Portuguese": "Destacar",
+            "Italian": "Staccare",
+            "German": "Lösen",
             "Chinese": "解除附属"
         },
         "flip": {
             "English": "Flip",
+            "French": "Retourner",
+            "Spanish": "Voltear",
+            "Portuguese": "Virar",
+            "Italian": "Capovolgere",
+            "German": "Umdrehen",
             "Chinese": "翻面"
         },
         "shuffleIntoOwnerSDeck": {
             "English": "Shuffle into owner's deck",
+            "French": "Mélanger dans le deck du propriétaire",
+            "Spanish": "Barajar en el mazo del propietario",
+            "Portuguese": "Embaralhar no baralho do proprietário",
+            "Italian": "Mescola nel mazzo del proprietario",
+            "German": "In das Deck des Besitzers mischen",
             "Chinese": "洗入所有者的牌组"
         },
         "commitUncommitFromQuest": {
             "English": "Commit / uncommit from quest",
+            "French": "Engager / désengager de la quête",
+            "Spanish": "Comprometerse / descomprometerse de la misión",
+            "Portuguese": "Comprometer / descomprometer da missão",
+            "Italian": "Impegnare / disimpegnare dalla quest",
+            "German": "Verpflichten / entpflichten von der Quest",
             "Chinese": "指派 / 取消参与探险"
         },
         "commitUncommitFromQuestWithoutExhaustingReadying": {
             "English": "Commit / uncommit from quest without exhausting / readying",
+            "French": "Engager / désengager de la quête sans épuiser / préparer",
+            "Spanish": "Comprometerse / descomprometerse de la misión sin agotar / preparar",
+            "Portuguese": "Comprometer / descomprometer da missão sem exaurir / preparar",
+            "Italian": "Impegnare / disimpegnare dalla quest senza esaurire / preparare",
+            "German": "Verpflichten / entpflichten von der Quest ohne Erschöpfen / Bereitstellen",
             "Chinese": "指派 / 取消参与探险，无需横置 / 重整"
         },
         "dealShadowCard": {
             "English": "Deal shadow card",
+            "French": "Distribuer une carte d'ombre",
+            "Spanish": "Repartir carta de sombra",
+            "Portuguese": "Distribuir carta de sombra",
+            "Italian": "Distribuisci una carta ombra",
+            "German": "Schattenkarte verteilen",
             "Chinese": "分发魔影卡牌"
         },
         "targetCard": {
             "English": "Target card",
+            "French": "Carte cible",
+            "Spanish": "Carta objetivo",
+            "Portuguese": "Carta alvo",
+            "Italian": "Carta bersaglio",
+            "German": "Zielkarte",
             "Chinese": "目标卡牌"
         },
         "addToVictoryDisplay": {
             "English": "Add to victory display",
+            "French": "Ajouter à l'affichage de victoire",
+            "Spanish": "Agregar al área de victoria",
+            "Portuguese": "Adicionar à exibição de vitória",
+            "Italian": "Aggiungi alla visualizzazione della vittoria",
+            "German": "Zur Siegesanzeige hinzufügen",
             "Chinese": "添加到胜利区"
         },
         "discard": {
             "English": "Discard",
+            "French": "Défausser",
+            "Spanish": "Descartar",
+            "Portuguese": "Descarte",
+            "Italian": "Scartare",
+            "German": "Abwerfen",
             "Chinese": "弃除"
         },
         "discardOrAdvance": {
             "English": "Discard (if quest card, advance quest)",
+            "French": "Défausser (si carte de quête, avancer la quête)",
+            "Spanish": "Descartar (si es una carta de misión, avanzar la misión)",
+            "Portuguese": "Descarte (se for carta de missão, avance a missão)",
+            "Italian": "Scarta (se carta di quest, avanza la quest)",
+            "German": "Abwerfen (wenn Questkarte, Quest vorantreiben)",
             "Chinese": "弃除（如果弃除的是探险卡牌，则推进探险）"
         },
         "discardAllOtherCardsInThisCardSStack": {
             "English": "Discard all other cards in this card's stack",
+            "French": "Défausser toutes les autres cartes dans la pile de cette carte",
+            "Spanish": "Descartar todas las demás cartas en la pila de esta carta",
+            "Portuguese": "Descartar todas as outras cartas na pilha desta carta",
+            "Italian": "Scarta tutte le altre carte in questa pila",
+            "German": "Alle anderen Karten in diesem Stapel abwerfen",
             "Chinese": "弃除此卡堆中的所有其他卡牌"
         },
         "sendAttachmentToBackOfStack": {
             "English": "Send attachment to back of stack",
+            "French": "Envoyer la pièce jointe à l'arrière de la pile",
+            "Spanish": "Enviar el adjunto al final de la pila",
+            "Portuguese": "Enviar o anexo para o final da pilha",
+            "Italian": "Invia l'allegato alla fine della pila",
+            "German": "Anhänge an das Ende des Stapels senden",
             "Chinese": "将附件发送到堆栈后面"
         },
         "triggerAbilityOnlyAvailableForSelectCards": {
             "English": "Trigger ability (only available for select cards)",
+            "French": "Déclencher la capacité (disponible uniquement pour les cartes sélectionnées)",
+            "Spanish": "Desencadenar habilidad (solo disponible para cartas seleccionadas)",
+            "Portuguese": "Desencadear habilidade (disponível apenas para cartas selecionadas)",
+            "Italian": "Attiva abilità (disponibile solo per carte selezionate)",
+            "German": "Fähigkeit auslösen (nur verfügbar für ausgewählte Karten)",
             "Chinese": "触发能力（仅触发选中的卡牌）"
         },
         "layout1Player": {
             "English": "1 player",
+            "French": "1 joueur",
+            "Spanish": "1 jugador",
+            "Portuguese": "1 jogador",
+            "Italian": "1 giocatore",
+            "German": "1 Spieler",
             "Chinese": "单人"
         },
         "layout2Player": {
             "English": "2 players",
+            "French": "2 joueurs",
+            "Spanish": "2 jugadores",
+            "Portuguese": "2 jogadores",
+            "Italian": "2 giocatori",
+            "German": "2 Spieler",
             "Chinese": "双人"
         },
         "layout3Player": {
             "English": "3 players",
+            "French": "3 joueurs",
+            "Spanish": "3 jugadores",
+            "Portuguese": "3 jogadores",
+            "Italian": "3 giocatori",
+            "German": "3 Spieler",
             "Chinese": "三名玩家"
         },
         "layout4Player": {
             "English": "4 players",
+            "French": "4 joueurs",
+            "Spanish": "4 jugadores",
+            "Portuguese": "4 jogadores",
+            "Italian": "4 giocatori",
+            "German": "4 Spieler",
             "Chinese": "四名玩家"
         },
         "layout1PlayerMap": {
             "English": "1 player (Map)",
+            "French": "1 joueur (Carte)",
+            "Spanish": "1 jugador (Mapa)",
+            "Portuguese": "1 jogador (Mapa)",
+            "Italian": "1 giocatore (Mappa)",
+            "German": "1 Spieler (Karte)",
             "Chinese": "单人（地图）"
         },
         "layout2PlayerMap": {
             "English": "2 players (Map)",
+            "French": "2 joueurs (Carte)",
+            "Spanish": "2 jugadores (Mapa)",
+            "Portuguese": "2 jogadores (Mapa)",
+            "Italian": "2 giocatori (Mappa)",
+            "German": "2 Spieler (Karte)",
             "Chinese": "双人（地图）"
         },
         "layout3PlayerMap": {
             "English": "3 players (Map)",
+            "French": "3 joueurs (Carte)",
+            "Spanish": "3 jugadores (Mapa)",
+            "Portuguese": "3 jogadores (Mapa)",
+            "Italian": "3 giocatori (Mappa)",
+            "German": "3 Spieler (Karte)",
             "Chinese": "三名玩家（地图）"
         },
         "layout4PlayerMap": {
             "English": "4 players (Map)",
+            "French": "4 joueurs (Carte)",
+            "Spanish": "4 jugadores (Mapa)",
+            "Portuguese": "4 jogadores (Mapa)",
+            "Italian": "4 giocatori (Mappa)",
+            "German": "4 Spieler (Karte)",
             "Chinese": "四名玩家（地图）"
         },
         "layout2PlayerMultiStaging": {
             "English": "2 players (Multiple Staging Areas)",
+            "French": "2 joueurs (Zones de mise en scène multiples)",
+            "Spanish": "2 jugadores (Áreas de preparación múltiples)",
+            "Portuguese": "2 jogadores (Áreas de Estágio Múltiplas)",
+            "Italian": "2 giocatori (Aree di Preparazione Multiple)",
+            "German": "2 Spieler (Mehrere Vorbereitungsbereiche)",
             "Chinese": "双人（多重探查区域）"
         },
         "layout3PlayerMultiStaging": {
             "English": "3 players (Multiple Staging Areas)",
+            "French": "3 joueurs (Zones de mise en scène multiples)",
+            "Spanish": "3 jugadores (Áreas de preparación múltiples)",
+            "Portuguese": "3 jogadores (Áreas de Estágio Múltiplas)",
+            "Italian": "3 giocatori (Aree di Preparazione Multiple)",
+            "German": "3 Spieler (Mehrere Vorbereitungsbereiche)",
             "Chinese": "三名玩家（多重探查区域）"
         },
         "layout4PlayerMultiStaging": {
             "English": "4 players (Multiple Staging Areas)",
+            "French": "4 joueurs (Zones de mise en scène multiples)",
+            "Spanish": "4 jugadores (Áreas de preparación múltiples)",
+            "Portuguese": "4 jogadores (Áreas de Estágio Múltiplas)",
+            "Italian": "4 giocatori (Aree di Preparazione Multiple)",
+            "German": "4 Spieler (Mehrere Vorbereitungsbereiche)",
             "Chinese": "四名玩家（多重探查区域）"
         },
         "layout1PlayerExtra4": {
             "English": "1 player (4 extra rows)",
+            "French": "1 joueur (4 lignes supplémentaires)",
+            "Spanish": "1 jugador (4 filas adicionales)",
+            "Portuguese": "1 jogador (4 linhas extras)",
+            "Italian": "1 giocatore (4 righe extra)",
+            "German": "1 Spieler (4 zusätzliche Reihen)",
             "Chinese": "单人（额外四行）"
         },
         "layout2PlayerExtra4": {
             "English": "2 players (4 extra rows)",
+            "French": "2 joueurs (4 lignes supplémentaires)",
+            "Spanish": "2 jugadores (4 filas adicionales)",
+            "Portuguese": "2 jogadores (4 linhas extras)",
+            "Italian": "2 giocatori (4 righe extra)",
+            "German": "2 Spieler (4 zusätzliche Reihen)",
             "Chinese": "双人（额外四行）"
         },
         "layout3PlayerExtra4": {
             "English": "3 players (4 extra rows)",
+            "French": "3 joueurs (4 lignes supplémentaires)",
+            "Spanish": "3 jugadores (4 filas adicionales)",
+            "Portuguese": "3 jogadores (4 linhas extras)",
+            "Italian": "3 giocatori (4 righe extra)",
+            "German": "3 Spieler (4 zusätzliche Reihen)",
             "Chinese": "三名玩家（额外四行）"
         },
         "layout4PlayerExtra4": {
             "English": "4 players (4 extra rows)",
+            "French": "4 joueurs (4 lignes supplémentaires)",
+            "Spanish": "4 jugadores (4 filas adicionales)",
+            "Portuguese": "4 jogadores (4 linhas extras)",
+            "Italian": "4 giocatori (4 righe extra)",
+            "German": "4 Spieler (4 zusätzliche Reihen)",
             "Chinese": "四名玩家（额外四行）"
         },
         "alpha": {
             "English": "α",
+            "French": "α",
+            "Spanish": "α",
+            "Portuguese": "α",
+            "Italian": "α",
+            "German": "α",
             "Chinese": "α"
         },
         "resource": {
             "English": "Resource",
+            "French": "Ressource",
+            "Spanish": "Recurso",
+            "Portuguese": "Recurso",
+            "Italian": "Risorsa",
+            "German": "Ressource",
             "Chinese": "资源"
         },
         "planning": {
             "English": "Planning",
+            "French": "Planification",
+            "Spanish": "Planificación",
+            "Portuguese": "Planejamento",
+            "Italian": "Pianificazione",
+            "German": "Planung",
             "Chinese": "计划"
         },
         "quest": {
             "English": "Quest",
+            "French": "Quête",
+            "Spanish": "Misión",
+            "Portuguese": "Missão",
+            "Italian": "Quest",
+            "German": "Quest",
             "Chinese": "探险"
         },
         "travel": {
             "English": "Travel",
+            "French": "Voyage",
+            "Spanish": "Viaje",
+            "Portuguese": "Viagem",
+            "Italian": "Viaggio",
+            "German": "Reise",
             "Chinese": "游历"
         },
         "encounter": {
             "English": "Encounter",
+            "French": "Rencontre",
+            "Spanish": "Encuentro",
+            "Portuguese": "Encontro",
+            "Italian": "Incontro",
+            "German": "Begegnung",
             "Chinese": "遭遇"
         },
         "combat": {
             "English": "Combat",
+            "French": "Combat",
+            "Spanish": "Combate",
+            "Portuguese": "Combate",
+            "Italian": "Combattimento",
+            "German": "Kampf",
             "Chinese": "战斗"
         },
         "refresh": {
             "English": "Refresh",
+            "French": "Rafraîchir",
+            "Spanish": "Refrescar",
+            "Portuguese": "Atualizar",
+            "Italian": "Ricaricare",
+            "German": "Erneuern",
             "Chinese": "恢复"
         },
         "omega": {
             "English": "Ω",
+            "French": "Ω",
+            "Spanish": "Ω",
+            "Portuguese": "Ω",
+            "Italian": "Ω",
+            "German": "Ω",
             "Chinese": "Ω"
         },
         "cardsPerRound": {
             "English": "Cards Per Round",
+            "French": "Cartes par tour",
+            "Spanish": "Cartas por ronda",
+            "Portuguese": "Cartas por rodada",
+            "Italian": "Carte per round",
+            "German": "Karten pro Runde",
             "Chinese": "每轮卡牌数"
         },
         "normalQuest": {
             "English": "Normal Quest",
+            "French": "Quête normale",
+            "Spanish": "Misión normal",
+            "Portuguese": "Missão normal",
+            "Italian": "Quest normale",
+            "German": "Normale Quest",
             "Chinese": "普通探险模式"
         },
         "battleQuest": {
             "English": "Battle Quest",
+            "French": "Quête de bataille",
+            "Spanish": "Misión de batalla",
+            "Portuguese": "Missão de batalha",
+            "Italian": "Quest di battaglia",
+            "German": "Schlacht-Quest",
             "Chinese": "战斗探险模式"
         },
         "siegeQuest": {
             "English": "Siege Quest",
+            "French": "Quête de siège",
+            "Spanish": "Misión de asedio",
+            "Portuguese": "Missão de cerco",
+            "Italian": "Quest d'assedio",
+            "German": "Belagerungs-Quest",
             "Chinese": "围城探险模式"
         },
         "step-0.0": {
             "English": "0.0: Beginning of the round",
+            "French": "0.0: Début du tour",
+            "Spanish": "0.0: Comienzo del turno",
+            "Portuguese": "0.0: Início do turno",
+            "Italian": "0.0: Inizio del turno",
+            "German": "0.0: Beginn der Runde",
             "Chinese": "0.0: 回合开始"
         },
         "step-1.1": {
             "English": "1.1: Beginning of the Resource phase",
+            "French": "1.1: Début de la phase des ressources",
+            "Spanish": "1.1: Comienzo de la fase de recursos",
+            "Portuguese": "1.1: Início da fase de recursos",
+            "Italian": "1.1: Inizio della fase delle risorse",
+            "German": "1.1: Beginn der Ressourcenphase",
             "Chinese": "1.1: 资源环节开始"
         },
         "step-1.2-1.3": {
             "English": "1.2 & 1.3: Gain resources and draw cards - then player actions",
+            "French": "1.2 & 1.3: Gagner des ressources et tirer des cartes - puis actions des joueurs",
+            "Spanish": "1.2 & 1.3: Obtener recursos y robar cartas - luego las acciones de los jugadores",
+            "Portuguese": "1.2 & 1.3: Ganhar recursos e puxar cartas - depois ações dos jogadores",
+            "Italian": "1.2 & 1.3: Guadagnare risorse e pescare carte - poi azioni dei giocatori",
+            "German": "1.2 & 1.3: Ressourcen erhalten und Karten ziehen - dann Spieleraktionen",
             "Chinese": "1.2 & 1.3: 获得资源和抽取卡牌 - 然后玩家行动"
         },
         "step-1.4": {
             "English": "1.4: End of the Resource phase",
+            "French": "1.4 : Fin de la phase de ressources",
+            "Spanish": "1.4: Fin de la fase de recursos",
+            "Portuguese": "1.4: Fim da fase de recursos",
+            "Italian": "1.4: Fine della fase delle risorse",
+            "German": "1.4: Ende der Ressourcenphase",
             "Chinese": "1.4: 资源环节结束"
         },
         "step-2.1": {
             "English": "2.1: Beginning of the Planning phase",
+            "French": "2.1 : Début de la phase de planification",
+            "Spanish": "2.1: Comienzo de la fase de planificación",
+            "Portuguese": "2.1: Início da fase de planejamento",
+            "Italian": "2.1: Inizio della fase di pianificazione",
+            "German": "2.1: Beginn der Planungsphase",
             "Chinese": "2.1: 计划环节开始"
         },
         "step-2.2-2.3": {
             "English": "2.2 & 2.3: Play cards in turn order - player actions throughout",
+            "French": "2.2 & 2.3 : Jouer les cartes dans l'ordre du tour - actions des joueurs tout au long",
+            "Spanish": "2.2 & 2.3: Jugar cartas en orden de turno - acciones del jugador durante todo",
+            "Portuguese": "2.2 & 2.3: Jogar cartas por ordem de turno - ações dos jogadores durante",
+            "Italian": "2.2 & 2.3: Giocare le carte in ordine di turno - azioni dei giocatori durante",
+            "German": "2.2 & 2.3: Karten in Spielreihenfolge spielen - Spieleraktionen während des gesamten Vorgangs",
             "Chinese": "2.2 & 2.3: 按玩家顺位依次打出卡牌 - 玩家可以随时行动"
         },
         "step-2.4": {
             "English": "2.4: End of the Planning phase",
+            "French": "2.4 : Fin de la phase de planification",
+            "Spanish": "2.4: Fin de la fase de planificación",
+            "Portuguese": "2.4: Fim da fase de planejamento",
+            "Italian": "2.4: Fine della fase di pianificazione",
+            "German": "2.4: Ende der Planungsphase",
             "Chinese": "2.4: 计划环节结束"
         },
         "step-3.1": {
             "English": "3.1: Beginning of the Quest phase - then player actions",
+            "French": "3.1 : Début de la phase de quête - puis actions des joueurs",
+            "Spanish": "3.1: Comienzo de la fase de misión - luego acciones del jugador",
+            "Portuguese": "3.1: Início da fase de missão - depois ações dos jogadores",
+            "Italian": "3.1: Inizio della fase di quest - poi azioni dei giocatori",
+            "German": "3.1: Beginn der Questphase - dann Spieleraktionen",
             "Chinese": "3.1: 探险环节开始 - 然后玩家行动"
         },
         "step-3.2": {
             "English": "3.2: Commit characters to the quest - then player actions",
+            "French": "3.2 : Engager des personnages dans la quête - puis actions des joueurs",
+            "Spanish": "3.2: Asignar personajes a la misión - luego acciones del jugador",
+            "Portuguese": "3.2: Enviar personagens para a missão - depois ações dos jogadores",
+            "Italian": "3.2: Impegnare i personaggi nella quest - poi azioni dei giocatori",
+            "German": "3.2: Charaktere für die Quest einsetzen - dann Spieleraktionen",
             "Chinese": "3.2: 指派角色 - 然后玩家行动"
         },
         "step-3.3": {
             "English": "3.3: Staging - then player actions",
+            "French": "3.3 : Mise en scène - puis actions des joueurs",
+            "Spanish": "3.3: Preparación - luego acciones del jugador",
+            "Portuguese": "3.3: Preparação - depois ações dos jogadores",
+            "Italian": "3.3: Preparazione - poi azioni dei giocatori",
+            "German": "3.3: Staging - dann Spieleraktionen",
             "Chinese": "3.3: 探查 - 然后玩家行动"
         },
         "step-3.4": {
             "English": "3.4: Quest resolution - then player actions",
+            "French": "3.4 : Résolution de la quête - puis actions des joueurs",
+            "Spanish": "3.4: Resolución de la misión - luego acciones del jugador",
+            "Portuguese": "3.4: Resolução da missão - depois ações dos jogadores",
+            "Italian": "3.4: Risoluzione della quest - poi azioni dei giocatori",
+            "German": "3.4: Questauflösung - dann Spieleraktionen",
             "Chinese": "3.4: 结算探险 - 然后玩家行动"
         },
         "step-3.5": {
             "English": "3.5: End of the Quest phase",
+            "French": "3.5 : Fin de la phase de quête",
+            "Spanish": "3.5: Fin de la fase de misión",
+            "Portuguese": "3.5: Fim da fase de missão",
+            "Italian": "3.5: Fine della fase di quest",
+            "German": "3.5: Ende der Questphase",
             "Chinese": "3.5: 探险环节结束"
         },
         "step-4.1": {
             "English": "4.1: Beginning of the Travel phase",
-            "Chinese": "4.1: 游历环节"
+            "French": "4.1 : Début de la phase de voyage",
+            "Spanish": "4.1: Comienzo de la fase de viaje",
+            "Portuguese": "4.1: Início da fase de viagem",
+            "Italian": "4.1: Inizio della fase di viaggio",
+            "German": "4.1: Beginn der Reisephase",
+            "Chinese": "4.1: 游历环节开始"
         },
         "step-4.2": {
             "English": "4.2: Travel opportunity - then player actions",
+            "French": "4.2 : Opportunité de voyage - puis actions des joueurs",
+            "Spanish": "4.2: Oportunidad de viaje - luego acciones del jugador",
+            "Portuguese": "4.2: Oportunidade de viagem - depois ações dos jogadores",
+            "Italian": "4.2: Opportunità di viaggio - poi azioni dei giocatori",
+            "German": "4.2: Reisegelegenheit - dann Spieleraktionen",
             "Chinese": "4.2: 游历机会 - 然后玩家行动"
         },
         "step-4.3": {
             "English": "4.3: End of the Travel phase",
+            "French": "4.3 : Fin de la phase de voyage",
+            "Spanish": "4.3: Fin de la fase de viaje",
+            "Portuguese": "4.3: Fim da fase de viagem",
+            "Italian": "4.3: Fine della fase di viaggio",
+            "German": "4.3: Ende der Reisephase",
             "Chinese": "4.3: 游历环节结束"
         },
         "step-5.1": {
             "English": "5.1: Beginning of the Encounter phase",
+            "French": "5.1 : Début de la phase de rencontre",
+            "Spanish": "5.1: Comienzo de la fase de encuentro",
+            "Portuguese": "5.1: Início da fase de encontro",
+            "Italian": "5.1: Inizio della fase di incontro",
+            "German": "5.1: Beginn der Begegnungsphase",
             "Chinese": "5.1: 遭遇环节开始"
         },
         "step-5.2": {
             "English": "5.2: Optional engagement - then player actions",
+            "French": "5.2 : Engagement optionnel - puis actions des joueurs",
+            "Spanish": "5.2: Compromiso opcional - luego acciones del jugador",
+            "Portuguese": "5.2: Engajamento opcional - depois ações dos jogadores",
+            "Italian": "5.2: Impegno opzionale - poi azioni dei giocatori",
+            "German": "5.2: Optionales Engagement - dann Spieleraktionen",
             "Chinese": "5.2: 主动交战 - 然后玩家行动"
         },
         "step-5.3": {
             "English": "5.3: Engagement checks - then player actions",
+            "French": "5.3 : Vérifications d'engagement - puis actions des joueurs",
+            "Spanish": "5.3: Comprobaciones de compromiso - luego acciones del jugador",
+            "Portuguese": "5.3: Verificações de engajamento - depois ações dos jogadores",
+            "Italian": "5.3: Controlli di impegno - poi azioni dei giocatori",
+            "German": "5.3: Engagement-Prüfungen - dann Spieleraktionen",
             "Chinese": "5.3: 交战检定 - 然后玩家行动"
         },
         "step-5.4": {
             "English": "5.4: End of the Encounter phase",
+            "French": "5.4 : Fin de la phase de rencontre",
+            "Spanish": "5.4: Fin de la fase de encuentro",
+            "Portuguese": "5.4: Fim da fase de encontro",
+            "Italian": "5.4: Fine della fase di incontro",
+            "German": "5.4: Ende der Begegnungsphase",
             "Chinese": "5.4: 遭遇环节结束"
         },
         "step-6.1": {
             "English": "6.1: Beginning of the Combat phase",
+            "French": "6.1 : Début de la phase de combat",
+            "Spanish": "6.1: Comienzo de la fase de combate",
+            "Portuguese": "6.1: Início da fase de combate",
+            "Italian": "6.1: Inizio della fase di combattimento",
+            "German": "6.1: Beginn der Kampfphase",
             "Chinese": "6.1: 战斗环节开始"
         },
         "step-6.2": {
             "English": "6.2: Deal shadow cards",
+            "French": "6.2 : Distribuer les cartes d'ombre",
+            "Spanish": "6.2: Repartir cartas de sombra",
+            "Portuguese": "6.2: Distribuir cartas de sombra",
+            "Italian": "6.2: Distribuire carte ombra",
+            "German": "6.2: Schattenkarten austeilen",
             "Chinese": "6.2: 分发魔影卡牌"
         },
         "step-6.3-6.6": {
             "English": "6.3-6.6: Enemy attacks - <u>player actions after each combat substep</u>",
+            "French": "6.3-6.6 : Attaques ennemies - <u>actions des joueurs après chaque sous-étape du combat</u>",
+            "Spanish": "6.3-6.6: Ataques enemigos - <u>acciones del jugador después de cada subpaso de combate</u>",
+            "Portuguese": "6.3-6.6: Ataques inimigos - <u>ações do jogador após cada subetapa de combate</u>",
+            "Italian": "6.3-6.6: Attacchi nemici - <u>azioni dei giocatori dopo ogni sotto-passo di combattimento</u>",
+            "German": "6.3-6.6: Feindangriffe - <u>Spieleraktionen nach jedem Kampfunter-Schritt</u>",
             "Chinese": "6.3-6.6: 敌人攻击 - <u>每个战斗步骤后玩家行动</u>"
         },
         "step-6.7-6.10": {
             "English": "6.7-6.10: Player attacks - <u>player actions after each combat substep</u>",
+            "French": "6.7-6.10 : Attaques des joueurs - <u>actions des joueurs après chaque sous-étape du combat</u>",
+            "Spanish": "6.7-6.10: Ataques de los jugadores - <u>acciones del jugador después de cada subpaso de combate</u>",
+            "Portuguese": "6.7-6.10: Ataques dos jogadores - <u>ações do jogador após cada subetapa de combate</u>",
+            "Italian": "6.7-6.10: Attacchi dei giocatori - <u>azioni dei giocatori dopo ogni sotto-passo di combattimento</u>",
+            "German": "6.7-6.10: Spielerangriffe - <u>Spieleraktionen nach jedem Kampfunter-Schritt</u>",
             "Chinese": "6.7-6.10: 玩家攻击 - <u>每个战斗步骤后玩家行动</u>"
         },
         "step-6.11": {
             "English": "6.11: End of the Combat phase",
+            "French": "6.11 : Fin de la phase de combat",
+            "Spanish": "6.11: Fin de la fase de combate",
+            "Portuguese": "6.11: Fim da fase de combate",
+            "Italian": "6.11: Fine della fase di combattimento",
+            "German": "6.11: Ende der Kampfphase",
             "Chinese": "6.11: 战斗环节结束"
         },
         "step-7.1": {
             "English": "7.1: Beginning of the Refresh phase",
+            "French": "7.1 : Début de la phase de rafraîchissement",
+            "Spanish": "7.1: Comienzo de la fase de recarga",
+            "Portuguese": "7.1: Início da fase de recarga",
+            "Italian": "7.1: Inizio della fase di aggiornamento",
+            "German": "7.1: Beginn der Erfrischungsphase",
             "Chinese": "7.1: 恢复环节开始"
         },
         "step-7.2-7.4": {
             "English": "7.2-7.4: Ready cards, raise threat, pass P1 token - then player actions",
+            "French": "7.2-7.4 : Préparer les cartes, augmenter la menace, passer le jeton P1 - puis actions des joueurs",
+            "Spanish": "7.2-7.4: Preparar cartas, aumentar amenaza, pasar el token P1 - luego acciones del jugador",
+            "Portuguese": "7.2-7.4: Preparar cartas, aumentar ameaça, passar token P1 - depois ações do jogador",
+            "Italian": "7.2-7.4: Preparare le carte, aumentare la minaccia, passare il token P1 - poi azioni dei giocatori",
+            "German": "7.2-7.4: Karten vorbereiten, Bedrohung erhöhen, P1-Token weitergeben - dann Spieleraktionen",
             "Chinese": "7.2-7.4: 重整卡牌，增加威胁，传递起始玩家标记 - 然后玩家行动"
         },
         "step-7.5": {
             "English": "7.5: End of the Refresh phase",
+            "French": "7.5 : Fin de la phase de rafraîchissement",
+            "Spanish": "7.5: Fin de la fase de recarga",
+            "Portuguese": "7.5: Fim da fase de recarga",
+            "Italian": "7.5: Fine della fase di aggiornamento",
+            "German": "7.5: Ende der Erfrischungsphase",
             "Chinese": "7.5: 恢复环节结束"
         },
         "step-0.1": {
             "English": "0.1: End of the round",
+            "French": "0.1 : Fin du tour",
+            "Spanish": "0.1: Fin del turno",
+            "Portuguese": "0.1: Fim da rodada",
+            "Italian": "0.1: Fine del turno",
+            "German": "0.1: Ende der Runde",
             "Chinese": "0.1: 回合结束"
         },
         "resourceToken": {
             "English": "Resource",
+            "French": "Ressource",
+            "Spanish": "Recurso",
+            "Portuguese": "Recurso",
+            "Italian": "Risorsa",
+            "German": "Ressource",
             "Chinese": "资源"
         },
         "progressToken": {
             "English": "Progress",
+            "French": "Progrès",
+            "Spanish": "Progreso",
+            "Portuguese": "Progresso",
+            "Italian": "Progresso",
+            "German": "Fortschritt",
             "Chinese": "进度"
         },
         "damageToken": {
             "English": "Damage",
+            "French": "Dégâts",
+            "Spanish": "Daño",
+            "Portuguese": "Dano",
+            "Italian": "Danno",
+            "German": "Schaden",
             "Chinese": "伤害"
         },
         "timeToken": {
             "English": "Time",
+            "French": "Temps",
+            "Spanish": "Tiempo",
+            "Portuguese": "Tempo",
+            "Italian": "Tempo",
+            "German": "Zeit",
             "Chinese": "时间"
         },
         "willpowerToken": {
             "English": "Willpower",
+            "French": "Volonté",
+            "Spanish": "Voluntad",
+            "Portuguese": "Vontade",
+            "Italian": "Volontà",
+            "German": "Willenskraft",
             "Chinese": "意志"
         },
         "threatToken": {
             "English": "Threat",
+            "French": "Menace",
+            "Spanish": "Amenaza",
+            "Portuguese": "Ameaça",
+            "Italian": "Minaccia",
+            "German": "Bedrohung",
             "Chinese": "威胁"
         },
         "attackToken": {
             "English": "Attack",
+            "French": "Attaque",
+            "Spanish": "Ataque",
+            "Portuguese": "Ataque",
+            "Italian": "Attacco",
+            "German": "Angriff",
             "Chinese": "攻击"
         },
         "defenseToken": {
             "English": "Defense",
+            "French": "Défense",
+            "Spanish": "Defensa",
+            "Portuguese": "Defesa",
+            "Italian": "Difesa",
+            "German": "Verteidigung",
             "Chinese": "防御"
         },
         "hitPointToken": {
             "English": "Hit Point",
+            "French": "Point de Vie",
+            "Spanish": "Punto de Vida",
+            "Portuguese": "Ponto de Vida",
+            "Italian": "Punto Vita",
+            "German": "Lebenspunkte",
             "Chinese": "生命值"
+        },
+        "questPointToken": {
+            "English": "Quest Point",
+            "French": "Point de Quête",
+            "Spanish": "Punto de Misión",
+            "Portuguese": "Ponto de Missão",
+            "Italian": "Punto Quest",
+            "German": "Quest-Punkt",
+            "Chinese": "探险点"
+        },
+        "engagementCostToken": {
+            "English": "Engagement Cost",
+            "French": "Coût d'Engagement",
+            "Spanish": "Coste de Compromiso",
+            "Portuguese": "Custo de Engajamento",
+            "Italian": "Costo di Impegno",
+            "German": "Engagement-Kosten",
+            "Chinese": "交战成本"
         },
         "round": {
             "English": "Round",
+            "French": "Tour",
+            "Spanish": "Ronda",
+            "Portuguese": "Rodada",
+            "Italian": "Turno",
+            "German": "Runde",
             "Chinese": "回合"
         },
         "stagingThreat": {
             "English": "Staging Threat",
+            "French": "Menace de mise en place",
+            "Spanish": "Amenaza de preparación",
+            "Portuguese": "Ameaça de preparação",
+            "Italian": "Minaccia di messa in gioco",
+            "German": "Bedrohung in der Auslage",
             "Chinese": "探查区威胁"
         },
         "stagingProgress": {
             "English": "Staging Progress",
+            "French": "Progrès de mise en place",
+            "Spanish": "Progreso de preparación",
+            "Portuguese": "Progresso de preparação",
+            "Italian": "Progresso di messa in gioco",
+            "German": "Fortschritt in der Auslage",
             "Chinese": "探查进度"
         },
         "threat": {
             "English": "Threat",
+            "French": "Menace",
+            "Spanish": "Amenaza",
+            "Portuguese": "Ameaça",
+            "Italian": "Minaccia",
+            "German": "Bedrohung",
             "Chinese": "威胁"
         },
         "questingWillpower": {
             "English": "Questing Willpower",
+            "French": "Volonté de quête",
+            "Spanish": "Voluntad para la misión",
+            "Portuguese": "Vontade para a missão",
+            "Italian": "Volontà per la quest",
+            "German": "Willenskraft für die Quest",
             "Chinese": "探查意志力"
         },
         "willpower": {
             "English": "Willpower",
+            "French": "Volonté",
+            "Spanish": "Voluntad",
+            "Portuguese": "Vontade",
+            "Italian": "Volontà",
+            "German": "Willenskraft",
             "Chinese": "意志"
         },
         "removeTokens": {
             "English": "Remove Tokens",
+            "French": "Supprimer les jetons",
+            "Spanish": "Eliminar los tokens",
+            "Portuguese": "Remover tokens",
+            "Italian": "Rimuovi i token",
+            "German": "Tokens entfernen",
             "Chinese": "移除标记"
         },
-        "exhautReady": {
+        "exhaustReady": {
             "English": "Exhaust Ready",
+            "French": "Épuiser / Préparer",
+            "Spanish": "Agotar / Preparar",
+            "Portuguese": "Exaurir / Preparar",
+            "Italian": "Esaurire / Preparare",
+            "German": "Erschöpfen / Bereitstellen",
             "Chinese": "横置重整"
         },
         "commit": {
             "English": "Commit",
+            "French": "Engager",
+            "Spanish": "Comprometerse",
+            "Portuguese": "Comprometer",
+            "Italian": "Impegnare",
+            "German": "Verpflichten",
             "Chinese": "指派"
         },
         "shuffle": {
             "English": "Shuffle",
+            "French": "Mélanger",
+            "Spanish": "Barajar",
+            "Portuguese": "Embaralhar",
+            "Italian": "Mescolare",
+            "German": "Mischen",
             "Chinese": "洗牌"
         },
         "flipTouchButton": {
             "English": "Flip",
+            "French": "Retourner",
+            "Spanish": "Voltear",
+            "Portuguese": "Virar",
+            "Italian": "Capovolgere",
+            "German": "Umdrehen",
             "Chinese": "翻面"
         },
         "shadow": {
             "English": "Shadow",
+            "French": "Ombre",
+            "Spanish": "Sombra",
+            "Portuguese": "Sombra",
+            "Italian": "Ombra",
+            "German": "Schatten",
             "Chinese": "魔影"
         },
         "discardTouchButton": {
             "English": "Discard",
+            "French": "Défausser",
+            "Spanish": "Descartar",
+            "Portuguese": "Descarte",
+            "Italian": "Scartare",
+            "German": "Abwerfen",
             "Chinese": "弃除"
         },
         "target": {
             "English": "Target",
+            "French": "Cible",
+            "Spanish": "Objetivo",
+            "Portuguese": "Alvo",
+            "Italian": "Bersaglio",
+            "German": "Ziel",
             "Chinese": "标记"
         },
         "victory": {
             "English": "Victory",
+            "French": "Victoire",
+            "Spanish": "Victoria",
+            "Portuguese": "Vitória",
+            "Italian": "Vittoria",
+            "German": "Sieg",
             "Chinese": "胜利"
         },
         "drawArrow": {
             "English": "Draw Arrow",
+            "French": "Dessiner une flèche",
+            "Spanish": "Dibujar flecha",
+            "Portuguese": "Desenhar seta",
+            "Italian": "Disegna freccia",
+            "German": "Pfeil ziehen",
             "Chinese": "画箭头"
         },
         "draw": {
             "English": "Draw",
+            "French": "Tirer",
+            "Spanish": "Robar",
+            "Portuguese": "Comprar",
+            "Italian": "Pesca",
+            "German": "Ziehe",
             "Chinese": "抽取"
         },
         "reveal": {
             "English": "Reveal",
+            "French": "Révéler",
+            "Spanish": "Revelar",
+            "Portuguese": "Revelar",
+            "Italian": "Rivelare",
+            "German": "Aufdecken",
             "Chinese": "翻开"
         },
         "shadows": {
             "English": "Shadows",
+            "French": "Ombres",
+            "Spanish": "Sombras",
+            "Portuguese": "Sombras",
+            "Italian": "Ombre",
+            "German": "Schatten",
             "Chinese": "魔影"
         },
         "discardShadows": {
             "English": "Discard shadows",
+            "French": "Défausser les ombres",
+            "Spanish": "Descartar sombras",
+            "Portuguese": "Descartar sombras",
+            "Italian": "Scartare le ombre",
+            "German": "Schatten abwerfen",
             "Chinese": "弃除魔影"
         },
         "refreshTouchButton": {
             "English": "Refresh",
+            "French": "Rafraîchir",
+            "Spanish": "Recargar",
+            "Portuguese": "Recarregar",
+            "Italian": "Ricaricare",
+            "German": "Erfrischen",
             "Chinese": "恢复"
         },
         "newRound": {
             "English": "New round (Deprecated)",
+            "French": "Nouveau tour (Obsolète)",
+            "Spanish": "Nuevo turno (Descontinuado)",
+            "Portuguese": "Nova rodada (Descontinuado)",
+            "Italian": "Nuovo turno (Deprecato)",
+            "German": "Neue Runde (Veraltet)",
             "Chinese": "新回合（已弃用）"
         },
         "clearTargets": {
             "English": "Clear Targets",
+            "French": "Effacer les cibles",
+            "Spanish": "Borrar objetivos",
+            "Portuguese": "Limpar alvos",
+            "Italian": "Cancella obiettivi",
+            "German": "Ziele löschen",
             "Chinese": "清除标记"
         },
         "undo": {
             "English": "Undo",
+            "French": "Annuler",
+            "Spanish": "Deshacer",
+            "Portuguese": "Desfazer",
+            "Italian": "Annulla",
+            "German": "Rückgängig",
             "Chinese": "撤销"
         },
         "undoMany": {
             "English": "Undo many",
+            "French": "Annuler plusieurs",
+            "Spanish": "Deshacer muchas",
+            "Portuguese": "Desfazer várias",
+            "Italian": "Annulla più",
+            "German": "Mehrere rückgängig machen",
             "Chinese": "撤销多步"
         },
         "nextStep": {
             "English": "Next step",
+            "French": "Prochaine étape",
+            "Spanish": "Próximo paso",
+            "Portuguese": "Próximo passo",
+            "Italian": "Passo successivo",
+            "German": "Nächster Schritt",
             "Chinese": "下一步骤"
         },
         "raiseThreat": {
             "English": "Raise threat",
+            "French": "Augmenter la menace",
+            "Spanish": "Aumentar la amenaza",
+            "Portuguese": "Aumentar a ameaça",
+            "Italian": "Aumenta la minaccia",
+            "German": "Bedrohung erhöhen",
             "Chinese": "提高威胁"
         },
         "reduceThreat": {
             "English": "Reduce threat",
+            "French": "Réduire la menace",
+            "Spanish": "Reducir la amenaza",
+            "Portuguese": "Reduzir a ameaça",
+            "Italian": "Riduci la minaccia",
+            "German": "Bedrohung verringern",
             "Chinese": "降低威胁"
         },
         "save": {
             "English": "Save",
+            "French": "Sauvegarder",
+            "Spanish": "Guardar",
+            "Portuguese": "Salvar",
+            "Italian": "Salva",
+            "German": "Speichern",
             "Chinese": "保存"
         },
         "reveal2": {
             "English": "Reveal #2",
+            "French": "Révéler #2",
+            "Spanish": "Revelar #2",
+            "Portuguese": "Revelar #2",
+            "Italian": "Rivelare #2",
+            "German": "Aufdecken #2",
             "Chinese": "翻开 #2"
         },
         "mulligan": {
             "English": "Mulligan",
+            "French": "Mulligan",
+            "Spanish": "Mulligan",
+            "Portuguese": "Mulligan",
+            "Italian": "Mulligan",
+            "German": "Mulligan",
             "Chinese": "重新抽牌"
         },
         "score": {
             "English": "Score",
+            "French": "Score",
+            "Spanish": "Puntuación",
+            "Portuguese": "Pontuação",
+            "Italian": "Punteggio",
+            "German": "Punkte",
             "Chinese": "计分"
         },
         "toggleExhaust": {
             "English": "Exhaust/Ready",
+            "French": "Épuisé/Prêt",
+            "Spanish": "Agotar/Listo",
+            "Portuguese": "Esgotar/Preparar",
+            "Italian": "Sfinito/Ripristina",
+            "German": "Erschöpft/Bereit",
             "Chinese": "横置/重整"
         },
         "labelMarkAsVictory": {
             "English": "Mark as Victory",
+            "French": "Marquer comme victoire",
+            "Spanish": "Marcar como victoria",
+            "Portuguese": "Marcar como vitória",
+            "Italian": "Segna come vittoria",
+            "German": "Als Sieg markieren",
             "Chinese": "标记为胜利"
         },
         "labelMarkAsDefeat": {
             "English": "Mark as Defeat",
+            "French": "Marquer comme défaite",
+            "Spanish": "Marcar como derrota",
+            "Portuguese": "Marcar como derrota",
+            "Italian": "Segna come sconfitta",
+            "German": "Als Niederlage markieren",
             "Chinese": "标记为失败"
         },
         "labelMarkAsIncomplete": {
             "English": "Mark as Incomplete",
+            "French": "Marquer comme incomplet",
+            "Spanish": "Marcar como incompleto",
+            "Portuguese": "Marcar como incompleto",
+            "Italian": "Segna come incompleto",
+            "German": "Als unvollständig markieren",
             "Chinese": "标记为未完成"
         },
         "easy": {
             "English": "Easy",
+            "French": "Facile",
+            "Spanish": "Fácil",
+            "Portuguese": "Fácil",
+            "Italian": "Facile",
+            "German": "Einfach",
             "Chinese": "简单"
         },
         "normal": {
             "English": "Normal",
+            "French": "Normal",
+            "Spanish": "Normal",
+            "Portuguese": "Normal",
+            "Italian": "Normale",
+            "German": "Normal",
             "Chinese": "标准"
         },
         "nightmare": {
             "English": "Nightmare",
+            "French": "Cauchemar",
+            "Spanish": "Pesadilla",
+            "Portuguese": "Pesadelo",
+            "Italian": "Incubo",
+            "German": "Alptraum",
             "Chinese": "噩梦"
         },
         "Core Set & Shadows of Mirkwood": {
             "English": "Core Set & Shadows of Mirkwood",
+            "French": "Jeu de base & Les Ombres de Mirkwood",
+            "Spanish": "Juego base & Sombras de Mirkwood",
+            "Portuguese": "Conjunto Básico & Sombras de Mirkwood",
+            "Italian": "Set base & Le ombre di Mirkwood",
+            "German": "Kernset & Schatten von Mirkwood",
             "Chinese": "核心包 & 幽暗密林的阴影"
         },
         "Passage Through Mirkwood": {
             "English": "Passage Through Mirkwood",
+            "French": "Passage à travers Mirkwood",
+            "Spanish": "Paso a través de Mirkwood",
+            "Portuguese": "Passagem por Mirkwood",
+            "Italian": "Passaggio attraverso Mirkwood",
+            "German": "Durchgang durch Mirkwood",
             "Chinese": "穿越黑森林"
         },
         "Journey Along the Anduin": {
             "English": "Journey Along the Anduin",
+            "French": "Voyage le long de l'Anduin",
+            "Spanish": "Viaje a lo largo del Anduin",
+            "Portuguese": "Jornada ao longo do Anduin",
+            "Italian": "Viaggio lungo l'Anduin",
+            "German": "Reise entlang des Anduin",
             "Chinese": "沿河而下"
         },
         "Escape from Dol Guldur": {
             "English": "Escape from Dol Guldur",
+            "French": "Évasion de Dol Guldur",
+            "Spanish": "Escape de Dol Guldur",
+            "Portuguese": "Fuga de Dol Guldur",
+            "Italian": "Fuga da Dol Guldur",
+            "German": "Flucht aus Dol Guldur",
             "Chinese": "逃离多古尔都"
         },
         "The Hunt for Gollum": {
             "English": "The Hunt for Gollum",
+            "French": "La Chasse à Gollum",
+            "Spanish": "La Caza de Gollum",
+            "Portuguese": "A Caçada a Gollum",
+            "Italian": "La Caccia a Gollum",
+            "German": "Die Jagd nach Gollum",
             "Chinese": "追捕咕噜"
         },
         "Conflict at the Carrock": {
             "English": "Conflict at the Carrock",
+            "French": "Conflit à Carrock",
+            "Spanish": "Conflicto en Carrock",
+            "Portuguese": "Conflito no Carrock",
+            "Italian": "Conflitto al Carrock",
+            "German": "Konflikt am Carrock",
             "Chinese": "激战卡洛克"
         },
         "A Journey to Rhosgobel": {
             "English": "A Journey to Rhosgobel",
+            "French": "Un voyage à Rhosgobel",
+            "Spanish": "Un viaje a Rhosgobel",
+            "Portuguese": "Uma jornada para Rhosgobel",
+            "Italian": "Un viaggio a Rhosgobel",
+            "German": "Eine Reise nach Rhosgobel",
             "Chinese": "罗斯加堡之旅"
         },
         "The Hills of Emyn Muil": {
             "English": "The Hills of Emyn Muil",
+            "French": "Les collines d'Emyn Muil",
+            "Spanish": "Las colinas de Emyn Muil",
+            "Portuguese": "As Colinas de Emyn Muil",
+            "Italian": "Le colline di Emyn Muil",
+            "German": "Die Hügel von Emyn Muil",
             "Chinese": "艾明穆尔山丘"
         },
         "The Dead Marshes": {
             "English": "The Dead Marshes",
+            "French": "Les marais morts",
+            "Spanish": "Los pantanos muertos",
+            "Portuguese": "Os Pântanos Mortos",
+            "Italian": "Le Paludi Morte",
+            "German": "Die Toten Moore",
             "Chinese": "死亡沼泽"
         },
         "Return to Mirkwood": {
             "English": "Return to Mirkwood",
+            "French": "Retour à Mirkwood",
+            "Spanish": "Regreso a Mirkwood",
+            "Portuguese": "Retorno a Mirkwood",
+            "Italian": "Ritorno a Mirkwood",
+            "German": "Rückkehr nach Mirkwood",
             "Chinese": "重返幽暗密林"
         },
         "Khazad-dûm & Dwarrowdelf": {
             "English": "Khazad-dûm & Dwarrowdelf",
+            "French": "Khazad-dûm & Dwarrowdelf",
+            "Spanish": "Khazad-dûm & Dwarrowdelf",
+            "Portuguese": "Khazad-dûm & Dwarrowdelf",
+            "Italian": "Khazad-dûm & Dwarrowdelf",
+            "German": "Khazad-dûm & Dwarrowdelf",
             "Chinese": "凯撒督姆 & 矮人故乡"
         },
         "Into the Pit": {
             "English": "Into the Pit",
+            "French": "Dans le Puits",
+            "Spanish": "En el Pozo",
+            "Portuguese": "No Poço",
+            "Italian": "Nel Pozzo",
+            "German": "In die Grube",
             "Chinese": "深入矿坑"
         },
         "The Seventh Level": {
             "English": "The Seventh Level",
+            "French": "Le Septième Niveau",
+            "Spanish": "El Séptimo Nivel",
+            "Portuguese": "O Sétimo Nível",
+            "Italian": "Il Settimo Livello",
+            "German": "Die Siebte Ebene",
             "Chinese": "第七层"
         },
         "Flight from Moria": {
             "English": "Flight from Moria",
+            "French": "Fuite de Moria",
+            "Spanish": "Huida de Moria",
+            "Portuguese": "Fuga de Moria",
+            "Italian": "Fuga da Moria",
+            "German": "Flucht aus Moria",
             "Chinese": "逃离摩瑞亚"
         },
         "The Redhorn Gate": {
             "English": "The Redhorn Gate",
+            "French": "La Porte du Cor Rouge",
+            "Spanish": "La Puerta del Cuerno Rojo",
+            "Portuguese": "A Porta do Corno Vermelho",
+            "Italian": "La Porta del Corno Rosso",
+            "German": "Das Rote Horn Tor",
             "Chinese": "红角隘口"
         },
         "Road to Rivendell": {
             "English": "Road to Rivendell",
+            "French": "Route vers Fondcombe",
+            "Spanish": "Camino a Rivendel",
+            "Portuguese": "Caminho para Rivendell",
+            "Italian": "La Strada per Rivendell",
+            "German": "Der Weg nach Rivendell",
             "Chinese": "瑞文戴尔之路"
         },
         "The Watcher in the Water": {
             "English": "The Watcher in the Water",
+            "French": "Le Guetteur dans l'Eau",
+            "Spanish": "El Vigilante en el Agua",
+            "Portuguese": "O Vigia na Água",
+            "Italian": "Il Guardiano nell'Acqua",
+            "German": "Der Wächter im Wasser",
             "Chinese": "水中监视者"
         },
         "The Long Dark": {
             "English": "The Long Dark",
+            "French": "La Longue Nuit",
+            "Spanish": "La Larga Oscuridad",
+            "Portuguese": "A Longa Escuridão",
+            "Italian": "La Lunga Oscurità",
+            "German": "Die Lange Dunkelheit",
             "Chinese": "漫长的黑暗"
         },
         "Foundations of Stone": {
             "English": "Foundations of Stone",
+            "French": "Les Fondations de Pierre",
+            "Spanish": "Las Fundaciones de Piedra",
+            "Portuguese": "As Fundamentos de Pedra",
+            "Italian": "Le Fondamenta di Pietra",
+            "German": "Fundamente aus Stein",
             "Chinese": "大地的根基"
         },
         "Shadow and Flame": {
             "English": "Shadow and Flame",
+            "French": "Ombre et Flamme",
+            "Spanish": "Sombra y Llama",
+            "Portuguese": "Sombra e Chama",
+            "Italian": "Ombra e Fiamma",
+            "German": "Schatten und Flamme",
             "Chinese": "暗影与烈焰"
         },
         "Heirs of Númenor & Against the Shadow": {
             "English": "Heirs of Númenor & Against the Shadow",
+            "French": "Les Héritiers de Númenor & Contre l'Ombre",
+            "Spanish": "Hijos de Númenor & Contra la Sombra",
+            "Portuguese": "Heróis de Númenor & Contra a Sombra",
+            "Italian": "Eredi di Númenor & Contro l'Ombra",
+            "German": "Erben von Númenor & Gegen den Schatten",
             "Chinese": "努门诺尔的后裔 & 对抗暗影"
         },
         "Peril In Pelargir": {
             "English": "Peril In Pelargir",
+            "French": "Péril à Pelargir",
+            "Spanish": "Peligro en Pelargir",
+            "Portuguese": "Perigo em Pelargir",
+            "Italian": "Pericolo a Pelargir",
+            "German": "Gefahr in Pelargir",
             "Chinese": "危险的佩拉格"
         },
         "Into Ithilien": {
             "English": "Into Ithilien",
+            "French": "Dans l'Ithilien",
+            "Spanish": "En Ithilien",
+            "Portuguese": "Em Ithilien",
+            "Italian": "In Ithilien",
+            "German": "Nach Ithilien",
             "Chinese": "深入伊西利安"
         },
         "The Siege of Cair Andros": {
             "English": "The Siege of Cair Andros",
+            "French": "Le Siège de Cair Andros",
+            "Spanish": "El Asedio de Cair Andros",
+            "Portuguese": "O Cerco de Cair Andros",
+            "Italian": "L'Assedio di Cair Andros",
+            "German": "Die Belagerung von Cair Andros",
             "Chinese": "围攻凯尔安卓斯"
         },
         "The Steward's Fear": {
             "English": "The Steward's Fear",
+            "French": "La Peur du Régent",
+            "Spanish": "El Miedo del Regente",
+            "Portuguese": "O Medo do Regente",
+            "Italian": "La Paura del Sovrintendente",
+            "German": "Die Angst des Verwalters",
             "Chinese": "摄政王的恐惧"
         },
         "The Drúadan Forest": {
             "English": "The Drúadan Forest",
+            "French": "La Forêt Drúadain",
+            "Spanish": "El Bosque Drúadan",
+            "Portuguese": "A Floresta Drúadan",
+            "Italian": "La Foresta Drúadan",
+            "German": "Der Drúadanwald",
             "Chinese": "督伊顿森林"
         },
         "Encounter at Amon Dîn": {
             "English": "Encounter at Amon Dîn",
+            "French": "Rencontre à Amon Dîn",
+            "Spanish": "Encuentro en Amon Dîn",
+            "Portuguese": "Encontro em Amon Dîn",
+            "Italian": "Incontro a Amon Dîn",
+            "German": "Begegnung bei Amon Dîn",
             "Chinese": "阿蒙丁山的遭遇"
         },
         "Assault on Osgiliath": {
             "English": "Assault on Osgiliath",
+            "French": "Assaut sur Osgiliath",
+            "Spanish": "Asalto a Osgiliath",
+            "Portuguese": "Assalto a Osgiliath",
+            "Italian": "Assalto a Osgiliath",
+            "German": "Angriff auf Osgiliath",
             "Chinese": "强袭奥斯吉力亚斯"
         },
         "The Blood of Gondor": {
             "English": "The Blood of Gondor",
+            "French": "Le Sang de Gondor",
+            "Spanish": "La Sangre de Gondor",
+            "Portuguese": "O Sangue de Gondor",
+            "Italian": "Il Sangue di Gondor",
+            "German": "Das Blut von Gondor",
             "Chinese": "刚铎之血"
         },
         "The Morgul Vale": {
             "English": "The Morgul Vale",
+            "French": "La Vallée de Morgul",
+            "Spanish": "El Valle de Morgul",
+            "Portuguese": "O Vale Morgul",
+            "Italian": "La Valle di Morgul",
+            "German": "Das Morgul-Tal",
             "Chinese": "魔窟谷"
         },
         "The Voice of Isengard & The Ringmaker": {
             "English": "The Voice of Isengard & The Ringmaker",
+            "French": "La Voix d'Isengard & Le Forgeron des Anneaux",
+            "Spanish": "La Voz de Isengard & El Creador de Anillos",
+            "Portuguese": "A Voz de Isengard & O Criador de Anéis",
+            "Italian": "La Voce di Isengard & Il Fabbro degli Anelli",
+            "German": "Die Stimme von Isengard & Der Ringeschmied",
             "Chinese": "艾辛格之声 & 铸戒者"
         },
         "Fords of Isen": {
             "English": "Fords of Isen",
+            "French": "Les Gués de l'Isen",
+            "Spanish": "Los Vados de Isen",
+            "Portuguese": "Os Vados de Isen",
+            "Italian": "I Guadi di Isen",
+            "German": "Die Furten von Isen",
             "Chinese": "艾辛河渡口"
         },
         "To Catch an Orc": {
             "English": "To Catch an Orc",
+            "French": "Attraper un Orque",
+            "Spanish": "Atrapar un Orco",
+            "Portuguese": "Capturar um Orque",
+            "Italian": "Catturare un Orco",
+            "German": "Einen Ork fangen",
             "Chinese": "活捉半兽人"
         },
         "Into Fangorn": {
             "English": "Into Fangorn",
+            "French": "Dans Fangorn",
+            "Spanish": "En Fangorn",
+            "Portuguese": "Em Fangorn",
+            "Italian": "Dentro Fangorn",
+            "German": "In Fangorn",
             "Chinese": "进入法贡森林"
         },
         "The Dunland Trap": {
             "English": "The Dunland Trap",
+            "French": "Le Piège de Dunland",
+            "Spanish": "La Trampa de Dunland",
+            "Portuguese": "A Armadilha de Dunland",
+            "Italian": "La Trappola di Dunland",
+            "German": "Die Falle von Dunland",
             "Chinese": "登兰德的陷阱"
         },
         "The Three Trials": {
             "English": "The Three Trials",
+            "French": "Les Trois Épreuves",
+            "Spanish": "Las Tres Pruebas",
+            "Portuguese": "Os Três Desafios",
+            "Italian": "Le Tre Prove",
+            "German": "Die Drei Prüfungen",
             "Chinese": "三场试炼"
         },
         "Trouble in Tharbad": {
             "English": "Trouble in Tharbad",
+            "French": "Des Problèmes à Tharbad",
+            "Spanish": "Problemas en Tharbad",
+            "Portuguese": "Problemas em Tharbad",
+            "Italian": "Problemi a Tharbad",
+            "German": "Probleme in Tharbad",
             "Chinese": "塔巴德的麻烦"
         },
         "The Nin in Eilph": {
             "English": "The Nin in Eilph",
+            "French": "Le Nin à Eilph",
+            "Spanish": "El Nin en Eilph",
+            "Portuguese": "O Nin em Eilph",
+            "Italian": "Il Nin in Eilph",
+            "German": "Der Nin in Eilph",
             "Chinese": "天鹅沼泽"
         },
         "Celebrimbor's Secret": {
             "English": "Celebrimbor's Secret",
+            "French": "Le Secret de Celebrimbor",
+            "Spanish": "El Secreto de Celebrimbor",
+            "Portuguese": "O Segredo de Celebrimbor",
+            "Italian": "Il Segreto di Celebrimbor",
+            "German": "Celebrimbors Geheimnis",
             "Chinese": "凯勒布理鹏的秘密"
         },
         "The Antlered Crown": {
             "English": "The Antlered Crown",
+            "French": "La Couronne aux Cornes",
+            "Spanish": "La Corona con Cuernos",
+            "Portuguese": "A Coroa com Chifres",
+            "Italian": "La Corona Cornuta",
+            "German": "Die Gehörnte Krone",
             "Chinese": "鹿角王冠"
         },
         "The Lost Realm & Angmar Awakened": {
             "English": "The Lost Realm & Angmar Awakened",
+            "French": "Le Royaume Perdu & Angmar Réveillé",
+            "Spanish": "El Reino Perdido & Angmar Despierto",
+            "Portuguese": "O Reino Perdido & Angmar Desperto",
+            "Italian": "Il Regno Perduto & Angmar Risvegliato",
+            "German": "Das Verlorene Reich & Angmar Erwacht",
             "Chinese": "失落的王国 & 安格玛觉醒"
         },
         "Intruders in Chetwood": {
             "English": "Intruders in Chetwood",
+            "French": "Intrus dans la Forêt de Chetwood",
+            "Spanish": "Intrusos en Chetwood",
+            "Portuguese": "Intrusos em Chetwood",
+            "Italian": "Intrusi a Chetwood",
+            "German": "Eindringlinge im Chetwood",
             "Chinese": "契特森林的闯入者"
         },
         "The Weather Hills": {
             "English": "The Weather Hills",
+            "French": "Les Collines du Temps",
+            "Spanish": "Las Colinas del Tiempo",
+            "Portuguese": "As Colinas do Tempo",
+            "Italian": "Le Colline del Tempo",
+            "German": "Die Wetterhügel",
             "Chinese": "风云丘"
         },
         "Deadmen's Dike": {
             "English": "Deadmen's Dike",
+            "French": "Le Digue des Morts",
+            "Spanish": "La Muralla de los Muertos",
+            "Portuguese": "A Muralha dos Mortos",
+            "Italian": "Il Muro dei Morti",
+            "German": "Der Damm der Toten",
             "Chinese": "亡者之堤"
         },
         "The Wastes of Eriador": {
             "English": "The Wastes of Eriador",
+            "French": "Les Déserts d'Eriador",
+            "Spanish": "Las Tierras Desoladas de Eriador",
+            "Portuguese": "As Terras Desoladas de Eriador",
+            "Italian": "Le Terre Desolate di Eriador",
+            "German": "Die Wüsten von Eriador",
             "Chinese": "伊利雅德荒原"
         },
         "Escape from Mount Gram": {
             "English": "Escape from Mount Gram",
+            "French": "Évasion du Mont Gram",
+            "Spanish": "Escape del Monte Gram",
+            "Portuguese": "Fuga do Monte Gram",
+            "Italian": "Fuga dal Monte Gram",
+            "German": "Flucht vom Berg Gram",
             "Chinese": "逃离格兰山"
         },
         "Across the Ettenmoors": {
             "English": "Across the Ettenmoors",
+            "French": "À travers les Ettenmoors",
+            "Spanish": "A través de los Ettenmoors",
+            "Portuguese": "Através dos Ettenmoors",
+            "Italian": "Attraverso gli Ettenmoors",
+            "German": "Über die Ettenmoors",
             "Chinese": "横穿伊顿荒原"
         },
         "The Treachery of Rhudaur": {
             "English": "The Treachery of Rhudaur",
+            "French": "La Trahison de Rhudaur",
+            "Spanish": "La Traición de Rhudaur",
+            "Portuguese": "A Traição de Rhudaur",
+            "Italian": "Il Tradimento di Rhudaur",
+            "German": "Der Verrat von Rhudaur",
             "Chinese": "鲁道尔的阴谋"
         },
         "The Battle of Carn Dum": {
             "English": "The Battle of Carn Dum",
+            "French": "La Bataille de Carn Dum",
+            "Spanish": "La Batalla de Carn Dum",
+            "Portuguese": "A Batalha de Carn Dum",
+            "Italian": "La Battaglia di Carn Dum",
+            "German": "Die Schlacht von Carn Dum",
             "Chinese": "卡恩督之战"
         },
         "The Dread Realm": {
             "English": "The Dread Realm",
+            "French": "Le Royaume de l'Effroi",
+            "Spanish": "El Reino del Miedo",
+            "Portuguese": "O Reino do Terror",
+            "Italian": "Il Regno del Terrore",
+            "German": "Das Schreckensreich",
             "Chinese": "亡者国度"
         },
         "The Grey Havens & The Dreamchaser": {
             "English": "The Grey Havens & The Dreamchaser",
+            "French": "Les Havres Gris & Le Chasseur de Rêves",
+            "Spanish": "Los Puertos Grises & El Cazador de Sueños",
+            "Portuguese": "Os Portos Cinzentos & O Caçador de Sonhos",
+            "Italian": "I Porti Grigi & Il Cacciatore di Sogni",
+            "German": "Die Grauen Hafen & Der Traumjäger",
             "Chinese": "灰港岸 & 逐梦者"
         },
         "Voyage Across Belegaer": {
             "English": "Voyage Across Belegaer",
+            "French": "Voyage à travers Belegaer",
+            "Spanish": "Viaje a través de Belegaer",
+            "Portuguese": "Viagem através de Belegaer",
+            "Italian": "Viaggio attraverso Belegaer",
+            "German": "Reise über Belegaer",
             "Chinese": "横渡贝烈盖尔"
         },
         "The Fate of Numenor": {
             "English": "The Fate of Numenor",
+            "French": "Le Destin de Númenor",
+            "Spanish": "El Destino de Númenor",
+            "Portuguese": "O Destino de Númenor",
+            "Italian": "Il Destino di Númenor",
+            "German": "Das Schicksal von Númenor",
             "Chinese": "努门诺尔的命运"
         },
         "Raid on the Grey Havens": {
             "English": "Raid on the Grey Havens",
+            "French": "Raid sur les Havres Gris",
+            "Spanish": "Asalto a los Puertos Grises",
+            "Portuguese": "Assalto aos Portos Cinzentos",
+            "Italian": "Raid sui Porti Grigi",
+            "German": "Überfall auf die Grauen Hafen",
             "Chinese": "突袭灰港"
         },
         "Flight of the Stormcaller": {
             "English": "Flight of the Stormcaller",
+            "French": "Fuite du Maître des Tempêtes",
+            "Spanish": "Huida del Llamador de Tormentas",
+            "Portuguese": "Fuga do Chamador da Tormenta",
+            "Italian": "Fuga del Chiamatore della Tempesta",
+            "German": "Flucht des Sturmrufer",
             "Chinese": "追击风暴召唤者"
         },
         "The Thing in the Depths": {
             "English": "The Thing in the Depths",
+            "French": "La Chose dans les Profondeurs",
+            "Spanish": "La Cosa en las Profundidades",
+            "Portuguese": "A Coisa nas Profundezas",
+            "Italian": "La Cosa nelle Profondità",
+            "German": "Das Ding in den Tiefen",
             "Chinese": "深海之物"
         },
         "Temple of the Deceived": {
             "English": "Temple of the Deceived",
+            "French": "Temple des Trompés",
+            "Spanish": "Templo de los Engañados",
+            "Portuguese": "Templo dos Enganados",
+            "Italian": "Tempio degli Ingannati",
+            "German": "Tempel der Getäuschten",
             "Chinese": "欺诈者神庙"
         },
         "The Drowned Ruins": {
             "English": "The Drowned Ruins",
+            "French": "Les Ruines Englouties",
+            "Spanish": "Las Ruinas Sumergidas",
+            "Portuguese": "As Ruínas Submersas",
+            "Italian": "Le Rovine Sommersa",
+            "German": "Die Ertrunkenen Ruinen",
             "Chinese": "淹没的废墟"
         },
         "A Storm on Cobas Haven": {
             "English": "A Storm on Cobas Haven",
+            "French": "Une Tempête sur Cobas Haven",
+            "Spanish": "Una Tormenta en Cobas Haven",
+            "Portuguese": "Uma Tempestade em Cobas Haven",
+            "Italian": "Una Tempesta su Cobas Haven",
+            "German": "Ein Sturm auf Cobas Haven",
             "Chinese": "科巴斯港的风暴"
         },
         "The City of Corsairs": {
             "English": "The City of Corsairs",
+            "French": "La Ville des Corsaires",
+            "Spanish": "La Ciudad de los Corsarios",
+            "Portuguese": "A Cidade dos Corsários",
+            "Italian": "La Città dei Corsari",
+            "German": "Die Stadt der Korsaren",
             "Chinese": "海盗之城"
         },
         "The Sands of Harad & The Haradrim": {
             "English": "The Sands of Harad & The Haradrim",
+            "French": "Les Sables de Harad & Les Haradrim",
+            "Spanish": "Las Arenas de Harad & Los Haradrim",
+            "Portuguese": "As Areias de Harad & Os Haradrim",
+            "Italian": "Le Sabbie di Harad & Gli Haradrim",
+            "German": "Die Sanddünen von Harad & Die Haradrim",
             "Chinese": "哈拉德之沙 & 哈拉德林"
         },
         "Escape from Umbar": {
             "English": "Escape from Umbar",
+            "French": "Fuite d'Umbar",
+            "Spanish": "Escape de Umbar",
+            "Portuguese": "Escape de Umbar",
+            "Italian": "Fuga da Umbar",
+            "German": "Flucht vor Umbar",
             "Chinese": "逃离昂巴"
         },
         "Desert Crossing": {
             "English": "Desert Crossing",
+            "French": "Traversée du Désert",
+            "Spanish": "Cruce del Desierto",
+            "Portuguese": "Travessia do Deserto",
+            "Italian": "Attraversamento del Deserto",
+            "German": "Wüstenüberquerung",
             "Chinese": "穿越沙漠"
         },
         "The Long Arm of Mordor": {
             "English": "The Long Arm of Mordor",
+            "French": "Le Long Bras du Mordor",
+            "Spanish": "El Largo Brazo de Mordor",
+            "Portuguese": "O Longo Braço de Mordor",
+            "Italian": "Il Lungo Braccio di Mordor",
+            "German": "Der Lange Arm von Mordor",
             "Chinese": "魔多的长爪"
         },
         "The Mumakil": {
             "English": "The Mumakil",
+            "French": "Les Mumakils",
+            "Spanish": "Los Mumakil",
+            "Portuguese": "Os Mumakil",
+            "Italian": "I Mumakil",
+            "German": "Die Mumakil",
             "Chinese": "猛犸巨象"
         },
         "Race Across Harad": {
             "English": "Race Across Harad",
+            "French": "Course à travers Harad",
+            "Spanish": "Carrera a través de Harad",
+            "Portuguese": "Corrida através de Harad",
+            "Italian": "Corsa attraverso Harad",
+            "German": "Rennen durch Harad",
             "Chinese": "哈拉德竞逐"
         },
         "Beneath the Sands": {
             "English": "Beneath the Sands",
+            "French": "Sous les Sables",
+            "Spanish": "Bajo las Arenas",
+            "Portuguese": "Sob as Areias",
+            "Italian": "Sotto le Sabbie",
+            "German": "Unter den Sanden",
             "Chinese": "沙土之下"
         },
         "The Black Serpent": {
             "English": "The Black Serpent",
+            "French": "Le Serpent Noir",
+            "Spanish": "La Serpiente Negra",
+            "Portuguese": "A Serpente Negra",
+            "Italian": "Il Serpente Nero",
+            "German": "Die Schwarze Schlange",
             "Chinese": "黑蛇"
         },
         "The Dungeons of Cirith Gurat": {
             "English": "The Dungeons of Cirith Gurat",
+            "French": "Les Donjons de Cirith Gurat",
+            "Spanish": "Las Mazmorras de Cirith Gurat",
+            "Portuguese": "As Masmorras de Cirith Gurat",
+            "Italian": "Le Prigioni di Cirith Gurat",
+            "German": "Die Verliese von Cirith Gurat",
             "Chinese": "西力斯古拉特地牢"
         },
         "The Crossings of Poros": {
             "English": "The Crossings of Poros",
+            "French": "Les Traversées de Poros",
+            "Spanish": "Los Cruces de Poros",
+            "Portuguese": "As Travessias de Poros",
+            "Italian": "I Passaggi di Poros",
+            "German": "Die Übergänge von Poros",
             "Chinese": "波罗斯渡口"
         },
         "The Wilds of Rhovanion & Ered Mithrin": {
             "English": "The Wilds of Rhovanion & Ered Mithrin",
+            "French": "Les Terres Sauvages de Rhovanion & Ered Mithrin",
+            "Spanish": "Las Tierras Salvajes de Rhovanion & Ered Mithrin",
+            "Portuguese": "As Terras Selvagens de Rhovanion & Ered Mithrin",
+            "Italian": "Le Terre Selvagge di Rhovanion & Ered Mithrin",
+            "German": "Die Wildnisse von Rhovanion & Ered Mithrin",
             "Chinese": "罗马尼安的荒野 & 伊瑞德米斯林"
         },
         "Journey Up the Anduin": {
             "English": "Journey Up the Anduin",
+            "French": "Voyage sur l'Anduin",
+            "Spanish": "Viaje por el Anduin",
+            "Portuguese": "Jornada pelo Anduin",
+            "Italian": "Viaggio lungo l'Anduin",
+            "German": "Reise den Anduin hinauf",
             "Chinese": "溯流安都因河"
         },
         "Lost in Mirkwood": {
             "English": "Lost in Mirkwood",
+            "French": "Perdu dans Mirkwood",
+            "Spanish": "Perdido en Mirkwood",
+            "Portuguese": "Perdido em Mirkwood",
+            "Italian": "Perso nella Mirkwood",
+            "German": "Verloren im Düsterwald",
             "Chinese": "迷失在幽暗密林"
         },
         "The King's Quest": {
             "English": "The King's Quest",
+            "French": "La Quête du Roi",
+            "Spanish": "La Misión del Rey",
+            "Portuguese": "A Missão do Rei",
+            "Italian": "La Quest del Re",
+            "German": "Die Königliche Quest",
             "Chinese": "国王的任务"
         },
         "The Withered Heath": {
             "English": "The Withered Heath",
+            "French": "La lande desséchée",
+            "Spanish": "La Ciénaga Marchita",
+            "Portuguese": "A Charneca Murcha",
+            "Italian": "La Brughiera Inaridita",
+            "German": "Die Verwüstete Heide",
             "Chinese": "凋谢荒地"
         },
         "Roam Across Rhovanion": {
             "English": "Roam Across Rhovanion",
+            "French": "Errer à travers Rhovanion",
+            "Spanish": "Vagar por Rhovanion",
+            "Portuguese": "Vaguear por Rhovanion",
+            "Italian": "Vagare per Rhovanion",
+            "German": "Durch Rhovanion Streifen",
             "Chinese": "漫游罗马尼安"
         },
         "Fire in the Night": {
             "English": "Fire in the Night",
+            "French": "Feu dans la Nuit",
+            "Spanish": "Fuego en la Noche",
+            "Portuguese": "Fogo na Noite",
+            "Italian": "Fuoco nella Notte",
+            "German": "Feuer in der Nacht",
             "Chinese": "夜火"
         },
         "The Ghost of Framsburg": {
             "English": "The Ghost of Framsburg",
+            "French": "Le Fantôme de Framsburg",
+            "Spanish": "El Fantasma de Framsburg",
+            "Portuguese": "O Fantasma de Framsburg",
+            "Italian": "Il Fantasma di Framsburg",
+            "German": "Der Geist von Framsburg",
             "Chinese": "佛兰斯堡的鬼魂"
         },
         "Mount Gundabad": {
             "English": "Mount Gundabad",
+            "French": "Mont Gundabad",
+            "Spanish": "Montaña Gundabad",
+            "Portuguese": "Montanha Gundabad",
+            "Italian": "Monte Gundabad",
+            "German": "Der Gundabad Berg",
             "Chinese": "刚达巴山"
         },
         "The Fate of Wilderland": {
             "English": "The Fate of Wilderland",
+            "French": "Le Destin du Wilderland",
+            "Spanish": "El Destino de Wilderland",
+            "Portuguese": "O Destino de Wilderland",
+            "Italian": "Il Destino di Wilderland",
+            "German": "Das Schicksal von Wilderland",
             "Chinese": "荒原的命运"
         },
-        "A Shadow in the East & Vengenace of Mordor": {
-            "English": "A Shadow in the East & Vengenace of Mordor",
+        "A Shadow in the East & Vengeance of Mordor": {
+            "English": "A Shadow in the East & Vengeance of Mordor",
+            "French": "Une Ombre à l'Est & La Vengeance du Mordor",
+            "Spanish": "Una Sombra en el Este & Venganza de Mordor",
+            "Portuguese": "Uma Sombra no Leste & A Vingança de Mordor",
+            "Italian": "Un'Ombra a Est & La Vendetta di Mordor",
+            "German": "Ein Schatten im Osten & Rache von Mordor",
             "Chinese": "东方魔影 & 摩多的复仇"
         },
         "The River Running": {
             "English": "The River Running",
+            "French": "La Rivière Courante",
+            "Spanish": "El Río Corriente",
+            "Portuguese": "O Rio Corrente",
+            "Italian": "Il Fiume Scorrente",
+            "German": "Der Fließende Fluss",
             "Chinese": "大河奔流"
         },
         "Danger in Dorwinian": {
             "English": "Danger in Dorwinian",
+            "French": "Danger à Dorwinian",
+            "Spanish": "Peligro en Dorwinian",
+            "Portuguese": "Perigo em Dorwinian",
+            "Italian": "Pericolo a Dorwinian",
+            "German": "Gefahr in Dorwinian",
             "Chinese": "多温尼安的危险"
         },
         "Temple of Doom": {
             "English": "Temple of Doom",
+            "French": "Temple de la Mort",
+            "Spanish": "Templo de la Perdición",
+            "Portuguese": "Templo do Destino",
+            "Italian": "Tempio della Perdizione",
+            "German": "Tempel des Verderbens",
             "Chinese": "厄运神庙"
         },
         "Wrath and Ruin": {
             "English": "Wrath and Ruin",
+            "French": "Colère et Ruine",
+            "Spanish": "Ira y Ruina",
+            "Portuguese": "Ira e Ruína",
+            "Italian": "Collera e Rovina",
+            "German": "Zorn und Ruin",
             "Chinese": "愤怒与毁灭"
         },
         "The City of Ulfast": {
             "English": "The City of Ulfast",
+            "French": "La Ville d'Ulfast",
+            "Spanish": "La Ciudad de Ulfast",
+            "Portuguese": "A Cidade de Ulfast",
+            "Italian": "La Città di Ulfast",
+            "German": "Die Stadt von Ulfast",
             "Chinese": "乌法斯特之城"
         },
         "Challenge of the Wainriders": {
             "English": "Challenge of the Wainriders",
+            "French": "Défi des Conducteurs de Chars",
+            "Spanish": "Desafío de los Wainriders",
+            "Portuguese": "Desafio dos Wainriders",
+            "Italian": "Sfida dei Wainriders",
+            "German": "Herausforderung der Wainriders",
             "Chinese": "战车民的挑战"
         },
         "Under the Ash Mountains": {
             "English": "Under the Ash Mountains",
+            "French": "Sous les Montagnes de Cendres",
+            "Spanish": "Bajo las Montañas de Ceniza",
+            "Portuguese": "Sob as Montanhas de Cinzas",
+            "Italian": "Sotto le Montagne di Cenere",
+            "German": "Unter den Aschenbergen",
             "Chinese": "灰烬山下"
         },
         "The Land of Sorrow": {
             "English": "The Land of Sorrow",
+            "French": "La Terre de la Tristesse",
+            "Spanish": "La Tierra de la Tristeza",
+            "Portuguese": "A Terra da Tristeza",
+            "Italian": "La Terra della Tristezza",
+            "German": "Das Land des Kummers",
             "Chinese": "悲伤之地"
         },
         "The Fortress of Nurn": {
             "English": "The Fortress of Nurn",
+            "French": "La Forteresse de Nurn",
+            "Spanish": "La Fortaleza de Nurn",
+            "Portuguese": "A Fortaleza de Nurn",
+            "Italian": "La Fortezza di Nurn",
+            "German": "Die Festung von Nurn",
             "Chinese": "诺恩要塞"
         },
         "The Hobbit": {
             "English": "The Hobbit",
+            "French": "Le Hobbit",
+            "Spanish": "El Hobbit",
+            "Portuguese": "O Hobbit",
+            "Italian": "Lo Hobbit",
+            "German": "Der Hobbit",
             "Chinese": "霍比特人"
         },
         "We Must Away Ere Break of Day": {
             "English": "We Must Away Ere Break of Day",
+            "French": "Nous devons partir avant l'aube",
+            "Spanish": "Debemos irnos antes del amanecer",
+            "Portuguese": "Devemos partir antes do amanhecer",
+            "Italian": "Dobbiamo partire prima dell'alba",
+            "German": "Wir müssen vor Tagesanbruch aufbrechen",
             "Chinese": "荷戟赴险莫待旦"
         },
         "Over the Misty Mountains Grim": {
             "English": "Over the Misty Mountains Grim",
+            "French": "Au-delà des Montagnes Brumeuses",
+            "Spanish": "Sobre las Montañas Brumosas",
+            "Portuguese": "Além das Montanhas Nebulosas",
+            "Italian": "Oltre le Montagne Nebbiose",
+            "German": "Über die Nebelberge",
             "Chinese": "阴山雾峦路难行"
         },
         "Dungeons Deep and Caverns Dim": {
             "English": "Dungeons Deep and Caverns Dim",
+            "French": "Donjons Profonds et Cavernes Obscures",
+            "Spanish": "Mazmorras Profundas y Cavernas Oscuras",
+            "Portuguese": "Masmoiras Profundas e Cavernas Sombras",
+            "Italian": "Prigioni Profonde e Caverne Oscure",
+            "German": "Tiefes Verlies und Dunkle Höhlen",
             "Chinese": "幽冥地穴杳时光"
         },
         "Flies and Spiders": {
             "English": "Flies and Spiders",
+            "French": "Mouches et Araignées",
+            "Spanish": "Moscas y Arañas",
+            "Portuguese": "Moscas e Aranhas",
+            "Italian": "Mosche e Ragni",
+            "German": "Fliegen und Spinnen",
             "Chinese": "苍蝇与蜘蛛"
         },
         "The Lonely Mountain": {
             "English": "The Lonely Mountain",
+            "French": "La Montagne Solitaire",
+            "Spanish": "La Montaña Solitaria",
+            "Portuguese": "A Montanha Solitária",
+            "Italian": "La Montagna Solitaria",
+            "German": "Der Einsame Berg",
             "Chinese": "孤山"
         },
         "The Battle of Five Armies": {
             "English": "The Battle of Five Armies",
+            "French": "La Bataille des Cinq Armées",
+            "Spanish": "La Batalla de los Cinco Ejércitos",
+            "Portuguese": "A Batalha dos Cinco Exércitos",
+            "Italian": "La Battaglia dei Cinque Eserciti",
+            "German": "Die Schlacht der Fünf Heere",
             "Chinese": "五军之战"
         },
         "The Lord of the Rings Standalone": {
             "English": "The Lord of the Rings Standalone",
+            "French": "Le Seigneur des Anneaux : Aventure Solo",
+            "Spanish": "El Señor de los Anillos Aventura Independiente",
+            "Portuguese": "O Senhor dos Anéis Aventura Solo",
+            "Italian": "Il Signore degli Anelli Avventura Singola",
+            "German": "Der Herr der Ringe Einzelabenteuer",
             "Chinese": "魔戒传奇扩独立冒险"
         },
         "The Lord of the Rings Campaign": {
             "English": "The Lord of the Rings Campaign",
+            "French": "Le Seigneur des Anneaux : Campagne",
+            "Spanish": "El Señor de los Anillos: Campaña",
+            "Portuguese": "O Senhor dos Anéis: Campanha",
+            "Italian": "Il Signore degli Anelli: Campagna",
+            "German": "Der Herr der Ringe Kampagne",
             "Chinese": "魔戒传奇扩战役"
         },
         "The Passage of the Marshes": {
             "English": "The Passage of the Marshes",
+            "French": "Le Passage des Marais",
+            "Spanish": "El Paso de los Pantanos",
+            "Portuguese": "A Passagem dos Pântanos",
+            "Italian": "Il Passaggio delle Paludi",
+            "German": "Der Durchgang der Sümpfe",
             "Chinese": "沼泽秘径"
         },
-        "Journey to the Cross roads": {
-            "English": "Journey to the Cross roads",
+        "Journey to the Cross-roads": {
+            "English": "Journey to the Cross-roads",
+            "French": "Voyage aux Carrefours",
+            "Spanish": "Viaje a los Cruce de Caminos",
+            "Portuguese": "Jornada aos Cruzamentos",
+            "Italian": "Viaggio ai Bivii",
+            "German": "Reise zu den Kreuzwegen",
             "Chinese": "十字路口之旅"
         },
         "Shelob's Lair": {
             "English": "Shelob's Lair",
+            "French": "Le Repaire de Shelob",
+            "Spanish": "La Guarida de Shelob",
+            "Portuguese": "A Caverna de Shelob",
+            "Italian": "La Tana di Shelob",
+            "German": "Shelobs Höhle",
             "Chinese": "希洛布的巢穴"
         },
         "The Passing of the Grey Company": {
             "English": "The Passing of the Grey Company",
+            "French": "Le Passage de la Compagnie Grise",
+            "Spanish": "El Paso de la Compañía Gris",
+            "Portuguese": "A Passagem da Companhia Cinza",
+            "Italian": "Il Passaggio della Compagnia Grigia",
+            "German": "Das Vorüberziehen der Grauen Gesellschaft",
             "Chinese": "灰衣劲旅的征程"
         },
         "The Siege of Gondor": {
             "English": "The Siege of Gondor",
+            "French": "Le Siège de Gondor",
+            "Spanish": "El Asedio de Gondor",
+            "Portuguese": "O Cerco de Gondor",
+            "Italian": "L'Assedio di Gondor",
+            "German": "Die Belagerung von Gondor",
             "Chinese": "刚铎围城"
         },
         "The Battle of the Pelennor Fields": {
             "English": "The Battle of the Pelennor Fields",
+            "French": "La Bataille des Champs de Pelennor",
+            "Spanish": "La Batalla de los Campos de Pelennor",
+            "Portuguese": "A Batalha dos Campos de Pelennor",
+            "Italian": "La Battaglia dei Campi di Pelennor",
+            "German": "Die Schlacht der Pelennor-Felder",
             "Chinese": "佩兰诺平野之战"
         },
         "The Tower of Cirith Ungol": {
             "English": "The Tower of Cirith Ungol",
+            "French": "La Tour de Cirith Ungol",
+            "Spanish": "La Torre de Cirith Ungol",
+            "Portuguese": "A Torre de Cirith Ungol",
+            "Italian": "La Torre di Cirith Ungol",
+            "German": "Der Turm von Cirith Ungol",
             "Chinese": "奇立斯乌苟之塔"
         },
         "The Black Gate Opens": {
             "English": "The Black Gate Opens",
+            "French": "La Porte Noire S'ouvre",
+            "Spanish": "La Puerta Negra se Abre",
+            "Portuguese": "A Porta Negra se Abre",
+            "Italian": "La Porta Nera si Apre",
+            "German": "Das Schwarze Tor Öffnet sich",
             "Chinese": "黑门开启"
         },
         "Mount Doom": {
             "English": "Mount Doom",
+            "French": "Mont Doom",
+            "Spanish": "Monte del Destino",
+            "Portuguese": "Monte da Perdição",
+            "Italian": "Monte Fato",
+            "German": "Berg Schicksal",
             "Chinese": "末日山"
         },
         "Two-Player Limited-Edition Starter": {
             "English": "Two-Player Limited-Edition Starter",
+            "French": "Starter Édition Limitée à Deux Joueurs",
+            "Spanish": "Juego Inicial Edición Limitada para Dos Jugadores",
+            "Portuguese": "Início de Edição Limitada para Dois Jogadores",
+            "Italian": "Starter Edizione Limitata per Due Giocatori",
+            "German": "Zwei-Spieler Limitierte Edition Starter",
             "Chinese": "双人限量版入门套装（黑森林之黯）"
         },
         "Print on Demand": {
             "English": "Print on Demand",
+            "French": "Impression à la Demande",
+            "Spanish": "Impresión Bajo Demanda",
+            "Portuguese": "Impressão Sob Demanda",
+            "Italian": "Stampa su Richiesta",
+            "German": "Druck auf Abruf",
             "Chinese": "独立剧情小扩（POD）"
         },
         "Attack on Dol Guldur": {
             "English": "Attack on Dol Guldur",
+            "French": "Attaque de Dol Guldur",
+            "Spanish": "Ataque a Dol Guldur",
+            "Portuguese": "Ataque a Dol Guldur",
+            "Italian": "Attacco a Dol Guldur",
+            "German": "Angriff auf Dol Guldur",
             "Chinese": "进攻多尔哥多"
         },
         "The Wizard's Quest": {
             "English": "The Wizard's Quest",
+            "French": "La Quête du Sorcier",
+            "Spanish": "La Misión del Mago",
+            "Portuguese": "A Missão do Mago",
+            "Italian": "La Quest del Mago",
+            "German": "Die Quest des Zauberers",
             "Chinese": "巫师的任务"
         },
         "The Woodland Realm": {
             "English": "The Woodland Realm",
+            "French": "Le Royaume des Forêts",
+            "Spanish": "El Reino del Bosque",
+            "Portuguese": "O Reino da Floresta",
+            "Italian": "Il Regno Forestale",
+            "German": "Das Waldreich",
             "Chinese": "林地王国"
         },
         "The Mines of Moria": {
             "English": "The Mines of Moria",
+            "French": "Les Mines de Moria",
+            "Spanish": "Las Minas de Moria",
+            "Portuguese": "As Minas de Moria",
+            "Italian": "Le Miniere di Moria",
+            "German": "Die Minen von Moria",
             "Chinese": "摩瑞亚矿坑"
         },
         "Escape from Khazad dûm": {
             "English": "Escape from Khazad dûm",
+            "French": "Évasion de Khazad-dûm",
+            "Spanish": "Escape de Khazad-dûm",
+            "Portuguese": "Fuga de Khazad-dûm",
+            "Italian": "Fuga da Khazad-dûm",
+            "German": "Flucht aus Khazad-dûm",
             "Chinese": "逃离凯撒督姆"
         },
         "The Hunt for the Dreadnaught": {
             "English": "The Hunt for the Dreadnaught",
+            "French": "La Chasse au Dreadnought",
+            "Spanish": "La Caza del Dreadnought",
+            "Portuguese": "A Caçada pelo Dreadnought",
+            "Italian": "La Caccia al Dreadnought",
+            "German": "Die Jagd auf den Dreadnought",
             "Chinese": "追捕无畏号"
         },
         "ALeP The Scouring of the Shire": {
             "English": "ALeP The Scouring of the Shire",
+            "French": "ALeP Le Nettoyage de la Comté",
+            "Spanish": "ALeP La Limpieza de la Comarca",
+            "Portuguese": "ALeP A Limpeza da Terra dos Hobbits",
+            "Italian": "ALeP La Pulizia della Contea",
+            "German": "ALeP Die Säuberung des Auenlandes",
             "Chinese": "ALeP The Scouring of the Shire"
         },
         "Campaign": {
             "English": "Campaign",
+            "French": "Campagne",
+            "Spanish": "Campaña",
+            "Portuguese": "Campanha",
+            "Italian": "Campagna",
+            "German": "Kampagne",
             "Chinese": "战役卡"
         },
         "ALeP - Children of Eorl & Oaths of the Rohirrim": {
             "English": "ALeP - Children of Eorl & Oaths of the Rohirrim",
+            "French": "ALeP - Les Enfants d'Eorl & Les Serments des Rohirrim",
+            "Spanish": "ALeP - Los Hijos de Eorl & Los Juramentos de los Rohirrim",
+            "Portuguese": "ALeP - Filhos de Eorl & Juramentos dos Rohirrim",
+            "Italian": "ALeP - I Figli di Eorl & I Giuramenti dei Rohirrim",
+            "German": "ALeP - Kinder von Eorl & Schwüre der Rohirrim",
             "Chinese": "ALeP - Children of Eorl & Oaths of the Rohirrim"
         },
         "ALeP Ambush at Erelas": {
             "English": "ALeP Ambush at Erelas",
+            "French": "ALeP Embuscade à Erelas",
+            "Spanish": "ALeP Emboscada en Erelas",
+            "Portuguese": "ALeP Emboscada em Erelas",
+            "Italian": "ALeP Emboscata a Erelas",
+            "German": "ALeP Hinterhalt in Erelas",
             "Chinese": "ALeP Ambush at Erelas"
         },
         "ALeP The Battle for the Beacon": {
             "English": "ALeP The Battle for the Beacon",
+            "French": "ALeP La Bataille pour le Phare",
+            "Spanish": "ALeP La Batalla por el Faro",
+            "Portuguese": "ALeP A Batalha pelo Farol",
+            "Italian": "ALeP La Battaglia per il Faro",
+            "German": "ALeP Die Schlacht um das Leuchtfeuer",
             "Chinese": "ALeP The Battle for the Beacon"
         },
         "ALeP The Horse Lord s Ire": {
-            "English": "ALeP The Horse Lord s Ire",
-            "Chinese": "ALeP The Horse Lord s Ire"
+            "English": "ALeP The Horse Lord's Ire",
+            "French": "ALeP La Colère du Seigneur des Chevaux",
+            "Spanish": "ALeP La Ira del Señor de los Caballos",
+            "Portuguese": "ALeP A Ira do Senhor dos Cavalos",
+            "Italian": "ALeP L'Ira del Signore dei Cavalli",
+            "German": "ALeP Der Zorn des Pferdekönigs",
+            "Chinese": "ALeP The Horse Lord's Ire"
         },
         "ALeP The Aldburg Plot": {
             "English": "ALeP The Aldburg Plot",
+            "French": "ALeP Le Complot d'Aldburg",
+            "Spanish": "ALeP El Complot de Aldburg",
+            "Portuguese": "ALeP O Plano de Aldburg",
+            "Italian": "ALeP Il Complotto di Aldburg",
+            "German": "ALeP Der Aldburg-Plan",
             "Chinese": "ALeP The Aldburg Plot"
         },
         "ALeP The Gap of Rohan Playtest": {
             "English": "ALeP The Gap of Rohan Playtest",
+            "French": "ALeP Le Gouffre de Rohan - Test de Jeu",
+            "Spanish": "ALeP El Desfiladero de Rohan - Prueba de Juego",
+            "Portuguese": "ALeP O Abismo de Rohan - Teste de Jogo",
+            "Italian": "ALeP La Fenditura di Rohan - Playtest",
+            "German": "ALeP Der Gap von Rohan - Spieltest",
             "Chinese": "ALeP The Gap of Rohan 游戏测试"
         },
         "ALeP The Glittering Caves Playtest": {
             "English": "ALeP The Glittering Caves Playtest",
+            "French": "ALeP Les Cavernes Scintillantes - Test de Jeu",
+            "Spanish": "ALeP Las Cavernas Brillantes - Prueba de Juego",
+            "Portuguese": "ALeP As Cavernas Cintilantes - Teste de Jogo",
+            "Italian": "ALeP Le Grotte Scintillanti - Playtest",
+            "German": "ALeP Die Funkelnden Höhlen - Spieltest",
             "Chinese": "ALeP The Glittering Caves 游戏测试"
         },
         "ALeP Mustering of the Rohirrim Playtest": {
             "English": "ALeP Mustering of the Rohirrim Playtest",
+            "French": "ALeP Le Rassemblement des Rohirrim - Test de Jeu",
+            "Spanish": "ALeP El Reclutamiento de los Rohirrim - Prueba de Juego",
+            "Portuguese": "ALeP O Recrutamento dos Rohirrim - Teste de Jogo",
+            "Italian": "ALeP L'Arruolamento dei Rohirrim - Playtest",
+            "German": "ALeP Die Musterung der Rohirrim - Spieltest",
             "Chinese": "ALeP Mustering of the Rohirrim 游戏测试"
         },
         "ALeP Blood in the Isen Playtest": {
             "English": "ALeP Blood in the Isen Playtest",
+            "French": "ALeP Le Sang dans l'Isen - Test de Jeu",
+            "Spanish": "ALeP Sangre en el Isen - Prueba de Juego",
+            "Portuguese": "ALeP Sangue no Isen - Teste de Jogo",
+            "Italian": "ALeP Sangue nell'Isen - Playtest",
+            "German": "ALeP Blut im Isen - Spieltest",
             "Chinese": "ALeP Blood in the Isen 游戏测试"
         },
         "ALeP - Playtest": {
             "English": "ALeP - Playtest",
+            "French": "ALeP - Test de Jeu",
+            "Spanish": "ALeP - Prueba de Juego",
+            "Portuguese": "ALeP - Teste de Jogo",
+            "Italian": "ALeP - Playtest",
+            "German": "ALeP - Spieltest",
             "Chinese": "ALeP - 游戏测试"
         },
         "myDeck": {
             "English": "My Deck",
+            "French": "Mon Deck",
+            "Spanish": "Mi Mazo",
+            "Portuguese": "Meu Baralho",
+            "Italian": "Il Mio Mazzo",
+            "German": "Mein Deck",
             "Chinese": "我的牌组"
         },
         "player1Deck": {
             "English": "Player 1 Deck",
+            "French": "Deck du Joueur 1",
+            "Spanish": "Mazo del Jugador 1",
+            "Portuguese": "Baralho do Jogador 1",
+            "Italian": "Mazzo del Giocatore 1",
+            "German": "Spieler 1 Deck",
             "Chinese": "玩家 1 牌组"
         },
         "player2Deck": {
             "English": "Player 2 Deck",
+            "French": "Deck du Joueur 2",
+            "Spanish": "Mazo del Jugador 2",
+            "Portuguese": "Baralho do Jogador 2",
+            "Italian": "Mazzo del Giocatore 2",
+            "German": "Spieler 2 Deck",
             "Chinese": "玩家 2 牌组"
         },
         "player3Deck": {
             "English": "Player 3 Deck",
+            "French": "Deck du Joueur 3",
+            "Spanish": "Mazo del Jugador 3",
+            "Portuguese": "Baralho do Jogador 3",
+            "Italian": "Mazzo del Giocatore 3",
+            "German": "Spieler 3 Deck",
             "Chinese": "玩家 3 牌组"
         },
         "player4Deck": {
             "English": "Player 4 Deck",
+            "French": "Deck du Joueur 4",
+            "Spanish": "Mazo del Jugador 4",
+            "Portuguese": "Baralho do Jogador 4",
+            "Italian": "Mazzo del Giocatore 4",
+            "German": "Spieler 4 Deck",
             "Chinese": "玩家 4 牌组"
         },
         "sharedQuestDeck": {
             "English": "Quest Deck",
+            "French": "Deck de Quête",
+            "Spanish": "Mazo de Misión",
+            "Portuguese": "Baralho de Missão",
+            "Italian": "Mazzo della Quest",
+            "German": "Quest Deck",
             "Chinese": "探险牌组"
         },
         "sharedQuestDeck2": {
             "English": "Quest Deck 2",
+            "French": "Deck de Quête 2",
+            "Spanish": "Mazo de Misión 2",
+            "Portuguese": "Baralho de Missão 2",
+            "Italian": "Mazzo della Quest 2",
+            "German": "Quest Deck 2",
             "Chinese": "探险牌组"
         },
         "sharedActiveLocation": {
             "English": "Active Location",
+            "French": "Lieu Actif",
+            "Spanish": "Ubicación Activa",
+            "Portuguese": "Localização Ativa",
+            "Italian": "Localizzazione Attiva",
+            "German": "Aktiver Ort",
             "Chinese": "当前地区"
         },
         "sharedStagingArea": {
             "English": "Staging Area",
+            "French": "Zone de Mise en Scène",
+            "Spanish": "Área de Preparación",
+            "Portuguese": "Área de Preparação",
+            "Italian": "Area di Preparazione",
+            "German": "Vorbereitungsbereich",
             "Chinese": "探查区"
         },
         "sharedEncounterDeck": {
             "English": "Encounter Deck",
+            "French": "Deck de Rencontre",
+            "Spanish": "Mazo de Encuentro",
+            "Portuguese": "Baralho de Encontro",
+            "Italian": "Mazzo Incontro",
+            "German": "Begegnungsdeck",
             "Chinese": "遭遇牌组"
         },
         "sharedEncounterDeck2": {
             "English": "Encounter Deck 2",
+            "French": "Deck de Rencontre 2",
+            "Spanish": "Mazo de Encuentro 2",
+            "Portuguese": "Baralho de Encontro 2",
+            "Italian": "Mazzo Incontro 2",
+            "German": "Begegnungsdeck 2",
             "Chinese": "遭遇牌组2"
         },
         "sharedEncounterDeck3": {
             "English": "Encounter Deck 3",
+            "French": "Deck de Rencontre 3",
+            "Spanish": "Mazo de Encuentro 3",
+            "Portuguese": "Baralho de Encontro 3",
+            "Italian": "Mazzo Incontro 3",
+            "German": "Begegnungsdeck 3",
             "Chinese": "遭遇牌组3"
         },
         "sharedExtra1": {
             "English": "Extra 1",
+            "French": "Extra 1",
+            "Spanish": "Extra 1",
+            "Portuguese": "Extra 1",
+            "Italian": "Extra 1",
+            "German": "Extra 1",
             "Chinese": "额外区域 1"
         },
         "sharedExtra2": {
             "English": "Extra 2",
+            "French": "Extra 2",
+            "Spanish": "Extra 2",
+            "Portuguese": "Extra 2",
+            "Italian": "Extra 2",
+            "German": "Extra 2",
             "Chinese": "额外区域 2"
         },
         "sharedExtra3": {
             "English": "Extra 3",
+            "French": "Extra 3",
+            "Spanish": "Extra 3",
+            "Portuguese": "Extra 3",
+            "Italian": "Extra 3",
+            "German": "Extra 3",
             "Chinese": "额外区域 3"
         },
         "sharedExtra4": {
             "English": "Extra 4",
+            "French": "Extra 4",
+            "Spanish": "Extra 4",
+            "Portuguese": "Extra 4",
+            "Italian": "Extra 4",
+            "German": "Extra 4",
             "Chinese": "额外区域 4"
         },
         "sharedExtra5": {
             "English": "Extra 5",
+            "French": "Extra 5",
+            "Spanish": "Extra 5",
+            "Portuguese": "Extra 5",
+            "Italian": "Extra 5",
+            "German": "Extra 5",
             "Chinese": "额外区域 5"
         },
         "sharedExtra6": {
             "English": "Extra 6",
+            "French": "Extra 6",
+            "Spanish": "Extra 6",
+            "Portuguese": "Extra 6",
+            "Italian": "Extra 6",
+            "German": "Extra 6",
             "Chinese": "额外区域 6"
         },
         "sharedExtra7": {
             "English": "Extra 7",
+            "French": "Extra 7",
+            "Spanish": "Extra 7",
+            "Portuguese": "Extra 7",
+            "Italian": "Extra 7",
+            "German": "Extra 7",
             "Chinese": "额外区域 7"
         },
         "sharedExtra8": {
             "English": "Extra 8",
+            "French": "Extra 8",
+            "Spanish": "Extra 8",
+            "Portuguese": "Extra 8",
+            "Italian": "Extra 8",
+            "German": "Extra 8",
             "Chinese": "额外区域 8"
         },
         "damage": {
             "English": "damage",
+            "French": "dégâts",
+            "Spanish": "daño",
+            "Portuguese": "dano",
+            "Italian": "danno",
+            "German": "Schaden",
             "Chinese": "伤害"
         },
         "add to VD": {
             "English": "add to VD",
+            "French": "ajouter à la VD",
+            "Spanish": "agregar a la VD",
+            "Portuguese": "adicionar à VD",
+            "Italian": "aggiungi a VD",
+            "German": "zu VD hinzufügen",
             "Chinese": "加入胜利区"
         },
         "progress": {
             "English": "progress",
+            "French": "progrès",
+            "Spanish": "progreso",
+            "Portuguese": "progresso",
+            "Italian": "progresso",
+            "German": "Fortschritt",
             "Chinese": "进度"
         },
         "exhaust": {
             "English": "exhaust",
+            "French": "épuiser",
+            "Spanish": "agotar",
+            "Portuguese": "exaurir",
+            "Italian": "esaurire",
+            "German": "erschöpfen",
             "Chinese": "横置"
         },
         "ready": {
             "English": "ready",
+            "French": "prêt",
+            "Spanish": "preparado",
+            "Portuguese": "pronto",
+            "Italian": "pronto",
+            "German": "bereit",
             "Chinese": "重整"
         },
         "A Shadow of the Past": {
             "English": "A Shadow of the Past",
+            "French": "Une Ombre du Passé",
+            "Spanish": "Una Sombra del Pasado",
+            "Portuguese": "Uma Sombra do Passado",
+            "Italian": "Un'Ombra del Passato",
+            "German": "Ein Schatten der Vergangenheit",
             "Chinese": "往昔阴影"
         },
         "A Knife in the Dark": {
             "English": "A Knife in the Dark",
+            "French": "Un Couteau dans l'Obscurité",
+            "Spanish": "Un Cuchillo en la Oscuridad",
+            "Portuguese": "Uma Faca na Escuridão",
+            "Italian": "Un Coltello nel Buio",
+            "German": "Ein Messer in der Dunkelheit",
             "Chinese": "暗夜白刃"
         },
         "Flight to the Ford": {
             "English": "Flight to the Ford",
+            "French": "Fuite vers le Gué",
+            "Spanish": "Huida al Vado",
+            "Portuguese": "Fuga para o Vado",
+            "Italian": "Fuga al Guado",
+            "German": "Flucht zum Furt",
             "Chinese": "渡口逃亡"
         },
         "The Ring Goes South": {
             "English": "The Ring Goes South",
+            "French": "L'Anneau Va au Sud",
+            "Spanish": "El Anillo Va al Sur",
+            "Portuguese": "O Anel Vai para o Sul",
+            "Italian": "L'Anello Va a Sud",
+            "German": "Der Ring Geht nach Süden",
             "Chinese": "魔戒南下"
         },
         "Journey in the Dark": {
             "English": "Journey in the Dark",
+            "French": "Voyage dans l'Obscurité",
+            "Spanish": "Viaje en la Oscuridad",
+            "Portuguese": "Viagem na Escuridão",
+            "Italian": "Viaggio nel Buio",
+            "German": "Reise im Dunkeln",
             "Chinese": "黑暗中的旅程"
         },
         "Breaking of the Fellowship": {
             "English": "Breaking of the Fellowship",
+            "French": "La Rupture de la Communauté",
+            "Spanish": "La Ruptura de la Comunidad",
+            "Portuguese": "A Quebra da Comunidade",
+            "Italian": "La Rottura della Compagnia",
+            "German": "Die Zersplitterung der Gefährten",
             "Chinese": "分道扬镳"
         },
         "The Uruk hai": {
             "English": "The Uruk hai",
+            "French": "Les Uruk-hai",
+            "Spanish": "Los Uruk-hai",
+            "Portuguese": "Os Uruk-hai",
+            "Italian": "Gli Uruk-hai",
+            "German": "Die Uruk-hai",
             "Chinese": "乌鲁克族"
         },
         "Helm's Deep": {
             "English": "Helm's Deep",
+            "French": "Les Profondeurs de Helm",
+            "Spanish": "Foso de Helm",
+            "Portuguese": "Fosso de Helm",
+            "Italian": "Fosso di Helm",
+            "German": "Helms Klamm",
             "Chinese": "海尔姆深谷"
         },
         "The Road to Isengard": {
             "English": "The Road to Isengard",
+            "French": "La Route vers Isengard",
+            "Spanish": "El Camino a Isengard",
+            "Portuguese": "A Estrada para Isengard",
+            "Italian": "La Strada per Isengard",
+            "German": "Der Weg nach Isengard",
             "Chinese": "通往艾森加德之路"
         },
         "The Massing at Osgiliath": {
             "English": "The Massing at Osgiliath",
+            "French": "L'Armée à Osgiliath",
+            "Spanish": "El Asalto a Osgiliath",
+            "Portuguese": "O Massacre em Osgiliath",
+            "Italian": "L'Assalto a Osgiliath",
+            "German": "Das Aufgebot in Osgiliath",
             "Chinese": "兵临旧都"
         },
         "The Battle of Lake Town": {
             "English": "The Battle of Lake Town",
+            "French": "La Bataille de Lac-Town",
+            "Spanish": "La Batalla de Lago Town",
+            "Portuguese": "A Batalha da Cidade do Lago",
+            "Italian": "La Battaglia della Città del Lago",
+            "German": "Die Schlacht um Lake Town",
             "Chinese": "长湖镇之战"
         },
         "The Stone of Erech": {
             "English": "The Stone of Erech",
+            "French": "La Pierre d'Erech",
+            "Spanish": "La Piedra de Erech",
+            "Portuguese": "A Pedra de Erech",
+            "Italian": "La Pietra di Erech",
+            "German": "Der Stein von Erech",
             "Chinese": "伊瑞赫之石"
         },
         "The Old Forest": {
             "English": "The Old Forest",
+            "French": "La Vieille Forêt",
+            "Spanish": "El Bosque Antiguo",
+            "Portuguese": "A Floresta Antiga",
+            "Italian": "La Foresta Antica",
+            "German": "Der Alte Wald",
             "Chinese": "老林迷踪"
         },
         "Fog on the Barrow downs": {
             "English": "Fog on the Barrow downs",
+            "French": "Brouillard sur les Tombes",
+            "Spanish": "Niebla sobre las Colinas de los Túmulos",
+            "Portuguese": "Nevoeiro sobre os Montes dos Túmulos",
+            "Italian": "Nebbia sulle Colline delle Tombe",
+            "German": "Nebel über den Hügelgräbern",
             "Chinese": "古墓岗之雾"
         },
         "The Ruins of Belegost": {
             "English": "The Ruins of Belegost",
+            "French": "Les Ruines de Belegost",
+            "Spanish": "Las Ruinas de Belegost",
+            "Portuguese": "As Ruínas de Belegost",
+            "Italian": "Le Rovine di Belegost",
+            "German": "Die Ruinen von Belegost",
             "Chinese": "贝勒勾斯特的废墟"
         },
         "Murder at the Prancing Pony": {
             "English": "Murder at the Prancing Pony",
+            "French": "Meurtre à la Taverne du Poney Fringant",
+            "Spanish": "Asesinato en la Poni Saltarina",
+            "Portuguese": "Assassinato no Pônei Saltitante",
+            "Italian": "Omicidio alla Locanda del Poney Saltante",
+            "German": "Mord im Trampelponny",
             "Chinese": "跃马旅店的谋杀"
         },
         "Standard The Siege of Annuminas": {
             "English": "Standard The Siege of Annuminas",
+            "French": "Standard Le Siège d'Annuminas",
+            "Spanish": "Estándar El Asedio de Annuminas",
+            "Portuguese": "Padrão O Cerco de Annuminas",
+            "Italian": "Standard L'Assedio di Annuminas",
+            "German": "Standard Die Belagerung von Annuminas",
             "Chinese": "围攻阿努米纳斯普通模式"
         },
         "Epic The Siege of Annuminas": {
             "English": "Epic The Siege of Annuminas",
+            "French": "Épique Le Siège d'Annuminas",
+            "Spanish": "Épico El Asedio de Annuminas",
+            "Portuguese": "Épico O Cerco de Annuminas",
+            "Italian": "Epico L'Assedio di Annuminas",
+            "German": "Episch Die Belagerung von Annuminas",
             "Chinese": "围攻阿努米纳斯史诗模式"
         },
         "The Lord of the Rings": {
             "English": "The Lord of the Rings",
+            "French": "Le Seigneur des Anneaux",
+            "Spanish": "El Señor de los Anillos",
+            "Portuguese": "O Senhor dos Anéis",
+            "Italian": "Il Signore degli Anelli",
+            "German": "Der Herr der Ringe",
             "Chinese": "魔戒同盟"
         },
         "The Core Set": {
             "English": "The Core Set",
+            "French": "Le Jeu de Base",
+            "Spanish": "El Juego Base",
+            "Portuguese": "O Conjunto Base",
+            "Italian": "Il Set Base",
+            "German": "Das Grundset",
             "Chinese": "核心包"
         },
         "Angmar Awakened": {
             "English": "Angmar Awakened",
+            "French": "Angmar Réveillé",
+            "Spanish": "Angmar Despierto",
+            "Portuguese": "Angmar Desperto",
+            "Italian": "Angmar Risvegliato",
+            "German": "Angmar Erwacht",
             "Chinese": "安格玛觉醒"
         },
         "name": {
             "English": "Name",
+            "French": "Nom",
+            "Spanish": "Nombre",
+            "Portuguese": "Nome",
+            "Italian": "Nome",
+            "German": "Name",
             "Chinese": "名称"
         },
         "sphere": {
             "English": "Sphere",
+            "French": "Sphère",
+            "Spanish": "Esfera",
+            "Portuguese": "Esfera",
+            "Italian": "Sfera",
+            "German": "Sphäre",
             "Chinese": "派系"
         },
         "type": {
             "English": "Type",
+            "French": "Type",
+            "Spanish": "Tipo",
+            "Portuguese": "Tipo",
+            "Italian": "Tipo",
+            "German": "Typ",
             "Chinese": "类型"
         },
         "traits": {
             "English": "Traits",
+            "French": "Traits",
+            "Spanish": "Rasgos",
+            "Portuguese": "Características",
+            "Italian": "Caratteristiche",
+            "German": "Eigenschaften",
             "Chinese": "特性"
         },
         "pack": {
             "English": "Pack",
+            "French": "Paquet",
+            "Spanish": "Paquete",
+            "Portuguese": "Pacote",
+            "Italian": "Pacchetto",
+            "German": "Pack",
             "Chinese": "游戏包"
         },
         "number": {
             "English": "Number",
+            "French": "Numéro",
+            "Spanish": "Número",
+            "Portuguese": "Número",
+            "Italian": "Numero",
+            "German": "Nummer",
             "Chinese": "编号"
         },
         "myPlayArea": {
             "English": "My Play Area",
+            "French": "Ma Zone de Jeu",
+            "Spanish": "Mi Área de Juego",
+            "Portuguese": "Minha Área de Jogo",
+            "Italian": "La Mia Area di Gioco",
+            "German": "Mein Spielbereich",
             "Chinese": "我的游戏区"
         },
         "shuffleGroupIntoDeck": {
             "English": "Shuffle Into Deck",
+            "French": "Mélanger dans le Deck",
+            "Spanish": "Barajar en el Mazo",
+            "Portuguese": "Embaralhar no Baralho",
+            "Italian": "Mescola nel Mazzo",
+            "German": "In das Deck mischen",
             "Chinese": "洗入牌组"
         },
         "sharedEncounterDiscard": {
             "English": "Encounter Discard",
+            "French": "Défausse des Rencontres",
+            "Spanish": "Descartar Encuentro",
+            "Portuguese": "Descartar Encontro",
+            "Italian": "Scarti Incontro",
+            "German": "Begegnungsabwurf",
             "Chinese": "遭遇牌堆弃牌"
         },
         "sharedEncounterDiscard2": {
             "English": "Encounter Discard 2",
+            "French": "Défausse des Rencontres 2",
+            "Spanish": "Descartar Encuentro 2",
+            "Portuguese": "Descartar Encontro 2",
+            "Italian": "Scarti Incontro 2",
+            "German": "Begegnungsabwurf 2",
             "Chinese": "遭遇弃牌堆 2"
         },
         "sharedEncounterDiscard3": {
             "English": "Encounter Discard 3",
+            "French": "Défausse des Rencontres 3",
+            "Spanish": "Descartar Encuentro 3",
+            "Portuguese": "Descartar Encontro 3",
+            "Italian": "Scarti Incontro 3",
+            "German": "Begegnungsabwurf 3",
             "Chinese": "遭遇弃牌堆 3"
         },
         "sharedOther": {
             "English": "Other",
+            "French": "Autre",
+            "Spanish": "Otro",
+            "Portuguese": "Outro",
+            "Italian": "Altro",
+            "German": "Andere",
             "Chinese": "其他"
         },
         "sharedSetAside": {
             "English": "Set Aside",
+            "French": "Mettre de Côté",
+            "Spanish": "Poner a un Lado",
+            "Portuguese": "Colocar de Lado",
+            "Italian": "Mettere da Parte",
+            "German": "Beiseite legen",
             "Chinese": "放到一边"
         },
         "sharedVictory": {
             "English": "Victory Display",
+            "French": "Affichage de Victoire",
+            "Spanish": "Pantalla de Victoria",
+            "Portuguese": "Exibição de Vitória",
+            "Italian": "Mostra della Vittoria",
+            "German": "Siegesanzeige",
             "Chinese": "胜利区"
         },
         "sharedVictoryTable": {
             "English": "Victory",
+            "French": "Victoire",
+            "Spanish": "Victoria",
+            "Portuguese": "Vitória",
+            "Italian": "Vittoria",
+            "German": "Sieg",
             "Chinese": "胜利"
         },
         "staging": {
             "English": "Staging",
+            "French": "Préparation",
+            "Spanish": "Preparación",
+            "Portuguese": "Preparação",
+            "Italian": "Preparazione",
+            "German": "Vorbereitung",
             "Chinese": "环节"
         },
         "active": {
             "English": "Active",
+            "French": "Actif",
+            "Spanish": "Activo",
+            "Portuguese": "Ativo",
+            "Italian": "Attivo",
+            "German": "Aktiv",
             "Chinese": "当前"
         },
         "player1Hand": {
             "English": "Player 1 Hand",
+            "French": "Main du Joueur 1",
+            "Spanish": "Mano del Jugador 1",
+            "Portuguese": "Mão do Jogador 1",
+            "Italian": "Mano del Giocatore 1",
+            "German": "Spieler 1 Hand",
             "Chinese": "玩家 1 手牌"
         },
         "hand": {
             "English": "Hand",
+            "French": "Main",
+            "Spanish": "Mano",
+            "Portuguese": "Mão",
+            "Italian": "Mano",
+            "German": "Hand",
             "Chinese": "手牌"
         },
         "deck": {
             "English": "Deck",
+            "French": "Deck",
+            "Spanish": "Mazo",
+            "Portuguese": "Baralho",
+            "Italian": "Mazzo",
+            "German": "Deck",
             "Chinese": "牌组"
         },
         "player1Discard": {
             "English": "Player 1 Discard",
+            "French": "Défausse du Joueur 1",
+            "Spanish": "Descartar del Jugador 1",
+            "Portuguese": "Descarte do Jogador 1",
+            "Italian": "Scarti del Giocatore 1",
+            "German": "Spieler 1 Abwurf",
             "Chinese": "玩家 1 弃牌堆"
         },
         "player1Play1": {
             "English": "Player 1 Play Area",
+            "French": "Zone de Jeu du Joueur 1",
+            "Spanish": "Área de Juego del Jugador 1",
+            "Portuguese": "Área de Jogo do Jogador 1",
+            "Italian": "Area di Gioco del Giocatore 1",
+            "German": "Spielbereich des Spielers 1",
             "Chinese": "玩家 1 游戏区"
         },
         "playArea": {
             "English": "Play Area",
+            "French": "Zone de Jeu",
+            "Spanish": "Área de Juego",
+            "Portuguese": "Área de Jogo",
+            "Italian": "Area di Gioco",
+            "German": "Spielbereich",
             "Chinese": "游戏区"
         },
         "player1Play2": {
             "English": "Player 1 Play Area",
+            "French": "Zone de Jeu du Joueur 1",
+            "Spanish": "Área de Juego del Jugador 1",
+            "Portuguese": "Área de Jogo do Jogador 1",
+            "Italian": "Area di Gioco del Giocatore 1",
+            "German": "Spielbereich des Spielers 1",
             "Chinese": "玩家 1 游戏区"
         },
         "player1Play3": {
             "English": "Player 1 Play Area",
+            "French": "Zone de Jeu du Joueur 1",
+            "Spanish": "Área de Juego del Jugador 1",
+            "Portuguese": "Área de Jogo do Jogador 1",
+            "Italian": "Area di Gioco del Giocatore 1",
+            "German": "Spielbereich des Spielers 1",
             "Chinese": "玩家 1 游戏区"
         },
         "player1Play4": {
             "English": "Player 1 Play Area",
+            "French": "Zone de Jeu du Joueur 1",
+            "Spanish": "Área de Juego del Jugador 1",
+            "Portuguese": "Área de Jogo do Jogador 1",
+            "Italian": "Area di Gioco del Giocatore 1",
+            "German": "Spielbereich des Spielers 1",
             "Chinese": "玩家 1 游戏区"
         },
         "player1Engaged": {
             "English": "Player 1 Engaged",
+            "French": "Joueur 1 Engagé",
+            "Spanish": "Jugador 1 Enfrentado",
+            "Portuguese": "Jogador 1 Engajado",
+            "Italian": "Giocatore 1 Impegnato",
+            "German": "Spieler 1 Engagiert",
             "Chinese": "玩家 1 交战区"
         },
         "sideboard": {
             "English": "Sideboard",
+            "French": "Table de Jeu",
+            "Spanish": "Reserva",
+            "Portuguese": "Banco de Reservas",
+            "Italian": "Sideboard",
+            "German": "Seitenboard",
             "Chinese": "场边"
         },
         "player1Sideboard": {
             "English": "Player 1 Sideboard",
+            "French": "Table de Jeu du Joueur 1",
+            "Spanish": "Reserva del Jugador 1",
+            "Portuguese": "Banco de Reservas do Jogador 1",
+            "Italian": "Sideboard del Giocatore 1",
+            "German": "Seitenboard des Spielers 1",
             "Chinese": "玩家 1 场边"
         },
         "player2Sideboard": {
             "English": "Player 2 Sideboard",
+            "French": "Table de Jeu du Joueur 2",
+            "Spanish": "Reserva del Jugador 2",
+            "Portuguese": "Banco de Reservas do Jogador 2",
+            "Italian": "Sideboard del Giocatore 2",
+            "German": "Seitenboard des Spielers 2",
             "Chinese": "玩家 2 场边"
         },
         "player3Sideboard": {
             "English": "Player 3 Sideboard",
+            "French": "Table de Jeu du Joueur 3",
+            "Spanish": "Reserva del Jugador 3",
+            "Portuguese": "Banco de Reservas do Jogador 3",
+            "Italian": "Sideboard del Giocatore 3",
+            "German": "Seitenboard des Spielers 3",
             "Chinese": "玩家 3 场边"
         },
         "player4Sideboard": {
             "English": "Player 4 Sideboard",
+            "French": "Table de Jeu du Joueur 4",
+            "Spanish": "Reserva del Jugador 4",
+            "Portuguese": "Banco de Reservas do Jogador 4",
+            "Italian": "Sideboard del Giocatore 4",
+            "German": "Seitenboard des Spielers 4",
             "Chinese": "玩家 4 场边"
         },
         "engaged": {
             "English": "Engaged",
+            "French": "Engagé",
+            "Spanish": "Enfrentado",
+            "Portuguese": "Engajado",
+            "Italian": "Impegnato",
+            "German": "Engagiert",
             "Chinese": "交战"
         },
         "player1Event": {
             "English": "Player 1 Event",
+            "French": "Événement du Joueur 1",
+            "Spanish": "Evento del Jugador 1",
+            "Portuguese": "Evento do Jogador 1",
+            "Italian": "Evento del Giocatore 1",
+            "German": "Spieler 1 Ereignis",
             "Chinese": "玩家 1 事件"
         },
         "event": {
             "English": "Event",
+            "French": "Événement",
+            "Spanish": "Evento",
+            "Portuguese": "Evento",
+            "Italian": "Evento",
+            "German": "Ereignis",
             "Chinese": "事件"
         },
         "player2Hand": {
             "English": "Player 2 Hand",
+            "French": "Main du Joueur 2",
+            "Spanish": "Mano del Jugador 2",
+            "Portuguese": "Mão do Jogador 2",
+            "Italian": "Mano del Giocatore 2",
+            "German": "Spieler 2 Hand",
             "Chinese": "玩家 2 手牌"
         },
         "player2Discard": {
             "English": "Player 2 Discard",
+            "French": "Défausse du Joueur 2",
+            "Spanish": "Descartar del Jugador 2",
+            "Portuguese": "Descarte do Jogador 2",
+            "Italian": "Scarti del Giocatore 2",
+            "German": "Spieler 2 Abwurf",
             "Chinese": "玩家 2 弃牌堆"
         },
         "player2Play1": {
             "English": "Player 2 Play Area",
+            "French": "Zone de Jeu du Joueur 2",
+            "Spanish": "Área de Juego del Jugador 2",
+            "Portuguese": "Área de Jogo do Jogador 2",
+            "Italian": "Area di Gioco del Giocatore 2",
+            "German": "Spielbereich des Spielers 2",
             "Chinese": "玩家 2 游戏区"
         },
         "player2Play2": {
             "English": "Player 2 Play Area",
+            "French": "Zone de Jeu du Joueur 2",
+            "Spanish": "Área de Juego del Jugador 2",
+            "Portuguese": "Área de Jogo do Jogador 2",
+            "Italian": "Area di Gioco del Giocatore 2",
+            "German": "Spielbereich des Spielers 2",
             "Chinese": "玩家 2 游戏区"
         },
         "player2Play3": {
             "English": "Player 2 Play Area",
+            "French": "Zone de Jeu du Joueur 2",
+            "Spanish": "Área de Juego del Jugador 2",
+            "Portuguese": "Área de Jogo do Jogador 2",
+            "Italian": "Area di Gioco del Giocatore 2",
+            "German": "Spielbereich des Spielers 2",
             "Chinese": "玩家 2 游戏区"
         },
         "player2Play4": {
             "English": "Player 2 Play Area",
+            "French": "Zone de Jeu du Joueur 2",
+            "Spanish": "Área de Juego del Jugador 2",
+            "Portuguese": "Área de Jogo do Jogador 2",
+            "Italian": "Area di Gioco del Giocatore 2",
+            "German": "Spielbereich des Spielers 2",
             "Chinese": "玩家 2 游戏区"
         },
         "player2Engaged": {
             "English": "Player 2 Engaged",
+            "French": "Joueur 2 Engagé",
+            "Spanish": "Jugador 2 Enfrentado",
+            "Portuguese": "Jogador 2 Engajado",
+            "Italian": "Giocatore 2 Impegnato",
+            "German": "Spieler 2 Engagiert",
             "Chinese": "玩家 2 交战区"
         },
         "player2Event": {
             "English": "Player 2 Event",
+            "French": "Événement du Joueur 2",
+            "Spanish": "Evento del Jugador 2",
+            "Portuguese": "Evento do Jogador 2",
+            "Italian": "Evento del Giocatore 2",
+            "German": "Spieler 2 Ereignis",
             "Chinese": "玩家 2 事件"
         },
         "player3Hand": {
             "English": "Player 3 Hand",
+            "French": "Main du Joueur 3",
+            "Spanish": "Mano del Jugador 3",
+            "Portuguese": "Mão do Jogador 3",
+            "Italian": "Mano del Giocatore 3",
+            "German": "Spieler 3 Hand",
             "Chinese": "玩家 3 手牌"
         },
         "player3Discard": {
             "English": "Player 3 Discard",
+            "French": "Défausse du Joueur 3",
+            "Spanish": "Descartar del Jugador 3",
+            "Portuguese": "Descarte do Jogador 3",
+            "Italian": "Scarti del Giocatore 3",
+            "German": "Spieler 3 Abwurf",
             "Chinese": "玩家 3 弃牌堆"
         },
         "player3Play1": {
             "English": "Player 3 Play Area",
+            "French": "Zone de Jeu du Joueur 3",
+            "Spanish": "Área de Juego del Jugador 3",
+            "Portuguese": "Área de Jogo do Jogador 3",
+            "Italian": "Area di Gioco del Giocatore 3",
+            "German": "Spielbereich des Spielers 3",
             "Chinese": "玩家 3 游戏区"
         },
         "player3Play2": {
             "English": "Player 3 Play Area",
+            "French": "Zone de Jeu du Joueur 3",
+            "Spanish": "Área de Juego del Jugador 3",
+            "Portuguese": "Área de Jogo do Jogador 3",
+            "Italian": "Area di Gioco del Giocatore 3",
+            "German": "Spielbereich des Spielers 3",
             "Chinese": "玩家 3 游戏区"
         },
         "player3Play3": {
             "English": "Player 3 Play Area",
+            "French": "Zone de Jeu du Joueur 3",
+            "Spanish": "Área de Juego del Jugador 3",
+            "Portuguese": "Área de Jogo do Jogador 3",
+            "Italian": "Area di Gioco del Giocatore 3",
+            "German": "Spielbereich des Spielers 3",
             "Chinese": "玩家 3 游戏区"
         },
         "player3Play4": {
             "English": "Player 3 Play Area",
+            "French": "Zone de Jeu du Joueur 3",
+            "Spanish": "Área de Juego del Jugador 3",
+            "Portuguese": "Área de Jogo do Jogador 3",
+            "Italian": "Area di Gioco del Giocatore 3",
+            "German": "Spielbereich des Spielers 3",
             "Chinese": "玩家 3 游戏区"
         },
         "player3Engaged": {
             "English": "Player 3 Engaged",
+            "French": "Joueur 3 Engagé",
+            "Spanish": "Jugador 3 Enfrentado",
+            "Portuguese": "Jogador 3 Engajado",
+            "Italian": "Giocatore 3 Impegnato",
+            "German": "Spieler 3 Engagiert",
             "Chinese": "玩家 3 交战区"
         },
         "player3Event": {
             "English": "Player 3 Event",
+            "French": "Événement du Joueur 3",
+            "Spanish": "Evento del Jugador 3",
+            "Portuguese": "Evento do Jogador 3",
+            "Italian": "Evento del Giocatore 3",
+            "German": "Spieler 3 Ereignis",
             "Chinese": "玩家 3 事件"
         },
         "player4Hand": {
             "English": "Player 4 Hand",
+            "French": "Main du Joueur 4",
+            "Spanish": "Mano del Jugador 4",
+            "Portuguese": "Mão do Jogador 4",
+            "Italian": "Mano del Giocatore 4",
+            "German": "Spieler 4 Hand",
             "Chinese": "玩家 4 手牌"
         },
         "player4Discard": {
             "English": "Player 4 Discard",
+            "French": "Défausse du Joueur 4",
+            "Spanish": "Descartar del Jugador 4",
+            "Portuguese": "Descarte do Jogador 4",
+            "Italian": "Scarti del Giocatore 4",
+            "German": "Spieler 4 Abwurf",
             "Chinese": "玩家 4 弃牌堆"
         },
         "player4Play1": {
             "English": "Player 4 Play Area",
+            "French": "Zone de Jeu du Joueur 4",
+            "Spanish": "Área de Juego del Jugador 4",
+            "Portuguese": "Área de Jogo do Jogador 4",
+            "Italian": "Area di Gioco del Giocatore 4",
+            "German": "Spielbereich des Spielers 4",
             "Chinese": "玩家 4 游戏区"
         },
         "player4Play2": {
             "English": "Player 4 Play Area",
+            "French": "Zone de Jeu du Joueur 4",
+            "Spanish": "Área de Juego del Jugador 4",
+            "Portuguese": "Área de Jogo do Jogador 4",
+            "Italian": "Area di Gioco del Giocatore 4",
+            "German": "Spielbereich des Spielers 4",
             "Chinese": "玩家 4 游戏区"
         },
         "player4Play3": {
             "English": "Player 4 Play Area",
+            "French": "Zone de Jeu du Joueur 4",
+            "Spanish": "Área de Juego del Jugador 4",
+            "Portuguese": "Área de Jogo do Jogador 4",
+            "Italian": "Area di Gioco del Giocatore 4",
+            "German": "Spielbereich des Spielers 4",
             "Chinese": "玩家 4 游戏区"
         },
         "player4Play4": {
             "English": "Player 4 Play Area",
+            "French": "Zone de Jeu du Joueur 4",
+            "Spanish": "Área de Juego del Jugador 4",
+            "Portuguese": "Área de Jogo do Jogador 4",
+            "Italian": "Area di Gioco del Giocatore 4",
+            "German": "Spielbereich des Spielers 4",
             "Chinese": "玩家 4 游戏区"
         },
         "player4Engaged": {
             "English": "Player 4 Engaged",
+            "French": "Joueur 4 Engagé",
+            "Spanish": "Jugador 4 Enfrentado",
+            "Portuguese": "Jogador 4 Engajado",
+            "Italian": "Giocatore 4 Impegnato",
+            "German": "Spieler 4 Engagiert",
             "Chinese": "玩家 4 交战区"
         },
         "player4Event": {
             "English": "Player 4 Event",
+            "French": "Événement du Joueur 4",
+            "Spanish": "Evento del Jugador 4",
+            "Portuguese": "Evento do Jogador 4",
+            "Italian": "Evento del Giocatore 4",
+            "German": "Spieler 4 Ereignis",
             "Chinese": "玩家 4 事件"
         },
         "sharedMainQuest": {
             "English": "Main Quest",
+            "French": "Quête Principale",
+            "Spanish": "Misión Principal",
+            "Portuguese": "Missão Principal",
+            "Italian": "Quest Principale",
+            "German": "Hauptquest",
             "Chinese": "主要探险"
         },
         "player1Deck2": {
             "English": "Player 1 Deck 2",
+            "French": "Deck 2 du Joueur 1",
+            "Spanish": "Mazo 2 del Jugador 1",
+            "Portuguese": "Baralho 2 do Jogador 1",
+            "Italian": "Mazzo 2 del Giocatore 1",
+            "German": "Spieler 1 Deck 2",
             "Chinese": "玩家 1 第二牌库"
         },
         "player2Deck2": {
             "English": "Player 2 Deck 2",
+            "French": "Deck 2 du Joueur 2",
+            "Spanish": "Mazo 2 del Jugador 2",
+            "Portuguese": "Baralho 2 do Jogador 2",
+            "Italian": "Mazzo 2 del Giocatore 2",
+            "German": "Spieler 2 Deck 2",
             "Chinese": "玩家 2 第二牌库"
         },
         "player3Deck2": {
             "English": "Player 3 Deck 2",
+            "French": "Deck 2 du Joueur 3",
+            "Spanish": "Mazo 2 del Jugador 3",
+            "Portuguese": "Baralho 2 do Jogador 3",
+            "Italian": "Mazzo 2 del Giocatore 3",
+            "German": "Spieler 3 Deck 2",
             "Chinese": "玩家 3 第二牌库"
         },
         "player4Deck2": {
             "English": "Player 4 Deck 2",
+            "French": "Deck 2 du Joueur 4",
+            "Spanish": "Mazo 2 del Jugador 4",
+            "Portuguese": "Baralho 2 do Jogador 4",
+            "Italian": "Mazzo 2 del Giocatore 4",
+            "German": "Spieler 4 Deck 2",
             "Chinese": "玩家 4 第二牌库"
         },
         "exhaustReady": {
             "English": "Exhaust/Ready",
+            "French": "Épuiser/Préparer",
+            "Spanish": "Agotar/Preparar",
+            "Portuguese": "Exaurir/Preparar",
+            "Italian": "Esaurire/Rendere Pronto",
+            "German": "Erschöpfen/Bereitstellen",
             "Chinese": "横置/重整"
         },
         "topBarStagingThreat": {
             "English": "Threat",
+            "French": "Menace",
+            "Spanish": "Amenaza",
+            "Portuguese": "Ameaça",
+            "Italian": "Minaccia",
+            "German": "Bedrohung",
             "Chinese": "威胁"
         },
         "topBarStagingProgress": {
             "English": "Progress",
+            "French": "Progrès",
+            "Spanish": "Progreso",
+            "Portuguese": "Progresso",
+            "Italian": "Progresso",
+            "German": "Fortschritt",
             "Chinese": "进度"
         },
         "coreLeadership": {
             "English": "30 Card Original Core Set Deck - Leadership",
+            "French": "Deck de 30 Cartes du Set de Base - Leadership",
+            "Spanish": "Mazo de 30 Cartas del Set Básico - Liderazgo",
+            "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Liderança",
+            "Italian": "Mazzo da 30 Carte del Set Base - Leadership",
+            "German": "30 Karten Original Core Set Deck - Führung",
             "Chinese": "30 张核心包牌组 - 领袖"
         },
         "coreLore": {
             "English": "30 Card Original Core Set Deck - Lore",
+            "French": "Deck de 30 Cartes du Set de Base - Connaissance",
+            "Spanish": "Mazo de 30 Cartas del Set Básico - Sabiduría",
+            "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Sabedoria",
+            "Italian": "Mazzo da 30 Carte del Set Base - Lore",
+            "German": "30 Karten Original Core Set Deck - Wissen",
             "Chinese": "30 张核心包牌组 - 学识"
         },
         "coreSpirit": {
             "English": "30 Card Original Core Set Deck - Spirit",
+            "French": "Deck de 30 Cartes du Set de Base - Esprit",
+            "Spanish": "Mazo de 30 Cartas del Set Básico - Espíritu",
+            "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Espírito",
+            "Italian": "Mazzo da 30 Carte del Set Base - Spirito",
+            "German": "30 Karten Original Core Set Deck - Geist",
             "Chinese": "30 张核心包牌组 - 精神"
         },
         "coreTactics": {
             "English": "30 Card Original Core Set Deck - Tactics",
+            "French": "Deck de 30 Cartes du Set de Base - Tactique",
+            "Spanish": "Mazo de 30 Cartas del Set Básico - Tácticas",
+            "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Táticas",
+            "Italian": "Mazzo da 30 Carte del Set Base - Tattiche",
+            "German": "30 Karten Original Core Set Deck - Taktiken",
             "Chinese": "30 张核心包牌组 - 战术"
         },
         "starterElves": {
             "English": "Starter Deck - Elves of Lórien",
+            "French": "Deck de Démarrage - Elfes de Lórien",
+            "Spanish": "Mazo Inicial - Elfos de Lórien",
+            "Portuguese": "Baralho Inicial - Elfos de Lórien",
+            "Italian": "Mazzo Iniziale - Elfi di Lórien",
+            "German": "Starter-Deck - Elfen von Lórien",
             "Chinese": "玩家起始牌库 - 罗瑞恩精灵"
         },
         "starterGondor": {
             "English": "Starter Deck - Defenders of Gondor",
+            "French": "Deck de Démarrage - Défenseurs de Gondor",
+            "Spanish": "Mazo Inicial - Defensores de Gondor",
+            "Portuguese": "Baralho Inicial - Defensores de Gondor",
+            "Italian": "Mazzo Iniziale - Difensori di Gondor",
+            "German": "Starter-Deck - Verteidiger von Gondor",
             "Chinese": "玩家起始牌库 - 刚铎防御者"
         },
         "starterDwarves": {
             "English": "Starter Deck - Dwarves of Durin",
+            "French": "Deck de Démarrage - Nains de Durin",
+            "Spanish": "Mazo Inicial - Enanos de Durin",
+            "Portuguese": "Baralho Inicial - Anões de Durin",
+            "Italian": "Mazzo Iniziale - Nani di Durin",
+            "German": "Starter-Deck - Zwerge von Durin",
             "Chinese": "玩家起始牌库 - 都林矮人"
         },
         "starterRohan": {
             "English": "Starter Deck - Riders of Rohan",
+            "French": "Deck de Démarrage - Cavaliers de Rohan",
+            "Spanish": "Mazo Inicial - Jinetes de Rohan",
+            "Portuguese": "Baralho Inicial - Cavaleiros de Rohan",
+            "Italian": "Mazzo Iniziale - Cavalieri di Rohan",
+            "German": "Starter-Deck - Reiter von Rohan",
             "Chinese": "玩家起始牌库 - 洛汗骠骑"
         },
         "questingToken": {
             "English": "Questing Token",
+            "French": "Jeton de Quête",
+            "Spanish": "Fichas de Misión",
+            "Portuguese": "Ficha de Missão",
+            "Italian": "Segnalino della Quest",
+            "German": "Quest-Token",
             "Chinese": "探险标记"
         },
         "preventRefresh": {
             "English": "Prevent Refresh",
+            "French": "Empêcher le Rafraîchissement",
+            "Spanish": "Prevenir la Recuperación",
+            "Portuguese": "Prevenir a Recuperação",
+            "Italian": "Prevenire il Ristabilimento",
+            "German": "Verhindere das Auffrischen",
             "Chinese": "阻止重整"
         },
         "swapWithTop": {
             "English": "Swap with top card in deck of origin",
+            "French": "Échanger avec la carte du dessus du deck d'origine",
+            "Spanish": "Intercambiar con la carta superior en el mazo de origen",
+            "Portuguese": "Trocar com a carta do topo do baralho original",
+            "Italian": "Scambia con la carta in cima al mazzo di origine",
+            "German": "Tausche mit der obersten Karte im Ursprungsdeck",
             "Chinese": "与所归属牌库的牌库顶卡牌互换"
         },
         "discardUntilLocation": {
             "English": "Discard Until Location",
+            "French": "Défausse jusqu'à la Zone",
+            "Spanish": "Descartar hasta la Ubicación",
+            "Portuguese": "Descartar até a Localização",
+            "Italian": "Scarta fino alla Posizione",
+            "German": "Abwerfen bis zum Ort",
             "Chinese": "弃除卡牌直到地区"
         },
         "discardUntilEnemy": {
             "English": "Discard Until Enemy",
+            "French": "Défausse jusqu'à l'Ennemi",
+            "Spanish": "Descartar hasta el Enemigo",
+            "Portuguese": "Descartar até o Inimigo",
+            "Italian": "Scarta fino al Nemico",
+            "German": "Abwerfen bis zum Feind",
             "Chinese": "弃除卡牌直到敌人"
         },
         "showQuestDeck": {
             "English": "Show Quest Deck",
+            "French": "Afficher le Deck de Quête",
+            "Spanish": "Mostrar el Mazo de Misión",
+            "Portuguese": "Mostrar o Baralho de Missão",
+            "Italian": "Mostra il Mazzo della Quest",
+            "German": "Zeige das Quest Deck",
             "Chinese": "展示探险牌库"
         },
         "customBoolean": {
             "English": "Custom Boolean",
+            "French": "Booléen Personnalisé",
+            "Spanish": "Booleano Personalizado",
+            "Portuguese": "Booleano Personalizado",
+            "Italian": "Booleano Personalizzato",
+            "German": "Benutzerdefinierter Boolescher Wert",
             "Chinese": "自定义布尔值"
         },
         "choice2": {
             "English": "Choice2",
+            "French": "Choix2",
+            "Spanish": "Opción2",
+            "Portuguese": "Escolha2",
+            "Italian": "Scelta2",
+            "German": "Wahl2",
             "Chinese": "选择2"
         },
         "choice1": {
             "English": "Choice1",
+            "French": "Choix1",
+            "Spanish": "Opción1",
+            "Portuguese": "Escolha1",
+            "Italian": "Scelta1",
+            "German": "Wahl1",
             "Chinese": "选择1"
         },
         "customChoice": {
             "English": "Custom Choice",
+            "French": "Choix Personnalisé",
+            "Spanish": "Opción Personalizada",
+            "Portuguese": "Escolha Personalizada",
+            "Italian": "Scelta Personalizzata",
+            "German": "Benutzerdefinierte Wahl",
             "Chinese": "自定义选择"
         },
         "customString": {
             "English": "Custom String",
+            "French": "Chaîne Personnalisée",
+            "Spanish": "Cadena Personalizada",
+            "Portuguese": "String Personalizada",
+            "Italian": "Stringa Personalizzata",
+            "German": "Benutzerdefinierte Zeichenfolge",
             "Chinese": "自定义字符串"
         },
         "refreshed": {
             "English": "Refreshed",
+            "French": "Rafraîchi",
+            "Spanish": "Recargado",
+            "Portuguese": "Atualizado",
+            "Italian": "Ristabilito",
+            "German": "Aktualisiert",
             "Chinese": "已重整"
         },
         "cardsDrawn": {
             "English": "Cards Drawn",
+            "French": "Cartes Tirées",
+            "Spanish": "Cartas Robadas",
+            "Portuguese": "Cartas Compradas",
+            "Italian": "Carte Pesate",
+            "German": "Gezogene Karten",
             "Chinese": "每回合抽取牌数"
         },
         "hitpoints": {
             "English": "Hitpoints",
+            "French": "Points de Vie",
+            "Spanish": "Puntos de Vida",
+            "Portuguese": "Pontos de Vida",
+            "Italian": "Punti Vita",
+            "German": "Lebenspunkte",
             "Chinese": "生命值"
         },
         "defense": {
             "English": "Defense",
+            "French": "Défense",
+            "Spanish": "Defensa",
+            "Portuguese": "Defesa",
+            "Italian": "Difesa",
+            "German": "Verteidigung",
             "Chinese": "防御"
         },
         "attack": {
             "English": "Attack",
+            "French": "Attaque",
+            "Spanish": "Ataque",
+            "Portuguese": "Ataque",
+            "Italian": "Attacco",
+            "German": "Angriff",
             "Chinese": "攻击"
         },
         "questingStat": {
             "English": "Questing Stat",
+            "French": "Statistique de Quête",
+            "Spanish": "Estadística de Misión",
+            "Portuguese": "Atributo de Missão",
+            "Italian": "Statistica della Quest",
+            "German": "Quest-Statistik",
             "Chinese": "用于探险的属性"
         },
         "questProgress": {
             "English": "Quest Progress",
+            "French": "Progrès de la Quête",
+            "Spanish": "Progreso de la Misión",
+            "Portuguese": "Progresso da Missão",
+            "Italian": "Progresso della Quest",
+            "German": "Questfortschritt",
             "Chinese": "探险进度"
         }
     }

@@ -9,7 +9,9 @@
             {"key": "5", "tokenType": "threat", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/threat.png)"},
             {"key": "6", "tokenType": "attack", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/attack.png)"},
             {"key": "7", "tokenType": "defense", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/defense.png)"},
-            {"key": "8", "tokenType": "hitPoints", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/hitPoints.png)"}
+            {"key": "8", "tokenType": "hitPoints", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/hitPoints.png)"},
+            {"key": "9", "tokenType": "questPoints", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/questPoints.png)"},
+            {"key": "0", "tokenType": "engagementCost", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/engagementCost.png)"}
         ],
         "game": [
             {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},

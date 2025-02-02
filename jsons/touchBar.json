@@ -133,16 +133,10 @@
               "actionList": "drawCard"
             },
             {
-              "id": "reveal",
-              "label": "id:reveal",
-              "actionType": "game",
-              "actionList": "revealEncounterFaceup"
-            },
-            {
               "id": "shadows",
               "label": "id:shadows",
               "actionType": "game",
-              "actionList": "dealShadows"
+              "actionList": "skipToDealShadowsStep"
             },
             {
               "id": "discardShadows",
@@ -155,12 +149,6 @@
               "label": "id:refresh",
               "actionType": "game",
               "actionList": "refresh"
-            },
-            {
-              "id": "advanceRound",
-              "label": "id:advanceTheRound",
-              "actionType": "game",
-              "actionList": "advanceRound"
             },
             {
               "id": "clearTargets",
@@ -215,6 +203,36 @@
               "label": "id:score",
               "actionType": "game",
               "actionList": "calculateScore"
+            },
+            {
+              "id": "W",
+              "label": "id:W-Skip",
+              "actionType": "game",
+              "actionList": ["DO_ADVANCE_BUTTON"]
+            },
+            {
+              "id": "E",
+              "label": "id:E-Reveal",
+              "actionType": "game",
+              "actionList": "revealEncounter"
+            },
+            {
+              "id": "Q",
+              "label": "id:Q-Commit",
+              "actionType": "card",
+              "actionList": "toggleCommit"
+            },
+            {
+              "id": "Z",
+              "label": "id:Z-Rezolve",
+              "actionType": "game",
+              "actionList": ["RESOLVE_QUEST"]
+            },
+            {
+              "id": "G",
+              "label": "id:G-Engage",
+              "actionType": "game",
+              "actionList": ["RESOLVE_ENGAGEMENT_CHECKS"]
             }
         ]
     ]
