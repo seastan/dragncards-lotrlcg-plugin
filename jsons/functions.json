@@ -532,6 +532,17 @@
             ]
           ]
         },
+        "GET_QUEST_POINTS": {
+          "args": ["$CARD"],
+          "code": [
+            ["COND",
+              ["OR", ["EQUAL", "$CARD.currentFace.type", "Location"], ["EQUAL", "$CARD.currentFace.type", "Quest"]],
+              ["ADD", "$CARD.currentFace.questPoints", "$CARD.tokens.questPoints"],
+              true,
+              0
+            ]
+          ]
+        },
         "RESOLVE_QUEST" : {
           "args": [],
           "code": [
@@ -554,7 +565,7 @@
                         ["EQUAL", "$NUM_ACTIVE_LOCATIONS", 1],
                         [
                             ["VAR", "$ACTIVE_LOCATION", "$ACTIVE_LOCATIONS.[0]"],
-                            ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", "$ACTIVE_LOCATION.currentFace.questPoints", "$ACTIVE_LOCATION.tokens.progress"]],
+                            ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", ["GET_QUEST_POINTS", "$ACTIVE_LOCATION"], "$ACTIVE_LOCATION.tokens.progress"]],
                             ["UPDATE_VAR", "$REMAINING_LOCATION_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_LOCATION_PROGRESS"]]],
                             ["LOG", "├── {{$PROGRESS_MADE}} progress was placed on the active location."],
                             ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
@@ -565,7 +576,7 @@
                         ["GREATER_THAN", "$PROGRESS_MADE", 0], 
                         [
                             ["VAR", "$CURRENT_QUEST", ["GET_CURRENT_QUEST"]],
-                            ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", "$CURRENT_QUEST.currentFace.questPoints", "$CURRENT_QUEST.tokens.progress"]],
+                            ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", ["GET_QUEST_POINTS", "$CURRENT_QUEST"], "$CURRENT_QUEST.tokens.progress"]],
                             ["UPDATE_VAR", "$REMAINING_QUEST_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_QUEST_PROGRESS"]]],
                             ["LOG", "└── {{$PROGRESS_MADE}} progress was placed on the current quest, {{$CURRENT_QUEST.currentFace.name}}."],
                             ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$PROGRESS_MADE"]
