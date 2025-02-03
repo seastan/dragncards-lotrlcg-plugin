@@ -881,7 +881,7 @@
                                     ]
                                 ]]],
                                 ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
-                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["Reduce player {{$I}}'s threat by 6", "player{{$I}}"], "{{$I}}", 
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["FORMAT", "Reduce player {{$I}}'s threat by 6", "player{{$I}}"], "{{$I}}", 
                                         ["REPLACE_STRING_IN_LIST", ["POINTER", [
                                             ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " Reduced their threat by 6."],
                                             ["DECREASE_VAL", "/playerData/player{I}/threat", 6]
