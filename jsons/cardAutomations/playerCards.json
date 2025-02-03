@@ -1893,15 +1893,10 @@
                 "rules": {
                     "makeIntoAlly": {
                         "type": "passive",
-                        "autoRun": {
-                            "status": "promptYN",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Apply the new card type to {{$THIS.parentCard.sides.A.name}}?"
-                        },
                         "listenTo": ["/cardById/$THIS_ID/cardIndex"],
                         "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
                         "onDo": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["VAR", "$ALIAS", ["GET_ALIAS", ["PREV", "$THIS.controller"]]],
                             ["LOG", "{{$ALIAS}} gave the ally type to {{$THIS.parentCard.sides.A.name}}."],
                             ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Ally"]
                         ],
