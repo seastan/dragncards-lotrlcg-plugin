@@ -2,7 +2,7 @@
     "automation": {
         "postNewGameActionList": [
             ["PROMPT", "player1", "setPlayerCount"],
-            ["PROMPT", "player1", "notify", "Welcome to DragnCards 2.0! You may notice several new quality-of-life imporvements. One of them is the helper text box in the top left to guide you through each round. For a more manual feel, you can disable this in View->Preferances."],
+            ["PROMPT", "player1", "notify", "Welcome to DragnCards 2.0! You may notice several new quality-of-life improvements. One of them is the helper text box in the top left to guide you through each round. For a more manual feel, you can disable this in View->Preferances."],
             ["UPDATE_HELPER_TEXT_VISIBILITY"]
         ],
         "postLoadActionList": [
@@ -16,7 +16,7 @@
                     ["AND", 
                         ["EQUAL", "$CARD.sides.A.type", "Hero"],
                         ["EQUAL", "$CARD.inPlay", true],
-                        ["NOT_EQUAL", "$CARD.controller", "shared"]
+                        ["NOT_EQUAL", "$CARD.sides.A.cost", 0]
                     ],
                     [
                         ["UPDATE_VAR", "$LOADED_PLAYER_DECK", true],
