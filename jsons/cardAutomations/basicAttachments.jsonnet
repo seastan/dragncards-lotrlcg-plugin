@@ -19,7 +19,7 @@ local modifyToken(card_id, tokenName, amount) =
 // checkFaceUp: primarily for Dreamchaser campaign boons which can be upgraded (flipped 'face-down') but still need to trigger
 // listenTo: list of paths to additionally listen
 // condition: list of conditions to append to "AND" condition
-local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, checkFaceUp=true, listenTo=[], condition=[]) = { 
+local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, engagementCost=0, checkFaceUp=true, listenTo=[], condition=[]) = { 
     "_comment": "Add/remove tokens to the attached card.",
     "type": "passive", 
     "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/cardIndex"] + listenTo,
@@ -34,21 +34,23 @@ local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints
         modifyToken("$THIS.parentCardId", "threat", threat) +
         modifyToken("$THIS.parentCardId", "attack", attack) +
         modifyToken("$THIS.parentCardId", "defense", defense) +
-        modifyToken("$THIS.parentCardId", "hitPoints", hitPoints)
+        modifyToken("$THIS.parentCardId", "hitPoints", hitPoints) +
+        modifyToken("$THIS.parentCardId", "engagementCost", engagementCost)
     ,
     "offDo": [["VAR", "$PREV_PARENT_ID", ["PREV", "$THIS.parentCardId"]]] + 
         modifyToken("$PREV_PARENT_ID", "willpower", -willpower) +
         modifyToken("$PREV_PARENT_ID", "threat", -threat) +
         modifyToken("$PREV_PARENT_ID", "attack", -attack) +
         modifyToken("$PREV_PARENT_ID", "defense", -defense) +
-        modifyToken("$PREV_PARENT_ID", "hitPoints", -hitPoints)
+        modifyToken("$PREV_PARENT_ID", "hitPoints", -hitPoints) +
+        modifyToken("$PREV_PARENT_ID", "engagementCost", -engagementCost)
     ,
 };
 
-local staticAttachment(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, checkFaceUp=true) = {
+local staticAttachment(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, engagementCost=0, checkFaceUp=true) = {
     "_comment": name,
     "rules": {
-        "attachmentStaticPassiveTokens": attachmentRule(name, willpower, threat, attack, defense, hitPoints, checkFaceUp)
+        "attachmentStaticPassiveTokens": attachmentRule(name, willpower, threat, attack, defense, hitPoints, engagementCost, checkFaceUp)
     }
 };
 
@@ -63,6 +65,7 @@ local conditionalAttachment(name, bonusList) = {
             attack     = std.get(bonusRule, "attack",    default=0),
             defense    = std.get(bonusRule, "defense",   default=0),
             hitPoints  = std.get(bonusRule, "hitPoints", default=0),
+            engagementCost = std.get(bonusRule, "engagementCost", default=0),
             checkFaceUp  = std.get(bonusRule, "checkFaceUp", default=true),
             listenTo   = std.get(bonusRule, "listenTo",  default=[]),
             condition  = std.get(bonusRule, "condition", default=[])
@@ -189,13 +192,14 @@ local conditionalAttachment(name, bonusList) = {
             "ff574390-bd68-4277-9065-dd9dbf552d00": staticAttachment("Valiant Warrior", attack=1),
             "af49e5ea-c6a2-4be4-bbf3-ac53c100e887": staticAttachment("Noble Hero", willpower=1),
             "4b36df3f-d75b-4b3a-9324-9ab31c10d7b9": staticAttachment("Pale Blade", attack=1),
+            "09aeff64-6e0d-4dfa-af21-2e7805441376": staticAttachment("Black Steed", engagementCost=-10),
             "7791cd04-7ffe-41f3-9633-cf57ad3a34ca": staticAttachment("Sting (Boon)", willpower=1, attack=1, defense=1),
             "23acfc2e-3262-4f22-8496-a753fa9089bd": staticAttachment("Mithril Shirt (Boon)", defense=1, hitPoints=1),
             "c7f5eac0-dbda-419f-994c-c182775682b3": staticAttachment("Glamdring (Boon)", attack=2),
             "24eabbac-62b1-4d2c-93a0-f97c04a2aefa": staticAttachment("Andúril (Boon)", willpower=1, attack=1, defense=1),
             "b86ba0f8-11f9-4694-b421-17b683bd4325": staticAttachment("Ent Draught", hitPoints=2),
             "1665d088-793c-4350-82f3-e35fd307463d": staticAttachment("Beyond All Hope (Boon)", willpower=1, attack=1, defense=1),
-            "6e85113d-a2a6-44a7-895c-ca5115f7b7d2": staticAttachment("Fell Beast", threat=1, attack=1, defense=1), // TODO engagement cost -10
+            "6e85113d-a2a6-44a7-895c-ca5115f7b7d2": staticAttachment("Fell Beast", threat=1, attack=1, defense=1, engagementCost=-10),
             "5003227b-ebc3-454a-88b4-2d6e20cc48f7": staticAttachment("Hell-hawk", threat=2, attack=2, defense=2),
             "f31e3b0f-bb24-4c6d-856f-4805db1bbf4b": staticAttachment("Armor Plating (Boon)", defense=1, checkFaceUp=false),
             "e6f3f717-5348-463c-8cdf-dff28ee89d92": staticAttachment("Ballista (Boon)", attack=1, checkFaceUp=false),

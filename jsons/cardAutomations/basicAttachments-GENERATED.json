@@ -389,6 +389,70 @@
                }
             }
          },
+         "09aeff64-6e0d-4dfa-af21-2e7805441376": {
+            "_comment": "Black Steed",
+            "rules": {
+               "attachmentStaticPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 10 engagementCost to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/engagementCost",
+                        10
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 10 engagementCost from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/engagementCost",
+                        10
+                     ]
+                  ],
+                  "type": "passive"
+               }
+            }
+         },
          "0b179f39-f202-4fe7-b930-0f3db582bc3e": {
             "_comment": "The Red Arrow",
             "rules": {
@@ -5619,6 +5683,18 @@
                         "DECREASE_VAL",
                         "/cardById/$PREV_PARENT_ID/tokens/defense",
                         1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 10 engagementCost to ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/engagementCost",
+                        10
                      ]
                   ],
                   "onDo": [
@@ -5657,6 +5733,18 @@
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/defense",
                         1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 10 engagementCost from ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/engagementCost",
+                        10
                      ]
                   ],
                   "type": "passive"
