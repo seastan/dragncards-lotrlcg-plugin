@@ -1,5 +1,14 @@
 {
     "labels": {
+        "convertToHero": {
+            "English": "Convert to Hero",
+            "French": "Convertir en Héros",
+            "Spanish": "Convertir en Héroe",
+            "Portuguese": "Converter em Herói",
+            "Italian": "Converti in Eroe",
+            "German": "In Helden umwandeln",
+            "Chinese": "转换为英雄"
+        },
         "W-Skip": {
             "English": "W / Skip",
             "French": "W / Passer",

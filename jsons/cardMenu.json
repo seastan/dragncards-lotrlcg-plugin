@@ -14,6 +14,13 @@
                 "label": "id:toggleEngagedWithEachPlayer",
                 "actionList": ["TOGGLE_ENGAGED_WITH_EACH_PLAYER", ["NOT", "$ACTIVE_CARD.engagedWithEachPlayer"]],
                 "showIf": ["EQUAL", "$ACTIVE_CARD.currentFace.type", "Enemy"]
+            },
+            {
+                "label": "id:convertToHero",
+                "actionList": [
+                    ["LOG", "{{$ALIAS_N}} converted {{$ACTIVE_FACE.name}} to a Hero."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/currentFace/type", "Hero"]
+                ]
             }
         ]
     }
