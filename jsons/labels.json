@@ -1,5 +1,14 @@
 {
     "labels": {
+        "convertToAlly": {
+            "English": "Convert to Ally",
+            "French": "Convertir en Allié",
+            "Spanish": "Convertir en Aliado",
+            "Portuguese": "Converter em Aliado",
+            "Italian": "Converti in Alleato",
+            "German": "In Verbündeten umwandeln",
+            "Chinese": "转换为盟友"
+        },
         "convertToHero": {
             "English": "Convert to Hero",
             "French": "Convertir en Héros",

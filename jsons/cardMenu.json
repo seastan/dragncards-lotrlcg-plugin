@@ -18,8 +18,29 @@
             {
                 "label": "id:convertToHero",
                 "actionList": [
-                    ["LOG", "{{$ALIAS_N}} converted {{$ACTIVE_FACE.name}} to a Hero."],
-                    ["SET", "/cardById/$ACTIVE_CARD_ID/currentFace/type", "Hero"]
+                    ["LOG", "{{$ALIAS_N}} converted {{$ACTIVE_FACE.name}} to a hero."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/sides/$ACTIVE_CARD.currentSide/type", "Hero"]
+                ],
+                "showIf": ["AND",
+                    ["NOT_EQUAL", "$ACTIVE_FACE.type", "Hero"],
+                    ["OR",
+                        ["EQUAL", "$ACTIVE_CARD.databaseId", "68168e29-feaf-43da-9ea0-2fc33061710d"],
+                        ["EQUAL", "$ACTIVE_CARD.databaseId", "6238c12d-b4c0-478f-bd7e-b59ef9b4e86f"]
+                    ]
+                ]
+            },
+            {
+                "label": "id:convertToAlly",
+                "actionList": [
+                    ["LOG", "{{$ALIAS_N}} converted {{$ACTIVE_FACE.name}} to an ally."],
+                    ["SET", "/cardById/$ACTIVE_CARD_ID/sides/$ACTIVE_CARD.currentSide/type", "Ally"]
+                ],
+                "showIf": ["AND",
+                    ["NOT_EQUAL", "$ACTIVE_FACE.type", "Ally"],
+                    ["OR",
+                        ["EQUAL", "$ACTIVE_CARD.databaseId", "68168e29-feaf-43da-9ea0-2fc33061710d"],
+                        ["EQUAL", "$ACTIVE_CARD.databaseId", "6238c12d-b4c0-478f-bd7e-b59ef9b4e86f"]
+                    ]
                 ]
             }
         ]
