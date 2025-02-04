@@ -357,8 +357,8 @@
             ["LOG", "Final score: ", "$FINAL_SCORE"]
         ],
         "discardCard": [
+            ["VAR", "$ROTATION", "$ACTIVE_CARD.rotation"],
             ["COND",
-                ["VAR", "$ROTATION", "$ACTIVE_CARD.rotation"],
                 ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
                 [
                     ["VAR", "$STACK_ID", ["GET_STACK_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex"]],
