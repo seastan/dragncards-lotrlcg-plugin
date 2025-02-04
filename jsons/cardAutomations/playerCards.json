@@ -780,7 +780,7 @@
                 }
             },
             "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1": {
-                "_comment": "Galadriel",
+                "_comment": "Galadriel (Hero)",
                 "ability": {
                     "A": ["COND",
                         ["AND", 
@@ -815,7 +815,7 @@
                     ]
                 }
             },
-            "8ccfbcf2-676c-4e24-ab5e-fa479343ab39": {"_comment": "Galadriel", "inheritFrom": "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1"},
+            "8ccfbcf2-676c-4e24-ab5e-fa479343ab39": {"_comment": "Galadriel (Hero)", "inheritFrom": "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1"},
             "51223bd0-ffd1-11df-a976-0801200c9012": {
                 "_comment": "Beravor",
                 "ability": {
@@ -1225,6 +1225,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
+                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS_ID"],
                             ["ACTION_LIST", "discardCard"]
                         ]
                     }
@@ -1328,7 +1329,7 @@
                 }
             },
             "51223bd0-ffd1-11df-a976-0801203c9003": {
-                "_comment": "Radagast",
+                "_comment": "Radagast (Ally)",
                 "rules": {
                     "radagastResource": {
                         "type": "trigger",
@@ -1621,7 +1622,7 @@
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "4a2566d3-9af7-455a-bb5a-d9dafe62c636": {
-                "_comment": "Anduril (ALep)",
+                "_comment": "Anduril (ALeP)",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "77721e76-80a6-41b0-a71a-9cd533954250": {
