@@ -406,7 +406,7 @@
                 ]
             ],
             ["COND",
-                ["EQUAL", "$ACTIVE_CARD.currentFace.type", "Quest"],
+                ["EQUAL", "$ACTIVE_FACE.type", "Quest"],
                 ["COND", 
                     ["EQUAL", ["LENGTH", "$GAME.groupById.sharedQuestDeck.stackIds"], 0],
                     ["LOG", "The players won the game!"],
@@ -415,7 +415,10 @@
                         ["MOVE_STACK", ["GET_STACK_ID", "sharedQuestDeck", 0], "sharedMainQuest", 0],
                         ["LOG", "$ALIAS_N", " advanced the quest."],
                         ["COND",
-                            ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                            ["AND",
+                                ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                                ["NOT_EQUAL", "$ACTIVE_CARD.rotation", -30]
+                            ],
                             ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
                         ]
                     ]
