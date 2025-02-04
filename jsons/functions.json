@@ -781,7 +781,7 @@
         "IS_CHARACTER": {
           "args": ["$CARD"],
           "code": ["AND",
-            ["EQUAL", "$THIS.cardIndex", 0],
+            ["EQUAL", "$CARD.cardIndex", 0],
             ["OR",
               ["EQUAL", "$CARD.currentFace.type", "Hero"],
               ["EQUAL", "$CARD.currentFace.type", "Ally"],
