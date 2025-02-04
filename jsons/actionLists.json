@@ -25,10 +25,12 @@
         ],
         "skipToDealShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
+            ["END_THE_QUEST_PHASE"],
             ["SET", "/stepId", "6.2"]
         ],
         "skipToDiscardShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the end of the combat phase."],
+            ["END_THE_QUEST_PHASE"],
             ["SET", "/stepId", "6.11"]
         ],
         "skipToRefreshPhase": [
@@ -186,7 +188,7 @@
                                 ["EQUAL", "$GAME.stepId", "4.2"],
                                 [
                                     ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
-                                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                                    ["MOVE_STACK", "$ACTIVE_CARD.stackId", "sharedActiveLocation", 0]
                                 ]
                             ]
                         ],
