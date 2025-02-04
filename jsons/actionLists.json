@@ -358,6 +358,7 @@
         ],
         "discardCard": [
             ["COND",
+                ["VAR", "$ROTATION", "$ACTIVE_CARD.rotation"],
                 ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
                 [
                     ["VAR", "$STACK_ID", ["GET_STACK_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex"]],
@@ -376,7 +377,7 @@
                                     ["COND",
                                         ["AND",
                                             ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
-                                            ["NOT_EQUAL", "$CARD.rotation", -30]
+                                            ["NOT_EQUAL", "$ROTATION", -30]
                                         ],
                                         ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
                                     ]
@@ -397,7 +398,7 @@
                             ["COND",
                                 ["AND",
                                     ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
-                                    ["NOT_EQUAL", "$ACTIVE_CARD.rotation", -30]
+                                    ["NOT_EQUAL", "$ROTATION", -30]
                                 ],
                                 ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
                             ]
@@ -417,7 +418,7 @@
                         ["COND",
                             ["AND",
                                 ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
-                                ["NOT_EQUAL", "$ACTIVE_CARD.rotation", -30]
+                                ["NOT_EQUAL", "$ROTATION", -30]
                             ],
                             ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
                         ]
