@@ -118,6 +118,17 @@
             ]
           ]
         },
+        "GET_ENGAGEMENT_COST": {
+          "args": ["$CARD"],
+          "code": [
+            ["COND",
+              ["EQUAL", "$CARD.currentFace.type", "Enemy"],
+              ["ADD", "$CARD.currentFace.engagementCost", "$CARD.tokens.engagementCost"],
+              true,
+              0
+            ]
+          ]
+        },
         "ENEMIES_IN_STAGING_AREA_FORCED": {
           "args": [],
           "code": [
@@ -127,8 +138,8 @@
               [
                 ["VAR", "$PLAYERS_BY_THREAT", ["SORT_OBJ_LIST", "$PLAYER_ORDER", "$PLAYER_I", "$GAME.playerData.$PLAYER_I.threat"]],
                 ["VAR", "$HIGHEST_THREAT", "$GAME.playerData.{{$PLAYERS_BY_THREAT.[-1]}}.threat"],
-                ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$STAGING_ENEMIES", "$C", "$C.currentFace.engagementCost"]],
-                ["VAR", "$LOWEST_ENG_COST", "$ENEMIES_BY_ENG_COST.[0].currentFace.engagementCost"],
+                ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$STAGING_ENEMIES", "$C", ["GET_ENGAGEMENT_COST", "$C"]]],
+                ["VAR", "$LOWEST_ENG_COST", ["GET_ENGAGEMENT_COST", "$ENEMIES_BY_ENG_COST.[0]"]],
                 ["COND", 
                   ["LESS_EQUAL", "$LOWEST_ENG_COST", "$HIGHEST_THREAT"],
                   true,
@@ -241,7 +252,7 @@
             ["VAR", "$ENGAGED_WITH_ME", "$GAME.groupById.{{$PLAYER_I}}Engaged.parentCards"],
             ["VAR", "$ENGAGED_WITH_ALL", ["FILTER_CARDS", "$C", ["EQUAL", "$C.engagedWithEachPlayer", true]]],
             ["VAR", "$ENGAGED_CARDS", ["CONCAT_LISTS", "$ENGAGED_WITH_ME", "$ENGAGED_WITH_ALL"]],
-            ["VAR", "$SORTED_ENGAGED_CARDS", ["REVERSE_LIST", ["SORT_OBJ_LIST", "$ENGAGED_CARDS", "$CARD", "$CARD.sides.A.engagementCost"]]],
+            ["VAR", "$SORTED_ENGAGED_CARDS", ["REVERSE_LIST", ["SORT_OBJ_LIST", "$ENGAGED_CARDS", "$CARD", ["GET_ENGAGEMENT_COST", "$CARD"]]]],
             ["FOR_EACH_VAL", "$CARD", "$SORTED_ENGAGED_CARDS", [
                 ["VAR", "$CARD_ID", "$CARD.id"],
                 ["COND",
@@ -521,6 +532,17 @@
             ]
           ]
         },
+        "GET_QUEST_POINTS": {
+          "args": ["$CARD"],
+          "code": [
+            ["COND",
+              ["OR", ["EQUAL", "$CARD.currentFace.type", "Location"], ["EQUAL", "$CARD.currentFace.type", "Quest"]],
+              ["ADD", "$CARD.currentFace.questPoints", "$CARD.tokens.questPoints"],
+              true,
+              0
+            ]
+          ]
+        },
         "RESOLVE_QUEST" : {
           "args": [],
           "code": [
@@ -543,7 +565,7 @@
                         ["EQUAL", "$NUM_ACTIVE_LOCATIONS", 1],
                         [
                             ["VAR", "$ACTIVE_LOCATION", "$ACTIVE_LOCATIONS.[0]"],
-                            ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", "$ACTIVE_LOCATION.currentFace.questPoints", "$ACTIVE_LOCATION.tokens.progress"]],
+                            ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", ["GET_QUEST_POINTS", "$ACTIVE_LOCATION"], "$ACTIVE_LOCATION.tokens.progress"]],
                             ["UPDATE_VAR", "$REMAINING_LOCATION_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_LOCATION_PROGRESS"]]],
                             ["LOG", "├── {{$PROGRESS_MADE}} progress was placed on the active location."],
                             ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
@@ -554,7 +576,7 @@
                         ["GREATER_THAN", "$PROGRESS_MADE", 0], 
                         [
                             ["VAR", "$CURRENT_QUEST", ["GET_CURRENT_QUEST"]],
-                            ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", "$CURRENT_QUEST.currentFace.questPoints", "$CURRENT_QUEST.tokens.progress"]],
+                            ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", ["GET_QUEST_POINTS", "$CURRENT_QUEST"], "$CURRENT_QUEST.tokens.progress"]],
                             ["UPDATE_VAR", "$REMAINING_QUEST_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_QUEST_PROGRESS"]]],
                             ["LOG", "└── {{$PROGRESS_MADE}} progress was placed on the current quest, {{$CURRENT_QUEST.currentFace.name}}."],
                             ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$PROGRESS_MADE"]
@@ -605,14 +627,14 @@
                         "AND",
                         ["EQUAL", "$C.groupId", "sharedStagingArea"],
                         ["EQUAL", "$C.currentFace.type", "Enemy"],
-                        ["GREATER_EQUAL", "$GAME.playerData.$CURRENT_PLAYER.threat", "$C.currentFace.engagementCost"]
+                        ["GREATER_EQUAL", "$GAME.playerData.$CURRENT_PLAYER.threat", ["GET_ENGAGEMENT_COST", "$C"]]
                     ]]],
                     ["COND",
                         ["EQUAL", ["LENGTH", "$CANDIDATES"], 0],
                         ["LOG", "├── ", "{{$ALIAS_I}} has no enemies in the staging area that they must engage."],
                         ["TRUE"],
                         [
-                            ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$CANDIDATES", "$C", "$C.currentFace.engagementCost"]],
+                            ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$CANDIDATES", "$C", ["GET_ENGAGEMENT_COST", "$C"]]],
                             ["VAR", "$ENEMY_TO_ENGAGE", "$ENEMIES_BY_ENG_COST.[-1]"],
                             ["LOG", "├── ", "{{$ALIAS_I}} engages ", "$ENEMY_TO_ENGAGE.currentFace.name", "."],
                             ["MOVE_STACK", "$ENEMY_TO_ENGAGE.stackId", "{{$CURRENT_PLAYER}}Engaged", -1]

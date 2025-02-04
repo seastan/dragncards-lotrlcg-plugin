@@ -19,7 +19,7 @@ local modifyToken(card_id, tokenName, amount) =
 // checkFaceUp: primarily for Dreamchaser campaign boons which can be upgraded (flipped 'face-down') but still need to trigger
 // listenTo: list of paths to additionally listen
 // condition: list of conditions to append to "AND" condition
-local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, checkFaceUp=true, listenTo=[], condition=[]) = { 
+local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true, listenTo=[], condition=[]) = { 
     "_comment": "Add/remove tokens to the attached card.",
     "type": "passive", 
     "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/cardIndex"] + listenTo,
@@ -34,21 +34,25 @@ local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints
         modifyToken("$THIS.parentCardId", "threat", threat) +
         modifyToken("$THIS.parentCardId", "attack", attack) +
         modifyToken("$THIS.parentCardId", "defense", defense) +
-        modifyToken("$THIS.parentCardId", "hitPoints", hitPoints)
+        modifyToken("$THIS.parentCardId", "hitPoints", hitPoints) +
+        modifyToken("$THIS.parentCardId", "questPoints", questPoints) +
+        modifyToken("$THIS.parentCardId", "engagementCost", engagementCost)
     ,
     "offDo": [["VAR", "$PREV_PARENT_ID", ["PREV", "$THIS.parentCardId"]]] + 
         modifyToken("$PREV_PARENT_ID", "willpower", -willpower) +
         modifyToken("$PREV_PARENT_ID", "threat", -threat) +
         modifyToken("$PREV_PARENT_ID", "attack", -attack) +
         modifyToken("$PREV_PARENT_ID", "defense", -defense) +
-        modifyToken("$PREV_PARENT_ID", "hitPoints", -hitPoints)
+        modifyToken("$PREV_PARENT_ID", "hitPoints", -hitPoints) +
+        modifyToken("$PREV_PARENT_ID", "questPoints", -questPoints) +
+        modifyToken("$PREV_PARENT_ID", "engagementCost", -engagementCost)
     ,
 };
 
-local staticAttachment(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, checkFaceUp=true) = {
+local staticAttachment(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true) = {
     "_comment": name,
     "rules": {
-        "attachmentStaticPassiveTokens": attachmentRule(name, willpower, threat, attack, defense, hitPoints, checkFaceUp)
+        "attachmentStaticPassiveTokens": attachmentRule(name, willpower, threat, attack, defense, hitPoints, questPoints, engagementCost, checkFaceUp)
     }
 };
 
@@ -63,6 +67,8 @@ local conditionalAttachment(name, bonusList) = {
             attack     = std.get(bonusRule, "attack",    default=0),
             defense    = std.get(bonusRule, "defense",   default=0),
             hitPoints  = std.get(bonusRule, "hitPoints", default=0),
+            questPoints= std.get(bonusRule, "questPoints", default=0),
+            engagementCost = std.get(bonusRule, "engagementCost", default=0),
             checkFaceUp  = std.get(bonusRule, "checkFaceUp", default=true),
             listenTo   = std.get(bonusRule, "listenTo",  default=[]),
             condition  = std.get(bonusRule, "condition", default=[])
@@ -72,7 +78,7 @@ local conditionalAttachment(name, bonusList) = {
 };
 
 // All attachments were found through the following regex search:
-// Attached .* \b(?:gets|gains)\b .* \[?\b(?:willpower|threat|attack|defense|hit)\b
+// Attached .* \b(?:gets|gains)\b .* \[?\b(?:willpower|threat|attack|defense|hit|quest|engagement)\b
 // Skipped: PvP scenarios, Custom sets
 {
     "_comment" : "JSON file automatically generated using jsonnet",
@@ -132,6 +138,7 @@ local conditionalAttachment(name, bonusList) = {
             "7cde0efa-22e2-41c3-a167-e36da4de092d": staticAttachment("Bow of the Galadhrim", attack=1),
             "bf925a7c-b427-4fb6-ba6b-dbc86304a69f": staticAttachment("Heirloom of Iârchon", willpower=1),
             "2e5e6e97-003b-4500-8372-495f5ee86051": staticAttachment("Heirloom of Iârchon", willpower=1),
+            "7f458303-66c1-45db-bf3f-20669fea6ff4": staticAttachment("Haunting Fog", questPoints=6),
             "8a6566b1-2425-442b-8e44-f8a3aa4590fe": staticAttachment("Sword of Númenor", attack=1),
             "7a8a2dbe-5a97-42da-a3c9-283724783145": staticAttachment("Secret Vigil", threat=-1),
             "2f9c24db-2ee4-4368-99fa-db49a0add8f5": staticAttachment("Raiment of War", attack=1, defense=1, hitPoints=2),
@@ -159,6 +166,7 @@ local conditionalAttachment(name, bonusList) = {
             "b1cc99c3-09a7-4418-85c4-e368f44adf1d": staticAttachment("Necklace of Girion", willpower=2),
             "d45259f1-a551-466c-8352-cc466e1670c2": staticAttachment("Stone of Elostirion", willpower=2),
             "4c77565a-475e-4f57-9360-8f0a2916607f": staticAttachment("Armor of Erebor", defense=1),
+            "639a4814-6a8e-4d7d-b589-fbbf22c78df2": staticAttachment("Put off Pursuit", questPoints=2),
             "b897b63d-86ac-417c-88d2-1a594f3674f1": staticAttachment("Sword of Rhûn", attack=2),
             "53c01bdc-2761-4f8f-90bc-1eedd14ca376": staticAttachment("Easterling Horse", threat=2),
             "57e22e64-6ff5-4133-8c70-2ee3460d02f9": staticAttachment("Evidence of the Cult", threat=1, attack=1, defense=1),
@@ -174,9 +182,11 @@ local conditionalAttachment(name, bonusList) = {
             "7bae4f1a-42b7-46ab-bfbb-0078ed0842a4": staticAttachment("Sword of Belegost", attack=4),
             "0f201650-6d15-4909-9d06-0a87ab94f327": staticAttachment("Hired Muscle", threat=1, attack=1, defense=1),
             "58aa1ac7-961f-4a44-ad11-7613d87d4eab": staticAttachment("The Cabal's Champion", threat=1, attack=1, defense=1, hitPoints=2),
+            "e84369a8-89c8-4866-bd21-7c25ece2ca3f": staticAttachment("Shadow-Fall", questPoints=3),
             "27f961dd-c360-418e-9aac-6756d3a46dde": staticAttachment("Poison-darts", attack=2),
             "dc2da597-7d44-4654-a3f4-860e3f7117d6": staticAttachment("Fiery Whip", defense=1),
             "c7c7761f-a4dd-4f09-ac10-f0483d0c931d": staticAttachment("Flaming Sword", attack=1),
+            "8bc37a15-f097-4471-8259-ac6f2cac3bc3": staticAttachment("Cunning Wolves", questPoints=3),
             "8d99a2be-18d6-4bfb-85ab-7be54a18e6b7": staticAttachment("Black Mare", hitPoints=3),
             "51223bd0-ffd1-11df-a976-1801204c9075": staticAttachment("Sting (Treasure)", willpower=1, attack=1, defense=1),
             "51223bd0-ffd1-11df-a976-1801204c9064": staticAttachment("Orcrist (Treasure)", attack=2),
@@ -184,18 +194,21 @@ local conditionalAttachment(name, bonusList) = {
             "12d51424-0edd-4977-9df1-5f6a7a5a96e1": staticAttachment("Mithril Shirt (Treasure)", defense=1, hitPoints=1),
             "857d6dc8-ba1e-4839-8e96-a8a0136a2302": staticAttachment("Thror's Battle Axe (Treasure)", attack=2),
             "323842f5-457f-4dd4-95b8-eb19c24664cb": staticAttachment("Dark Bats", willpower=-1, attack=-1, defense=-1),
+            "9bb32f2c-29fb-43ba-b7ba-2227b28f7b58": staticAttachment("Elf-stone", questPoints=1),
+            "60c7ba84-8d59-48c6-ab81-0639ab55a8bf": staticAttachment("Elf-stone", questPoints=1),
             "ef014a91-c2d9-44ca-acd0-cc1a339c051f": staticAttachment("Tireless Ranger", defense=1),
             "1d1ab8a3-ad76-4992-ae5c-6a89fd0ed463": staticAttachment("Skilled Healer", hitPoints=2),
             "ff574390-bd68-4277-9065-dd9dbf552d00": staticAttachment("Valiant Warrior", attack=1),
             "af49e5ea-c6a2-4be4-bbf3-ac53c100e887": staticAttachment("Noble Hero", willpower=1),
             "4b36df3f-d75b-4b3a-9324-9ab31c10d7b9": staticAttachment("Pale Blade", attack=1),
+            "09aeff64-6e0d-4dfa-af21-2e7805441376": staticAttachment("Black Steed", engagementCost=-10),
             "7791cd04-7ffe-41f3-9633-cf57ad3a34ca": staticAttachment("Sting (Boon)", willpower=1, attack=1, defense=1),
             "23acfc2e-3262-4f22-8496-a753fa9089bd": staticAttachment("Mithril Shirt (Boon)", defense=1, hitPoints=1),
             "c7f5eac0-dbda-419f-994c-c182775682b3": staticAttachment("Glamdring (Boon)", attack=2),
             "24eabbac-62b1-4d2c-93a0-f97c04a2aefa": staticAttachment("Andúril (Boon)", willpower=1, attack=1, defense=1),
             "b86ba0f8-11f9-4694-b421-17b683bd4325": staticAttachment("Ent Draught", hitPoints=2),
             "1665d088-793c-4350-82f3-e35fd307463d": staticAttachment("Beyond All Hope (Boon)", willpower=1, attack=1, defense=1),
-            "6e85113d-a2a6-44a7-895c-ca5115f7b7d2": staticAttachment("Fell Beast", threat=1, attack=1, defense=1), // TODO engagement cost -10
+            "6e85113d-a2a6-44a7-895c-ca5115f7b7d2": staticAttachment("Fell Beast", threat=1, attack=1, defense=1, engagementCost=-10),
             "5003227b-ebc3-454a-88b4-2d6e20cc48f7": staticAttachment("Hell-hawk", threat=2, attack=2, defense=2),
             "f31e3b0f-bb24-4c6d-856f-4805db1bbf4b": staticAttachment("Armor Plating (Boon)", defense=1, checkFaceUp=false),
             "e6f3f717-5348-463c-8cdf-dff28ee89d92": staticAttachment("Ballista (Boon)", attack=1, checkFaceUp=false),
@@ -226,7 +239,6 @@ local conditionalAttachment(name, bonusList) = {
             "969e2d92-da4f-4257-8833-0cc4c19ea10d": staticAttachment("Heirloom of Iarchon (Boon)", willpower=1),
             "46b11215-59ee-46ac-8154-693ce9fff971": staticAttachment("Orders from Angmar (Boon)", defense=1),
             "a539e3f4-4387-4569-a14e-fea235ad447c": staticAttachment("Raiment of the Second Age (Boon)", attack=2, hitPoints=2),
-
         }
     }
 }

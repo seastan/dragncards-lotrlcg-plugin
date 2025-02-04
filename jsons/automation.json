@@ -398,11 +398,11 @@
             "turnCardsGreen": { 
                 "_comment": "Turn cards green when they have 0 quest points left",
                 "type": "passive", 
-                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
+                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/questPoints", "/cardById/*/tokens"],
                 "condition": ["AND", 
                     ["NOT_EQUAL", "$TARGET.currentFace.questPoints", null],
                     ["GREATER_THAN", "$TARGET.tokens.progress", 0],
-                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]]
+                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", ["GET_QUEST_POINTS", "$TARGET"]]]
                 ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is explored."],
@@ -413,7 +413,7 @@
                 ]
             },
             "turnCurrentQuestBlue": { 
-                "_comment": "Turn cards green when they have 0 quest points left",
+                "_comment": "Turn quest cards blue when they are selected as the current quest",
                 "type": "trigger", 
                 "listenTo": ["/currentQuestCardId"],
                 "condition": ["TRUE"],
