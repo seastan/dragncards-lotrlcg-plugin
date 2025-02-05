@@ -1,39 +1,3 @@
-
-// const sectionToLoadGroupId = (section, playerN) => {
-//     switch(section) {
-//       case 'Hero':
-//         return playerN+'Play1';
-//       case 'Ally':
-//         return playerN+'Deck';
-//       case 'Attachment':
-//         return playerN+'Deck';
-//       case 'Event':
-//         return playerN+'Deck';
-//       case 'Side Quest':
-//         return playerN+'Deck';
-//       case 'Sideboard':
-//         return playerN+'Sideboard';
-//       case 'Quest':
-//         return 'sharedQuestDeck';
-//       case 'Encounter':
-//         return 'sharedEncounterDeck';
-//       case 'Special':
-//         return 'sharedEncounterDeck2';
-//       case 'Second Special':
-//         return 'sharedEncounterDeck3';
-//       case 'Setup':
-//         return 'sharedSetAside';
-//       case 'Staging Setup':
-//         return 'sharedStaging';
-//       case 'Active Setup':
-//         return 'sharedActive';
-//       case 'Second Quest Deck':
-//         return 'sharedQuestDeck2';
-//     }
-//     return 'sharedOther';
-//   }
-
-
 {
     "o8dImport": {
         "o8dSectionToLoadGroupId": {
