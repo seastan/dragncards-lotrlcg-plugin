@@ -290,8 +290,8 @@
                     true,
                     [
                         ["VAR", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                        ["ATTACH_CARD", "$SHADOW_CARD_ID", "$ACTIVE_CARD_ID"],
                         ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
+                        ["ATTACH_CARD", "$SHADOW_CARD_ID", "$ACTIVE_CARD_ID"],
                         ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
                         ["LOG", "$ALIAS_N", " dealt a shadow card to ", "$ACTIVE_FACE.name", "."]
                     ]
