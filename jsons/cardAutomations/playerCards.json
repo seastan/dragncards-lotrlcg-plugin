@@ -2084,6 +2084,53 @@
                         ]
                     }
                 }
+            },
+            "3e055edf-4540-4cf1-94ce-afbf5fc28f82": {
+                "_comment": "Hero Gandalf",
+                // "ability": {
+                //     "A": [
+                //         ["COND",
+                //             ["NOT_EQUAL", "$THIS.abilityEnabled", true],
+                //             [
+                //                 ["LOG", "{{$ALIAS_N}} turned on Gandalf's ability to look at the top card of their deck."],
+                //                 ["SET", "/cardById/$THIS_ID/groupIdToPeakAt", "{{$THIS.controller}}Deck"],
+                //                 ["SET", "/cardById/$THIS_ID/abiltyEnabled", true]
+                //             ],
+                //             ["TRUE"],
+                //             [
+                //                 ["LOG", "{{$ALIAS_N}} turned off Gandalf's ability to look at the top card of their deck."],
+                //                 ["SET", "/cardById/$THIS_ID/groupIdToPeakAt", ""],
+                //                 ["SET", "/cardById/$THIS_ID/abiltyEnabled", false]
+                //             ]
+                //         ]
+                //     ]
+                // },
+                "rules": {
+                    "flipTopCardFaceup": {
+                        "type": "trigger",
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/groupById/player1Deck/stackIds", "/groupById/player2Deck/stackIds", "/groupById/player3Deck/stackIds", "/groupById/player4Deck/stackIds"],
+                        "condition": ["AND", "$THIS.inPlay", ["EQUAL", "$THIS.currentSide", "A"]],
+                        "then": [
+                            ["VAR", "$GROUP_ID", "{{$THIS.controller}}Deck"],
+                            ["UNSET", "/groupById/$GROUP_ID/onCardEnter/currentSide"],
+                            ["VAR", "$PARENT_CARD_IDS", "$GAME.groupById.{{$GROUP_ID}}.parentCardIds"],
+                            ["FOR_EACH_VAL", "$PARENT_CARD_ID", "$PARENT_CARD_IDS", [
+                                ["COND",
+                                    ["EQUAL", "$GAME.cardById.$PARENT_CARD_ID.currentSide", "A"],
+                                    ["SET", "/cardById/$PARENT_CARD_ID/currentSide", "B"]
+                                ]
+                            ]],
+                            ["VAR", "$CARD_COUNT", ["LENGTH", "$PARENT_CARD_IDS"]],
+                            ["COND",
+                                ["GREATER_THAN", "$CARD_COUNT", 0],
+                                [
+                                    ["VAR", "$TOP_CARD_ID", ["GET_CARD_ID", "$GROUP_ID", 0, 0]],
+                                    ["SET", "/cardById/$TOP_CARD_ID/currentSide", "A"]
+                                ]
+                            ]
+                        ]
+                    }
+                }
             }
         }
     }
