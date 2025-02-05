@@ -712,6 +712,76 @@
                 "_comment": "Vilya",
                 "inheritFrom": "51223bd0-ffd1-11df-a976-0801213c9027"
             },
+            "51223bd0-ffd1-11df-a976-1801204c9032": {
+                "_comment": "Fili",
+                "ability": {
+                    "A": [
+                        ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                        ["VAR", "$VALID_TARGET",
+                            ["ONE_CARD",
+                            "$CARD",
+                            ["AND",
+                                ["EQUAL", "$CARD.sides.A.name", "Kili"],
+                                ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Deck"]
+                            ]
+                            ]
+                        ],
+                        ["COND",
+                            ["DEFINED", "$VALID_TARGET"],
+                            [
+                                ["LOG", "└── ", "Fili put Kili into play from {{$ALIAS}}'s deck."],
+                                ["MOVE_CARD", "$VALID_TARGET.id", "{{$THIS.controller}}Play1", -1],
+                                ["SHUFFLE_GROUP", "{{$THIS.controller}}Deck"]
+                            ],
+                            true,
+                            ["LOG", "└── ", "Kili not found in {{$ALIAS}}'s deck."]
+                        ]
+                    ]
+                }
+            },
+            "1f04497c-34ee-4d6b-a765-65103bc1ddd4": {"_comment": "Fili", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9032"},
+            "418da080-4747-46c1-b73e-a327c5ce626f": {"_comment": "Fili", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9032"},
+            "51223bd0-ffd1-11df-a976-1801204c9055": {
+                "_comment": "Kili",
+                "ability": {
+                    "A": [
+                        ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                        ["VAR", "$VALID_TARGET",
+                            ["ONE_CARD",
+                            "$CARD",
+                            ["AND",
+                                ["EQUAL", "$CARD.sides.A.name", "Fili"],
+                                ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Deck"]
+                            ]
+                            ]
+                        ],
+                        ["COND",
+                            ["DEFINED", "$VALID_TARGET"],
+                            [
+                                ["LOG", "└── ", "Kili put Fili into play from {{$ALIAS}}'s deck."],
+                                ["MOVE_CARD", "$VALID_TARGET.id", "{{$THIS.controller}}Play1", -1],
+                                ["SHUFFLE_GROUP", "{{$THIS.controller}}Deck"]
+                            ],
+                            true,
+                            ["LOG", "└── ", "Fili not found in {{$ALIAS}}'s deck."]
+                        ]
+                    ]
+                }
+            },
+            "168eb130-262e-4287-a70f-ad34397c1626": {"_comment": "Kili", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9055"},
+            "65156eb7-dc07-43b9-9290-07ba4063564b": {"_comment": "Kili", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9055"},
+            "f4d94f3d-d3af-44d6-9896-764484302bb1": {
+                "_comment": "Double Back (Side Quest)",
+                "ability": {
+                    "A": [
+                        ["LOG", "$ALIAS_N", " reduced each player's threat by 5 and added ", "$ACTIVE_FACE.name", " to the victory display."],
+                        ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["DECREASE_VAL", "/playerData/$PLAYER_I/threat", 5]
+                        ]]                  
+                    ]
+                }
+            },
             "b9e3d591-5973-4f35-90b8-d74d0aeabcc7": {
                 "_comment": "Legacy of Numenor",
                 "ability": {
@@ -779,6 +849,18 @@
                     ]
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801212c9010": {
+                "_comment": "Daeron's Runes",
+                "ability": {
+                    "A": [
+                        ["DRAW_CARD", 2, "$THIS.controller"],
+                        ["LOG", "└── ", "{{$ALIAS_N}} drew 2 cards and must now discard a card from their hand."],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "d8729719-5d37-48c2-9bf6-8d2c8d579901": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
+            "37863571-be66-46b1-82d3-d21f4f0e653c": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
             "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1": {
                 "_comment": "Galadriel (Hero)",
                 "ability": {
@@ -816,6 +898,31 @@
                 }
             },
             "8ccfbcf2-676c-4e24-ab5e-fa479343ab39": {"_comment": "Galadriel (Hero)", "inheritFrom": "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1"},
+            "ff3794e8-d8b1-48dc-a9f8-97ea7d6b3874": {
+                "_comment": "Galadriel's Handmaiden",
+                "ability": {
+                    "A": ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " reduces threat by 1."],
+                                            ["DECREASE_VAL", "/playerData/player{I}/threat", 1]
+                                        ]], "{I}", "{{$I}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " reduces threat by 1"],
+                                ["DECREASE_VAL", "/playerData/player1/threat", 1]
+                            ]
+                    ]
+                }
+            },
+            "8a95a914-ab86-41db-a87e-553e50b30248": {"_comment": "Galadriel's Handmaiden", "inheritFrom": "ff3794e8-d8b1-48dc-a9f8-97ea7d6b3874"},
             "51223bd0-ffd1-11df-a976-0801200c9012": {
                 "_comment": "Beravor",
                 "ability": {
@@ -1150,6 +1257,20 @@
                      ]
                  }
             },
+            "ad0cbc82-6807-4a5a-ada8-97952cb02c5f": {
+                "_comment": "Send for Aid (Side Quest)",
+                "ability": {
+                    "A": [
+                        ["LOG", "$ALIAS_N", " added ", "$ACTIVE_FACE.name", " to the victory display."],
+                        ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["VAR", "$PLAYER_I_ALIAS", ["GET_ALIAS", "$PLAYER_I"]],
+                            ["LOG", "└── ", "{{$PLAYER_I_ALIAS}} is looking at the top 10 cards of their deck."],
+                            ["LOOK_AT", "$PLAYER_I", "{{$PLAYER_I}}Deck", 10, true]
+                        ]]                  
+                    ]
+                }
+            },
             "51223bd0-ffd1-11df-a976-0801200c9060": {
                 "_comment": "Henamarth Riversong",
                 "ability": {
@@ -1210,6 +1331,17 @@
                      ]
                  }
             },
+            "f8a3acfb-3b0d-414b-b5d0-2612d33c193d": {
+                "_comment": "Scout Ahead (Side Quest)",
+                "ability": {
+                    "A": [
+                        ["VAR", "$NUM_CARDS",  ["ADD", "$GAME.numPlayers", 4]],
+                        ["LOG", "$ALIAS_N", " added ", "$ACTIVE_FACE.name", " to the victory display."],
+                        ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedVictory", 0],
+                        ["LOOK_AT_X", "sharedEncounterDeck", "$NUM_CARDS"]
+                    ]
+                }
+            },
             "3d09a998-9ad0-4b98-9c42-50c4226cc73b": {
                 "_comment": "Galadriel (Ally)",
                 "ability": {
@@ -1258,7 +1390,7 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} drew 1 additional card from Ori."],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Ori."],
                             ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
@@ -1279,7 +1411,7 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} drew 1 additional card from Stone of Elostirion."],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Stone of Elostirion."],
                             ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
@@ -1298,7 +1430,26 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
-                            ["LOG", "{{$ALIAS}} drew 1 additional card from Bilbo Baggins."],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Bilbo Baggins."],
+                            ["DRAW_CARD", 1, "$GAME.firstPlayer"]
+                        ]
+                    }
+                }
+            },
+            "8ad1cefa-21c5-435c-8865-6417de0e5ba6": {
+                "_comment": "Prepare for Battle (Side Quest)",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.groupId", "sharedVictory"]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Prepare for Battle."],
                             ["DRAW_CARD", 1, "$GAME.firstPlayer"]
                         ]
                     }
@@ -1322,7 +1473,31 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} added 1 resource to Treebeard."],
+                            ["LOG", "├── ", "Treebeard gains 1 resource."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801203c9003": {
+                "_comment": "Radagast (Ally)",
+                "rules": {
+                    "radagastResource": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Add 1 resource to Radagast?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "{{$ALIAS}} added 1 resource to Radagast."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
                         ]
                     }
@@ -1366,7 +1541,7 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} added 1 additional resource to Thorin Oakenshield."],
+                            ["LOG", "├── ", "Thorin Oakenshield gains 1 additional resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
                         ]
                     }
@@ -1385,7 +1560,7 @@
                             ["GREATER_THAN", "$THIS.cardIndex", 0]
                         ],
                         "then": [
-                            ["LOG", "├── ", "{{$ALIAS_N}} added 1 resource to ", "$THIS.currentFace.name", "'s attached hero."],
+                            ["LOG", "├── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains 1 additional resource from {{$THIS.currentFace.name}}."],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
                         ]
                     }
