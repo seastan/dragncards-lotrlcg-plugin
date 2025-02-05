@@ -1,0 +1,57 @@
+
+// const sectionToLoadGroupId = (section, playerN) => {
+//     switch(section) {
+//       case 'Hero':
+//         return playerN+'Play1';
+//       case 'Ally':
+//         return playerN+'Deck';
+//       case 'Attachment':
+//         return playerN+'Deck';
+//       case 'Event':
+//         return playerN+'Deck';
+//       case 'Side Quest':
+//         return playerN+'Deck';
+//       case 'Sideboard':
+//         return playerN+'Sideboard';
+//       case 'Quest':
+//         return 'sharedQuestDeck';
+//       case 'Encounter':
+//         return 'sharedEncounterDeck';
+//       case 'Special':
+//         return 'sharedEncounterDeck2';
+//       case 'Second Special':
+//         return 'sharedEncounterDeck3';
+//       case 'Setup':
+//         return 'sharedSetAside';
+//       case 'Staging Setup':
+//         return 'sharedStaging';
+//       case 'Active Setup':
+//         return 'sharedActive';
+//       case 'Second Quest Deck':
+//         return 'sharedQuestDeck2';
+//     }
+//     return 'sharedOther';
+//   }
+
+
+{
+    "o8dImport": {
+        "o8dSectionToLoadGroupId": {
+            "Hero": "playerNPlay1",
+            "Ally": "playerNDeck",
+            "Attachment": "playerNDeck",
+            "Event": "playerNDeck",
+            "Side Quest": "playerNDeck",
+            "Sideboard": "playerNSideboard",
+            "Quest": "sharedQuestDeck",
+            "Encounter": "sharedEncounterDeck",
+            "Special": "sharedEncounterDeck2",
+            "Second Special": "sharedEncounterDeck3",
+            "Setup": "sharedSetAside",
+            "Staging Setup": "sharedStagingArea",
+            "Active Setup": "sharedActiveLocation",
+            "Second Quest Deck": "sharedQuestDeck2"
+        },
+        "otherSectionLoadGroupId": "sharedOther"
+    }
+}
