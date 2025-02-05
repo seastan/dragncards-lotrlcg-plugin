@@ -776,12 +776,15 @@
         },
         "IS_CHARACTER": {
           "args": ["$CARD"],
-          "code": ["OR",
-            ["EQUAL", "$CARD.currentFace.type", "Hero"],
-            ["EQUAL", "$CARD.currentFace.type", "Ally"],
-            ["EQUAL", "$CARD.currentFace.type", "Objective Hero"],
-            ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
-            ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
+          "code": ["AND",
+            ["EQUAL", "$THIS.cardIndex", 0],
+            ["OR",
+              ["EQUAL", "$CARD.currentFace.type", "Hero"],
+              ["EQUAL", "$CARD.currentFace.type", "Ally"],
+              ["EQUAL", "$CARD.currentFace.type", "Objective Hero"],
+              ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
+              ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
+            ]
           ]
         }
     }

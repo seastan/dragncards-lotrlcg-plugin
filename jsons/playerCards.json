@@ -1042,7 +1042,7 @@
                                                 ["LOG", "└── ", "Added 1 willpower to each character controlled by ", ["GET_ALIAS", "player{I}"], " until the end of the phase."],
                                                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                                     ["COND",
-                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"]],
+                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"], ["IS_CHARACTER", "$CARD"]],
                                                         [
                                                             ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                                         ]
@@ -1057,7 +1057,7 @@
                                     ["LOG", "└── ", "Added 1 willpower to each character until the end of the phase."],
                                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                         ["COND",
-                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"]],
+                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"], ["IS_CHARACTER", "$CARD"]],
                                             [
                                                 ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                             ]
