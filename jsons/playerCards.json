@@ -1571,8 +1571,23 @@
                 "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
             },
             "b1cc99c3-09a7-4418-85c4-e368f44adf1d": {
-                "_comment": "Necklace of Girion",
-                "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
+                "_comment": "Necklace of Girion (doesn't use inheritFrom because it conflicts with attachment automation)",
+                "rules": {
+                    "collectAdditionalResource": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        "then": [
+                            ["LOG", "├── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains 1 additional resource from {{$THIS.currentFace.name}}."],
+                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
+                        ]
+                    }
+                }
             },
             "59201982-0c04-45a4-8675-755f90932b88": {
                 "_comment": "Bilbo's Spoons",
