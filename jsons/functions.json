@@ -213,8 +213,9 @@
           "code": [
             ["COND",
               ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+              ["VAR", "$STEP_ID", "$GAME.stepId"],
               ["COND",
-                  ["EQUAL", "$GAME.phaseId", "Quest"],
+                  ["EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Quest"],
                   [
                     ["LOG", "$ALIAS_N"," shuffled the encounter discard pile into the encounter deck."],
                     ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"]
@@ -566,7 +567,9 @@
                         [
                             ["VAR", "$ACTIVE_LOCATION", "$ACTIVE_LOCATIONS.[0]"],
                             ["VAR", "$REMAINING_LOCATION_PROGRESS", ["SUBTRACT", ["GET_QUEST_POINTS", "$ACTIVE_LOCATION"], "$ACTIVE_LOCATION.tokens.progress"]],
+                            ["LOG", "├── {{$REMAINING_LOCATION_PROGRESS}} {{$ACTIVE_LOCATION.currentFace.questPoints}} {{$ACTIVE_LOCATION.tokens.progress}}."],
                             ["UPDATE_VAR", "$REMAINING_LOCATION_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_LOCATION_PROGRESS"]]],
+                            ["LOG", "├── {{$REMAINING_LOCATION_PROGRESS}} progress needed for active location."],                          
                             ["LOG", "├── {{$PROGRESS_MADE}} progress was placed on the active location."],
                             ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
                             ["DECREASE_VAR", "$PROGRESS_MADE", "$REMAINING_LOCATION_PROGRESS"]
