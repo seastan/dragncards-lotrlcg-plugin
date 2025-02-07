@@ -22,11 +22,12 @@ local modifyToken(card_id, tokenName, amount) =
 local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true, listenTo=[], condition=[]) = { 
     "_comment": "Add/remove tokens to the attached card.",
     "type": "passive", 
-    "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/cardIndex"] + listenTo,
+    "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/cardIndex", "/cardById/$THIS_ID/rotation"] + listenTo,
     "condition": [
         "AND", 
             "$THIS.inPlay",
-            ["GREATER_THAN", "$THIS.cardIndex", 0],
+            ["GREATER_THAN", "$THIS.cardIndex", 0],  // Card must be attached
+            ["NOT_EQUAL", "$THIS.rotation", -30],  // Attached card must not be a shadow
     ] + (if checkFaceUp then [["EQUAL", "$THIS.currentSide", "A"]] else [])
     + condition,
     "onDo":

@@ -213,8 +213,9 @@
           "code": [
             ["COND",
               ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
+              ["VAR", "$STEP_ID", "$GAME.stepId"],
               ["COND",
-                  ["EQUAL", "$GAME.phaseId", "Quest"],
+                  ["EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Quest"],
                   [
                     ["LOG", "$ALIAS_N"," shuffled the encounter discard pile into the encounter deck."],
                     ["MOVE_STACKS", "sharedEncounterDiscard", "sharedEncounterDeck", ["LENGTH", "$GAME.groupById.sharedEncounterDiscard.stackIds"], "shuffle"]
@@ -265,8 +266,8 @@
                         ["TRUE"],
                         [
                             ["VAR", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                            ["ATTACH_CARD", "$SHADOW_CARD_ID", "$CARD_ID"],
                             ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
+                            ["ATTACH_CARD", "$SHADOW_CARD_ID", "$CARD_ID"],
                             ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
                             ["LOG", "$ALIAS_N", " dealt a shadow card to ", ["FACEUP_NAME_FROM_CARD_ID", "$CARD_ID"], "."]
                         ]
@@ -776,12 +777,15 @@
         },
         "IS_CHARACTER": {
           "args": ["$CARD"],
-          "code": ["OR",
-            ["EQUAL", "$CARD.currentFace.type", "Hero"],
-            ["EQUAL", "$CARD.currentFace.type", "Ally"],
-            ["EQUAL", "$CARD.currentFace.type", "Objective Hero"],
-            ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
-            ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
+          "code": ["AND",
+            ["EQUAL", "$THIS.cardIndex", 0],
+            ["OR",
+              ["EQUAL", "$CARD.currentFace.type", "Hero"],
+              ["EQUAL", "$CARD.currentFace.type", "Ally"],
+              ["EQUAL", "$CARD.currentFace.type", "Objective Hero"],
+              ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
+              ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
+            ]
           ]
         }
     }
