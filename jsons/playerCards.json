@@ -1042,7 +1042,7 @@
                                                 ["LOG", "└── ", "Added 1 willpower to each character controlled by ", ["GET_ALIAS", "player{I}"], " until the end of the phase."],
                                                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                                     ["COND",
-                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"]],
+                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"], ["IS_CHARACTER", "$CARD"]],
                                                         [
                                                             ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                                         ]
@@ -1057,7 +1057,7 @@
                                     ["LOG", "└── ", "Added 1 willpower to each character until the end of the phase."],
                                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                         ["COND",
-                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"]],
+                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"], ["IS_CHARACTER", "$CARD"]],
                                             [
                                                 ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                             ]
@@ -1571,8 +1571,23 @@
                 "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
             },
             "b1cc99c3-09a7-4418-85c4-e368f44adf1d": {
-                "_comment": "Necklace of Girion",
-                "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
+                "_comment": "Necklace of Girion (doesn't use inheritFrom because it conflicts with attachment automation)",
+                "rules": {
+                    "collectAdditionalResource": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        "then": [
+                            ["LOG", "├── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains 1 additional resource from {{$THIS.currentFace.name}}."],
+                            ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
+                        ]
+                    }
+                }
             },
             "59201982-0c04-45a4-8675-755f90932b88": {
                 "_comment": "Bilbo's Spoons",
