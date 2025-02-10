@@ -1233,14 +1233,14 @@
             "German": "7.5: Ende der Erfrischungsphase",
             "Chinese": "7.5: 恢复环节结束"
         },
-        "step-0.1": {
-            "English": "0.1: End of the round",
-            "French": "0.1 : Fin du tour",
-            "Spanish": "0.1: Fin del turno",
-            "Portuguese": "0.1: Fim da rodada",
-            "Italian": "0.1: Fine del turno",
-            "German": "0.1: Ende der Runde",
-            "Chinese": "0.1: 回合结束"
+        "step-8.0": {
+            "English": "8.0: End of the round",
+            "French": "8.0 : Fin du tour",
+            "Spanish": "8.0: Fin del turno",
+            "Portuguese": "8.0: Fim da rodada",
+            "Italian": "8.0: Fine del turno",
+            "German": "8.0: Ende der Runde",
+            "Chinese": "8.0: 回合结束"
         },
         "resourceToken": {
             "English": "Resource",
