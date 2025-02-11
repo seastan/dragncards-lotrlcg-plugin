@@ -920,7 +920,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed 1 willpower from each Gondor character in play."
+                        "Removed 1 willpower from each Gondor character."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -978,7 +978,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Added 1 willpower to each Gondor character in play."
+                        "Added 1 willpower to each Gondor character."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -1161,7 +1161,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed 1 attack from each Gondor ally in play."
+                        "Removed 1 attack from each Gondor ally."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -1220,7 +1220,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Added 1 attack to each Gondor ally in play."
+                        "Added 1 attack to each Gondor ally."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -2767,7 +2767,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed 1 willpower from each hero in play."
+                        "Removed 1 willpower from each hero."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -2821,7 +2821,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Added 1 willpower to each hero in play."
+                        "Added 1 willpower to each hero."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -3999,7 +3999,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed 1 willpower from each hero in play."
+                        "Removed 1 willpower from each hero."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -4053,7 +4053,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Added 1 willpower to each hero in play."
+                        "Added 1 willpower to each hero."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -4179,6 +4179,234 @@
                            "LOG",
                            "└── ",
                            "Fellowship of the Ring added 1 willpower to ",
+                           "$TARGET.currentFace.name",
+                           "."
+                        ],
+                        [
+                           "INCREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/willpower",
+                           1
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
+         "f49d9b7f-bdb6-4f2c-8b25-42b07c60a2f3": {
+            "_comment": "Kahliel's Headdress",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 hit point from each Harad character."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "PREV",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ]
+                                 ],
+                                 [
+                                    "PREV",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.currentSide",
+                                       "A"
+                                    ]
+                                 ],
+                                 "PREV",
+                                 [
+                                    "AND",
+                                    [
+                                       "IN_STRING",
+                                       "$TARGET.currentFace.traits",
+                                       "Harad."
+                                    ],
+                                    [
+                                       "IS_CHARACTER",
+                                       "$TARGET"
+                                    ]
+                                 ]
+                              ],
+                              [
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/willpower",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 hit point to each Harad character."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.currentSide",
+                                    "A"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Harad."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/willpower",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on cards that pass/fail targetCondition depending on if this card meets thisCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "EQUAL",
+                        "$TARGET.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$TARGET.currentSide",
+                        "A"
+                     ],
+                     [
+                        "NOT_EQUAL",
+                        "$THIS_ID",
+                        "$TARGET_ID"
+                     ],
+                     [
+                        "IN_STRING",
+                        "$TARGET.currentFace.traits",
+                        "Harad."
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$TARGET"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/cardIndex",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/controller"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        "$TARGET.inPlay",
+                        [
+                           "GREATER_THAN",
+                           "$THIS.cardIndex",
+                           0
+                        ]
+                     ],
+                     [
+                        [
+                           "LOG",
+                           "└── ",
+                           "Kahliel's Headdress removed 1 hit point from ",
+                           "$TARGET.currentFace.name",
+                           "."
+                        ],
+                        [
+                           "DECREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/willpower",
+                           1
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        "$TARGET.inPlay",
+                        [
+                           "EQUAL",
+                           "$TARGET.cardIndex",
+                           0
+                        ],
+                        [
+                           "EQUAL",
+                           "$TARGET.currentSide",
+                           "A"
+                        ],
+                        [
+                           "GREATER_THAN",
+                           "$THIS.cardIndex",
+                           0
+                        ]
+                     ],
+                     [
+                        [
+                           "LOG",
+                           "└── ",
+                           "Kahliel's Headdress added 1 hit point to ",
                            "$TARGET.currentFace.name",
                            "."
                         ],
