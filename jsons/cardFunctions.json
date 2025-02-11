@@ -104,7 +104,7 @@
     "DOOMED": {
       "args": ["$X"],
       "code": [
-        ["LOG", "└── ", "Raised each player's threat by $X."],
+        ["LOG", "└── ", "Raised each player's threat by {{$X}}."],
         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
           ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", "$X"]
         ]]
@@ -125,6 +125,47 @@
           true,
             ["SET", "/cardById/$CARD_ID/tokens/damage", 0]
         ]
+      ]
+    },
+    "GET_ONE_RING": {
+      "args": [],
+      "code": [
+        ["ONE_CARD", "$CARD",
+          ["AND",
+            ["GREATER_THAN", "$CARD.cardIndex", 0],
+            ["EQUAL", "$CARD.sides.A.name", "The One Ring"]
+          ]
+        ]
+      ]
+    },
+    "GET_ONE_RING_PARENT": {
+      "args": [],
+      "code": [
+        ["VAR", "$ONE_RING", ["GET_ONE_RING"]],
+        ["COND",
+          ["DEFINED", "$ONE_RING"],
+          "$GAME.cardById.{{$ONE_RING.parentCardId}}"
+        ]
+      ]
+    },
+    "IS_ONE_RING_READY": {
+      "args": [],
+      "code": [
+        ["VAR", "$ONE_RING", ["GET_ONE_RING"]],
+        ["COND",
+          ["DEFINED", "$ONE_RING"],
+          ["EQUAL", "$ONE_RING.exhausted", false],
+          ["TRUE"],
+          false
+        ]
+      ]
+    },
+    "EXHAUST_ONE_RING": {
+      "args": [],
+      "code": [
+        ["VAR", "$ONE_RING", ["GET_ONE_RING"]],
+        ["SET", "/cardById/$ONE_RING.id/exhausted", true],
+        ["SET", "/cardById/$ONE_RING.id/rotation", 90]
       ]
     }
   }
