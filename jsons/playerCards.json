@@ -1352,7 +1352,7 @@
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", 
-                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$GAME.stepId", "8.0"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
@@ -1382,6 +1382,7 @@
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1397,12 +1398,76 @@
                 }
             },
             "3f1fe728-ecc6-4aff-a056-31e3731e39c2": {"_comment": "Ori", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9065"},
+            "76ee3df4-3ebe-4d2d-9d7f-a0bbe759358a": {
+                "_comment": "Cirdan the Shipwright",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "priority": 29,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Círdan and must now discard a card just drawn."],
+                            ["DRAW_CARD", 1, "$THIS.controller"],
+                            ["SET", "/cardById/$THIS_ID/targeting/{{$THIS.controller}}", true]
+                        ]
+                    }
+                }
+            },
+            "b188f729-0314-4664-95a0-7f93f4d44133": {
+                "_comment": "Erestor",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "priority": 25,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 3 additional cards from Erestor."],
+                            ["DRAW_CARD", 3, "$THIS.controller"]
+                        ]
+                    },
+                    "discardHand": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "8.0"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "└── ", "Erestor causes {{$ALIAS}} to discard all cards in hand."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                                ["COND",
+                                    ["AND", ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Hand"]],
+                                    [
+                                        ["DEFINE", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                                        ["ACTION_LIST", "discardCard"]
+                                    ]
+                                ]]
+                            ]
+                        ]
+                    }
+                }
+            },
             "d45259f1-a551-466c-8352-cc466e1670c2": {
                 "_comment": "Stone of Elostirion",
                 "rules": {
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1423,6 +1488,7 @@
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1442,6 +1508,7 @@
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1466,6 +1533,7 @@
                             "promptMessage": "Add 1 resource to Treebeard?"
                         },
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1490,6 +1558,7 @@
                             "promptMessage": "Add 1 resource to Radagast?"
                         },
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1497,31 +1566,7 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} added 1 resource to Radagast."],
-                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
-                        ]
-                    }
-                }
-            },
-            "51223bd0-ffd1-11df-a976-0801203c9003": {
-                "_comment": "Radagast (Ally)",
-                "rules": {
-                    "radagastResource": {
-                        "type": "trigger",
-                        "autoRun": {
-                            "status": "prompt",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Add 1 resource to Radagast?"
-                        },
-                        "listenTo": ["/stepId"],
-                        "condition": ["AND", 
-                            ["EQUAL", "$GAME.stepId", "1.R"], 
-                            ["EQUAL", "$THIS.currentSide", "A"],
-                            ["EQUAL", "$THIS.inPlay", true]
-                        ],
-                        "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} added 1 resource to Radagast."],
+                            ["LOG", "├── ", "Radagast gains 1 resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
                         ]
                     }
@@ -1533,6 +1578,7 @@
                     "thorinResource": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1547,12 +1593,34 @@
                     }
                 }
             },
+            "94726dff-4b95-4c7c-9542-320b45652d7a": {
+                "_comment": "Amarthuil",
+                "rules": {
+                    "amarthuilResource": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "priority": 15,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_EQUAL", ["NUM_ENGAGED_ENEMIES", "$THIS.controller"], 2]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "Amarthiúl gains 1 additional resource."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
+                        ]
+                    }
+                }
+            },
             "attachedHeroGainsOneResourceInResourcePhase": {
                 "abstract": true,
                 "rules": {
                     "collectAdditionalResource": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1576,6 +1644,7 @@
                     "collectAdditionalResource": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1610,6 +1679,35 @@
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
+                }
+            },
+            "9a39a6b1-d480-4ced-8590-d3748b076208": {
+                "_comment": "Well Preserved",
+                "rules": {
+                    "wellPreservedHeal": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Use Well Preserved to heal all damage from attached hero?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "priority": 5,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.damage", 0],
+                            ["IS_ONE_RING_READY"]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["VAR", "$HERO", "GET_ONE_RING_PARENT"],
+                            ["LOG", "└── ", "{{$ALIAS}} exhausted The One Ring and raised threat by 1 to heal all damage from ", "$HERO.currentFace.name", "."],
+                            ["EXHAUST_ONE_RING"],
+                            ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
+                            ["SET", "/cardById/$THIS.parentCardId/tokens/damage", 0]
+                        ]
+                    }
                 }
             },
             "74522565-cb89-4a49-aee0-66840fd077e5": {
@@ -1765,8 +1863,8 @@
                         ],
                         [
                             ["LOG", "└── ", "Exhausted ", "$THIS.currentFace.name", " to ready ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
-                            ["SET", "/cardById/$THIS.id/rotation", 90],
-                            ["SET", "/cardById/$THIS.id/exhausted", true],
+                            ["SET", "/cardById/$THIS_ID/rotation", 90],
+                            ["SET", "/cardById/$THIS_ID/exhausted", true],
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false]
                         ],
@@ -1818,6 +1916,28 @@
             "77721e76-80a6-41b0-a71a-9cd533954250": {
                 "_comment": "Onward Into Battle",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
+            "db733a56-9d85-4a9b-bdbf-e1aa5770a125": {
+                "_comment": "The Ring of Power",
+                "ability": {
+                    "A": ["COND",
+                        ["IS_ONE_RING_READY"],
+                        [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["VAR", "$CARD", ["GET_ONE_RING_PARENT"]],
+                            ["LOG", "└── ", "{{$ALIAS}} exhausted The One Ring and raised threat by 1 to ready ", "$CARD.currentFace.name", " and give it 1 willpower, 1 attack, and 1 defense until the end of the phase."],
+                            ["EXHAUST_ONE_RING"],
+                            ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
+                            ["SET", "/cardById/$CARD.id/rotation", 0],
+                            ["SET", "/cardById/$CARD.id/exhausted", false],
+                            ["ADD_TEMP_TOKEN", "phase", "$CARD.id", "willpower", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$CARD.id", "attack", 1],
+                            ["ADD_TEMP_TOKEN", "phase", "$CARD.id", "defense", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
             },
             "51223bd0-ffd1-11df-a976-1801204c9024": {
                 "_comment": "Cram",
@@ -2098,6 +2218,29 @@
                             ["SET", "/cardById/{{$PREV_PARENT.id}}/sides/A/type", "Enemy"]
                         ]
                     }
+                }
+            },
+            "f9196cda-8f50-4cc5-9aad-1c56cb677bca": {
+                "_comment": "Frodo Baggins (The Road Darkens)",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            "$THIS.inPlay",
+                            ["IS_ONE_RING_READY"],
+                            ["GREATER_THAN", "$THIS.tokens.resource", 0]
+                        ],
+                        [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "└── ", "{{$ALIAS}} spent 1 fellowship resource and exhausted The One Ring to cancel the attack's damage and raise each player's threat by 2."],
+                            ["SET", "/cardById/$THIS_ID/rotation", 90],
+                            ["SET", "/cardById/$THIS_ID/exhausted", true],
+                            ["EXHAUST_ONE_RING"],
+                            ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
+                            ["DOOMED", 2]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
                 }
             },
             "3e055edf-4540-4cf1-94ce-afbf5fc28f82": {

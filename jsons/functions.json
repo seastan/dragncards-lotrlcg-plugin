@@ -790,6 +790,17 @@
               ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
             ]
           ]
+        },
+        "IS_ENEMY": {
+          "args": ["$CARD"],
+          "code": ["AND",
+            ["EQUAL", "$THIS.cardIndex", 0],
+            ["OR",
+              ["EQUAL", "$CARD.currentFace.type", "Enemy"],
+              ["EQUAL", "$CARD.currentFace.type", "Ship-Enemy"],
+              ["EQUAL", "$CARD.currentFace.type", "Ship Enemy"]
+            ]
+          ]
         }
     }
 }

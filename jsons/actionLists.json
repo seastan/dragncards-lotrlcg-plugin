@@ -7,11 +7,23 @@
                 ["AND", 
                     ["NOT_EQUAL", "$GAME.roundNumber", 0],
                     ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Refresh"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "End"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Beginning"],
                     ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Resource"]
                 ],
                 [["ACTION_LIST", "skipToRefreshPhase"]]
             ],
             ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
+            ["COND",
+                ["AND", 
+                    ["NOT_EQUAL", "$GAME.roundNumber", 0],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "End"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Beginning"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Resource"]
+                ],
+                ["SET", "/stepId", "8.0"]
+            ],
+
             ["INCREASE_VAL", "/roundNumber", 1],
             ["SET", "/stepId", "1.R"],
             ["SET", "/stepId", "2.P"]
