@@ -2,6 +2,7 @@
     "automation": {
         "postNewGameActionList": [
             ["PROMPT", "player1", "setPlayerCount"],
+            ["PROMPT", "player1", "notify", "Welcome to DragnCards 2.0! You may notice several new quality-of-life improvements. One of them is the helper text box in the top left to guide you through each round. For a more manual feel, you can disable this in View->Preferances."],
             ["UPDATE_HELPER_TEXT_VISIBILITY"]
         ],
         "postLoadActionList": [
@@ -15,7 +16,7 @@
                     ["AND", 
                         ["EQUAL", "$CARD.sides.A.type", "Hero"],
                         ["EQUAL", "$CARD.inPlay", true],
-                        ["NOT_EQUAL", "$CARD.controller", "shared"]
+                        ["NOT_EQUAL", "$CARD.sides.A.cost", 0]
                     ],
                     [
                         ["UPDATE_VAR", "$LOADED_PLAYER_DECK", true],
@@ -23,7 +24,7 @@
                     ]
                 ],
                 ["COND",
-                    ["DEFINED", "$GAME_DEF.automation.{{$CARD.databaseId}}"],
+                    ["DEFINED", "$GAME_DEF.automation.cards.{{$CARD.databaseId}}"],
                     [
                         ["SET", "/cardById/$CARD_ID/sides/A/triggers", {}],
                         ["SET", "/cardById/$CARD_ID/sides/B/triggers", {}]
@@ -128,7 +129,7 @@
                     ["EQUAL", "$GAME.roundAdvancementFunction", "loadPlayerDecks"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Menu->Load to load player decks or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "loadEncounterDeck"],
-                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Menu->Load to load encounter deck or W to skip."],
+                    ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Menu->Load prebuilt to load quest or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "goToFirstPlanning"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Setup. Next: W to advance to planning phase."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "readyForNextPlanning"],
@@ -181,22 +182,31 @@
                 "listenTo": ["/stepId"],
                 "abstract": true
             },
-            "step_1.R": {
-                "_comment": "Trigger resource phase framework effects",
+            "step_1.R-resources": {
+                "_comment": "Trigger resource-gaining resource phase framework effects",
                 "inheritFrom": "stepTrigger",
+                "priority": 10,
                 "condition": ["EQUAL", "$GAME.stepId", "1.R"],
                 "then": [
-                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
-                        ["VAR", "$NUM_DRAWN", "$PLAYER_DATA.$PLAYER_I.cardsDrawn"],
-                        ["LOG", "├── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
-                        ["DRAW_CARD", "$NUM_DRAWN", "$PLAYER_I"]
-                    ]],
                     ["LOG", "└── ", "Each hero gains 1 resource."],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                         ["COND",
                             ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.currentFace.type", "Hero"]],
                             ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
                         ]
+                    ]]
+                ]
+            },
+            "step_1.R-cards": {
+                "_comment": "Trigger card-drawing resource phase framework effects",
+                "inheritFrom": "stepTrigger",
+                "priority": 20,
+                "condition": ["EQUAL", "$GAME.stepId", "1.R"],
+                "then": [
+                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                        ["VAR", "$NUM_DRAWN", "$PLAYER_DATA.$PLAYER_I.cardsDrawn"],
+                        ["LOG", "├── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
+                        ["DRAW_CARD", "$NUM_DRAWN", "$PLAYER_I"]
                     ]]
                 ]
             },
@@ -292,7 +302,7 @@
                 "then": [
                     ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["VAR", "$PREV_TARGET", ["PREV", "$TARGET"]],
-                    ["VAR", "$COMMITTED_VAL", ["ADD", "$PREV_TARGET.currentFace.$QUESTING_STAT", "$PREV_TARGET.tokens.$QUESTING_STAT"]],
+                    ["VAR", "$COMMITTED_VAL", "$PREV_TARGET.tokens.questing"],
                     ["DECREASE_VAL", "/playerData/$TARGET.controller/willpower", "$COMMITTED_VAL"],
                     ["LOG", "└── ", "$TARGET.controller", " lost ", "$COMMITTED_VAL", " ", "$QUESTING_STAT", " toward the quest."]
                 ]
@@ -304,7 +314,7 @@
                 "condition": ["AND", "$TARGET.committed", "$TARGET.inPlay", ["EQUAL", "$GAME.questingStat", "willpower"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
-                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
+                    ["VAR", "$DELTA", ["MIN", ["LIST", "$DELTA", ["SUBTRACT", 0, ["PREV", "$TARGET.tokens.questing"]]]]],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
                     ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
@@ -316,7 +326,6 @@
                 "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "attack"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.attack", ["PREV", "$TARGET.tokens.attack"]]],
-                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
                     ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
@@ -328,7 +337,6 @@
                 "condition": ["AND", "$TARGET.committed", ["EQUAL", "$GAME.questingStat", "defense"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.defense", ["PREV", "$TARGET.tokens.defense"]]],
-                    ["VAR", "$QUESTING_STAT", "$GAME.questingStat"],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
                     ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
@@ -397,11 +405,11 @@
             "turnCardsGreen": { 
                 "_comment": "Turn cards green when they have 0 quest points left",
                 "type": "passive", 
-                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/hitPoints", "/cardById/*/tokens"],
+                "listenTo": ["/cardById/*/tokens/progress", "/cardById/*/tokens/questPoints", "/cardById/*/tokens"],
                 "condition": ["AND", 
                     ["NOT_EQUAL", "$TARGET.currentFace.questPoints", null],
                     ["GREATER_THAN", "$TARGET.tokens.progress", 0],
-                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", "$TARGET.currentFace.questPoints", "$TARGET.tokens.hitPoints"]]
+                    ["GREATER_EQUAL", "$TARGET.tokens.progress", ["ADD", ["GET_QUEST_POINTS", "$TARGET"]]]
                 ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is explored."],
@@ -412,7 +420,7 @@
                 ]
             },
             "turnCurrentQuestBlue": { 
-                "_comment": "Turn cards green when they have 0 quest points left",
+                "_comment": "Turn quest cards blue when they are selected as the current quest",
                 "type": "trigger", 
                 "listenTo": ["/currentQuestCardId"],
                 "condition": ["TRUE"],

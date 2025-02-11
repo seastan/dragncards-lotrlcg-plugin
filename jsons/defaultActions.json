@@ -30,12 +30,12 @@
         {
           "actionList": "addProgress",
           "label": "id:progress",
-          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Quest"], ["LESS_EQUAL", "$ACTIVE_CARD.tokens.progress", "$ACTIVE_FACE.questPoints"]]
+          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Quest"], ["LESS_EQUAL", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": "discardCard",
           "label": "id:discard",
-          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Quest"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.progress", "$ACTIVE_FACE.questPoints"]]
+          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Quest"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": "flipCard",
@@ -65,17 +65,17 @@
         {
           "actionList": "addProgress",
           "label": "id:progress",
-          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Location"], ["LESS_THAN", "$ACTIVE_CARD.tokens.progress", "$ACTIVE_FACE.questPoints"]]
+          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Location"], ["LESS_THAN", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": "addToVictoryDisplay",
           "label": "id:add to VD",
-          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Location"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.progress", "$ACTIVE_FACE.questPoints"], "$ACTIVE_FACE.victoryPoints", ["GREATHER_THAN", "$ACTIVE_FACE.victoryPoints", 0]]
+          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Location"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]], "$ACTIVE_FACE.victoryPoints", ["GREATHER_THAN", "$ACTIVE_FACE.victoryPoints", 0]]
         },
         {
           "actionList": "discardCard",
           "label": "id:discard",
-          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Location"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.progress", "$ACTIVE_FACE.questPoints"]]
+          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Location"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": "discardCard",

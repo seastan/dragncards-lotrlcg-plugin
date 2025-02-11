@@ -5,16 +5,83 @@
                 ["DEFINE", "$QUEST_CARD", ["ONE_CARD", "$CARD", ["AND", ["EQUAL", "$CARD.sides.A.cost", 1], ["EQUAL", "$CARD.sides.A.type", "Quest"]]]],
                 "$QUEST_CARD.sides.A.encounterSet"
             ],
-            "Heroes": [
-                ["DEFINE", "$HEROES", ""],
+            "Player 1": [
+                ["VAR", "$HEROES", ""],
+                ["VAR", "$NUM_HEROES", 0],
                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                     ["COND",
-                        ["AND", ["EQUAL", "$CARD.sides.A.type", "Hero"], ["EQUAL", "$CARD.controller", "$PLAYER_N"]],
-                        ["DEFINE", "$HEROES", "{{$HEROES}}{{$CARD.sides.A.name}}, "]
+                        ["AND", ["EQUAL", "$CARD.sides.A.type", "Hero"], ["EQUAL", "$CARD.controller", "player1"]],
+                        [
+                            ["UPDATE_VAR", "$HEROES", "{{$HEROES}}{{$CARD.sides.A.name}}, "],
+                            ["INCREASE_VAR", "$NUM_HEROES", 1]
+                        ]
                     ]
                 ]],
-                ["SUBSTRING", "$HEROES", 0, ["SUBTRACT", ["LENGTH", "$HEROES"], 2]]
-            ]
+                ["COND", 
+                    ["GREATER_THAN", "$NUM_HEROES", 0],
+                    ["SUBSTRING", "$HEROES", 0, ["SUBTRACT", ["LENGTH", "$HEROES"], 2]],
+                    ["TRUE"],
+                    null
+                ]
+            ],
+            "Player 2": [
+                ["VAR", "$HEROES", ""],
+                ["VAR", "$NUM_HEROES", 0],
+                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                    ["COND",
+                        ["AND", ["EQUAL", "$CARD.sides.A.type", "Hero"], ["EQUAL", "$CARD.controller", "player2"]],
+                        [
+                            ["UPDATE_VAR", "$HEROES", "{{$HEROES}}{{$CARD.sides.A.name}}, "],
+                            ["INCREASE_VAR", "$NUM_HEROES", 1]
+                        ]
+                    ]
+                ]],
+                ["COND", 
+                    ["GREATER_THAN", "$NUM_HEROES", 0],
+                    ["SUBSTRING", "$HEROES", 0, ["SUBTRACT", ["LENGTH", "$HEROES"], 2]],
+                    ["TRUE"],
+                    null
+                ]
+            ],
+            "Player 3": [
+                ["VAR", "$HEROES", ""],
+                ["VAR", "$NUM_HEROES", 0],
+                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                    ["COND",
+                        ["AND", ["EQUAL", "$CARD.sides.A.type", "Hero"], ["EQUAL", "$CARD.controller", "player3"]],
+                        [
+                            ["UPDATE_VAR", "$HEROES", "{{$HEROES}}{{$CARD.sides.A.name}}, "],
+                            ["INCREASE_VAR", "$NUM_HEROES", 1]
+                        ]
+                    ]
+                ]],
+                ["COND", 
+                    ["GREATER_THAN", "$NUM_HEROES", 0],
+                    ["SUBSTRING", "$HEROES", 0, ["SUBTRACT", ["LENGTH", "$HEROES"], 2]],
+                    ["TRUE"],
+                    null
+                ]
+            ],
+            "Player 4": [
+                ["VAR", "$HEROES", ""],
+                ["VAR", "$NUM_HEROES", 0],
+                ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                    ["COND",
+                        ["AND", ["EQUAL", "$CARD.sides.A.type", "Hero"], ["EQUAL", "$CARD.controller", "player4"]],
+                        [
+                            ["UPDATE_VAR", "$HEROES", "{{$HEROES}}{{$CARD.sides.A.name}}, "],
+                            ["INCREASE_VAR", "$NUM_HEROES", 1]
+                        ]
+                    ]
+                ]],
+                ["COND", 
+                    ["GREATER_THAN", "$NUM_HEROES", 0],
+                    ["SUBSTRING", "$HEROES", 0, ["SUBTRACT", ["LENGTH", "$HEROES"], 2]],
+                    ["TRUE"],
+                    null
+                ]
+            ],
+            "Outcome": "$GAME.victoryState"
         }
     }
 }

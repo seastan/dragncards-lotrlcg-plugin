@@ -10,8 +10,8 @@
             {"key": "6", "tokenType": "attack", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/attack.png)"},
             {"key": "7", "tokenType": "defense", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/defense.png)"},
             {"key": "8", "tokenType": "hitPoints", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/hitPoints.png)"},
-            {"key": "9", "tokenType": "questPoints", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/questPoints.png)"},
-            {"key": "0", "tokenType": "engagementCost", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/engagementCost.png)"}
+            {"key": "8", "tokenType": "questPoints", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/questPoints.png)"},
+            {"key": "9", "tokenType": "engagementCost", "label": "icon(https://dragncards-lotrlcg.s3.amazonaws.com/tokens/engagementCost.png)"}
         ],
         "game": [
             {"key": "D", "actionList": "drawCard", "label": "id:drawACard"},
@@ -46,7 +46,6 @@
             {"key": "Shift+Q", "actionList": "toggleCommitWithoutExhausting", "label": "id:commitUncommitFromQuestWithoutExhaustingReadying"},
             {"key": "S", "actionList": "dealShadow", "label": "id:dealShadowCard"},
             {"key": "V", "actionList": "addToVictoryDisplay", "label": "id:addToVictoryDisplay"},
-            {"key": "Q", "actionList": "toggleCommit", "label": "id:commitUncommitFromQuest"},
             {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
             //{"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
             {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},

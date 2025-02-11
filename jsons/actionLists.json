@@ -1,34 +1,41 @@
 {
     "actionLists": {
         "skipToNextPlanningPhase": [
-            ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
             ["END_THE_QUEST_PHASE"],
-            ["INCREASE_VAL", "/roundNumber", 1],
+            ["VAR", "$STEP_ID", "$GAME.stepId"],
             ["COND",
-                ["EQUAL", "$GAME.roundNumber", 1],
-                [
-                    ["SET", "/stepId", "1.R"],
-                    ["SET", "/stepId", "2.P"]
+                ["AND", 
+                    ["NOT_EQUAL", "$GAME.roundNumber", 0],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Refresh"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "End"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Beginning"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Resource"]
                 ],
-                ["NOT_EQUAL", "$GAME.phaseId", "Refresh"],
-                [
-                    ["ACTION_LIST", "skipToRefreshPhase"],
-                    ["SET", "/stepId", "1.R"],
-                    ["SET", "/stepId", "2.P"]
+                [["ACTION_LIST", "skipToRefreshPhase"]]
+            ],
+            ["LOG", "{{$ALIAS_N}} advanced to the next planning phase."],
+            ["COND",
+                ["AND", 
+                    ["NOT_EQUAL", "$GAME.roundNumber", 0],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "End"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Beginning"],
+                    ["NOT_EQUAL", "$GAME_DEF.steps.$STEP_ID.phaseId", "Resource"]
                 ],
-                ["TRUE"],
-                [
-                    ["SET", "/stepId", "1.R"],
-                    ["SET", "/stepId", "2.P"]
-                ]
-            ]
+                ["SET", "/stepId", "8.0"]
+            ],
+
+            ["INCREASE_VAL", "/roundNumber", 1],
+            ["SET", "/stepId", "1.R"],
+            ["SET", "/stepId", "2.P"]
         ],
         "skipToDealShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
+            ["END_THE_QUEST_PHASE"],
             ["SET", "/stepId", "6.2"]
         ],
         "skipToDiscardShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the end of the combat phase."],
+            ["END_THE_QUEST_PHASE"],
             ["SET", "/stepId", "6.11"]
         ],
         "skipToRefreshPhase": [
@@ -186,7 +193,7 @@
                                 ["EQUAL", "$GAME.stepId", "4.2"],
                                 [
                                     ["LOG", "$ALIAS_N", " made ", "$ACTIVE_FACE.name", " active."],
-                                    ["MOVE_CARD", "$ACTIVE_CARD_ID", "sharedActiveLocation", 0]
+                                    ["MOVE_STACK", "$ACTIVE_CARD.stackId", "sharedActiveLocation", 0]
                                 ]
                             ]
                         ],
@@ -288,8 +295,8 @@
                     true,
                     [
                         ["VAR", "$SHADOW_CARD_ID", ["GET_CARD_ID", "sharedEncounterDeck", 0, 0]],
-                        ["ATTACH_CARD", "$SHADOW_CARD_ID", "$ACTIVE_CARD_ID"],
                         ["SET", "/cardById/$SHADOW_CARD_ID/rotation", -30],
+                        ["ATTACH_CARD", "$SHADOW_CARD_ID", "$ACTIVE_CARD_ID"],
                         ["SET", "/cardById/$SHADOW_CARD_ID/currentSide", "B"],
                         ["LOG", "$ALIAS_N", " dealt a shadow card to ", "$ACTIVE_FACE.name", "."]
                     ]
@@ -357,6 +364,7 @@
             ["LOG", "Final score: ", "$FINAL_SCORE"]
         ],
         "discardCard": [
+            ["VAR", "$ROTATION", "$ACTIVE_CARD.rotation"],
             ["COND",
                 ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
                 [
@@ -374,7 +382,10 @@
                                     ["LOG", "$ALIAS_N", " discarded ", "$CARD.sides.A.name", "."],
                                     ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0],
                                     ["COND",
-                                        ["NOT_EQUAL", "$CARD.sides.$CURRENT_SIDE.victoryPoints", null],
+                                        ["AND",
+                                            ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
+                                            ["NOT_EQUAL", "$ROTATION", -30]
+                                        ],
                                         ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
                                     ]
                                 ]
@@ -392,7 +403,10 @@
                             ["LOG", "$ALIAS_N", " discarded ", "$ACTIVE_CARD.sides.A.name", "."],
                             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.discardGroupId", 0],
                             ["COND",
-                                ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                                ["AND",
+                                    ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                                    ["NOT_EQUAL", "$ROTATION", -30]
+                                ],
                                 ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
                             ]
                         ]
@@ -400,7 +414,7 @@
                 ]
             ],
             ["COND",
-                ["EQUAL", "$ACTIVE_CARD.currentFace.type", "Quest"],
+                ["EQUAL", "$ACTIVE_FACE.type", "Quest"],
                 ["COND", 
                     ["EQUAL", ["LENGTH", "$GAME.groupById.sharedQuestDeck.stackIds"], 0],
                     ["LOG", "The players won the game!"],
@@ -409,7 +423,10 @@
                         ["MOVE_STACK", ["GET_STACK_ID", "sharedQuestDeck", 0], "sharedMainQuest", 0],
                         ["LOG", "$ALIAS_N", " advanced the quest."],
                         ["COND",
-                            ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                            ["AND",
+                                ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
+                                ["NOT_EQUAL", "$ROTATION", -30]
+                            ],
                             ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
                         ]
                     ]
