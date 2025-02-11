@@ -1,0 +1,1262 @@
+{
+   "_comment": "JSON file automatically generated using jsonnet",
+   "automation": {
+      "cards": {
+         "0b1ff7b7-06ae-416a-a9a0-1199fc985fc4": {
+            "_comment": "Astonishing Speed",
+            "inheritFrom": "51223bd0-ffd1-11df-a976-0801206c9003"
+         },
+         "21c68054-6070-49cd-be5f-7d432842a879": {
+            "_comment": "Scouting Party",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each Scout character +2 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Scout."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.controller",
+                                    "$THIS.controller"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       2
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "4823aae3-46ef-4a75-89f9-cbd3aa1b9050": {
+            "_comment": "Light the Beacons",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each character +2 defense until the end of the round."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "round",
+                                       "$TARGET_ID",
+                                       "defense",
+                                       2
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801200c9022": {
+            "_comment": "For Gondor!",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each character +1 attack and each Gondor character +1 defense until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "attack",
+                                       1
+                                    ],
+                                    [
+                                       "COND",
+                                       [
+                                          "IN_STRING",
+                                          "$TARGET.currentFace.traits",
+                                          "Gondor."
+                                       ],
+                                       [
+                                          [
+                                             "ADD_TEMP_TOKEN",
+                                             "phase",
+                                             "$TARGET_ID",
+                                             "defense",
+                                             1
+                                          ]
+                                       ]
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801200c9025": {
+            "_comment": "Grim Resolve",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied all characters."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801202c9009": {
+            "_comment": "Eomund",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied each Rohan character"
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Rohan."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801204c9012": {
+            "_comment": "Rear Guard",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each Hero committed to the quest +1 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.committed",
+                                    true
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801206c9003": {
+            "_comment": "Astonishing Speed",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave all Rohan characters +2 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Rohan."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       2
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801207c9083": {
+            "_comment": "Untroubled by Darkness",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each Dwarf character +1/+2 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Dwarf."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "COND",
+                                       [
+                                          "OR",
+                                          [
+                                             "ACTIVE_LOCATION_HAS_TRAIT",
+                                             "Underground."
+                                          ],
+                                          [
+                                             "ACTIVE_LOCATION_HAS_TRAIT",
+                                             "Dark."
+                                          ]
+                                       ],
+                                       [
+                                          [
+                                             [
+                                                "ADD_TEMP_TOKEN",
+                                                "phase",
+                                                "$TARGET_ID",
+                                                "willpower",
+                                                2
+                                             ]
+                                          ]
+                                       ],
+                                       true,
+                                       [
+                                          [
+                                             [
+                                                "ADD_TEMP_TOKEN",
+                                                "phase",
+                                                "$TARGET_ID",
+                                                "willpower",
+                                                1
+                                             ]
+                                          ]
+                                       ]
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801209c9015": {
+            "_comment": "Lure of Moria",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied all Dwarf characters."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Dwarf."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "6ed73c76-bcdc-47bd-9d1d-96dc1eddab2d": {
+            "_comment": "Lure of Moria",
+            "inheritFrom": "51223bd0-ffd1-11df-a976-0801209c9015"
+         },
+         "8588e98f-1aaf-4e90-95b9-48b76c0fc4be": {
+            "_comment": "Hold Your Ground!",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND",
+                     [
+                        "IS_PLAYER_IN_VALOUR",
+                        "$THIS.controller"
+                     ]
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied each sentinel character."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.keywords",
+                                    "Sentinel."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "8a236d16-1b31-474c-992b-3a2cd91a3b71": {
+            "_comment": "The Free Peoples",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied each character and gave each character controlled by {{$THIS.controller}} +1 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ],
+                                    [
+                                       "COND",
+                                       [
+                                          "EQUAL",
+                                          "$TARGET.controller",
+                                          "$THIS.controller"
+                                       ],
+                                       [
+                                          [
+                                             "ADD_TEMP_TOKEN",
+                                             "phase",
+                                             "$TARGET_ID",
+                                             "willpower",
+                                             1
+                                          ]
+                                       ]
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "8b15901c-c6b2-421e-8c6d-3200558e3609": {
+            "_comment": "Leaf-wrapped Lembas (Boon)",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ]
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added Leaf-wrapped Lembas to the victory display and readied all heroes."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "addToVictoryDisplay"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "91f28bdf-4b78-4750-9853-65e783e4cb15": {
+            "_comment": "Strength of Arms",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied each Ally."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_ALLY",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "bedda85f-f07f-469a-b6f7-d59910210a86": {
+            "_comment": "A Desperate Path",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Discarded cards from the encounter deck until a treachery is discarded. Each questing character is readied and gets +1 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.committed",
+                                    true
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ],
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "cb08f48e-7acf-44ff-ac6f-36d4f017a962": {
+            "_comment": "Captains of the West",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each Noble hero +1 willpower until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Noble."
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "ACTION_LIST",
+                        "discardCard"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "d0024a2b-e3ea-44aa-a813-999b8ab754a4": {
+            "_comment": "Grim Resolve",
+            "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9025"
+         },
+         "edb23ff8-1851-41ec-8e8e-dfac6ef9e710": {
+            "_comment": "Wind from the Sea",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied each Hero committed to the quest and removed Wind from the Sea from the game."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.committed",
+                                    true
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DELETE_CARD",
+                        "$THIS_ID"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "f94a6cd8-d909-453a-a206-e477244b1b0f": {
+            "_comment": "Eomund",
+            "inheritFrom": "51223bd0-ffd1-11df-a976-0801202c9009"
+         },
+         "ff265d76-021b-4f23-9e62-a57e16b3e77d": {
+            "_comment": "Lords of the Eldar",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND",
+                     [
+                        "IN_STRING",
+                        "$THIS.groupId",
+                        "Discard"
+                     ]
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Moved Lords of the Eldar to the bottom of the deck and gave all Noldor characters +1 willpower, +1 attack, and +1 defense until the end of the round."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Noldor."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "round",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       1
+                                    ],
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "round",
+                                       "$TARGET_ID",
+                                       "attack",
+                                       1
+                                    ],
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "round",
+                                       "$TARGET_ID",
+                                       "defense",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "MOVE_CARD",
+                        "$THIS_ID",
+                        "{{$THIS.controller}}Deck",
+                        -1
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         }
+      }
+   }
+}
