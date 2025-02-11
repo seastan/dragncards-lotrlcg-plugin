@@ -1352,7 +1352,7 @@
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", 
-                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$GAME.stepId", "8.0"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
@@ -1382,6 +1382,7 @@
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1397,12 +1398,76 @@
                 }
             },
             "3f1fe728-ecc6-4aff-a056-31e3731e39c2": {"_comment": "Ori", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9065"},
+            "76ee3df4-3ebe-4d2d-9d7f-a0bbe759358a": {
+                "_comment": "Cirdan the Shipwright",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "priority": 29,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Círdan and must now discard a card just drawn."],
+                            ["DRAW_CARD", 1, "$THIS.controller"],
+                            ["SET", "/cardById/$THIS_ID/targeting/{{$THIS.controller}}", true]
+                        ]
+                    }
+                }
+            },
+            "b188f729-0314-4664-95a0-7f93f4d44133": {
+                "_comment": "Erestor",
+                "rules": {
+                    "drawAdditionalCard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "priority": 25,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "{{$ALIAS}} draws 3 additional cards from Erestor."],
+                            ["DRAW_CARD", 3, "$THIS.controller"]
+                        ]
+                    },
+                    "discardHand": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "8.0"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "└── ", "Erestor causes {{$ALIAS}} to discard all cards in hand."],
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                                ["COND",
+                                    ["AND", ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Hand"]],
+                                    [
+                                        ["DEFINE", "$ACTIVE_CARD_ID", "$CARD_ID"],
+                                        ["ACTION_LIST", "discardCard"]
+                                    ]
+                                ]]
+                            ]
+                        ]
+                    }
+                }
+            },
             "d45259f1-a551-466c-8352-cc466e1670c2": {
                 "_comment": "Stone of Elostirion",
                 "rules": {
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1423,6 +1488,7 @@
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1442,6 +1508,7 @@
                     "drawAdditionalCard": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 25,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1466,6 +1533,7 @@
                             "promptMessage": "Add 1 resource to Treebeard?"
                         },
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1490,6 +1558,7 @@
                             "promptMessage": "Add 1 resource to Radagast?"
                         },
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1497,31 +1566,7 @@
                         ],
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} added 1 resource to Radagast."],
-                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
-                        ]
-                    }
-                }
-            },
-            "51223bd0-ffd1-11df-a976-0801203c9003": {
-                "_comment": "Radagast (Ally)",
-                "rules": {
-                    "radagastResource": {
-                        "type": "trigger",
-                        "autoRun": {
-                            "status": "prompt",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Add 1 resource to Radagast?"
-                        },
-                        "listenTo": ["/stepId"],
-                        "condition": ["AND", 
-                            ["EQUAL", "$GAME.stepId", "1.R"], 
-                            ["EQUAL", "$THIS.currentSide", "A"],
-                            ["EQUAL", "$THIS.inPlay", true]
-                        ],
-                        "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} added 1 resource to Radagast."],
+                            ["LOG", "├── ", "Radagast gains 1 resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
                         ]
                     }
@@ -1533,6 +1578,7 @@
                     "thorinResource": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1553,6 +1599,7 @@
                     "collectAdditionalResource": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
@@ -1576,6 +1623,7 @@
                     "collectAdditionalResource": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
+                        "priority": 15,
                         "condition": ["AND", 
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],

@@ -182,22 +182,31 @@
                 "listenTo": ["/stepId"],
                 "abstract": true
             },
-            "step_1.R": {
-                "_comment": "Trigger resource phase framework effects",
+            "step_1.R-resources": {
+                "_comment": "Trigger resource-gaining resource phase framework effects",
                 "inheritFrom": "stepTrigger",
+                "priority": 10,
                 "condition": ["EQUAL", "$GAME.stepId", "1.R"],
                 "then": [
-                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
-                        ["VAR", "$NUM_DRAWN", "$PLAYER_DATA.$PLAYER_I.cardsDrawn"],
-                        ["LOG", "├── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
-                        ["DRAW_CARD", "$NUM_DRAWN", "$PLAYER_I"]
-                    ]],
                     ["LOG", "└── ", "Each hero gains 1 resource."],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                         ["COND",
                             ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.currentFace.type", "Hero"]],
                             ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
                         ]
+                    ]]
+                ]
+            },
+            "step_1.R-cards": {
+                "_comment": "Trigger card-drawing resource phase framework effects",
+                "inheritFrom": "stepTrigger",
+                "priority": 20,
+                "condition": ["EQUAL", "$GAME.stepId", "1.R"],
+                "then": [
+                    ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                        ["VAR", "$NUM_DRAWN", "$PLAYER_DATA.$PLAYER_I.cardsDrawn"],
+                        ["LOG", "├── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
+                        ["DRAW_CARD", "$NUM_DRAWN", "$PLAYER_I"]
                     ]]
                 ]
             },
