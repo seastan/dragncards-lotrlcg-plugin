@@ -205,7 +205,7 @@
                 "then": [
                     ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                         ["VAR", "$NUM_DRAWN", "$PLAYER_DATA.$PLAYER_I.cardsDrawn"],
-                        ["LOG", "├── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
+                        ["LOG", "└── ", ["GET_ALIAS", "$PLAYER_I"], " draws {{$NUM_DRAWN}} card(s)."],
                         ["DRAW_CARD", "$NUM_DRAWN", "$PLAYER_I"]
                     ]]
                 ]
@@ -258,9 +258,6 @@
                 "inheritFrom": "stepTrigger",
                 "condition": ["EQUAL", "$GAME.stepId", "7.R"],
                 "then": [
-                    ["VAR", "$NEXT_PLAYER", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
-                    ["LOG", "├── The first player is now {{$NEXT_PLAYER}}"],
-                    ["SET", "/firstPlayer", "$NEXT_PLAYER"],
                     ["LOG", "├── Readied all cards in play."],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                         ["COND",
@@ -274,11 +271,38 @@
                             ]
                         ]
                     ]],    
-                    ["LOG", "└── ", "Each player increased their threat by 1."],        
+                    ["LOG", "├── ", "Each player increased their threat by 1."],        
                     ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
                         ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", 1]
-                    ]
+                    ],
+                    ["VAR", "$NEXT_PLAYER", ["NEXT_PLAYER", "$GAME.firstPlayer"]],
+                    ["LOG", "└── The first player is now ", ["GET_ALIAS", "$NEXT_PLAYER"], "."],
+                    ["SET", "/firstPlayer", "$NEXT_PLAYER"]
+
                 ]
+            },
+            "updateFirstPlayerControlledCharacters": {  
+                "_comment": "Move characters controlled by the first player when the first player changes",
+                "type": "trigger", 
+                "listenTo": ["/firstPlayer"],
+                "condition": ["GREATER_THAN", "$GAME.numPlayers", 1],
+                "then": [
+                    ["VAR", "$PREV_PLAYER", ["PREV", "$GAME.firstPlayer"]],
+                    ["VAR", "$NEXT_PLAYER", "$GAME.firstPlayer"],
+                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", "$CARD.inPlay", true],
+                                "$CARD.currentFace.tags.firstPlayerControls",
+                                ["IN_STRING", "$CARD.groupId", "{{$PREV_PLAYER}}Play"]
+                            ],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "$NEXT_PLAYER"], " gains control of {{$CARD.currentFace.name}}."],
+                                ["MOVE_STACK", "$CARD.stackId", "{{$NEXT_PLAYER}}Play1", -1]
+                            ]
+                        ]
+                    ]
+                ]]
             },
             // "triggerGameStepEffects": {
             //     "_comment": "Trigger card effects for a given game step",
