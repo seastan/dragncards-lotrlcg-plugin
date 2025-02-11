@@ -1593,6 +1593,27 @@
                     }
                 }
             },
+            "94726dff-4b95-4c7c-9542-320b45652d7a": {
+                "_comment": "Amarthuil",
+                "rules": {
+                    "amarthuilResource": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "priority": 15,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "1.R"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_EQUAL", ["NUM_ENGAGED_ENEMIES", "$THIS.controller"], 2]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "├── ", "Amarthiúl gains 1 additional resource."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1]
+                        ]
+                    }
+                }
+            },
             "attachedHeroGainsOneResourceInResourcePhase": {
                 "abstract": true,
                 "rules": {

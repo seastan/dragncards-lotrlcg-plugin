@@ -101,6 +101,17 @@
         ["GREATER_THAN", ["LENGTH", "$ACTIVE_LOCATIONS_WITH_TRAIT"], 0]
       ]
     },
+    "NUM_ENGAGED_ENEMIES": {
+      "args": ["$PLAYER"],
+      "code": [
+        ["VAR", "$ENGAGED_ENEMIES", ["FILTER_CARDS", "$C", [
+          "AND",
+              ["IS_ENEMY", "$C"],
+              ["EQUAL", "$C.groupId", "{{$PLAYER}}Engaged"]
+        ]]],
+        ["LENGTH", "$ENGAGED_ENEMIES"]
+      ]
+    },
     "DOOMED": {
       "args": ["$X"],
       "code": [
