@@ -1642,7 +1642,6 @@
                 "ability": {
                     "A": [
                             ["LOG", "└── ", "Added 2 attack to ", "$THIS.currentFace.name", " until the end of the round."],
-                            ["TOGGLE_EXHAUST", "$THIS"],
                             ["ADD_TEMP_TOKEN", "round", "$THIS_ID", "attack", 2]
                         ]
                 }
