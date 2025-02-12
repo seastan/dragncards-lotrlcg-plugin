@@ -7,7 +7,9 @@
             "onCardEnter": {
                 "currentSide": "B",
                 "inPlay": false,
-                "rotation": 0
+                "rotation": 0,
+                "exhausted": false,
+                "committed": false
             }
         },
         "discard": {
@@ -17,7 +19,9 @@
             "onCardEnter": {
                 "currentSide": "A",
                 "inPlay": false,
-                "rotation": 0
+                "rotation": 0,
+                "exhausted": false,
+                "committed": false
             }
         },
         "hand": {
@@ -27,7 +31,9 @@
             "onCardEnter": {
                 "currentSide": "A",
                 "inPlay": false,
-                "rotation": 0
+                "rotation": 0,
+                "exhausted": false,
+                "committed": false
             }
         },
         "inPlay": {

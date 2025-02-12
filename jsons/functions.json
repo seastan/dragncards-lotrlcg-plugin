@@ -791,6 +791,27 @@
             ]
           ]
         },
+        "IS_HERO": {
+          "args": ["$CARD"],
+          "code": ["AND",
+            ["EQUAL", "$CARD.cardIndex", 0],
+            ["OR",
+              ["EQUAL", "$CARD.currentFace.type", "Hero"],
+              ["EQUAL", "$CARD.currentFace.type", "Objective Hero"]
+            ]
+          ]
+        },
+        "IS_ALLY": {
+          "args": ["$CARD"],
+          "code": ["AND",
+            ["EQUAL", "$CARD.cardIndex", 0],
+            ["OR",
+              ["EQUAL", "$CARD.currentFace.type", "Ally"],
+              ["EQUAL", "$CARD.currentFace.type", "Objective Ally"],
+              ["EQUAL", "$CARD.currentFace.type", "Ship Objective"]
+            ]
+          ]
+        },
         "IS_ENEMY": {
           "args": ["$CARD"],
           "code": ["AND",

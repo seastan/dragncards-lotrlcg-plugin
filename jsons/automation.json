@@ -314,7 +314,6 @@
                 "condition": ["AND", "$TARGET.committed", "$TARGET.inPlay", ["EQUAL", "$GAME.questingStat", "willpower"], ["NOT_EQUAL", "$TARGET.controller", "shared"]],
                 "then": [
                     ["VAR", "$DELTA", ["SUBTRACT", "$TARGET.tokens.willpower", ["PREV", "$TARGET.tokens.willpower"]]],
-                    ["VAR", "$DELTA", ["MIN", ["LIST", "$DELTA", ["SUBTRACT", 0, ["PREV", "$TARGET.tokens.questing"]]]]],
                     ["INCREASE_VAL", "/playerData/$TARGET.controller/willpower", "$DELTA"],
                     ["INCREASE_VAL", "/cardById/$TARGET.id/tokens/questing", "$DELTA"]
                 ]
