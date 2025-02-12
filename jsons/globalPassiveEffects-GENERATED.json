@@ -37,12 +37,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -53,9 +49,8 @@
                                        "{{$THIS.controller}}Engaged"
                                     ],
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Enemy"
+                                       "IS_ENEMY",
+                                       "$TARGET"
                                     ],
                                     [
                                        "NOT_EQUAL",
@@ -98,9 +93,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -108,9 +102,8 @@
                                     "{{$THIS.controller}}Engaged"
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Enemy"
+                                    "IS_ENEMY",
+                                    "$TARGET"
                                  ],
                                  [
                                     "NOT_EQUAL",
@@ -143,9 +136,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -158,9 +150,8 @@
                         "{{$THIS.controller}}Engaged"
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Enemy"
+                        "IS_ENEMY",
+                        "$TARGET"
                      ],
                      [
                         "NOT_EQUAL",
@@ -207,9 +198,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -267,12 +257,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -327,9 +313,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -371,9 +356,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -433,9 +417,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -493,12 +476,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -548,9 +527,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IS_CHARACTER",
@@ -587,9 +565,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -643,9 +620,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -703,12 +679,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -763,9 +735,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -807,9 +778,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -869,9 +839,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -942,12 +911,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -997,9 +962,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IN_STRING",
@@ -1036,9 +1000,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -1102,9 +1065,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "GREATER_THAN",
@@ -1183,12 +1145,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -1239,9 +1197,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IN_STRING",
@@ -1279,9 +1236,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -1341,9 +1297,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "GREATER_THAN",
@@ -1406,12 +1361,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -1466,9 +1417,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -1510,9 +1460,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -1572,9 +1521,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -1639,12 +1587,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -1699,9 +1643,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IN_STRING",
@@ -1743,9 +1686,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -1809,9 +1751,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "EQUAL",
@@ -1891,12 +1832,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -1946,9 +1883,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -1985,9 +1921,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -2052,9 +1987,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "GREATER_THAN",
@@ -2129,12 +2063,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -2184,9 +2114,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IN_STRING",
@@ -2223,9 +2152,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -2285,9 +2213,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "GREATER_THAN",
@@ -2354,12 +2281,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -2410,9 +2333,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -2450,9 +2372,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -2508,9 +2429,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -2568,12 +2488,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -2624,9 +2540,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -2664,9 +2579,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -2722,9 +2636,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -2789,12 +2702,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -2840,9 +2749,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -2875,9 +2783,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -2932,9 +2839,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "EQUAL",
@@ -3004,12 +2910,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -3024,9 +2926,8 @@
                                        "$TARGET.currentFace.unique"
                                     ],
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Enemy"
+                                       "IS_ENEMY",
+                                       "$TARGET"
                                     ],
                                     [
                                        "NOT_EQUAL",
@@ -3069,9 +2970,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IN_STRING",
@@ -3083,9 +2983,8 @@
                                     "$TARGET.currentFace.unique"
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Enemy"
+                                    "IS_ENEMY",
+                                    "$TARGET"
                                  ],
                                  [
                                     "NOT_EQUAL",
@@ -3118,9 +3017,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3137,9 +3035,8 @@
                         "$TARGET.currentFace.unique"
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Enemy"
+                        "IS_ENEMY",
+                        "$TARGET"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3191,9 +3088,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "EQUAL",
@@ -3256,12 +3152,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -3312,9 +3204,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -3352,9 +3243,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3410,9 +3300,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -3470,12 +3359,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -3530,9 +3415,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -3574,9 +3458,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3636,9 +3519,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -3700,12 +3582,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -3781,9 +3659,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -3846,9 +3723,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3929,9 +3805,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ]
                      ],
                      [
@@ -4021,12 +3896,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -4072,9 +3943,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "EQUAL",
@@ -4107,9 +3977,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -4164,9 +4033,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "GREATER_THAN",
@@ -4236,12 +4104,8 @@
                                     ]
                                  ],
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.currentSide",
-                                       "A"
-                                    ]
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  "PREV",
                                  [
@@ -4291,9 +4155,8 @@
                                     0
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentSide",
-                                    "A"
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
                                     "IN_STRING",
@@ -4330,9 +4193,8 @@
                         0
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentSide",
-                        "A"
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                      ],
                      [
                         "NOT_EQUAL",
@@ -4392,9 +4254,8 @@
                            0
                         ],
                         [
-                           "EQUAL",
-                           "$TARGET.currentSide",
-                           "A"
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                         ],
                         [
                            "GREATER_THAN",
