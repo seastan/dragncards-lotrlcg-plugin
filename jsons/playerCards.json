@@ -37,6 +37,29 @@
                     }
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801205c9014": {
+                "_comment": "Silvan Tracker",
+                "rules": {
+                    "silvanTrackerHeal": {
+                        "_comment": "If Silvan Tracker is in play, heal Silvan characters when they ready during the refresh phase.",
+                        "type": "whileInPlay",
+                        "listenTo": ["/cardById/*/exhausted"],
+                        "condition": ["AND",
+                            ["EQUAL", "$GAME.stepId", "7.R"],
+                            "$TARGET.inPlay",
+                            ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."],
+                            ["IS_CHARACTER", "$TARGET"],
+                            ["NOT", "$TARGET.exhausted"],
+                            ["GREATER_THAN", "$TARGET.tokens.damage", 0]
+                        ],
+                        "then": [
+                            ["LOG", "└── ", "Silvan Tracker healed ", "$TARGET.currentFace.name", "."],
+                            ["DECREASE_VAL", "/cardById/$TARGET_ID/tokens/damage", 1]  // No need to use "HEAL" because already checked that it is damaged
+                        ]
+                    }
+                }
+            },
+            "61f5c07a-bdec-401b-be5c-19d3c7c456c9": {"_comment": "Silvan Tracker", "inheritFrom": "51223bd0-ffd1-11df-a976-0801205c9014"},
             "4124136c-8c86-4f86-830c-94c8c76df161": {
                 "_comment": "Sam Gamgee",
                 "ability": {
@@ -399,6 +422,18 @@
                     ]
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801203c9005": {
+                "_comment": "Ancient Mathom",
+                "ability": {
+                    "A": [
+                        ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Ancient Mathom."],
+                        ["DRAW_CARD", 1, "$GAME.firstPlayer"],
+                        ["ACTION_LIST", "discardCard"]
+                    ]
+                }
+            },
+            "82435db6-aa5d-4626-baef-e5d39309b833": {"_comment": "Ancient Mathom", "inheritFrom": "51223bd0-ffd1-11df-a976-0801203c9005"},
+            "824d1be0-6761-4de8-9077-c3b0e6d06a58": {"_comment": "Ancient Mathom", "inheritFrom": "51223bd0-ffd1-11df-a976-0801203c9005"},
             "51223bd0-ffd1-11df-a976-0801212c9010": {
                 "_comment": "Daeron's Runes",
                 "ability": {
@@ -448,6 +483,32 @@
                 }
             },
             "8ccfbcf2-676c-4e24-ab5e-fa479343ab39": {"_comment": "Galadriel (Hero)", "inheritFrom": "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1"},
+            "51223bd0-ffd1-11df-a976-0801200c9049": {
+                "_comment": "Will of the West",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " shuffles discard pile back into deck."],
+                                            ["MOVE_CARDS", "player{I}Discard", "player{I}Deck"]
+                                        ]], "{I}", "{{$I}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " shuffles discard pile back into deck"],
+                                ["MOVE_CARDS", "player1Discard", "player1Deck"]
+                            ]
+                        ]
+                    ]
+                }
+            },
             "ff3794e8-d8b1-48dc-a9f8-97ea7d6b3874": {
                 "_comment": "Galadriel's Handmaiden",
                 "ability": {
@@ -541,6 +602,25 @@
                     ]
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801210c9009": {
+                "_comment": "Legacy of Durin",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws a card."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "ea0854b0-37c6-4f3a-806a-f1532a1edcd1": {"_comment": "Legacy of Durin", "inheritFrom": "51223bd0-ffd1-11df-a976-0801210c9009"},
             "51223bd0-ffd1-11df-a976-0801200c9046": {
                 "_comment": "The Galadhrim's Greeting",
                 "ability": {
@@ -932,8 +1012,7 @@
                             ["HAS_5_OR_MORE_DWARVES", "$THIS.controller"]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Ori."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Ori."],
                             ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
@@ -953,8 +1032,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Círdan and must now discard a card just drawn."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Círdan and must now discard a card just drawn."],
                             ["DRAW_CARD", 1, "$THIS.controller"],
                             ["SET", "/cardById/$THIS_ID/targeting/{{$THIS.controller}}", true]
                         ]
@@ -974,8 +1052,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 3 additional cards from Erestor."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 3 additional cards from Erestor."],
                             ["DRAW_CARD", 3, "$THIS.controller"]
                         ]
                     },
@@ -1017,8 +1094,7 @@
                             ["GREATER_THAN", "$THIS.cardIndex", 0]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Stone of Elostirion."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Stone of Elostirion."],
                             ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
@@ -1037,8 +1113,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Bilbo Baggins."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Bilbo Baggins."],
                             ["DRAW_CARD", 1, "$GAME.firstPlayer"]
                         ]
                     }
@@ -1057,8 +1132,7 @@
                             ["EQUAL", "$THIS.groupId", "sharedVictory"]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Prepare for Battle."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Prepare for Battle."],
                             ["DRAW_CARD", 1, "$GAME.firstPlayer"]
                         ]
                     }
@@ -1181,7 +1255,7 @@
                 "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
             },
             "b1cc99c3-09a7-4418-85c4-e368f44adf1d": {
-                "_comment": "Necklace of Girion (doesn't use inheritFrom because it conflicts with attachment automation)",
+                "_comment": "Necklace of Girion", // doesn't use inheritFrom because it conflicts with attachment automation
                 "rules": {
                     "collectAdditionalResource": {
                         "type": "trigger",
@@ -1242,9 +1316,8 @@
                             ["IS_ONE_RING_READY"]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["VAR", "$HERO", "GET_ONE_RING_PARENT"],
-                            ["LOG", "└── ", "{{$ALIAS}} exhausted The One Ring and raised threat by 1 to heal all damage from ", "$HERO.currentFace.name", "."],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " exhausted The One Ring and raised threat by 1 to heal all damage from ", "$HERO.currentFace.name", "."],
                             ["EXHAUST_ONE_RING"],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
                             ["SET", "/cardById/$THIS.parentCardId/tokens/damage", 0]
@@ -1469,9 +1542,8 @@
                     "A": ["COND",
                         ["IS_ONE_RING_READY"],
                         [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["VAR", "$CARD", ["GET_ONE_RING_PARENT"]],
-                            ["LOG", "└── ", "{{$ALIAS}} exhausted The One Ring and raised threat by 1 to ready ", "$CARD.currentFace.name", " and give it 1 willpower, 1 attack, and 1 defense until the end of the phase."],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " exhausted The One Ring and raised threat by 1 to ready ", "$CARD.currentFace.name", " and give it 1 willpower, 1 attack, and 1 defense until the end of the phase."],
                             ["EXHAUST_ONE_RING"],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
                             ["SET", "/cardById/$CARD.id/rotation", 0],
@@ -1729,8 +1801,7 @@
                         "listenTo": ["/cardById/$THIS_ID/cardIndex"],
                         "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
+                            ["LOG", ["GET_ALIAS", "$THIS.controller"], " gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
                             ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Hero"]
                         ]
                     }
@@ -1775,8 +1846,7 @@
                             ["GREATER_THAN", "$THIS.tokens.resource", 0]
                         ],
                         [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "└── ", "{{$ALIAS}} spent 1 fellowship resource and exhausted The One Ring to cancel the attack's damage and raise each player's threat by 2."],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " spent 1 fellowship resource and exhausted The One Ring to cancel the attack's damage and raise each player's threat by 2."],
                             ["SET", "/cardById/$THIS_ID/rotation", 90],
                             ["SET", "/cardById/$THIS_ID/exhausted", true],
                             ["EXHAUST_ONE_RING"],
