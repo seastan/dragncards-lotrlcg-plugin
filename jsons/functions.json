@@ -208,7 +208,7 @@
             ]
           ]
         },
-        "DISCARD_CARD": {  // TODO test with erestor/galadriel (end of round) in MP
+        "DISCARD_CARD": {
           "args": ["$CARD"],
           "code": [
             ["VAR", "$ROTATION", "$CARD.rotation"],
@@ -248,13 +248,13 @@
                   true,
                   [
                     ["LOG", "$ALIAS_N", " discarded ", "$CARD.sides.A.name", "."],
-                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0],
+                    ["MOVE_CARD", "$CARD.id", "$CARD.discardGroupId", 0],
                     ["COND",
                       ["AND",
                         ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
                         ["NOT_EQUAL", "$ROTATION", -30]
                       ],
-                      ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
+                      ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD.id"]
                     ]
                   ]
                 ]
@@ -274,7 +274,7 @@
                       ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
                       ["NOT_EQUAL", "$ROTATION", -30]
                     ],
-                    ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
+                    ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD.id"]
                   ]
                 ]
               ]
@@ -872,7 +872,7 @@
         "IS_ENEMY": {
           "args": ["$CARD"],
           "code": ["AND",
-            ["EQUAL", "$THIS.cardIndex", 0],
+            ["EQUAL", "$CARD.cardIndex", 0],
             ["OR",
               ["EQUAL", "$CARD.currentFace.type", "Enemy"],
               ["EQUAL", "$CARD.currentFace.type", "Ship-Enemy"],

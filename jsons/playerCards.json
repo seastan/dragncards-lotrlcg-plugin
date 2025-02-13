@@ -42,9 +42,11 @@
                 "rules": {
                     "silvanTrackerHeal": {
                         "_comment": "If Silvan Tracker is in play, heal Silvan characters when they ready during the refresh phase.",
-                        "type": "whileInPlay",
+                        "type": "trigger",
                         "listenTo": ["/cardById/*/exhausted"],
                         "condition": ["AND",
+                            "$THIS.inPlay",
+                            ["EQUAL", "$THIS.currentSide", "A"],
                             ["EQUAL", "$GAME.stepId", "7.R"],
                             "$TARGET.inPlay",
                             ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."],
@@ -426,8 +428,8 @@
                 "_comment": "Ancient Mathom",
                 "ability": {
                     "A": [
-                        ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Ancient Mathom."],
-                        ["DRAW_CARD", 1, "$GAME.firstPlayer"],
+                        ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 3 additional cards from Ancient Mathom."],
+                        ["DRAW_CARD", 3, "$GAME.firstPlayer"],
                         ["DISCARD_CARD", "$THIS"]
                     ]
                 }
@@ -493,17 +495,19 @@
                                 ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
                                 ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
                                     ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
-                                        ["REPLACE_STRING_IN_LIST", ["POINTER", [
-                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " shuffles discard pile back into deck."],
-                                            ["MOVE_CARDS", "player{I}Discard", "player{I}Deck"]
-                                        ]], "{I}", "{{$I}}"]
+                                    ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " shuffled discard pile back into deck and removed Will of the West from the game."],
+                                            ["MOVE_STACKS", "player{I}Discard", "player{I}Deck"],
+                                            ["DELETE_CARD", "{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
                                     ]
                                 ]]
                             ],
                             ["TRUE"],
                             [
-                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " shuffles discard pile back into deck"],
-                                ["MOVE_CARDS", "player1Discard", "player1Deck"]
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " shuffled discard pile back into deck and removed Will of the West from the game."],
+                                ["MOVE_STACKS", "player1Discard", "player1Deck"],
+                                ["DELETE_CARD", "$THIS_ID"]
                             ]
                         ]
                     ]
@@ -1055,7 +1059,7 @@
                             ["DRAW_CARD", 3, "$THIS.controller"]
                         ]
                     },
-                    "discardHand": {
+                    "erestorDiscardHand": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", 
@@ -1066,14 +1070,7 @@
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "└── ", "Erestor causes {{$ALIAS}} to discard all cards in hand."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [  // TODO use MOVE_STACKS
-                                ["COND",
-                                    ["AND", ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Hand"]],
-                                    [
-                                        ["DISCARD_CARD", "$CARD"]
-                                    ]
-                                ]]
-                            ]
+                            ["MOVE_STACKS", "{{$THIS.controller}}Hand", "{{$THIS.controller}}Discard", -1, "top"]
                         ]
                     }
                 }
