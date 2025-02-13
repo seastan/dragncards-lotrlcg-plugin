@@ -82,6 +82,79 @@
                ]
             }
          },
+         "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3": {
+            "_comment": "Need Drives Them",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Readied each character if its owner has 40 or more threat."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IS_PLAYER_IN_VALOUR",
+                                    "$TARGET.controller"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/rotation",
+                                       0
+                                    ],
+                                    [
+                                       "SET",
+                                       "/cardById/$TARGET_ID/exhausted",
+                                       false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
          "4823aae3-46ef-4a75-89f9-cbd3aa1b9050": {
             "_comment": "Light the Beacons",
             "ability": {
@@ -687,9 +760,209 @@
                ]
             }
          },
+         "5865f440-4912-41e7-861e-9526d07e371f": {
+            "_comment": "Need Drives Them",
+            "inheritFrom": "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3"
+         },
          "6ed73c76-bcdc-47bd-9d1d-96dc1eddab2d": {
             "_comment": "Lure of Moria",
             "inheritFrom": "51223bd0-ffd1-11df-a976-0801209c9015"
+         },
+         "768ae041-2d15-44a3-a928-62838536a160": {
+            "_comment": "Take No Notice",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each enemy +5 engagement cost until the end of the round."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "round",
+                                       "$TARGET_ID",
+                                       "engagementCost",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "7c7912dc-4d55-4c40-98a0-befbbff24c90": {
+            "_comment": "Shadows Give Way",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Discarded each shadow card."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "DISCARD_CARD",
+                                       "$TARGET_ID"
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "7d906063-149f-4b7d-b271-e1532afea7c0": {
+            "_comment": "Horn's Cry",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each enemy -1 attack until the end of the phase."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "attack",
+                                       -1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
          },
          "8588e98f-1aaf-4e90-95b9-48b76c0fc4be": {
             "_comment": "Hold Your Ground!",
@@ -1218,6 +1491,161 @@
                      [
                         "DELETE_CARD",
                         "$THIS_ID"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "f07ea741-4991-46c9-9c6a-439dc186cec6": {
+            "_comment": "Arrows from the Trees",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Dealt one damage to each enemy in the staging area."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "sharedStagingArea"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "INCREASE_VAL",
+                                       "/cardById/$TARGET.id/tokens/damage",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "f9351811-479d-4bad-a6b3-ac745739b63f": {
+            "_comment": "In The Shadows",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each enemy engaged with {{$THIS.controller}} that has engagement cost higher than threat -1 attack and -1 defense until the end of the phase"
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "{{$THIS.controller}}Engaged"
+                                 ],
+                                 [
+                                    "GREATER_THAN",
+                                    [
+                                       "GET_ENGAGEMENT_COST",
+                                       "$TARGET"
+                                    ],
+                                    "$GAME.playerData.{{$THIS.controller}}.threat"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "attack",
+                                       -1
+                                    ],
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "defense",
+                                       -1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,

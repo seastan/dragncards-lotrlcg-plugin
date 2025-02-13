@@ -169,6 +169,47 @@ local readyCard() = [
                         ],
                     ]
                 ],
+            ),
+            "7c7912dc-4d55-4c40-98a0-befbbff24c90": globalActionEffect(
+                name = "Shadows Give Way",
+                log = "Discarded each shadow card.",
+                targetCondition = [["EQUAL", "$TARGET.rotation", -30]],
+                targetEffect = [["DISCARD_CARD", "$TARGET_ID"]],
+            ),
+            "7d906063-149f-4b7d-b271-e1532afea7c0": globalActionEffect(
+                name = "Horn's Cry",
+                log = "Gave each enemy -1 attack until the end of the phase.",
+                targetCondition = [["IS_ENEMY", "$TARGET"]],
+                targetEffect = addToken("attack", timing="phase", amount=-1),
+            ),
+            "768ae041-2d15-44a3-a928-62838536a160": globalActionEffect(
+                name = "Take No Notice",
+                log = "Gave each enemy +5 engagement cost until the end of the round.",
+                targetCondition = [["IS_ENEMY", "$TARGET"]],
+                targetEffect = addToken("engagementCost", timing="round", amount=1),
+            ),
+            "f07ea741-4991-46c9-9c6a-439dc186cec6": globalActionEffect(
+                name = "Arrows from the Trees",
+                log = "Dealt one damage to each enemy in the staging area.",
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]],
+                targetEffect = [["INCREASE_VAL", "/cardById/$TARGET.id/tokens/damage", 1]],
+            ),
+            "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3": globalActionEffect(
+                name = "Need Drives Them",
+                log = "Readied each character if its owner has 40 or more threat.",
+                targetCondition = [["IS_CHARACTER", "$TARGET"], ["IS_PLAYER_IN_VALOUR", "$TARGET.controller"]],
+                targetEffect = readyCard(),
+            ),
+            "5865f440-4912-41e7-861e-9526d07e371f": {"_comment": "Need Drives Them", "inheritFrom": "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3"},
+            "f9351811-479d-4bad-a6b3-ac745739b63f": globalActionEffect(
+                name = "In The Shadows",
+                log = "Gave each enemy engaged with {{$THIS.controller}} that has engagement cost higher than threat -1 attack and -1 defense until the end of the phase",
+                targetCondition = [
+                    ["IS_ENEMY", "$TARGET"],
+                    ["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"],
+                    ["GREATER_THAN", ["GET_ENGAGEMENT_COST", "$TARGET"], "$GAME.playerData.{{$THIS.controller}}.threat"],
+                ],
+                targetEffect = removeToken("attack") + removeToken("defense"),
             )
         },
     }
