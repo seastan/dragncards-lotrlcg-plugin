@@ -667,21 +667,6 @@
                 ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
                   ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", "$THREAT_RAISE"]
                 ]
-              ],
-              ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                  ["COND",
-                      ["AND",
-                          "$CARD.committed",
-                          ["EQUAL", "$CARD.currentFace.type", "Hero"]
-                      ],
-                      [
-                          ["SET", "/cardById/$CARD_ID/committed", false],
-                          ["SET", "/cardById/$CARD_ID/tokens/questing", 0]
-                      ]
-                  ]
-              ]],
-              ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER",
-                  ["SET", "/playerData/$PLAYER_I/willpower", 0]
               ]
             ],
             ["COND",
