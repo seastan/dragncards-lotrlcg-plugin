@@ -109,7 +109,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Boromir (Hero, Leadership)",
                 listenToThisChange = ["/cardById/$THIS_ID/tokens/resource"],
                 thisCondition = [["GREATER_THAN", "$THIS.tokens.resource", 0]],
-                targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Gondor."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Gondor."], ["IS_ALLY", "$TARGET"]],
                 effectOn = addToken("attack"),
                 effectOff = removeToken("attack"),
                 conditionOnLog = "Added 1 attack to each Gondor ally.",
@@ -133,7 +133,8 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Fellowship of the Ring",
                 listenToThisChange = ["/cardById/$THIS_ID/cardIndex"],
                 thisCondition = [["GREATER_THAN", "$THIS.cardIndex", 0]],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Hero"]],
+                listenToTargetChange = ["/cardById/*/sides/*/type"],
+                targetCondition = [["IS_HERO", "$TARGET"]],
                 effectOn = addToken("willpower"),
                 effectOff = removeToken("willpower"),
                 conditionOnLog = "Added 1 willpower to each hero.",
@@ -184,7 +185,8 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Rally the West",
                 listenToThisChange = ["/cardById/$THIS_ID/groupId"],
                 thisCondition = [["EQUAL", "$THIS.groupId", "sharedVictory"]],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Hero"]],
+                listenToTargetChange = ["/cardById/*/sides/*/type"],
+                targetCondition = [["IS_HERO", "$TARGET"]],
                 effectOn = addToken("willpower"),
                 effectOff = removeToken("willpower"),
                 conditionOnLog = "Added 1 willpower to each hero.",
@@ -261,7 +263,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 listenToThisChange = [],
                 thisCondition = [],
                 listenToTargetChange = ["/cardById/*/rotation"],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Enemy"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
                 effectOn = addToken("engagementCost"),
                 effectOff = removeToken("engagementCost"),
                 conditionOnLog = "Added 1 engagement cost to each enemy.",
@@ -276,14 +278,14 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 listenToThisChange = [],
                 thisCondition = [],
                 listenToTargetChange = ["/cardById/*/rotation"],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Enemy"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
                 effectOn = [["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/engagementCost", ["LENGTH",
                                 ["FILTER_CARDS", "$CARD", [
                                     "AND",
                                         "$CARD.inPlay",
                                         ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                         ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                        ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                        ["IS_HERO", "$CARD"]
                                     ]
                                 ]
                             ]]],
@@ -293,7 +295,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                                         "$CARD.inPlay",
                                         ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                         ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                        ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                        ["IS_HERO", "$CARD"]
                                     ]
                                 ]
                             ]]],

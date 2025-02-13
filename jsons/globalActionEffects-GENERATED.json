@@ -69,8 +69,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -135,8 +135,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -218,8 +218,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -287,8 +287,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -428,8 +428,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -499,8 +499,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -600,8 +600,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -674,8 +674,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -756,8 +756,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -842,8 +842,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -986,8 +986,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -1067,8 +1067,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,
@@ -1138,8 +1138,8 @@
                         ]
                      ],
                      [
-                        "ACTION_LIST",
-                        "discardCard"
+                        "DISCARD_CARD",
+                        "$THIS"
                      ]
                   ],
                   true,

@@ -13,7 +13,7 @@
             {
                 "label": "id:toggleEngagedWithEachPlayer",
                 "actionList": ["TOGGLE_ENGAGED_WITH_EACH_PLAYER", ["NOT", "$ACTIVE_CARD.engagedWithEachPlayer"]],
-                "showIf": ["EQUAL", "$ACTIVE_CARD.currentFace.type", "Enemy"]
+                "showIf": ["IS_ENEMY", "$ACTIVE_CARD"]
             },
             {
                 "label": "id:convertToHero",
