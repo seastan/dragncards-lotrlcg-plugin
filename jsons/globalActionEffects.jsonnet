@@ -12,6 +12,7 @@ local globalActionEffect(name, log, thisCondition=[], targetCondition, targetEff
                     ["COND",
                         ["AND",
                             ["EQUAL", "$TARGET.inPlay", true],
+                            ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]
                         ] + targetCondition,
                         [targetEffect]
                     ]
