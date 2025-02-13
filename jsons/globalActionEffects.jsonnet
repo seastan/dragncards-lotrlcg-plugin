@@ -1,4 +1,4 @@
-local globalActionEffect(name, log, thisCondition=[], targetCondition, targetEffect, beforeEffect=[], afterEffect=[["ACTION_LIST", "discardCard"]]) = {
+local globalActionEffect(name, log, thisCondition=[], targetCondition, targetEffect, beforeEffect=[], afterEffect=[["DISCARD_CARD", "$THIS"]]) = {
     /*
     Actions like "Ready all character cards in play." and "Until the end of the phase, each Noble hero gets +1 [willpower]."
     */

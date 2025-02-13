@@ -14,7 +14,7 @@
       "args": ["$CARD", "$X"],
       "code": ["ACTION_LIST_TO_LOOK_AT_X", 
           ["IN_STRING", "$CARD.groupId", "Hand"], 
-          "discardCard", 
+          ["DISCARD_CARD", "$CARD"] ,
           "$CARD",
           "{{$CARD.controller}}Deck",
           "$X"
@@ -34,7 +34,7 @@
       "args": ["$CARD", "$X"],
       "code": ["ACTION_LIST_TO_LOOK_AT_X", 
           ["IN_STRING", "$CARD.groupId", "Hand"], 
-          "discardCard", 
+          ["DISCARD_CARD", "$CARD"],
           "$CARD",
           "sharedEncounterDeck",
           "$X"

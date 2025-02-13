@@ -208,6 +208,79 @@
             ]
           ]
         },
+        "DISCARD_CARD": {  // TODO test with erestor/galadriel (end of round) in MP
+          "args": ["$CARD"],
+          "code": [
+            ["VAR", "$ROTATION", "$CARD.rotation"],
+            ["COND",
+              ["EQUAL", "$CARD.cardIndex", 0],
+              [
+                ["VAR", "$STACK_ID", ["GET_STACK_ID", "$CARD.groupId", "$CARD.stackIndex"]],
+                ["VAR", "$STACK_CARD_IDS", "$GAME.stackById.$STACK_ID.cardIds"],
+                ["FOR_EACH_VAL", "$STACK_CARD_ID", "$STACK_CARD_IDS",
+                  [
+                    ["VAR", "$STACK_CARD", "$GAME.cardById.$STACK_CARD_ID"],
+                    ["COND",
+                      ["EQUAL", "$STACK_CARD.discardGroupId", null],
+                      ["LOG", "$ALIAS_N", " failed to discard ", "$STACK_CARD.currentFace.name", " because it is not associated with a discard pile. Please drag the card instead."],
+                      true,
+                      [
+                        ["VAR", "$CURRENT_SIDE", "$STACK_CARD.currentSide"],
+                        ["LOG", "$ALIAS_N", " discarded ", "$STACK_CARD.sides.A.name", "."],
+                        ["MOVE_CARD", "$STACK_CARD_ID", "$STACK_CARD.discardGroupId", 0],
+                        ["COND",
+                          ["AND",
+                            ["NOT_EQUAL", "$STACK_CARD.currentFace.victoryPoints", null],
+                            ["NOT_EQUAL", "$ROTATION", -30]
+                          ],
+                          ["PROMPT", "$PLAYER_N", "victoryDisplay", "$STACK_CARD_ID"]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              true,
+              [
+                ["COND",
+                  ["EQUAL", "$CARD.discardGroupId", null],
+                  ["LOG", "$ALIAS_N", " failed to discard ", "$CARD.currentFace.name", " because it is not associated with a discard pile. Please drag the card instead."],
+                  true,
+                  [
+                    ["LOG", "$ALIAS_N", " discarded ", "$CARD.sides.A.name", "."],
+                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0],
+                    ["COND",
+                      ["AND",
+                        ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
+                        ["NOT_EQUAL", "$ROTATION", -30]
+                      ],
+                      ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            ["COND",
+              ["EQUAL", "$CARD.currentFace.type", "Quest"],
+              ["COND", 
+                ["EQUAL", ["LENGTH", "$GAME.groupById.sharedQuestDeck.stackIds"], 0],
+                ["LOG", "The players won the game!"],
+                true,
+                [
+                  ["MOVE_STACK", ["GET_STACK_ID", "sharedQuestDeck", 0], "sharedMainQuest", 0],
+                  ["LOG", "$ALIAS_N", " advanced the quest."],
+                  ["COND",
+                    ["AND",
+                      ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
+                      ["NOT_EQUAL", "$ROTATION", -30]
+                    ],
+                    ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        },
         "REVEAL_ENCOUNTER": {
           "args": ["$SIDE"],
           "code": [
@@ -386,8 +459,7 @@
               ["WHILE",
                 ["NOT_EQUAL", "$GAME.groupById.$GROUP_ID.parentCards.[0].sides.A.type", "$TYPE"],
                 [
-                  ["DEFINE", "$ACTIVE_CARD_ID", "$GAME.groupById.$GROUP_ID.parentCardIds.[0]"],
-                  ["ACTION_LIST", "discardCard"]
+                  ["DISCARD_CARD", "$GAME.cardById.{{$GAME.groupById.$GROUP_ID.parentCardIds.[0]}}"]
                 ]
               ],
               ["VAR", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],

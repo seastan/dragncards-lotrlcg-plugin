@@ -371,7 +371,7 @@
                                 ]
                             ]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -393,7 +393,7 @@
                                 ]
                             ]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -406,7 +406,7 @@
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                             ["DRAW_CARD", 2, "$PLAYER_I"]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -418,7 +418,7 @@
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                             ["DRAW_CARD", 1, "$PLAYER_I"]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -428,7 +428,7 @@
                     "A": [
                         ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Ancient Mathom."],
                         ["DRAW_CARD", 1, "$GAME.firstPlayer"],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -440,7 +440,7 @@
                     "A": [
                         ["DRAW_CARD", 2, "$THIS.controller"],
                         ["LOG", "└── ", "{{$ALIAS_N}} drew 2 cards and must now discard a card from their hand."],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -649,7 +649,7 @@
                                 ["DECREASE_VAL", "/playerData/$PLAYER_N/threat", 6]
                             ]
                         ],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -979,8 +979,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS_ID"],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ]
                     }
                 }
@@ -1067,12 +1066,11 @@
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "└── ", "Erestor causes {{$ALIAS}} to discard all cards in hand."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
+                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [  // TODO use MOVE_STACKS
                                 ["COND",
                                     ["AND", ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Hand"]],
                                     [
-                                        ["DEFINE", "$ACTIVE_CARD_ID", "$CARD_ID"],
-                                        ["ACTION_LIST", "discardCard"]
+                                        ["DISCARD_CARD", "$CARD"]
                                     ]
                                 ]]
                             ]
@@ -1569,7 +1567,7 @@
                             ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to ready ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1594,7 +1592,7 @@
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
                             ["HEAL", "$THIS.parentCardId", 3],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1611,7 +1609,7 @@
                         [
                             ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to add 2 defense to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the phase."],
                             ["ADD_TEMP_TOKEN", "phase", "$THIS.parentCardId", "defense", 2],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
