@@ -141,7 +141,7 @@
                         "onDo": ["COND",
                             ["AND",
                                 ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                ["EQUAL", "$TARGET.currentFace.type", "Hero"],
+                                ["IS_HERO", "$TARGET"],
                                 ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
                             ],
                             [
@@ -152,7 +152,7 @@
                         "offDo": ["COND",
                             ["AND",
                                 ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                ["EQUAL", "$TARGET.currentFace.type", "Hero"],
+                                ["IS_HERO", "$TARGET"],
                                 ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
                             ],
                             [
@@ -178,7 +178,7 @@
                                             "$CARD.inPlay",
                                             ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                             ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                            ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                            ["IS_HERO", "$CARD"]
                                         ]
                                     ]
                                 ]
@@ -197,7 +197,7 @@
                                                             "$CARD.inPlay",
                                                             ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                                             ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                                            ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                                            ["IS_HERO", "$CARD"]
                                                         ]
                                                     ]
                                             ]
@@ -363,7 +363,7 @@
                             ["COND",
                                 ["AND",
                                     ["EQUAL", "$CARD.inPlay", true],
-                                    ["EQUAL", "$CARD.currentFace.type", "Hero"],
+                                    ["IS_HERO", "$CARD"],
                                     ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]
                                 ],
                                 [

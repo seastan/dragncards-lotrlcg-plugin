@@ -80,7 +80,7 @@
           "COND",
           ["AND",
             ["EQUAL", "$DWARF_CARD.currentFace.name", "Bombur"],
-            ["EQUAL", "$DWARF_CARD.sides.A.type", "Hero"]
+            ["IS_HERO", "$DWARF_CARD"]
           ],
           ["INCREASE_VAR", "$DWARF_COUNT", 2],
           ["TRUE"],

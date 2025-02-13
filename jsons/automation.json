@@ -191,7 +191,7 @@
                     ["LOG", "└── ", "Each hero gains 1 resource."],
                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                         ["COND",
-                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.currentFace.type", "Hero"]],
+                            ["AND", "$CARD.inPlay", ["IS_HERO", "$CARD"]],
                             ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
                         ]
                     ]]
