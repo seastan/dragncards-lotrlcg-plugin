@@ -42,7 +42,7 @@
             ["FILTER_CARDS", "$C", 
               ["AND",
                 ["EQUAL", "$C.groupId", "sharedStagingArea"],
-                ["EQUAL", "$C.currentFace.type", "Enemy"]
+                ["IS_ENEMY", "$C"]
               ]
             ]
           ]
@@ -122,7 +122,7 @@
           "args": ["$CARD"],
           "code": [
             ["COND",
-              ["EQUAL", "$CARD.currentFace.type", "Enemy"],
+              ["IS_ENEMY", "$CARD"],
               ["ADD", "$CARD.currentFace.engagementCost", "$CARD.tokens.engagementCost"],
               true,
               0
@@ -330,7 +330,7 @@
             ["FOR_EACH_VAL", "$CARD", "$SORTED_ENGAGED_CARDS", [
                 ["VAR", "$CARD_ID", "$CARD.id"],
                 ["COND",
-                    ["EQUAL", "$CARD.currentFace.type", "Enemy"],
+                    ["IS_ENEMY", "$CARD"],
                     ["COND",
                         ["EQUAL", ["LENGTH", "$GAME.groupById.sharedEncounterDeck.stackIds"], 0],
                         [
@@ -687,7 +687,7 @@
                     ["VAR", "$CANDIDATES", ["FILTER_CARDS", "$C", [
                         "AND",
                         ["EQUAL", "$C.groupId", "sharedStagingArea"],
-                        ["EQUAL", "$C.currentFace.type", "Enemy"],
+                        ["IS_ENEMY", "$C"],
                         ["GREATER_EQUAL", "$GAME.playerData.$CURRENT_PLAYER.threat", ["GET_ENGAGEMENT_COST", "$C"]]
                     ]]],
                     ["COND",

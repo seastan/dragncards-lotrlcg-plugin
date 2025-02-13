@@ -1157,9 +1157,8 @@
                                        "Gondor."
                                     ],
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Ally"
+                                       "IS_ALLY",
+                                       "$TARGET"
                                     ]
                                  ]
                               ],
@@ -1206,9 +1205,8 @@
                                     "Gondor."
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Ally"
+                                    "IS_ALLY",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -1250,9 +1248,8 @@
                         "Gondor."
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Ally"
+                        "IS_ALLY",
+                        "$TARGET"
                      ]
                   ],
                   "listenTo": [
@@ -2288,9 +2285,8 @@
                                  [
                                     "AND",
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Enemy"
+                                       "IS_ENEMY",
+                                       "$TARGET"
                                     ],
                                     [
                                        "NOT_EQUAL",
@@ -2337,9 +2333,8 @@
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Enemy"
+                                    "IS_ENEMY",
+                                    "$TARGET"
                                  ],
                                  [
                                     "NOT_EQUAL",
@@ -2381,9 +2376,8 @@
                         "$TARGET_ID"
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Enemy"
+                        "IS_ENEMY",
+                        "$TARGET"
                      ],
                      [
                         "NOT_EQUAL",
@@ -2495,9 +2489,8 @@
                                  [
                                     "AND",
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Enemy"
+                                       "IS_ENEMY",
+                                       "$TARGET"
                                     ],
                                     [
                                        "NOT_EQUAL",
@@ -2544,9 +2537,8 @@
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Enemy"
+                                    "IS_ENEMY",
+                                    "$TARGET"
                                  ],
                                  [
                                     "NOT_EQUAL",
@@ -2588,9 +2580,8 @@
                         "$TARGET_ID"
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Enemy"
+                        "IS_ENEMY",
+                        "$TARGET"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3157,9 +3148,8 @@
                                  [
                                     "AND",
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Enemy"
+                                       "IS_ENEMY",
+                                       "$TARGET"
                                     ],
                                     [
                                        "NOT_EQUAL",
@@ -3206,9 +3196,8 @@
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Enemy"
+                                    "IS_ENEMY",
+                                    "$TARGET"
                                  ],
                                  [
                                     "NOT_EQUAL",
@@ -3250,9 +3239,8 @@
                         "$TARGET_ID"
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Enemy"
+                        "IS_ENEMY",
+                        "$TARGET"
                      ],
                      [
                         "NOT_EQUAL",
@@ -3587,9 +3575,8 @@
                                  [
                                     "AND",
                                     [
-                                       "EQUAL",
-                                       "$TARGET.currentFace.type",
-                                       "Enemy"
+                                       "IS_ENEMY",
+                                       "$TARGET"
                                     ],
                                     [
                                        "NOT_EQUAL",
@@ -3660,9 +3647,8 @@
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
-                                    "EQUAL",
-                                    "$TARGET.currentFace.type",
-                                    "Enemy"
+                                    "IS_ENEMY",
+                                    "$TARGET"
                                  ],
                                  [
                                     "NOT_EQUAL",
@@ -3728,9 +3714,8 @@
                         "$TARGET_ID"
                      ],
                      [
-                        "EQUAL",
-                        "$TARGET.currentFace.type",
-                        "Enemy"
+                        "IS_ENEMY",
+                        "$TARGET"
                      ],
                      [
                         "NOT_EQUAL",

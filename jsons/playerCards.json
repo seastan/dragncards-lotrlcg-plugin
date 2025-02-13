@@ -8,7 +8,7 @@
                         "_comment": "If Celeborn is in play, add tokens to Silvan allies that enter play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
-                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["IS_ALLY", "$TARGET"]],
                         "then": [
                             ["LOG", "└── ", "Celeborn added 1 willpower, 1 attack, and 1 defense to ", "$TARGET.currentFace.name", " until the end of the round."],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "willpower", 1],
@@ -29,7 +29,7 @@
                         "_comment": "If Tom Cotton is in play, add tokens to Hobbit allies that enter play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
-                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["IS_ALLY", "$TARGET"]],
                         "then": [
                             ["LOG", "└── ", "Tom Cotton added 2 attack to ", "$TARGET.currentFace.name", " until the end of the round."],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 2]
