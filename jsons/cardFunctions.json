@@ -112,6 +112,17 @@
         ["LENGTH", "$ENGAGED_ENEMIES"]
       ]
     },
+    "NUM_SIDE_QUESTS_IN_VICTORY_DISPLAY": {
+      "args": [],
+      "code": [
+        ["VAR", "$SIDE_QUESTS", ["FILTER_CARDS", "$C", [
+          "AND",
+              ["EQUAL", "$C.currentFace.type", "Side Quest"],
+              ["EQUAL", "$C.groupId", "sharedVictory"]
+        ]]],
+        ["LENGTH", "$SIDE_QUESTS"]
+      ]
+    },
     "DOOMED": {
       "args": ["$X"],
       "code": [

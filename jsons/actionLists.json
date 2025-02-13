@@ -31,6 +31,7 @@
         "skipToDealShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
             ["END_THE_QUEST_PHASE"],
+            ["SET", "/stepId", "6.1"],
             ["SET", "/stepId", "6.2"]
         ],
         "skipToDiscardShadowsStep": [

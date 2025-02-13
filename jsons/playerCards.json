@@ -1834,6 +1834,73 @@
                     }
                 }
             },
+            "68168e29-feaf-43da-9ea0-2fc33061710d": {
+                "_comment": "Thalion",
+                "rules": {
+                    "thalionReadiesInCombat": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "6.1"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_EQUAL", ["NUM_SIDE_QUESTS_IN_VICTORY_DISPLAY"], 1]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "└── ", "Readied Thalion."],
+                            ["SET", "/cardById/$THIS_ID/rotation", 0],
+                            ["SET", "/cardById/$THIS_ID/exhausted", false]
+                        ]
+                    },
+                    "thalionBecomesHero": {
+                        "type": "whileInPlay", 
+                        "side": "A",
+                        "listenTo": ["/cardById/*/groupId"],
+                        "condition": ["AND",
+                            ["GREATER_EQUAL", ["NUM_SIDE_QUESTS_IN_VICTORY_DISPLAY"], 3]
+                        ],
+                        "onDo": [
+                            ["LOG", "└── ", "Thalion becomes a hero."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Hero"]
+                        ],
+                        "offDo": [
+                            ["LOG", "└── ", "Thalion becomes an ally."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Ally"]
+                        ]
+                    }
+                }
+            },
+            "6238c12d-b4c0-478f-bd7e-b59ef9b4e86f": {
+                "_comment": "Prince Imrahil (Ally)",
+                "rules": {
+                    "imrahilBecomesHero": {
+                        "type": "whileInPlay", 
+                        "side": "A",
+                        "listenTo": ["/cardById/*/groupId"],
+                        "condition": [
+                            "GREATER_EQUAL",
+                            [
+                                ["VAR", "$DISCARDED_HEROES", ["FILTER_CARDS", "$C", [
+                                    "AND",
+                                        ["EQUAL", "$C.currentFace.type", "Hero"],
+                                        ["EQUAL", "$C.groupId", "{{$THIS.controller}}Discard"]
+                                ]]],
+                                ["LENGTH", "$DISCARDED_HEROES"]
+                            ],
+                            1
+                        ],
+                        "onDo": [
+                            ["LOG", "└── ", "Prince Imrahil becomes a hero."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Hero"]
+                        ],
+                        "offDo": [
+                            ["LOG", "└── ", "Prince Imrahil becomes an ally."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Ally"]
+                        ]
+                    }
+                }
+            },
             "f9196cda-8f50-4cc5-9aad-1c56cb677bca": {
                 "_comment": "Frodo Baggins (The Road Darkens)",
                 "ability": {

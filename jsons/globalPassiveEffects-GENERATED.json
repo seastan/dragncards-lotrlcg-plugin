@@ -2800,7 +2800,8 @@
                   "listenTo": [
                      "/cardById/*/inPlay",
                      "/cardById/*/cardIndex",
-                     "/cardById/*/currentSide"
+                     "/cardById/*/currentSide",
+                     "/cardById/*/sides/*/type"
                   ],
                   "offDo": [
                      "COND",

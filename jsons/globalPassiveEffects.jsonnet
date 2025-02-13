@@ -184,6 +184,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Rally the West",
                 listenToThisChange = ["/cardById/$THIS_ID/groupId"],
                 thisCondition = [["EQUAL", "$THIS.groupId", "sharedVictory"]],
+                listenToTargetChange = ["/cardById/*/sides/*/type"],
                 targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Hero"]],
                 effectOn = addToken("willpower"),
                 effectOff = removeToken("willpower"),
