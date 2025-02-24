@@ -1,0 +1,1028 @@
+{
+   "_comment": "JSON file automatically generated using jsonnet",
+   "automation": {
+      "cards": {
+         "052b1f85-8b9c-4bb0-a735-bdbd5ac1b2c4": {
+            "_comment": "Merry (Tactics)",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND",
+                     true
+                  ],
+                  "listenTo": [ ],
+                  "onDo": [
+                     [
+                        "VAR",
+                        "$TARGET_COUNT",
+                        0
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Hobbit."
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ]
+                              ],
+                              [
+                                 "INCREASE_VAR",
+                                 "$TARGET_COUNT",
+                                 1
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added {{$TARGET_COUNT}} attack to ",
+                        "$THIS.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS_ID/tokens/attack",
+                        "$TARGET_COUNT"
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on this card when other cards pass/fail targetCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "IN_STRING",
+                        "$TARGET.currentFace.traits",
+                        "Hobbit."
+                     ],
+                     [
+                        "IS_HERO",
+                        "$TARGET"
+                     ],
+                     [
+                        "EQUAL",
+                        "$TARGET.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.controller",
+                        "$TARGET.controller"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/controller"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "IN_STRING",
+                                       "$TARGET.currentFace.traits",
+                                       "Hobbit."
+                                    ],
+                                    [
+                                       "IS_HERO",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$THIS.controller",
+                                       "$TARGET.controller"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_THAN",
+                              "$TARGET_COUNT",
+                              -1
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Removed 1 attack from ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "IN_STRING",
+                                       "$TARGET.currentFace.traits",
+                                       "Hobbit."
+                                    ],
+                                    [
+                                       "IS_HERO",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$THIS.controller",
+                                       "$TARGET.controller"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_EQUAL",
+                              "$TARGET_COUNT",
+                              -1
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Added 1 attack to ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
+         "323ebfa3-57e5-4394-9f55-284b2f7ee0be": {
+            "_comment": "Faramir (Hero, Lore)",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND",
+                     true
+                  ],
+                  "listenTo": [ ],
+                  "onDo": [
+                     [
+                        "VAR",
+                        "$TARGET_COUNT",
+                        0
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "sharedStagingArea"
+                                 ]
+                              ],
+                              [
+                                 "INCREASE_VAR",
+                                 "$TARGET_COUNT",
+                                 1
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added {{$TARGET_COUNT}} attack to ",
+                        "$THIS.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS_ID/tokens/attack",
+                        "$TARGET_COUNT"
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on this card when other cards pass/fail targetCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "IS_ENEMY",
+                        "$TARGET"
+                     ],
+                     [
+                        "EQUAL",
+                        "$TARGET.groupId",
+                        "sharedStagingArea"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/groupId"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "IS_ENEMY",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.groupId",
+                                       "sharedStagingArea"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_THAN",
+                              "$TARGET_COUNT",
+                              -1
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Removed 1 attack from ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "IS_ENEMY",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.groupId",
+                                       "sharedStagingArea"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_EQUAL",
+                              "$TARGET_COUNT",
+                              -1
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Added 1 attack to ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801206c9009": {
+            "_comment": "Eagles of the Misty Mountains",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND",
+                     true
+                  ],
+                  "listenTo": [ ],
+                  "onDo": [
+                     [
+                        "VAR",
+                        "$TARGET_COUNT",
+                        0
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.currentSide",
+                                    "B"
+                                 ],
+                                 [
+                                    "GREATER_THAN",
+                                    "$TARGET.cardIndex",
+                                    0
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$THIS_ID",
+                                    "$TARGET.parentCardId"
+                                 ]
+                              ],
+                              [
+                                 "INCREASE_VAR",
+                                 "$TARGET_COUNT",
+                                 1
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added {{$TARGET_COUNT}} attack to ",
+                        "$THIS.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS_ID/tokens/attack",
+                        "$TARGET_COUNT"
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on this card when other cards pass/fail targetCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "EQUAL",
+                        "$TARGET.currentSide",
+                        "B"
+                     ],
+                     [
+                        "GREATER_THAN",
+                        "$TARGET.cardIndex",
+                        0
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS_ID",
+                        "$TARGET.parentCardId"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/cardIndex"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.currentSide",
+                                       "B"
+                                    ],
+                                    [
+                                       "GREATER_THAN",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$THIS_ID",
+                                       "$TARGET.parentCardId"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_THAN",
+                              "$TARGET_COUNT",
+                              -1
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Removed 1 attack from ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.currentSide",
+                                       "B"
+                                    ],
+                                    [
+                                       "GREATER_THAN",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$THIS_ID",
+                                       "$TARGET.parentCardId"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_EQUAL",
+                              "$TARGET_COUNT",
+                              -1
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Added 1 attack to ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801211c9007": {
+            "_comment": "Erebor Battle Master",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND",
+                     true
+                  ],
+                  "listenTo": [ ],
+                  "onDo": [
+                     [
+                        "VAR",
+                        "$TARGET_COUNT",
+                        0
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Dwarf."
+                                 ],
+                                 [
+                                    "IS_ALLY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$THIS_ID",
+                                    "$TARGET_ID"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ]
+                              ],
+                              [
+                                 "INCREASE_VAR",
+                                 "$TARGET_COUNT",
+                                 1
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "UPDATE_VAR",
+                        "$TARGET_COUNT",
+                        [
+                           "MIN",
+                           [
+                              "LIST",
+                              "$TARGET_COUNT",
+                              4
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added {{$TARGET_COUNT}} attack to ",
+                        "$THIS.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS_ID/tokens/attack",
+                        "$TARGET_COUNT"
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on this card when other cards pass/fail targetCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "IN_STRING",
+                        "$TARGET.currentFace.traits",
+                        "Dwarf."
+                     ],
+                     [
+                        "IS_ALLY",
+                        "$TARGET"
+                     ],
+                     [
+                        "EQUAL",
+                        "$TARGET.cardIndex",
+                        0
+                     ],
+                     [
+                        "NOT_EQUAL",
+                        "$THIS_ID",
+                        "$TARGET_ID"
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.controller",
+                        "$TARGET.controller"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/controller"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "IN_STRING",
+                                       "$TARGET.currentFace.traits",
+                                       "Dwarf."
+                                    ],
+                                    [
+                                       "IS_ALLY",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ],
+                                    [
+                                       "NOT_EQUAL",
+                                       "$THIS_ID",
+                                       "$TARGET_ID"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$THIS.controller",
+                                       "$TARGET.controller"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_THAN",
+                              "$TARGET_COUNT",
+                              4
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Removed 1 attack from ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        true
+                     ],
+                     [
+                        [
+                           "VAR",
+                           "$TARGET_COUNT",
+                           0
+                        ],
+                        [
+                           "FOR_EACH_KEY_VAL",
+                           "$TARGET_ID",
+                           "$TARGET",
+                           "$GAME.cardById",
+                           [
+                              [
+                                 "COND",
+                                 [
+                                    "AND",
+                                    "$TARGET.inPlay",
+                                    [
+                                       "IN_STRING",
+                                       "$TARGET.currentFace.traits",
+                                       "Dwarf."
+                                    ],
+                                    [
+                                       "IS_ALLY",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ],
+                                    [
+                                       "NOT_EQUAL",
+                                       "$THIS_ID",
+                                       "$TARGET_ID"
+                                    ],
+                                    [
+                                       "EQUAL",
+                                       "$THIS.controller",
+                                       "$TARGET.controller"
+                                    ]
+                                 ],
+                                 [
+                                    "INCREASE_VAR",
+                                    "$TARGET_COUNT",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ],
+                        [
+                           "COND",
+                           [
+                              "LESS_EQUAL",
+                              "$TARGET_COUNT",
+                              4
+                           ],
+                           [
+                              [
+                                 [
+                                    "LOG",
+                                    "└── ",
+                                    "Added 1 attack to ",
+                                    "$GAME.cardById.{{$THIS_ID}}.currentFace.name",
+                                    "."
+                                 ],
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$THIS_ID/tokens/attack",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
+         "8fcb55c3-2996-4c13-b120-2b0c31f62d21": {
+            "_comment": "Faramir (Hero, Lore)",
+            "inheritFrom": "323ebfa3-57e5-4394-9f55-284b2f7ee0be"
+         }
+      }
+   }
+}
