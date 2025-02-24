@@ -1374,6 +1374,26 @@
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
+                },
+                "rules": {
+                    "stewardOfGondorAuto": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Trigger Steward of Gondor's ability?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "priority": 15,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "2.P"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["ABILITY", "$THIS_ID", "A"]
+                        ]
+                    }
                 }
             },
             "7ce49caa-c7ac-455e-b35f-217055be34ed": {
