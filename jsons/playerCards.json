@@ -81,8 +81,8 @@
                         "_comment": "Reduce starting threat by 3.",
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/playerData/$THIS.controller/threat"],
-                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 3]],
                             ["LOG", "└── ", "Éowyn reduced starting threat by 3 to {{$NEW_THREAT}}."],
@@ -117,12 +117,76 @@
                         "_comment": "Reduce starting threat by 2.",
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/playerData/$THIS.controller/threat"],
-                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 2]],
                             ["LOG", "└── ", "Fatty Bolger reduced starting threat by 2 to {{$NEW_THREAT}}."],
                             ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 2]
+                        ]
+                    }
+                }
+            },
+            "375d1e9d-7de9-4853-a99f-c15885256a6f": {
+                "_comment": "Folco Boffin",
+                "rules": {
+                    "folcoSetup": {
+                        "_comment": "Reduce starting threat by the number of Hobbit heroes.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$CONTROLLED_HOBBITS", ["FILTER_CARDS", "$CARD", 
+                            ["AND",
+                                "$CARD.inPlay",
+                                ["IS_HERO", "$CARD"],
+                                ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."]
+                            ]
+                            ]],
+                            ["VAR", "$THREAT_REDUCTION", ["LENGTH", "$CONTROLLED_HOBBITS"]],    
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", "$THREAT_REDUCTION"]],
+                            ["LOG", "└── ", "Folco Boffin reduced starting threat by {{$THREAT_REDUCTION}} to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", "$THREAT_REDUCTION"]
+                        ]
+                    }
+                },
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.inPlay",
+                        [
+                            ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to reduce ", ["GET_ALIAS", "$THIS.controller"], "'s threat by 7."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 7],
+                            ["DISCARD_CARD", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "536c80ba-ad8b-447e-b378-1684508eb0f9": {
+                "_comment": "Mirlonde",
+                "rules": {
+                    "folcoSetup": {
+                        "_comment": "Reduce starting threat by the number of Lore heroes.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$CONTROLLED_LORE", ["FILTER_CARDS", "$CARD", 
+                            ["AND",
+                                "$CARD.inPlay",
+                                ["IS_HERO", "$CARD"],
+                                ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                ["EQUAL", "$CARD.currentFace.sphere", "Lore"]
+                            ]
+                            ]],
+                            ["VAR", "$THREAT_REDUCTION", ["LENGTH", "$CONTROLLED_LORE"]],    
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", "$THREAT_REDUCTION"]],
+                            ["LOG", "└── ", "Mirlonde reduced starting threat by {{$THREAT_REDUCTION}} to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", "$THREAT_REDUCTION"]
                         ]
                     }
                 }
