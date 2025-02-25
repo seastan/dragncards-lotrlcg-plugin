@@ -2447,6 +2447,226 @@
                }
             }
          },
+         "66bcd2b8-fcc7-402b-94b2-a45a6c469981": {
+            "_comment": "Halbarad (Ally)",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND"
+                  ],
+                  "listenTo": [ ],
+                  "offDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 10 engagement cost from each enemy engaded with {{$THIS.controller}}."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "PREV",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ]
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 "PREV",
+                                 [
+                                    "AND",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.groupId",
+                                       "{{$THIS.controller}}Engaged"
+                                    ],
+                                    [
+                                       "IS_ENEMY",
+                                       "$TARGET"
+                                    ],
+                                    [
+                                       "NOT_EQUAL",
+                                       "$TARGET.rotation",
+                                       -30
+                                    ]
+                                 ]
+                              ],
+                              [
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/engagementCost",
+                                    10
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 10 engagement cost to each enemy engaged with {{$THIS.controller}}."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "{{$THIS.controller}}Engaged"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
+                                 ]
+                              ],
+                              [
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/engagementCost",
+                                    10
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on cards that pass/fail targetCondition depending on if this card meets thisCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "EQUAL",
+                        "$TARGET.cardIndex",
+                        0
+                     ],
+                     [
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                     ],
+                     [
+                        "NOT_EQUAL",
+                        "$THIS_ID",
+                        "$TARGET_ID"
+                     ],
+                     [
+                        "EQUAL",
+                        "$TARGET.groupId",
+                        "{{$THIS.controller}}Engaged"
+                     ],
+                     [
+                        "IS_ENEMY",
+                        "$TARGET"
+                     ],
+                     [
+                        "NOT_EQUAL",
+                        "$TARGET.rotation",
+                        -30
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/cardIndex",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/groupId",
+                     "/cardById/*/rotation"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        "$TARGET.inPlay"
+                     ],
+                     [
+                        [
+                           "LOG",
+                           "└── ",
+                           "{{$THIS.currentFace.name}} removed 10 engagement cost from ",
+                           "$TARGET.currentFace.name",
+                           "."
+                        ],
+                        [
+                           "DECREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/engagementCost",
+                           10
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        "$TARGET.inPlay",
+                        [
+                           "EQUAL",
+                           "$TARGET.cardIndex",
+                           0
+                        ],
+                        [
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                        ]
+                     ],
+                     [
+                        [
+                           "LOG",
+                           "└── ",
+                           "{{$THIS.currentFace.name}} added 10 engagement cost to ",
+                           "$TARGET.currentFace.name",
+                           "."
+                        ],
+                        [
+                           "INCREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/engagementCost",
+                           10
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
          "80c51ea1-495e-40a0-8257-ff3e81aeb298": {
             "_comment": "Grip/Fang/Wolf (ALeP)",
             "rules": {
