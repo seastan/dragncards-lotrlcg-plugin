@@ -127,92 +127,6 @@
                     }
                 }
             },
-            "052b1f85-8b9c-4bb0-a735-bdbd5ac1b2c4": {
-                "_comment": "Merry",
-                "rules": {
-                    "merryOtherHobbitEnterLeavePlayTokens": {
-                        "_comment": "Add/remove attack tokens on Merry when other Hobbit heroes enter/leave the owner's control.",
-                        "type": "whileInPlay", 
-                        "side": "A",
-                        "listenTo": ["/cardById/*/inPlay", "/cardById/*/controller"],
-                        "condition": [
-                            "AND", 
-                                "$TARGET.inPlay",
-                                ["EQUAL", "$TARGET.controller", "$THIS.controller"]
-                        ],
-                        "onDo": ["COND",
-                            ["AND",
-                                ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                ["IS_HERO", "$TARGET"],
-                                ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
-                            ],
-                            [
-                                ["LOG", "└── ", "Added 1 attack to Merry."],
-                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
-                            ]
-                        ],
-                        "offDo": ["COND",
-                            ["AND",
-                                ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                ["IS_HERO", "$TARGET"],
-                                ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
-                            ],
-                            [
-                                ["LOG", "└── ", "Removed 1 attack from Merry."],
-                                ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
-                            ]
-                        ]
-                    },
-                    "merryEnterLeavePlayTokens": {
-                        "_comment": "Add attack to Merry when Merry enters play.",
-                        "type": "passive",
-                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
-                        "condition": [
-                            "AND", 
-                                "$THIS.inPlay",
-                                ["EQUAL", "$THIS.currentSide", "A"]
-                        ],
-                        "onDo": [
-                            ["VAR", "$NUM_HOBBITS",
-                                ["LENGTH",
-                                    ["FILTER_CARDS", "$CARD", [
-                                        "AND",
-                                            "$CARD.inPlay",
-                                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
-                                            ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                            ["IS_HERO", "$CARD"]
-                                        ]
-                                    ]
-                                ]
-                            ],
-                            ["LOG", "└── ", "$THIS.controller", " added {{$NUM_HOBBITS}} attack to Merry."],
-                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", "$NUM_HOBBITS"]
-                        ],
-                        "offDo": [
-                            ["COND",
-                                ["EQUAL", "$THIS.currentSide", "B"],
-                                [
-                                    ["VAR", "$NUM_HOBBITS",
-                                        ["LENGTH",
-                                            ["PREV", ["FILTER_CARDS", "$CARD", [
-                                                        "AND",
-                                                            "$CARD.inPlay",
-                                                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
-                                                            ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                                            ["IS_HERO", "$CARD"]
-                                                        ]
-                                                    ]
-                                            ]
-                                        ]
-                                    ],
-                                    ["LOG", "└── ", "$THIS.controller", " removed {{$NUM_HOBBITS}} attack on Merry."],
-                                    ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attack", "$NUM_HOBBITS"]
-                                ]
-                            ]
-                        ]
-                    }
-                }
-            },
             "2b28d8ba-23b9-4f48-9808-3bbe2ed0a8fc": {
                 "_comment": "Dwarf Pipe",
                 "ability": {
@@ -1374,6 +1288,26 @@
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
+                },
+                "rules": {
+                    "stewardOfGondorAuto": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Trigger Steward of Gondor's ability?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "priority": 15,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "2.P"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["ABILITY", "$THIS_ID", "A"]
+                        ]
+                    }
                 }
             },
             "7ce49caa-c7ac-455e-b35f-217055be34ed": {
