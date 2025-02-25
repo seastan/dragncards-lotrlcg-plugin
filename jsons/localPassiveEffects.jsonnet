@@ -28,65 +28,74 @@ local countCards(condition, limit=-1) =
     if limit != -1 then [["UPDATE_VAR", "$TARGET_COUNT", ["MIN", ["LIST", "$TARGET_COUNT", limit]]]] else []
 ;
 
-local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=[true], listenToTargetChange, targetCondition, token, limit=-1) = {
+local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=[true], listenToTargetChange, targetCondition, targetInPlay=true, tokens, limit=-1) = {
     /*
     Cards with effects of form "<card>" gets +1 <token> for each other card matching <thisCondition>"
     thisCondition: a condition that is independent of the target card. Includes 'this-card-in-play'.
     targetCondition: a condition evaluated for each card in play to determine whether they are included. Includes 'target-card-in-play'.
     limit: default 0 (no limit). Maximum number of tokens that can be added by this effect.
     */
+    local fullTargetCondition = ["AND"] + (if targetInPlay then ["$TARGET.inPlay"] else []) + targetCondition,
     "_comment": name,
     "rules": {
-        targetChangeRule: {
+        ["targetChangeRule" + token]: {
             "_comment": "Add/remove tokens on this card when other cards pass/fail targetCondition.",
             "type": "whileInPlay",
             "side": side,
             "listenTo": ["/cardById/*/inPlay", "/cardById/*/currentSide"] + listenToTargetChange,
-            "condition": ["AND",
-                "$TARGET.inPlay",
-            ] + targetCondition,
+            "condition": fullTargetCondition,
             "onDo": [
                 "COND",
                     ["AND"] + thisCondition,
-                        countCards(["AND", "$TARGET.inPlay"] + targetCondition) + [
+                    if limit != -1 then
+                        countCards(fullTargetCondition) + [
                         ["COND",
                             ["LESS_EQUAL", "$TARGET_COUNT", limit],
                             [
                                 modifyToken("$THIS_ID", token, 1)
                             ]
                         ]
+                    ] else [
+                        modifyToken("$THIS_ID", token, 1)
                     ]
             ],
             "offDo": [
                 "COND",
                     ["AND"] + thisCondition,
-                        countCards(["AND", "$TARGET.inPlay"] + targetCondition) + [
+                    if limit != -1 then
+                        countCards(fullTargetCondition) + [
                         ["COND",
                             ["LESS_THAN", "$TARGET_COUNT", limit],
                             [
                                 modifyToken("$THIS_ID", token, -1)
                             ]
                         ]
+                    ] else [
+                        modifyToken("$THIS_ID", token, -1)
                     ]
             ]
-        },
-        passiveRule: { 
+        } for token in tokens
+    } + {
+        ["passiveRule" + token]: { 
             "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
             "type": "whileInPlay",
             "side": side,
             "listenTo": listenToThisChange,
             "condition": ["AND"] + thisCondition,
             "onDo":
-                countCards(["AND", "$TARGET.inPlay"] + targetCondition, limit) + [
+                countCards(fullTargetCondition, limit) + [
                 ["LOG", "└── ", "Added {{$TARGET_COUNT}} " + token + " to ", "$THIS.currentFace.name", "."],
                 ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/" + token, "$TARGET_COUNT"]
             ],
-            /*"offDo":  // Only need to re-add when a card using thisCondition is added
-                countCards(["AND", "$THIS.inPlay"] + ["PREV", ["AND", "$TARGET.inPlay"] + targetCondition], limit) + [
-                ["LOG", "└── ", "Removed {{$TARGET_COUNT}} " + token + " from ", "$THIS.currentFace.name", "."],
-                ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/" + token, "$TARGET_COUNT"]
-            ]*/
-        }
+            "offDo":
+                ["COND",
+                    "$THIS.inPlay",
+                        countCards(["AND"] + ["PREV", fullTargetCondition], limit) + [
+                        ["LOG", "└── ", "Removed {{$TARGET_COUNT}} " + token + " from ", "$THIS.currentFace.name", "."],
+                        ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/" + token, "$TARGET_COUNT"]
+                    ]
+                ]
+        } for token in tokens
     }
 };
 
@@ -107,7 +116,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                     ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"],
                     ["EQUAL", "$THIS.controller", "$TARGET.controller"],
                 ],
-                token = "attack",
+                tokens = ["attack"],
                 limit = 4,
             ),
             "052b1f85-8b9c-4bb0-a735-bdbd5ac1b2c4": localPassiveEffect(
@@ -119,7 +128,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                     ["EQUAL", "$TARGET.cardIndex", 0],
                     ["EQUAL", "$THIS.controller", "$TARGET.controller"],
                 ],
-                token = "attack",
+                tokens = ["attack"],
             ),
             "323ebfa3-57e5-4394-9f55-284b2f7ee0be": localPassiveEffect(
                 name = "Faramir (Hero, Lore)",
@@ -128,7 +137,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                     ["IS_ENEMY", "$TARGET"],
                     ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]
                 ],
-                token = "attack",
+                tokens = ["attack"],
             ),
             "8fcb55c3-2996-4c13-b120-2b0c31f62d21": {"_comment": "Faramir (Hero, Lore)", "inheritFrom": "323ebfa3-57e5-4394-9f55-284b2f7ee0be"},
             "51223bd0-ffd1-11df-a976-0801206c9009": localPassiveEffect(
@@ -139,7 +148,54 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                     ["GREATER_THAN", "$TARGET.cardIndex", 0],
                     ["EQUAL", "$THIS_ID", "$TARGET.parentCardId"],
                 ],
-                token = "attack",  // TODO support attack and defense
+                tokens = ["attack", "defense"],
+            ),
+            "9ea49df7-4c1f-432a-ba95-c0576fc62e89": localPassiveEffect(
+                name = "Guardian of Esgaroth",  // Doesn't check that attachments are different or that they are player cards
+                listenToTargetChange = ["/cardById/*/cardIndex"],
+                targetCondition = [
+                    ["GREATER_THAN", "$TARGET.cardIndex", 0],
+                    ["EQUAL", "$THIS_ID", "$TARGET.parentCardId"],
+                ],
+                tokens = ["willpower", "attack", "defense", "hitPoints"],
+                limit = 3,
+            ),
+            "a933917f-4c7e-416e-8b08-ee2e60f6ab5f": localPassiveEffect(
+                name = "Warden of Annuminas",
+                listenToTargetChange = ["/cardById/*/groupId"],
+                targetCondition = [
+                    ["IS_ENEMY", "$TARGET"],
+                    ["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"],
+                ],
+                tokens = ["willpower"],
+            ),
+            "40efacf7-f3c1-434b-b31f-42b3721c90c0": localPassiveEffect(
+                name = "Fornost Bowman",
+                listenToTargetChange = ["/cardById/*/groupId"],
+                targetCondition = [
+                    ["IS_ENEMY", "$TARGET"],
+                    ["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"],
+                ],
+                tokens = ["attack"],
+            ),
+            "0f2501c7-16ad-4fee-bea6-17b767fb0d14": localPassiveEffect(
+                name = "Guardian of Arnor",
+                listenToTargetChange = ["/cardById/*/groupId"],
+                targetCondition = [
+                    ["IS_ENEMY", "$TARGET"],
+                    ["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"],
+                ],
+                tokens = ["defense"],
+            ),
+            "12946b30-a231-4074-a524-960365081360": localPassiveEffect(
+                name = "Thurindir",
+                listenToTargetChange = ["/cardById/*/groupId"],
+                targetCondition = [
+                    ["EQUAL", "$TARGET.currentFace.type", "Side Quest"],
+                    ["EQUAL", "$TARGET.groupId", "sharedVictory"]
+                ],
+                targetInPlay = false,
+                tokens = ["willpower"],
             ),
         },
     }
