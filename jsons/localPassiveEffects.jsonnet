@@ -46,7 +46,7 @@ local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=
             "condition": fullTargetCondition,
             "onDo": [
                 "COND",
-                    ["AND"] + thisCondition,
+                    ["AND", ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]] + thisCondition,
                     if limit != -1 then
                         countCards(fullTargetCondition) + [
                         ["COND",
@@ -61,7 +61,7 @@ local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=
             ],
             "offDo": [
                 "COND",
-                    ["AND"] + thisCondition,
+                    ["AND", ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]] + thisCondition,
                     if limit != -1 then
                         countCards(fullTargetCondition) + [
                         ["COND",
