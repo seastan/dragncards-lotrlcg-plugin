@@ -247,6 +247,29 @@ local readyCard() = [
                     ]
                 ],
             ),
+            "c7c503b9-a804-4e37-8554-927d0095e7b1": globalActionEffect(
+                name = "Old Toby",
+                log = "Healed 1 damage from each hero with a Pipe attachment.",
+                targetCondition = [["IS_HERO", "$TARGET"], ["HAS_ATTACHMENT_WITH_TRAIT", "$TARGET", "Pipe."]],
+                targetEffect = [["HEAL", "$TARGET_ID", 1]],
+                beforeEffect = [
+                    ["VAR", "$CONTROLLED_PIPES", ["FILTER_CARDS", "$CARD", 
+                        ["AND",
+                            ["EQUAL", "$CARD.inPlay", true],
+                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                            ["IN_STRING", "$CARD.currentFace.traits", "Pipe."],
+                        ]
+                    ]],
+                    ["VAR", "$CARDS_TO_DRAW", ["LENGTH", "$CONTROLLED_PIPES"]],
+                    ["COND",
+                        ["GREATER_THAN", "$CARDS_TO_DRAW", 0],
+                        [
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws {{$CARDS_TO_DRAW}} cards."],
+                            ["DRAW_CARD", "$THIS.controller", "$CARDS_TO_DRAW"],
+                        ]
+                    ]
+                ],
+            ),
         },
     }
 }

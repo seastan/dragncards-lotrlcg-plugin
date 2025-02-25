@@ -603,6 +603,25 @@
                 }
             },
             "ea0854b0-37c6-4f3a-806a-f1532a1edcd1": {"_comment": "Legacy of Durin", "inheritFrom": "51223bd0-ffd1-11df-a976-0801210c9009"},
+            "52a0f137-da57-4c41-b455-9671aecd5298": {
+                "_comment": "Horn of the Mark",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws a card."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "732b9a46-a5d5-4660-9ec1-9c498d583a22": {"_comment": "Horn of the Mark", "inheritFrom": "52a0f137-da57-4c41-b455-9671aecd5298"},
             "51223bd0-ffd1-11df-a976-0801200c9046": {
                 "_comment": "The Galadhrim's Greeting",
                 "ability": {
@@ -1527,6 +1546,10 @@
             },
             "77721e76-80a6-41b0-a71a-9cd533954250": {
                 "_comment": "Onward Into Battle",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
+            "a55bc730-259b-4d52-8c98-648d43840738": {
+                "_comment": "Armored Destrier",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "db733a56-9d85-4a9b-bdbf-e1aa5770a125": {

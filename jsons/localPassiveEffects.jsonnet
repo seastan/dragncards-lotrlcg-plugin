@@ -28,7 +28,7 @@ local countCards(condition, limit=-1) =
     if limit != -1 then [["UPDATE_VAR", "$TARGET_COUNT", ["MIN", ["LIST", "$TARGET_COUNT", limit]]]] else []
 ;
 
-local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=[true], listenToTargetChange, targetCondition, targetInPlay=true, tokens, limit=-1) = {
+local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=[true], listenToTargetChange, targetCondition, targetInPlay=true, tokens, tokenAmounts=1, limit=-1) = {
     /*
     Cards with effects of form "<card>" gets +1 <token> for each other card matching <thisCondition>"
     thisCondition: a condition that is independent of the target card. Includes 'this-card-in-play'.
@@ -52,11 +52,11 @@ local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=
                         ["COND",
                             ["LESS_EQUAL", "$TARGET_COUNT", limit],
                             [
-                                modifyToken("$THIS_ID", token, 1)
+                                modifyToken("$THIS_ID", token, tokenAmounts)
                             ]
                         ]
                     ] else [
-                        modifyToken("$THIS_ID", token, 1)
+                        modifyToken("$THIS_ID", token, tokenAmounts)
                     ]
             ],
             "offDo": [
@@ -67,11 +67,11 @@ local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=
                         ["COND",
                             ["LESS_THAN", "$TARGET_COUNT", limit],
                             [
-                                modifyToken("$THIS_ID", token, -1)
+                                modifyToken("$THIS_ID", token, -tokenAmounts)
                             ]
                         ]
                     ] else [
-                        modifyToken("$THIS_ID", token, -1)
+                        modifyToken("$THIS_ID", token, -tokenAmounts)
                     ]
             ]
         } for token in tokens
@@ -83,14 +83,16 @@ local localPassiveEffect(name, side = "A", listenToThisChange=[], thisCondition=
             "listenTo": listenToThisChange,
             "condition": ["AND"] + thisCondition,
             "onDo":
-                countCards(fullTargetCondition, limit) + [
+                countCards(fullTargetCondition, limit) + 
+                (if tokenAmounts > 1 then [["UPDATE_VAR", "$TARGET_COUNT", ["MULTIPLY", "$TARGET_COUNT", tokenAmounts]]] else []) + [
                 ["LOG", "└── ", "Added {{$TARGET_COUNT}} " + token + " to ", "$THIS.currentFace.name", "."],
                 ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/" + token, "$TARGET_COUNT"]
             ],
             "offDo":
                 ["COND",
                     "$THIS.inPlay",
-                        countCards(["AND"] + ["PREV", fullTargetCondition], limit) + [
+                        countCards(["AND"] + ["PREV", fullTargetCondition], limit) +
+                        (if tokenAmounts > 1 then [["UPDATE_VAR", "$TARGET_COUNT", ["MULTIPLY", "$TARGET_COUNT", tokenAmounts]]] else []) + [
                         ["LOG", "└── ", "Removed {{$TARGET_COUNT}} " + token + " from ", "$THIS.currentFace.name", "."],
                         ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/" + token, "$TARGET_COUNT"]
                     ]
@@ -197,6 +199,51 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 targetInPlay = false,
                 tokens = ["willpower"],
             ),
+            "cc7beee8-1f42-4926-8c45-8a50f3a87c57": localPassiveEffect(
+                name = "Elrohir (Hero)",
+                listenToTargetChange = [],
+                targetCondition = [
+                    ["EQUAL", "$TARGET.currentFace.name", "Elladan"],
+                    ["EQUAL", "$TARGET.cardIndex", 0],
+                ],
+                tokens = ["defense"],
+                tokenAmounts = 2,
+                limit = 1,
+            ),
+            "51223bd0-ffd1-11df-a976-0801209c9010": localPassiveEffect(
+                name = "Elladan (Hero)",
+                listenToTargetChange = [],
+                targetCondition = [
+                    ["EQUAL", "$TARGET.currentFace.name", "Elrohir"],
+                    ["EQUAL", "$TARGET.cardIndex", 0],
+                ],
+                tokens = ["attack"],
+                tokenAmounts = 2,
+                limit = 1,
+            ),
+            "769dbf59-9e02-4750-9605-b1ad6c8783e2": localPassiveEffect(
+                name = "Elrohir (Ally)",
+                listenToTargetChange = [],
+                targetCondition = [
+                    ["EQUAL", "$TARGET.currentFace.name", "Elladan"],
+                    ["EQUAL", "$TARGET.cardIndex", 0],
+                ],
+                tokens = ["defense"],
+                tokenAmounts = 2,
+                limit = 1,
+            ),
+            "51512531-0697-4005-9fb6-884da5b02f75": localPassiveEffect(
+                name = "Elladan (Ally)",
+                listenToTargetChange = [],
+                targetCondition = [
+                    ["EQUAL", "$TARGET.currentFace.name", "Elrohir"],
+                    ["EQUAL", "$TARGET.cardIndex", 0],
+                ],
+                tokens = ["attack"],
+                tokenAmounts = 2,
+                limit = 1,
+            ),
+
         },
     }
 }

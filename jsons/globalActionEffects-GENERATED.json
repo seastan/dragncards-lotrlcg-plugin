@@ -1641,6 +1641,133 @@
                ]
             }
          },
+         "c7c503b9-a804-4e37-8554-927d0095e7b1": {
+            "_comment": "Old Toby",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "VAR",
+                        "$CONTROLLED_PIPES",
+                        [
+                           "FILTER_CARDS",
+                           "$CARD",
+                           [
+                              "AND",
+                              [
+                                 "EQUAL",
+                                 "$CARD.inPlay",
+                                 true
+                              ],
+                              [
+                                 "EQUAL",
+                                 "$CARD.controller",
+                                 "$THIS.controller"
+                              ],
+                              [
+                                 "IN_STRING",
+                                 "$CARD.currentFace.traits",
+                                 "Pipe."
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "VAR",
+                        "$CARDS_TO_DRAW",
+                        [
+                           "LENGTH",
+                           "$CONTROLLED_PIPES"
+                        ]
+                     ],
+                     [
+                        "COND",
+                        [
+                           "GREATER_THAN",
+                           "$CARDS_TO_DRAW",
+                           0
+                        ],
+                        [
+                           [
+                              "LOG",
+                              "└── ",
+                              [
+                                 "GET_ALIAS",
+                                 "$THIS.controller"
+                              ],
+                              " draws {{$CARDS_TO_DRAW}} cards."
+                           ],
+                           [
+                              "DRAW_CARD",
+                              "$THIS.controller",
+                              "$CARDS_TO_DRAW"
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Healed 1 damage from each hero with a Pipe attachment."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "HAS_ATTACHMENT_WITH_TRAIT",
+                                    "$TARGET",
+                                    "Pipe."
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "HEAL",
+                                       "$TARGET_ID",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
          "cb08f48e-7acf-44ff-ac6f-36d4f017a962": {
             "_comment": "Captains of the West",
             "ability": {
