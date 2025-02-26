@@ -297,6 +297,71 @@
                ]
             }
          },
+         "51223bd0-ffd1-11df-a976-0801200c9018": {
+            "_comment": "Longbeard Orc Slayer",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Dealt one damage to each Orc enemy."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Orc."
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "INCREASE_VAL",
+                                       "/cardById/$TARGET.id/tokens/damage",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
          "51223bd0-ffd1-11df-a976-0801200c9022": {
             "_comment": "For Gondor!",
             "ability": {

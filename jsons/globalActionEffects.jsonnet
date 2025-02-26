@@ -213,6 +213,13 @@ local readyCard() = [
                 targetCondition = [["IS_ENEMY", "$TARGET"], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]],
                 targetEffect = [["INCREASE_VAL", "/cardById/$TARGET.id/tokens/damage", 1]],
             ),
+            "51223bd0-ffd1-11df-a976-0801200c9018": globalActionEffect(
+                name = "Longbeard Orc Slayer",
+                log = "Dealt one damage to each Orc enemy.",
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["IN_STRING", "$TARGET.currentFace.traits", "Orc."]],
+                targetEffect = [["INCREASE_VAL", "/cardById/$TARGET.id/tokens/damage", 1]],
+                afterEffect = []
+            ),
             "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3": globalActionEffect(
                 name = "Need Drives Them",
                 log = "Readied each character if its owner has 40 or more threat.",

@@ -426,6 +426,21 @@
             },
             "d8729719-5d37-48c2-9bf6-8d2c8d579901": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
             "37863571-be66-46b1-82d3-d21f4f0e653c": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
+            "abebff49-8219-4ae0-bd26-266db57bdfc3": {
+                "_comment": "Elven-light",
+                "ability": {
+                    "A": ["COND",
+                        ["IN_STRING", "$THIS.groupId", "Discard"], 
+                        [
+                            ["LOG", "└── ", "{{$ALIAS_N}} returned Elven-light to their hand and drew a card."],
+                            ["MOVE_CARD", "$THIS_ID", "{{$THIS.controller}}Hand", -1],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
             "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1": {
                 "_comment": "Galadriel (Hero)",
                 "ability": {
@@ -581,6 +596,62 @@
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9064": {
+                "_comment": "Lorien's Wealth",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " draws 3 cards."],
+                                            ["DRAW_CARD", 3, "player{I}"],
+                                            ["DISCARD_CARD", "$GAME.cardById.{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " draws 3 cards"],
+                                ["DRAW_CARD", 3],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "371e29be-17a9-4535-a9e0-bc13126522bb": {
+                "_comment": "Heed the Dream",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["VAR", "$GROUP", "$GAME.groupById.player{I}Deck"],
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " is looking at the top 5 cards of {{$GROUP.label}}."],
+                                            ["LOOK_AT", "player{I}", "player{I}Deck", 5, true],
+                                            ["DISCARD_CARD", "$GAME.cardById.{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOOK_AT_X", "player1Deck", 5],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]
+                        ]
                     ]
                 }
             },
