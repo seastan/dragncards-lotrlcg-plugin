@@ -168,20 +168,16 @@ local readyCard() = [
             ),
             "51223bd0-ffd1-11df-a976-0801207c9083": globalActionEffect(
                 name = "Untroubled by Darkness",
-                log = "Gave each Dwarf character +1/+2 willpower until the end of the phase.",
+                log = "Gave each Dwarf character +{{$AMOUNT}} willpower until the end of the phase.",
                 targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Dwarf."], ["IS_CHARACTER", "$TARGET"]],
-                targetEffect = [
+                beforeEffect = [
+                    ["VAR", "$AMOUNT", 1],
                     ["COND",
                         ["OR", ["ACTIVE_LOCATION_HAS_TRAIT", "Underground."], ["ACTIVE_LOCATION_HAS_TRAIT", "Dark."]],
-                        [
-                            addToken("willpower", amount=2),
-                        ],
-                        true,
-                        [
-                            addToken("willpower", amount=1),
-                        ],
+                        ["UPDATE_VAR", "$AMOUNT", 2],
                     ]
                 ],
+                targetEffect = addToken("willpower", amount="$AMOUNT"),
             ),
             "7c7912dc-4d55-4c40-98a0-befbbff24c90": globalActionEffect(
                 name = "Shadows Give Way",
@@ -199,7 +195,7 @@ local readyCard() = [
                 name = "Take No Notice",
                 log = "Gave each enemy +5 engagement cost until the end of the round.",
                 targetCondition = [["IS_ENEMY", "$TARGET"]],
-                targetEffect = addToken("engagementCost", timing="round", amount=1),
+                targetEffect = addToken("engagementCost", timing="round", amount=5),
             ),
             "f07ea741-4991-46c9-9c6a-439dc186cec6": globalActionEffect(
                 name = "Arrows from the Trees",
@@ -236,6 +232,20 @@ local readyCard() = [
                     ["GREATER_THAN", ["GET_ENGAGEMENT_COST", "$TARGET"], "$GAME.playerData.{{$THIS.controller}}.threat"],
                 ],
                 targetEffect = removeToken("attack") + removeToken("defense"),
+            ),
+            "697e1c80-a218-4dc7-b0c3-06921e879b81": globalActionEffect(
+                name = "Robin Smallburrow",
+                log = "Gave each enemy +{{$AMOUNT}} engagement cost until the end of the round.",
+                targetCondition = [["IS_ENEMY", "$TARGET"]],
+                beforeEffect = [
+                    ["VAR", "$ACTIVE_LOCATIONS", ["GET_ACTIVE_LOCATIONS"]],
+                    ["VAR", "$AMOUNT", 0],
+                    ["FOR_EACH_VAL", "$LOCATION", "$ACTIVE_LOCATIONS",
+                        ["UPDATE_VAR", "$AMOUNT", ["MAX", ["LIST", "$AMOUNT", ["GET_QUEST_POINTS", "$LOCATION"]]]]
+                    ],
+                ],
+                targetEffect = addToken("engagementCost", timing="round", amount="$AMOUNT"),
+                afterEffect = []
             ),
             "9418c634-54c6-47de-9aae-798038a4a35b": globalActionEffect(
                 name = "Smoke Rings",

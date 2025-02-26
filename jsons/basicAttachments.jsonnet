@@ -95,6 +95,14 @@ local conditionalAttachment(name, bonusList) = {
                 {name: "attachmentConditionalPassiveTokens", defense: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Gondor."]]}
             ]),
             "fa1aa093-59e5-4919-8c06-86864848a89e": self["09134509-191b-4903-b4b5-5e650f8143c1"],
+            "51223bd0-ffd1-11df-a976-0801212c9013": conditionalAttachment("Durin's Axe (Objective Attachment)", [
+                {name: "attachmentBasicPassiveTokens", attack: 3, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Dwarf."]]]},
+                {name: "attachmentConditionalPassiveTokens", attack: 3, willpower: 1, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Dwarf."]]}
+            ]),
+            "51223bd0-ffd1-11df-a976-0801212c9014": conditionalAttachment("Durin's Helm (Objective Attachment)", [
+                {name: "attachmentBasicPassiveTokens", defense: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Dwarf."]]]},
+                {name: "attachmentConditionalPassiveTokens", defense: 1, hitPoints: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.traits", "Dwarf."]]}
+            ]),
             "0ee1f1e6-1952-4bad-8ecd-631e80f4ccc0": conditionalAttachment("Firefoot", [
                 {name: "attachmentBasicPassiveTokens", attack: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]]},  // Matches both Éomer and Eomer
                 {name: "attachmentConditionalPassiveTokens", attack: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]}
@@ -113,7 +121,9 @@ local conditionalAttachment(name, bonusList) = {
                 {name: "attachmentBasicPassiveTokens", defense: 1, listenTo: ["/playerData/*/threat"], condition: [["LESS_THAN", "$GAME.playerData.{{$THIS.controller}}.threat", 40]]},
                 {name: "attachmentConditionalPassiveTokens", defense: 2, listenTo: ["/playerData/*/threat"], condition: [["GREATER_EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 40]]}
             ]),
-            "418e6de7-af19-4ea7-bfbe-2a02838c6de4": staticAttachment("Dagger of Westernesse", attack=1),  // TODO make dynamic based on engaged enemy engagement cost
+            "789fbae0-a33e-4ea0-a34f-adfe3b62dba7": conditionalAttachment("Strider", [
+                {name: "attachmentConditionalPassiveTokens", willpower: 2, listenTo: ["/cardById/*/inPlay", "/cardById/*/controller"], condition: [["LESS_EQUAL", ["LENGTH", ["FILTER_CARDS", "$C", ["AND", "$C.inPlay", ["EQUAL", "$C.controller", "$THIS.controller"], ["IS_CHARACTER", "$C"]]]], 5]]}
+            ]),
 
             "51223bd0-ffd1-11df-a976-0801200c9027": staticAttachment("Celebrían's Stone", willpower=2),
             "ac8089a9-6dee-4c11-8c6c-4ef528400b39": staticAttachment("Celebrían's Stone", willpower=2),
@@ -195,6 +205,7 @@ local conditionalAttachment(name, bonusList) = {
             "12d51424-0edd-4977-9df1-5f6a7a5a96e1": staticAttachment("Mithril Shirt (Treasure)", defense=1, hitPoints=1),
             "857d6dc8-ba1e-4839-8e96-a8a0136a2302": staticAttachment("Thror's Battle Axe (Treasure)", attack=2),
             "323842f5-457f-4dd4-95b8-eb19c24664cb": staticAttachment("Dark Bats", willpower=-1, attack=-1, defense=-1),
+            "418e6de7-af19-4ea7-bfbe-2a02838c6de4": staticAttachment("Dagger of Westernesse", attack=1),
             "9bb32f2c-29fb-43ba-b7ba-2227b28f7b58": staticAttachment("Elf-stone", questPoints=1),
             "60c7ba84-8d59-48c6-ab81-0639ab55a8bf": staticAttachment("Elf-stone", questPoints=1),
             "ef014a91-c2d9-44ca-acd0-cc1a339c051f": staticAttachment("Tireless Ranger", defense=1),
