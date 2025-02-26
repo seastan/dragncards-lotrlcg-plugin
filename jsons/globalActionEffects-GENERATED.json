@@ -449,6 +449,75 @@
                ]
             }
          },
+         "51223bd0-ffd1-11df-a976-0801202c9006": {
+            "_comment": "Beorning Beekeeper",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Discarded Beorning Beekeeper to deal one damage to each enemy in the staging area."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "sharedStagingArea"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "INCREASE_VAL",
+                                       "/cardById/$TARGET.id/tokens/damage",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
          "51223bd0-ffd1-11df-a976-0801202c9009": {
             "_comment": "Eomund",
             "ability": {

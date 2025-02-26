@@ -207,6 +207,12 @@ local readyCard() = [
                 targetCondition = [["IS_ENEMY", "$TARGET"], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]],
                 targetEffect = [["INCREASE_VAL", "/cardById/$TARGET.id/tokens/damage", 1]],
             ),
+            "51223bd0-ffd1-11df-a976-0801202c9006": globalActionEffect(
+                name = "Beorning Beekeeper",
+                log = "Discarded Beorning Beekeeper to deal one damage to each enemy in the staging area.",
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"]],
+                targetEffect = [["INCREASE_VAL", "/cardById/$TARGET.id/tokens/damage", 1]],
+            ),
             "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3": globalActionEffect(
                 name = "Need Drives Them",
                 log = "Readied each character if its owner has 40 or more threat.",
