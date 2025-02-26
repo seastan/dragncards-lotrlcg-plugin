@@ -7121,28 +7121,28 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed 3 hitPoints from ",
+                        "Removed 2 hitPoints from ",
                         "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
                         "."
                      ],
                      [
                         "DECREASE_VAL",
                         "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
-                        3
+                        2
                      ]
                   ],
                   "onDo": [
                      [
                         "LOG",
                         "└── ",
-                        "Added 3 hitPoints to ",
+                        "Added 2 hitPoints to ",
                         "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
                         "."
                      ],
                      [
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/hitPoints",
-                        3
+                        2
                      ]
                   ],
                   "type": "passive"

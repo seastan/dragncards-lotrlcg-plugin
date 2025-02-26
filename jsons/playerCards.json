@@ -1793,10 +1793,25 @@
                 "_comment": "Boromir (Hero, Tactics)",
                 "ability": {
                     "A": ["COND",
-                        ["$THIS.exhausted"],
+                        "$THIS.exhausted",
                         [
                             ["LOG", "└── ", "Raised threat by 1 to ready Boromir."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
+                            ["TOGGLE_EXHAUST", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "cf54398c-b1d9-4467-995b-5f982c9057a2": {
+                "_comment": "Archet Alekeeper",
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.exhausted",
+                        [
+                            ["LOG", "└── ", "Readied Archet Alekeeper and gave it +1 attack until the end of the phase."],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1],
                             ["TOGGLE_EXHAUST", "$THIS"]
                         ],
                         ["TRUE"],
