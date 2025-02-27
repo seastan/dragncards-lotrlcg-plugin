@@ -76,7 +76,8 @@
                 ],
                 [
                     ["LOG", "$ALIAS_N", " set their starting threat to ", "$THREAT_RAISE", "."],
-                    ["SET", "/playerData/$PLAYER_N/threat", "$THREAT_RAISE"]
+                    ["SET", "/playerData/$PLAYER_N/threat", "$THREAT_RAISE"],
+                    ["SET", "/playerData/$PLAYER_N/deckLoaded", true]
                 ]
             ],
             ["COND",
@@ -89,7 +90,7 @@
             ["VAR", "$ALL_PLAYER_DECKS_LOADED", true],
             ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                 ["COND", 
-                    ["EQUAL", ["LENGTH", "$GAME.groupById.{{$PLAYER_I}}Deck.stackIds"], 0], 
+                    ["NOT", "$GAME.playerData.$PLAYER_I.deckLoaded"], 
                     ["UPDATE_VAR", "$ALL_PLAYER_DECKS_LOADED", false]
                 ] 
             ]],

@@ -297,6 +297,71 @@
                ]
             }
          },
+         "51223bd0-ffd1-11df-a976-0801200c9018": {
+            "_comment": "Longbeard Orc Slayer",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Dealt one damage to each Orc enemy."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Orc."
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "INCREASE_VAL",
+                                       "/cardById/$TARGET.id/tokens/damage",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
          "51223bd0-ffd1-11df-a976-0801200c9022": {
             "_comment": "For Gondor!",
             "ability": {
@@ -429,6 +494,75 @@
                                        "SET",
                                        "/cardById/$TARGET_ID/exhausted",
                                        false
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "51223bd0-ffd1-11df-a976-0801202c9006": {
+            "_comment": "Beorning Beekeeper",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Discarded Beorning Beekeeper to deal one damage to each enemy in the staging area."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "sharedStagingArea"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "INCREASE_VAL",
+                                       "/cardById/$TARGET.id/tokens/damage",
+                                       1
                                     ]
                                  ]
                               ]
@@ -671,9 +805,33 @@
                   ],
                   [
                      [
+                        "VAR",
+                        "$AMOUNT",
+                        1
+                     ],
+                     [
+                        "COND",
+                        [
+                           "OR",
+                           [
+                              "ACTIVE_LOCATION_HAS_TRAIT",
+                              "Underground."
+                           ],
+                           [
+                              "ACTIVE_LOCATION_HAS_TRAIT",
+                              "Dark."
+                           ]
+                        ],
+                        [
+                           "UPDATE_VAR",
+                           "$AMOUNT",
+                           2
+                        ]
+                     ],
+                     [
                         "LOG",
                         "└── ",
-                        "Gave each Dwarf character +1/+2 willpower until the end of the phase."
+                        "Gave each Dwarf character +{{$AMOUNT}} willpower until the end of the phase."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -707,41 +865,11 @@
                               [
                                  [
                                     [
-                                       "COND",
-                                       [
-                                          "OR",
-                                          [
-                                             "ACTIVE_LOCATION_HAS_TRAIT",
-                                             "Underground."
-                                          ],
-                                          [
-                                             "ACTIVE_LOCATION_HAS_TRAIT",
-                                             "Dark."
-                                          ]
-                                       ],
-                                       [
-                                          [
-                                             [
-                                                "ADD_TEMP_TOKEN",
-                                                "phase",
-                                                "$TARGET_ID",
-                                                "willpower",
-                                                2
-                                             ]
-                                          ]
-                                       ],
-                                       true,
-                                       [
-                                          [
-                                             [
-                                                "ADD_TEMP_TOKEN",
-                                                "phase",
-                                                "$TARGET_ID",
-                                                "willpower",
-                                                1
-                                             ]
-                                          ]
-                                       ]
+                                       "ADD_TEMP_TOKEN",
+                                       "phase",
+                                       "$TARGET_ID",
+                                       "willpower",
+                                       "$AMOUNT"
                                     ]
                                  ]
                               ]
@@ -840,6 +968,100 @@
             "_comment": "Need Drives Them",
             "inheritFrom": "3dc9ec01-71b6-48fd-8fe4-0c8fa2161fe3"
          },
+         "697e1c80-a218-4dc7-b0c3-06921e879b81": {
+            "_comment": "Robin Smallburrow",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "VAR",
+                        "$ACTIVE_LOCATIONS",
+                        [
+                           "GET_ACTIVE_LOCATIONS"
+                        ]
+                     ],
+                     [
+                        "VAR",
+                        "$AMOUNT",
+                        0
+                     ],
+                     [
+                        "FOR_EACH_VAL",
+                        "$LOCATION",
+                        "$ACTIVE_LOCATIONS",
+                        [
+                           "UPDATE_VAR",
+                           "$AMOUNT",
+                           [
+                              "MAX",
+                              [
+                                 "LIST",
+                                 "$AMOUNT",
+                                 [
+                                    "GET_QUEST_POINTS",
+                                    "$LOCATION"
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Gave each enemy +{{$AMOUNT}} engagement cost until the end of the round."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "ADD_TEMP_TOKEN",
+                                       "round",
+                                       "$TARGET_ID",
+                                       "engagementCost",
+                                       "$AMOUNT"
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
          "6ed73c76-bcdc-47bd-9d1d-96dc1eddab2d": {
             "_comment": "Lure of Moria",
             "inheritFrom": "51223bd0-ffd1-11df-a976-0801209c9015"
@@ -889,7 +1111,7 @@
                                        "round",
                                        "$TARGET_ID",
                                        "engagementCost",
-                                       1
+                                       5
                                     ]
                                  ]
                               ]
@@ -1620,6 +1842,133 @@
                                        "phase",
                                        "$TARGET_ID",
                                        "willpower",
+                                       1
+                                    ]
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "DISCARD_CARD",
+                        "$THIS"
+                     ]
+                  ],
+                  true,
+                  [
+                     "LOG",
+                     "└── ",
+                     "The ability's conditions are not met."
+                  ]
+               ]
+            }
+         },
+         "c7c503b9-a804-4e37-8554-927d0095e7b1": {
+            "_comment": "Old Toby",
+            "ability": {
+               "A": [
+                  "COND",
+                  [
+                     "AND"
+                  ],
+                  [
+                     [
+                        "VAR",
+                        "$CONTROLLED_PIPES",
+                        [
+                           "FILTER_CARDS",
+                           "$CARD",
+                           [
+                              "AND",
+                              [
+                                 "EQUAL",
+                                 "$CARD.inPlay",
+                                 true
+                              ],
+                              [
+                                 "EQUAL",
+                                 "$CARD.controller",
+                                 "$THIS.controller"
+                              ],
+                              [
+                                 "IN_STRING",
+                                 "$CARD.currentFace.traits",
+                                 "Pipe."
+                              ]
+                           ]
+                        ]
+                     ],
+                     [
+                        "VAR",
+                        "$CARDS_TO_DRAW",
+                        [
+                           "LENGTH",
+                           "$CONTROLLED_PIPES"
+                        ]
+                     ],
+                     [
+                        "COND",
+                        [
+                           "GREATER_THAN",
+                           "$CARDS_TO_DRAW",
+                           0
+                        ],
+                        [
+                           [
+                              "LOG",
+                              "└── ",
+                              [
+                                 "GET_ALIAS",
+                                 "$THIS.controller"
+                              ],
+                              " draws {{$CARDS_TO_DRAW}} cards."
+                           ],
+                           [
+                              "DRAW_CARD",
+                              "$THIS.controller",
+                              "$CARDS_TO_DRAW"
+                           ]
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Healed 1 damage from each hero with a Pipe attachment."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$CARD_BY_ID",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.inPlay",
+                                    true
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "IS_HERO",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "HAS_ATTACHMENT_WITH_TRAIT",
+                                    "$TARGET",
+                                    "Pipe."
+                                 ]
+                              ],
+                              [
+                                 [
+                                    [
+                                       "HEAL",
+                                       "$TARGET_ID",
                                        1
                                     ]
                                  ]

@@ -81,8 +81,8 @@
                         "_comment": "Reduce starting threat by 3.",
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/playerData/$THIS.controller/threat"],
-                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 3]],
                             ["LOG", "└── ", "Éowyn reduced starting threat by 3 to {{$NEW_THREAT}}."],
@@ -117,12 +117,76 @@
                         "_comment": "Reduce starting threat by 2.",
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/playerData/$THIS.controller/threat"],
-                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 2]],
                             ["LOG", "└── ", "Fatty Bolger reduced starting threat by 2 to {{$NEW_THREAT}}."],
                             ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 2]
+                        ]
+                    }
+                }
+            },
+            "375d1e9d-7de9-4853-a99f-c15885256a6f": {
+                "_comment": "Folco Boffin",
+                "rules": {
+                    "folcoSetup": {
+                        "_comment": "Reduce starting threat by the number of Hobbit heroes.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$CONTROLLED_HOBBITS", ["FILTER_CARDS", "$CARD", 
+                            ["AND",
+                                "$CARD.inPlay",
+                                ["IS_HERO", "$CARD"],
+                                ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."]
+                            ]
+                            ]],
+                            ["VAR", "$THREAT_REDUCTION", ["LENGTH", "$CONTROLLED_HOBBITS"]],    
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", "$THREAT_REDUCTION"]],
+                            ["LOG", "└── ", "Folco Boffin reduced starting threat by {{$THREAT_REDUCTION}} to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", "$THREAT_REDUCTION"]
+                        ]
+                    }
+                },
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.inPlay",
+                        [
+                            ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to reduce ", ["GET_ALIAS", "$THIS.controller"], "'s threat by 7."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 7],
+                            ["DISCARD_CARD", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "536c80ba-ad8b-447e-b378-1684508eb0f9": {
+                "_comment": "Mirlonde",
+                "rules": {
+                    "folcoSetup": {
+                        "_comment": "Reduce starting threat by the number of Lore heroes.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$CONTROLLED_LORE", ["FILTER_CARDS", "$CARD", 
+                            ["AND",
+                                "$CARD.inPlay",
+                                ["IS_HERO", "$CARD"],
+                                ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                ["EQUAL", "$CARD.currentFace.sphere", "Lore"]
+                            ]
+                            ]],
+                            ["VAR", "$THREAT_REDUCTION", ["LENGTH", "$CONTROLLED_LORE"]],    
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", "$THREAT_REDUCTION"]],
+                            ["LOG", "└── ", "Mirlonde reduced starting threat by {{$THREAT_REDUCTION}} to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", "$THREAT_REDUCTION"]
                         ]
                     }
                 }
@@ -362,6 +426,21 @@
             },
             "d8729719-5d37-48c2-9bf6-8d2c8d579901": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
             "37863571-be66-46b1-82d3-d21f4f0e653c": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
+            "abebff49-8219-4ae0-bd26-266db57bdfc3": {
+                "_comment": "Elven-light",
+                "ability": {
+                    "A": ["COND",
+                        ["IN_STRING", "$THIS.groupId", "Discard"], 
+                        [
+                            ["LOG", "└── ", "{{$ALIAS_N}} returned Elven-light to their hand and drew a card."],
+                            ["MOVE_CARD", "$THIS_ID", "{{$THIS.controller}}Hand", -1],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
             "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1": {
                 "_comment": "Galadriel (Hero)",
                 "ability": {
@@ -520,6 +599,62 @@
                     ]
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801200c9064": {
+                "_comment": "Lorien's Wealth",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " draws 3 cards."],
+                                            ["DRAW_CARD", 3, "player{I}"],
+                                            ["DISCARD_CARD", "$GAME.cardById.{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " draws 3 cards"],
+                                ["DRAW_CARD", 3],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "371e29be-17a9-4535-a9e0-bc13126522bb": {
+                "_comment": "Heed the Dream",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["VAR", "$GROUP", "$GAME.groupById.player{I}Deck"],
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " is looking at the top 5 cards of {{$GROUP.label}}."],
+                                            ["LOOK_AT", "player{I}", "player{I}Deck", 5, true],
+                                            ["DISCARD_CARD", "$GAME.cardById.{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOOK_AT_X", "player1Deck", 5],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]
+                        ]
+                    ]
+                }
+            },
             "51223bd0-ffd1-11df-a976-0801210c9009": {
                 "_comment": "Legacy of Durin",
                 "ability": {
@@ -539,6 +674,25 @@
                 }
             },
             "ea0854b0-37c6-4f3a-806a-f1532a1edcd1": {"_comment": "Legacy of Durin", "inheritFrom": "51223bd0-ffd1-11df-a976-0801210c9009"},
+            "52a0f137-da57-4c41-b455-9671aecd5298": {
+                "_comment": "Horn of the Mark",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws a card."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "732b9a46-a5d5-4660-9ec1-9c498d583a22": {"_comment": "Horn of the Mark", "inheritFrom": "52a0f137-da57-4c41-b455-9671aecd5298"},
             "51223bd0-ffd1-11df-a976-0801200c9046": {
                 "_comment": "The Galadhrim's Greeting",
                 "ability": {
@@ -1465,6 +1619,10 @@
                 "_comment": "Onward Into Battle",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
+            "a55bc730-259b-4d52-8c98-648d43840738": {
+                "_comment": "Armored Destrier",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
             "db733a56-9d85-4a9b-bdbf-e1aa5770a125": {
                 "_comment": "The Ring of Power",
                 "ability": {
@@ -1706,10 +1864,25 @@
                 "_comment": "Boromir (Hero, Tactics)",
                 "ability": {
                     "A": ["COND",
-                        ["$THIS.exhausted"],
+                        "$THIS.exhausted",
                         [
                             ["LOG", "└── ", "Raised threat by 1 to ready Boromir."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
+                            ["TOGGLE_EXHAUST", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "cf54398c-b1d9-4467-995b-5f982c9057a2": {
+                "_comment": "Archet Alekeeper",
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.exhausted",
+                        [
+                            ["LOG", "└── ", "Readied Archet Alekeeper and gave it +1 attack until the end of the phase."],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1],
                             ["TOGGLE_EXHAUST", "$THIS"]
                         ],
                         ["TRUE"],
