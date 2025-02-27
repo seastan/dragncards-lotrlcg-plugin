@@ -31,6 +31,7 @@
         "skipToDealShadowsStep": [
             ["LOG", "{{$ALIAS_N}} advanced to the deal shadows step."],
             ["END_THE_QUEST_PHASE"],
+            ["SET", "/stepId", "6.1"],
             ["SET", "/stepId", "6.2"]
         ],
         "skipToDiscardShadowsStep": [
@@ -137,8 +138,7 @@
                     ["COND",
                         ["EQUAL", "$CARD.rotation", -30],
                         [
-                            ["VAR", "$ACTIVE_CARD_ID", "$CARD_ID"],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$CARD"]
                         ]
                     ]
                 ]
@@ -362,76 +362,6 @@
             ["LOG", "Victory points: ", "$TOTAL_VICTORY_POINTS"],
             ["VAR", "$FINAL_SCORE", ["SUBTRACT", ["ADD", ["ADD", "$FALLEN_HERO_COST", "$TOTAL_THREAT"], ["ADD", "$DAMAGE_ON_HEROES", ["MULTIPLY", "$GAME.roundNumber", 10]]], "$TOTAL_VICTORY_POINTS"]],
             ["LOG", "Final score: ", "$FINAL_SCORE"]
-        ],
-        "discardCard": [
-            ["VAR", "$ROTATION", "$ACTIVE_CARD.rotation"],
-            ["COND",
-                ["EQUAL", "$ACTIVE_CARD.cardIndex", 0],
-                [
-                    ["VAR", "$STACK_ID", ["GET_STACK_ID", "$ACTIVE_CARD.groupId", "$ACTIVE_CARD.stackIndex"]],
-                    ["VAR", "$CARD_IDS", "$GAME.stackById.$STACK_ID.cardIds"],
-                    ["FOR_EACH_VAL", "$CARD_ID", "$CARD_IDS",
-                        [
-                            ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
-                            ["COND",
-                                ["EQUAL", "$CARD.discardGroupId", null],
-                                ["LOG", "$ALIAS_N", " failed to discard ", "$CARD.currentFace.name", " because it is not associated with a discard pile. Please drag the card instead."],
-                                true,
-                                [
-                                    ["VAR", "$CURRENT_SIDE", "$CARD.currentSide"],
-                                    ["LOG", "$ALIAS_N", " discarded ", "$CARD.sides.A.name", "."],
-                                    ["MOVE_CARD", "$CARD_ID", "$CARD.discardGroupId", 0],
-                                    ["COND",
-                                        ["AND",
-                                            ["NOT_EQUAL", "$CARD.currentFace.victoryPoints", null],
-                                            ["NOT_EQUAL", "$ROTATION", -30]
-                                        ],
-                                        ["PROMPT", "$PLAYER_N", "victoryDisplay", "$CARD_ID"]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ],
-                true,
-                [
-                    ["COND",
-                        ["EQUAL", "$ACTIVE_CARD.discardGroupId", null],
-                        ["LOG", "$ALIAS_N", " failed to discard ", "$ACTIVE_FACE.name", " because it is not associated with a discard pile. Please drag the card instead."],
-                        true,
-                        [
-                            ["LOG", "$ALIAS_N", " discarded ", "$ACTIVE_CARD.sides.A.name", "."],
-                            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.discardGroupId", 0],
-                            ["COND",
-                                ["AND",
-                                    ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
-                                    ["NOT_EQUAL", "$ROTATION", -30]
-                                ],
-                                ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
-                            ]
-                        ]
-                    ]
-                ]
-            ],
-            ["COND",
-                ["EQUAL", "$ACTIVE_FACE.type", "Quest"],
-                ["COND", 
-                    ["EQUAL", ["LENGTH", "$GAME.groupById.sharedQuestDeck.stackIds"], 0],
-                    ["LOG", "The players won the game!"],
-                    true,
-                    [
-                        ["MOVE_STACK", ["GET_STACK_ID", "sharedQuestDeck", 0], "sharedMainQuest", 0],
-                        ["LOG", "$ALIAS_N", " advanced the quest."],
-                        ["COND",
-                            ["AND",
-                                ["NOT_EQUAL", "$ACTIVE_FACE.victoryPoints", null],
-                                ["NOT_EQUAL", "$ROTATION", -30]
-                            ],
-                            ["PROMPT", "$PLAYER_N", "victoryDisplay", "$ACTIVE_CARD_ID"]
-                        ]
-                    ]
-                ]
-            ]
         ],
         "shuffleIntoDeck": [
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$ACTIVE_CARD.deckGroupId", 0],

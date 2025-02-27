@@ -46,7 +46,7 @@
             {"key": "Shift+Q", "actionList": "toggleCommitWithoutExhausting", "label": "id:commitUncommitFromQuestWithoutExhaustingReadying"},
             {"key": "S", "actionList": "dealShadow", "label": "id:dealShadowCard"},
             {"key": "V", "actionList": "addToVictoryDisplay", "label": "id:addToVictoryDisplay"},
-            {"key": "X", "actionList": "discardCard", "label": "id:discardOrAdvance"},
+            {"key": "X", "actionList": ["DISCARD_CARD", "$ACTIVE_CARD"], "label": "id:discardOrAdvance"},
             //{"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
             {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
             {"key": "Shift+T", "actionList": "swapWithTop", "label": "id:swapWithTop"}

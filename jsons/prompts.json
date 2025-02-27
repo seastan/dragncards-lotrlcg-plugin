@@ -221,8 +221,7 @@
                                     ]
                                 ],
                                 [
-                                    ["VAR", "$ACTIVE_CARD_ID", "$CARD_ID"],
-                                    ["ACTION_LIST", "discardCard"]
+                                    ["DISCARD_CARD", "$CARD"]
                                 ]
                             ]
                         ]],

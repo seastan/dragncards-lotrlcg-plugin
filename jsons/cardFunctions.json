@@ -14,7 +14,7 @@
       "args": ["$CARD", "$X"],
       "code": ["ACTION_LIST_TO_LOOK_AT_X", 
           ["IN_STRING", "$CARD.groupId", "Hand"], 
-          "discardCard", 
+          ["LIST", "DISCARD_CARD", "$CARD"],
           "$CARD",
           "{{$CARD.controller}}Deck",
           "$X"
@@ -34,7 +34,7 @@
       "args": ["$CARD", "$X"],
       "code": ["ACTION_LIST_TO_LOOK_AT_X", 
           ["IN_STRING", "$CARD.groupId", "Hand"], 
-          "discardCard", 
+          ["LIST", "DISCARD_CARD", "$CARD"],
           "$CARD",
           "sharedEncounterDeck",
           "$X"
@@ -80,7 +80,7 @@
           "COND",
           ["AND",
             ["EQUAL", "$DWARF_CARD.currentFace.name", "Bombur"],
-            ["EQUAL", "$DWARF_CARD.sides.A.type", "Hero"]
+            ["IS_HERO", "$DWARF_CARD"]
           ],
           ["INCREASE_VAR", "$DWARF_COUNT", 2],
           ["TRUE"],
@@ -110,6 +110,17 @@
               ["EQUAL", "$C.groupId", "{{$PLAYER}}Engaged"]
         ]]],
         ["LENGTH", "$ENGAGED_ENEMIES"]
+      ]
+    },
+    "NUM_SIDE_QUESTS_IN_VICTORY_DISPLAY": {
+      "args": [],
+      "code": [
+        ["VAR", "$SIDE_QUESTS", ["FILTER_CARDS", "$C", [
+          "AND",
+              ["EQUAL", "$C.currentFace.type", "Side Quest"],
+              ["EQUAL", "$C.groupId", "sharedVictory"]
+        ]]],
+        ["LENGTH", "$SIDE_QUESTS"]
       ]
     },
     "DOOMED": {
@@ -177,6 +188,21 @@
         ["VAR", "$ONE_RING", ["GET_ONE_RING"]],
         ["SET", "/cardById/$ONE_RING.id/exhausted", true],
         ["SET", "/cardById/$ONE_RING.id/rotation", 90]
+      ]
+    },
+    "HAS_ATTACHMENT_WITH_TRAIT": {
+      "args": ["$CARD", "$TRAIT"],
+      "code": [
+        ["VAR", "$ATTACHMENTS_WITH_TRAIT", 0],
+        ["FOR_EACH_VAL", "$ATTACHMENT_ID", "$GAME.stackById.{{$CARD.stackId}}.cardIds", [
+          "COND",
+          ["AND",
+            ["EQUAL", "$GAME.cardById.$ATTACHMENT_ID.currentFace.type", "Attachment"],
+            ["IN_STRING", "$GAME.cardById.$ATTACHMENT_ID.currentFace.traits", "$TRAIT"]
+          ],
+          ["INCREASE_VAR", "$ATTACHMENTS_WITH_TRAIT", 1]
+        ]],
+        ["GREATER_THAN", "$ATTACHMENTS_WITH_TRAIT", 0]
       ]
     }
   }

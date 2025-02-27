@@ -8,7 +8,7 @@
                         "_comment": "If Celeborn is in play, add tokens to Silvan allies that enter play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
-                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."], ["IS_ALLY", "$TARGET"]],
                         "then": [
                             ["LOG", "└── ", "Celeborn added 1 willpower, 1 attack, and 1 defense to ", "$TARGET.currentFace.name", " until the end of the round."],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "willpower", 1],
@@ -29,7 +29,7 @@
                         "_comment": "If Tom Cotton is in play, add tokens to Hobbit allies that enter play.",
                         "type": "trigger",
                         "listenTo": ["/cardById/*/inPlay"],
-                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", ["PREV", ["NOT", "$TARGET.inPlay"]], ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."], ["IS_ALLY", "$TARGET"]],
                         "then": [
                             ["LOG", "└── ", "Tom Cotton added 2 attack to ", "$TARGET.currentFace.name", " until the end of the round."],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 2]
@@ -37,6 +37,31 @@
                     }
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801205c9014": {
+                "_comment": "Silvan Tracker",
+                "rules": {
+                    "silvanTrackerHeal": {
+                        "_comment": "If Silvan Tracker is in play, heal Silvan characters when they ready during the refresh phase.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/exhausted"],
+                        "condition": ["AND",
+                            "$THIS.inPlay",
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$GAME.stepId", "7.R"],
+                            "$TARGET.inPlay",
+                            ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."],
+                            ["IS_CHARACTER", "$TARGET"],
+                            ["NOT", "$TARGET.exhausted"],
+                            ["GREATER_THAN", "$TARGET.tokens.damage", 0]
+                        ],
+                        "then": [
+                            ["LOG", "└── ", "Silvan Tracker healed ", "$TARGET.currentFace.name", "."],
+                            ["DECREASE_VAL", "/cardById/$TARGET_ID/tokens/damage", 1]  // No need to use "HEAL" because already checked that it is damaged
+                        ]
+                    }
+                }
+            },
+            "61f5c07a-bdec-401b-be5c-19d3c7c456c9": {"_comment": "Silvan Tracker", "inheritFrom": "51223bd0-ffd1-11df-a976-0801205c9014"},
             "4124136c-8c86-4f86-830c-94c8c76df161": {
                 "_comment": "Sam Gamgee",
                 "ability": {
@@ -56,8 +81,8 @@
                         "_comment": "Reduce starting threat by 3.",
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/playerData/$THIS.controller/threat"],
-                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 3]],
                             ["LOG", "└── ", "Éowyn reduced starting threat by 3 to {{$NEW_THREAT}}."],
@@ -92,8 +117,8 @@
                         "_comment": "Reduce starting threat by 2.",
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/playerData/$THIS.controller/threat"],
-                        "condition": ["AND", ["EQUAL", "$GAME.roundNumber", 0], ["PREV", ["EQUAL", "$GAME.playerData.{{$THIS.controller}}.threat", 0]]],
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 2]],
                             ["LOG", "└── ", "Fatty Bolger reduced starting threat by 2 to {{$NEW_THREAT}}."],
@@ -102,88 +127,66 @@
                     }
                 }
             },
-            "052b1f85-8b9c-4bb0-a735-bdbd5ac1b2c4": {
-                "_comment": "Merry",
+            "375d1e9d-7de9-4853-a99f-c15885256a6f": {
+                "_comment": "Folco Boffin",
                 "rules": {
-                    "merryOtherHobbitEnterLeavePlayTokens": {
-                        "_comment": "Add/remove attack tokens on Merry when other Hobbit heroes enter/leave the owner's control.",
-                        "type": "whileInPlay", 
+                    "folcoSetup": {
+                        "_comment": "Reduce starting threat by the number of Hobbit heroes.",
+                        "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/cardById/*/inPlay", "/cardById/*/controller"],
-                        "condition": [
-                            "AND", 
-                                "$TARGET.inPlay",
-                                ["EQUAL", "$TARGET.controller", "$THIS.controller"]
-                        ],
-                        "onDo": ["COND",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$CONTROLLED_HOBBITS", ["FILTER_CARDS", "$CARD", 
                             ["AND",
-                                ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                ["EQUAL", "$TARGET.currentFace.type", "Hero"],
-                                ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
-                            ],
-                            [
-                                ["LOG", "└── ", "Added 1 attack to Merry."],
-                                ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
+                                "$CARD.inPlay",
+                                ["IS_HERO", "$CARD"],
+                                ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."]
                             ]
-                        ],
-                        "offDo": ["COND",
-                            ["AND",
-                                ["IN_STRING", "$TARGET.currentFace.traits", "Hobbit."],
-                                ["EQUAL", "$TARGET.currentFace.type", "Hero"],
-                                ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"]
-                            ],
-                            [
-                                ["LOG", "└── ", "Removed 1 attack from Merry."],
-                                ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attack", 1]
-                            ]
+                            ]],
+                            ["VAR", "$THREAT_REDUCTION", ["LENGTH", "$CONTROLLED_HOBBITS"]],    
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", "$THREAT_REDUCTION"]],
+                            ["LOG", "└── ", "Folco Boffin reduced starting threat by {{$THREAT_REDUCTION}} to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", "$THREAT_REDUCTION"]
                         ]
-                    },
-                    "merryEnterLeavePlayTokens": {
-                        "_comment": "Add attack to Merry when Merry enters play.",
-                        "type": "passive",
-                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
-                        "condition": [
-                            "AND", 
-                                "$THIS.inPlay",
-                                ["EQUAL", "$THIS.currentSide", "A"]
+                    }
+                },
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.inPlay",
+                        [
+                            ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to reduce ", ["GET_ALIAS", "$THIS.controller"], "'s threat by 7."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 7],
+                            ["DISCARD_CARD", "$THIS"]
                         ],
-                        "onDo": [
-                            ["VAR", "$NUM_HOBBITS",
-                                ["LENGTH",
-                                    ["FILTER_CARDS", "$CARD", [
-                                        "AND",
-                                            "$CARD.inPlay",
-                                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
-                                            ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                            ["EQUAL", "$CARD.currentFace.type", "Hero"]
-                                        ]
-                                    ]
-                                ]
-                            ],
-                            ["LOG", "└── ", "$THIS.controller", " added {{$NUM_HOBBITS}} attack to Merry."],
-                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/attack", "$NUM_HOBBITS"]
-                        ],
-                        "offDo": [
-                            ["COND",
-                                ["EQUAL", "$THIS.currentSide", "B"],
-                                [
-                                    ["VAR", "$NUM_HOBBITS",
-                                        ["LENGTH",
-                                            ["PREV", ["FILTER_CARDS", "$CARD", [
-                                                        "AND",
-                                                            "$CARD.inPlay",
-                                                            ["EQUAL", "$CARD.controller", "$THIS.controller"],
-                                                            ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                                            ["EQUAL", "$CARD.currentFace.type", "Hero"]
-                                                        ]
-                                                    ]
-                                            ]
-                                        ]
-                                    ],
-                                    ["LOG", "└── ", "$THIS.controller", " removed {{$NUM_HOBBITS}} attack on Merry."],
-                                    ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/attack", "$NUM_HOBBITS"]
-                                ]
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "536c80ba-ad8b-447e-b378-1684508eb0f9": {
+                "_comment": "Mirlonde",
+                "rules": {
+                    "folcoSetup": {
+                        "_comment": "Reduce starting threat by the number of Lore heroes.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$CONTROLLED_LORE", ["FILTER_CARDS", "$CARD", 
+                            ["AND",
+                                "$CARD.inPlay",
+                                ["IS_HERO", "$CARD"],
+                                ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                ["EQUAL", "$CARD.currentFace.sphere", "Lore"]
                             ]
+                            ]],
+                            ["VAR", "$THREAT_REDUCTION", ["LENGTH", "$CONTROLLED_LORE"]],    
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", "$THREAT_REDUCTION"]],
+                            ["LOG", "└── ", "Mirlonde reduced starting threat by {{$THREAT_REDUCTION}} to {{$NEW_THREAT}}."],
+                            ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", "$THREAT_REDUCTION"]
                         ]
                     }
                 }
@@ -340,14 +343,15 @@
                             ["COND",
                                 ["AND",
                                     ["EQUAL", "$CARD.inPlay", true],
-                                    ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                    ["IS_HERO", "$CARD"],
+                                    ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]
                                 ],
                                 [
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
                                 ]
                             ]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -361,14 +365,15 @@
                             ["COND",
                                 ["AND",
                                     ["EQUAL", "$CARD.inPlay", true],
-                                    ["OR", ["EQUAL", "$CARD.currentFace.type", "Hero"], ["EQUAL", "$CARD.currentFace.type", "Ally"]]
+                                    ["IS_CHARACTER", "$CARD"],
+                                    ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]
                                 ],
                                 [
                                     ["SET", "/cardById/$CARD_ID/tokens/damage", 0]
                                 ]
                             ]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -381,7 +386,7 @@
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                             ["DRAW_CARD", 2, "$PLAYER_I"]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -393,22 +398,49 @@
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                             ["DRAW_CARD", 1, "$PLAYER_I"]
                         ]],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801203c9005": {
+                "_comment": "Ancient Mathom",
+                "ability": {
+                    "A": [
+                        ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 3 additional cards from Ancient Mathom."],
+                        ["DRAW_CARD", 3, "$GAME.firstPlayer"],
+                        ["DISCARD_CARD", "$THIS"]
+                    ]
+                }
+            },
+            "82435db6-aa5d-4626-baef-e5d39309b833": {"_comment": "Ancient Mathom", "inheritFrom": "51223bd0-ffd1-11df-a976-0801203c9005"},
+            "824d1be0-6761-4de8-9077-c3b0e6d06a58": {"_comment": "Ancient Mathom", "inheritFrom": "51223bd0-ffd1-11df-a976-0801203c9005"},
             "51223bd0-ffd1-11df-a976-0801212c9010": {
                 "_comment": "Daeron's Runes",
                 "ability": {
                     "A": [
                         ["DRAW_CARD", 2, "$THIS.controller"],
                         ["LOG", "└── ", "{{$ALIAS_N}} drew 2 cards and must now discard a card from their hand."],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
             "d8729719-5d37-48c2-9bf6-8d2c8d579901": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
             "37863571-be66-46b1-82d3-d21f4f0e653c": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
+            "abebff49-8219-4ae0-bd26-266db57bdfc3": {
+                "_comment": "Elven-light",
+                "ability": {
+                    "A": ["COND",
+                        ["IN_STRING", "$THIS.groupId", "Discard"], 
+                        [
+                            ["LOG", "└── ", "{{$ALIAS_N}} returned Elven-light to their hand and drew a card."],
+                            ["MOVE_CARD", "$THIS_ID", "{{$THIS.controller}}Hand", -1],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
             "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1": {
                 "_comment": "Galadriel (Hero)",
                 "ability": {
@@ -446,6 +478,34 @@
                 }
             },
             "8ccfbcf2-676c-4e24-ab5e-fa479343ab39": {"_comment": "Galadriel (Hero)", "inheritFrom": "8d6a15a8-e363-46bb-8e49-0af45a1ea0d1"},
+            "51223bd0-ffd1-11df-a976-0801200c9049": {
+                "_comment": "Will of the West",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                    ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " shuffled discard pile back into deck and removed Will of the West from the game."],
+                                            ["MOVE_STACKS", "player{I}Discard", "player{I}Deck"],
+                                            ["DELETE_CARD", "{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " shuffled discard pile back into deck and removed Will of the West from the game."],
+                                ["MOVE_STACKS", "player1Discard", "player1Deck"],
+                                ["DELETE_CARD", "$THIS_ID"]
+                            ]
+                        ]
+                    ]
+                }
+            },
             "ff3794e8-d8b1-48dc-a9f8-97ea7d6b3874": {
                 "_comment": "Galadriel's Handmaiden",
                 "ability": {
@@ -539,6 +599,100 @@
                     ]
                 }
             },
+            "51223bd0-ffd1-11df-a976-0801200c9064": {
+                "_comment": "Lorien's Wealth",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " draws 3 cards."],
+                                            ["DRAW_CARD", 3, "player{I}"],
+                                            ["DISCARD_CARD", "$GAME.cardById.{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "player1"], " draws 3 cards"],
+                                ["DRAW_CARD", 3],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "371e29be-17a9-4535-a9e0-bc13126522bb": {
+                "_comment": "Heed the Dream",
+                "ability": {
+                    "A": [
+                        ["COND",
+                            ["GREATER_THAN", "$GAME.numPlayers", 1],
+                            [
+                                ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                                ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                                    ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                        ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                            ["VAR", "$GROUP", "$GAME.groupById.player{I}Deck"],
+                                            ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " is looking at the top 5 cards of {{$GROUP.label}}."],
+                                            ["LOOK_AT", "player{I}", "player{I}Deck", 5, true],
+                                            ["DISCARD_CARD", "$GAME.cardById.{THIS_ID}"]
+                                        ]], "{I}", "{{$I}}"], "{THIS_ID}", "{{$THIS_ID}}"]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOOK_AT_X", "player1Deck", 5],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801210c9009": {
+                "_comment": "Legacy of Durin",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws a card."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "ea0854b0-37c6-4f3a-806a-f1532a1edcd1": {"_comment": "Legacy of Durin", "inheritFrom": "51223bd0-ffd1-11df-a976-0801210c9009"},
+            "52a0f137-da57-4c41-b455-9671aecd5298": {
+                "_comment": "Horn of the Mark",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws a card."],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["DRAW_CARD", 1, "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "732b9a46-a5d5-4660-9ec1-9c498d583a22": {"_comment": "Horn of the Mark", "inheritFrom": "52a0f137-da57-4c41-b455-9671aecd5298"},
             "51223bd0-ffd1-11df-a976-0801200c9046": {
                 "_comment": "The Galadhrim's Greeting",
                 "ability": {
@@ -567,7 +721,7 @@
                                 ["DECREASE_VAL", "/playerData/$PLAYER_N/threat", 6]
                             ]
                         ],
-                        ["ACTION_LIST", "discardCard"]
+                        ["DISCARD_CARD", "$THIS"]
                     ]
                 }
             },
@@ -590,7 +744,7 @@
                                                 ["LOG", "└── ", "Added 1 willpower to each character controlled by ", ["GET_ALIAS", "player{I}"], " until the end of the phase."],
                                                 ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                                     ["COND",
-                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"], ["IS_CHARACTER", "$CARD"]],
+                                                        ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player{I}"], ["IS_CHARACTER", "$CARD"], ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]],
                                                         [
                                                             ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                                         ]
@@ -605,7 +759,7 @@
                                     ["LOG", "└── ", "Added 1 willpower to each character until the end of the phase."],
                                     ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                         ["COND",
-                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"], ["IS_CHARACTER", "$CARD"]],
+                                            ["AND", "$CARD.inPlay", ["EQUAL", "$CARD.controller", "player1"], ["IS_CHARACTER", "$CARD"], ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]],
                                             [
                                                 ["ADD_TEMP_TOKEN", "phase", "$CARD_ID", "willpower", 1]
                                             ]
@@ -650,14 +804,6 @@
                     "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 5]
                 }
             },
-            "51223bd0-ffd1-11df-a976-0801212c9010": {
-                "_comment": "Daeron's Runes",
-                "ability": {
-                    "A": ["DISCARD_TO_LOOK_AT_X", "$THIS", 2]
-                }
-            },
-            "d8729719-5d37-48c2-9bf6-8d2c8d579901": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
-            "37863571-be66-46b1-82d3-d21f4f0e653c": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
             "51e0054c-c48d-4fc7-9737-30bf12d4b52a": {
                 "_comment": "Westfold Horse-breeder",
                 "ability": {
@@ -905,8 +1051,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["DEFINE", "$ACTIVE_CARD_ID", "$THIS_ID"],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ]
                     }
                 }
@@ -938,8 +1083,7 @@
                             ["HAS_5_OR_MORE_DWARVES", "$THIS.controller"]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Ori."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Ori."],
                             ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
@@ -959,8 +1103,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Círdan and must now discard a card just drawn."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Círdan and must now discard a card just drawn."],
                             ["DRAW_CARD", 1, "$THIS.controller"],
                             ["SET", "/cardById/$THIS_ID/targeting/{{$THIS.controller}}", true]
                         ]
@@ -980,12 +1123,11 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 3 additional cards from Erestor."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 3 additional cards from Erestor."],
                             ["DRAW_CARD", 3, "$THIS.controller"]
                         ]
                     },
-                    "discardHand": {
+                    "erestorDiscardHand": {
                         "type": "trigger",
                         "listenTo": ["/stepId"],
                         "condition": ["AND", 
@@ -996,15 +1138,7 @@
                         "then": [
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "└── ", "Erestor causes {{$ALIAS}} to discard all cards in hand."],
-                            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
-                                ["COND",
-                                    ["AND", ["EQUAL", "$CARD.groupId", "{{$THIS.controller}}Hand"]],
-                                    [
-                                        ["DEFINE", "$ACTIVE_CARD_ID", "$CARD_ID"],
-                                        ["ACTION_LIST", "discardCard"]
-                                    ]
-                                ]]
-                            ]
+                            ["MOVE_STACKS", "{{$THIS.controller}}Hand", "{{$THIS.controller}}Discard", -1, "top"]
                         ]
                     }
                 }
@@ -1023,8 +1157,7 @@
                             ["GREATER_THAN", "$THIS.cardIndex", 0]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Stone of Elostirion."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Stone of Elostirion."],
                             ["DRAW_CARD", 1, "$THIS.controller"]
                         ]
                     }
@@ -1043,8 +1176,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Bilbo Baggins."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Bilbo Baggins."],
                             ["DRAW_CARD", 1, "$GAME.firstPlayer"]
                         ]
                     }
@@ -1063,8 +1195,7 @@
                             ["EQUAL", "$THIS.groupId", "sharedVictory"]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$GAME.firstPlayer"]],
-                            ["LOG", "├── ", "{{$ALIAS}} draws 1 additional card from Prepare for Battle."],
+                            ["LOG", "├── ", ["GET_ALIAS", "$GAME.firstPlayer"], " draws 1 additional card from Prepare for Battle."],
                             ["DRAW_CARD", 1, "$GAME.firstPlayer"]
                         ]
                     }
@@ -1187,7 +1318,7 @@
                 "inheritFrom": "attachedHeroGainsOneResourceInResourcePhase"
             },
             "b1cc99c3-09a7-4418-85c4-e368f44adf1d": {
-                "_comment": "Necklace of Girion (doesn't use inheritFrom because it conflicts with attachment automation)",
+                "_comment": "Necklace of Girion", // doesn't use inheritFrom because it conflicts with attachment automation
                 "rules": {
                     "collectAdditionalResource": {
                         "type": "trigger",
@@ -1248,9 +1379,8 @@
                             ["IS_ONE_RING_READY"]
                         ],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["VAR", "$HERO", "GET_ONE_RING_PARENT"],
-                            ["LOG", "└── ", "{{$ALIAS}} exhausted The One Ring and raised threat by 1 to heal all damage from ", "$HERO.currentFace.name", "."],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " exhausted The One Ring and raised threat by 1 to heal all damage from ", "$HERO.currentFace.name", "."],
                             ["EXHAUST_ONE_RING"],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
                             ["SET", "/cardById/$THIS.parentCardId/tokens/damage", 0]
@@ -1312,6 +1442,26 @@
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
+                },
+                "rules": {
+                    "stewardOfGondorAuto": {
+                        "type": "trigger",
+                        "autoRun": {
+                            "status": "prompt",
+                            "promptPlayerI": "$THIS.controller",
+                            "promptMessage": "Trigger Steward of Gondor's ability?"
+                        },
+                        "listenTo": ["/stepId"],
+                        "priority": 15,
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "2.P"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["ABILITY", "$THIS_ID", "A"]
+                        ]
+                    }
                 }
             },
             "7ce49caa-c7ac-455e-b35f-217055be34ed": {
@@ -1390,7 +1540,11 @@
                             ["ACTION_LIST", "toggleCommit"],
                             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.cardById", [
                                 ["COND",
-                                    ["AND", ["EQUAL", "$CARD.groupId", "sharedStagingArea"], ["EQUAL", "$CARD.currentFace.type", "Location"]],
+                                    ["AND",
+                                        ["EQUAL", "$CARD.groupId", "sharedStagingArea"],
+                                        ["EQUAL", "$CARD.currentFace.type", "Location"],
+                                        ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]
+                                    ],
                                     ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/progress", 1]
                                 ]]
                             ]
@@ -1465,15 +1619,18 @@
                 "_comment": "Onward Into Battle",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
+            "a55bc730-259b-4d52-8c98-648d43840738": {
+                "_comment": "Armored Destrier",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
             "db733a56-9d85-4a9b-bdbf-e1aa5770a125": {
                 "_comment": "The Ring of Power",
                 "ability": {
                     "A": ["COND",
                         ["IS_ONE_RING_READY"],
                         [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["VAR", "$CARD", ["GET_ONE_RING_PARENT"]],
-                            ["LOG", "└── ", "{{$ALIAS}} exhausted The One Ring and raised threat by 1 to ready ", "$CARD.currentFace.name", " and give it 1 willpower, 1 attack, and 1 defense until the end of the phase."],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " exhausted The One Ring and raised threat by 1 to ready ", "$CARD.currentFace.name", " and give it 1 willpower, 1 attack, and 1 defense until the end of the phase."],
                             ["EXHAUST_ONE_RING"],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
                             ["SET", "/cardById/$CARD.id/rotation", 0],
@@ -1499,7 +1656,7 @@
                             ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to ready ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1524,7 +1681,7 @@
                             ["SET", "/cardById/$THIS.parentCardId/rotation", 0],
                             ["SET", "/cardById/$THIS.parentCardId/exhausted", false],
                             ["HEAL", "$THIS.parentCardId", 3],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1541,7 +1698,7 @@
                         [
                             ["LOG", "└── ", "Discarded ", "$THIS.currentFace.name", " to add 2 defense to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " until the end of the phase."],
                             ["ADD_TEMP_TOKEN", "phase", "$THIS.parentCardId", "defense", 2],
-                            ["ACTION_LIST", "discardCard"]
+                            ["DISCARD_CARD", "$THIS"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1707,10 +1864,25 @@
                 "_comment": "Boromir (Hero, Tactics)",
                 "ability": {
                     "A": ["COND",
-                        ["$THIS.exhausted"],
+                        "$THIS.exhausted",
                         [
                             ["LOG", "└── ", "Raised threat by 1 to ready Boromir."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 1],
+                            ["TOGGLE_EXHAUST", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "cf54398c-b1d9-4467-995b-5f982c9057a2": {
+                "_comment": "Archet Alekeeper",
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.exhausted",
+                        [
+                            ["LOG", "└── ", "Readied Archet Alekeeper and gave it +1 attack until the end of the phase."],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1],
                             ["TOGGLE_EXHAUST", "$THIS"]
                         ],
                         ["TRUE"],
@@ -1731,8 +1903,7 @@
                         "listenTo": ["/cardById/$THIS_ID/cardIndex"],
                         "condition": ["GREATER_THAN", "$THIS.cardIndex", 0],
                         "then": [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "{{$ALIAS}} gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
+                            ["LOG", ["GET_ALIAS", "$THIS.controller"], " gave the hero type to {{$THIS.parentCard.sides.A.name}}."],
                             ["SET", "/cardById/$THIS.parentCardId/sides/A/type", "Hero"]
                         ]
                     }
@@ -1767,6 +1938,73 @@
                     }
                 }
             },
+            "68168e29-feaf-43da-9ea0-2fc33061710d": {
+                "_comment": "Thalion",
+                "rules": {
+                    "thalionReadiesInCombat": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "6.1"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["GREATER_EQUAL", ["NUM_SIDE_QUESTS_IN_VICTORY_DISPLAY"], 1]
+                        ],
+                        "then": [
+                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
+                            ["LOG", "└── ", "Readied Thalion."],
+                            ["SET", "/cardById/$THIS_ID/rotation", 0],
+                            ["SET", "/cardById/$THIS_ID/exhausted", false]
+                        ]
+                    },
+                    "thalionBecomesHero": {
+                        "type": "whileInPlay", 
+                        "side": "A",
+                        "listenTo": ["/cardById/*/groupId"],
+                        "condition": ["AND",
+                            ["GREATER_EQUAL", ["NUM_SIDE_QUESTS_IN_VICTORY_DISPLAY"], 3]
+                        ],
+                        "onDo": [
+                            ["LOG", "└── ", "Thalion becomes a hero."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Hero"]
+                        ],
+                        "offDo": [
+                            ["LOG", "└── ", "Thalion becomes an ally."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Ally"]
+                        ]
+                    }
+                }
+            },
+            "6238c12d-b4c0-478f-bd7e-b59ef9b4e86f": {
+                "_comment": "Prince Imrahil (Ally)",
+                "rules": {
+                    "imrahilBecomesHero": {
+                        "type": "whileInPlay", 
+                        "side": "A",
+                        "listenTo": ["/cardById/*/groupId"],
+                        "condition": [
+                            "GREATER_EQUAL",
+                            [
+                                ["VAR", "$DISCARDED_HEROES", ["FILTER_CARDS", "$C", [
+                                    "AND",
+                                        ["EQUAL", "$C.currentFace.type", "Hero"],
+                                        ["EQUAL", "$C.groupId", "{{$THIS.controller}}Discard"]
+                                ]]],
+                                ["LENGTH", "$DISCARDED_HEROES"]
+                            ],
+                            1
+                        ],
+                        "onDo": [
+                            ["LOG", "└── ", "Prince Imrahil becomes a hero."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Hero"]
+                        ],
+                        "offDo": [
+                            ["LOG", "└── ", "Prince Imrahil becomes an ally."],
+                            ["SET", "/cardById/$THIS_ID/sides/A/type", "Ally"]
+                        ]
+                    }
+                }
+            },
             "f9196cda-8f50-4cc5-9aad-1c56cb677bca": {
                 "_comment": "Frodo Baggins (The Road Darkens)",
                 "ability": {
@@ -1777,8 +2015,7 @@
                             ["GREATER_THAN", "$THIS.tokens.resource", 0]
                         ],
                         [
-                            ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
-                            ["LOG", "└── ", "{{$ALIAS}} spent 1 fellowship resource and exhausted The One Ring to cancel the attack's damage and raise each player's threat by 2."],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " spent 1 fellowship resource and exhausted The One Ring to cancel the attack's damage and raise each player's threat by 2."],
                             ["SET", "/cardById/$THIS_ID/rotation", 90],
                             ["SET", "/cardById/$THIS_ID/exhausted", true],
                             ["EXHAUST_ONE_RING"],

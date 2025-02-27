@@ -16,12 +16,12 @@ local globalPassiveEffect(name, side = "A", listenToThisChange, thisCondition, l
             "condition": ["AND",
                 "$TARGET.inPlay",
                 ["EQUAL", "$TARGET.cardIndex", 0],
-                ["EQUAL", "$TARGET.currentSide", "A"],
+                ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"],
                 ["NOT_EQUAL", "$THIS_ID", "$TARGET_ID"],  // Ignore self because will be covered in passiveRule
             ] + targetCondition,
             "onDo": [
                 "COND",
-                    ["AND", "$TARGET.inPlay", ["EQUAL", "$TARGET.cardIndex", 0], ["EQUAL", "$TARGET.currentSide", "A"]] + thisCondition,
+                    ["AND", "$TARGET.inPlay", ["EQUAL", "$TARGET.cardIndex", 0], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]] + thisCondition,
                     [
                         ["LOG", "└── ", targetOnLog, "$TARGET.currentFace.name", "."],
                     ] + effectOn,
@@ -44,7 +44,7 @@ local globalPassiveEffect(name, side = "A", listenToThisChange, thisCondition, l
                 ["LOG", "└── ", conditionOnLog],
                 ["FOR_EACH_KEY_VAL", "$TARGET_ID", "$TARGET", "$GAME.cardById", [
                 ["COND",
-                    ["AND", "$TARGET.inPlay", ["EQUAL", "$TARGET.cardIndex", 0], ["EQUAL", "$TARGET.currentSide", "A"]] + targetCondition,
+                    ["AND", "$TARGET.inPlay", ["EQUAL", "$TARGET.cardIndex", 0], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]] + targetCondition,
                     effectOn,
                 ]]]
             ],
@@ -52,7 +52,7 @@ local globalPassiveEffect(name, side = "A", listenToThisChange, thisCondition, l
                 ["LOG", "└── ", conditionOffLog],
                 ["FOR_EACH_KEY_VAL", "$TARGET_ID", "$TARGET", "$GAME.cardById", [
                 ["COND",
-                    ["AND", "$TARGET.inPlay", ["PREV", ["EQUAL", "$TARGET.cardIndex", 0]], ["PREV", ["EQUAL", "$TARGET.currentSide", "A"]]] + ["PREV", ["AND"] + targetCondition],
+                    ["AND", "$TARGET.inPlay", ["PREV", ["EQUAL", "$TARGET.cardIndex", 0]], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]] + ["PREV", ["AND"] + targetCondition],
                     effectOff,
                 ]]]
             ]
@@ -109,7 +109,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Boromir (Hero, Leadership)",
                 listenToThisChange = ["/cardById/$THIS_ID/tokens/resource"],
                 thisCondition = [["GREATER_THAN", "$THIS.tokens.resource", 0]],
-                targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Gondor."], ["EQUAL", "$TARGET.currentFace.type", "Ally"]],
+                targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Gondor."], ["IS_ALLY", "$TARGET"]],
                 effectOn = addToken("attack"),
                 effectOff = removeToken("attack"),
                 conditionOnLog = "Added 1 attack to each Gondor ally.",
@@ -133,7 +133,8 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Fellowship of the Ring",
                 listenToThisChange = ["/cardById/$THIS_ID/cardIndex"],
                 thisCondition = [["GREATER_THAN", "$THIS.cardIndex", 0]],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Hero"]],
+                listenToTargetChange = ["/cardById/*/sides/*/type"],
+                targetCondition = [["IS_HERO", "$TARGET"]],
                 effectOn = addToken("willpower"),
                 effectOff = removeToken("willpower"),
                 conditionOnLog = "Added 1 willpower to each hero.",
@@ -158,7 +159,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 listenToThisChange = ["/cardById/$THIS_ID/groupId"],
                 thisCondition = [["EQUAL", "$THIS.groupId", "sharedVictory"]],
                 listenToTargetChange = ["/cardById/*/groupId", "/cardById/*/rotation"],
-                targetCondition = [["IN_STRING", "$TARGET.groupId", "Engaged"], ["NOT", "$TARGET.currentFace.unique"], ["EQUAL", "$TARGET.currentFace.type", "Enemy"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                targetCondition = [["IN_STRING", "$TARGET.groupId", "Engaged"], ["NOT", "$TARGET.currentFace.unique"], ["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
                 effectOn = removeToken("attack"),
                 effectOff = addToken("attack"),
                 conditionOnLog = "Removed 1 attack from each non-unique enemy engaged with a player.",
@@ -172,7 +173,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 listenToThisChange = [],
                 thisCondition = [],
                 listenToTargetChange = ["/cardById/*/groupId", "/cardById/*/rotation"],
-                targetCondition = [["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"], ["EQUAL", "$TARGET.currentFace.type", "Enemy"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                targetCondition = [["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"], ["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
                 effectOn = removeToken("defense"),
                 effectOff = addToken("defense"),
                 conditionOnLog = "Removed 1 defense from each enemy engaged with {{$THIS.controller}}.",
@@ -184,7 +185,8 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 name = "Rally the West",
                 listenToThisChange = ["/cardById/$THIS_ID/groupId"],
                 thisCondition = [["EQUAL", "$THIS.groupId", "sharedVictory"]],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Hero"]],
+                listenToTargetChange = ["/cardById/*/sides/*/type"],
+                targetCondition = [["IS_HERO", "$TARGET"]],
                 effectOn = addToken("willpower"),
                 effectOff = removeToken("willpower"),
                 conditionOnLog = "Added 1 willpower to each hero.",
@@ -261,7 +263,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 listenToThisChange = [],
                 thisCondition = [],
                 listenToTargetChange = ["/cardById/*/rotation"],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Enemy"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
                 effectOn = addToken("engagementCost"),
                 effectOff = removeToken("engagementCost"),
                 conditionOnLog = "Added 1 engagement cost to each enemy.",
@@ -271,19 +273,32 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
             ),
             "bd50a02b-0827-44e2-9407-d1e3703d59e0": self["80c51ea1-495e-40a0-8257-ff3e81aeb298"],
             "55f4784e-2262-4961-a600-03de90e2ed11": self["80c51ea1-495e-40a0-8257-ff3e81aeb298"],
+            "66bcd2b8-fcc7-402b-94b2-a45a6c469981": globalPassiveEffect(
+                name = "Halbarad (Ally)",
+                listenToThisChange = [],
+                thisCondition = [],
+                listenToTargetChange = ["/cardById/*/groupId", "/cardById/*/rotation"],
+                targetCondition = [["EQUAL", "$TARGET.groupId", "{{$THIS.controller}}Engaged"], ["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                effectOn = addToken("engagementCost", amount=10),
+                effectOff = removeToken("engagementCost", amount=10),
+                conditionOnLog = "Added 10 engagement cost to each enemy engaged with {{$THIS.controller}}.",
+                conditionOffLog = "Removed 10 engagement cost from each enemy engaded with {{$THIS.controller}}.",
+                targetOnLog = "{{$THIS.currentFace.name}} added 10 engagement cost to ",
+                targetOffLog = "{{$THIS.currentFace.name}} removed 10 engagement cost from ",
+            ),
             "ce96b767-c569-48b8-a998-d8009b0143c7": globalPassiveEffect(
                 name = "Pippin (Hero, Lore)",
                 listenToThisChange = [],
                 thisCondition = [],
                 listenToTargetChange = ["/cardById/*/rotation"],
-                targetCondition = [["EQUAL", "$TARGET.currentFace.type", "Enemy"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
+                targetCondition = [["IS_ENEMY", "$TARGET"], ["NOT_EQUAL", "$TARGET.rotation", -30]],
                 effectOn = [["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/engagementCost", ["LENGTH",
                                 ["FILTER_CARDS", "$CARD", [
                                     "AND",
                                         "$CARD.inPlay",
                                         ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                         ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                        ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                        ["IS_HERO", "$CARD"]
                                     ]
                                 ]
                             ]]],
@@ -293,7 +308,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                                         "$CARD.inPlay",
                                         ["EQUAL", "$CARD.controller", "$THIS.controller"],
                                         ["IN_STRING", "$CARD.currentFace.traits", "Hobbit."],
-                                        ["EQUAL", "$CARD.currentFace.type", "Hero"]
+                                        ["IS_HERO", "$CARD"]
                                     ]
                                 ]
                             ]]],

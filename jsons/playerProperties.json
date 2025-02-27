@@ -32,6 +32,11 @@
             "label": "id:readyForNextPlanning",
             "type": "boolean", 
             "default": false
+        },
+        "deckLoaded": {
+            "label": "id:playerDeckLoaded",
+            "type": "boolean",
+            "default": false
         }
     }
 }

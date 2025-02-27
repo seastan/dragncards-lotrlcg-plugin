@@ -252,6 +252,9 @@
             "German": "Abwerfen 2",
             "Chinese": "弃除 2"
         },
+        "playerDeckLoaded": {
+            "English": "Player deck loaded"
+        },
         "allPlayerDecksLoaded": {
             "English": "All player decks loaded",
             "French": "Tous les paquets de joueurs chargés",

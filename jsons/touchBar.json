@@ -104,7 +104,7 @@
               "id": "discardTouchButton",
               "label": "id:discard",
               "actionType": "card",
-              "actionList": "discardCard"
+              "actionList": ["DISCARD_CARD", "$ACTIVE_CARD"]
             },
             {
               "id": "target",
