@@ -65,7 +65,7 @@
         },
         "encounterDeckLoaded": {
             "English": "Encounter Deck Loaded",
-            "French": "Paquet de Rencontre Chargé",
+            "French": "Deck de Rencontre Chargé",
             "Spanish": "Mazo de Encuentro Cargado",
             "Portuguese": "Baralho de Encontro Carregado",
             "Italian": "Mazzo di Incontro Caricato",
@@ -74,7 +74,7 @@
         },
         "resolveEngagementChecks": {
             "English": "Resolve Engagement Checks",
-            "French": "Résoudre les Vérifications d'Engagement",
+            "French": "Résoudre les Tests d'Engagement",
             "Spanish": "Resolver las Comprobaciones de Compromiso",
             "Portuguese": "Resolver Verificações de Engajamento",
             "Italian": "Risolvi i Controlli di Impegno",
@@ -128,7 +128,7 @@
         },
         "The Dream-chaser": {
             "English": "The Dream-chaser",
-            "French": "Le Chasseur de Rêves",
+            "French": "Le Chasse-Rêves",
             "Spanish": "El Cazador de Sueños",
             "Portuguese": "O Caçador de Sonhos",
             "Italian": "Il Cacciatore di Sogni",
@@ -137,7 +137,7 @@
         },
         "The Dark of Mirkwood": {
             "English": "The Dark of Mirkwood",
-            "French": "Les Ténèbres de Mirkwood",
+            "French": "Les Ténèbres de la Forêt Noire",
             "Spanish": "La Oscuridad de Mirkwood",
             "Portuguese": "A Escuridão de Mirkwood",
             "Italian": "Le Tenebre di Mirkwood",
@@ -146,7 +146,7 @@
         },
         "roundAdvancementFunction": {
             "English": "Advance through the round",
-            "French": "Avancer à travers le tour",
+            "French": "Avancer dans le tour",
             "Spanish": "Avanzar en el turno",
             "Portuguese": "Avançar pelo turno",
             "Italian": "Avanza attraverso il turno",
@@ -155,7 +155,7 @@
         },
         "readyForNextPlanning": {
             "English": "Ready For Next Planning",
-            "French": "Prêt pour la Prochaine Planification",
+            "French": "Prêt pour la Prochaine Organisation",
             "Spanish": "Listo para la Próxima Planificación",
             "Portuguese": "Pronto para o Próximo Planejamento",
             "Italian": "Pronto per la Prossima Pianificazione",
@@ -173,7 +173,7 @@
         },
         "skipToNextPlanningPhase": {
             "English": "Skip to Next Planning Phase",
-            "French": "Passer à la Prochaine Phase de Planification",
+            "French": "Passer à la Prochaine Phase d'Organisation",
             "Spanish": "Saltar a la Próxima Fase de Planificación",
             "Portuguese": "Pular para a Próxima Fase de Planejamento",
             "Italian": "Salta alla Prossima Fase di Pianificazione",
@@ -182,7 +182,7 @@
         },
         "skipToDealShadowsStep": {
             "English": "Skip to Deal Shadows Step",
-            "French": "Passer à l'Étape des Ombres",
+            "French": "Passer à l'Étape d'Attribution des Cartes Ombres",
             "Spanish": "Saltar a la Etapa de Tratar Sombras",
             "Portuguese": "Pular para a Etapa de Tratar Sombras",
             "Italian": "Salta alla Fase di Gestire Ombre",
@@ -191,7 +191,7 @@
         },
         "skipToRefreshPhase": {
             "English": "Skip to Refresh Phase",
-            "French": "Passer à la Phase de Rafraîchissement",
+            "French": "Passer à la Phase de Restauration",
             "Spanish": "Saltar a la Fase de Refrescamiento",
             "Portuguese": "Pular para a Fase de Recarregamento",
             "Italian": "Salta alla Fase di Ricarica",
@@ -200,7 +200,7 @@
         },
         "advanceThroughRoundStopAtTriggers": {
             "English": "Advance Through Round",
-            "French": "Avancer à Travers le Tour",
+            "French": "Avancer dans le Tour",
             "Spanish": "Avanzar a Través del Turno",
             "Portuguese": "Avançar pelo Turno",
             "Italian": "Avanza nel Turno",
@@ -218,7 +218,7 @@
         },
         "advanceToNextPlanningPhaseStopAtTriggers": {
             "English": "Advance to next planning phase (allow trigger reminders to interrupt)",
-            "French": "Avancer à la prochaine phase de planification (permettre aux rappels de déclencheurs d'interrompre)",
+            "French": "Avancer à la prochaine phase d'organisation (activer les rappels de déclencheurs)",
             "Spanish": "Avanzar a la siguiente fase de planificación (permitir que los recordatorios de disparadores interrumpan)",
             "Portuguese": "Avançar para a próxima fase de planejamento (permitir que os lembretes de gatilho interrompam)",
             "Italian": "Avanza alla prossima fase di pianificazione (consenti che i promemoria di attivazione interrompano)",
@@ -227,7 +227,7 @@
         },
         "advanceToNextPlanningPhase": {
             "English": "Advance to next planning phase (ignore trigger reminders)",
-            "French": "Avancer à la prochaine phase de planification (ignorer les rappels de déclencheurs)",
+            "French": "Avancer à la prochaine phase d'organisation (ignorer les rappels de déclencheurs)",
             "Spanish": "Avanzar a la siguiente fase de planificación (ignorar los recordatorios de disparadores)",
             "Portuguese": "Avançar para a próxima fase de planejamento (ignorar os lembretes de gatilho)",
             "Italian": "Avanza alla prossima fase di pianificazione (ignora i promemoria di attivazione)",
@@ -245,7 +245,7 @@
         },
         "discard2": {
             "English": "Discard 2",
-            "French": "Défausser 2",
+            "French": "Défausse 2",
             "Spanish": "Descartar 2",
             "Portuguese": "Descartar 2",
             "Italian": "Scartare 2",
@@ -253,11 +253,12 @@
             "Chinese": "弃除 2"
         },
         "playerDeckLoaded": {
-            "English": "Player deck loaded"
+            "English": "Player deck loaded",
+            "French": "Deck du joueur chargé"
         },
         "allPlayerDecksLoaded": {
             "English": "All player decks loaded",
-            "French": "Tous les paquets de joueurs chargés",
+            "French": "Tous les decks joueurs chargés",
             "Spanish": "Todos los mazos de jugadores cargados",
             "Portuguese": "Todos os baralhos de jogadores carregados",
             "Italian": "Tutti i mazzi dei giocatori caricati",
@@ -383,7 +384,7 @@
         },
         "drawACard": {
             "English": "Draw a card",
-            "French": "Piochez une carte",
+            "French": "Piocher une carte",
             "Spanish": "Robar una carta",
             "Portuguese": "Puxar uma carta",
             "Italian": "Pesca una carta",
@@ -392,7 +393,7 @@
         },
         "revealEncounterCard": {
             "English": "Reveal encounter card",
-            "French": "Révéler la carte de rencontre",
+            "French": "Révéler une carte de rencontre",
             "Spanish": "Revelar la carta de encuentro",
             "Portuguese": "Revelar carta de encontro",
             "Italian": "Scoprire la carta di incontro",
@@ -401,7 +402,7 @@
         },
         "revealFacedownEncounterCard": {
             "English": "Reveal facedown encounter card",
-            "French": "Révéler la carte de rencontre face cachée",
+            "French": "Révéler une carte de rencontre face cachée",
             "Spanish": "Revelar la carta de encuentro boca abajo",
             "Portuguese": "Revelar carta de encontro virada para baixo",
             "Italian": "Scoprire la carta di incontro a faccia in giù",
@@ -410,7 +411,7 @@
         },
         "revealCardFromSecondEncounterDeck": {
             "English": "Reveal card from second encounter deck",
-            "French": "Révéler une carte du deuxième paquet de rencontre",
+            "French": "Révéler une carte du deuxième deck de rencontre",
             "Spanish": "Revelar carta del segundo mazo de encuentro",
             "Portuguese": "Revelar carta do segundo baralho de encontro",
             "Italian": "Scoprire carta dal secondo mazzo di incontro",
@@ -419,7 +420,7 @@
         },
         "revealFacedownCardFromSecondEncounterDeck": {
             "English": "Reveal facedown card from second encounter deck",
-            "French": "Révéler la carte face cachée du deuxième paquet de rencontre",
+            "French": "Révéler une carte face cachée du deuxième deck de rencontre",
             "Spanish": "Revelar carta boca abajo del segundo mazo de encuentro",
             "Portuguese": "Revelar carta virada para baixo do segundo baralho de encontro",
             "Italian": "Scoprire carta a faccia in giù dal secondo mazzo di incontro",
@@ -428,7 +429,7 @@
         },
         "drawCardAndGainResourcesIfHostIncrementRound": {
             "English": "Draw card and gain resources. If host, increment round.",
-            "French": "Piochez une carte et gagnez des ressources. Si hôte, incrémentez le tour.",
+            "French": "Piocher une carte et gagner des ressources. Si hôte, incrémenter le tour.",
             "Spanish": "Robar carta y ganar recursos. Si eres el anfitrión, incrementar turno.",
             "Portuguese": "Puxar uma carta e ganhar recursos. Se for o host, incrementar o turno.",
             "Italian": "Pesca una carta e guadagna risorse. Se sei l'ospite, incrementa il turno.",
@@ -446,7 +447,7 @@
         },
         "refreshAndRaiseThreatIfHostMove1StPlayerToken": {
             "English": "Refresh and raise threat. If host, move 1st player token.",
-            "French": "Rafraîchir et augmenter la menace. Si hôte, déplacer le jeton du premier joueur.",
+            "French": "Redresser et augmenter la menace. Si hôte, déplacer le marqueur Premier Joueur.",
             "Spanish": "Recargar y aumentar la amenaza. Si es el anfitrión, mover el token del primer jugador.",
             "Portuguese": "Recarregar e aumentar a ameaça. Se for o anfitrião, mova o token do primeiro jogador.",
             "Italian": "Ricarica e aumenta la minaccia. Se è l'host, sposta il token del primo giocatore.",
@@ -455,7 +456,7 @@
         },
         "dealAllShadowCards": {
             "English": "Deal all shadow cards",
-            "French": "Distribuer toutes les cartes d'ombre",
+            "French": "Attribuer toutes les cartes Ombre",
             "Spanish": "Repartir todas las cartas de sombra",
             "Portuguese": "Distribuir todas as cartas de sombra",
             "Italian": "Distribuisci tutte le carte ombra",
@@ -464,7 +465,7 @@
         },
         "discardAllShadowCards": {
             "English": "Discard all shadow cards",
-            "French": "Défausser toutes les cartes d'ombre",
+            "French": "Défausser toutes les cartes Ombre",
             "Spanish": "Descartar todas las cartas de sombra",
             "Portuguese": "Descarte todas as cartas de sombra",
             "Italian": "Scarta tutte le carte ombra",
@@ -527,7 +528,7 @@
         },
         "moveToPreviousGameStep": {
             "English": "Move to previous game step",
-            "French": "Passer à l'étape précédente du jeu",
+            "French": "Passer à l'étape de jeu précédente",
             "Spanish": "Moverse al paso anterior del juego",
             "Portuguese": "Mover para o passo anterior do jogo",
             "Italian": "Passa al passo di gioco precedente",
@@ -536,7 +537,7 @@
         },
         "moveToNextGameStep": {
             "English": "Move to next game step",
-            "French": "Passer à l'étape suivante du jeu",
+            "French": "Passer à l'étape de jeu suivante",
             "Spanish": "Moverse al siguiente paso del juego",
             "Portuguese": "Mover para o próximo passo do jogo",
             "Italian": "Passa al passo di gioco successivo",
@@ -572,7 +573,7 @@
         },
         "pressShiftNForAllPlayers": {
             "English": "Press Shift+N for all players",
-            "French": "Appuyez sur Maj+N pour tous les joueurs",
+            "French": "Appuyer sur Maj+N pour tous les joueurs",
             "Spanish": "Presiona Shift+N para todos los jugadores",
             "Portuguese": "Pressione Shift+N para todos os jogadores",
             "Italian": "Premi Shift+N per tutti i giocatori",
@@ -581,7 +582,7 @@
         },
         "pressShiftRForAllPlayers": {
             "English": "Press Shift+R for all players",
-            "French": "Appuyez sur Maj+R pour tous les joueurs",
+            "French": "Appuyer sur Maj+R pour tous les joueurs",
             "Spanish": "Presiona Shift+R para todos los jugadores",
             "Portuguese": "Pressione Shift+R para todos os jogadores",
             "Italian": "Premi Shift+R per tutti i giocatori",
@@ -617,7 +618,7 @@
         },
         "exhaustReadyIfLocationMakeActive": {
             "English": "Exhaust / ready. If location, make active.",
-            "French": "Épuiser / Préparer. Si c'est un lieu, rendre actif.",
+            "French": "Incliner / redresser. Si c'est un lieu, rendre actif.",
             "Spanish": "Agotar / Preparar. Si es una ubicación, hacerla activa.",
             "Portuguese": "Exaurir / Preparar. Se for uma localização, torná-la ativa.",
             "Italian": "Esaurisci / Rendi pronto. Se è una posizione, rendila attiva.",
@@ -662,7 +663,7 @@
         },
         "commitUncommitFromQuestWithoutExhaustingReadying": {
             "English": "Commit / uncommit from quest without exhausting / readying",
-            "French": "Engager / désengager de la quête sans épuiser / préparer",
+            "French": "Engager / désengager de la quête sans incliner / redresser",
             "Spanish": "Comprometerse / descomprometerse de la misión sin agotar / preparar",
             "Portuguese": "Comprometer / descomprometer da missão sem exaurir / preparar",
             "Italian": "Impegnare / disimpegnare dalla quest senza esaurire / preparare",
@@ -671,7 +672,7 @@
         },
         "dealShadowCard": {
             "English": "Deal shadow card",
-            "French": "Distribuer une carte d'ombre",
+            "French": "Attribuer une carte Ombre",
             "Spanish": "Repartir carta de sombra",
             "Portuguese": "Distribuir carta de sombra",
             "Italian": "Distribuisci una carta ombra",
@@ -689,7 +690,7 @@
         },
         "addToVictoryDisplay": {
             "English": "Add to victory display",
-            "French": "Ajouter à l'affichage de victoire",
+            "French": "Ajouter à la pile de victoire",
             "Spanish": "Agregar al área de victoria",
             "Portuguese": "Adicionar à exibição de vitória",
             "Italian": "Aggiungi alla visualizzazione della vittoria",
@@ -725,7 +726,7 @@
         },
         "sendAttachmentToBackOfStack": {
             "English": "Send attachment to back of stack",
-            "French": "Envoyer la pièce jointe à l'arrière de la pile",
+            "French": "Envoyer l'attachement sous le deck",
             "Spanish": "Enviar el adjunto al final de la pila",
             "Portuguese": "Enviar o anexo para o final da pilha",
             "Italian": "Invia l'allegato alla fine della pila",
@@ -815,7 +816,7 @@
         },
         "layout2PlayerMultiStaging": {
             "English": "2 players (Multiple Staging Areas)",
-            "French": "2 joueurs (Zones de mise en scène multiples)",
+            "French": "2 joueurs (Zones de cheminement multiples)",
             "Spanish": "2 jugadores (Áreas de preparación múltiples)",
             "Portuguese": "2 jogadores (Áreas de Estágio Múltiplas)",
             "Italian": "2 giocatori (Aree di Preparazione Multiple)",
@@ -824,7 +825,7 @@
         },
         "layout3PlayerMultiStaging": {
             "English": "3 players (Multiple Staging Areas)",
-            "French": "3 joueurs (Zones de mise en scène multiples)",
+            "French": "3 joueurs (Zones de cheminement multiples)",
             "Spanish": "3 jugadores (Áreas de preparación múltiples)",
             "Portuguese": "3 jogadores (Áreas de Estágio Múltiplas)",
             "Italian": "3 giocatori (Aree di Preparazione Multiple)",
@@ -833,7 +834,7 @@
         },
         "layout4PlayerMultiStaging": {
             "English": "4 players (Multiple Staging Areas)",
-            "French": "4 joueurs (Zones de mise en scène multiples)",
+            "French": "4 joueurs (Zones de cheminement multiples)",
             "Spanish": "4 jugadores (Áreas de preparación múltiples)",
             "Portuguese": "4 jogadores (Áreas de Estágio Múltiplas)",
             "Italian": "4 giocatori (Aree di Preparazione Multiple)",
@@ -896,7 +897,7 @@
         },
         "planning": {
             "English": "Planning",
-            "French": "Planification",
+            "French": "Organisation",
             "Spanish": "Planificación",
             "Portuguese": "Planejamento",
             "Italian": "Pianificazione",
@@ -941,7 +942,7 @@
         },
         "refresh": {
             "English": "Refresh",
-            "French": "Rafraîchir",
+            "French": "Restauration",
             "Spanish": "Refrescar",
             "Portuguese": "Atualizar",
             "Italian": "Ricaricare",
@@ -977,7 +978,7 @@
         },
         "battleQuest": {
             "English": "Battle Quest",
-            "French": "Quête de bataille",
+            "French": "Quête de Bataille",
             "Spanish": "Misión de batalla",
             "Portuguese": "Missão de batalha",
             "Italian": "Quest di battaglia",
@@ -986,7 +987,7 @@
         },
         "siegeQuest": {
             "English": "Siege Quest",
-            "French": "Quête de siège",
+            "French": "Quête de Siège",
             "Spanish": "Misión de asedio",
             "Portuguese": "Missão de cerco",
             "Italian": "Quest d'assedio",
@@ -1004,7 +1005,7 @@
         },
         "step-1.1": {
             "English": "1.1: Beginning of the Resource phase",
-            "French": "1.1: Début de la phase des ressources",
+            "French": "1.1: Début de la phase de ressource",
             "Spanish": "1.1: Comienzo de la fase de recursos",
             "Portuguese": "1.1: Início da fase de recursos",
             "Italian": "1.1: Inizio della fase delle risorse",
@@ -1013,7 +1014,7 @@
         },
         "step-1.2-1.3": {
             "English": "1.2 & 1.3: Gain resources and draw cards - then player actions",
-            "French": "1.2 & 1.3: Gagner des ressources et tirer des cartes - puis actions des joueurs",
+            "French": "1.2 & 1.3: Gagner des ressources et piocher des cartes - puis actions des joueurs",
             "Spanish": "1.2 & 1.3: Obtener recursos y robar cartas - luego las acciones de los jugadores",
             "Portuguese": "1.2 & 1.3: Ganhar recursos e puxar cartas - depois ações dos jogadores",
             "Italian": "1.2 & 1.3: Guadagnare risorse e pescare carte - poi azioni dei giocatori",
@@ -1022,7 +1023,7 @@
         },
         "step-1.4": {
             "English": "1.4: End of the Resource phase",
-            "French": "1.4 : Fin de la phase de ressources",
+            "French": "1.4 : Fin de la phase de ressource",
             "Spanish": "1.4: Fin de la fase de recursos",
             "Portuguese": "1.4: Fim da fase de recursos",
             "Italian": "1.4: Fine della fase delle risorse",
@@ -1031,7 +1032,7 @@
         },
         "step-2.1": {
             "English": "2.1: Beginning of the Planning phase",
-            "French": "2.1 : Début de la phase de planification",
+            "French": "2.1 : Début de la phase d'organisation",
             "Spanish": "2.1: Comienzo de la fase de planificación",
             "Portuguese": "2.1: Início da fase de planejamento",
             "Italian": "2.1: Inizio della fase di pianificazione",
@@ -1040,7 +1041,7 @@
         },
         "step-2.2-2.3": {
             "English": "2.2 & 2.3: Play cards in turn order - player actions throughout",
-            "French": "2.2 & 2.3 : Jouer les cartes dans l'ordre du tour - actions des joueurs tout au long",
+            "French": "2.2 & 2.3 : Jouer des cartes dans l'ordre du tour - actions des joueurs tout du long",
             "Spanish": "2.2 & 2.3: Jugar cartas en orden de turno - acciones del jugador durante todo",
             "Portuguese": "2.2 & 2.3: Jogar cartas por ordem de turno - ações dos jogadores durante",
             "Italian": "2.2 & 2.3: Giocare le carte in ordine di turno - azioni dei giocatori durante",
@@ -1049,7 +1050,7 @@
         },
         "step-2.4": {
             "English": "2.4: End of the Planning phase",
-            "French": "2.4 : Fin de la phase de planification",
+            "French": "2.4 : Fin de la phase d'organisation",
             "Spanish": "2.4: Fin de la fase de planificación",
             "Portuguese": "2.4: Fim da fase de planejamento",
             "Italian": "2.4: Fine della fase di pianificazione",
@@ -1076,7 +1077,7 @@
         },
         "step-3.3": {
             "English": "3.3: Staging - then player actions",
-            "French": "3.3 : Mise en scène - puis actions des joueurs",
+            "French": "3.3 : Renforcement - puis actions des joueurs",
             "Spanish": "3.3: Preparación - luego acciones del jugador",
             "Portuguese": "3.3: Preparação - depois ações dos jogadores",
             "Italian": "3.3: Preparazione - poi azioni dei giocatori",
@@ -1112,7 +1113,7 @@
         },
         "step-4.2": {
             "English": "4.2: Travel opportunity - then player actions",
-            "French": "4.2 : Opportunité de voyage - puis actions des joueurs",
+            "French": "4.2 : Opportunité de voyager - puis actions des joueurs",
             "Spanish": "4.2: Oportunidad de viaje - luego acciones del jugador",
             "Portuguese": "4.2: Oportunidade de viagem - depois ações dos jogadores",
             "Italian": "4.2: Opportunità di viaggio - poi azioni dei giocatori",
@@ -1139,7 +1140,7 @@
         },
         "step-5.2": {
             "English": "5.2: Optional engagement - then player actions",
-            "French": "5.2 : Engagement optionnel - puis actions des joueurs",
+            "French": "5.2 : Engagement intentionnel - puis actions des joueurs",
             "Spanish": "5.2: Compromiso opcional - luego acciones del jugador",
             "Portuguese": "5.2: Engajamento opcional - depois ações dos jogadores",
             "Italian": "5.2: Impegno opzionale - poi azioni dei giocatori",
@@ -1148,7 +1149,7 @@
         },
         "step-5.3": {
             "English": "5.3: Engagement checks - then player actions",
-            "French": "5.3 : Vérifications d'engagement - puis actions des joueurs",
+            "French": "5.3 : Tests d'engagement - puis actions des joueurs",
             "Spanish": "5.3: Comprobaciones de compromiso - luego acciones del jugador",
             "Portuguese": "5.3: Verificações de engajamento - depois ações dos jogadores",
             "Italian": "5.3: Controlli di impegno - poi azioni dei giocatori",
@@ -1175,7 +1176,7 @@
         },
         "step-6.2": {
             "English": "6.2: Deal shadow cards",
-            "French": "6.2 : Distribuer les cartes d'ombre",
+            "French": "6.2 : Attribuer des cartes Ombre",
             "Spanish": "6.2: Repartir cartas de sombra",
             "Portuguese": "6.2: Distribuir cartas de sombra",
             "Italian": "6.2: Distribuire carte ombra",
@@ -1211,7 +1212,7 @@
         },
         "step-7.1": {
             "English": "7.1: Beginning of the Refresh phase",
-            "French": "7.1 : Début de la phase de rafraîchissement",
+            "French": "7.1 : Début de la phase de restauration",
             "Spanish": "7.1: Comienzo de la fase de recarga",
             "Portuguese": "7.1: Início da fase de recarga",
             "Italian": "7.1: Inizio della fase di aggiornamento",
@@ -1220,7 +1221,7 @@
         },
         "step-7.2-7.4": {
             "English": "7.2-7.4: Ready cards, raise threat, pass P1 token - then player actions",
-            "French": "7.2-7.4 : Préparer les cartes, augmenter la menace, passer le jeton P1 - puis actions des joueurs",
+            "French": "7.2-7.4 : Redresser les cartes, augmenter la menace, passer le marqueur P1 - puis actions des joueurs",
             "Spanish": "7.2-7.4: Preparar cartas, aumentar amenaza, pasar el token P1 - luego acciones del jugador",
             "Portuguese": "7.2-7.4: Preparar cartas, aumentar ameaça, passar token P1 - depois ações do jogador",
             "Italian": "7.2-7.4: Preparare le carte, aumentare la minaccia, passare il token P1 - poi azioni dei giocatori",
@@ -1229,7 +1230,7 @@
         },
         "step-7.5": {
             "English": "7.5: End of the Refresh phase",
-            "French": "7.5 : Fin de la phase de rafraîchissement",
+            "French": "7.5 : Fin de la phase de restauration",
             "Spanish": "7.5: Fin de la fase de recarga",
             "Portuguese": "7.5: Fim da fase de recarga",
             "Italian": "7.5: Fine della fase di aggiornamento",
@@ -1256,7 +1257,7 @@
         },
         "progressToken": {
             "English": "Progress",
-            "French": "Progrès",
+            "French": "Progression",
             "Spanish": "Progreso",
             "Portuguese": "Progresso",
             "Italian": "Progresso",
@@ -1355,7 +1356,7 @@
         },
         "stagingThreat": {
             "English": "Staging Threat",
-            "French": "Menace de mise en place",
+            "French": "Menace de la zone de cheminement",
             "Spanish": "Amenaza de preparación",
             "Portuguese": "Ameaça de preparação",
             "Italian": "Minaccia di messa in gioco",
@@ -1364,7 +1365,7 @@
         },
         "stagingProgress": {
             "English": "Staging Progress",
-            "French": "Progrès de mise en place",
+            "French": "Progression",
             "Spanish": "Progreso de preparación",
             "Portuguese": "Progresso de preparação",
             "Italian": "Progresso di messa in gioco",
@@ -1382,7 +1383,7 @@
         },
         "questingWillpower": {
             "English": "Questing Willpower",
-            "French": "Volonté de quête",
+            "French": "Volonté dans la quête",
             "Spanish": "Voluntad para la misión",
             "Portuguese": "Vontade para a missão",
             "Italian": "Volontà per la quest",
@@ -1400,7 +1401,7 @@
         },
         "removeTokens": {
             "English": "Remove Tokens",
-            "French": "Supprimer les jetons",
+            "French": "Supprimer les marqueurs",
             "Spanish": "Eliminar los tokens",
             "Portuguese": "Remover tokens",
             "Italian": "Rimuovi i token",
@@ -1409,7 +1410,7 @@
         },
         "exhaustReady": {
             "English": "Exhaust Ready",
-            "French": "Épuiser / Préparer",
+            "French": "Incliner / Redresser",
             "Spanish": "Agotar / Preparar",
             "Portuguese": "Exaurir / Preparar",
             "Italian": "Esaurire / Preparare",
@@ -1490,7 +1491,7 @@
         },
         "draw": {
             "English": "Draw",
-            "French": "Tirer",
+            "French": "Piocher",
             "Spanish": "Robar",
             "Portuguese": "Comprar",
             "Italian": "Pesca",
@@ -1517,7 +1518,7 @@
         },
         "discardShadows": {
             "English": "Discard shadows",
-            "French": "Défausser les ombres",
+            "French": "Défausser les cartes Ombres",
             "Spanish": "Descartar sombras",
             "Portuguese": "Descartar sombras",
             "Italian": "Scartare le ombre",
@@ -1526,7 +1527,7 @@
         },
         "refreshTouchButton": {
             "English": "Refresh",
-            "French": "Rafraîchir",
+            "French": "Restaurer",
             "Spanish": "Recargar",
             "Portuguese": "Recarregar",
             "Italian": "Ricaricare",
@@ -1634,7 +1635,7 @@
         },
         "toggleExhaust": {
             "English": "Exhaust/Ready",
-            "French": "Épuisé/Prêt",
+            "French": "Incliné/Redressé",
             "Spanish": "Agotar/Listo",
             "Portuguese": "Esgotar/Preparar",
             "Italian": "Sfinito/Ripristina",
@@ -1697,7 +1698,7 @@
         },
         "Core Set & Shadows of Mirkwood": {
             "English": "Core Set & Shadows of Mirkwood",
-            "French": "Jeu de base & Les Ombres de Mirkwood",
+            "French": "Jeu de base & Les Ombres de la Forêt Noire",
             "Spanish": "Juego base & Sombras de Mirkwood",
             "Portuguese": "Conjunto Básico & Sombras de Mirkwood",
             "Italian": "Set base & Le ombre di Mirkwood",
@@ -1706,7 +1707,7 @@
         },
         "Passage Through Mirkwood": {
             "English": "Passage Through Mirkwood",
-            "French": "Passage à travers Mirkwood",
+            "French": "Passage Dans la Forêt Noire",
             "Spanish": "Paso a través de Mirkwood",
             "Portuguese": "Passagem por Mirkwood",
             "Italian": "Passaggio attraverso Mirkwood",
@@ -1715,7 +1716,7 @@
         },
         "Journey Along the Anduin": {
             "English": "Journey Along the Anduin",
-            "French": "Voyage le long de l'Anduin",
+            "French": "Voyage le Long de l'Anduin",
             "Spanish": "Viaje a lo largo del Anduin",
             "Portuguese": "Jornada ao longo do Anduin",
             "Italian": "Viaggio lungo l'Anduin",
@@ -1733,7 +1734,7 @@
         },
         "The Hunt for Gollum": {
             "English": "The Hunt for Gollum",
-            "French": "La Chasse à Gollum",
+            "French": "À la Poursuite de Gollum",
             "Spanish": "La Caza de Gollum",
             "Portuguese": "A Caçada a Gollum",
             "Italian": "La Caccia a Gollum",
@@ -1742,7 +1743,7 @@
         },
         "Conflict at the Carrock": {
             "English": "Conflict at the Carrock",
-            "French": "Conflit à Carrock",
+            "French": "Conflit au Carrock",
             "Spanish": "Conflicto en Carrock",
             "Portuguese": "Conflito no Carrock",
             "Italian": "Conflitto al Carrock",
@@ -1751,7 +1752,7 @@
         },
         "A Journey to Rhosgobel": {
             "English": "A Journey to Rhosgobel",
-            "French": "Un voyage à Rhosgobel",
+            "French": "Voyage à Rhosgobel",
             "Spanish": "Un viaje a Rhosgobel",
             "Portuguese": "Uma jornada para Rhosgobel",
             "Italian": "Un viaggio a Rhosgobel",
@@ -1760,7 +1761,7 @@
         },
         "The Hills of Emyn Muil": {
             "English": "The Hills of Emyn Muil",
-            "French": "Les collines d'Emyn Muil",
+            "French": "Les Collines d'Emyn Muil",
             "Spanish": "Las colinas de Emyn Muil",
             "Portuguese": "As Colinas de Emyn Muil",
             "Italian": "Le colline di Emyn Muil",
@@ -1769,7 +1770,7 @@
         },
         "The Dead Marshes": {
             "English": "The Dead Marshes",
-            "French": "Les marais morts",
+            "French": "Les Marais des Morts",
             "Spanish": "Los pantanos muertos",
             "Portuguese": "Os Pântanos Mortos",
             "Italian": "Le Paludi Morte",
@@ -1778,7 +1779,7 @@
         },
         "Return to Mirkwood": {
             "English": "Return to Mirkwood",
-            "French": "Retour à Mirkwood",
+            "French": "Retour à la Forêt Noire",
             "Spanish": "Regreso a Mirkwood",
             "Portuguese": "Retorno a Mirkwood",
             "Italian": "Ritorno a Mirkwood",
@@ -1787,7 +1788,7 @@
         },
         "Khazad-dûm & Dwarrowdelf": {
             "English": "Khazad-dûm & Dwarrowdelf",
-            "French": "Khazad-dûm & Dwarrowdelf",
+            "French": "Khazad-dûm & Royaume de Cavenain",
             "Spanish": "Khazad-dûm & Dwarrowdelf",
             "Portuguese": "Khazad-dûm & Dwarrowdelf",
             "Italian": "Khazad-dûm & Dwarrowdelf",
@@ -1796,7 +1797,7 @@
         },
         "Into the Pit": {
             "English": "Into the Pit",
-            "French": "Dans le Puits",
+            "French": "Dans le Gouffre Noir",
             "Spanish": "En el Pozo",
             "Portuguese": "No Poço",
             "Italian": "Nel Pozzo",
@@ -1814,7 +1815,7 @@
         },
         "Flight from Moria": {
             "English": "Flight from Moria",
-            "French": "Fuite de Moria",
+            "French": "Fuir la Moria",
             "Spanish": "Huida de Moria",
             "Portuguese": "Fuga de Moria",
             "Italian": "Fuga da Moria",
@@ -1823,7 +1824,7 @@
         },
         "The Redhorn Gate": {
             "English": "The Redhorn Gate",
-            "French": "La Porte du Cor Rouge",
+            "French": "La Porte du Rubicorne",
             "Spanish": "La Puerta del Cuerno Rojo",
             "Portuguese": "A Porta do Corno Vermelho",
             "Italian": "La Porta del Corno Rosso",
@@ -1832,7 +1833,7 @@
         },
         "Road to Rivendell": {
             "English": "Road to Rivendell",
-            "French": "Route vers Fondcombe",
+            "French": "La Route vers Fondcombe",
             "Spanish": "Camino a Rivendel",
             "Portuguese": "Caminho para Rivendell",
             "Italian": "La Strada per Rivendell",
@@ -1841,7 +1842,7 @@
         },
         "The Watcher in the Water": {
             "English": "The Watcher in the Water",
-            "French": "Le Guetteur dans l'Eau",
+            "French": "Le Guetteur de l'Eau",
             "Spanish": "El Vigilante en el Agua",
             "Portuguese": "O Vigia na Água",
             "Italian": "Il Guardiano nell'Acqua",
@@ -1850,7 +1851,7 @@
         },
         "The Long Dark": {
             "English": "The Long Dark",
-            "French": "La Longue Nuit",
+            "French": "La Longue Obscurité",
             "Spanish": "La Larga Oscuridad",
             "Portuguese": "A Longa Escuridão",
             "Italian": "La Lunga Oscurità",
@@ -1859,7 +1860,7 @@
         },
         "Foundations of Stone": {
             "English": "Foundations of Stone",
-            "French": "Les Fondations de Pierre",
+            "French": "Fondations de Pierre",
             "Spanish": "Las Fundaciones de Piedra",
             "Portuguese": "As Fundamentos de Pedra",
             "Italian": "Le Fondamenta di Pietra",
@@ -1868,7 +1869,7 @@
         },
         "Shadow and Flame": {
             "English": "Shadow and Flame",
-            "French": "Ombre et Flamme",
+            "French": "L'Ombre et la Flamme",
             "Spanish": "Sombra y Llama",
             "Portuguese": "Sombra e Chama",
             "Italian": "Ombra e Fiamma",
@@ -1877,7 +1878,7 @@
         },
         "Heirs of Númenor & Against the Shadow": {
             "English": "Heirs of Númenor & Against the Shadow",
-            "French": "Les Héritiers de Númenor & Contre l'Ombre",
+            "French": "Les Héritiers de Númenor & Face à l'Ombre",
             "Spanish": "Hijos de Númenor & Contra la Sombra",
             "Portuguese": "Heróis de Númenor & Contra a Sombra",
             "Italian": "Eredi di Númenor & Contro l'Ombra",
@@ -1886,7 +1887,7 @@
         },
         "Peril In Pelargir": {
             "English": "Peril In Pelargir",
-            "French": "Péril à Pelargir",
+            "French": "Bagarre à Pelargir",
             "Spanish": "Peligro en Pelargir",
             "Portuguese": "Perigo em Pelargir",
             "Italian": "Pericolo a Pelargir",
@@ -1895,7 +1896,7 @@
         },
         "Into Ithilien": {
             "English": "Into Ithilien",
-            "French": "Dans l'Ithilien",
+            "French": "En Ithilien",
             "Spanish": "En Ithilien",
             "Portuguese": "Em Ithilien",
             "Italian": "In Ithilien",
@@ -1913,7 +1914,7 @@
         },
         "The Steward's Fear": {
             "English": "The Steward's Fear",
-            "French": "La Peur du Régent",
+            "French": "Les Craintes de l'Intendant",
             "Spanish": "El Miedo del Regente",
             "Portuguese": "O Medo do Regente",
             "Italian": "La Paura del Sovrintendente",
@@ -1922,7 +1923,7 @@
         },
         "The Drúadan Forest": {
             "English": "The Drúadan Forest",
-            "French": "La Forêt Drúadain",
+            "French": "La Forêt de Drúadan",
             "Spanish": "El Bosque Drúadan",
             "Portuguese": "A Floresta Drúadan",
             "Italian": "La Foresta Drúadan",
@@ -1949,7 +1950,7 @@
         },
         "The Blood of Gondor": {
             "English": "The Blood of Gondor",
-            "French": "Le Sang de Gondor",
+            "French": "Le Sang du Gondor",
             "Spanish": "La Sangre de Gondor",
             "Portuguese": "O Sangue de Gondor",
             "Italian": "Il Sangue di Gondor",
@@ -1967,7 +1968,7 @@
         },
         "The Voice of Isengard & The Ringmaker": {
             "English": "The Voice of Isengard & The Ringmaker",
-            "French": "La Voix d'Isengard & Le Forgeron des Anneaux",
+            "French": "L'Appel de l'Isengard & Le Créateur d'Anneaux",
             "Spanish": "La Voz de Isengard & El Creador de Anillos",
             "Portuguese": "A Voz de Isengard & O Criador de Anéis",
             "Italian": "La Voce di Isengard & Il Fabbro degli Anelli",
@@ -1985,7 +1986,7 @@
         },
         "To Catch an Orc": {
             "English": "To Catch an Orc",
-            "French": "Attraper un Orque",
+            "French": "Chasse à l'Orque",
             "Spanish": "Atrapar un Orco",
             "Portuguese": "Capturar um Orque",
             "Italian": "Catturare un Orco",
@@ -1994,7 +1995,7 @@
         },
         "Into Fangorn": {
             "English": "Into Fangorn",
-            "French": "Dans Fangorn",
+            "French": "À Fangorn",
             "Spanish": "En Fangorn",
             "Portuguese": "Em Fangorn",
             "Italian": "Dentro Fangorn",
@@ -2003,7 +2004,7 @@
         },
         "The Dunland Trap": {
             "English": "The Dunland Trap",
-            "French": "Le Piège de Dunland",
+            "French": "Piègé au Pays de Dun",
             "Spanish": "La Trampa de Dunland",
             "Portuguese": "A Armadilha de Dunland",
             "Italian": "La Trappola di Dunland",
@@ -2021,7 +2022,7 @@
         },
         "Trouble in Tharbad": {
             "English": "Trouble in Tharbad",
-            "French": "Des Problèmes à Tharbad",
+            "French": "Panique à Tharbad",
             "Spanish": "Problemas en Tharbad",
             "Portuguese": "Problemas em Tharbad",
             "Italian": "Problemi a Tharbad",
@@ -2030,7 +2031,7 @@
         },
         "The Nin in Eilph": {
             "English": "The Nin in Eilph",
-            "French": "Le Nin à Eilph",
+            "French": "Les Nin-in-Eilph",
             "Spanish": "El Nin en Eilph",
             "Portuguese": "O Nin em Eilph",
             "Italian": "Il Nin in Eilph",
@@ -2048,7 +2049,7 @@
         },
         "The Antlered Crown": {
             "English": "The Antlered Crown",
-            "French": "La Couronne aux Cornes",
+            "French": "La Couronne d'Andouillers",
             "Spanish": "La Corona con Cuernos",
             "Portuguese": "A Coroa com Chifres",
             "Italian": "La Corona Cornuta",
@@ -2057,7 +2058,7 @@
         },
         "The Lost Realm & Angmar Awakened": {
             "English": "The Lost Realm & Angmar Awakened",
-            "French": "Le Royaume Perdu & Angmar Réveillé",
+            "French": "Le Royaume Perdu & Le Réveil d'Angmar",
             "Spanish": "El Reino Perdido & Angmar Despierto",
             "Portuguese": "O Reino Perdido & Angmar Desperto",
             "Italian": "Il Regno Perduto & Angmar Risvegliato",
@@ -2066,7 +2067,7 @@
         },
         "Intruders in Chetwood": {
             "English": "Intruders in Chetwood",
-            "French": "Intrus dans la Forêt de Chetwood",
+            "French": "Intrus au Bois de Chet",
             "Spanish": "Intrusos en Chetwood",
             "Portuguese": "Intrusos em Chetwood",
             "Italian": "Intrusi a Chetwood",
@@ -2075,7 +2076,7 @@
         },
         "The Weather Hills": {
             "English": "The Weather Hills",
-            "French": "Les Collines du Temps",
+            "French": "Les Collines Venteuses",
             "Spanish": "Las Colinas del Tiempo",
             "Portuguese": "As Colinas do Tempo",
             "Italian": "Le Colline del Tempo",
@@ -2084,7 +2085,7 @@
         },
         "Deadmen's Dike": {
             "English": "Deadmen's Dike",
-            "French": "Le Digue des Morts",
+            "French": "La Chaussée des Morts",
             "Spanish": "La Muralla de los Muertos",
             "Portuguese": "A Muralha dos Mortos",
             "Italian": "Il Muro dei Morti",
@@ -2093,7 +2094,7 @@
         },
         "The Wastes of Eriador": {
             "English": "The Wastes of Eriador",
-            "French": "Les Déserts d'Eriador",
+            "French": "Les Désolations d'Eriador",
             "Spanish": "Las Tierras Desoladas de Eriador",
             "Portuguese": "As Terras Desoladas de Eriador",
             "Italian": "Le Terre Desolate di Eriador",
@@ -2102,7 +2103,7 @@
         },
         "Escape from Mount Gram": {
             "English": "Escape from Mount Gram",
-            "French": "Évasion du Mont Gram",
+            "French": "Fuite du Mont Gram",
             "Spanish": "Escape del Monte Gram",
             "Portuguese": "Fuga do Monte Gram",
             "Italian": "Fuga dal Monte Gram",
@@ -2111,7 +2112,7 @@
         },
         "Across the Ettenmoors": {
             "English": "Across the Ettenmoors",
-            "French": "À travers les Ettenmoors",
+            "French": "La Traversée des Landes d'Etten",
             "Spanish": "A través de los Ettenmoors",
             "Portuguese": "Através dos Ettenmoors",
             "Italian": "Attraverso gli Ettenmoors",
@@ -2120,7 +2121,7 @@
         },
         "The Treachery of Rhudaur": {
             "English": "The Treachery of Rhudaur",
-            "French": "La Trahison de Rhudaur",
+            "French": "La Perfidie du Rhudaur",
             "Spanish": "La Traición de Rhudaur",
             "Portuguese": "A Traição de Rhudaur",
             "Italian": "Il Tradimento di Rhudaur",
@@ -2147,7 +2148,7 @@
         },
         "The Grey Havens & The Dreamchaser": {
             "English": "The Grey Havens & The Dreamchaser",
-            "French": "Les Havres Gris & Le Chasseur de Rêves",
+            "French": "Les Havres Gris & Le Chasse-Rêves",
             "Spanish": "Los Puertos Grises & El Cazador de Sueños",
             "Portuguese": "Os Portos Cinzentos & O Caçador de Sonhos",
             "Italian": "I Porti Grigi & Il Cacciatore di Sogni",
@@ -2156,7 +2157,7 @@
         },
         "Voyage Across Belegaer": {
             "English": "Voyage Across Belegaer",
-            "French": "Voyage à travers Belegaer",
+            "French": "Voyage sur la Belegaer",
             "Spanish": "Viaje a través de Belegaer",
             "Portuguese": "Viagem através de Belegaer",
             "Italian": "Viaggio attraverso Belegaer",
@@ -2183,7 +2184,7 @@
         },
         "Flight of the Stormcaller": {
             "English": "Flight of the Stormcaller",
-            "French": "Fuite du Maître des Tempêtes",
+            "French": "La Fuite de la Tourmente",
             "Spanish": "Huida del Llamador de Tormentas",
             "Portuguese": "Fuga do Chamador da Tormenta",
             "Italian": "Fuga del Chiamatore della Tempesta",
@@ -2192,7 +2193,7 @@
         },
         "The Thing in the Depths": {
             "English": "The Thing in the Depths",
-            "French": "La Chose dans les Profondeurs",
+            "French": "La Chose des Profondeurs",
             "Spanish": "La Cosa en las Profundidades",
             "Portuguese": "A Coisa nas Profundezas",
             "Italian": "La Cosa nelle Profondità",
@@ -2201,7 +2202,7 @@
         },
         "Temple of the Deceived": {
             "English": "Temple of the Deceived",
-            "French": "Temple des Trompés",
+            "French": "Temple des Dupes",
             "Spanish": "Templo de los Engañados",
             "Portuguese": "Templo dos Enganados",
             "Italian": "Tempio degli Ingannati",
@@ -2210,7 +2211,7 @@
         },
         "The Drowned Ruins": {
             "English": "The Drowned Ruins",
-            "French": "Les Ruines Englouties",
+            "French": "Les Ruines Immergées",
             "Spanish": "Las Ruinas Sumergidas",
             "Portuguese": "As Ruínas Submersas",
             "Italian": "Le Rovine Sommersa",
@@ -2219,7 +2220,7 @@
         },
         "A Storm on Cobas Haven": {
             "English": "A Storm on Cobas Haven",
-            "French": "Une Tempête sur Cobas Haven",
+            "French": "Une Tempête sur le Havre de Cobas",
             "Spanish": "Una Tormenta en Cobas Haven",
             "Portuguese": "Uma Tempestade em Cobas Haven",
             "Italian": "Una Tempesta su Cobas Haven",
@@ -2228,7 +2229,7 @@
         },
         "The City of Corsairs": {
             "English": "The City of Corsairs",
-            "French": "La Ville des Corsaires",
+            "French": "La Cité des Corsaires",
             "Spanish": "La Ciudad de los Corsarios",
             "Portuguese": "A Cidade dos Corsários",
             "Italian": "La Città dei Corsari",
@@ -2255,7 +2256,7 @@
         },
         "Desert Crossing": {
             "English": "Desert Crossing",
-            "French": "Traversée du Désert",
+            "French": "La Traversée du Désert",
             "Spanish": "Cruce del Desierto",
             "Portuguese": "Travessia do Deserto",
             "Italian": "Attraversamento del Deserto",
@@ -2264,7 +2265,7 @@
         },
         "The Long Arm of Mordor": {
             "English": "The Long Arm of Mordor",
-            "French": "Le Long Bras du Mordor",
+            "French": "Le Souffle du Mordor",
             "Spanish": "El Largo Brazo de Mordor",
             "Portuguese": "O Longo Braço de Mordor",
             "Italian": "Il Lungo Braccio di Mordor",
@@ -2282,7 +2283,7 @@
         },
         "Race Across Harad": {
             "English": "Race Across Harad",
-            "French": "Course à travers Harad",
+            "French": "Course en Harad",
             "Spanish": "Carrera a través de Harad",
             "Portuguese": "Corrida através de Harad",
             "Italian": "Corsa attraverso Harad",
@@ -2309,7 +2310,7 @@
         },
         "The Dungeons of Cirith Gurat": {
             "English": "The Dungeons of Cirith Gurat",
-            "French": "Les Donjons de Cirith Gurat",
+            "French": "Les Cachots de Cirith Gurat",
             "Spanish": "Las Mazmorras de Cirith Gurat",
             "Portuguese": "As Masmorras de Cirith Gurat",
             "Italian": "Le Prigioni di Cirith Gurat",
@@ -2318,7 +2319,7 @@
         },
         "The Crossings of Poros": {
             "English": "The Crossings of Poros",
-            "French": "Les Traversées de Poros",
+            "French": "Les Gués du Poros",
             "Spanish": "Los Cruces de Poros",
             "Portuguese": "As Travessias de Poros",
             "Italian": "I Passaggi di Poros",
@@ -2327,7 +2328,7 @@
         },
         "The Wilds of Rhovanion & Ered Mithrin": {
             "English": "The Wilds of Rhovanion & Ered Mithrin",
-            "French": "Les Terres Sauvages de Rhovanion & Ered Mithrin",
+            "French": "Les Terres Sauvages du Rhovanion & Ered Mithrin",
             "Spanish": "Las Tierras Salvajes de Rhovanion & Ered Mithrin",
             "Portuguese": "As Terras Selvagens de Rhovanion & Ered Mithrin",
             "Italian": "Le Terre Selvagge di Rhovanion & Ered Mithrin",
@@ -2336,7 +2337,7 @@
         },
         "Journey Up the Anduin": {
             "English": "Journey Up the Anduin",
-            "French": "Voyage sur l'Anduin",
+            "French": "La Remontée de l'Anduin",
             "Spanish": "Viaje por el Anduin",
             "Portuguese": "Jornada pelo Anduin",
             "Italian": "Viaggio lungo l'Anduin",
@@ -2345,7 +2346,7 @@
         },
         "Lost in Mirkwood": {
             "English": "Lost in Mirkwood",
-            "French": "Perdu dans Mirkwood",
+            "French": "Perdus dans la Forêt Noire",
             "Spanish": "Perdido en Mirkwood",
             "Portuguese": "Perdido em Mirkwood",
             "Italian": "Perso nella Mirkwood",
@@ -2363,7 +2364,7 @@
         },
         "The Withered Heath": {
             "English": "The Withered Heath",
-            "French": "La lande desséchée",
+            "French": "La Brande Desséchée",
             "Spanish": "La Ciénaga Marchita",
             "Portuguese": "A Charneca Murcha",
             "Italian": "La Brughiera Inaridita",
@@ -2372,7 +2373,7 @@
         },
         "Roam Across Rhovanion": {
             "English": "Roam Across Rhovanion",
-            "French": "Errer à travers Rhovanion",
+            "French": "Errance au Rhovanion",
             "Spanish": "Vagar por Rhovanion",
             "Portuguese": "Vaguear por Rhovanion",
             "Italian": "Vagare per Rhovanion",
@@ -2381,7 +2382,7 @@
         },
         "Fire in the Night": {
             "English": "Fire in the Night",
-            "French": "Feu dans la Nuit",
+            "French": "Des Flammes dans la Nuit",
             "Spanish": "Fuego en la Noche",
             "Portuguese": "Fogo na Noite",
             "Italian": "Fuoco nella Notte",
@@ -2408,7 +2409,7 @@
         },
         "The Fate of Wilderland": {
             "English": "The Fate of Wilderland",
-            "French": "Le Destin du Wilderland",
+            "French": "Le Destin du Terres Sauvages",
             "Spanish": "El Destino de Wilderland",
             "Portuguese": "O Destino de Wilderland",
             "Italian": "Il Destino di Wilderland",
@@ -2435,7 +2436,7 @@
         },
         "Danger in Dorwinian": {
             "English": "Danger in Dorwinian",
-            "French": "Danger à Dorwinian",
+            "French": "Danger au Dorwinion",
             "Spanish": "Peligro en Dorwinian",
             "Portuguese": "Perigo em Dorwinian",
             "Italian": "Pericolo a Dorwinian",
@@ -2444,7 +2445,7 @@
         },
         "Temple of Doom": {
             "English": "Temple of Doom",
-            "French": "Temple de la Mort",
+            "French": "Le Temple Maudit",
             "Spanish": "Templo de la Perdición",
             "Portuguese": "Templo do Destino",
             "Italian": "Tempio della Perdizione",
@@ -2453,7 +2454,7 @@
         },
         "Wrath and Ruin": {
             "English": "Wrath and Ruin",
-            "French": "Colère et Ruine",
+            "French": "Courroux Destructeur",
             "Spanish": "Ira y Ruina",
             "Portuguese": "Ira e Ruína",
             "Italian": "Collera e Rovina",
@@ -2462,7 +2463,7 @@
         },
         "The City of Ulfast": {
             "English": "The City of Ulfast",
-            "French": "La Ville d'Ulfast",
+            "French": "La Cité d'Ulfast",
             "Spanish": "La Ciudad de Ulfast",
             "Portuguese": "A Cidade de Ulfast",
             "Italian": "La Città di Ulfast",
@@ -2471,7 +2472,7 @@
         },
         "Challenge of the Wainriders": {
             "English": "Challenge of the Wainriders",
-            "French": "Défi des Conducteurs de Chars",
+            "French": "Le Défi des Gens-des-Chariots",
             "Spanish": "Desafío de los Wainriders",
             "Portuguese": "Desafio dos Wainriders",
             "Italian": "Sfida dei Wainriders",
@@ -2480,7 +2481,7 @@
         },
         "Under the Ash Mountains": {
             "English": "Under the Ash Mountains",
-            "French": "Sous les Montagnes de Cendres",
+            "French": "Sous les Monts de Cendres",
             "Spanish": "Bajo las Montañas de Ceniza",
             "Portuguese": "Sob as Montanhas de Cinzas",
             "Italian": "Sotto le Montagne di Cenere",
@@ -2489,7 +2490,7 @@
         },
         "The Land of Sorrow": {
             "English": "The Land of Sorrow",
-            "French": "La Terre de la Tristesse",
+            "French": "La Terre des Lamentations",
             "Spanish": "La Tierra de la Tristeza",
             "Portuguese": "A Terra da Tristeza",
             "Italian": "La Terra della Tristezza",
@@ -2516,7 +2517,7 @@
         },
         "We Must Away Ere Break of Day": {
             "English": "We Must Away Ere Break of Day",
-            "French": "Nous devons partir avant l'aube",
+            "French": "Il Nous Faut Aller Avant le Lever du Jour",
             "Spanish": "Debemos irnos antes del amanecer",
             "Portuguese": "Devemos partir antes do amanhecer",
             "Italian": "Dobbiamo partire prima dell'alba",
@@ -2525,7 +2526,7 @@
         },
         "Over the Misty Mountains Grim": {
             "English": "Over the Misty Mountains Grim",
-            "French": "Au-delà des Montagnes Brumeuses",
+            "French": "Au-delà des Montagnes Froides et Embrumées",
             "Spanish": "Sobre las Montañas Brumosas",
             "Portuguese": "Além das Montanhas Nebulosas",
             "Italian": "Oltre le Montagne Nebbiose",
@@ -2534,7 +2535,7 @@
         },
         "Dungeons Deep and Caverns Dim": {
             "English": "Dungeons Deep and Caverns Dim",
-            "French": "Donjons Profonds et Cavernes Obscures",
+            "French": "Des Cachots Profonds et des Cavernes Obscures",
             "Spanish": "Mazmorras Profundas y Cavernas Oscuras",
             "Portuguese": "Masmoiras Profundas e Cavernas Sombras",
             "Italian": "Prigioni Profonde e Caverne Oscure",
@@ -2552,7 +2553,7 @@
         },
         "The Lonely Mountain": {
             "English": "The Lonely Mountain",
-            "French": "La Montagne Solitaire",
+            "French": "Le Mont Solitaire",
             "Spanish": "La Montaña Solitaria",
             "Portuguese": "A Montanha Solitária",
             "Italian": "La Montagna Solitaria",
@@ -2570,7 +2571,7 @@
         },
         "The Lord of the Rings Standalone": {
             "English": "The Lord of the Rings Standalone",
-            "French": "Le Seigneur des Anneaux : Aventure Solo",
+            "French": "Le Seigneur des Anneaux : Scénarios Indépendants",
             "Spanish": "El Señor de los Anillos Aventura Independiente",
             "Portuguese": "O Senhor dos Anéis Aventura Solo",
             "Italian": "Il Signore degli Anelli Avventura Singola",
@@ -2588,7 +2589,7 @@
         },
         "The Passage of the Marshes": {
             "English": "The Passage of the Marshes",
-            "French": "Le Passage des Marais",
+            "French": "La Traversée des Marais",
             "Spanish": "El Paso de los Pantanos",
             "Portuguese": "A Passagem dos Pântanos",
             "Italian": "Il Passaggio delle Paludi",
@@ -2597,7 +2598,7 @@
         },
         "Journey to the Cross-roads": {
             "English": "Journey to the Cross-roads",
-            "French": "Voyage aux Carrefours",
+            "French": "Voyage à la Croisée des Chemins",
             "Spanish": "Viaje a los Cruce de Caminos",
             "Portuguese": "Jornada aos Cruzamentos",
             "Italian": "Viaggio ai Bivii",
@@ -2606,7 +2607,7 @@
         },
         "Shelob's Lair": {
             "English": "Shelob's Lair",
-            "French": "Le Repaire de Shelob",
+            "French": "L'Antre d'Arachne",
             "Spanish": "La Guarida de Shelob",
             "Portuguese": "A Caverna de Shelob",
             "Italian": "La Tana di Shelob",
@@ -2624,7 +2625,7 @@
         },
         "The Siege of Gondor": {
             "English": "The Siege of Gondor",
-            "French": "Le Siège de Gondor",
+            "French": "Le Siège du Gondor",
             "Spanish": "El Asedio de Gondor",
             "Portuguese": "O Cerco de Gondor",
             "Italian": "L'Assedio di Gondor",
@@ -2633,7 +2634,7 @@
         },
         "The Battle of the Pelennor Fields": {
             "English": "The Battle of the Pelennor Fields",
-            "French": "La Bataille des Champs de Pelennor",
+            "French": "La Bataille des Champs du Pelennor",
             "Spanish": "La Batalla de los Campos de Pelennor",
             "Portuguese": "A Batalha dos Campos de Pelennor",
             "Italian": "La Battaglia dei Campi di Pelennor",
@@ -2651,7 +2652,7 @@
         },
         "The Black Gate Opens": {
             "English": "The Black Gate Opens",
-            "French": "La Porte Noire S'ouvre",
+            "French": "La Porte Noire s'Ouvre",
             "Spanish": "La Puerta Negra se Abre",
             "Portuguese": "A Porta Negra se Abre",
             "Italian": "La Porta Nera si Apre",
@@ -2660,7 +2661,7 @@
         },
         "Mount Doom": {
             "English": "Mount Doom",
-            "French": "Mont Doom",
+            "French": "Montagne du Destin",
             "Spanish": "Monte del Destino",
             "Portuguese": "Monte da Perdição",
             "Italian": "Monte Fato",
@@ -2669,7 +2670,7 @@
         },
         "Two-Player Limited-Edition Starter": {
             "English": "Two-Player Limited-Edition Starter",
-            "French": "Starter Édition Limitée à Deux Joueurs",
+            "French": "Two-Player Limited-Edition Starter",
             "Spanish": "Juego Inicial Edición Limitada para Dos Jugadores",
             "Portuguese": "Início de Edição Limitada para Dois Jogadores",
             "Italian": "Starter Edizione Limitata per Due Giocatori",
@@ -2687,7 +2688,7 @@
         },
         "Attack on Dol Guldur": {
             "English": "Attack on Dol Guldur",
-            "French": "Attaque de Dol Guldur",
+            "French": "Attaque sur Dol Guldur",
             "Spanish": "Ataque a Dol Guldur",
             "Portuguese": "Ataque a Dol Guldur",
             "Italian": "Attacco a Dol Guldur",
@@ -2696,7 +2697,7 @@
         },
         "The Wizard's Quest": {
             "English": "The Wizard's Quest",
-            "French": "La Quête du Sorcier",
+            "French": "The Wizard's Quest",
             "Spanish": "La Misión del Mago",
             "Portuguese": "A Missão do Mago",
             "Italian": "La Quest del Mago",
@@ -2705,7 +2706,7 @@
         },
         "The Woodland Realm": {
             "English": "The Woodland Realm",
-            "French": "Le Royaume des Forêts",
+            "French": "Le Royaume Sylvestre",
             "Spanish": "El Reino del Bosque",
             "Portuguese": "O Reino da Floresta",
             "Italian": "Il Regno Forestale",
@@ -2714,7 +2715,7 @@
         },
         "The Mines of Moria": {
             "English": "The Mines of Moria",
-            "French": "Les Mines de Moria",
+            "French": "The Mines of Moria",
             "Spanish": "Las Minas de Moria",
             "Portuguese": "As Minas de Moria",
             "Italian": "Le Miniere di Moria",
@@ -2723,7 +2724,7 @@
         },
         "Escape from Khazad dûm": {
             "English": "Escape from Khazad dûm",
-            "French": "Évasion de Khazad-dûm",
+            "French": "Escape from Khazad dûm",
             "Spanish": "Escape de Khazad-dûm",
             "Portuguese": "Fuga de Khazad-dûm",
             "Italian": "Fuga da Khazad-dûm",
@@ -2732,7 +2733,7 @@
         },
         "The Hunt for the Dreadnaught": {
             "English": "The Hunt for the Dreadnaught",
-            "French": "La Chasse au Dreadnought",
+            "French": "The Hunt for the Dreadnaught",
             "Spanish": "La Caza del Dreadnought",
             "Portuguese": "A Caçada pelo Dreadnought",
             "Italian": "La Caccia al Dreadnought",
@@ -2759,7 +2760,7 @@
         },
         "ALeP - Children of Eorl & Oaths of the Rohirrim": {
             "English": "ALeP - Children of Eorl & Oaths of the Rohirrim",
-            "French": "ALeP - Les Enfants d'Eorl & Les Serments des Rohirrim",
+            "French": "ALeP - Les Enfants d'Eorl & Le Serment des Rohirrim",
             "Spanish": "ALeP - Los Hijos de Eorl & Los Juramentos de los Rohirrim",
             "Portuguese": "ALeP - Filhos de Eorl & Juramentos dos Rohirrim",
             "Italian": "ALeP - I Figli di Eorl & I Giuramenti dei Rohirrim",
@@ -2777,7 +2778,7 @@
         },
         "ALeP The Battle for the Beacon": {
             "English": "ALeP The Battle for the Beacon",
-            "French": "ALeP La Bataille pour le Phare",
+            "French": "ALeP La Bataille pour les Feux d'Alarme",
             "Spanish": "ALeP La Batalla por el Faro",
             "Portuguese": "ALeP A Batalha pelo Farol",
             "Italian": "ALeP La Battaglia per il Faro",
@@ -2786,7 +2787,7 @@
         },
         "ALeP The Horse Lord s Ire": {
             "English": "ALeP The Horse Lord's Ire",
-            "French": "ALeP La Colère du Seigneur des Chevaux",
+            "French": "ALeP La Colère des Seigneurs des Chevaux",
             "Spanish": "ALeP La Ira del Señor de los Caballos",
             "Portuguese": "ALeP A Ira do Senhor dos Cavalos",
             "Italian": "ALeP L'Ira del Signore dei Cavalli",
@@ -2795,7 +2796,7 @@
         },
         "ALeP The Aldburg Plot": {
             "English": "ALeP The Aldburg Plot",
-            "French": "ALeP Le Complot d'Aldburg",
+            "French": "ALeP Complot à Aldburg",
             "Spanish": "ALeP El Complot de Aldburg",
             "Portuguese": "ALeP O Plano de Aldburg",
             "Italian": "ALeP Il Complotto di Aldburg",
@@ -2804,7 +2805,7 @@
         },
         "ALeP The Gap of Rohan Playtest": {
             "English": "ALeP The Gap of Rohan Playtest",
-            "French": "ALeP Le Gouffre de Rohan - Test de Jeu",
+            "French": "ALeP La Trouée du Rohan - Playtest",
             "Spanish": "ALeP El Desfiladero de Rohan - Prueba de Juego",
             "Portuguese": "ALeP O Abismo de Rohan - Teste de Jogo",
             "Italian": "ALeP La Fenditura di Rohan - Playtest",
@@ -2813,7 +2814,7 @@
         },
         "ALeP The Glittering Caves Playtest": {
             "English": "ALeP The Glittering Caves Playtest",
-            "French": "ALeP Les Cavernes Scintillantes - Test de Jeu",
+            "French": "ALeP Les Grottes Scintillantes - Playtest",
             "Spanish": "ALeP Las Cavernas Brillantes - Prueba de Juego",
             "Portuguese": "ALeP As Cavernas Cintilantes - Teste de Jogo",
             "Italian": "ALeP Le Grotte Scintillanti - Playtest",
@@ -2822,7 +2823,7 @@
         },
         "ALeP Mustering of the Rohirrim Playtest": {
             "English": "ALeP Mustering of the Rohirrim Playtest",
-            "French": "ALeP Le Rassemblement des Rohirrim - Test de Jeu",
+            "French": "ALeP Le Rassemblement des Rohirrim - Playtest",
             "Spanish": "ALeP El Reclutamiento de los Rohirrim - Prueba de Juego",
             "Portuguese": "ALeP O Recrutamento dos Rohirrim - Teste de Jogo",
             "Italian": "ALeP L'Arruolamento dei Rohirrim - Playtest",
@@ -2831,7 +2832,7 @@
         },
         "ALeP Blood in the Isen Playtest": {
             "English": "ALeP Blood in the Isen Playtest",
-            "French": "ALeP Le Sang dans l'Isen - Test de Jeu",
+            "French": "ALeP Sang sur l'Isen - Playtest",
             "Spanish": "ALeP Sangre en el Isen - Prueba de Juego",
             "Portuguese": "ALeP Sangue no Isen - Teste de Jogo",
             "Italian": "ALeP Sangue nell'Isen - Playtest",
@@ -2840,7 +2841,7 @@
         },
         "ALeP - Playtest": {
             "English": "ALeP - Playtest",
-            "French": "ALeP - Test de Jeu",
+            "French": "ALeP - Playtest",
             "Spanish": "ALeP - Prueba de Juego",
             "Portuguese": "ALeP - Teste de Jogo",
             "Italian": "ALeP - Playtest",
@@ -2921,7 +2922,7 @@
         },
         "sharedStagingArea": {
             "English": "Staging Area",
-            "French": "Zone de Mise en Scène",
+            "French": "Zone de Cheminement",
             "Spanish": "Área de Preparación",
             "Portuguese": "Área de Preparação",
             "Italian": "Area di Preparazione",
@@ -3038,7 +3039,7 @@
         },
         "add to VD": {
             "English": "add to VD",
-            "French": "ajouter à la VD",
+            "French": "ajouter à la pile de victoire",
             "Spanish": "agregar a la VD",
             "Portuguese": "adicionar à VD",
             "Italian": "aggiungi a VD",
@@ -3047,7 +3048,7 @@
         },
         "progress": {
             "English": "progress",
-            "French": "progrès",
+            "French": "progression",
             "Spanish": "progreso",
             "Portuguese": "progresso",
             "Italian": "progresso",
@@ -3056,7 +3057,7 @@
         },
         "exhaust": {
             "English": "exhaust",
-            "French": "épuiser",
+            "French": "incliner",
             "Spanish": "agotar",
             "Portuguese": "exaurir",
             "Italian": "esaurire",
@@ -3065,7 +3066,7 @@
         },
         "ready": {
             "English": "ready",
-            "French": "prêt",
+            "French": "redresser",
             "Spanish": "preparado",
             "Portuguese": "pronto",
             "Italian": "pronto",
@@ -3074,7 +3075,7 @@
         },
         "A Shadow of the Past": {
             "English": "A Shadow of the Past",
-            "French": "Une Ombre du Passé",
+            "French": "L'Ombre du Passé",
             "Spanish": "Una Sombra del Pasado",
             "Portuguese": "Uma Sombra do Passado",
             "Italian": "Un'Ombra del Passato",
@@ -3083,7 +3084,7 @@
         },
         "A Knife in the Dark": {
             "English": "A Knife in the Dark",
-            "French": "Un Couteau dans l'Obscurité",
+            "French": "Un Poignard dans le Noir",
             "Spanish": "Un Cuchillo en la Oscuridad",
             "Portuguese": "Uma Faca na Escuridão",
             "Italian": "Un Coltello nel Buio",
@@ -3101,7 +3102,7 @@
         },
         "The Ring Goes South": {
             "English": "The Ring Goes South",
-            "French": "L'Anneau Va au Sud",
+            "French": "L'Anneau Prend le Chemin du Sud",
             "Spanish": "El Anillo Va al Sur",
             "Portuguese": "O Anel Vai para o Sul",
             "Italian": "L'Anello Va a Sud",
@@ -3110,7 +3111,7 @@
         },
         "Journey in the Dark": {
             "English": "Journey in the Dark",
-            "French": "Voyage dans l'Obscurité",
+            "French": "Un Voyage dans l'Obscurité",
             "Spanish": "Viaje en la Oscuridad",
             "Portuguese": "Viagem na Escuridão",
             "Italian": "Viaggio nel Buio",
@@ -3119,7 +3120,7 @@
         },
         "Breaking of the Fellowship": {
             "English": "Breaking of the Fellowship",
-            "French": "La Rupture de la Communauté",
+            "French": "La Dissolution de la Communauté",
             "Spanish": "La Ruptura de la Comunidad",
             "Portuguese": "A Quebra da Comunidade",
             "Italian": "La Rottura della Compagnia",
@@ -3128,7 +3129,7 @@
         },
         "The Uruk hai": {
             "English": "The Uruk hai",
-            "French": "Les Uruk-hai",
+            "French": "Les Uruk-Hai",
             "Spanish": "Los Uruk-hai",
             "Portuguese": "Os Uruk-hai",
             "Italian": "Gli Uruk-hai",
@@ -3137,7 +3138,7 @@
         },
         "Helm's Deep": {
             "English": "Helm's Deep",
-            "French": "Les Profondeurs de Helm",
+            "French": "Le Gouffre de Helm",
             "Spanish": "Foso de Helm",
             "Portuguese": "Fosso de Helm",
             "Italian": "Fosso di Helm",
@@ -3146,7 +3147,7 @@
         },
         "The Road to Isengard": {
             "English": "The Road to Isengard",
-            "French": "La Route vers Isengard",
+            "French": "La Route de l'Isengard",
             "Spanish": "El Camino a Isengard",
             "Portuguese": "A Estrada para Isengard",
             "Italian": "La Strada per Isengard",
@@ -3155,7 +3156,7 @@
         },
         "The Massing at Osgiliath": {
             "English": "The Massing at Osgiliath",
-            "French": "L'Armée à Osgiliath",
+            "French": "Rassemblement à Osgiliath",
             "Spanish": "El Asalto a Osgiliath",
             "Portuguese": "O Massacre em Osgiliath",
             "Italian": "L'Assalto a Osgiliath",
@@ -3164,7 +3165,7 @@
         },
         "The Battle of Lake Town": {
             "English": "The Battle of Lake Town",
-            "French": "La Bataille de Lac-Town",
+            "French": "La Bataille de la Ville du Lac",
             "Spanish": "La Batalla de Lago Town",
             "Portuguese": "A Batalha da Cidade do Lago",
             "Italian": "La Battaglia della Città del Lago",
@@ -3191,7 +3192,7 @@
         },
         "Fog on the Barrow downs": {
             "English": "Fog on the Barrow downs",
-            "French": "Brouillard sur les Tombes",
+            "French": "Brouillard sur les Hauts des Galgals",
             "Spanish": "Niebla sobre las Colinas de los Túmulos",
             "Portuguese": "Nevoeiro sobre os Montes dos Túmulos",
             "Italian": "Nebbia sulle Colline delle Tombe",
@@ -3200,7 +3201,7 @@
         },
         "The Ruins of Belegost": {
             "English": "The Ruins of Belegost",
-            "French": "Les Ruines de Belegost",
+            "French": "The Ruins of Belegost",
             "Spanish": "Las Ruinas de Belegost",
             "Portuguese": "As Ruínas de Belegost",
             "Italian": "Le Rovine di Belegost",
@@ -3209,7 +3210,7 @@
         },
         "Murder at the Prancing Pony": {
             "English": "Murder at the Prancing Pony",
-            "French": "Meurtre à la Taverne du Poney Fringant",
+            "French": "Meurtre au Poney Fringant",
             "Spanish": "Asesinato en la Poni Saltarina",
             "Portuguese": "Assassinato no Pônei Saltitante",
             "Italian": "Omicidio alla Locanda del Poney Saltante",
@@ -3254,7 +3255,7 @@
         },
         "Angmar Awakened": {
             "English": "Angmar Awakened",
-            "French": "Angmar Réveillé",
+            "French": "Le Réveil d'Angmar",
             "Spanish": "Angmar Despierto",
             "Portuguese": "Angmar Desperto",
             "Italian": "Angmar Risvegliato",
@@ -3335,7 +3336,7 @@
         },
         "sharedEncounterDiscard": {
             "English": "Encounter Discard",
-            "French": "Défausse des Rencontres",
+            "French": "Défausse Rencontres",
             "Spanish": "Descartar Encuentro",
             "Portuguese": "Descartar Encontro",
             "Italian": "Scarti Incontro",
@@ -3344,7 +3345,7 @@
         },
         "sharedEncounterDiscard2": {
             "English": "Encounter Discard 2",
-            "French": "Défausse des Rencontres 2",
+            "French": "Défausse Rencontres 2",
             "Spanish": "Descartar Encuentro 2",
             "Portuguese": "Descartar Encontro 2",
             "Italian": "Scarti Incontro 2",
@@ -3353,7 +3354,7 @@
         },
         "sharedEncounterDiscard3": {
             "English": "Encounter Discard 3",
-            "French": "Défausse des Rencontres 3",
+            "French": "Défausse Rencontres 3",
             "Spanish": "Descartar Encuentro 3",
             "Portuguese": "Descartar Encontro 3",
             "Italian": "Scarti Incontro 3",
@@ -3506,7 +3507,7 @@
         },
         "sideboard": {
             "English": "Sideboard",
-            "French": "Table de Jeu",
+            "French": "Sideboard",
             "Spanish": "Reserva",
             "Portuguese": "Banco de Reservas",
             "Italian": "Sideboard",
@@ -3839,7 +3840,7 @@
         },
         "exhaustReady": {
             "English": "Exhaust/Ready",
-            "French": "Épuiser/Préparer",
+            "French": "Incliner/Redresser",
             "Spanish": "Agotar/Preparar",
             "Portuguese": "Exaurir/Preparar",
             "Italian": "Esaurire/Rendere Pronto",
@@ -3857,7 +3858,7 @@
         },
         "topBarStagingProgress": {
             "English": "Progress",
-            "French": "Progrès",
+            "French": "Progression",
             "Spanish": "Progreso",
             "Portuguese": "Progresso",
             "Italian": "Progresso",
@@ -3866,7 +3867,7 @@
         },
         "coreLeadership": {
             "English": "30 Card Original Core Set Deck - Leadership",
-            "French": "Deck de 30 Cartes du Set de Base - Leadership",
+            "French": "Deck de 30 Cartes du Jeu de Base - Commandement",
             "Spanish": "Mazo de 30 Cartas del Set Básico - Liderazgo",
             "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Liderança",
             "Italian": "Mazzo da 30 Carte del Set Base - Leadership",
@@ -3875,7 +3876,7 @@
         },
         "coreLore": {
             "English": "30 Card Original Core Set Deck - Lore",
-            "French": "Deck de 30 Cartes du Set de Base - Connaissance",
+            "French": "Deck de 30 Cartes du Jeu de Base - Connaissance",
             "Spanish": "Mazo de 30 Cartas del Set Básico - Sabiduría",
             "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Sabedoria",
             "Italian": "Mazzo da 30 Carte del Set Base - Lore",
@@ -3884,7 +3885,7 @@
         },
         "coreSpirit": {
             "English": "30 Card Original Core Set Deck - Spirit",
-            "French": "Deck de 30 Cartes du Set de Base - Esprit",
+            "French": "Deck de 30 Cartes du Jeu de Base - Energie",
             "Spanish": "Mazo de 30 Cartas del Set Básico - Espíritu",
             "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Espírito",
             "Italian": "Mazzo da 30 Carte del Set Base - Spirito",
@@ -3893,7 +3894,7 @@
         },
         "coreTactics": {
             "English": "30 Card Original Core Set Deck - Tactics",
-            "French": "Deck de 30 Cartes du Set de Base - Tactique",
+            "French": "Deck de 30 Cartes du Jeu de Base - Tactique",
             "Spanish": "Mazo de 30 Cartas del Set Básico - Tácticas",
             "Portuguese": "Baralho de 30 Cartas do Conjunto Base - Táticas",
             "Italian": "Mazzo da 30 Carte del Set Base - Tattiche",
@@ -3902,7 +3903,7 @@
         },
         "starterElves": {
             "English": "Starter Deck - Elves of Lórien",
-            "French": "Deck de Démarrage - Elfes de Lórien",
+            "French": "Deck de Démarrage - Les Elfes de la Lórien",
             "Spanish": "Mazo Inicial - Elfos de Lórien",
             "Portuguese": "Baralho Inicial - Elfos de Lórien",
             "Italian": "Mazzo Iniziale - Elfi di Lórien",
@@ -3911,7 +3912,7 @@
         },
         "starterGondor": {
             "English": "Starter Deck - Defenders of Gondor",
-            "French": "Deck de Démarrage - Défenseurs de Gondor",
+            "French": "Deck de Démarrage - Les Défenseurs du Gondor",
             "Spanish": "Mazo Inicial - Defensores de Gondor",
             "Portuguese": "Baralho Inicial - Defensores de Gondor",
             "Italian": "Mazzo Iniziale - Difensori di Gondor",
@@ -3920,7 +3921,7 @@
         },
         "starterDwarves": {
             "English": "Starter Deck - Dwarves of Durin",
-            "French": "Deck de Démarrage - Nains de Durin",
+            "French": "Deck de Démarrage - Les Nains de Durin",
             "Spanish": "Mazo Inicial - Enanos de Durin",
             "Portuguese": "Baralho Inicial - Anões de Durin",
             "Italian": "Mazzo Iniziale - Nani di Durin",
@@ -3929,7 +3930,7 @@
         },
         "starterRohan": {
             "English": "Starter Deck - Riders of Rohan",
-            "French": "Deck de Démarrage - Cavaliers de Rohan",
+            "French": "Deck de Démarrage - Les Cavaliers du Rohan",
             "Spanish": "Mazo Inicial - Jinetes de Rohan",
             "Portuguese": "Baralho Inicial - Cavaleiros de Rohan",
             "Italian": "Mazzo Iniziale - Cavalieri di Rohan",
@@ -3938,7 +3939,7 @@
         },
         "questingToken": {
             "English": "Questing Token",
-            "French": "Jeton de Quête",
+            "French": "Marqueur de Quête",
             "Spanish": "Fichas de Misión",
             "Portuguese": "Ficha de Missão",
             "Italian": "Segnalino della Quest",
@@ -3947,7 +3948,7 @@
         },
         "preventRefresh": {
             "English": "Prevent Refresh",
-            "French": "Empêcher le Rafraîchissement",
+            "French": "Empêcher la Restauration",
             "Spanish": "Prevenir la Recuperación",
             "Portuguese": "Prevenir a Recuperação",
             "Italian": "Prevenire il Ristabilimento",
@@ -3965,7 +3966,7 @@
         },
         "discardUntilLocation": {
             "English": "Discard Until Location",
-            "French": "Défausse jusqu'à la Zone",
+            "French": "Défausser jusqu'à Lieu",
             "Spanish": "Descartar hasta la Ubicación",
             "Portuguese": "Descartar até a Localização",
             "Italian": "Scarta fino alla Posizione",
@@ -3974,7 +3975,7 @@
         },
         "discardUntilEnemy": {
             "English": "Discard Until Enemy",
-            "French": "Défausse jusqu'à l'Ennemi",
+            "French": "Défausser jusqu'à Ennemi",
             "Spanish": "Descartar hasta el Enemigo",
             "Portuguese": "Descartar até o Inimigo",
             "Italian": "Scarta fino al Nemico",
@@ -4037,7 +4038,7 @@
         },
         "refreshed": {
             "English": "Refreshed",
-            "French": "Rafraîchi",
+            "French": "Restauré",
             "Spanish": "Recargado",
             "Portuguese": "Atualizado",
             "Italian": "Ristabilito",
@@ -4046,7 +4047,7 @@
         },
         "cardsDrawn": {
             "English": "Cards Drawn",
-            "French": "Cartes Tirées",
+            "French": "Cartes Piochées",
             "Spanish": "Cartas Robadas",
             "Portuguese": "Cartas Compradas",
             "Italian": "Carte Pesate",
@@ -4082,7 +4083,7 @@
         },
         "questingStat": {
             "English": "Questing Stat",
-            "French": "Statistique de Quête",
+            "French": "Total de Quête",
             "Spanish": "Estadística de Misión",
             "Portuguese": "Atributo de Missão",
             "Italian": "Statistica della Quest",
@@ -4091,7 +4092,7 @@
         },
         "questProgress": {
             "English": "Quest Progress",
-            "French": "Progrès de la Quête",
+            "French": "Progression dans la Quête",
             "Spanish": "Progreso de la Misión",
             "Portuguese": "Progresso da Missão",
             "Italian": "Progresso della Quest",
