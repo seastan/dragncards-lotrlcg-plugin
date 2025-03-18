@@ -22,6 +22,20 @@
                 "_comment": "Celeborn",
                 "inheritFrom": "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b"
             },
+            "1027fea5-a03b-4fce-beab-453ef75a2f74": {
+                "_comment": "Galion",
+                "rules": {
+                    "galionEnterPlayTokens": {
+                        "_comment": "Add one willpower to Galion when he enters play.",
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["LOG", "└── ", "Added 1 willpower until the end of the round."],
+                            ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "willpower", 1]
+                        ]
+                    }
+                }
+            },
             "bbab76d6-7554-40da-af74-fb502d08d9a8": {
                 "_comment": "Tom Cotton",
                 "rules": {
@@ -33,6 +47,21 @@
                         "then": [
                             ["LOG", "└── ", "Tom Cotton added 2 attack to ", "$TARGET.currentFace.name", " until the end of the round."],
                             ["ADD_TEMP_TOKEN", "round", "$TARGET_ID", "attack", 2]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9006": {
+                "_comment": "Thalin",
+                "rules": {
+                    "celebornEnterPlayTokens": {
+                        "_comment": "If Thalin is committed to the quest, add 1 damage to enemies that enter play into the staging area.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", "$THIS.committed", ["PREV", ["NOT", "$TARGET.inPlay"]], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"], ["IS_ENEMY", "$TARGET"], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]],
+                        "then": [
+                            ["LOG", "└── ", "Thalin dealt 1 damage to ", "$TARGET.currentFace.name", "."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/damage", 1]
                         ]
                     }
                 }
@@ -123,6 +152,40 @@
                             ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 2]],
                             ["LOG", "└── ", "Fatty Bolger reduced starting threat by 2 to {{$NEW_THREAT}}."],
                             ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 2]
+                        ]
+                    }
+                }
+            },
+            "740a59a4-4b03-4871-b526-308be1c5c4df": {
+                "_comment": "Beyond the Original Bargain (ALeP)",
+                "rules": {
+                    "fattySetup": {
+                        "_comment": "Increase starting threat by 4.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 4]],
+                            ["LOG", "└── ", "Beyond the Original Bargain increased starting threat by 4 to {{$NEW_THREAT}}."],
+                            ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 4]
+                        ]
+                    }
+                }
+            },
+            "41241a8f-0de5-43ba-9c73-1ccc42139d33": {
+                "_comment": "At the End of All Things (ALeP)",
+                "rules": {
+                    "fattySetup": {
+                        "_comment": "Increase starting threat by 8.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 48]],
+                            ["LOG", "└── ", "Att the End of All Things increased starting threat by 8 to {{$NEW_THREAT}}."],
+                            ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 8]
                         ]
                     }
                 }
@@ -721,6 +784,16 @@
                                 ["DECREASE_VAL", "/playerData/$PLAYER_N/threat", 6]
                             ]
                         ],
+                        ["DISCARD_CARD", "$THIS"]
+                    ]
+                }
+            },
+            "35acc13d-fc10-458f-bacb-99f4979956ce": {
+                "_comment": "The Shirefolk",
+                "ability": {
+                    "A": [
+                        ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " reduced their threat by 4."],
+                        ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 4],
                         ["DISCARD_CARD", "$THIS"]
                     ]
                 }
@@ -1437,8 +1510,8 @@
                             ["NOT", "$THIS.exhausted"]
                         ],
                         [
-                            ["LOG", "└── ", "Added 2 resources to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
+                            ["LOG", "└── ", "Added 2 resources to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 2]
                         ],
                         ["TRUE"],
@@ -1453,12 +1526,10 @@
                             "promptPlayerI": "$THIS.controller",
                             "promptMessage": "Trigger Steward of Gondor's ability?"
                         },
-                        "listenTo": ["/stepId"],
-                        "priority": 15,
-                        "condition": ["AND", 
-                            ["EQUAL", "$GAME.stepId", "2.P"], 
-                            ["EQUAL", "$THIS.currentSide", "A"],
-                            ["EQUAL", "$THIS.inPlay", true]
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/exhausted"],
+                        "condition": ["AND",
+                            "$THIS.inPlay",
+                            ["NOT", "$THIS.exhausted"]
                         ],
                         "then": [
                             ["ABILITY", "$THIS_ID", "A"]
@@ -1623,6 +1694,10 @@
             },
             "a55bc730-259b-4d52-8c98-648d43840738": {
                 "_comment": "Armored Destrier",
+                "inheritFrom": "exhaustToReadyAttachedCharacter"
+            },
+            "eb4cf721-0aec-4120-989d-ebfd4cbbf370": {
+                "_comment": "The Elvenking",
                 "inheritFrom": "exhaustToReadyAttachedCharacter"
             },
             "db733a56-9d85-4a9b-bdbf-e1aa5770a125": {
