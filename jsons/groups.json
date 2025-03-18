@@ -46,7 +46,8 @@
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck",
-                "discardGroupId": "sharedQuestDiscard"
+                "discardGroupId": "sharedQuestDiscard",
+                "currentSide": "A"
             }
         },
         "sharedQuestDiscard": {
@@ -67,7 +68,8 @@
             "onCardEnter": {
                 "controller": "shared",
                 "deckGroupId": "sharedQuestDeck2",
-                "discardGroupId": "sharedQuestDiscard2"
+                "discardGroupId": "sharedQuestDiscard2",
+                "currentSide": "A"
             }
         },
         "sharedQuestDiscard2": {
