@@ -1154,7 +1154,8 @@
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
                             ["EQUAL", "$THIS.inPlay", true],
-                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["IS_CHARACTER", "$GAME.cardById.{{$THIS.parentCardId}}"]
                         ],
                         "then": [
                             ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Stone of Elostirion."],
@@ -1328,7 +1329,8 @@
                             ["EQUAL", "$GAME.stepId", "1.R"], 
                             ["EQUAL", "$THIS.currentSide", "A"],
                             ["EQUAL", "$THIS.inPlay", true],
-                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["IS_CHARACTER", "$GAME.cardById.{{$THIS.parentCardId}}"]
                         ],
                         "then": [
                             ["LOG", "├── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains 1 additional resource from {{$THIS.currentFace.name}}."],

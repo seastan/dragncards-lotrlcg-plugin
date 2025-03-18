@@ -2615,6 +2615,10 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
                      ]
                   ],
                   "listenTo": [
@@ -3794,6 +3798,10 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
                      ]
                   ],
                   "listenTo": [
@@ -7821,6 +7829,10 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
                      ]
                   ],
                   "listenTo": [
@@ -9676,6 +9688,10 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
                      ]
                   ],
                   "listenTo": [
@@ -10161,6 +10177,10 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
                      ]
                   ],
                   "listenTo": [
@@ -10870,6 +10890,10 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
                      ]
                   ],
                   "listenTo": [
