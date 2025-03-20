@@ -1966,8 +1966,8 @@
             "German": "Das Morgul-Tal",
             "Chinese": "魔窟谷"
         },
-        "The Voice of Isengard & The Ringmaker": {
-            "English": "The Voice of Isengard & The Ringmaker",
+        "The Voice of Isengard & The Ring-maker": {
+            "English": "The Voice of Isengard & The Ring-maker",
             "French": "L'Appel de l'Isengard & Le Créateur d'Anneaux",
             "Spanish": "La Voz de Isengard & El Creador de Anillos",
             "Portuguese": "A Voz de Isengard & O Criador de Anéis",
@@ -2146,8 +2146,8 @@
             "German": "Das Schreckensreich",
             "Chinese": "亡者国度"
         },
-        "The Grey Havens & The Dreamchaser": {
-            "English": "The Grey Havens & The Dreamchaser",
+        "The Grey Havens & Dream-chaser": {
+            "English": "The Grey Havens & Dream-chaser",
             "French": "Les Havres Gris & Le Chasse-Rêves",
             "Spanish": "Los Puertos Grises & El Cazador de Sueños",
             "Portuguese": "Os Portos Cinzentos & O Caçador de Sonhos",
@@ -2272,8 +2272,8 @@
             "German": "Der Lange Arm von Mordor",
             "Chinese": "魔多的长爪"
         },
-        "The Mumakil": {
-            "English": "The Mumakil",
+        "The Mûmakil": {
+            "English": "The Mûmakil",
             "French": "Les Mumakils",
             "Spanish": "Los Mumakil",
             "Portuguese": "Os Mumakil",
@@ -2416,8 +2416,8 @@
             "German": "Das Schicksal von Wilderland",
             "Chinese": "荒原的命运"
         },
-        "A Shadow in the East & Vengeance of Mordor": {
-            "English": "A Shadow in the East & Vengeance of Mordor",
+        "A Shadow in the East & The Vengeance of Mordor": {
+            "English": "A Shadow in the East & The Vengeance of Mordor",
             "French": "Une Ombre à l'Est & La Vengeance du Mordor",
             "Spanish": "Una Sombra en el Este & Venganza de Mordor",
             "Portuguese": "Uma Sombra no Leste & A Vingança de Mordor",
@@ -2668,14 +2668,20 @@
             "German": "Berg Schicksal",
             "Chinese": "末日山"
         },
-        "Two-Player Limited-Edition Starter": {
-            "English": "Two-Player Limited-Edition Starter",
-            "French": "Two-Player Limited-Edition Starter",
+        "Two-Player Limited Edition Starter": {
+            "English": "Two-Player Limited Edition Starter",
+            "French": "Two-Player Limited Edition Starter",
             "Spanish": "Juego Inicial Edición Limitada para Dos Jugadores",
             "Portuguese": "Início de Edição Limitada para Dois Jogadores",
             "Italian": "Starter Edizione Limitata per Due Giocatori",
             "German": "Zwei-Spieler Limitierte Edition Starter",
             "Chinese": "双人限量版入门套装（黑森林之黯）"
+        },
+        "The Oath": {
+            "English": "The Oath"
+        },
+        "The Caves of Nibin-Dûm": {
+            "English": "The Caves of Nibin-Dûm"
         },
         "Print on Demand": {
             "English": "Print on Demand",
@@ -2722,9 +2728,9 @@
             "German": "Die Minen von Moria",
             "Chinese": "摩瑞亚矿坑"
         },
-        "Escape from Khazad dûm": {
-            "English": "Escape from Khazad dûm",
-            "French": "Escape from Khazad dûm",
+        "Escape from Khazad-dûm": {
+            "English": "Escape from Khazad-dûm",
+            "French": "Escape from Khazad-dûm",
             "Spanish": "Escape de Khazad-dûm",
             "Portuguese": "Fuga de Khazad-dûm",
             "Italian": "Fuga da Khazad-dûm",
@@ -3217,8 +3223,8 @@
             "German": "Mord im Trampelponny",
             "Chinese": "跃马旅店的谋杀"
         },
-        "Standard The Siege of Annuminas": {
-            "English": "Standard The Siege of Annuminas",
+        "Standard The Siege of Annúminas": {
+            "English": "Standard The Siege of Annúminas",
             "French": "Standard Le Siège d'Annuminas",
             "Spanish": "Estándar El Asedio de Annuminas",
             "Portuguese": "Padrão O Cerco de Annuminas",
@@ -3226,8 +3232,8 @@
             "German": "Standard Die Belagerung von Annuminas",
             "Chinese": "围攻阿努米纳斯普通模式"
         },
-        "Epic The Siege of Annuminas": {
-            "English": "Epic The Siege of Annuminas",
+        "Epic The Siege of Annúminas": {
+            "English": "Epic The Siege of Annúminas",
             "French": "Épique Le Siège d'Annuminas",
             "Spanish": "Épico El Asedio de Annuminas",
             "Portuguese": "Épico O Cerco de Annuminas",
@@ -3244,8 +3250,8 @@
             "German": "Der Herr der Ringe",
             "Chinese": "魔戒同盟"
         },
-        "The Core Set": {
-            "English": "The Core Set",
+        "Core Set": {
+            "English": "Core Set",
             "French": "Le Jeu de Base",
             "Spanish": "El Juego Base",
             "Portuguese": "O Conjunto Base",

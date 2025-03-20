@@ -245,7 +245,7 @@
                 ]
             },
             {
-                "label": "id:The Voice of Isengard & The Ringmaker",
+                "label": "id:The Voice of Isengard & The Ring-maker",
                 "subMenus": [
                 {
                     "label": "id:Fords of Isen",
@@ -399,7 +399,7 @@
                 ]
             },
             {
-                "label": "id:The Grey Havens & The Dreamchaser",
+                "label": "id:The Grey Havens & Dream-chaser",
                 "subMenus": [
                 {
                     "label": "id:Voyage Across Belegaer",
@@ -500,7 +500,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Mumakil",
+                    "label": "id:The Mûmakil",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E07.4"},
                         {"label": "id:normal", "deckListId": "Q07.4"}
@@ -612,7 +612,7 @@
                 ]
             },
             {
-                "label": "id:A Shadow in the East & Vengeance of Mordor",
+                "label": "id:A Shadow in the East & The Vengeance of Mordor",
                 "subMenus": [
                 {
                     "label": "id:The River Running",
@@ -1019,8 +1019,21 @@
                 ]
             },
             {
-                "label": "id:Two-Player Limited-Edition Starter",
-                "subMenus": []
+                "label": "id:Two-Player Limited Edition Starter",
+                "subMenus": [
+                {
+                    "label": "id:The Oath",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q00.01"}
+                    ]
+                },
+                {
+                    "label": "id:The Caves of Nibin-Dûm",
+                    "deckLists": [
+                        {"label": "id:normal", "deckListId": "Q00.02"}
+                    ]
+                }
+                ]
             },
             {
                 "label": "id:Print on Demand",
@@ -1068,13 +1081,13 @@
                     ]
                 },
                 {
-                    "label": "id:Standard The Siege of Annuminas",
+                    "label": "id:Standard The Siege of Annúminas",
                     "deckLists": [
                         {"label": "id:normal", "deckListId": "Q99.08"}
                     ]
                 },
                 {
-                    "label": "id:Epic The Siege of Annuminas",
+                    "label": "id:Epic The Siege of Annúminas",
                     "deckLists": [
                         {"label": "id:normal", "deckListId": "Q99.09"}
                     ]
@@ -1104,7 +1117,7 @@
                     ]
                 },
                 {
-                    "label": "id:Escape from Khazad dûm",
+                    "label": "id:Escape from Khazad-dûm",
                     "deckLists": [
                         {"label": "id:normal", "deckListId": "Q99.14"}
                     ]
@@ -1129,7 +1142,7 @@
                         "deckListId": "CCL.1"
                     },
                     {
-                        "label": "id:The Core Set",
+                        "label": "id:Core Set",
                         "deckListId": "CCC.1"
                     },
                     {
