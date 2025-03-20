@@ -684,7 +684,7 @@
               ]
             ],
             ["COND",
-              "$GAME.gameStepAutomation",
+              ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.stepId", "3.3"]],
               ["DO_ADVANCE_BUTTON"]            
             ]
           ]
@@ -720,7 +720,7 @@
             ],
             ["LOG", "└── ", "Engagement checks are complete."],
             ["COND",
-              "$GAME.gameStepAutomation",
+              ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.stepId", "5.2"]],
               ["DO_ADVANCE_BUTTON"]            
             ]
           ]
