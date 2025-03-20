@@ -416,7 +416,7 @@
                 "condition": ["AND", 
                     ["NOT_EQUAL", "$TARGET.currentFace.hitPoints", null],
                     ["GREATER_THAN", "$TARGET.tokens.damage", 0],
-                    ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", "$TARGET.currentFace.hitPoints", "$TARGET.tokens.hitPoints"]]
+                    ["GREATER_EQUAL", "$TARGET.tokens.damage", ["ADD", ["GET_HIT_POINTS", "$TARGET"]]]
                 ],
                 "onDo": [
                     ["LOG", "└── ", "$TARGET.currentFace.name", " is destroyed."],

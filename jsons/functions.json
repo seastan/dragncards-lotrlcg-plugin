@@ -623,6 +623,17 @@
             ]
           ]
         },
+        "GET_HIT_POINTS": {
+          "args": ["$CARD"],
+          "code": [
+            ["COND",
+              ["OR", ["IS_CHARACTER", "$CARD"], ["IS_ENEMY", "$CARD"]],
+              ["ADD", "$CARD.currentFace.hitPoints", "$CARD.tokens.hitPoints"],
+              true,
+              0
+            ]
+          ]
+        },
         "PLACE_PROGRESS_ON_QUEST_OR_ACTIVE_LOCATION": {
           "args": ["$PROGRESS_MADE"],
           "code": [

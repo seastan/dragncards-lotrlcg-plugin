@@ -45,17 +45,17 @@
         {
           "actionList": "addDamage",
           "label": "id:damage",
-          "condition": ["AND", ["IS_ENEMY", "$ACTIVE_CARD"], ["LESS_THAN", "$ACTIVE_CARD.tokens.damage", "$ACTIVE_FACE.hitPoints"]]
+          "condition": ["AND", ["IS_ENEMY", "$ACTIVE_CARD"], ["LESS_THAN", "$ACTIVE_CARD.tokens.damage", ["GET_HIT_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": "addToVictoryDisplay",
           "label": "id:add to VD",
-          "condition": ["AND", ["IS_ENEMY", "$ACTIVE_CARD"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.damage", "$ACTIVE_FACE.hitPoints"], "$ACTIVE_FACE.victoryPoints", ["GREATHER_THAN", "$ACTIVE_FACE.victoryPoints", 0]]
+          "condition": ["AND", ["IS_ENEMY", "$ACTIVE_CARD"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.damage", ["GET_HIT_POINTS", "$ACTIVE_CARD"]], "$ACTIVE_FACE.victoryPoints", ["GREATHER_THAN", "$ACTIVE_FACE.victoryPoints", 0]]
         },
         {
           "actionList": ["DISCARD_CARD", "$ACTIVE_CARD"],
           "label": "id:discard",
-          "condition": ["AND", ["IS_ENEMY", "$ACTIVE_CARD"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.damage", "$ACTIVE_FACE.hitPoints"]]
+          "condition": ["AND", ["IS_ENEMY", "$ACTIVE_CARD"], ["GREATER_EQUAL", "$ACTIVE_CARD.tokens.damage", ["GET_HIT_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": ["DISCARD_CARD", "$ACTIVE_CARD"],
