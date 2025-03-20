@@ -104,7 +104,14 @@
         "NO_ACTIVE_LOCATION": {
           "args": [],
           "code": [
-            ["EQUAL", ["LENGTH", ["GET_ACTIVE_LOCATIONS"]], 0]
+            ["VAR", "$ALL_LOCATIONS_COMPLETE", true],
+            ["FOR_EACH_VAL", "$LOCATION", ["GET_ACTIVE_LOCATIONS"],
+              ["COND",
+                ["LESS_THAN", "$LOCATION.tokens.progress", ["ADD", ["GET_QUEST_POINTS", "$LOCATION"]]],
+                ["UPDATE_VAR", "$ALL_LOCATIONS_COMPLETE", false]
+              ]
+            ],
+            "$ALL_LOCATIONS_COMPLETE"
           ]
         },
         "GET_CURRENT_QUEST": {

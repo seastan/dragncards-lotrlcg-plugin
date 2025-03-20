@@ -116,7 +116,7 @@
             "updateAdvanceButton": {
                 "_comment": "Update the advance button",
                 "type": "trigger",
-                "listenTo": ["/stepId", "/groupById/sharedStagingArea/stackIds"],
+                "listenTo": ["/stepId", "/groupById/sharedStagingArea/stackIds", "/groupById/sharedActiveLocation/stackIds", "/cardById/*/borderColor"],
                 "condition": ["TRUE"],
                 "then": ["UPDATE_ADVANCE_BUTTON"],
                 "priority": 2
