@@ -166,7 +166,7 @@
                         "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
                         "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
-                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 4]],
+                            ["VAR", "$NEW_THREAT", ["ADD", "$GAME.playerData.{{$THIS.controller}}.threat", 4]],
                             ["LOG", "└── ", "Beyond the Original Bargain increased starting threat by 4 to {{$NEW_THREAT}}."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 4]
                         ]
@@ -183,7 +183,7 @@
                         "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
                         "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
-                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 48]],
+                            ["VAR", "$NEW_THREAT", ["ADD", "$GAME.playerData.{{$THIS.controller}}.threat", 8]],
                             ["LOG", "└── ", "Att the End of All Things increased starting threat by 8 to {{$NEW_THREAT}}."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 8]
                         ]
@@ -1276,7 +1276,7 @@
                 }
             },
             "c266126d-cf2d-4a61-aac7-28bac2d1ea0d": {
-                "_comment": "Treebeard",
+                "_comment": "Treebeard (Ally)",
                 "rules": {
                     "treebeardResource": {
                         "type": "trigger",
@@ -1626,6 +1626,31 @@
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
                 }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9005": {
+                "_comment": "Legolas (Tactics)",
+                "ability": {
+                    "A": ["PLACE_PROGRESS_ON_QUEST_OR_ACTIVE_LOCATION", 2]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9039": {
+                "_comment": "Blade of Gondolin",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        [
+                            ["PLACE_PROGRESS_ON_QUEST_OR_ACTIVE_LOCATION", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "8b253eb0-95dc-437a-9748-6a45ad157f34": {
+                "_comment": "Blade of Gondolin",
+                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9039"
             },
             "exhaustToReadyAttachedCharacter": {
                 "abstract": true,
