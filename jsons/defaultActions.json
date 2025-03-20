@@ -30,7 +30,7 @@
         {
           "actionList": "addProgress",
           "label": "id:progress",
-          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Quest"], ["LESS_EQUAL", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]]]
+          "condition": ["AND", ["EQUAL", "$ACTIVE_FACE.type", "Quest"], ["LESS_THAN", "$ACTIVE_CARD.tokens.progress", ["GET_QUEST_POINTS", "$ACTIVE_CARD"]]]
         },
         {
           "actionList": ["DISCARD_CARD", "$ACTIVE_CARD"],
