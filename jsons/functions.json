@@ -635,9 +635,10 @@
                   ["LESS_THAN", "$REMAINING_LOCATION_PROGRESS", 0],
                   ["UPDATE_VAR", "$REMAINING_LOCATION_PROGRESS", 0]
                 ],
-                ["LOG", "├── {{$PROGRESS_MADE}} progress was placed on the active location."],
-                ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
-                ["DECREASE_VAR", "$PROGRESS_MADE", "$REMAINING_LOCATION_PROGRESS"]
+                ["VAR", "$PROGRESS_ON_ACTIVE_LOCATION", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
+                ["LOG", "├── {{$PROGRESS_ON_ACTIVE_LOCATION}} progress was placed on the active location."],
+                ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", "$PROGRESS_ON_ACTIVE_LOCATION"],
+                ["DECREASE_VAR", "$PROGRESS_MADE", "$PROGRESS_ON_ACTIVE_LOCATION"]
               ]
             ],
             ["COND",
