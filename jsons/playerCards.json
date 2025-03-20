@@ -166,7 +166,7 @@
                         "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
                         "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
-                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 4]],
+                            ["VAR", "$NEW_THREAT", ["ADD", "$GAME.playerData.{{$THIS.controller}}.threat", 4]],
                             ["LOG", "└── ", "Beyond the Original Bargain increased starting threat by 4 to {{$NEW_THREAT}}."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 4]
                         ]
@@ -183,7 +183,7 @@
                         "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
                         "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
                         "then": [
-                            ["VAR", "$NEW_THREAT", ["SUBTRACT", "$GAME.playerData.{{$THIS.controller}}.threat", 48]],
+                            ["VAR", "$NEW_THREAT", ["ADD", "$GAME.playerData.{{$THIS.controller}}.threat", 8]],
                             ["LOG", "└── ", "Att the End of All Things increased starting threat by 8 to {{$NEW_THREAT}}."],
                             ["INCREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 8]
                         ]
@@ -1276,7 +1276,7 @@
                 }
             },
             "c266126d-cf2d-4a61-aac7-28bac2d1ea0d": {
-                "_comment": "Treebeard",
+                "_comment": "Treebeard (Ally)",
                 "rules": {
                     "treebeardResource": {
                         "type": "trigger",
@@ -1636,7 +1636,16 @@
             "51223bd0-ffd1-11df-a976-0801200c9039": {
                 "_comment": "Blade of Gondolin",
                 "ability": {
-                    "A": ["PLACE_PROGRESS_ON_QUEST_OR_ACTIVE_LOCATION", 1]
+                    "A": ["COND",
+                        ["AND", 
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        [
+                            ["PLACE_PROGRESS_ON_QUEST_OR_ACTIVE_LOCATION", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
                 }
             },
             "8b253eb0-95dc-437a-9748-6a45ad157f34": {
@@ -2163,6 +2172,51 @@
                                     ["SET", "/cardById/$TOP_CARD_ID/currentSide", "A"]
                                 ]
                             ]
+                        ]
+                    }
+                }
+            },
+            "4cca8984-2e4e-4df2-ac96-86af18b2a961": {
+                "_comment": "Lothiriel",
+                "rules": {
+                    "lothirielSetup": {
+                        "_comment": "Add Rohan trait on setup if Eomer is in play. Doesn't account for Eomer entering/leaving play later but good enough.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["VAR", "$MATCHED_CARD", ["ONE_CARD",
+                                "$CARD",
+                                ["AND",
+                                    ["EQUAL", "$CARD.sides.A.name", "Éomer"],
+                                    ["EQUAL", "$CARD.inPlay", true]
+                                ]
+                            ]],
+                            ["COND",
+                                ["DEFINED", "$MATCHED_CARD"],
+                                [
+                                    ["LOG", "└── ", "Added Rohan trait to Lothíriel."],
+                                    ["SET", "/cardById/$THIS_ID/sides/A/traits", ["JOIN_STRING", "$THIS.sides.A.traits", "Rohan"]]
+                                ]
+                            ]
+                        ]
+                    }
+                }
+            },
+            "2221ee74-436d-44fa-84bc-27b3653ef2ba": {"_comment": "Lothiriel", "inheritFrom": "4cca8984-2e4e-4df2-ac96-86af18b2a961"},
+            "4a76ad60-35d1-4657-ab4a-2f7f15cc7ab7": {
+                "_comment": "Denethor (Hero, Leadership)",
+                "rules": {
+                    "denethorSetup": {
+                        "_comment": "Add 2 resources to Denethor's resource pool.",
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/playerData/$THIS.controller/deckLoaded"],
+                        "condition": "$GAME.playerData.{{$THIS.controller}}.deckLoaded",
+                        "then": [
+                            ["LOG", "└── ", "Added 2 resources to Denethor."],
+                            ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 2]
                         ]
                     }
                 }
