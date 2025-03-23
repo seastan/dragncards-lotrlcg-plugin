@@ -4,7 +4,7 @@
         "options": [
             {
                 "label": "id:toggleExhaust",
-                "actionList": "toggleExhaust"
+                "actionList": ["TOGGLE_EXHAUST", "$ACTIVE_CARD"]
             },
             {
                 "label": "id:preventRefresh",

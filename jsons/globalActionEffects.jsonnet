@@ -288,7 +288,7 @@ local readyCard() = [
                         ["GREATER_THAN", "$CARDS_TO_DRAW", 0],
                         [
                             ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " draws {{$CARDS_TO_DRAW}} cards."],
-                            ["DRAW_CARD", "$THIS.controller", "$CARDS_TO_DRAW"],
+                            ["DRAW_CARD", "$CARDS_TO_DRAW", "$THIS.controller"],
                         ]
                     ]
                 ],

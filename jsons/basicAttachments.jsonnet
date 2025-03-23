@@ -19,7 +19,7 @@ local modifyToken(card_id, tokenName, amount) =
 // checkFaceUp: primarily for Dreamchaser campaign boons which can be upgraded (flipped 'face-down') but still need to trigger
 // listenTo: list of paths to additionally listen
 // condition: list of conditions to append to "AND" condition
-local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true, listenTo=[], condition=[]) = { 
+local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true, checkAttachedToCharacter=false, listenTo=[], condition=[]) = { 
     "_comment": "Add/remove tokens to the attached card.",
     "type": "passive", 
     "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide", "/cardById/$THIS_ID/cardIndex", "/cardById/$THIS_ID/rotation"] + listenTo,
@@ -29,6 +29,7 @@ local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints
             ["GREATER_THAN", "$THIS.cardIndex", 0],  // Card must be attached
             ["NOT_EQUAL", "$THIS.rotation", -30],  // Attached card must not be a shadow
     ] + (if checkFaceUp then [["EQUAL", "$THIS.currentSide", "A"]] else [])
+    + (if checkAttachedToCharacter then [["IS_CHARACTER", "$GAME.cardById.{{$THIS.parentCardId}}"]] else [])
     + condition,
     "onDo":
         modifyToken("$THIS.parentCardId", "willpower", willpower) +
@@ -50,10 +51,10 @@ local attachmentRule(name, willpower=0, threat=0, attack=0, defense=0, hitPoints
     ,
 };
 
-local staticAttachment(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true) = {
+local staticAttachment(name, willpower=0, threat=0, attack=0, defense=0, hitPoints=0, questPoints=0, engagementCost=0, checkFaceUp=true, checkAttachedToCharacter=false) = {
     "_comment": name,
     "rules": {
-        "attachmentStaticPassiveTokens": attachmentRule(name, willpower, threat, attack, defense, hitPoints, questPoints, engagementCost, checkFaceUp)
+        "attachmentStaticPassiveTokens": attachmentRule(name, willpower, threat, attack, defense, hitPoints, questPoints, engagementCost, checkFaceUp, checkAttachedToCharacter)
     }
 };
 
@@ -128,7 +129,7 @@ local conditionalAttachment(name, bonusList) = {
             "51223bd0-ffd1-11df-a976-0801200c9027": staticAttachment("Celebrían's Stone", willpower=2),
             "ac8089a9-6dee-4c11-8c6c-4ef528400b39": staticAttachment("Celebrían's Stone", willpower=2),
             "51223bd0-ffd1-11df-a976-0801200c9040": staticAttachment("Citadel Plate", hitPoints=4),
-            "51223bd0-ffd1-11df-a976-0801200c9055": staticAttachment("The Favour of the Lady", willpower=1),
+            "51223bd0-ffd1-11df-a976-0801200c9055": staticAttachment("The Favor of the Lady", willpower=1),
             "51223bd0-ffd1-11df-a976-0801200c9056": staticAttachment("Power in the Earth", threat=-1),
             "51223bd0-ffd1-11df-a976-0801200c9071": staticAttachment("Dark Knowledge", willpower=-1),
             "51223bd0-ffd1-11df-a976-0801201c9002": staticAttachment("Dúnedain Mark", attack=1),
@@ -170,19 +171,19 @@ local conditionalAttachment(name, bonusList) = {
             "50e62ade-1958-439d-9314-383d8621ecf5": staticAttachment("The Serpent's Garb", threat=2),
             "8a0391d0-33c2-4881-82b6-1d9d824c3536": staticAttachment("Squire's Helm", hitPoints=2),
             "e11e74bb-80c4-4766-ad89-7bdd22ecad5b": staticAttachment("Ancestral Armor", defense=2, hitPoints=2),
-            "30f499a0-c419-49b2-a5b7-93072fbaf875": staticAttachment("Glamdring", attack=2),
+            "30f499a0-c419-49b2-a5b7-93072fbaf875": staticAttachment("Glamdring", attack=2, checkAttachedToCharacter=true),
             "48eb743b-454a-43b7-96bf-27d468ad858a": staticAttachment("Wild Stallion", willpower=1, attack=1, defense=1, hitPoints=1),
-            "80bb3d6a-c730-4994-badc-52fed8d92730": staticAttachment("Orcrist", attack=2),
-            "4c23f4d0-fbf4-4c07-bb1d-0f5507647e0f": staticAttachment("Sting", willpower=1, attack=1, defense=1),
-            "b1cc99c3-09a7-4418-85c4-e368f44adf1d": staticAttachment("Necklace of Girion", willpower=2),
-            "d45259f1-a551-466c-8352-cc466e1670c2": staticAttachment("Stone of Elostirion", willpower=2),
+            "80bb3d6a-c730-4994-badc-52fed8d92730": staticAttachment("Orcrist", attack=2, checkAttachedToCharacter=true),
+            "4c23f4d0-fbf4-4c07-bb1d-0f5507647e0f": staticAttachment("Sting", willpower=1, attack=1, defense=1, checkAttachedToCharacter=true),
+            "b1cc99c3-09a7-4418-85c4-e368f44adf1d": staticAttachment("Necklace of Girion", willpower=2, checkAttachedToCharacter=true),
+            "d45259f1-a551-466c-8352-cc466e1670c2": staticAttachment("Stone of Elostirion", willpower=2, checkAttachedToCharacter=true),
             "4c77565a-475e-4f57-9360-8f0a2916607f": staticAttachment("Armor of Erebor", defense=1),
             "639a4814-6a8e-4d7d-b589-fbbf22c78df2": staticAttachment("Put off Pursuit", questPoints=2),
             "b897b63d-86ac-417c-88d2-1a594f3674f1": staticAttachment("Sword of Rhûn", attack=2),
             "53c01bdc-2761-4f8f-90bc-1eedd14ca376": staticAttachment("Easterling Horse", threat=2),
             "57e22e64-6ff5-4133-8c70-2ee3460d02f9": staticAttachment("Evidence of the Cult", threat=1, attack=1, defense=1),
             "1ac7e2b5-aa19-4608-b101-e22390c8a906": staticAttachment("Fanaticism", threat=1, attack=1, defense=1),
-            "be4ccbc9-1d4c-461f-a44d-582c52d353e6": staticAttachment("Durin's Axe", attack=2),
+            "be4ccbc9-1d4c-461f-a44d-582c52d353e6": staticAttachment("Durin's Axe", attack=2, checkAttachedToCharacter=true),
             "28bc6296-217d-460a-96b1-47714daf3817": staticAttachment("Silver Circlet", willpower=2),
             "b41ed6a0-17bc-4cbc-a654-d4d9538eed62": staticAttachment("Inner Strength", defense=1),
             "fbf90e5c-4d15-499c-98c2-f8e63855fb69": staticAttachment("Strength and Courage", attack=1),
