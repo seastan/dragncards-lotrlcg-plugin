@@ -1925,8 +1925,8 @@
                            ],
                            [
                               "DRAW_CARD",
-                              "$THIS.controller",
-                              "$CARDS_TO_DRAW"
+                              "$CARDS_TO_DRAW",
+                              "$THIS.controller"
                            ]
                         ]
                      ],

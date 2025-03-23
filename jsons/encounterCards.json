@@ -1,0 +1,53 @@
+{
+    "automation": {
+        "cards": {
+            "51223bd0-ffd1-11df-a976-0801203c9017": {
+                "_comment": "Rhosgobel",
+                "rules": {
+                    "xIsTheNumberOfPlayers": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["VAR", "$X", "$GAME.numPlayers"],
+                            ["LOG", "└── ", "Added X={{$X}} threat to Rhosgobel."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/threat", "$X"]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801207c9079": {
+                "_comment": "The Mountains' Roots",
+                "rules": {
+                    "xIsTheNumberOfPlayers": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["VAR", "$X", "$GAME.numPlayers"],
+                            ["LOG", "└── ", "Added X={{$X}} threat to The Mountains' Roots."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/threat", "$X"],
+                            ["LOG", "└── ", "Added X={{$X}} quest points to The Mountains' Roots."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/questPoints", "$X"]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801207c9075": {
+                "_comment": "Stray Goblin",
+                "rules": {
+                    "xIsTheNumberOfPlayers": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["VAR", "$X", "$GAME.numPlayers"],
+                            ["LOG", "└── ", "Added X={{$X}} threat to Stray Goblin."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/threat", "$X"],
+                            ["LOG", "└── ", "Added X={{$X}} attack to Stray Goblin."],
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/attack", "$X"]
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
+  

@@ -292,7 +292,7 @@
         },
         "mountGramSetup": {
             "args": [],
-            "message": "To set up each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels, press Setup. IMPORTANT: Before running this function, flip facedown all heroes that are not starting heroes.",
+            "message": "Press Setup to prepare each player's capture deck, add 2 resources to each hero, draw new starting hands of 3 cards, and set new threat levels. IMPORTANT: Before running this function, flip facedown all heroes that are not starting heroes.",
             "options": [
                 {
                     "label": "Setup",
@@ -306,7 +306,7 @@
                             ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID", [
                                 ["COND",
                                     ["AND",
-                                        ["EQUAL", "$CARD.groupById", "{{$PLAYER_I}}Deck"],
+                                        ["EQUAL", "$CARD.groupId", "{{$PLAYER_I}}Deck"],
                                         ["OR",
                                             ["EQUAL", "$CARD.sides.A.type", "Ally"],
                                             ["IN_STRING", "$CARD.sides.A.traits", "Item."],
@@ -353,9 +353,9 @@
                                 ["LOG", "WARNING: No facedown heroes detected."]
                             ],
                             ["DRAW_CARD", 3, "$PLAYER_I"],
-                            ["SET", "/playerData/$PLAYER_I/threat", "$CARD_BY_ID.{{$FACEUP_HERO}}.sides.A.threat"],
+                            ["SET", "/playerData/$PLAYER_I/threat", "$CARD_BY_ID.{{$FACEUP_HERO}}.sides.A.cost"],
                             ["SET", "/cardById/$FACEUP_HERO/tokens/resource", 2],
-                            ["SET", "/layoutVariants/secondPlayerDeck", true],
+                            ["SHOW_PLAYER_DECK_2", "$PLAYER_I", true],
                             ["SET", "/groupById/{{$PLAYER_I}}Deck2/tableLabel", "Capture Deck"]
                         ]]
                     ]
