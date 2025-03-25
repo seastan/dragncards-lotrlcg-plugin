@@ -109,6 +109,10 @@ local conditionalAttachment(name, bonusList) = {
                 {name: "attachmentConditionalPassiveTokens", attack: 2, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "omer"]]}
             ]),
             "9bf3f0fd-6eff-4560-8d65-c5ba79cf155f": self["0ee1f1e6-1952-4bad-8ecd-631e80f4ccc0"],
+            "477ca0c8-7922-4c17-bba2-6d7c4718c49d": conditionalAttachment("Hauberk of Mail", [
+                {name: "attachmentBasicPassiveTokens", defense: 1, condition: [["NOT", ["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.keywords", "Sentinel."]]]},
+                {name: "attachmentConditionalPassiveTokens", defense: 1, hitPoints: 1, condition: [["IN_STRING", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.keywords", "Sentinel."]]}
+            ]),
             "f40cc90c-02df-464b-a401-6640aa93e2f8": conditionalAttachment("Cloak of Lorien", [  // TODO fix listenTo trigger not firing
                 {name: "attachmentBasicPassiveTokens", defense: 1, listenTo: ["/groupById/sharedActiveLocation/stackIds"], condition: [["NOT", ["ACTIVE_LOCATION_HAS_TRAIT", "Forest."]]]},
                 {name: "attachmentConditionalPassiveTokens", defense: 2, listenTo: ["/groupById/sharedActiveLocation/stackIds"], condition: [["ACTIVE_LOCATION_HAS_TRAIT", "Forest."]]}
@@ -166,7 +170,6 @@ local conditionalAttachment(name, bonusList) = {
             "dd1a7167-8988-4ec7-a9ae-8e3becbc58d0": staticAttachment("Haradrim Spear", attack=1),
             "0b179f39-f202-4fe7-b930-0f3db582bc3e": staticAttachment("The Red Arrow", willpower=1),
             "86de124c-08d9-4482-8a37-be15455e0419": staticAttachment("The Red Arrow", willpower=1),
-            "477ca0c8-7922-4c17-bba2-6d7c4718c49d": staticAttachment("Hauberk of Mail", defense=1),
             "1a06164a-8f54-49b7-a067-52680893f69d": staticAttachment("Frenzied Creature", threat=1, attack=1, defense=1),
             "50e62ade-1958-439d-9314-383d8621ecf5": staticAttachment("The Serpent's Garb", threat=2),
             "8a0391d0-33c2-4881-82b6-1d9d824c3536": staticAttachment("Squire's Helm", hitPoints=2),

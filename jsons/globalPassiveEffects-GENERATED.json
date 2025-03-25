@@ -2667,6 +2667,242 @@
                }
             }
          },
+         "7ab0122f-ede8-45fa-b803-619c28dfe0ce": {
+            "_comment": "The Arkenstone",
+            "rules": {
+               "passiveRule": {
+                  "_comment": "Add/remove tokens on cards meeting targetCondition when this card passes/fails thisCondition.",
+                  "condition": [
+                     "AND",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$GAME.cardById.{{$THIS.parentCardId}}"
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/cardIndex"
+                  ],
+                  "offDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 willpower from each unique character controlled by {{$THIS.controller}}."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "PREV",
+                                    [
+                                       "EQUAL",
+                                       "$TARGET.cardIndex",
+                                       0
+                                    ]
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 "PREV",
+                                 [
+                                    "AND",
+                                    [
+                                       "EQUAL",
+                                       "$THIS.controller",
+                                       "$TARGET.controller"
+                                    ],
+                                    [
+                                       "IS_CHARACTER",
+                                       "$TARGET"
+                                    ],
+                                    "$TARGET.currentFace.unique"
+                                 ]
+                              ],
+                              [
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/willpower",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 willpower to each unique character controlled by {{$THIS.controller}}."
+                     ],
+                     [
+                        "FOR_EACH_KEY_VAL",
+                        "$TARGET_ID",
+                        "$TARGET",
+                        "$GAME.cardById",
+                        [
+                           [
+                              "COND",
+                              [
+                                 "AND",
+                                 "$TARGET.inPlay",
+                                 [
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                                 ],
+                                 [
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 "$TARGET.currentFace.unique"
+                              ],
+                              [
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/willpower",
+                                    1
+                                 ]
+                              ]
+                           ]
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               },
+               "targetChangeRule": {
+                  "_comment": "Add/remove tokens on cards that pass/fail targetCondition depending on if this card meets thisCondition.",
+                  "condition": [
+                     "AND",
+                     "$TARGET.inPlay",
+                     [
+                        "EQUAL",
+                        "$TARGET.cardIndex",
+                        0
+                     ],
+                     [
+                        "NOT",
+                        "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                     ],
+                     [
+                        "NOT_EQUAL",
+                        "$THIS_ID",
+                        "$TARGET_ID"
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.controller",
+                        "$TARGET.controller"
+                     ],
+                     [
+                        "IS_CHARACTER",
+                        "$TARGET"
+                     ],
+                     "$TARGET.currentFace.unique"
+                  ],
+                  "listenTo": [
+                     "/cardById/*/inPlay",
+                     "/cardById/*/cardIndex",
+                     "/cardById/*/currentSide",
+                     "/cardById/*/controller"
+                  ],
+                  "offDo": [
+                     "COND",
+                     [
+                        "AND",
+                        "$TARGET.inPlay",
+                        [
+                           "GREATER_THAN",
+                           "$THIS.cardIndex",
+                           0
+                        ],
+                        [
+                           "IS_CHARACTER",
+                           "$GAME.cardById.{{$THIS.parentCardId}}"
+                        ]
+                     ],
+                     [
+                        [
+                           "LOG",
+                           "└── ",
+                           "The Arkenstone removed 1 willpower from ",
+                           "$TARGET.currentFace.name",
+                           "."
+                        ],
+                        [
+                           "DECREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/willpower",
+                           1
+                        ]
+                     ]
+                  ],
+                  "onDo": [
+                     "COND",
+                     [
+                        "AND",
+                        "$TARGET.inPlay",
+                        [
+                           "EQUAL",
+                           "$TARGET.cardIndex",
+                           0
+                        ],
+                        [
+                           "NOT",
+                           "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
+                        ],
+                        [
+                           "GREATER_THAN",
+                           "$THIS.cardIndex",
+                           0
+                        ],
+                        [
+                           "IS_CHARACTER",
+                           "$GAME.cardById.{{$THIS.parentCardId}}"
+                        ]
+                     ],
+                     [
+                        [
+                           "LOG",
+                           "└── ",
+                           "The Arkenstone added 1 willpower to ",
+                           "$TARGET.currentFace.name",
+                           "."
+                        ],
+                        [
+                           "INCREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/willpower",
+                           1
+                        ]
+                     ]
+                  ],
+                  "side": "A",
+                  "type": "whileInPlay"
+               }
+            }
+         },
          "80c51ea1-495e-40a0-8257-ff3e81aeb298": {
             "_comment": "Grip/Fang/Wolf (ALeP)",
             "rules": {

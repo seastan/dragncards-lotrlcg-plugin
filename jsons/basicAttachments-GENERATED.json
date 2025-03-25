@@ -3022,7 +3022,7 @@
          "477ca0c8-7922-4c17-bba2-6d7c4718c49d": {
             "_comment": "Hauberk of Mail",
             "rules": {
-               "attachmentStaticPassiveTokens": {
+               "attachmentBasicPassiveTokens": {
                   "_comment": "Add/remove tokens to the attached card.",
                   "condition": [
                      "AND",
@@ -3041,6 +3041,14 @@
                         "EQUAL",
                         "$THIS.currentSide",
                         "A"
+                     ],
+                     [
+                        "NOT",
+                        [
+                           "IN_STRING",
+                           "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.keywords",
+                           "Sentinel."
+                        ]
                      ]
                   ],
                   "listenTo": [
@@ -3082,6 +3090,100 @@
                      [
                         "INCREASE_VAL",
                         "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ]
+                  ],
+                  "type": "passive"
+               },
+               "attachmentConditionalPassiveTokens": {
+                  "_comment": "Add/remove tokens to the attached card.",
+                  "condition": [
+                     "AND",
+                     "$THIS.inPlay",
+                     [
+                        "GREATER_THAN",
+                        "$THIS.cardIndex",
+                        0
+                     ],
+                     [
+                        "NOT_EQUAL",
+                        "$THIS.rotation",
+                        -30
+                     ],
+                     [
+                        "EQUAL",
+                        "$THIS.currentSide",
+                        "A"
+                     ],
+                     [
+                        "IN_STRING",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.keywords",
+                        "Sentinel."
+                     ]
+                  ],
+                  "listenTo": [
+                     "/cardById/$THIS_ID/inPlay",
+                     "/cardById/$THIS_ID/currentSide",
+                     "/cardById/$THIS_ID/cardIndex",
+                     "/cardById/$THIS_ID/rotation"
+                  ],
+                  "offDo": [
+                     [
+                        "VAR",
+                        "$PREV_PARENT_ID",
+                        [
+                           "PREV",
+                           "$THIS.parentCardId"
+                        ]
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 defense from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/defense",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Removed 1 hitPoints from ",
+                        "$GAME.cardById.{{$PREV_PARENT_ID}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "DECREASE_VAL",
+                        "/cardById/$PREV_PARENT_ID/tokens/hitPoints",
+                        1
+                     ]
+                  ],
+                  "onDo": [
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 defense to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/defense",
+                        1
+                     ],
+                     [
+                        "LOG",
+                        "└── ",
+                        "Added 1 hitPoints to ",
+                        "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name",
+                        "."
+                     ],
+                     [
+                        "INCREASE_VAL",
+                        "/cardById/$THIS.parentCardId/tokens/hitPoints",
                         1
                      ]
                   ],
