@@ -1024,13 +1024,32 @@
                 {
                     "label": "id:The Oath",
                     "deckLists": [
-                        {"label": "id:normal", "deckListId": "Q00.01"}
+                        {"label": "id:normal", "deckListId": "Q00.01A"}
                     ]
                 },
                 {
                     "label": "id:The Caves of Nibin-Dûm",
                     "deckLists": [
-                        {"label": "id:normal", "deckListId": "Q00.02"}
+                        {"label": "id:normal", "deckListId": "Q00.02A"}
+                    ]
+                }
+                ]
+            },
+            {
+                "label": "id:The Dark of Mirkwood",
+                "subMenus": [
+                {
+                    "label": "id:The Oath",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E00.01B"},
+                        {"label": "id:normal", "deckListId": "Q00.01B"}
+                    ]
+                },
+                {
+                    "label": "id:The Caves of Nibin-Dûm",
+                    "deckLists": [
+                        {"label": "id:easy", "deckListId": "E00.02B"},
+                        {"label": "id:normal", "deckListId": "Q00.02B"}
                     ]
                 }
                 ]
