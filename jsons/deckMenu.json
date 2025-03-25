@@ -1090,12 +1090,14 @@
                 {
                     "label": "id:The Ruins of Belegost",
                     "deckLists": [
+                        {"label": "id:easy", "deckListId": "E99.06"},
                         {"label": "id:normal", "deckListId": "Q99.06"}
                     ]
                 },
                 {
                     "label": "id:Murder at the Prancing Pony",
                     "deckLists": [
+                        {"label": "id:easy", "deckListId": "E99.07"},
                         {"label": "id:normal", "deckListId": "Q99.07"}
                     ]
                 },
