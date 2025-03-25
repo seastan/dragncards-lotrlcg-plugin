@@ -119,7 +119,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
             "55a2193b-c458-4aa0-82ec-544a373a1dca": {"_comment": "Boromir (Hero, Leadership)", "inheritFrom": "4823aae3-46ef-4a75-89f9-cbd3aa1b9008"},
             "2f0a3f18-c84f-4458-b6f7-2e6be9acee6b": globalPassiveEffect(
                 name = "Visionary Leadership",
-                listenToThisChange = ["/cardById/{{$THIS.parentCardId}}/tokens/resource", "/cardById/$THIS_ID/cardIndex"],
+                listenToThisChange = ["/cardById/*/tokens/resource", "/cardById/$THIS_ID/cardIndex"],
                 thisCondition = [["GREATER_THAN", "$THIS.cardIndex", 0], ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resource", 0]],
                 targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Gondor."], ["IS_CHARACTER", "$TARGET"]],
                 effectOn = addToken("willpower"),

@@ -882,7 +882,7 @@
                      ]
                   ],
                   "listenTo": [
-                     "/cardById/{{$THIS.parentCardId}}/tokens/resource",
+                     "/cardById/*/tokens/resource",
                      "/cardById/$THIS_ID/cardIndex"
                   ],
                   "offDo": [
