@@ -296,7 +296,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Nin in Eilph",
+                    "label": "id:The Nîn-in-Eilph",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E04.7"},
                         {"label": "id:normal", "deckListId": "Q04.7"},
@@ -381,7 +381,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Battle of Carn Dum",
+                    "label": "id:The Battle of Carn Dûm",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E05.8"},
                         {"label": "id:normal", "deckListId": "Q05.8"},
@@ -410,7 +410,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Fate of Numenor",
+                    "label": "id:The Fate of Númenor",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E06.2"},
                         {"label": "id:normal", "deckListId": "Q06.2"},
@@ -683,7 +683,7 @@
                 "label": "id:The Hobbit",
                 "subMenus": [
                 {
-                    "label": "id:We Must Away Ere Break of Day",
+                    "label": "id:We Must Away, Ere Break of Day",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E0A.1"},
                         {"label": "id:normal", "deckListId": "Q0A.1"},
@@ -784,7 +784,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Uruk hai",
+                    "label": "id:The Uruk-hai",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E0B.07"},
                         {"label": "id:normal", "deckListId": "Q0B.07"},
@@ -927,7 +927,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Uruk hai",
+                    "label": "id:The Uruk-hai",
                     "deckLists": [
                         {"label": "id:easy", "deckListId": "E0C.07"},
                         {"label": "id:normal", "deckListId": "Q0C.07"},
@@ -1045,7 +1045,7 @@
                     ]
                 },
                 {
-                    "label": "id:The Battle of Lake Town",
+                    "label": "id:The Battle of Lake-town",
                     "deckLists": [
                         {"label": "id:normal", "deckListId": "Q99.02"}
                     ]
@@ -1063,7 +1063,7 @@
                     ]
                 },
                 {
-                    "label": "id:Fog on the Barrow downs",
+                    "label": "id:Fog on the Barrow-downs",
                     "deckLists": [
                         {"label": "id:normal", "deckListId": "Q99.05"}
                     ]
@@ -1142,7 +1142,7 @@
                         "deckListId": "CCL.1"
                     },
                     {
-                        "label": "id:Core Set",
+                        "label": "id:Revised Core Set",
                         "deckListId": "CCC.1"
                     },
                     {
@@ -1154,7 +1154,7 @@
                         "deckListId": "CCC.3"
                     },
                     {
-                        "label": "id:The Dream-chaser",
+                        "label": "id:Dream-chaser",
                         "deckListId": "CCC.4"
                     },
                     {
