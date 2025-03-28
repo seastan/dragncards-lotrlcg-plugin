@@ -116,7 +116,10 @@
             "updateAdvanceButton": {
                 "_comment": "Update the advance button",
                 "type": "trigger",
-                "listenTo": ["/stepId", "/groupById/sharedStagingArea/stackIds", "/groupById/sharedActiveLocation/stackIds", "/cardById/*/borderColor"],
+                "listenTo": [
+                    "/stepId",
+                    "/cardById/*/groupId",
+                    "/cardById/*/borderColor"],
                 "condition": ["TRUE"],
                 "then": ["UPDATE_ADVANCE_BUTTON"],
                 "priority": 2
@@ -151,30 +154,6 @@
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Drag to engage. Next: G for checks or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToCombat"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: W to advance to combat phase."]
-                ]
-            },
-            "updateAdvanceButtonOnCardEnterPlay": {
-                "type": "trigger",
-                "listenTo": ["/cardById/*/inPlay"],
-                "condition": ["TRUE"],
-                "then": ["COND",
-                    ["AND",
-                        ["EQUAL", "$GAME.roundAdvancementFunction", "commitCharacters"],
-                        ["EQUAL", "$TARGET.sides.A.type", "Side Quest"]
-                    ],
-                    ["UPDATE_ADVANCE_BUTTON"]
-                ]
-            },
-            "updateAdvanceButtonOnCardMove": {
-                "type": "trigger",
-                "listenTo": ["/cardById/*/groupId"],
-                "condition": ["TRUE"],
-                "then": ["COND",
-                    ["AND",
-                        ["EQUAL", "$GAME.roundAdvancementFunction", "readyForNextPlanning"],
-                        ["ENEMIES_ARE_ENGAGED"]
-                    ],
-                    ["UPDATE_ADVANCE_BUTTON"]
                 ]
             },
             "stepTrigger": {
