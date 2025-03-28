@@ -126,8 +126,8 @@
             "German": "Ered Mithrin",
             "Chinese": "厄瑞德·米斯林"
         },
-        "The Dream-chaser": {
-            "English": "The Dream-chaser",
+        "Dream-chaser": {
+            "English": "Dream-chaser",
             "French": "Le Chasse-Rêves",
             "Spanish": "El Cazador de Sueños",
             "Portuguese": "O Caçador de Sonhos",
@@ -2029,8 +2029,8 @@
             "German": "Probleme in Tharbad",
             "Chinese": "塔巴德的麻烦"
         },
-        "The Nin in Eilph": {
-            "English": "The Nin in Eilph",
+        "The Nîn-in-Eilph": {
+            "English": "The Nîn-in-Eilph",
             "French": "Les Nin-in-Eilph",
             "Spanish": "El Nin en Eilph",
             "Portuguese": "O Nin em Eilph",
@@ -2128,13 +2128,13 @@
             "German": "Der Verrat von Rhudaur",
             "Chinese": "鲁道尔的阴谋"
         },
-        "The Battle of Carn Dum": {
-            "English": "The Battle of Carn Dum",
-            "French": "La Bataille de Carn Dum",
-            "Spanish": "La Batalla de Carn Dum",
-            "Portuguese": "A Batalha de Carn Dum",
-            "Italian": "La Battaglia di Carn Dum",
-            "German": "Die Schlacht von Carn Dum",
+        "The Battle of Carn Dûm": {
+            "English": "The Battle of Carn Dûm",
+            "French": "La Bataille de Carn Dûm",
+            "Spanish": "La Batalla de Carn Dûm",
+            "Portuguese": "A Batalha de Carn Dûm",
+            "Italian": "La Battaglia di Carn Dûm",
+            "German": "Die Schlacht von Carn Dûm",
             "Chinese": "卡恩督之战"
         },
         "The Dread Realm": {
@@ -2164,8 +2164,8 @@
             "German": "Reise über Belegaer",
             "Chinese": "横渡贝烈盖尔"
         },
-        "The Fate of Numenor": {
-            "English": "The Fate of Numenor",
+        "The Fate of Númenor": {
+            "English": "The Fate of Númenor",
             "French": "Le Destin de Númenor",
             "Spanish": "El Destino de Númenor",
             "Portuguese": "O Destino de Númenor",
@@ -2515,8 +2515,8 @@
             "German": "Der Hobbit",
             "Chinese": "霍比特人"
         },
-        "We Must Away Ere Break of Day": {
-            "English": "We Must Away Ere Break of Day",
+        "We Must Away, Ere Break of Day": {
+            "English": "We Must Away, Ere Break of Day",
             "French": "Il Nous Faut Aller Avant le Lever du Jour",
             "Spanish": "Debemos irnos antes del amanecer",
             "Portuguese": "Devemos partir antes do amanhecer",
@@ -3133,8 +3133,8 @@
             "German": "Die Zersplitterung der Gefährten",
             "Chinese": "分道扬镳"
         },
-        "The Uruk hai": {
-            "English": "The Uruk hai",
+        "The Uruk-hai": {
+            "English": "The Uruk-hai",
             "French": "Les Uruk-Hai",
             "Spanish": "Los Uruk-hai",
             "Portuguese": "Os Uruk-hai",
@@ -3169,8 +3169,8 @@
             "German": "Das Aufgebot in Osgiliath",
             "Chinese": "兵临旧都"
         },
-        "The Battle of Lake Town": {
-            "English": "The Battle of Lake Town",
+        "The Battle of Lake-town": {
+            "English": "The Battle of Lake-town",
             "French": "La Bataille de la Ville du Lac",
             "Spanish": "La Batalla de Lago Town",
             "Portuguese": "A Batalha da Cidade do Lago",
@@ -3196,8 +3196,8 @@
             "German": "Der Alte Wald",
             "Chinese": "老林迷踪"
         },
-        "Fog on the Barrow downs": {
-            "English": "Fog on the Barrow downs",
+        "Fog on the Barrow-downs": {
+            "English": "Fog on the Barrow-downs",
             "French": "Brouillard sur les Hauts des Galgals",
             "Spanish": "Niebla sobre las Colinas de los Túmulos",
             "Portuguese": "Nevoeiro sobre os Montes dos Túmulos",
@@ -3258,6 +3258,9 @@
             "Italian": "Il Set Base",
             "German": "Das Grundset",
             "Chinese": "核心包"
+        },
+        "Revised Core Set": {
+            "English": "Revised Core Set"
         },
         "Angmar Awakened": {
             "English": "Angmar Awakened",
