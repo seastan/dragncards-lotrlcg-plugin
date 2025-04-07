@@ -119,7 +119,7 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
             "55a2193b-c458-4aa0-82ec-544a373a1dca": {"_comment": "Boromir (Hero, Leadership)", "inheritFrom": "4823aae3-46ef-4a75-89f9-cbd3aa1b9008"},
             "2f0a3f18-c84f-4458-b6f7-2e6be9acee6b": globalPassiveEffect(
                 name = "Visionary Leadership",
-                listenToThisChange = ["/cardById/{{$THIS.parentCardId}}/tokens/resource", "/cardById/$THIS_ID/cardIndex"],
+                listenToThisChange = ["/cardById/*/tokens/resource", "/cardById/$THIS_ID/cardIndex"],
                 thisCondition = [["GREATER_THAN", "$THIS.cardIndex", 0], ["GREATER_THAN", "$GAME.cardById.{{$THIS.parentCardId}}.tokens.resource", 0]],
                 targetCondition = [["IN_STRING", "$TARGET.currentFace.traits", "Gondor."], ["IS_CHARACTER", "$TARGET"]],
                 effectOn = addToken("willpower"),
@@ -153,6 +153,19 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 conditionOffLog = "Removed 1 willpower from each character controlled by {{$THIS.controller}}.",
                 targetOnLog = "Sword that was Broken added 1 willpower to ",
                 targetOffLog = "Sword that was Broken removed 1 willpower from ",
+            ),
+            "7ab0122f-ede8-45fa-b803-619c28dfe0ce": globalPassiveEffect(
+                name = "The Arkenstone",
+                listenToThisChange = ["/cardById/$THIS_ID/cardIndex"],
+                thisCondition = [["GREATER_THAN", "$THIS.cardIndex", 0], ["IS_CHARACTER", "$GAME.cardById.{{$THIS.parentCardId}}"]],
+                listenToTargetChange = ["/cardById/*/controller"],
+                targetCondition = [["EQUAL", "$THIS.controller", "$TARGET.controller"], ["IS_CHARACTER", "$TARGET"], "$TARGET.currentFace.unique"],
+                effectOn = addToken("willpower"),
+                effectOff = removeToken("willpower"),
+                conditionOnLog = "Added 1 willpower to each unique character controlled by {{$THIS.controller}}.",
+                conditionOffLog = "Removed 1 willpower from each unique character controlled by {{$THIS.controller}}.",
+                targetOnLog = "The Arkenstone added 1 willpower to ",
+                targetOffLog = "The Arkenstone removed 1 willpower from ",
             ),
             "b8f5c0b1-a11e-41f5-b0bd-8dab7d537feb": globalPassiveEffect(
                 name = "Keep Watch",
