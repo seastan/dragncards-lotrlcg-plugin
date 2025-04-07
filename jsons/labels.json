@@ -1,5 +1,14 @@
 {
     "labels": {
+        "dontShowAgain": {
+            "English": "Don't show again",
+            "French": "Ne plus afficher",
+            "Spanish": "No mostrar de nuevo",
+            "Portuguese": "Não mostrar novamente",
+            "Italian": "Non mostrare più",
+            "German": "Nicht erneut anzeigen",
+            "Chinese": "不再显示"
+        },
         "convertToAlly": {
             "English": "Convert to Ally",
             "French": "Convertir en Allié",
