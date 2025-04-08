@@ -18,10 +18,7 @@
                     }
                 }
             },
-            "afec8b6f-6838-442e-b2a8-71537a25e05d": {
-                "_comment": "Celeborn",
-                "inheritFrom": "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b"
-            },
+            "afec8b6f-6838-442e-b2a8-71537a25e05d": {"_comment": "Celeborn", "inheritFrom": "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b"},
             "1027fea5-a03b-4fce-beab-453ef75a2f74": {
                 "_comment": "Galion",
                 "rules": {
@@ -275,10 +272,7 @@
                     ]
                 }
             },
-            "86e1977f-0a24-46c8-a7ee-d5d78410f1a3": {
-                "_comment": "Dwarf Pipe",
-                "inheritFrom": "2b28d8ba-23b9-4f48-9808-3bbe2ed0a8fc"
-            },
+            "86e1977f-0a24-46c8-a7ee-d5d78410f1a3": {"_comment": "Dwarf Pipe", "inheritFrom": "2b28d8ba-23b9-4f48-9808-3bbe2ed0a8fc"},
             "41b56fc4-6ecd-4c9a-80d4-3074c267e823": {
                 "_comment": "Silver Harp",
                 "ability": {
@@ -322,10 +316,7 @@
                     ]
                 }
             },
-            "65608b5c-4420-4d76-a458-71a8b32e4159": {
-                "_comment": "Vilya",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801213c9027"
-            },
+            "65608b5c-4420-4d76-a458-71a8b32e4159": {"_comment": "Vilya", "inheritFrom": "51223bd0-ffd1-11df-a976-0801213c9027"},
             "51223bd0-ffd1-11df-a976-1801204c9032": {
                 "_comment": "Fili",
                 "ability": {
@@ -1131,7 +1122,7 @@
             },
             "b20bd2b6-c4b8-464d-81ed-c1285c99ae7e": {"_comment": "Galadriel (Ally)", "inheritFrom": "3d09a998-9ad0-4b98-9c42-50c4226cc73b"},
             "66cf39b5-015f-4bae-b304-4a61b5d1bedf": {
-                "_comment": "Prince Imrahil (Tactics Hero)",
+                "_comment": "Prince Imrahil (Hero, Tactics)",
                 "ability": {
                     "A": ["ACTION_LIST_TO_LOOK_AT_X", 
                         ["AND", "$THIS.inPlay", ["GREATER_THAN", "$THIS.tokens.resource", 0]],
@@ -1537,14 +1528,8 @@
                     }
                 }
             },
-            "7ce49caa-c7ac-455e-b35f-217055be34ed": {
-                "_comment": "Steward of Gondor",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
-            },
-            "aef31639-1962-4d41-912c-bea70e1be83e": {
-                "_comment": "Steward of Gondor",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
-            },
+            "7ce49caa-c7ac-455e-b35f-217055be34ed": {"_comment": "Steward of Gondor", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"},
+            "aef31639-1962-4d41-912c-bea70e1be83e": {"_comment": "Steward of Gondor", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"},
             "exhaustToAddOneResourceToAttachedCharacter": {
                 "abstract": true,
                 "ability": {
@@ -1648,10 +1633,7 @@
                     ]
                 }
             },
-            "8b253eb0-95dc-437a-9748-6a45ad157f34": {
-                "_comment": "Blade of Gondolin",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9039"
-            },
+            "8b253eb0-95dc-437a-9748-6a45ad157f34": {"_comment": "Blade of Gondolin", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9039"},
             "exhaustToReadyAttachedCharacter": {
                 "abstract": true,
                 "ability": {
@@ -1905,10 +1887,7 @@
                         ]
                 }
             },
-            "e87c3473-e107-40dd-9af7-b01f35176ea0": {
-                "_comment": "Éomer (Hero, Tactics)",
-                "inheritFrom": "21cfb9e9-6777-4bc6-ace6-08fe68e949a4"
-            },
+            "e87c3473-e107-40dd-9af7-b01f35176ea0": {"_comment": "Éomer (Hero, Tactics)", "inheritFrom": "21cfb9e9-6777-4bc6-ace6-08fe68e949a4"},
             "c984e8e8-94a6-4af6-9455-824ad2cf46f9": {
                 "_comment": "Magic Ring",
                 "ability": {
@@ -2130,7 +2109,7 @@
                 }
             },
             "3e055edf-4540-4cf1-94ce-afbf5fc28f82": {
-                "_comment": "Hero Gandalf",
+                "_comment": "Gandalf (Hero)",
                 // "ability": {
                 //     "A": [
                 //         ["COND",
