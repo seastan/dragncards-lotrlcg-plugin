@@ -129,7 +129,8 @@
                 "type": "trigger",
                 "listenTo": ["/roundAdvancementFunction"],
                 "condition": ["TRUE"],
-                "then": ["COND",
+                "then": [
+                    ["COND",
                     ["EQUAL", "$GAME.roundAdvancementFunction", "loadPlayerDecks"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Menu->Load to load player decks or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "loadEncounterDeck"],
@@ -154,6 +155,7 @@
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Drag to engage. Next: G for checks or W to skip."],
                     ["EQUAL", "$GAME.roundAdvancementFunction", "advanceToCombat"],
                     ["UPDATE_LAYOUT", "/layout/textBoxes/roundAdvancement/label", "Actions. Next: W to advance to combat phase."]
+                ]
                 ]
             },
             "stepTrigger": {

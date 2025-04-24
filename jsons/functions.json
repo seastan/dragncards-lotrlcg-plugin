@@ -722,14 +722,14 @@
                         [
                             ["VAR", "$ENEMIES_BY_ENG_COST", ["SORT_OBJ_LIST", "$CANDIDATES", "$C", ["GET_ENGAGEMENT_COST", "$C"]]],
                             ["VAR", "$ENEMY_TO_ENGAGE", "$ENEMIES_BY_ENG_COST.[-1]"],
-                            ["LOG", "├── ", "{{$ALIAS_I}} engages ", "$ENEMY_TO_ENGAGE.currentFace.name", "."],
+                            ["LOG", "├── {{$ALIAS_I}} engages {{$ENEMY_TO_ENGAGE.currentFace.name}}."],
                             ["MOVE_STACK", "$ENEMY_TO_ENGAGE.stackId", "{{$CURRENT_PLAYER}}Engaged", -1]
                         ]
                     ],
                     ["UPDATE_VAR", "$CURRENT_PLAYER", ["NEXT_PLAYER", "$CURRENT_PLAYER"]]
                 ]
             ],
-            ["LOG", "└── ", "Engagement checks are complete."],
+            ["LOG", "└── Engagement checks are complete."],
             ["COND",
               ["AND", "$GAME.gameStepAutomation", ["EQUAL", "$GAME.stepId", "5.2"]],
               ["DO_ADVANCE_BUTTON"]            
@@ -739,9 +739,6 @@
         "UPDATE_ADVANCE_BUTTON": {
           "args": [],
           "code": [
-            // ["LOG_DEV", "{{$GAME.roundAdvancementFunction}}"],
-            // ["LOG_DEV", "$GAME.allPlayerDecksLoaded"],
-            // ["LOG_DEV", "$GAME.encounterDeckLoaded"],
             ["COND",
               ["EQUAL", "$GAME.allPlayerDecksLoaded", false],
               ["SET", "/roundAdvancementFunction", "loadPlayerDecks"],
