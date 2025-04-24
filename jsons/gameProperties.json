@@ -46,7 +46,7 @@
       "roundAdvancementFunction": {
         "label": "id:roundAdvancementFunction",
         "type": "any",
-        "default": "readyForNextPlanning"
+        "default": "loadPlayerDecks"
       },
       "gameStepAutomation": {
         "label": "id:gameStepAutomation",
