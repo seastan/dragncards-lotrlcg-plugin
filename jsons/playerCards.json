@@ -18,10 +18,7 @@
                     }
                 }
             },
-            "afec8b6f-6838-442e-b2a8-71537a25e05d": {
-                "_comment": "Celeborn",
-                "inheritFrom": "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b"
-            },
+            "afec8b6f-6838-442e-b2a8-71537a25e05d": {"_comment": "Celeborn", "inheritFrom": "4c4cccd3-576a-41f1-8b6c-ba11b4cc3d4b"},
             "1027fea5-a03b-4fce-beab-453ef75a2f74": {
                 "_comment": "Galion",
                 "rules": {
@@ -81,6 +78,7 @@
                             ["IN_STRING", "$TARGET.currentFace.traits", "Silvan."],
                             ["IS_CHARACTER", "$TARGET"],
                             ["NOT", "$TARGET.exhausted"],
+                            ["PREV", "$TARGET.exhausted"],
                             ["GREATER_THAN", "$TARGET.tokens.damage", 0]
                         ],
                         "then": [
@@ -275,10 +273,7 @@
                     ]
                 }
             },
-            "86e1977f-0a24-46c8-a7ee-d5d78410f1a3": {
-                "_comment": "Dwarf Pipe",
-                "inheritFrom": "2b28d8ba-23b9-4f48-9808-3bbe2ed0a8fc"
-            },
+            "86e1977f-0a24-46c8-a7ee-d5d78410f1a3": {"_comment": "Dwarf Pipe", "inheritFrom": "2b28d8ba-23b9-4f48-9808-3bbe2ed0a8fc"},
             "41b56fc4-6ecd-4c9a-80d4-3074c267e823": {
                 "_comment": "Silver Harp",
                 "ability": {
@@ -322,10 +317,7 @@
                     ]
                 }
             },
-            "65608b5c-4420-4d76-a458-71a8b32e4159": {
-                "_comment": "Vilya",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801213c9027"
-            },
+            "65608b5c-4420-4d76-a458-71a8b32e4159": {"_comment": "Vilya", "inheritFrom": "51223bd0-ffd1-11df-a976-0801213c9027"},
             "51223bd0-ffd1-11df-a976-1801204c9032": {
                 "_comment": "Fili",
                 "ability": {
@@ -489,6 +481,37 @@
             },
             "d8729719-5d37-48c2-9bf6-8d2c8d579901": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
             "37863571-be66-46b1-82d3-d21f4f0e653c": {"_comment": "Daeron's Runes", "inheritFrom": "51223bd0-ffd1-11df-a976-0801212c9010"},
+            "51223bd0-ffd1-11df-a976-0801200c9024": {
+                "_comment": "Valiant Sacrifice",
+                "ability": {
+                    "A": [ // TODO add prompt when numPlayers > 1 to give choice for who draws the cards
+                        ["LOG", "└── ", "{{$ALIAS_N}} drew 2 cards."],
+                        ["DRAW_CARD", 2, "$THIS.controller"],
+                        ["DISCARD_CARD", "$THIS"]
+                    ]
+                }
+            },
+            "81b03020-ee6b-40bd-80a3-075b680a6782": {"_comment": "Valiant Sacrifice", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9024"},
+            "3c47d373-62bc-4321-9dc1-9b86b2046f68": {
+                "_comment": "Mithrandir's Advice",
+                "ability": {
+                    "A": [
+                        ["VAR", "$LORE_HEROES", ["LENGTH",
+                            ["FILTER_CARDS", "$CARD", [
+                                "AND",
+                                    "$CARD.inPlay",
+                                    ["EQUAL", "$CARD.controller", "$THIS.controller"],
+                                    ["EQUAL", "$CARD.currentFace.sphere", "Lore"],
+                                    ["IS_HERO", "$CARD"]
+                                ]
+                            ]
+                        ]],
+                        ["LOG", "└── ", "{{$ALIAS_N}} drew {{$LORE_HEROES}} cards."],
+                        ["DRAW_CARD", "$LORE_HEROES", "$THIS.controller"],
+                        ["DISCARD_CARD", "$THIS"]
+                    ]
+                }
+            },
             "abebff49-8219-4ae0-bd26-266db57bdfc3": {
                 "_comment": "Elven-light",
                 "ability": {
@@ -798,6 +821,31 @@
                     ]
                 }
             },
+            "28877bba-27de-4b19-a8ab-5d557b634172": {
+                "_comment": "Pillars of the Kings",
+                "ability": {
+                    "A": [
+                        ["VAR", "$THREAT", "$GAME.playerData.{{$THIS.controller}}.threat"],
+                        ["COND",
+                            ["LESS_EQUAL", "$THREAT", 30],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " increased their threat to 40 and draws 4 cards."],
+                                ["DRAW_CARD", 4, "$THIS.controller"]
+                            ],
+                            ["LESS_THAN", "$THREAT", 40],
+                            [
+                                ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " increased their threat to 40 and draws a card."],
+                                ["DRAW_CARD", 1, "$THIS.controller"]
+                            ],
+                            ["TRUE"],
+                            ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " reduced their threat to 40."]
+                        ],
+                        ["SET", "/playerData/{{$THIS.controller}}/threat", 40],
+                        ["DISCARD_CARD", "$THIS"]
+                    ]
+                }
+            },
+            "bd400c84-4fa7-4da0-a35f-3d4331fbff74": {"_comment": "Pillars of the Kings", "inheritFrom": "28877bba-27de-4b19-a8ab-5d557b634172"},
             "51223bd0-ffd1-11df-a976-0801200c9014": {
                 "_comment": "Faramir",
                 "ability": {
@@ -1124,6 +1172,7 @@
                             ["EQUAL", "$THIS.inPlay", true]
                         ],
                         "then": [
+                            ["LOG", "└── ", "Discarded Galadriel at the end of the round."],
                             ["DISCARD_CARD", "$THIS"]
                         ]
                     }
@@ -1131,14 +1180,16 @@
             },
             "b20bd2b6-c4b8-464d-81ed-c1285c99ae7e": {"_comment": "Galadriel (Ally)", "inheritFrom": "3d09a998-9ad0-4b98-9c42-50c4226cc73b"},
             "66cf39b5-015f-4bae-b304-4a61b5d1bedf": {
-                "_comment": "Prince Imrahil (Tactics Hero)",
+                "_comment": "Prince Imrahil (Hero, Tactics)",
                 "ability": {
-                    "A": ["ACTION_LIST_TO_LOOK_AT_X", 
+                    "A": ["COND",
                         ["AND", "$THIS.inPlay", ["GREATER_THAN", "$THIS.tokens.resource", 0]],
-                        ["LIST", "DECREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
-                        "$THIS",
-                        "deck",
-                        5
+                        [   
+                            ["DECREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
+                            ["LOOK_AT_X", "{{$THIS.controller}}Deck", 5]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
                 }
             },
@@ -1537,14 +1588,8 @@
                     }
                 }
             },
-            "7ce49caa-c7ac-455e-b35f-217055be34ed": {
-                "_comment": "Steward of Gondor",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
-            },
-            "aef31639-1962-4d41-912c-bea70e1be83e": {
-                "_comment": "Steward of Gondor",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"
-            },
+            "7ce49caa-c7ac-455e-b35f-217055be34ed": {"_comment": "Steward of Gondor", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"},
+            "aef31639-1962-4d41-912c-bea70e1be83e": {"_comment": "Steward of Gondor", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9026"},
             "exhaustToAddOneResourceToAttachedCharacter": {
                 "abstract": true,
                 "ability": {
@@ -1648,10 +1693,7 @@
                     ]
                 }
             },
-            "8b253eb0-95dc-437a-9748-6a45ad157f34": {
-                "_comment": "Blade of Gondolin",
-                "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9039"
-            },
+            "8b253eb0-95dc-437a-9748-6a45ad157f34": {"_comment": "Blade of Gondolin", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9039"},
             "exhaustToReadyAttachedCharacter": {
                 "abstract": true,
                 "ability": {
@@ -1905,10 +1947,7 @@
                         ]
                 }
             },
-            "e87c3473-e107-40dd-9af7-b01f35176ea0": {
-                "_comment": "Éomer (Hero, Tactics)",
-                "inheritFrom": "21cfb9e9-6777-4bc6-ace6-08fe68e949a4"
-            },
+            "e87c3473-e107-40dd-9af7-b01f35176ea0": {"_comment": "Éomer (Hero, Tactics)", "inheritFrom": "21cfb9e9-6777-4bc6-ace6-08fe68e949a4"},
             "c984e8e8-94a6-4af6-9455-824ad2cf46f9": {
                 "_comment": "Magic Ring",
                 "ability": {
@@ -1987,6 +2026,17 @@
                             ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1],
                             ["TOGGLE_EXHAUST", "$THIS"]
                         ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "47750277-6869-470c-9376-7eb7f0a706f5": {
+                "_comment": "Lanwyn",
+                "ability": {
+                    "A": ["COND",
+                        "$THIS.inPlay",
+                        ["PROMPT", "$PLAYER_N", "lanwyn", "$THIS"],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
                     ]
@@ -2130,7 +2180,7 @@
                 }
             },
             "3e055edf-4540-4cf1-94ce-afbf5fc28f82": {
-                "_comment": "Hero Gandalf",
+                "_comment": "Gandalf (Hero)",
                 // "ability": {
                 //     "A": [
                 //         ["COND",
