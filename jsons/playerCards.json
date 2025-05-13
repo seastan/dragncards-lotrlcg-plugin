@@ -473,9 +473,9 @@
                 "_comment": "Daeron's Runes",
                 "ability": {
                     "A": [
-                        ["DRAW_CARD", 2, "$THIS.controller"],
                         ["LOG", "└── ", "{{$ALIAS_N}} drew 2 cards and must now discard a card from their hand."],
-                        ["DISCARD_CARD", "$THIS"]
+                        ["DRAW_CARD", 2, "$THIS.controller"],
+                        ["PROMPT", "$PLAYER_N", "daeronsRunes", "$THIS", "$THIS.controller"]
                     ]
                 }
             },
@@ -1229,7 +1229,7 @@
                         "then": [
                             ["LOG", "├── ", ["GET_ALIAS", "$THIS.controller"], " draws 1 additional card from Círdan and must now discard a card just drawn."],
                             ["DRAW_CARD", 1, "$THIS.controller"],
-                            ["SET", "/cardById/$THIS_ID/targeting/{{$THIS.controller}}", true]
+                            ["PROMPT", "$PLAYER_N", "cirdan", "$THIS.controller"]
                         ]
                     }
                 }
@@ -2224,6 +2224,435 @@
                             ]
                         ]
                     }
+                }
+            },
+            "f774ffb1-1c80-40a1-a474-eb021e225b19": {
+                "_comment": "Captain's Wisdom",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "captainsWisdom", "$THIS", "$THIS.controller"]
+                    ]
+                }
+            },
+            "4823aae3-46ef-4a75-89f9-cbd3aa1b9087": {
+                "_comment": "Wealth of Gondor",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "wealthOfGondor", "$THIS"]
+                    ]
+                }
+            },
+            "add42229-f5d1-4c39-a5dd-ec00ad7d0d76": {
+                "_comment": "Gaining Strength",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "gainingStrength", "$THIS", "$THIS.controller"]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801213c9020": {
+                "_comment": "Peace, and Thought",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "peaceAndThought", "$THIS", "$THIS.controller"]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801211c9026": {
+                "_comment": "Warden of Healing",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            "$THIS.inPlay",
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["PROMPT", "$PLAYER_N", "wardenOfHealing"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "6646bb07-0b44-4051-94a7-39c600b38481": {
+                "_comment": "Arod",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            "$THIS.inPlay",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["PROMPT", "$PLAYER_N", "placeProgressOnSelectedLocation", 1]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801212c9001": {
+                "_comment": "Asfaloth",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            "$THIS.inPlay",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["VAR", "$PROGRESS", 1],
+                            ["COND",
+                                ["EQUAL", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "Glorfindel"],
+                                ["UPDATE_VAR", "$PROGRESS", 2]
+                            ],
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["PROMPT", "$PLAYER_N", "placeProgressOnSelectedLocation", "$PROGRESS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "0baaf661-4bfd-48ed-80d4-bfa98217da1c": {
+                "_comment": "Rosie Cotton",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            "$THIS.inPlay",
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["PROMPT", "$PLAYER_N", "rosieCotton", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "17ed9b53-19f5-4ad1-ab91-14c2859e5a60": {
+                "_comment": "Nenya",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["NOT", "$THIS.exhausted"],
+                            ["NOT", "$GAME.cardById.{{$THIS.parentCardId}}.exhausted"],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        [
+                            ["PROMPT", "$PLAYER_N", "nenya", "$THIS", "$GAME.cardById.{{$THIS.parentCardId}}"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "76ce53e2-13df-4290-9b7f-f932f7b245a1": {"_comment": "Nenya", "inheritFrom": "17ed9b53-19f5-4ad1-ab91-14c2859e5a60"},
+            "51223bd0-ffd1-11df-a976-0801206c9019": {
+                "_comment": "Support of the Eagles",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["NOT", "$THIS.exhausted"],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        [
+                            ["PROMPT", "$PLAYER_N", "supportOfTheEagles", "$THIS", "$GAME.cardById.{{$THIS.parentCardId}}"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801210c9005": {
+                "_comment": "Elrond's Counsel",
+                "ability": {
+                    "A": [
+                        ["LOG", "└── ", ["GET_ALIAS", "$THIS.controller"], " reduced their threat by 3."],
+                        ["DECREASE_VAL", "/playerData/{{$THIS.controller}}/threat", 3],
+                        ["DISCARD_CARD", "$THIS"],
+                        ["PROMPT", "$PLAYER_N", "elrondsCounsel"]
+                    ]
+                }
+            },
+            "a312f83c-0213-4b42-8299-0da1b510d2c3": {"_comment": "Elrond's Counsel", "inheritFrom": "51223bd0-ffd1-11df-a976-0801210c9005"},
+            "51223bd0-ffd1-11df-a976-1801204c9033": {
+                "_comment": "Foe-hammer",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "foehammer", "$THIS", "$THIS.controller"]
+                    ]
+                }
+            },
+            "71763199-7840-4fb1-a211-60ab584dc395": {"_comment": "Foe-hammer", "inheritFrom": "51223bd0-ffd1-11df-a976-1801204c9033"},
+            "51223bd0-ffd1-11df-a976-0801210c9002": {
+                "_comment": "Arwen Undómiel (Ally)",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "arwenUndomielAlly"]
+                    ]
+                }
+            },
+            "99832065-8c3b-44ac-ba33-876c8798eb84": {"_comment": "Arwen Undómiel (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801210c9002"},
+            "51223bd0-ffd1-11df-a976-0801200c9070": {
+                "_comment": "Protector of Lorien",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        [
+                            ["PROMPT", "$PLAYER_N", "protectorOfLorien", "$GAME.cardById.{{$THIS.parentCardId}}", "$THIS.controller"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9016": {
+                "_comment": "Snowbourn Scout",
+                "rules": {
+                    "entersPlay": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "placeProgressOnSelectedLocation", 1]
+                        ]
+                    }
+                }
+            },
+            "39775f69-5cf4-4133-9cf4-45a1522aa9ea": {
+                "_comment": "Galadhon Archer",
+                "rules": {
+                    "entersPlay": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "dealDamageToSelectedEnemy", 1]
+                        ]
+                    }
+                }
+            },
+            "e1b2a7d6-605d-4787-bfa4-3a0972510cf6": {"_comment": "Galadhon Archer", "inheritFrom": "39775f69-5cf4-4133-9cf4-45a1522aa9ea"},
+            "bf7fc931-8086-4de7-827f-a5593f47ce79": {"_comment": "Galadhon Archer", "inheritFrom": "39775f69-5cf4-4133-9cf4-45a1522aa9ea"},
+            "4823aae3-46ef-4a75-89f9-cbd3aa1b9015": {
+                "_comment": "Envoy of Pelargir",
+                "rules": {
+                    "entersPlay": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "envoyOfPelagir"]
+                        ]
+                    }
+                }
+            },
+            "4b76df75-5897-482d-9a05-b4f4e9d9ca1a": {"_comment": "Envoy of Pelargir", "inheritFrom": "4823aae3-46ef-4a75-89f9-cbd3aa1b9015"},
+            "a6d6d6b8-d39c-4e53-aa79-297ec9ec8012": {"_comment": "Envoy of Pelargir", "inheritFrom": "4823aae3-46ef-4a75-89f9-cbd3aa1b9015"},
+            "b9926de4-af49-4852-a006-bcc235bf9266": {
+                "_comment": "Meneldor",
+                "rules": {
+                    "entersLeavesPlay": {
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/cardById/$THIS/inPlay", "/cardById/*/currentSide"],
+                        "condition": ["OR",
+                            ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
+                            ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                        ],
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "placeProgressOnSelectedLocation", 2]
+                        ]
+                    }
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801204c9004": {
+                "_comment": "Descendant of Thorondor",
+                "rules": {
+                    "entersLeavesPlay": {
+                        "type": "trigger",
+                        "side": "A",
+                        "listenTo": ["/cardById/$THIS/inPlay", "/cardById/*/currentSide"],
+                        "condition": ["OR",
+                            ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
+                            ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                        ],
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "dealDamageToSelectedEnemy", 2]
+                        ]
+                    }
+                }
+            },
+            "7af4cb4c-ddc9-4790-b721-4c7014bd281d": {"_comment": "Squire of the Citadel", "inheritFrom": "d4f034b0-2444-4b61-a249-8d86e8856f7c"},
+            "51223bd0-ffd1-11df-a976-0801204c9023": {
+                "_comment": "Riddermark's Finest",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            "$THIS.inPlay",
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["DISCARD_CARD", "$THIS"],
+                            ["PROMPT", "$PLAYER_N", "placeProgressOnSelectedLocation", 2]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "b449a4d8-9a2e-47e9-a4a4-f378fb1ffa3c": {"_comment": "Riddermark's Finest", "inheritFrom": "51223bd0-ffd1-11df-a976-0801204c9023"},
+            "2c1b7d82-e14e-4e2d-9270-86b59f95e0a9": {
+                "_comment": "Rhovanion Outrider",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            ["NOT", "$THIS.exhausted"],
+                            ["NOT", "$THIS.committed"],
+                            "$THIS.inPlay"
+                        ],
+                        [
+                            ["ACTION_LIST", "toggleCommit"],
+                            ["PROMPT", "$PLAYER_N", "rhovanionOutrider", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "428256aa-e03e-4f57-9b38-b8f7b5f17578": {
+                "_comment": "Wizard Pipe",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["NOT", "$THIS.exhausted"],
+                            ["GREATER_THAN", "$THIS.cardIndex", 0]
+                        ],
+                        [
+                            ["TOGGLE_EXHAUST", "$THIS"],
+                            ["PROMPT", "$PLAYER_N", "wizardPipe", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9073": {
+                "_comment": "Gandalf (Ally)",
+                "rules": {
+                    "gandalfEnterPlay": { 
+                        "type": "entersPlay", 
+                        "side": "A",
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "gandalfAlly", "$THIS.controller"]
+                        ]
+                    },
+                    "gandalfDiscard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "8.0"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["LOG", "└── ", "Discarded Gandalf at the end of the round."],
+                            ["DISCARD_CARD", "$THIS"]
+                        ]
+                    }
+                }
+            },
+            "b74a01c4-3eaf-4b75-8e0b-2e882abcffbd": {"_comment": "Gandalf (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9073"},
+            "5867614b-61fc-4b7c-9a05-02c59b7cc06a": {"_comment": "Gandalf (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9073"},
+            "b3af03db-917b-4252-a30d-122f4fde7c67": {"_comment": "Gandalf (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9073"},
+            "7c7c51a4-2324-4781-ab3c-e868f08ba0f7": {"_comment": "Gandalf (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9073"},
+            "a1382bc4-8167-426a-94d6-fa4a650366ad": {"_comment": "Gandalf (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9073"},
+            "9494ffbc-509c-42b7-8060-68e16613f73d": {"_comment": "Gandalf (Ally)", "inheritFrom": "51223bd0-ffd1-11df-a976-0801200c9073"},
+            "638638f0-8177-410a-bce8-9e2bbf5ad81f": {
+                "_comment": "Elrond (Ally)",
+                "rules": {
+                    "elrondEnterPlay": { 
+                        "type": "entersPlay", 
+                        "side": "A",
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "elrondAlly"]
+                        ]
+                    },
+                    "elrondDiscard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND", 
+                            ["EQUAL", "$GAME.stepId", "8.0"], 
+                            ["EQUAL", "$THIS.currentSide", "A"],
+                            ["EQUAL", "$THIS.inPlay", true]
+                        ],
+                        "then": [
+                            ["LOG", "└── ", "Discarded Elrond at the end of the round."],
+                            ["DISCARD_CARD", "$THIS"]
+                        ]
+                    }
+                }
+            },
+            "f07f5706-ac99-4aa2-8d33-ac6ab5ba6ce9": {"_comment": "Elrond (Ally)", "inheritFrom": "638638f0-8177-410a-bce8-9e2bbf5ad81f"},
+            "02e56cef-e78d-4dbd-bd4d-6ec43e4b1d2b": {
+                "_comment": "Gandalf's Staff",
+                "ability": {
+                    "A": ["COND",
+                        ["AND",
+                            ["GREATER_THAN", "$THIS.cardIndex", 0],
+                            ["NOT", "$THIS.exhausted"]
+                        ],
+                        [
+                            ["PROMPT", "$PLAYER_N", "gandalfsStaff", "$THIS"]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                }
+            },
+            "51223bd0-ffd1-11df-a976-0801200c9031": {
+                "_comment": "Beorn (Ally)",
+                "ability": {
+                    "A": ["COND",
+                        ["AND", 
+                            "$THIS.inPlay",
+                            ["NOT", "$THIS.usedBeornAbility"]
+                        ],
+                        [
+                            ["LOG", "└── ", "Added 5 attack to Beorn until the end of the phase."],
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 5],
+                            ["SET", "/cardById/$THIS_ID/usedBeornAbility", true]
+                        ],
+                        ["TRUE"],
+                        ["LOG", "└── ", "The ability's conditions are not met."]
+                    ]
+                },
+                "rules": {
+                    "beornDiscard": {
+                        "type": "trigger",
+                        "listenTo": ["/stepId"],
+                        "condition": ["AND",
+                            "$THIS.usedBeornAbility",
+                            ["EQUAL", "$THIS.inPlay", true],
+                            ["EQUAL", "$THIS.currentSide", "A"],                
+                            ["NOT_EQUAL", "$GAME_DEF.steps.{{$GAME.stepId}}.phaseId", ["PREV", "$GAME_DEF.steps.{{$GAME.stepId}}.phaseId"]] // TODO doesn't work
+                        ],
+                        "then": [
+                            ["LOG", "└── ", "Shuffled Beorn back into the deck."],
+                            ["MOVE_CARD", "$THIS_ID", "{{$THIS.controller}}Deck", -1],
+                            ["SHUFFLE_GROUP", "{{$THIS.controller}}Deck"] // TODO check what happens to Beorn's attachments
+                        ]
+                    }
+                }
+            },
+            "ede00b4b-15e0-4469-aaf6-ea60c9376898": {
+                "_comment": "Keen as Lances",
+                "ability": {
+                    "A": [
+                        ["PROMPT", "$PLAYER_N", "keenAsLances", "$THIS", "$THIS.controller"]
+                    ]
                 }
             }
         }

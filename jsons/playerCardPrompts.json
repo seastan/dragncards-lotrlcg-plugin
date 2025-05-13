@@ -1,5 +1,45 @@
 {
     "prompts": {
+        "placeProgressOnSelectedLocation": {
+            "args": ["$PROGRESS"],
+            "message": "Select a location to place {{$PROGRESS}} progress on.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} added {{$PROGRESS}} progress to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/progress", "$PROGRESS"]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "dealDamageToSelectedEnemy": {
+            "args": ["$DAMAGE"],
+            "message": "Select an enemy to deal {{$DAMAGE}} damage to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} dealt {{$DAMAGE}} damage to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", "$DAMAGE"]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
         "lanwyn": {
             "args": ["$CARD"],
             "message": "Select an option.",
@@ -23,6 +63,912 @@
                     "hotkey": "2",
                     "code": [
                         ["ADD_TEMP_TOKEN", "phase", "$CARD.id", "willpower", 2]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "daeronsRunes": {
+            "args": ["$CARD", "$CONTROLLER"],
+            "message": "Select a card to discard.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["EQUAL", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.groupId", "{{$CONTROLLER}}Hand"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["LOG", "{{$ALIAS_N}} chose to discard ", "$PROMPT_CARD.currentFace.name", "."],
+                                ["DISCARD_CARD", "$PROMPT_CARD"],
+                                ["DISCARD_CARD", "$CARD"]  // Seems to sometimes discard a card from hand instead of DR
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single card from your hand."],
+                                ["PROMPT", "$PLAYER_N", "daeronsRunes", "$CARD", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "cirdan": {
+            "args": ["$CONTROLLER"],
+            "message": "[Círdan the Shipwright] Select a just-drawn card to discard.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["EQUAL", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.groupId", "{{$CONTROLLER}}Hand"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["LOG", "{{$ALIAS_N}} chose to discard ", "$PROMPT_CARD.currentFace.name", "."],
+                                ["DISCARD_CARD", "$PROMPT_CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single card from your hand."],
+                                ["PROMPT", "$PLAYER_N", "cirdan", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "captainsWisdom": {
+            "args": ["$CARD", "$CONTROLLER"],
+            "message": "Select a Noble hero to exhaust and add 2 resource to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["COND",
+                            ["AND",
+                                ["NOT", "$PROMPT_CARD.exhausted"],
+                                ["IS_HERO", "$PROMPT_CARD"],
+                                ["EQUAL", "$PROMPT_CARD.controller", "$CONTROLLER"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} exhausted and added 2 resources to ", "$PROMPT_CARD.currentFace.name", "."],
+                                ["TOGGLE_EXHAUST", "$PROMPT_CARD"],
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 2],
+                                ["DISCARD_CARD", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "The ability's conditions are not met."],
+                                ["PROMPT", "$PLAYER_N", "captainsWisdom", "$CARD", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "wealthOfGondor": {
+            "args": ["$CARD"],
+            "message": "Select a Gondor hero and add 1 resource to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["COND",
+                            ["IS_HERO", "$PROMPT_CARD"],
+                            [
+                                ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$PROMPT_CARD.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                                ["DISCARD_CARD", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "The ability's conditions are not met."],
+                                ["PROMPT", "$PLAYER_N", "wealthOfGondor", "$CARD"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "gainingStrength": {
+            "args": ["$CARD", "$CONTROLLER"],
+            "message": "Select a hero with 2 resources to add 1 resource to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["COND",
+                            ["AND",
+                                ["IS_HERO", "$PROMPT_CARD"],
+                                ["GREATER_EQUAL", "$PROMPT_CARD.tokens.resource", 2]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$PROMPT_CARD.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                                ["DISCARD_CARD", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "The ability's conditions are not met."],
+                                ["PROMPT", "$PLAYER_N", "gainingStrength", "$CARD", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "peaceAndThought": {
+            "args": ["$CARD", "$CONTROLLER"],
+            "message": "Select a 2 heroes to exhaust.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 2,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD_1", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["VAR", "$PROMPT_CARD_2", "$GAME.cardById.{{$PROMPT_INPUT.[1]}}"],
+                        ["COND",
+                            ["AND",
+                                ["NOT", "$PROMPT_CARD_1.exhausted"],
+                                ["NOT", "$PROMPT_CARD_2.exhausted"],
+                                ["IS_HERO", "$PROMPT_CARD_1"],
+                                ["IS_HERO", "$PROMPT_CARD_2"],
+                                ["EQUAL", "$PROMPT_CARD_1.controller", "$CONTROLLER"],
+                                ["EQUAL", "$PROMPT_CARD_2.controller", "$CONTROLLER"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} exhausted ", "$PROMPT_CARD_1.currentFace.name", " and ", "$PROMPT_CARD_2.currentFace.name", " to draw 5 cards."],
+                                ["TOGGLE_EXHAUST", "$PROMPT_CARD_1"],
+                                ["TOGGLE_EXHAUST", "$PROMPT_CARD_2"],
+                                ["DRAW_CARD", 5, "$CONTROLLER"],
+                                ["DISCARD_CARD", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "The ability's conditions are not met."],
+                                ["PROMPT", "$PLAYER_N", "peaceAndThought", "$CARD", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "wardenOfHealing": {
+            "args": [],
+            "message": "Select 2 characters to heal.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 2,
+                    "code": [
+                        ["FOR_EACH_VAL", "$PROMPT_CARD_ID", "$PROMPT_INPUT", [
+                            ["LOG", "{{$ALIAS_N}} healed 1 damage from ", "$GAME.cardById.$PROMPT_CARD_ID.currentFace.name", " for 1."],
+                            ["HEAL", "$PROMPT_CARD_ID", 1]
+                        ]]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "rosieCotton": {
+            "args": ["$CARD"],
+            "message": "Select a Hobbit hero and an attribute to add Rosie Cotton's willpower to.",
+            "input": {
+                "type": "selectCards"
+            },
+            "options": [
+                {
+                    "label": "Willpower",
+                    "hotkey": "5",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_HERO", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["VAR", "$WILLPOWER", ["ADD", "$CARD.currentFace.willpower", "$CARD.tokens.willpower"]],
+                                ["LOG", "{{$ALIAS_N}} added ", "$WILLPOWER", " willpower to ", "$PROMPT_CARD.currentFace.name", " until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$PROMPT_CARD.id", "willpower", "$WILLPOWER"],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single Hobbit hero."],
+                                ["PROMPT", "$PLAYER_N", "rosieCotton", "$CARD"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Attack",
+                    "hotkey": "6",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_HERO", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["VAR", "$WILLPOWER", ["ADD", "$CARD.currentFace.willpower", "$CARD.tokens.willpower"]],
+                                ["LOG", "{{$ALIAS_N}} added ", "$WILLPOWER", " attack to ", "$PROMPT_CARD.currentFace.name", " until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$PROMPT_CARD.id", "attack", "$WILLPOWER"],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single Hobbit hero."],
+                                ["PROMPT", "$PLAYER_N", "rosieCotton", "$CARD"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Defense",
+                    "hotkey": "7",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_HERO", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["VAR", "$WILLPOWER", ["ADD", "$CARD.currentFace.willpower", "$CARD.tokens.willpower"]],
+                                ["LOG", "{{$ALIAS_N}} added ", "$WILLPOWER", " defense to ", "$PROMPT_CARD.currentFace.name", " until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$PROMPT_CARD.id", "defense", "$WILLPOWER"],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single Hobbit hero."],
+                                ["PROMPT", "$PLAYER_N", "rosieCotton", "$CARD"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "nenya": {
+            "args": ["$CARD", "$PARENT"],
+            "message": "Select a character to add Galadriel's willpower to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["COND",
+                            ["AND",
+                                ["IS_CHARACTER", "$PROMPT_CARD"]
+                            ],
+                            [
+                                ["VAR", "$WILLPOWER", ["ADD", "$PARENT.currentFace.willpower", "$PARENT.tokens.willpower"]],
+                                ["LOG", "{{$ALIAS_N}} added ", "$WILLPOWER", " willpower to ", "$PROMPT_CARD.currentFace.name", " until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$PROMPT_CARD.id", "willpower", "$WILLPOWER"],
+                                ["TOGGLE_EXHAUST", "$CARD"],
+                                ["TOGGLE_EXHAUST", "$PARENT"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a character."],
+                                ["PROMPT", "$PLAYER_N", "nenya", "$CARD", "$PARENT"]
+                            ]
+                        ]
+                    ]
+                }
+            }
+        },
+        "supportOfTheEagles": {
+            "args": ["$CARD", "$PARENT"],
+            "message": "Select an Eagle ally and an attribute.",
+            "input": {
+                "type": "selectCards"
+            },
+            "options": [
+                {
+                    "label": "Attack",
+                    "hotkey": "6",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_ALLY", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["VAR", "$BONUS", ["ADD", "$PROMPT_CARD.currentFace.attack", "$PROMPT_CARD.tokens.attack"]],
+                                ["LOG", "{{$ALIAS_N}} added ", "$BONUS", " attack to ", "$PARENT.currentFace.name", " until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$PARENT.id", "attack", "$BONUS"],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single Eagle ally."],
+                                ["PROMPT", "$PLAYER_N", "supportOfTheEagles", "$CARD", "$PARENT"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Defense",
+                    "hotkey": "7",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_ALLY", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["VAR", "$BONUS", ["ADD", "$PROMPT_CARD.currentFace.defense", "$PROMPT_CARD.tokens.defense"]],
+                                ["LOG", "{{$ALIAS_N}} added ", "$BONUS", " defense to ", "$PARENT.currentFace.name", " until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$PARENT.id", "defense", "$BONUS"],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "Must select a single Eagle ally."],
+                                ["PROMPT", "$PLAYER_N", "supportOfTheEagles", "$CARD", "$PARENT"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "elrondsCounsel": {
+            "args": [],
+            "message": "Select a character to give +1 willpower.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} gave ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", " +1 willpower until the end of the phase."],
+                        ["ADD_TEMP_TOKEN", "phase", "$PROMPT_INPUT.[0]", "willpower", 1]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "foehammer": {
+            "args": ["$CARD", "$CONTROLLER"],
+            "message": "Select a Weapon to exhaust.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["NOT", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.exhausted"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["LOG", "{{$ALIAS_N}} exhausted ", "$PROMPT_CARD.currentFace.name", " to draw 3 cards."],
+                                ["TOGGLE_EXHAUST", "$PROMPT_CARD"],
+                                ["DRAW_CARD", 3, "$CONTROLLER"],
+                                ["DISCARD_CARD", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "The ability's conditions are not met."],
+                                ["PROMPT", "$PLAYER_N", "foehammer", "$CARD", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "arwenUndomielAlly": {
+            "args": [],
+            "message": "Select a character to give +1 defense.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} gave ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", " +1 defense until the end of the round."],
+                        ["ADD_TEMP_TOKEN", "round", "$PROMPT_INPUT.[0]", "defense", 1]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "protectorOfLorien": {
+            "args": ["$PARENT", "$CONTROLLER"],
+            "message": "Select up to 3 cards from your hand to discard.",
+            "input": {
+                "type": "selectCards"
+            },
+            "options": [
+                {
+                    "label": "Add willpower",
+                    "hotkey": "5",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["GREATER_EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["LESS_EQUAL", ["LENGTH", "$PROMPT_INPUT"], 3]
+                            ],
+                            [
+                                ["FOR_EACH_VAL", "$PROMPT_CARD_ID", "$PROMPT_INPUT", [
+                                    ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_CARD_ID}}"],
+                                    ["COND",
+                                        ["EQUAL", "$PROMPT_CARD.groupId", "{{$CONTROLLER}}Hand"],
+                                        [
+                                            ["ADD_TEMP_TOKEN", "phase", "$PARENT", "willpower", 1],
+                                            ["LOG", "{{$ALIAS_N}} discarded ", "$PROMPT_CARD.currentFace.name", " to add +1 willpower to ", "$GAME.cardById.$PARENT.currentFace.name", "."],
+                                            ["DISCARD_CARD", "$PROMPT_CARD"]
+                                        ],
+                                        ["TRUE"],
+                                        ["LOG", "{{$ALIAS_N}} cannot discard ", "$PROMPT_CARD.currentFace.name", " because it is not in their hand."]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "1-3 cards must be selected."]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Add defense",
+                    "hotkey": "7",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["GREATER_EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["LESS_EQUAL", ["LENGTH", "$PROMPT_INPUT"], 3]
+                            ],
+                            [
+                                ["FOR_EACH_VAL", "$PROMPT_CARD_ID", "$PROMPT_INPUT", [
+                                    ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_CARD_ID}}"],
+                                    ["COND",
+                                        ["EQUAL", "$PROMPT_CARD.groupId", "{{$CONTROLLER}}Hand"],
+                                        [
+                                            ["ADD_TEMP_TOKEN", "phase", "$PARENT", "defense", 1],
+                                            ["LOG", "{{$ALIAS_N}} discarded ", "$PROMPT_CARD.currentFace.name", " to add +1 defense to ", "$GAME.cardById.$PARENT.currentFace.name", "."],
+                                            ["DISCARD_CARD", "$PROMPT_CARD"]
+                                        ],
+                                        ["TRUE"],
+                                        ["LOG", "{{$ALIAS_N}} cannot discard ", "$PROMPT_CARD.currentFace.name", " because it is not in their hand."]
+                                    ]
+                                ]]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "1-3 cards must be selected."]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "envoyOfPelagir": {
+            "args": [],
+            "message": "Select a Gondor or Noble hero to add 1 resource to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "squireOfTheCitadel": {
+            "args": [],
+            "message": "Select a Gondor hero to add 1 resource to.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "rhovanionOutrider": {
+            "args": ["$CARD"],
+            "message": "Select a location to place 1 progress on.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["LOG", "{{$ALIAS_N}} added 1 progress to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/progress", 1],
+                        ["COND",
+                            ["NOT_EQUAL", "$PROMPT_CARD.borderColor", "green"],
+                            [
+                                ["LOG", "└── ", "Location is not fully explored so Rhovanion Outrider gets +1 willpower until the end of the phase."],
+                                ["ADD_TEMP_TOKEN", "phase", "$CARD.id", "willpower", 1]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "wizardPipe": {
+            "args": ["$CARD"],
+            "message": "Select a card from your hand.",
+            "input": {
+                "type": "selectCards",
+                "autoSubmit": {
+                    "numCards": 1,
+                    "code": [
+                        ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", "$PROMPT_CARD.controller", "$CARD.controller"]
+                            ],
+                            [
+                                ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["DEFINE", "$ACTIVE_CARD", "$PROMPT_CARD"],
+                                ["ACTION_LIST", "swapWithTop"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "The ability's conditions are not met."],
+                                ["PROMPT", "$PLAYER_N", "wizardPipe", "$CARD"]
+                            ]
+                        ]
+                    ]
+                }
+            },
+            "options": [
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "gandalfAlly": {
+            "args": ["$CONTROLLER"],
+            "message": "Select an option.",
+            "input": {
+                "type": "selectCards"
+            },        
+            "options": [
+                {
+                    "label": "Draw 3 cards",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOG", "└── ", ["GET_ALIAS", "$CONTROLLER"], " drew 3 cards."],
+                        ["DRAW_CARD", 3, "$CONTROLLER"]
+                    ]
+                },
+                {
+                    "label": "Deal 4 damage to selected enemy",
+                    "hotkey": "4",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_ENEMY", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} dealt 4 damage to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", 4]        
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "An enemy must be selected."],
+                                ["PROMPT", "$PLAYER_N", "gandalfAlly", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Reduce threat by 5",
+                    "hotkey": "5",
+                    "code": [
+                        ["LOG", "└── ", ["GET_ALIAS", "$CONTROLLER"], " reduced their threat by 5."],
+                        ["DECREASE_VAL", "/playerData/{{$CONTROLLER}}/threat", 5]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "elrondAlly": {
+            "args": [],
+            "message": "Select an option.",
+            "input": {
+                "type": "selectCards"
+            },        
+            "options": [
+                {
+                    "label": "Heal all damage on selected hero",
+                    "hotkey": "1",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_HERO", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} healed all damage on ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                                ["SET", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", 0]        
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "A hero must be selected."],
+                                ["PROMPT", "$PLAYER_N", "elrondAlly"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Discard selected Condition attachment",
+                    "hotkey": "2",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["GREATER_THAN", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.cardIndex", 0]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} discarded ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                                ["DISCARD_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "An attachment must be selected."],
+                                ["PROMPT", "$PLAYER_N", "elrondAlly"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Each player draws a card",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOG", "└── ", "Each player draws a card."],
+                        ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
+                            ["DRAW_CARD", 1, "$PLAYER_I"]
+                        ]]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "gandalfsStaff": {
+            "args": ["$CARD"],
+            "message": "Select an option.",
+            "input": {
+                "type": "selectCards"
+            },        
+            "options": [
+                {
+                    "label": "Choose a player to draw a card",
+                    "hotkey": "1",
+                    "code": [
+                        ["LOG", "└── ", ["GET_ALIAS", "player1"], " drew 1 cards."],
+                        ["PROMPT", "$PLAYER_N", "executeForTargetPlayer"],
+                        ["FOR_EACH_START_STOP_STEP", "$I", 1, ["ADD", "$GAME.numPlayers", 1], 1, [
+                            ["PROMPT_ADD_OPTION", "$PLAYER_N", ["GET_ALIAS", "player{{$I}}"], "{{$I}}", 
+                                ["REPLACE_STRING_IN_LIST", ["POINTER", [
+                                    ["LOG", "└── ", ["GET_ALIAS", "player{I}"], " draws a card."],
+                                    ["DRAW_CARD", 1, "player{I}"]
+                                ]], "{I}", "{{$I}}"]
+                            ]
+                        ]],
+                        ["TOGGLE_EXHAUST", "$CARD"]
+                    ]
+                },
+                {
+                    "label": "Add 1 resource to selected hero's resource pool",
+                    "hotkey": "2",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_HERO", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "A hero must be selected."],
+                                ["PROMPT", "$PLAYER_N", "gandalfsStaff", "$CARD"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Discard selected shadow card",
+                    "hotkey": "3",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_SHADOW", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} discarded selected shadow card."],
+                                ["DISCARD_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
+                                ["TOGGLE_EXHAUST", "$CARD"]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "A shadow card must be selected."],
+                                ["PROMPT", "$PLAYER_N", "gandalfsStaff", "$CARD"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        },
+        "keenAsLances": {
+            "args": ["$CARD", "$CONTROLLER"],
+            "message": "Select an option.",
+            "input": {
+                "type": "selectCards"
+            },        
+            "options": [
+                {
+                    "label": "Add 2 resources to selected hero's resource pool",
+                    "hotkey": "1",
+                    "code": [
+                        ["COND",
+                            ["AND",
+                                ["EQUAL", ["LENGTH", "$PROMPT_INPUT"], 1],
+                                ["IS_HERO", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"]
+                            ],
+                            [
+                                ["LOG", "{{$ALIAS_N}} added 2 resources to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 2],
+                                ["MOVE_CARD", "$CARD.id", "sharedVictory", 0]
+                            ],
+                            ["TRUE"],
+                            [
+                                ["LOG", "└── ", "A hero must be selected."],
+                                ["PROMPT", "$PLAYER_N", "keenAsLances", "$CARD", "$CONTROLLER"]
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Draw 3 cards",
+                    "hotkey": "2",
+                    "code": [
+                        ["LOG", "└── ", ["GET_ALIAS", "$CONTROLLER"], " drew 3 cards."],
+                        ["DRAW_CARD", 3, "$CONTROLLER"]
+                    ]
+                },
+                {
+                    "label": "Reduce threat by 4",
+                    "hotkey": "3",
+                    "code": [
+                        ["LOG", "└── ", ["GET_ALIAS", "$CONTROLLER"], " reduced their threat by 4."],
+                        ["DECREASE_VAL", "/playerData/{{$CONTROLLER}}/threat", 4]
                     ]
                 },
                 {
