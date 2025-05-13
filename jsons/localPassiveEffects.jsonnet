@@ -145,6 +145,18 @@ local removeToken(tokenName, amount=1) = [["DECREASE_VAL", "/cardById/$TARGET_ID
                 tokens = ["attack"],
             ),
             "8fcb55c3-2996-4c13-b120-2b0c31f62d21": {"_comment": "Faramir (Hero, Lore)", "inheritFrom": "323ebfa3-57e5-4394-9f55-284b2f7ee0be"},
+            "665b16ad-accf-45c9-8725-f3f5d0818310": localPassiveEffect(
+                name = "Booming Ent",
+                listenToTargetChange = ["/cardById/*/groupId", "/cardById/*/tokens/damage"],
+                targetCondition = [
+                    ["IN_STRING", "$TARGET.currentFace.traits", "Ent."],
+                    ["IS_CHARACTER", "$TARGET"],
+                    ["EQUAL", "$TARGET.cardIndex", 0],
+                    ["GREATER_EQUAL", "$TARGET.tokens.damage", 1],
+                    ["EQUAL", "$THIS.controller", "$TARGET.controller"],
+                ],
+                tokens = ["attack"],
+            ),
             "51223bd0-ffd1-11df-a976-0801206c9009": localPassiveEffect(
                 name = "Eagles of the Misty Mountains",
                 listenToTargetChange = ["/cardById/*/currentSide", "/cardById/*/cardIndex"],

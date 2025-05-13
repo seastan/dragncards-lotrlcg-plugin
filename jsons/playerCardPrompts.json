@@ -1,0 +1,35 @@
+{
+    "prompts": {
+        "lanwyn": {
+            "args": ["$CARD"],
+            "message": "Select an option.",
+            "options": [
+                {
+                    "label": "Ready Lanwyn",
+                    "hotkey": "1",
+                    "code": ["COND",
+                        "$CARD.exhausted",
+                        [
+                            ["TOGGLE_EXHAUST", "$CARD"]
+                        ],
+                        true,
+                        [
+                            ["LOG", "└── ", "$CARD.currentFace.name", " is already ready."]
+                        ]
+                    ]
+                },
+                {
+                    "label": "Give Lanwyn +2 willpower until the end of the phase",
+                    "hotkey": "2",
+                    "code": [
+                        ["ADD_TEMP_TOKEN", "phase", "$CARD.id", "willpower", 2]
+                    ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
+                }
+            ]
+        }
+    }
+}
