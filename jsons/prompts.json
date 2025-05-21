@@ -385,7 +385,7 @@
             "message": "This quest uses an extra region. Use the 'M' key to toggle view of the extra region.",
             "options": [
                 {
-                    "label": "Ok",
+                    "label": "OK",
                     "hotkey": "K"
                 }
             ]
@@ -395,7 +395,7 @@
             "message": "This quest uses extra regions. Use the ',' key to toggle view of the extra regions.",
             "options": [
                 {
-                    "label": "Ok",
+                    "label": "OK",
                     "hotkey": "K"
                 }
             ]

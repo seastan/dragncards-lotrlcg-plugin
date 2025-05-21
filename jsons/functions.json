@@ -911,6 +911,13 @@
               ["EQUAL", "$CARD.currentFace.type", "Ship Enemy"]
             ]
           ]
+        },
+        "IS_SHADOW": {
+          "args": ["$CARD"],
+          "code": ["AND",
+            ["GREATER_THAN", "$CARD.cardIndex", 0],
+            ["EQUAL", "$CARD.rotation", -30]
+          ]
         }
     }
 }
