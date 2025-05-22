@@ -2457,10 +2457,13 @@
                     "entersLeavesPlay": {
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/*/currentSide"],
-                        "condition": ["OR",
-                            ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
-                            ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": ["AND",
+                            ["PREV", ["DEFINED", "$THIS.inPlay"]],
+                            ["OR",
+                                ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
+                                ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                            ]
                         ],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "placeProgressOnSelectedLocation", 2]
@@ -2474,10 +2477,13 @@
                     "entersLeavesPlay": {
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/*/currentSide"],
-                        "condition": ["OR",
-                            ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
-                            ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
+                        "condition": ["AND",
+                            ["PREV", ["DEFINED", "$THIS.inPlay"]],
+                            ["OR",
+                                ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
+                                ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                            ]
                         ],
                         "then": [
                             ["PROMPT", "$PLAYER_N", "dealDamageToSelectedEnemy", 2]
