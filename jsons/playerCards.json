@@ -2457,7 +2457,7 @@
                     "entersLeavesPlay": {
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/cardById/$THIS/inPlay", "/cardById/*/currentSide"],
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/*/currentSide"],
                         "condition": ["OR",
                             ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
                             ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
@@ -2474,7 +2474,7 @@
                     "entersLeavesPlay": {
                         "type": "trigger",
                         "side": "A",
-                        "listenTo": ["/cardById/$THIS/inPlay", "/cardById/*/currentSide"],
+                        "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/*/currentSide"],
                         "condition": ["OR",
                             ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
                             ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
