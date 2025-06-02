@@ -473,6 +473,8 @@
                 "_comment": "Daeron's Runes",
                 "ability": {
                     "A": [
+                        ["LOG", "└── ", "{{$ALIAS_N}} played Daeron's Runes."],
+                        ["MOVE_CARD", "$THIS_ID", "{{$THIS.controller}}Event", 0],
                         ["LOG", "└── ", "{{$ALIAS_N}} drew 2 cards and must now discard a card from their hand."],
                         ["DRAW_CARD", 2, "$THIS.controller"],
                         ["PROMPT", "$PLAYER_N", "daeronsRunes", "$THIS", "$THIS.controller"]

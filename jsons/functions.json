@@ -215,14 +215,15 @@
             ]
           ]
         },
-        "DISCARD_CARD": {
-          "args": ["$CARD"],
+        "DISCARD_CARD_ID": {
+          "args": ["$CARD_ID"],
           "code": [
+            ["VAR", "$CARD", "$GAME.cardById.{{$CARD_ID}}"],
             ["VAR", "$ROTATION", "$CARD.rotation"],
             ["COND",
               ["EQUAL", "$CARD.cardIndex", 0],
               [
-                ["VAR", "$STACK_ID", ["GET_STACK_ID", "$CARD.groupId", "$CARD.stackIndex"]],
+                ["VAR", "$STACK_ID", "$CARD.stackId"],
                 ["VAR", "$STACK_CARD_IDS", "$GAME.stackById.$STACK_ID.cardIds"],
                 ["FOR_EACH_VAL", "$STACK_CARD_ID", "$STACK_CARD_IDS",
                   [
@@ -287,6 +288,10 @@
               ]
             ]
           ]
+        },
+        "DISCARD_CARD": {
+          "args": ["$CARD"],
+          "code": ["DISCARD_CARD_ID", "$CARD.id"]
         },
         "REVEAL_ENCOUNTER": {
           "args": ["$SIDE"],
