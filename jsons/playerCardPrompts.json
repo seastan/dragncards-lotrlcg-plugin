@@ -73,7 +73,7 @@
         },
         "daeronsRunes": {
             "args": ["$CARD", "$CONTROLLER"],
-            "message": "Select a card to discard.",
+            "message": "Select a card to discard from your hand.",
             "input": {
                 "type": "selectCards",
                 "autoSubmit": {
@@ -88,7 +88,8 @@
                                 ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
                                 ["LOG", "{{$ALIAS_N}} chose to discard ", "$PROMPT_CARD.currentFace.name", "."],
                                 ["DISCARD_CARD", "$PROMPT_CARD"],
-                                ["DISCARD_CARD", "$CARD"]  // Seems to sometimes discard a card from hand instead of DR
+                                ["LOG", "{{$ALIAS_N}} discarded Daeron's Runes."],
+                                ["DISCARD_CARD", "$CARD"]
                             ],
                             ["TRUE"],
                             [
