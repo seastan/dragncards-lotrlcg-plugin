@@ -2460,11 +2460,23 @@
                         "type": "trigger",
                         "side": "A",
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
-                        "condition": ["AND",
-                            ["PREV", ["DEFINED", "$THIS.inPlay"]],
-                            ["OR",
-                                ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
-                                ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                        "condition": ["OR",
+                            // Leaves play
+                            ["AND",
+                                ["PREV", ["EQUAL", "$THIS.inPlay", true]],
+                                ["PREV", ["EQUAL", "$THIS.currentSide", "A"]],
+                                ["EQUAL", "$THIS.inPlay", false]
+                            ],
+                            // Enters play
+                            ["AND",
+                                ["PREV", ["EQUAL", "$THIS.inPlay", false]],
+                                ["EQUAL", "$THIS.inPlay", true],
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                            ],
+                            // Flips
+                            ["AND",
+                                ["EQUAL", "$THIS.inPlay", true]],
+                                ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]
                             ]
                         ],
                         "then": [
@@ -2480,11 +2492,23 @@
                         "type": "trigger",
                         "side": "A",
                         "listenTo": ["/cardById/$THIS_ID/inPlay", "/cardById/$THIS_ID/currentSide"],
-                        "condition": ["AND",
-                            ["PREV", ["DEFINED", "$THIS.inPlay"]],
-                            ["OR",
-                                ["NOT_EQUAL", "$THIS.inPlay", ["PREV", "$THIS.inPlay"]],
-                                ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]]
+                        "condition": ["OR",
+                            // Leaves play
+                            ["AND",
+                                ["PREV", ["EQUAL", "$THIS.inPlay", true]],
+                                ["PREV", ["EQUAL", "$THIS.currentSide", "A"]],
+                                ["EQUAL", "$THIS.inPlay", false]
+                            ],
+                            // Enters play
+                            ["AND",
+                                ["PREV", ["EQUAL", "$THIS.inPlay", false]],
+                                ["EQUAL", "$THIS.inPlay", true],
+                                ["EQUAL", "$THIS.currentSide", "A"]
+                            ],
+                            // Flips
+                            ["AND",
+                                ["EQUAL", "$THIS.inPlay", true]],
+                                ["NOT_EQUAL", "$THIS.currentSide", ["PREV", "$THIS.currentSide"]
                             ]
                         ],
                         "then": [

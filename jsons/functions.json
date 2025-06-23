@@ -467,16 +467,26 @@
         "DISCARD_UNTIL": {
           "args": ["$GROUP_ID", "$TYPE"],
           "code": [
-              ["LOG", "{{$PLAYER_N}} began discarding until {{$TYPE}}."],
-              ["WHILE",
-                ["NOT_EQUAL", "$GAME.groupById.$GROUP_ID.parentCards.[0].sides.A.type", "$TYPE"],
-                [
-                  ["DISCARD_CARD", "$GAME.cardById.{{$GAME.groupById.$GROUP_ID.parentCardIds.[0]}}"]
-                ]
+            ["LOG", "{{$PLAYER_N}} began discarding until {{$TYPE}}."],
+            ["WHILE",
+              ["AND",
+                ["GROUP_NOT_EMPTY", "$GROUP_ID"],
+                ["NOT_EQUAL", "$GAME.groupById.$GROUP_ID.parentCards.[0].sides.A.type", "$TYPE"]
               ],
-              ["VAR", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],
-              ["LOG", "{{$PLAYER_N}} discarded {{$TOP_CARD.sides.A.name}} and added it to the staging area."],
-              ["MOVE_CARD", "$TOP_CARD.id", "sharedStagingArea", -1]
+              [
+                ["DISCARD_CARD", "$GAME.cardById.{{$GAME.groupById.$GROUP_ID.parentCardIds.[0]}}"]
+              ]
+            ],
+            ["COND",
+              ["GROUP_EMPTY", "$GROUP_ID"],
+              ["LOG", "{{$PLAYER_N}} discarded all the cards in the deck and did not find a {{$TYPE}}."],
+              true,
+              [
+                ["VAR", "$TOP_CARD", "$GAME.groupById.$GROUP_ID.parentCards.[0]"],
+                ["LOG", "{{$PLAYER_N}} discarded {{$TOP_CARD.sides.A.name}} and added it to the staging area."],
+                ["MOVE_CARD", "$TOP_CARD.id", "sharedStagingArea", -1]
+              ]
+            ]
           ]
         },
         "END_THE_QUEST_PHASE": {
