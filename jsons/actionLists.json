@@ -252,7 +252,7 @@
                         ]
                     ]
                 ],
-                ["TRUE"],
+                ["NOT_EQUAL", "$ACTIVE_CARD.controller", "shared"],
                 [
                     ["ACTION_LIST", "toggleCommitWithoutExhausting"],
                     ["COND",
@@ -261,7 +261,9 @@
                         ["AND", ["NOT", "$ACTIVE_CARD.committed"], "$ACTIVE_CARD.inPlay", "$ACTIVE_CARD.exhausted"],
                         ["TOGGLE_EXHAUST", "$ACTIVE_CARD"]
                     ]
-                ]
+                ],
+                ["TRUE"],
+                ["LOG", "$ALIAS_N", " tried to commit ", "$ACTIVE_FACE.name", " to the quest, but it is not a valid character controlled by a player."]
             ]
         ],
         "toggleCommitWithoutExhausting": [
