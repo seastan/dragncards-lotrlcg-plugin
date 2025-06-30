@@ -55,6 +55,19 @@
                                 "deckListId": "QA2.4"
                             }
                         ]
+                    },
+                    {
+                        "label": "ALeP Fangs in the Dark",
+                        "deckLists": [
+                            {
+                                "label": "id:easy",
+                                "deckListId": "EA2.5"
+                            },
+                            {
+                                "label": "id:normal",
+                                "deckListId": "QA2.5"
+                            }
+                        ]
                     }
                 ]
             }

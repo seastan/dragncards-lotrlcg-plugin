@@ -1,0 +1,47 @@
+{
+    "preBuiltDecks": {
+        "EA2.5": {
+            "label": "ALeP Fangs in the Dark (Easy)",
+            "cards": [
+                {"databaseId": "18edf928-741a-4892-879c-49018cf684c6", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "The Hunt Begins"},
+                {"databaseId": "5167f28a-9a6a-449d-bbf3-11850dc94ddd", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Thrown to the Wolves"},
+                {"databaseId": "49b9d2aa-b84f-480c-b6a9-cac27510b075", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Caught in the Trap"},
+                {"databaseId": "08926600-87cc-4062-b739-0ab1c8b18848", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Savage Pup"},
+                {"databaseId": "d8d362b9-894e-4727-99a0-fdfd31d754c4", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Scout Wolf"},
+                {"databaseId": "15b5875f-e7bc-46c4-86b3-b11d4aae4046", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Hunter Wolf"},
+                {"databaseId": "571de030-36c6-4824-8c14-0003fc00cb05", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Pack Defender"},
+                {"databaseId": "1c2eb62f-0fdc-496e-a466-0424dc741ca2", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Ancient Dwarven Post"},
+                {"databaseId": "2e3f3ff6-c890-4bfa-80bd-d0dabfc7673f", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Bone-white Cliffs"},
+                {"databaseId": "1a081e3a-9cdd-48f0-b56f-dd4e895c4167", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Hunting Grounds"},
+                {"databaseId": "8c3135fe-a99b-43ca-ae86-a17477a7d333", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Brandy-stream"},
+                {"databaseId": "48750cda-5c24-4e1d-93bf-29a51a633062", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Buckland Homestead"},
+                {"databaseId": "b2444715-adc0-4f76-8415-c2fa18e77190", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Watchful Wood"},
+                {"databaseId": "7c2ac577-6f3e-4a4e-b9f0-0eb177e0ab10", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Cover of Darkness"},
+                {"databaseId": "3c4e3563-9984-442c-8d0c-9432eeae5c45", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Eyes in the Moonlight"},
+                {"databaseId": "25418080-3453-4928-acd5-212e56915acf", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Midnight Ambush"},
+                {"databaseId": "bac3635d-4dbe-49d8-ae6d-884572a04445", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Unnatural Aggression"},
+                {"databaseId": "06df5b59-7a64-4781-accc-76da30612a33", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Tracked by Scent"},
+                {"databaseId": "0947e5e8-29dd-4177-9454-e343c1a6c300", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "White Wolf-pelt Cloak"},
+                {"databaseId": "0109c68f-1805-405a-8a1b-6faecd726c0a", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Wolf-biter"},
+                {"databaseId": "673e80ee-115d-463c-9ad6-a0852ecf44ec", "quantity": 2, "loadGroupId": "sharedEncounterDeck2", "_name": "Buckland Adventurer"},
+                {"databaseId": "35f4730f-d9d0-485f-b620-e145b1d5e454", "quantity": 2, "loadGroupId": "sharedEncounterDeck2", "_name": "Northern Hunter"},
+                {"databaseId": "6a17050c-ec4d-4685-b1b5-0f9a44b8460b", "quantity": 2, "loadGroupId": "sharedEncounterDeck2", "_name": "Vigilant Road-warden"},
+                {"databaseId": "21d8450c-35ab-45a7-a719-87d722859d7c", "quantity": 2, "loadGroupId": "sharedEncounterDeck2", "_name": "Woman of the Woods"},
+                {"databaseId": "a2284275-6007-4a63-b2dd-db2ba9456f84", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark Rules"},
+                {"databaseId": "269bc4d0-6f8b-4df7-bd35-6d3347a1c800", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 1"},
+                {"databaseId": "6ebbbddb-2f84-47c4-b767-7dfcf1147ad6", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 2"},
+                {"databaseId": "fb348c06-f568-4a28-b87a-2172e8a32254", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 3"},
+                {"databaseId": "6ff25100-4325-41bf-be2d-5e7f6e4990a5", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 4"},
+                {"databaseId": "1df8e0cc-3b4b-4a27-8d67-1c9114d2eb81", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 5"},
+                {"databaseId": "e2e9beb8-3f4f-4796-aaa5-dd13e9306bb5", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 6"},
+                {"databaseId": "522a910a-6608-4956-a568-f0292829309a", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Fangs in the Dark 7"},
+                {"databaseId": "316fe3d4-e90e-4087-b3d3-367b6ae6240e", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Pack Matriarch"},
+                {"databaseId": "192a66bc-d867-4319-9e03-d7b019851c7f", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Girdley Island"},
+                {"databaseId": "9d713d2b-1628-4fae-a726-e20fe1bd03aa", "quantity": 5, "loadGroupId": "sharedStagingArea", "_name": "Stalking Wolf"},
+                {"databaseId": "f7786edb-37da-4f11-93e3-54f2cbaa2c37", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Bree-landers"},
+                {"databaseId": "cb627d05-fa98-4f5b-853f-74c707e31b0d", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Follow the Trail"},
+                {"databaseId": "2509e7af-6a4c-4960-9ab8-e5e293576b19", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Wolfsbane Jack"}
+            ]
+        }
+    }
+}
