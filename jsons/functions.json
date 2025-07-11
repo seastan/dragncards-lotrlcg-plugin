@@ -933,6 +933,40 @@
             ["GREATER_THAN", "$CARD.cardIndex", 0],
             ["EQUAL", "$CARD.rotation", -30]
           ]
+        },
+        "LOAD_CARDS_BY_CONDITION": {
+          "args": ["$GROUP_ID", "$CONDITION"],
+          "code": [
+            ["VAR", "$LOAD_LIST", ["LIST"]],
+            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD_DETAILS", "$CARD_DB", [
+              ["COND", 
+                ["ACTION_LIST", "$CONDITION"],
+                ["UPDATE_VAR", "$LOAD_LIST", 
+                  ["APPEND", "$LOAD_LIST", 
+                    ["PROCESS_MAP", 
+                      {"loadGroupId": "$GROUP_ID", "databaseId": "$CARD_ID", "quantity": ["TO_INT", "$CARD_DETAILS.A.deckbuilderQuantity"]}
+                    ]
+                  ]
+                ]
+              ]
+            ]],
+            ["LOAD_CARDS", "$LOAD_LIST"]
+          ]
+        },
+        "MOVE_CARD_BY_NAME": {
+          "args": ["$CARD_NAME", "$DESTINATION_GROUP_ID", "$POSITION"],
+          "code": [
+            ["VAR", "$CARD", ["ONE_CARD_WITH_FACE_KEY_VAL", "name", "$CARD_NAME"]],
+            ["VAR", "$CARD_ID", "$CARD.id"],
+            ["COND",
+              ["EQUAL", "$CARD_ID", null],
+              ["ABORT", "{{$ALIAS_N}} tried to move a card named {{$CARD_NAME}}, but no such card exists in the game."],
+              ["TRUE"],
+              [
+                ["MOVE_CARD", "$CARD_ID", "$DESTINATION_GROUP_ID", "$POSITION"]
+              ]
+            ]
+          ]
         }
     }
 }

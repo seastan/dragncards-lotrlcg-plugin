@@ -1,0 +1,129 @@
+{
+    "automation": {
+        "cards": {
+            "31c2ec5f-c9ac-40be-b91c-1f9ff9b7ec82": {
+                "_comment": "Setup",
+                "rules": {
+                    "setup": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["SET", "/groupById/sharedExtra1/onCardEnter/currentSide", "B"],
+                            ["SET", "/groupById/sharedExtra1/shuffleOnLoad", true],
+                            ["SET", "/groupById/sharedExtra2/onCardEnter/currentSide", "B"],
+                            ["SET", "/groupById/sharedExtra2/shuffleOnLoad", true],
+                            ["SET", "/groupById/sharedExtra3/onCardEnter/currentSide", "B"],
+                            ["SET", "/groupById/sharedExtra3/shuffleOnLoad", true],
+                            ["PROMPT", "player1", "mirrorOfGaladrielScenario"],
+                            ["PROMPT", "player1", "mirrorOfGaladrielWave1"],
+                            ["PROMPT", "player1", "mirrorOfGaladrielWave2"],
+                            ["PROMPT", "player1", "mirrorOfGaladrielVillain"]
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "prompts": {
+        "mirrorOfGaladrielScenario": {
+            "args": [],
+            "message": "Choose a Scenario set",
+            "options": [
+                {
+                    "label": "Minas Tirith",
+                    "code": [
+                        ["MOVE_STACKS", "sharedEncounterDeck", "sharedEncounterDeck2"],
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
+                            ["COND",
+                                ["IN_STRING", "$CARD.sides.A.traits", "Minas Tirith"],
+                                ["MOVE_CARD", "$CARD.id", "sharedEncounterDeck", 0]
+                            ]
+                        ]],
+                        ["SHUFFLE_GROUP", "sharedEncounterDeck"],
+                        ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedStagingArea", -1],
+                        ["MOVE_CARD_BY_NAME", "The One Ring", "sharedStagingArea", -1]
+                    ]
+                }
+            ]
+        },
+        "mirrorOfGaladrielWave1": {
+            "args": [],
+            "message": "Choose a Wave 1 set",
+            "options": [
+                {
+                    "label": "Wild Creatures",
+                    "code": [
+                        ["VAR", "$GROUP_ID", "sharedExtra1"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Wild Creatures"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
+                        ["MOVE_CARD_BY_NAME", "Wild Creatures", "sharedStagingArea", -1]
+                    ]
+                },
+                {
+                    "label": "Dunland Warriors",
+                    "code": [
+                        ["VAR", "$GROUP_ID", "sharedExtra1"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Dunland Warriors"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
+                        ["MOVE_CARD_BY_NAME", "Dunland Warriors", "sharedStagingArea", -1]
+                    ]
+                }
+            ]
+        },
+        "mirrorOfGaladrielWave2": {
+            "args": [],
+            "message": "Choose a Wave 2 set",
+            "options": [
+                {
+                    "label": "The Nazgûl",
+                    "code": [
+                        ["VAR", "$GROUP_ID", "sharedExtra2"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Nazgul"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
+                        ["SHUFFLE_GROUP", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "The Nazgûl", "sharedStagingArea", -1],
+                        ["MOVE_CARD_BY_NAME", "The Witch-king", "sharedSetAside", -1]
+                    ]
+                },
+                {
+                    "label": "Cursed Dead",
+                    "code": [
+                        ["VAR", "$GROUP_ID", "sharedExtra2"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Cursed Dead"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
+                        ["SHUFFLE_GROUP", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "Seal the Tomb", "sharedEncounterDeck2", -1]
+                    ]
+                }
+            ]
+        },
+        "mirrorOfGaladrielVillain": {
+            "args": [],
+            "message": "Choose a Villain set",
+            "options": [
+                {
+                    "label": "Sauron",
+                    "code": [
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
+                            ["COND",
+                                ["IN_STRING", "$CARD.sides.A.traits", "Sauron"],
+                                ["MOVE_CARD", "$CARD.id", "sharedExtra3", 0]
+                            ]
+                        ]],
+                        ["SHUFFLE_GROUP", "sharedExtra3"],
+                        ["MOVE_CARD_BY_NAME", "The Dark Lord Beckons", "sharedStagingArea", -1],
+                        ["MOVE_CARD_BY_NAME", "Sauron", "sharedSetAside", -1]
+                    ]
+                }
+            ]
+        }
+    }
+}
