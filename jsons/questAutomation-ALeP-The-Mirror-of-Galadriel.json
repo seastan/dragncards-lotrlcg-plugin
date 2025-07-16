@@ -56,6 +56,10 @@
                         ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "The One Ring", "sharedStagingArea", -1]
                     ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
                 }
             ]
         },
@@ -78,6 +82,10 @@
                 {
                     "label": "Dunland Warriors",
                     "code": ["LOAD_MIRROR_WAVE", "Dunland Warriors", "sharedExtra1"]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
                 }
             ]
         },
@@ -106,6 +114,10 @@
                 {
                     "label": "Drowned Dead",
                     "code": ["LOAD_MIRROR_WAVE", "Drowned Dead", "sharedExtra2"]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
                 }
             ]
         },
@@ -126,6 +138,10 @@
                         ["MOVE_CARD_BY_NAME", "The Dark Lord Beckons", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "Sauron", "sharedSetAside", -1]
                     ]
+                },
+                {
+                    "label": "Cancel",
+                    "hotkey": "X"
                 }
             ]
         }
