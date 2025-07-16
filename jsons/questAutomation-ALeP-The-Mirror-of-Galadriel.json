@@ -24,6 +24,19 @@
             }
         }
     },
+    "functions": {
+        "LOAD_MIRROR_WAVE": {
+          "args": ["$ENCOUNTER_SET", "$EXTRA_GROUP_ID"],
+          "code": [
+                ["VAR", "$GROUP_ID", "sharedExtra1"],
+                ["VAR", "$CONDITION", ["POINTER", ["AND",
+                    ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "$ENCOUNTER_SET"]
+                ]]],
+                ["LOAD_CARDS_BY_CONDITION", "$EXTRA_GROUP_ID", "$CONDITION"],
+                ["MOVE_CARD_BY_NAME", "$ENCOUNTER_SET", "sharedStagingArea", -1]
+            ]
+        }
+    },
     "prompts": {
         "mirrorOfGaladrielScenario": {
             "args": [],
@@ -52,25 +65,19 @@
             "options": [
                 {
                     "label": "Wild Creatures",
-                    "code": [
-                        ["VAR", "$GROUP_ID", "sharedExtra1"],
-                        ["VAR", "$CONDITION", ["POINTER", ["AND",
-                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Wild Creatures"]
-                        ]]],
-                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
-                        ["MOVE_CARD_BY_NAME", "Wild Creatures", "sharedStagingArea", -1]
-                    ]
+                    "code": ["LOAD_MIRROR_WAVE", "Wild Creatures", "sharedExtra1"]
+                },
+                {
+                    "label": "Plundering Goblins",
+                    "code": ["LOAD_MIRROR_WAVE", "Plundering Goblins", "sharedExtra1"]
+                },
+                {
+                    "label": "Ravaging Orcs",
+                    "code": ["LOAD_MIRROR_WAVE", "Ravaging Orcs", "sharedExtra1"]
                 },
                 {
                     "label": "Dunland Warriors",
-                    "code": [
-                        ["VAR", "$GROUP_ID", "sharedExtra1"],
-                        ["VAR", "$CONDITION", ["POINTER", ["AND",
-                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Dunland Warriors"]
-                        ]]],
-                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
-                        ["MOVE_CARD_BY_NAME", "Dunland Warriors", "sharedStagingArea", -1]
-                    ]
+                    "code": ["LOAD_MIRROR_WAVE", "Dunland Warriors", "sharedExtra1"]
                 }
             ]
         },
@@ -81,27 +88,24 @@
                 {
                     "label": "The Nazgûl",
                     "code": [
-                        ["VAR", "$GROUP_ID", "sharedExtra2"],
-                        ["VAR", "$CONDITION", ["POINTER", ["AND",
-                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Nazgul"]
-                        ]]],
-                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
-                        ["SHUFFLE_GROUP", "sharedExtra2"],
-                        ["MOVE_CARD_BY_NAME", "The Nazgûl", "sharedStagingArea", -1],
+                        ["LOAD_MIRROR_WAVE", "The Nazgûl", "sharedExtra2"],
                         ["MOVE_CARD_BY_NAME", "The Witch-king", "sharedSetAside", -1]
                     ]
                 },
                 {
                     "label": "Cursed Dead",
                     "code": [
-                        ["VAR", "$GROUP_ID", "sharedExtra2"],
-                        ["VAR", "$CONDITION", ["POINTER", ["AND",
-                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Cursed Dead"]
-                        ]]],
-                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
-                        ["SHUFFLE_GROUP", "sharedExtra2"],
+                        ["LOAD_MIRROR_WAVE", "Cursed Dead", "sharedExtra2"],
                         ["MOVE_CARD_BY_NAME", "Seal the Tomb", "sharedEncounterDeck2", -1]
                     ]
+                },
+                {
+                    "label": "Dunland Raiders",
+                    "code": ["LOAD_MIRROR_WAVE", "Dunland Raiders", "sharedExtra2"]
+                }, 
+                {
+                    "label": "Drowned Dead",
+                    "code": ["LOAD_MIRROR_WAVE", "Drowned Dead", "sharedExtra2"]
                 }
             ]
         },
