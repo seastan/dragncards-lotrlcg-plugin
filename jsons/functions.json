@@ -967,6 +967,27 @@
               ]
             ]
           ]
+        },
+        "MOVE_CARD_BY_NAME_AND_TYPE": {
+          "args": ["$CARD_NAME", "$CARD_TYPE", "$DESTINATION_GROUP_ID", "$POSITION"],
+          "code": [
+            ["VAR", "$CARD", ["ONE_CARD",
+              "$C",
+              ["AND",
+                ["EQUAL", "$C.sides.A.name", "$CARD_NAME"],
+                ["EQUAL", "$C.sides.A.type", "$CARD_TYPE"]
+              ]
+            ]],
+            ["VAR", "$CARD_ID", "$CARD.id"],
+            ["COND",
+              ["EQUAL", "$CARD_ID", null],
+              ["ABORT", "{{$ALIAS_N}} tried to move a card named {{$CARD_NAME}} and type {{$CARD_TYPE}}, but no such card exists in the game."],
+              ["TRUE"],
+              [
+                ["MOVE_CARD", "$CARD_ID", "$DESTINATION_GROUP_ID", "$POSITION"]
+              ]
+            ]
+          ]
         }
     }
 }
