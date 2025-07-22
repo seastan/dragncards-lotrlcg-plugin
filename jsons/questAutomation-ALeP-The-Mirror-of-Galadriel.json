@@ -33,7 +33,7 @@
                     ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "$ENCOUNTER_SET"]
                 ]]],
                 ["LOAD_CARDS_BY_CONDITION", "$EXTRA_GROUP_ID", "$CONDITION"],
-                ["MOVE_CARD_BY_NAME", "$ENCOUNTER_SET", "sharedStagingArea", -1]
+                ["MOVE_CARD_BY_NAME_AND_TYPE", "$ENCOUNTER_SET", "Objective", "sharedStagingArea", -1]
             ]
         }
     },
@@ -67,6 +67,20 @@
             "args": [],
             "message": "Choose a Wave 1 set",
             "options": [
+                {
+                    "label": "Mirkwood Foes",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Dol Guldur Orcs", "sharedExtra1"],
+                        ["LOAD_MIRROR_WAVE", "Spiders of Mirkwood", "sharedExtra1"],
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
+                            ["COND",
+                                ["NOT_EQUAL", "$CARD.sides.A.type", "Enemy"],
+                                ["DELETE_CARD", "$CARD.id"]
+                            ]
+                        ]],
+                        ["MOVE_CARD_BY_NAME", "Chieftain Ufthak", "sharedSetAside", -1]
+                    ]
+                },
                 {
                     "label": "Wild Creatures",
                     "code": ["LOAD_MIRROR_WAVE", "Wild Creatures", "sharedExtra1"]
@@ -114,6 +128,13 @@
                 {
                     "label": "Drowned Dead",
                     "code": ["LOAD_MIRROR_WAVE", "Drowned Dead", "sharedExtra2"]
+                }, 
+                {
+                    "label": "Easterling Raiders",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Drowned Dead", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "Warriors of the East", "sharedEncounterDeck2", -1]
+                    ]
                 },
                 {
                     "label": "Cancel",
