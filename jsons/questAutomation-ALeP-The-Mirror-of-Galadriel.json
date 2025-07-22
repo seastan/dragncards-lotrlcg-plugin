@@ -70,8 +70,15 @@
                 {
                     "label": "Mirkwood Foes",
                     "code": [
-                        ["LOAD_MIRROR_WAVE", "Dol Guldur Orcs", "sharedExtra1"],
-                        ["LOAD_MIRROR_WAVE", "Spiders of Mirkwood", "sharedExtra1"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Dol Guldur Orcs"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$sharedExtra1", "$CONDITION"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "Spiders of Mirkwood"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$sharedExtra1", "$CONDITION"],
+                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Mirkwood Foes", "Objective", "sharedStagingArea", -1],
                         ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
                             ["COND",
                                 ["NOT_EQUAL", "$CARD.sides.A.type", "Enemy"],
