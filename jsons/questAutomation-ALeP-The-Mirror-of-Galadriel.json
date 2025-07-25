@@ -139,7 +139,7 @@
                 {
                     "label": "Easterling Raiders",
                     "code": [
-                        ["LOAD_MIRROR_WAVE", "Drowned Dead", "sharedExtra2"],
+                        ["LOAD_MIRROR_WAVE", "Easterling Raiders", "sharedExtra2"],
                         ["MOVE_CARD_BY_NAME", "Warriors of the East", "sharedEncounterDeck2", -1]
                     ]
                 },
