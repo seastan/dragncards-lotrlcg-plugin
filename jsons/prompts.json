@@ -400,6 +400,16 @@
                 }
             ]
         },
+        "boonRegionReminder": {
+            "args": [],
+            "message": "Some cards have been loaded into the 'Boons' group. This group is accessible via the bottom-right button in your screen, or via the View->Shared menu.",
+            "options": [
+                {
+                    "label": "OK",
+                    "hotkey": "K"
+                }
+            ]
+        },
         "glitteringSetup": {
             "args": [],
             "message": "After you finish rearranging the Caves Map so that all the caves are connected, press Setup to complete the remainder of the setup.",
