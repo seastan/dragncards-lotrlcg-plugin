@@ -9,6 +9,7 @@
             ["VAR", "$LOADED_PLAYER_DECK", false],
             ["VAR", "$LOADED_ENCOUNTER_DECK", false],
             ["VAR", "$LOADED_ENCOUNTER_DECK_2", false],
+            ["VAR", "$LOADED_BOONS", false],
             ["VAR", "$THREAT_RAISE", 0],
             ["FOR_EACH_VAL", "$CARD_ID", "$GAME.loadedCardIds", [
                 ["VAR", "$CARD", "$GAME.cardById.$CARD_ID"],
@@ -46,6 +47,10 @@
                     ["EQUAL", "$CARD.groupId", "sharedEncounterDeck2"],
                     ["UPDATE_VAR", "$LOADED_ENCOUNTER_DECK_2", true]
                 ],
+                ["COND",
+                    ["EQUAL", "$CARD.groupId", "sharedBoons"],
+                    ["UPDATE_VAR", "$LOADED_BOONS", true]
+                ],
                 ["COND", 
                     ["AND", ["EQUAL", "$CARD.sides.A.type", "Quest"], ["EQUAL", "$CARD.sides.A.cost", 1]],
                     [
@@ -58,6 +63,10 @@
             ["COND",
                 "$LOADED_ENCOUNTER_DECK_2",
                 ["SHOW_ENCOUNTER_DECK_2", true]
+            ],
+            ["COND",
+                "$LOADED_BOONS",
+                ["PROMPT", "$PLAYER_ORDER", "boonRegionReminder"]
             ],
             ["COND",
                 "$LOADED_ENCOUNTER_DECK",

@@ -3397,6 +3397,15 @@
             "German": "Beiseite legen",
             "Chinese": "放到一边"
         },
+        "sharedBoons": {
+            "English": "Boons",
+            "French": "Bienfaits",
+            "Spanish": "Beneficios",
+            "Portuguese": "Bênçãos",
+            "Italian": "Benefici",
+            "German": "Gaben",
+            "Chinese": "祝福"
+        },
         "sharedVictory": {
             "English": "Victory Display",
             "French": "Affichage de Victoire",

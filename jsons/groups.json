@@ -138,6 +138,14 @@
                 "controller": "shared"
             }
         },
+        "sharedBoons": {
+            "groupType": "discard",
+            "label": "id:sharedBoons", 
+            "tableLabel": "id:sharedBoons",
+            "onCardEnter": {
+                "controller": "shared"
+            }
+        },
         "sharedVictory": {
             "groupType": "discard",
             "label": "id:sharedVictory", 

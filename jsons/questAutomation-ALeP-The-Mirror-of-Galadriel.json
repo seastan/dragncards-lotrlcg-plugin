@@ -104,8 +104,50 @@
                     "code": ["LOAD_MIRROR_WAVE", "Ravaging Orcs", "sharedExtra1"]
                 },
                 {
+                    "label": "Brigands",
+                    "code": ["LOAD_MIRROR_WAVE", "Brigands", "sharedExtra1"]
+                },
+                {
+                    "label": "Misty Mountain Orcs",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Misty Mountain Orcs", "sharedExtra1"],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
+                            ["COND",
+                                ["EQUAL", "$CARD.sides.A.name", "Orc Hunting Party"],
+                                ["DELETE_CARD", "$CARD_ID"]
+                            ]
+                        ]]
+                    ]
+                },
+                {
+                    "label": "Harad Foes",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "a34ffb4e-c821-42aa-8dab-2914d274b3b1", "groupId": "sharedExtra1", "quantity": 3},
+                            {"databaseId": "6cfc4fa5-bbcc-4c99-82b7-bb6359d24750", "groupId": "sharedExtra1", "quantity": 3},
+                            {"databaseId": "04a23a2e-a14f-4c54-b54f-eeef36d3a92b", "groupId": "sharedExtra1", "quantity": 3}
+                        ]],
+                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Harad Foes", "Objective", "sharedStagingArea", -1]
+                    ]
+                },
+                {
+                    "label": "Orcs of Mordor",
+                    "code": ["LOAD_MIRROR_WAVE", "Orcs of Mordor", "sharedExtra1"]
+                },
+                {
                     "label": "Dunland Warriors",
                     "code": ["LOAD_MIRROR_WAVE", "Dunland Warriors", "sharedExtra1"]
+                },
+                {
+                    "label": "Dunlanding Warriors",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Dunlanding Warriors", "sharedExtra1"],
+                        ["MOVE_CARD_BY_NAME", "Dunland Chieftain", "sharedSetAside", -1]
+                    ]
+                },
+                {
+                    "label": "Wolf-cult",
+                    "code": ["LOAD_MIRROR_WAVE", "Wolf-cult", "sharedExtra1"]
                 },
                 {
                     "label": "Cancel",
@@ -144,6 +186,55 @@
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Easterling Raiders", "sharedExtra2"],
                         ["MOVE_CARD_BY_NAME", "Warriors of the East", "sharedEncounterDeck2", -1]
+                    ]
+                },
+                {
+                    "label": "Angmar Orcs",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Angmar Orcs", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "Orc Ambush", "sharedEncounterDeck2", -1]
+                    ]
+                },
+                {
+                    "label": "Corsair Raiders",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Corsair Raiders", "sharedExtra2"],
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "97bf780d-cd76-492f-a970-37f78273c5bb", "groupId": "sharedStagingArea", "quantity": 1}
+                        ]]
+                    ]
+                },
+                {
+                    "label": "Uruk-hai Foes",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "509f3e41-385c-4b84-ad28-7cc2eed8028c", "groupId": "sharedExtra2", "quantity": 4},
+                            {"databaseId": "fed61900-b526-41e6-b072-9c5eae29bc77", "groupId": "sharedExtra2", "quantity": 3},
+                            {"databaseId": "8345c4ad-4c5e-484d-bc6f-d1e4bc27805f", "groupId": "sharedExtra2", "quantity": 3}
+                        ]],
+                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Uruk-hai Foes", "Objective", "sharedStagingArea", -1]
+                    ]
+                },
+                {
+                    "label": "Wolves",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Wolves", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "Great Wolf", "sharedSetAside", -1]
+                    ]
+                },
+                {
+                    "label": "Orc-host",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Orc-host", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "Orc Battalion", "sharedExtra2", -1],
+                        ["LOG", "{{$ALIAS_N}} placed Orc Battalion on the bottom of the Extra 2 group."]
+                    ]
+                },
+                {
+                    "label": "Ruffians",
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Ruffians", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "Ruffians on the Rise", "sharedSetAside", -1]
                     ]
                 },
                 {
