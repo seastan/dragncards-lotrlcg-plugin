@@ -402,7 +402,7 @@
         },
         "boonRegionReminder": {
             "args": [],
-            "message": "Some cards have been loaded into the 'Boons' group. This group is accessible via the bottom-right button in your screen, or via the View->Shared menu.",
+            "message": "Some cards have been loaded into the 'Boons' group. This group is accessible via the bottom-right button on your screen, or via the View->Shared menu.",
             "options": [
                 {
                     "label": "OK",

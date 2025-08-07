@@ -35,11 +35,11 @@
                 "sideRegion":            {"groupId": "sharedSetAside",        "type": "fan", "direction": "vertical",   "left": "90%", "top": "1/5", "width":  "10%", "height": "3/5", "style": {"background": "rgba(0, 0, 0, 0.3)"}, "showMenu": true}
             },
             "tableButtons": {
-                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedSetAside"],        "label": "Set Aside", "left": "98%", "top": "25/30", "width": "2%", "height": "1/30", "style": {"fontSize": "1.4vh", "lineHeight": "1.4vh", "textAlign": "center"}},
-                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "{{$PLAYER_N}}Sideboard"],"label": "Side board", "left": "98%", "top": "26/30", "width": "2%", "height": "1/30", "style": {"fontSize": "1.3vh", "lineHeight": "1.4vh", "textAlign": "center"}},
-                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],         "label": "Victory Display", "left": "98%", "top": "27/30", "width": "2%", "height": "1/30", "style": {"fontSize": "1.1vh", "lineHeight": "1.2vh", "textAlign": "center"}},
-                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],       "label": "Quest Deck", "left": "98%", "top": "28/30", "width": "2%", "height": "1/30", "style": {"fontSize": "1.3vh", "lineHeight": "1.4vh", "textAlign": "center"}},
-                "sharedBoons":     {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedBoons"],           "label": "Boons", "left": "98%", "top": "29/30", "width": "2%", "height": "1/30", "style": {"fontSize": "1.3vh", "lineHeight": "1.3vh", "textAlign": "center"}}
+                "sharedSetAside":  {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedSetAside"],        "label": "Set Aside", "left": "98%", "top": "20/25", "width": "2%", "height": "1/25", "style": {"fontSize": "1.4vh", "lineHeight": "1.4vh", "textAlign": "center"}},
+                "playerNSideboard":{"actionList": ["TOGGLE_TABLE_BUTTON", "{{$PLAYER_N}}Sideboard"],"label": "Side board", "left": "98%", "top": "21/25", "width": "2%", "height": "1/25", "style": {"fontSize": "1.3vh", "lineHeight": "1.4vh", "textAlign": "center"}},
+                "sharedVictory":   {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedVictory"],         "label": "Victory Display", "left": "98%", "top": "22/25", "width": "2%", "height": "1/25", "style": {"fontSize": "1.1vh", "lineHeight": "1.2vh", "textAlign": "center"}},
+                "sharedQuestDeck": {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedQuestDeck"],       "label": "Quest Deck", "left": "98%", "top": "23/25", "width": "2%", "height": "1/25", "style": {"fontSize": "1.3vh", "lineHeight": "1.4vh", "textAlign": "center"}},
+                "sharedBoons":     {"actionList": ["TOGGLE_TABLE_BUTTON", "sharedBoons"],           "label": "Boons", "left": "98%", "top": "24/25", "width": "2%", "height": "1/25", "style": {"fontSize": "1.3vh", "lineHeight": "1.3vh", "textAlign": "center"}}
             },
             "textBoxes": {
                 "roundAdvancement":   {"label": "", "left": "0%", "top": "0%", "width": "23%", "height": "3%", "visible": false}
