@@ -123,9 +123,9 @@
                     "label": "Harad Foes",
                     "code": [
                         ["LOAD_CARDS", ["LIST",
-                            {"databaseId": "a34ffb4e-c821-42aa-8dab-2914d274b3b1", "groupId": "sharedExtra1", "quantity": 3},
-                            {"databaseId": "6cfc4fa5-bbcc-4c99-82b7-bb6359d24750", "groupId": "sharedExtra1", "quantity": 3},
-                            {"databaseId": "04a23a2e-a14f-4c54-b54f-eeef36d3a92b", "groupId": "sharedExtra1", "quantity": 3}
+                            {"databaseId": "a34ffb4e-c821-42aa-8dab-2914d274b3b1", "loadGroupId": "sharedExtra1", "quantity": 3},
+                            {"databaseId": "6cfc4fa5-bbcc-4c99-82b7-bb6359d24750", "loadGroupId": "sharedExtra1", "quantity": 3},
+                            {"databaseId": "04a23a2e-a14f-4c54-b54f-eeef36d3a92b", "loadGroupId": "sharedExtra1", "quantity": 3}
                         ]],
                         ["MOVE_CARD_BY_NAME_AND_TYPE", "Harad Foes", "Objective", "sharedStagingArea", -1]
                     ]
@@ -200,7 +200,7 @@
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Corsair Raiders", "sharedExtra2"],
                         ["LOAD_CARDS", ["LIST",
-                            {"databaseId": "97bf780d-cd76-492f-a970-37f78273c5bb", "groupId": "sharedStagingArea", "quantity": 1}
+                            {"databaseId": "97bf780d-cd76-492f-a970-37f78273c5bb", "loadGroupId": "sharedStagingArea", "quantity": 1}
                         ]]
                     ]
                 },
@@ -208,9 +208,9 @@
                     "label": "Uruk-hai Foes",
                     "code": [
                         ["LOAD_CARDS", ["LIST",
-                            {"databaseId": "509f3e41-385c-4b84-ad28-7cc2eed8028c", "groupId": "sharedExtra2", "quantity": 4},
-                            {"databaseId": "fed61900-b526-41e6-b072-9c5eae29bc77", "groupId": "sharedExtra2", "quantity": 3},
-                            {"databaseId": "8345c4ad-4c5e-484d-bc6f-d1e4bc27805f", "groupId": "sharedExtra2", "quantity": 3}
+                            {"databaseId": "509f3e41-385c-4b84-ad28-7cc2eed8028c", "loadGroupId": "sharedExtra2", "quantity": 4},
+                            {"databaseId": "fed61900-b526-41e6-b072-9c5eae29bc77", "loadGroupId": "sharedExtra2", "quantity": 3},
+                            {"databaseId": "8345c4ad-4c5e-484d-bc6f-d1e4bc27805f", "loadGroupId": "sharedExtra2", "quantity": 3}
                         ]],
                         ["MOVE_CARD_BY_NAME_AND_TYPE", "Uruk-hai Foes", "Objective", "sharedStagingArea", -1]
                     ]
@@ -226,6 +226,12 @@
                     "label": "Orc-host",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Orc-host", "sharedExtra2"],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.groupById.sharedExtra2.parentCards", [
+                            ["COND",
+                                ["NOT_EQUAL", "$CARD.sides.A.type", "Enemy"],
+                                ["DELETE_CARD", "$CARD_ID"]
+                            ]
+                        ]],
                         ["MOVE_CARD_BY_NAME", "Orc Battalion", "sharedExtra2", -1],
                         ["LOG", "{{$ALIAS_N}} placed Orc Battalion on the bottom of the Extra 2 group."]
                     ]
