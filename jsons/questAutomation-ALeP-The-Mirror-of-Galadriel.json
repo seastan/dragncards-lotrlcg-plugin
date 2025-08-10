@@ -97,7 +97,18 @@
                 },
                 {
                     "label": "Plundering Goblins",
-                    "code": ["LOAD_MIRROR_WAVE", "Plundering Goblins", "sharedExtra1"]
+                    "code": [
+                        ["LOAD_MIRROR_WAVE", "Plundering Goblins", "sharedExtra1"],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
+                            ["COND",
+                                ["OR",
+                                    ["EQUAL", "$CARD.sides.A.name", "Undisturbed Bones"],
+                                    ["EQUAL", "$CARD.sides.A.name", "Plundered Armoury"]
+                                ],
+                                ["DELETE_CARD", "$CARD_ID"]
+                            ]
+                        ]]
+                    ]
                 },
                 {
                     "label": "Ravaging Orcs",
