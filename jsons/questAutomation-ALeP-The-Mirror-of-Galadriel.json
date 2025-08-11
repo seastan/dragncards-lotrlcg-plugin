@@ -150,9 +150,9 @@
                     "code": ["LOAD_MIRROR_WAVE", "Dunland Warriors", "sharedExtra1"]
                 },
                 {
-                    "label": "Dunlanding Warriors",
+                    "label": "Dunlending Warriors",
                     "code": [
-                        ["LOAD_MIRROR_WAVE", "Dunlanding Warriors", "sharedExtra1"],
+                        ["LOAD_MIRROR_WAVE", "Dunlending Warriors", "sharedExtra1"],
                         ["MOVE_CARD_BY_NAME", "Dunland Chieftain", "sharedSetAside", -1]
                     ]
                 },
