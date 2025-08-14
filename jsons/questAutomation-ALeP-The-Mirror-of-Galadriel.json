@@ -88,6 +88,7 @@
                                 ["DELETE_CARD", "$CARD.id"]
                             ]
                         ]],
+                        ["MOVE_CARD_BY_NAME", "Ungoliant's Spawn", "sharedEncounterDeck2", -1],
                         ["MOVE_CARD_BY_NAME", "Chieftan Ufthak", "sharedSetAside", -1]
                     ]
                 },
@@ -221,7 +222,8 @@
                         ["LOAD_CARDS", ["LIST",
                             {"databaseId": "509f3e41-385c-4b84-ad28-7cc2eed8028c", "loadGroupId": "sharedExtra2", "quantity": 4},
                             {"databaseId": "fed61900-b526-41e6-b072-9c5eae29bc77", "loadGroupId": "sharedExtra2", "quantity": 3},
-                            {"databaseId": "8345c4ad-4c5e-484d-bc6f-d1e4bc27805f", "loadGroupId": "sharedExtra2", "quantity": 3}
+                            {"databaseId": "8345c4ad-4c5e-484d-bc6f-d1e4bc27805f", "loadGroupId": "sharedExtra2", "quantity": 3},
+                            {"databaseId": "c0fd82d5-1d87-4120-9b4b-37f81c1b2c9c", "loadGroupId": "sharedSetAside", "quantity": 1}
                         ]],
                         ["MOVE_CARD_BY_NAME_AND_TYPE", "Uruk-hai Foes", "Objective", "sharedStagingArea", -1]
                     ]
