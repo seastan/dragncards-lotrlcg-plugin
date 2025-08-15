@@ -9,13 +9,13 @@
                         "side": "A",
                         "then": [
                             ["SET", "/groupById/sharedExtra1/onCardEnter/currentSide", "B"],
-                            ["SET", "/groupById/sharedExtra1/onCardEnter/discardGroupId", "sharedEncounterDeck"],
+                            ["SET", "/groupById/sharedExtra1/onCardEnter/discardGroupId", "sharedEncounterDiscard"],
                             ["SET", "/groupById/sharedExtra1/shuffleOnLoad", true],
                             ["SET", "/groupById/sharedExtra2/onCardEnter/currentSide", "B"],
-                            ["SET", "/groupById/sharedExtra2/onCardEnter/discardGroupId", "sharedEncounterDeck"],
+                            ["SET", "/groupById/sharedExtra2/onCardEnter/discardGroupId", "sharedEncounterDiscard"],
                             ["SET", "/groupById/sharedExtra2/shuffleOnLoad", true],
                             ["SET", "/groupById/sharedExtra3/onCardEnter/currentSide", "B"],
-                            ["SET", "/groupById/sharedExtra3/onCardEnter/discardGroupId", "sharedEncounterDeck"],
+                            ["SET", "/groupById/sharedExtra3/onCardEnter/discardGroupId", "sharedEncounterDiscard"],
                             ["SET", "/groupById/sharedExtra3/shuffleOnLoad", true],
                             ["PROMPT", "player1", "mirrorOfGaladrielScenario"],
                             ["PROMPT", "player1", "mirrorOfGaladrielWave1"],
@@ -100,13 +100,13 @@
                     "label": "Plundering Goblins",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Plundering Goblins", "sharedExtra1"],
-                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
                             ["COND",
                                 ["OR",
                                     ["EQUAL", "$CARD.sides.A.name", "Undisturbed Bones"],
                                     ["EQUAL", "$CARD.sides.A.name", "Plundered Armoury"]
                                 ],
-                                ["DELETE_CARD", "$CARD_ID"]
+                                ["DELETE_CARD", "$CARD.id"]
                             ]
                         ]]
                     ]
