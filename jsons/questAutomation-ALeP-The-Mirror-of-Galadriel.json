@@ -154,6 +154,12 @@
                     "label": "Dunlending Warriors",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Dunlending Warriors", "sharedExtra1"],
+                        ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
+                            ["COND",
+                                ["NOT_EQUAL", "$CARD.sides.A.type", "Enemy"],
+                                ["DELETE_CARD", "$CARD_ID"]
+                            ]
+                        ]],
                         ["MOVE_CARD_BY_NAME", "Dunland Chieftain", "sharedSetAside", -1]
                     ]
                 },
