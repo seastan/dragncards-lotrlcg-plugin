@@ -123,7 +123,7 @@
                     "label": "Misty Mountain Orcs",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Misty Mountain Orcs", "sharedExtra1"],
-                        ["FOR_EACH_KEY_VAL", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedExtra1.parentCards", [
                             ["COND",
                                 ["EQUAL", "$CARD.sides.A.name", "Orc Hunting Party"],
                                 ["DELETE_CARD", "$CARD.id"]
@@ -245,7 +245,7 @@
                     "label": "Orc-host",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Orc-host", "sharedExtra2"],
-                        ["FOR_EACH_KEY_VAL", "$CARD", "$GAME.groupById.sharedExtra2.parentCards", [
+                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedExtra2.parentCards", [
                             ["COND",
                                 ["NOT_EQUAL", "$CARD.sides.A.type", "Enemy"],
                                 ["DELETE_CARD", "$CARD.id"]
