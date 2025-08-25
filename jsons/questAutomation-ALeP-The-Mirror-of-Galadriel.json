@@ -272,13 +272,12 @@
                 {
                     "label": "Sauron",
                     "code": [
-                        ["FOR_EACH_VAL", "$CARD", "$GAME.groupById.sharedEncounterDeck2.parentCards", [
-                            ["COND",
-                                ["IN_STRING", "$CARD.sides.A.traits", "Sauron"],
-                                ["MOVE_CARD", "$CARD.id", "sharedExtra3", 0]
-                            ]
-                        ]],
-                        ["SHUFFLE_GROUP", "sharedExtra3"],
+                        ["VAR", "$GROUP_ID", "sharedExtra3"],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Sauron"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "$EXTRA_GROUP_ID", "$CONDITION"],
+                        ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "The Dark Lord Beckons", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "Sauron", "sharedSetAside", -1]
                     ]
