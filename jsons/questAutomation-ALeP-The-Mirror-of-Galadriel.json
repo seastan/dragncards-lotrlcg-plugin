@@ -48,11 +48,10 @@
                 {
                     "label": "Gondor",
                     "code": [
-                        ["VAR", "$GROUP_ID", "sharedEncounterDeck"],
                         ["VAR", "$CONDITION", ["POINTER", ["AND",
                             ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Gondor"]
                         ]]],
-                        ["LOAD_CARDS_BY_CONDITION", "$EXTRA_GROUP_ID", "$CONDITION"],
+                        ["LOAD_CARDS_BY_CONDITION", "sharedEncounterDeck", "$CONDITION"],
                         ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "The One Ring", "sharedStagingArea", -1]
                     ]
