@@ -20,7 +20,8 @@
                             ["PROMPT", "player1", "mirrorOfGaladrielScenario"],
                             ["PROMPT", "player1", "mirrorOfGaladrielWave1"],
                             ["PROMPT", "player1", "mirrorOfGaladrielWave2"],
-                            ["PROMPT", "player1", "mirrorOfGaladrielVillain"]
+                            ["PROMPT", "player1", "mirrorOfGaladrielVillain"],
+                            ["MOVE_STACKS", "sharedEncounterDeck", "sharedOther"]
                         ]
                     }
                 }
@@ -84,7 +85,7 @@
                                 ["DELETE_CARD", "$CARD.id"]
                             ]
                         ]],
-                        ["MOVE_CARD_BY_NAME", "Ungoliant's Spawn", "sharedEncounterDeck2", -1],
+                        ["MOVE_CARD_BY_NAME", "Ungoliant's Spawn", "sharedOther", -1],
                         ["MOVE_CARD_BY_NAME", "Chieftan Ufthak", "sharedSetAside", -1]
                     ]
                 },
@@ -184,7 +185,7 @@
                     "label": "Cursed Dead",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Cursed Dead", "sharedExtra2"],
-                        ["MOVE_CARD_BY_NAME", "Seal the Tomb", "sharedEncounterDeck2", -1]
+                        ["MOVE_CARD_BY_NAME", "Seal the Tomb", "sharedOther", -1]
                     ]
                 },
                 {
@@ -199,14 +200,14 @@
                     "label": "Easterling Raiders",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Easterling Raiders", "sharedExtra2"],
-                        ["MOVE_CARD_BY_NAME", "Warriors of the East", "sharedEncounterDeck2", -1]
+                        ["MOVE_CARD_BY_NAME", "Warriors of the East", "sharedOther", -1]
                     ]
                 },
                 {
                     "label": "Angmar Orcs",
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Angmar Orcs", "sharedExtra2"],
-                        ["MOVE_CARD_BY_NAME", "Orc Ambush", "sharedEncounterDeck2", -1]
+                        ["MOVE_CARD_BY_NAME", "Orc Ambush", "sharedOther", -1]
                     ]
                 },
                 {
@@ -275,7 +276,7 @@
                         ["VAR", "$CONDITION", ["POINTER", ["AND",
                             ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Sauron"]
                         ]]],
-                        ["LOAD_CARDS_BY_CONDITION", "$EXTRA_GROUP_ID", "$CONDITION"],
+                        ["LOAD_CARDS_BY_CONDITION", "$GROUP_ID", "$CONDITION"],
                         ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "The Dark Lord Beckons", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "Sauron", "sharedSetAside", -1]
