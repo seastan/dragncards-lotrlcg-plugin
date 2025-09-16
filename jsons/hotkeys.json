@@ -49,6 +49,7 @@
             {"key": "X", "actionList": ["DISCARD_CARD", "$ACTIVE_CARD"], "label": "id:discardOrAdvance"},
             //{"key": "Shift+C", "actionList": "discardOtherCardsInStack", "label": "id:discardAllOtherCardsInThisCardSStack"},
             {"key": "B", "actionList": "sendToBack", "label": "id:sendAttachmentToBackOfStack"},
+            {"key": "Shift+B", "actionList": "moveToBottomOfDeck", "label": "id:moveToBottomOfOriginDeck"},
             {"key": "Shift+T", "actionList": "swapWithTop", "label": "id:swapWithTop"}
         ]
     }
