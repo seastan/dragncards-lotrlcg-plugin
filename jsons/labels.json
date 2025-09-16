@@ -3991,6 +3991,15 @@
             "German": "Tausche mit der obersten Karte im Ursprungsdeck",
             "Chinese": "与所归属牌库的牌库顶卡牌互换"
         },
+        "moveToBottomOfOriginDeck": {
+            "English": "Move to bottom of deck of origin",
+            "French": "Déplacer vers le bas du deck d'origine",
+            "Spanish": "Mover al fondo del mazo de origen",
+            "Portuguese": "Mover para o fundo do baralho original",
+            "Italian": "Sposta in fondo al mazzo di origine",
+            "German": "Nach unten zum Ursprungsdeck bewegen",
+            "Chinese": "移至所归属牌库底部"
+        },
         "discardUntilLocation": {
             "English": "Discard Until Location",
             "French": "Défausser jusqu'à Lieu",
