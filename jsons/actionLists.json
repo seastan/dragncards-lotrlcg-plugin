@@ -458,6 +458,11 @@
                     ["LOG", "$ALIAS_N", " preventRefresh ", "$ACTIVE_FACE.name", "."]
                 ]
             ]
+        ],
+        "moveToBottomOfDeck": [
+            ["VAR", "$DECK_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
+            ["MOVE_CARD", "$ACTIVE_CARD_ID", "$DECK_GROUP_ID", -1],
+            ["LOG", "$ALIAS_N", " moved ", "$ACTIVE_FACE.name", " to the bottom of ", "$GAME.groupById.$DECK_GROUP_ID.label", "."]
         ]
 
     }
