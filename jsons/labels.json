@@ -724,6 +724,15 @@
             "German": "Abwerfen (wenn Questkarte, Quest vorantreiben)",
             "Chinese": "弃除（如果弃除的是探险卡牌，则推进探险）"
         },
+        "discardRandomCardFromHand": {
+            "English": "Discard random card from hand",
+            "French": "Défausser une carte aléatoire de la main",
+            "Spanish": "Descartar carta aleatoria de la mano",
+            "Portuguese": "Descartar carta aleatória da mão",
+            "Italian": "Scarta carta casuale dalla mano",
+            "German": "Zufällige Karte aus der Hand abwerfen",
+            "Chinese": "从手牌中随机弃除一张卡牌"
+        },
         "discardAllOtherCardsInThisCardSStack": {
             "English": "Discard all other cards in this card's stack",
             "French": "Défausser toutes les autres cartes dans la pile de cette carte",
