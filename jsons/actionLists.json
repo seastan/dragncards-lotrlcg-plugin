@@ -463,6 +463,22 @@
             ["VAR", "$DECK_GROUP_ID", "$ACTIVE_CARD.deckGroupId"],
             ["MOVE_CARD", "$ACTIVE_CARD_ID", "$DECK_GROUP_ID", -1],
             ["LOG", "$ALIAS_N", " moved ", "$ACTIVE_FACE.name", " to the bottom of ", "$GAME.groupById.$DECK_GROUP_ID.label", "."]
+        ],
+        "discardRandomFromHand": [
+            ["VAR", "$HAND_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Hand"]],
+            ["VAR", "$HAND_SIZE", ["LENGTH", "$GAME.groupById.$HAND_GROUP_ID.stackIds"]],
+            ["COND",
+                ["GREATER_THAN", "$HAND_SIZE", 0],
+                [
+                    ["VAR", "$RANDOM_INDEX", ["RANDOM_INT", 0, ["SUBTRACT", "$HAND_SIZE", 1]]],
+                    ["VAR", "$RANDOM_CARD_ID", ["GET_CARD_ID", "$HAND_GROUP_ID", "$RANDOM_INDEX", 0]],
+                    ["VAR", "$DISCARD_GROUP_ID", ["JOIN_STRING", "$PLAYER_N", "Discard"]],
+                    ["MOVE_CARD", "$RANDOM_CARD_ID", "$DISCARD_GROUP_ID", 0],
+                    ["LOG", "$ALIAS_N", " discarded ", "$GAME.cardById.$RANDOM_CARD_ID.currentFace.name", " at random from their hand."]
+                ],
+                ["TRUE"],
+                ["LOG", "$ALIAS_N", " tried to discard a random card from their hand, but their hand is empty."]
+            ]
         ]
 
     }

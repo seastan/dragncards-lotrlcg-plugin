@@ -1,6 +1,7 @@
 {
     "announcements": [
+        "2025-09-19: Added new hotkeys: Shift+H (discard random card from hand) and Shift+B (move card to bottom of deck)",
         "2025-02-02: DragnCards 2.0 Plugin Released",
-        "2023-12-19: Fixed the Z (Resolve Quest) hotkey to properly place progress on locations."
+        "2024-12-19: Fixed the Z (Resolve Quest) hotkey to properly place progress on locations."
     ]
 }

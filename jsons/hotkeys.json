@@ -35,7 +35,8 @@
             {"key": "J", "actionList": "decreaseThreat", "label": "id:reduceThreatBy1"},
             {"key": "Shift+U", "actionList": "raiseAllThreat", "label": "id:raiseThreatBy1ForAllPlayers"},
             {"key": "Shift+J", "actionList": "reduceAllThreat", "label": "id:reduceThreatBy1ForAllPlayers"},
-            {"key": "Shift+D", "actionList": "drawNextSeat", "label": "id:drawCardOnBehalfOfNextEmptySeat"}
+            {"key": "Shift+D", "actionList": "drawNextSeat", "label": "id:drawCardOnBehalfOfNextEmptySeat"},
+            {"key": "Shift+H", "actionList": "discardRandomFromHand", "label": "id:discardRandomCardFromHand"}
         ],
         "card": [
             {"key": "A", "actionList": "hotkeyA", "label": "id:exhaustReadyIfLocationMakeActive"},
