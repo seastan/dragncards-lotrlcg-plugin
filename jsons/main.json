@@ -1,5 +1,5 @@
 {
     "pluginName": "LotR Living Card Game",
     "tutorialUrl": "https://youtu.be/vslX0A5wu7Y",
-    "backgroundUrl": "https://i.imgur.com/sHn4yAA.jpg"
+    "backgroundUrl": "s3://dragncards-lotrlcg/background/lotrbackground.jpg"
 }
