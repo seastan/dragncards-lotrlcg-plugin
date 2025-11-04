@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="a21af4e8-be4b-4cda-a6b6-534f9717391f" sleeveid="0">
+  <section name="Hero" shared="False" />
+  <section name="Ally" shared="False" />
+  <section name="Attachment" shared="False" />
+  <section name="Event" shared="False" />
+  <section name="Side Quest" shared="False" />
+  <section name="Sideboard" shared="False" />
+  <section name="Quest" shared="True">
+    <card id="31c2ec5f-c9ac-40be-b91c-1f9ff9b7ec82" qty="1">Things that Yet May Be</card>
+    <card id="ecf87d56-c2d2-422b-a2ca-329d38c61426" qty="1">The First Wave</card>
+    <card id="07a36114-fc01-4411-bdf4-168b446c631b" qty="1">The Second Wave</card>
+    <card id="737307e3-d41b-4ef0-8b3d-48851fc111a1" qty="1">The Villain</card>
+  </section>
+  <section name="Second Quest Deck" shared="True" />
+  <section name="Encounter" shared="True">
+    <card id="bd46b17f-80c5-4302-8d42-7eeb550738f1" qty="1">Mirkwood Foes</card>
+    <card id="fb077691-6770-498a-bb8a-3fc021d279a5" qty="1">Plundering Goblins</card>
+    <card id="b6b194e1-2efe-4213-a15d-f15064cb2563" qty="1">Brigands</card>
+    <card id="cad1eda2-c7e6-416a-98fa-231824f6f7e6" qty="1">Ravaging Orcs</card>
+    <card id="c7952573-4f74-436f-9f53-302394a0bffb" qty="1">Misty Mountain Orcs</card>
+    <card id="9fb7eb50-3de3-4da3-98cc-8a951e7e7f1c" qty="1">Dunland Warriors</card>
+    <card id="afb9f6fd-69d2-4c48-bcfc-06035a5a15e1" qty="1">Harad Foes</card>
+    <card id="d7ec9c37-4910-490e-835d-ca668165adbd" qty="1">Wild Creatures</card>
+    <card id="8a47f42f-41d3-4367-b4b3-4d84faf9e353" qty="1">Dunlending Warriors</card>
+    <card id="0beeba6f-db1a-4ae8-8361-9cbc4da28257" qty="1">Orcs of Mordor</card>
+    <card id="87bfd3d2-d0f8-4de4-8c6b-5b97cb46bd62" qty="1">Wolf-cult</card>
+    <card id="d4d93a81-4322-4f4b-9f70-0c603bdee50a" qty="1">Dunland Raiders</card>
+    <card id="ebe6e3a4-c5b1-47ad-a4c9-5cc692d426d0" qty="1">Angmar Orcs</card>
+    <card id="e99a5285-f102-4379-9a32-3d2965ab1a79" qty="1">Cursed Dead</card>
+    <card id="b6464e83-5095-4f5c-bd5e-b408ba10bba5" qty="1">Corsair Raiders</card>
+    <card id="43cfdd2e-8928-486d-a13c-030a593b9299" qty="1">Drowned Dead</card>
+    <card id="275813e2-a1b2-4615-845e-c900d6f2f0d7" qty="1">Easterling Raiders</card>
+    <card id="b219eb63-ef58-4143-9444-286a6d8fe122" qty="1">The Nazgûl</card>
+    <card id="2cdae95d-f323-499e-9e49-8ed5aa71b3fd" qty="1">Uruk-hai Foes</card>
+    <card id="be4cabdd-53a6-48cb-83aa-11f396a6c1b0" qty="1">Orc-host</card>
+    <card id="07dbea9e-4482-4b4f-a0ea-71907672a371" qty="1">Wolves</card>
+    <card id="53f4e6df-0c3b-482d-9eed-6960f85f5d0b" qty="1">Ruffians</card>
+  </section>
+  <section name="Special" shared="True" />
+  <section name="Second Special" shared="True" />
+  <section name="Setup" shared="True">
+    <card id="a9db673d-58f7-4138-89ae-37781c62ac93" qty="1">The Mirror of Galadriel Rules</card>
+    <card id="9d453fab-b3db-4cb6-a6fd-18b46882c381" qty="1">The Mirror of Galadriel 1</card>
+    <card id="146b7336-5078-4a43-9f1d-863a640aa27a" qty="1">The Mirror of Galadriel 2</card>
+    <card id="41f61284-df87-4d7b-a0de-a2f5ab06cd9e" qty="1">The Mirror of Galadriel 3</card>
+    <card id="ea898a14-c52e-4123-81dc-7e59e954ba01" qty="1">The Mirror of Galadriel 4</card>
+    <card id="e89f0d7d-9b5f-478b-b8a2-699530b9db0a" qty="1">The Mirror of Galadriel 5</card>
+    <card id="27b4f482-37ba-4987-beef-d2d2b7562ff8" qty="1">The Mirror of Galadriel 6</card>
+    <card id="131aaf3d-31d5-4046-998e-697dd19fd461" qty="1">The Mirror of Galadriel 7</card>
+    <card id="11cc7a35-21e3-4bbb-897b-96aca202bbbe" qty="1">Ring-bound Soldiers</card>
+    <card id="e22b3267-9043-4b43-a249-2aae80c5b326" qty="2">Chance Meeting</card>
+    <card id="8388df2f-63b4-46f8-847e-89e8a4065b81" qty="5">Drop of Miruvor</card>
+    <card id="9a4c331f-83c4-4a96-a2f2-cb4fb046a4d9" qty="2">Mallorn Bow</card>
+    <card id="6c84c6d9-b4d6-45fe-a387-00d58467535e" qty="2">The Lady’s Favor</card>
+    <card id="f0c9be30-5bf3-4b4a-b52d-514e48f9dfb3" qty="2">A New Alliance</card>
+    <card id="37aa497c-24cf-469d-ad7f-9cbb9d4dc9a1" qty="3">Flask of Miruvor</card>
+    <card id="be6238b9-02d4-4ded-851f-eebe13af4e61" qty="2">Eagles are Coming!</card>
+    <card id="88163413-1657-46a2-9ba7-c31cf20d6f01" qty="4">The Will of Ilúvatar</card>
+    <card id="d327fd04-141c-4d19-b00a-094f03115b67" qty="1">Word of Healing</card>
+  </section>
+  <section name="Staging Setup" shared="True">
+    <card id="06d4affb-9fa4-4c6d-ac9a-4b73d6400d81" qty="1">Siege of Middle-earth</card>
+    <card id="aefab7b9-75d2-45d3-9740-455e4ad6053f" qty="1">The Ring Comes to Gondor</card>
+    <card id="90a6215a-434a-4a50-96e1-129520c4894a" qty="1">The Dark Lord Beckons</card>
+    <card id="d971d622-9455-49ff-8ff8-db11b41088a0" qty="1">The One Ring</card>
+  </section>
+  <section name="Active Setup" shared="True" />
+  <notes><![CDATA[]]></notes>
+</deck>

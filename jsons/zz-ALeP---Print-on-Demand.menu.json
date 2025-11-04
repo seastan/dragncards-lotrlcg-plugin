@@ -31,8 +31,16 @@
                                 "deckListId": "Q99.19"
                             }
                         ]
+                    },
+                    {
+                        "label": "ALeP The Mirror of Galadriel",
+                        "deckLists": [
+                            {
+                                "label": "id:normal",
+                                "deckListId": "Q99.20"
+                            }
+                        ]
                     }
-
                 ]
             }
         ]
