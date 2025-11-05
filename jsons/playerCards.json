@@ -1333,11 +1333,6 @@
                 "rules": {
                     "treebeardResource": {
                         "type": "trigger",
-                        "autoRun": {
-                            "status": "prompt",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Add 1 resource to Treebeard?"
-                        },
                         "listenTo": ["/stepId"],
                         "priority": 15,
                         "condition": ["AND", 
@@ -1358,11 +1353,6 @@
                 "rules": {
                     "radagastResource": {
                         "type": "trigger",
-                        "autoRun": {
-                            "status": "prompt",
-                            "promptPlayerI": "$THIS.controller",
-                            "promptMessage": "Add 1 resource to Radagast?"
-                        },
                         "listenTo": ["/stepId"],
                         "priority": 15,
                         "condition": ["AND", 

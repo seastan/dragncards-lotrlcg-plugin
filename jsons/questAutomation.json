@@ -116,6 +116,31 @@
                         ]
                     }
                 }
+            },
+            "5c8e7eab-3899-489e-a801-3ac34b77f62f": {
+                "_comment": "The Nine are Abroad",
+                "rules": {
+                    "theNineAreAbroadSetup": {
+                        "type": "entersPlay",
+                        "side": "A",
+                        "then": [
+                            ["UPDATE_LAYOUT", "/layout/regions/sharedMap/visible", true],
+                            ["VAR", "$X", ["LIST", 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]],
+                            ["VAR", "$Y", ["LIST", 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4]],
+                            ["VAR", "$INDEX", 0],
+                            ["FOR_EACH_VAL", "$STACK_ID", "$GAME.groupById.sharedEncounterDeck3.stackIds", [
+                                ["MOVE_STACK", "$STACK_ID", "sharedMap", 0],
+                                ["VAR", "$LEFT", ["CALC", "{{$X.[$INDEX]}}*15"]],
+                                ["VAR", "$TOP", ["CALC", "{{$Y.[$INDEX]}}*20"]],
+                                ["SET", "/stackById/$STACK_ID/left", "{{$LEFT}}%"],
+                                ["SET", "/stackById/$STACK_ID/top", "{{$TOP}}%"],
+                                ["INCREASE_VAR", "$INDEX", 1]
+                            ]],
+                            ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"],
+                            ["PROMPT", "player1", "glitteringSetup"]
+                        ]
+                    }
+                }
             }
         }
     }
