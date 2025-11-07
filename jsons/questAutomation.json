@@ -136,8 +136,7 @@
                                 ["SET", "/stackById/$STACK_ID/top", "{{$TOP}}%"],
                                 ["INCREASE_VAR", "$INDEX", 1]
                             ]],
-                            ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"],
-                            ["PROMPT", "player1", "glitteringSetup"]
+                            ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"]
                         ]
                     }
                 }
