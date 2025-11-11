@@ -671,6 +671,7 @@
                 ["VAR", "$PROGRESS_ON_ACTIVE_LOCATION", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
                 ["LOG", "├── {{$PROGRESS_ON_ACTIVE_LOCATION}} progress was placed on the active location."],
                 ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", "$PROGRESS_ON_ACTIVE_LOCATION"],
+                ["FADE_TEXT", "$ACTIVE_LOCATION.id", "+{{$PROGRESS_ON_ACTIVE_LOCATION}} token:progress"],
                 ["DECREASE_VAR", "$PROGRESS_MADE", "$PROGRESS_ON_ACTIVE_LOCATION"]
               ]
             ],
@@ -681,7 +682,8 @@
                 ["VAR", "$REMAINING_QUEST_PROGRESS", ["SUBTRACT", ["GET_QUEST_POINTS", "$CURRENT_QUEST"], "$CURRENT_QUEST.tokens.progress"]],
                 ["UPDATE_VAR", "$REMAINING_QUEST_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_QUEST_PROGRESS"]]],
                 ["LOG", "└── {{$PROGRESS_MADE}} progress was placed on the current quest, {{$CURRENT_QUEST.currentFace.name}}."],
-                ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$PROGRESS_MADE"]
+                ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$PROGRESS_MADE"],
+                ["FADE_TEXT", "$CURRENT_QUEST.id", "+{{$PROGRESS_MADE}} token:progress"]
               ]
             ]
           ]

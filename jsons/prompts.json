@@ -111,6 +111,7 @@
                     "label": "Setup",
                     "hotkey": "S",
                     "code": [
+                        ["SET", "/automationEnabled", false],
                         ["COND", 
                             ["NOT", "$GAME.allPlayerDecksLoaded"],
                             [
@@ -138,8 +139,11 @@
                                         ["SET", "/stackById/$STACK_ID/left", "{{$LEFT}}%"],
                                         ["SET", "/stackById/$STACK_ID/top",  "{{$TOP}}%"],
                                         ["VAR", "$PARENT_CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
+                                        ["SET", "/cardById/$PARENT_CARD_ID/currentSide", "B"],
                                         ["FOR_EACH_START_STOP_STEP", "$J", 0, 7, 1, [
-                                            ["ATTACH_CARD", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[$J]", "$PARENT_CARD_ID", {"combine": "bottom", "allowFlip": false}]
+                                            ["VAR", "$TOP_CARD_ID", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[$J]"],
+                                            ["SET", "/cardById/$TOP_CARD_ID/currentSide", "B"],
+                                            ["ATTACH_CARD", "$TOP_CARD_ID", "$PARENT_CARD_ID", {"combine": "bottom", "allowFlip": false}]
                                         ]],
                                         ["INCREASE_VAR", "$PLAYER_INDEX", 1]
                                     ]]
@@ -149,13 +153,16 @@
                                     ["MOVE_STACK", "$STACK_ID", "sharedMainQuest", -1, {"allowFlip": false}],
                                     ["VAR", "$PARENT_CARD_ID", "$GAME.stackById.$STACK_ID.cardIds.[0]"],
                                     ["FOR_EACH_START_STOP_STEP", "$J", 0, 7, 1, [
-                                        ["ATTACH_CARD", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[0]", "$PARENT_CARD_ID", {"combine": "behind", "allowFlip": false}]
+                                        ["VAR", "$TOP_CARD_ID", "$GAME.groupById.{{$PLAYER_I}}Deck.parentCardIds.[0]"],
+                                        ["SET", "/cardById/$TOP_CARD_ID/currentSide", "B"],
+                                        ["ATTACH_CARD", "$TOP_CARD_ID", "$PARENT_CARD_ID", {"combine": "behind", "allowFlip": false}]
                                     ]]
                                 ]],
                                 ["UPDATE_LAYOUT", "/layout/regions/sharedMap/visible", true],
                                 ["PROMPT", "$PLAYER_ORDER", "mapHotkeyReminder"]
                             ]
-                        ]
+                        ],
+                        ["SET", "/automationEnabled", true]
                     ]
                 },
                 {
