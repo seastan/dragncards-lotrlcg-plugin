@@ -1,8 +1,8 @@
 {
     "automation": {
         "postNewGameActionList": [
-            ["PROMPT", "player1", "setPlayerCount"],
             ["PROMPT", "player1", "welcome1"],
+            ["PROMPT", "player1", "setPlayerCount"],
             ["UPDATE_HELPER_TEXT_VISIBILITY"]
         ],
         "postLoadActionList": [
@@ -180,19 +180,19 @@
                 "condition": true,
                 "then": ["COND",
                     ["EQUAL", "$GAME.stepId", "1.1"],
-                    ["FADE_TEXT", "game", "Resource Phase"],
+                    ["FADE_TEXT_GAME", "Resource Phase"],
                     ["EQUAL", "$GAME.stepId", "2.1"],
-                    ["FADE_TEXT", "game", "Planning Phase"],
+                    ["FADE_TEXT_GAME", "Planning Phase"],
                     ["EQUAL", "$GAME.stepId", "3.1"],
-                    ["FADE_TEXT", "game", "Quest Phase"],
+                    ["FADE_TEXT_GAME", "Quest Phase"],
                     ["EQUAL", "$GAME.stepId", "4.1"],
-                    ["FADE_TEXT", "game", "Travel Phase"],
+                    ["FADE_TEXT_GAME", "Travel Phase"],
                     ["EQUAL", "$GAME.stepId", "5.1"],
-                    ["FADE_TEXT", "game", "Encounter Phase"],
+                    ["FADE_TEXT_GAME", "Encounter Phase"],
                     ["EQUAL", "$GAME.stepId", "6.1"],
-                    ["FADE_TEXT", "game", "Combat Phase"],
+                    ["FADE_TEXT_GAME", "Combat Phase"],
                     ["EQUAL", "$GAME.stepId", "7.1"],
-                    ["FADE_TEXT", "game", "Refresh Phase"]
+                    ["FADE_TEXT_GAME", "Refresh Phase"]
                 ]
             },
             "step_1.R-resources": {
@@ -207,7 +207,7 @@
                             ["AND", "$CARD.inPlay", ["IS_HERO", "$CARD"]],
                             [
                                 ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1],
-                                ["FADE_TEXT", "$CARD_ID", "+1 token:resource"]
+                                ["FADE_TEXT_CARD", "$CARD_ID", "+1 token:resource"]
                             ]
                         ]
                     ]]

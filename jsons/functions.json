@@ -671,7 +671,7 @@
                 ["VAR", "$PROGRESS_ON_ACTIVE_LOCATION", ["MIN", ["LIST", "$REMAINING_LOCATION_PROGRESS", "$PROGRESS_MADE"]]],
                 ["LOG", "├── {{$PROGRESS_ON_ACTIVE_LOCATION}} progress was placed on the active location."],
                 ["INCREASE_VAL", "/cardById/$ACTIVE_LOCATION.id/tokens/progress", "$PROGRESS_ON_ACTIVE_LOCATION"],
-                ["FADE_TEXT", "$ACTIVE_LOCATION.id", "+{{$PROGRESS_ON_ACTIVE_LOCATION}} token:progress"],
+                ["FADE_TEXT_CARD", "$ACTIVE_LOCATION.id", "+{{$PROGRESS_ON_ACTIVE_LOCATION}} token:progress"],
                 ["DECREASE_VAR", "$PROGRESS_MADE", "$PROGRESS_ON_ACTIVE_LOCATION"]
               ]
             ],
@@ -683,7 +683,7 @@
                 ["UPDATE_VAR", "$REMAINING_QUEST_PROGRESS", ["MAX", ["LIST", 0, "$REMAINING_QUEST_PROGRESS"]]],
                 ["LOG", "└── {{$PROGRESS_MADE}} progress was placed on the current quest, {{$CURRENT_QUEST.currentFace.name}}."],
                 ["INCREASE_VAL", "/cardById/$CURRENT_QUEST.id/tokens/progress", "$PROGRESS_MADE"],
-                ["FADE_TEXT", "$CURRENT_QUEST.id", "+{{$PROGRESS_MADE}} token:progress"]
+                ["FADE_TEXT_CARD", "$CURRENT_QUEST.id", "+{{$PROGRESS_MADE}} token:progress"]
               ]
             ]
           ]
@@ -840,6 +840,7 @@
               ["EQUAL", "$GAME.roundAdvancementFunction", "goToFirstPlanning"],
               [
                 ["INCREASE_VAL", "/roundNumber", 1],
+                ["FADE_TEXT_GAME", "Round {{$GAME.roundNumber}}"],
                 ["ADVANCE_THROUGH_ROUND_BUT_STOP_AT_TRIGGERS", "2.P"]
               ],
               ["EQUAL", "$GAME.roundAdvancementFunction", "readyForNextPlanning"],

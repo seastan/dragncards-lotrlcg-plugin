@@ -24,6 +24,7 @@
                 ["SET", "/stepId", "8.0"]
             ],
             ["INCREASE_VAL", "/roundNumber", 1],
+            ["FADE_TEXT_GAME", "Round {{$GAME.roundNumber}}"],
             ["SET", "/stepId", "1.R"],
             ["SET", "/stepId", "2.P"],
             ["REMOVE_ALL_TEMP_TOKENS", "phase"],

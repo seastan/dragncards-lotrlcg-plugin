@@ -58,7 +58,8 @@
                         "condition": ["AND", "$THIS.inPlay", "$TARGET.inPlay", "$THIS.committed", ["PREV", ["NOT", "$TARGET.inPlay"]], ["EQUAL", "$TARGET.groupId", "sharedStagingArea"], ["IS_ENEMY", "$TARGET"], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]],
                         "then": [
                             ["LOG", "└── ", "Thalin dealt 1 damage to ", "$TARGET.currentFace.name", "."],
-                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/damage", 1]
+                            ["INCREASE_VAL", "/cardById/$TARGET_ID/tokens/damage", 1],
+                            ["FADE_TEXT_CARD", "$TARGET_ID", "+1 token:damage"]
                         ]
                     }
                 }
@@ -402,7 +403,8 @@
                                     ["NOT", "$CARD.currentFace.tags.immuneToPlayerCardEffects"]
                                 ],
                                 [
-                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1]
+                                    ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/resource", 1],
+                                    ["FADE_TEXT_CARD", "$CARD_ID", "+1 token:resource"]
                                 ]
                             ]
                         ]],
@@ -1344,7 +1346,7 @@
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "├── ", "Treebeard gains 1 resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS_ID", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:resource"]
                         ]
                     }
                 }
@@ -1365,7 +1367,7 @@
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "├── ", "Radagast gains 1 resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS_ID", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:resource"]
                         ]
                     }
                 }
@@ -1387,7 +1389,7 @@
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "├── ", "Thorin Oakenshield gains 1 additional resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS_ID", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:resource"]
                         ]
                     }
                 }
@@ -1409,7 +1411,7 @@
                             ["VAR", "$ALIAS", ["GET_ALIAS", "$THIS.controller"]],
                             ["LOG", "├── ", "Amarthiúl gains 1 additional resource."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS_ID", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:resource"]
                         ]
                     }
                 }
@@ -1430,7 +1432,7 @@
                         "then": [
                             ["LOG", "├── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains 1 additional resource from {{$THIS.currentFace.name}}."],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS_ID", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:resource"]
                         ]
                     }
                 }
@@ -1456,7 +1458,7 @@
                         "then": [
                             ["LOG", "├── ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", " gains 1 additional resource from {{$THIS.currentFace.name}}."],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS_ID", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:resource"]
                         ]
                     }
                 }
@@ -1478,7 +1480,7 @@
                             ["LOG", "└── ", "Healed 2 damage from ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
                             ["HEAL", "$THIS.parentCardId", 2],
-                            ["FADE_TEXT", "$THIS.parentCardId", "-2 token:damage"]
+                            ["FADE_TEXT_CARD", "$THIS.parentCardId", "-2 token:damage"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1526,7 +1528,7 @@
                             ["LOG", "└── ", "Healed 1 damage from ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
                             ["HEAL", "$THIS.parentCardId", 1],
-                            ["FADE_TEXT", "$THIS.parentCardId", "-1 token:damage"]
+                            ["FADE_TEXT_CARD", "$THIS.parentCardId", "-1 token:damage"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1564,7 +1566,7 @@
                             ["TOGGLE_EXHAUST", "$THIS"],
                             ["LOG", "└── ", "Added 2 resources to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 2],
-                            ["FADE_TEXT", "$THIS.parentCardId", "+2 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS.parentCardId", "+2 token:resource"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1603,7 +1605,7 @@
                             ["LOG", "└── ", "Added 1 resource to ", "$GAME.cardById.{{$THIS.parentCardId}}.currentFace.name", "."],
                             ["TOGGLE_EXHAUST", "$THIS"],
                             ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
-                            ["FADE_TEXT", "$THIS.parentCardId", "+1 token:resource"]
+                            ["FADE_TEXT_CARD", "$THIS.parentCardId", "+1 token:resource"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
@@ -1667,7 +1669,7 @@
                                     ],
                                     [
                                         ["INCREASE_VAL", "/cardById/$CARD_ID/tokens/progress", 1],
-                                        ["FADE_TEXT", "$CARD_ID", "+1 token:progress"]
+                                        ["FADE_TEXT_CARD", "$CARD_ID", "+1 token:progress"]
                                     ]
                                 ]]
                             ]
@@ -1939,7 +1941,10 @@
                             ["LOG", "└── ", "Dealt 1 damage to ", "$THIS.currentFace.name", " to add 1 willpower and 1 attack until the end of the phase."],
                             ["INCREASE_VAL", "/cardById/$THIS_ID/tokens/damage", 1],
                             ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "willpower", 1],
-                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1]
+                            ["ADD_TEMP_TOKEN", "phase", "$THIS_ID", "attack", 1],
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:damage"],
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:willpower"],
+                            ["FADE_TEXT_CARD", "$THIS_ID", "+1 token:attack"]
                         ]
                 }
             },
@@ -1968,7 +1973,8 @@
                                 ["AND", ["NOT", "$PARENT_CARD.exhausted"], ["EQUAL", "$PARENT_CARD.tokens.damage", 0]],
                                 [
                                     ["LOG", "└── ", "Added a resource to ", "$PARENT_CARD.currentFace.name","."],
-                                    ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1]
+                                    ["INCREASE_VAL", "/cardById/$THIS.parentCardId/tokens/resource", 1],
+                                    ["FADE_TEXT_CARD", "$THIS.parentCardId", "+1 token:resource"]
                                 ],
                                 ["TRUE"],
                                 [
@@ -1983,7 +1989,8 @@
                                     ],
                                     ["PROMPT_ADD_OPTION", "$PLAYER_N", "Add 1 resource", "2", ["REPLACE_STRING_IN_LIST", ["REPLACE_STRING_IN_LIST", ["POINTER", [
                                         ["LOG", "└── ", "Added 1 resource to PARENT_CARD_NAME."],
-                                        ["INCREASE_VAL", "/cardById/{{PARENT_CARD_ID}}/tokens/resource", 1]
+                                        ["INCREASE_VAL", "/cardById/{{PARENT_CARD_ID}}/tokens/resource", 1],
+                                        ["FADE_TEXT_CARD", "{{PARENT_CARD_ID}}", "+1 token:resource"]
                                     ]], "PARENT_CARD_NAME", "$PARENT_CARD.currentFace.name"], "PARENT_CARD_ID", "$PARENT_CARD.id"]
                                     ],
                                     ["COND",

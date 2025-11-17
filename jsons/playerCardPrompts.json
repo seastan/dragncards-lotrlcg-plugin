@@ -9,7 +9,8 @@
                     "numCards": 1,
                     "code": [
                         ["LOG", "{{$ALIAS_N}} added {{$PROGRESS}} progress to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
-                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/progress", "$PROGRESS"]
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/progress", "$PROGRESS"],
+                        ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+{{$PROGRESS}} token:progress"]
                     ]
                 }
             },
@@ -29,7 +30,8 @@
                     "numCards": 1,
                     "code": [
                         ["LOG", "{{$ALIAS_N}} dealt {{$DAMAGE}} damage to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
-                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", "$DAMAGE"]
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", "$DAMAGE"],
+                        ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+{{$DAMAGE}} token:damage"]
                     ]
                 }
             },
@@ -160,6 +162,7 @@
                                 ["LOG", "{{$ALIAS_N}} exhausted and added 2 resources to ", "$PROMPT_CARD.currentFace.name", "."],
                                 ["TOGGLE_EXHAUST", "$PROMPT_CARD"],
                                 ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 2],
+                                ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+2 token:resource"],
                                 ["DISCARD_CARD", "$CARD"]
                             ],
                             ["TRUE"],
@@ -192,6 +195,7 @@
                             [
                                 ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$PROMPT_CARD.currentFace.name", "."],
                                 ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                                ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+1 token:resource"],
                                 ["DISCARD_CARD", "$CARD"]
                             ],
                             ["TRUE"],
@@ -227,6 +231,7 @@
                             [
                                 ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$PROMPT_CARD.currentFace.name", "."],
                                 ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                                ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+1 token:resource"],
                                 ["DISCARD_CARD", "$CARD"]
                             ],
                             ["TRUE"],
@@ -645,7 +650,8 @@
                     "numCards": 1,
                     "code": [
                         ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
-                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1]
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                        ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+1 token:resource"]
                     ]
                 }
             },
@@ -665,7 +671,8 @@
                     "numCards": 1,
                     "code": [
                         ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
-                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1]
+                        ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                        ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+1 token:resource"]
                     ]
                 }
             },
@@ -687,6 +694,7 @@
                         ["VAR", "$PROMPT_CARD", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}"],
                         ["LOG", "{{$ALIAS_N}} added 1 progress to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
                         ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/progress", 1],
+                        ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+1 token:progress"],
                         ["COND",
                             ["NOT_EQUAL", "$PROMPT_CARD.borderColor", "green"],
                             [
@@ -764,7 +772,8 @@
                             ],
                             [
                                 ["LOG", "{{$ALIAS_N}} dealt 4 damage to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
-                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", 4]        
+                                ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/damage", 4],
+                                ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+4 token:damage"]
                             ],
                             ["TRUE"],
                             [
@@ -889,6 +898,7 @@
                             [
                                 ["LOG", "{{$ALIAS_N}} added 1 resource to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
                                 ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 1],
+                                ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+1 token:resource"],
                                 ["TOGGLE_EXHAUST", "$CARD"]
                             ],
                             ["TRUE"],
@@ -946,6 +956,7 @@
                             [
                                 ["LOG", "{{$ALIAS_N}} added 2 resources to ", "$GAME.cardById.{{$PROMPT_INPUT.[0]}}.currentFace.name", "."],
                                 ["INCREASE_VAL", "/cardById/{{$PROMPT_INPUT.[0]}}/tokens/resource", 2],
+                                ["FADE_TEXT_CARD", "{{$PROMPT_INPUT.[0]}}", "+2 token:resource"],
                                 ["MOVE_CARD", "$CARD.id", "sharedVictory", 0]
                             ],
                             ["TRUE"],
