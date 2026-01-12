@@ -2416,7 +2416,7 @@
                             ["GREATER_THAN", "$THIS.cardIndex", 0]
                         ],
                         [
-                            ["PROMPT", "$PLAYER_N", "protectorOfLorien", "$GAME.cardById.{{$THIS.parentCardId}}", "$THIS.controller"]
+                            ["PROMPT", "$PLAYER_N", "protectorOfLorien", "$THIS.parentCardId", "$THIS.controller"]
                         ],
                         ["TRUE"],
                         ["LOG", "└── ", "The ability's conditions are not met."]
