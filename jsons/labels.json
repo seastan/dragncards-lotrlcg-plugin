@@ -1202,22 +1202,22 @@
             "Chinese": "6.2: 分发魔影卡牌"
         },
         "step-6.3-6.6": {
-            "English": "6.3-6.6: Enemy attacks - <u>player actions after each combat substep</u>",
-            "French": "6.3-6.6 : Attaques ennemies - <u>actions des joueurs après chaque sous-étape du combat</u>",
-            "Spanish": "6.3-6.6: Ataques enemigos - <u>acciones del jugador después de cada subpaso de combate</u>",
-            "Portuguese": "6.3-6.6: Ataques inimigos - <u>ações do jogador após cada subetapa de combate</u>",
-            "Italian": "6.3-6.6: Attacchi nemici - <u>azioni dei giocatori dopo ogni sotto-passo di combattimento</u>",
-            "German": "6.3-6.6: Feindangriffe - <u>Spieleraktionen nach jedem Kampfunter-Schritt</u>",
-            "Chinese": "6.3-6.6: 敌人攻击 - <u>每个战斗步骤后玩家行动</u>"
+            "English": "6.3-6.6: Enemy attacks - player actions after each combat substep",
+            "French": "6.3-6.6 : Attaques ennemies - actions des joueurs après chaque sous-étape du combat",
+            "Spanish": "6.3-6.6: Ataques enemigos - acciones del jugador después de cada subpaso de combate",
+            "Portuguese": "6.3-6.6: Ataques inimigos - ações do jogador após cada subetapa de combate",
+            "Italian": "6.3-6.6: Attacchi nemici - azioni dei giocatori dopo ogni sotto-passo di combattimento",
+            "German": "6.3-6.6: Feindangriffe - Spieleraktionen nach jedem Kampfunter-Schritt",
+            "Chinese": "6.3-6.6: 敌人攻击 - 每个战斗步骤后玩家行动"
         },
         "step-6.7-6.10": {
-            "English": "6.7-6.10: Player attacks - <u>player actions after each combat substep</u>",
-            "French": "6.7-6.10 : Attaques des joueurs - <u>actions des joueurs après chaque sous-étape du combat</u>",
-            "Spanish": "6.7-6.10: Ataques de los jugadores - <u>acciones del jugador después de cada subpaso de combate</u>",
-            "Portuguese": "6.7-6.10: Ataques dos jogadores - <u>ações do jogador após cada subetapa de combate</u>",
-            "Italian": "6.7-6.10: Attacchi dei giocatori - <u>azioni dei giocatori dopo ogni sotto-passo di combattimento</u>",
-            "German": "6.7-6.10: Spielerangriffe - <u>Spieleraktionen nach jedem Kampfunter-Schritt</u>",
-            "Chinese": "6.7-6.10: 玩家攻击 - <u>每个战斗步骤后玩家行动</u>"
+            "English": "6.7-6.10: Player attacks - player actions after each combat substep",
+            "French": "6.7-6.10 : Attaques des joueurs - actions des joueurs après chaque sous-étape du combat",
+            "Spanish": "6.7-6.10: Ataques de los jugadores - acciones del jugador después de cada subpaso de combate",
+            "Portuguese": "6.7-6.10: Ataques dos jogadores - ações do jogador após cada subetapa de combate",
+            "Italian": "6.7-6.10: Attacchi dei giocatori - azioni dei giocatori dopo ogni sotto-passo di combattimento",
+            "German": "6.7-6.10: Spielerangriffe - Spieleraktionen nach jedem Kampfunter-Schritt",
+            "Chinese": "6.7-6.10: 玩家攻击 - 每个战斗步骤后玩家行动"
         },
         "step-6.11": {
             "English": "6.11: End of the Combat phase",

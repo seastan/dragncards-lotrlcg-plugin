@@ -423,11 +423,6 @@
                 ["INCREASE_VAL", "/playerData/$PLAYER_I/threat", -1]
             ]]
         ],
-        "setCardsDrawn": [
-            ["INPUT", "integer", "$VAL", "Set the number of cards drawn during resource phase:", 1],
-            ["LOG", "$ALIAS_N", " set number of cards drawn during the Resource Phase to ", "$VAL", "."],
-            ["SET", "/playerData/$PLAYER_N/cardsDrawn", "$VAL"]
-        ],
         "setQuestNormal": [
             ["LOG", "$ALIAS_N", " set the questing type to Normal."],
             ["SET", "/questingStat", "willpower"]

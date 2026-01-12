@@ -1505,23 +1505,23 @@
           ["UPDATE_LAYOUT", "/layout/regions/sharedExtra7/visible", true],
           ["UPDATE_LAYOUT", "/layout/regions/sharedExtra8/visible", true],
           ["VAR", "$RIVERLANDS_CARD", ["ONE_CARD", "$C", ["EQUAL", "$C.sides.A.name", "The Riverlands"]]],
-          ["MOVE_CARD", "$RIVERLANDS_CARD.id", "sharedExtra2", 0],
+          ["MOVE_CARD", "$RIVERLANDS_CARD.id", "sharedExtra3", 0],
           ["VAR", "$CITY_WALLS_CARD", ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.sides.A.name", "City Walls"], ["EQUAL", "$C.groupId", "sharedSetAside"]]]],
           ["COND",
               ["EQUAL", "$GAME.numPlayers", 4],
-              ["MOVE_CARD", "$CITY_WALLS_CARD.id", "sharedExtra7", 0],
+              ["MOVE_CARD", "$CITY_WALLS_CARD.id", "sharedExtra6", 0],
               ["TRUE"],
               ["MOVE_CARD", "$CITY_WALLS_CARD.id", "sharedEncounterDeck", 0]
           ],
           ["VAR", "$IRON_HILLS_CARD", ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.sides.A.name", "Iron Hills Reinforcements"], ["EQUAL", "$C.groupId", "sharedSetAside"]]]],
           ["COND",
               ["EQUAL", "$GAME.numPlayers", 1],
-              ["MOVE_CARD", "$IRON_HILLS_CARD.id", "sharedExtra7", 0]
+              ["MOVE_CARD", "$IRON_HILLS_CARD.id", "sharedExtra5", 0]
           ],
           ["VAR", "$IRON_HILLS_CARD", ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.sides.A.name", "Iron Hills Reinforcements"], ["EQUAL", "$C.groupId", "sharedSetAside"]]]],
           ["COND",
               ["EQUAL", "$GAME.numPlayers", 2],
-              ["MOVE_CARD", "$IRON_HILLS_CARD.id", "sharedExtra8", 0]
+              ["MOVE_CARD", "$IRON_HILLS_CARD.id", "sharedExtra6", 0]
           ]
         ]
       }
