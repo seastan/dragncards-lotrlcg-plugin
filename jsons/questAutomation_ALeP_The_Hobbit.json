@@ -28,7 +28,7 @@
                                 ["MOVE_CARD", "$CARD.id", "sharedSetAside", 0]
                             ]
                         ]],
-                        ["DISCARD_CARD", "$GAME.cardById{{$GAME.groupById.sharedMainQuest.parentCardIds.[0]}}"],
+                        ["DISCARD_CARD_ID", "$GAME.groupById.sharedMainQuest.parentCardIds.[0]"],
                         ["COND",
                             ["EQUAL", "$NEXT_STAGE", 7],
                             [
