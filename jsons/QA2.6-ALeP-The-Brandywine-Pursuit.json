@@ -1,0 +1,46 @@
+{
+    "preBuiltDecks": {
+        "QA2.6": {
+            "label": "ALeP The Brandywine Pursuit",
+            "cards": [
+                {"databaseId": "7bcf1743-4659-40ca-8994-2208697035e9", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Down the Brandywine"},
+                {"databaseId": "f730acc9-0a36-4b30-9752-68010ad7acb9", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "We Must Keep Moving"},
+                {"databaseId": "79a67f80-6c4c-4a1c-bae2-937144a33cdc", "quantity": 1, "loadGroupId": "sharedQuestDeck", "_name": "Battle at Sarn Ford"},
+                {"databaseId": "cfa028c7-1b4b-4802-b4af-df3ded493577", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Unravelling Ropes"},
+                {"databaseId": "3216e01e-cff0-4e91-a645-bb6a3f32423f", "quantity": 1, "loadGroupId": "sharedEncounterDeck", "_name": "Ruffians on the Rise"},
+                {"databaseId": "8294fb41-2e73-409e-95f5-0979bd728982", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Agile Assailant"},
+                {"databaseId": "ad235832-15d8-4463-a32e-b57867c18f76", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Brawny Outlaw"},
+                {"databaseId": "41e002a4-f4a4-4212-af37-cf8a6839b81a", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Torch Wielder"},
+                {"databaseId": "6e39849e-a50d-401a-86d6-c1c8c8809195", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Overbourn Adder"},
+                {"databaseId": "032a721f-8964-4889-bfdd-dcd3568bf68e", "quantity": 3, "loadGroupId": "sharedEncounterDeck", "_name": "Withywindle Rats"},
+                {"databaseId": "644af743-152b-486f-89a5-4fb1e85be4ee", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Zealous Beaver"},
+                {"databaseId": "4aed80a2-d389-4337-a1e7-d59c0c16232b", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Sneering Snooper"},
+                {"databaseId": "ecb17bde-2193-48da-8e1c-d1d67df7fc2e", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Thuggish Thrower"},
+                {"databaseId": "67fb7a9b-b277-4297-a8c2-7487ffe40659", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Girded Gangster"},
+                {"databaseId": "ff1092cf-ea1a-4063-8255-fcd2c70fa982", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Burly Bouncer"},
+                {"databaseId": "b0854c44-1038-47a7-b76f-8f14ed44f4dd", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Sandbank"},
+                {"databaseId": "75cd1e68-9e17-4b0c-8046-c5b346078b01", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Enraged Swans"},
+                {"databaseId": "977231db-e66d-4379-b36b-1f3424e6a448", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Strong Current"},
+                {"databaseId": "7788d280-b589-4e20-830c-302a2b5ae67c", "quantity": 2, "loadGroupId": "sharedEncounterDeck", "_name": "Submerged Rocks"},
+                {"databaseId": "db62e2cb-c0cc-47a6-8a80-f43527699b1a", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Buckland Waterfalls"},
+                {"databaseId": "fcec6846-fb93-424d-b685-27272d884225", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Congested Detour"},
+                {"databaseId": "b4b6671d-d8eb-4521-894a-3a26991f84b6", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Dangerous Rapids"},
+                {"databaseId": "1be41595-6cd1-4d99-81a2-498a12cdd7bb", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Narrow Gorge"},
+                {"databaseId": "b93d81b6-c8d5-4df8-8015-a09aa276b2c3", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Swampy Passage"},
+                {"databaseId": "13b1e097-4891-4751-ab6a-1f70f8497d69", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Tumultuous Waters"},
+                {"databaseId": "9376e967-6006-4daa-86b6-f25ed944bb4f", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "Unmapped Falls"},
+                {"databaseId": "ae1610de-2438-45cc-ae00-5a3155f5d2dc", "quantity": 1, "loadGroupId": "sharedEncounterDeck2", "_name": "White Water"},
+                {"databaseId": "27f8c041-d2c2-49dc-9e05-180199bd1f5b", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Brandywine Pursuit Rules"},
+                {"databaseId": "1b2253a4-054a-45db-bad7-76a403faf227", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Brandywine Pursuit 1"},
+                {"databaseId": "cffc2ccb-5bdc-4ca9-9c55-dd9dee7a6f3a", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Brandywine Pursuit 2"},
+                {"databaseId": "7aaf9008-3d21-4f3f-a09c-d9934c6ce73b", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Brandywine Pursuit 3"},
+                {"databaseId": "883ab769-d5f1-46ad-ab1a-248e70ce5019", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Brandywine Pursuit 4"},
+                {"databaseId": "19c76710-6b71-416f-87f0-88f31448c943", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Brandywine Pursuit 5"},
+                {"databaseId": "76c1d6d7-b78c-4444-98f9-c9c74280e302", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Sarn Ford"},
+                {"databaseId": "396eb65f-e2aa-4e36-bf69-f88e74a4594b", "quantity": 4, "loadGroupId": "sharedSetAside", "_name": "Makeshift Raft"},
+                {"databaseId": "2261648a-3956-4737-9c90-a6764cbe5c3b", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "Drogo Baggins"},
+                {"databaseId": "d467c792-35c7-40c3-9d8e-82129a7079fd", "quantity": 1, "loadGroupId": "sharedActiveLocation", "_name": "Girdley Island Shores"}
+            ]
+        }
+    }
+}

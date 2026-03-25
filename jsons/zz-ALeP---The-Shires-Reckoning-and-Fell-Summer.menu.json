@@ -68,6 +68,19 @@
                                 "deckListId": "QA2.5"
                             }
                         ]
+                    },
+                    {
+                        "label": "ALeP The Brandywine Pursuit",
+                        "deckLists": [
+                            {
+                                "label": "id:easy",
+                                "deckListId": "EA2.6"
+                            },
+                            {
+                                "label": "id:normal",
+                                "deckListId": "QA2.6"
+                            }
+                        ]
                     }
                 ]
             }
