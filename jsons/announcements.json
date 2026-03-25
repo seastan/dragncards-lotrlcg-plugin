@@ -1,5 +1,7 @@
 {
     "announcements": [
+        "2026-01-29: Fixed automation for Well Preserved, Protector of Lorien, Visionary Leadership, and several other cards.",
+        "2026-01-29: Fixed RingsDB import for several campaign cards.",
         "2025-09-19: Added new hotkeys: Shift+H (discard random card from hand) and Shift+B (move card to bottom of deck)",
         "2025-02-02: DragnCards 2.0 Plugin Released",
         "2024-12-19: Fixed the Z (Resolve Quest) hotkey to properly place progress on locations."

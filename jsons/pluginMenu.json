@@ -1,10 +1,6 @@
 {
     "pluginMenu": {
         "options": [
-            { 
-                "label": "id:cardsPerRound",
-                "actionList": "setCardsDrawn"
-            },
             {
                 "label": "id:normalQuest",
                 "actionList": "setQuestNormal"

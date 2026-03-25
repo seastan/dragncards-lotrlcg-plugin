@@ -52,7 +52,7 @@ local globalPassiveEffect(name, side = "A", listenToThisChange, thisCondition, l
                 ["LOG", "└── ", conditionOffLog],
                 ["FOR_EACH_KEY_VAL", "$TARGET_ID", "$TARGET", "$GAME.cardById", [
                 ["COND",
-                    ["AND", "$TARGET.inPlay", ["PREV", ["EQUAL", "$TARGET.cardIndex", 0]], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]] + ["PREV", ["AND"] + targetCondition],
+                    ["AND", "$TARGET.inPlay", ["EQUAL", "$TARGET.cardIndex", 0], ["NOT", "$TARGET.currentFace.tags.immuneToPlayerCardEffects"]] + targetCondition,
                     effectOff,
                 ]]]
             ]

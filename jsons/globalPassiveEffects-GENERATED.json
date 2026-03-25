@@ -29,34 +29,27 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.groupId",
-                                       "{{$THIS.controller}}Engaged"
-                                    ],
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "{{$THIS.controller}}Engaged"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -249,34 +242,27 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$THIS.controller",
-                                       "$TARGET.controller"
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Outlands."
-                                    ]
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Outlands."
                                  ]
                               ],
                               [
@@ -468,29 +454,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Hobbit."
-                                    ]
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Hobbit."
                                  ]
                               ],
                               [
@@ -671,34 +650,27 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$THIS.controller",
-                                       "$TARGET.controller"
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Outlands."
-                                    ]
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Outlands."
                                  ]
                               ],
                               [
@@ -903,29 +875,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Gondor."
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ]
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Gondor."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -1137,29 +1102,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Gondor."
-                                    ],
-                                    [
-                                       "IS_ALLY",
-                                       "$TARGET"
-                                    ]
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Gondor."
+                                 ],
+                                 [
+                                    "IS_ALLY",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -1350,34 +1308,27 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$THIS.controller",
-                                       "$TARGET.controller"
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Outlands."
-                                    ]
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Outlands."
                                  ]
                               ],
                               [
@@ -1576,29 +1527,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Dwarf."
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ]
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Dwarf."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -1821,29 +1765,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$THIS.controller",
-                                       "$TARGET.controller"
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ]
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -2052,29 +1989,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Dwarf."
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ]
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Dwarf."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -2270,29 +2200,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -2474,34 +2397,27 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.groupId",
-                                       "{{$THIS.controller}}Engaged"
-                                    ],
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.groupId",
+                                    "{{$THIS.controller}}Engaged"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -2705,31 +2621,24 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$THIS.controller",
-                                       "$TARGET.controller"
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ],
-                                    "$TARGET.currentFace.unique"
-                                 ]
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 "$TARGET.currentFace.unique"
                               ],
                               [
                                  [
@@ -2930,29 +2839,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -3141,24 +3043,17 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_HERO",
-                                       "$TARGET"
-                                    ]
+                                    "IS_HERO",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -3347,38 +3242,31 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.groupId",
-                                       "Engaged"
-                                    ],
-                                    [
-                                       "NOT",
-                                       "$TARGET.currentFace.unique"
-                                    ],
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "IN_STRING",
+                                    "$TARGET.groupId",
+                                    "Engaged"
+                                 ],
+                                 [
+                                    "NOT",
+                                    "$TARGET.currentFace.unique"
+                                 ],
+                                 [
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -3589,29 +3477,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -3793,34 +3674,27 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "EQUAL",
-                                       "$THIS.controller",
-                                       "$TARGET.controller"
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Outlands."
-                                    ]
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Outlands."
                                  ]
                               ],
                               [
@@ -4016,29 +3890,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_ENEMY",
-                                       "$TARGET"
-                                    ],
-                                    [
-                                       "NOT_EQUAL",
-                                       "$TARGET.rotation",
-                                       -30
-                                    ]
+                                    "IS_ENEMY",
+                                    "$TARGET"
+                                 ],
+                                 [
+                                    "NOT_EQUAL",
+                                    "$TARGET.rotation",
+                                    -30
                                  ]
                               ],
                               [
@@ -4323,24 +4190,17 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IS_HERO",
-                                       "$TARGET"
-                                    ]
+                                    "IS_HERO",
+                                    "$TARGET"
                                  ]
                               ],
                               [
@@ -4529,29 +4389,22 @@
                                  "AND",
                                  "$TARGET.inPlay",
                                  [
-                                    "PREV",
-                                    [
-                                       "EQUAL",
-                                       "$TARGET.cardIndex",
-                                       0
-                                    ]
+                                    "EQUAL",
+                                    "$TARGET.cardIndex",
+                                    0
                                  ],
                                  [
                                     "NOT",
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
-                                 "PREV",
                                  [
-                                    "AND",
-                                    [
-                                       "IN_STRING",
-                                       "$TARGET.currentFace.traits",
-                                       "Harad."
-                                    ],
-                                    [
-                                       "IS_CHARACTER",
-                                       "$TARGET"
-                                    ]
+                                    "IN_STRING",
+                                    "$TARGET.currentFace.traits",
+                                    "Harad."
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
+                                    "$TARGET"
                                  ]
                               ],
                               [
