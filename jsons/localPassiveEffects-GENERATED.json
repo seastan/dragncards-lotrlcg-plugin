@@ -3267,11 +3267,6 @@
                      "COND",
                      [
                         "AND",
-                        [
-                           "NOT_EQUAL",
-                           "$THIS_ID",
-                           "$TARGET_ID"
-                        ],
                         true
                      ],
                      [
@@ -3295,11 +3290,6 @@
                      "COND",
                      [
                         "AND",
-                        [
-                           "NOT_EQUAL",
-                           "$THIS_ID",
-                           "$TARGET_ID"
-                        ],
                         true
                      ],
                      [
