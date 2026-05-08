@@ -972,7 +972,8 @@
                     "hotkey": "2",
                     "code": [
                         ["LOG", "└── ", ["GET_ALIAS", "$CONTROLLER"], " drew 3 cards."],
-                        ["DRAW_CARD", 3, "$CONTROLLER"]
+                        ["DRAW_CARD", 3, "$CONTROLLER"],
+                        ["MOVE_CARD", "$CARD.id", "sharedVictory", 0]
                     ]
                 },
                 {
@@ -980,7 +981,8 @@
                     "hotkey": "3",
                     "code": [
                         ["LOG", "└── ", ["GET_ALIAS", "$CONTROLLER"], " reduced their threat by 4."],
-                        ["DECREASE_VAL", "/playerData/{{$CONTROLLER}}/threat", 4]
+                        ["DECREASE_VAL", "/playerData/{{$CONTROLLER}}/threat", 4],
+                        ["MOVE_CARD", "$CARD.id", "sharedVictory", 0]
                     ]
                 },
                 {
