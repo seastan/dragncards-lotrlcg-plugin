@@ -483,9 +483,9 @@
                         ["SHUFFLE_GROUP", "sharedEncounterDeck"],
                         ["VAR", "$CORNER_CARD", ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.row", 2], ["EQUAL", "$C.col", 0]]]],
                         ["SET", "/cardById/$CORNER_CARD.id/tokens/attack", 1],
-                        ["COND", ["GREATER_THAN", "$GAME.numPlayers", 1], ["SET", "/cardById/$CORNER_CARD_ID/tokens/defense", 1]],
-                        ["COND", ["GREATER_THAN", "$GAME.numPlayers", 2], ["SET", "/cardById/$CORNER_CARD_ID/tokens/hitPoints", 1]],
-                        ["COND", ["GREATER_THAN", "$GAME.numPlayers", 3], ["SET", "/cardById/$CORNER_CARD_ID/tokens/time", 1]],
+                        ["COND", ["GREATER_THAN", "$GAME.numPlayers", 1], ["SET", "/cardById/$CORNER_CARD.id/tokens/defense", 1]],
+                        ["COND", ["GREATER_THAN", "$GAME.numPlayers", 2], ["SET", "/cardById/$CORNER_CARD.id/tokens/hitPoints", 1]],
+                        ["COND", ["GREATER_THAN", "$GAME.numPlayers", 3], ["SET", "/cardById/$CORNER_CARD.id/tokens/time", 1]],
                         ["VAR", "$CORNER_CARD", ["ONE_CARD", "$C", ["AND", ["EQUAL", "$C.row", 0], ["EQUAL", "$C.col", 3]]]],
                         ["SET", "/cardById/$CORNER_CARD.id/tokens/threat", 1]
                     ]   
