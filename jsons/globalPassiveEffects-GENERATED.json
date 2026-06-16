@@ -4176,7 +4176,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Removed 1 willpower from each hero."
+                        "Removed 1 willpower, 1 attack, and 1 defense from each character."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -4199,7 +4199,12 @@
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
-                                    "IS_HERO",
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
                                     "$TARGET"
                                  ]
                               ],
@@ -4207,6 +4212,16 @@
                                  [
                                     "DECREASE_VAL",
                                     "/cardById/$TARGET_ID/tokens/willpower",
+                                    1
+                                 ],
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/attack",
+                                    1
+                                 ],
+                                 [
+                                    "DECREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/defense",
                                     1
                                  ]
                               ]
@@ -4218,7 +4233,7 @@
                      [
                         "LOG",
                         "└── ",
-                        "Added 1 willpower to each hero."
+                        "Added 1 willpower, 1 attack, and 1 defense to each character."
                      ],
                      [
                         "FOR_EACH_KEY_VAL",
@@ -4241,7 +4256,12 @@
                                     "$TARGET.currentFace.tags.immuneToPlayerCardEffects"
                                  ],
                                  [
-                                    "IS_HERO",
+                                    "EQUAL",
+                                    "$THIS.controller",
+                                    "$TARGET.controller"
+                                 ],
+                                 [
+                                    "IS_CHARACTER",
                                     "$TARGET"
                                  ]
                               ],
@@ -4249,6 +4269,16 @@
                                  [
                                     "INCREASE_VAL",
                                     "/cardById/$TARGET_ID/tokens/willpower",
+                                    1
+                                 ],
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/attack",
+                                    1
+                                 ],
+                                 [
+                                    "INCREASE_VAL",
+                                    "/cardById/$TARGET_ID/tokens/defense",
                                     1
                                  ]
                               ]
@@ -4279,7 +4309,12 @@
                         "$TARGET_ID"
                      ],
                      [
-                        "IS_HERO",
+                        "EQUAL",
+                        "$THIS.controller",
+                        "$TARGET.controller"
+                     ],
+                     [
+                        "IS_CHARACTER",
                         "$TARGET"
                      ]
                   ],
@@ -4287,7 +4322,8 @@
                      "/cardById/*/inPlay",
                      "/cardById/*/cardIndex",
                      "/cardById/*/currentSide",
-                     "/cardById/*/sides/*/type"
+                     "/cardById/*/sides/*/type",
+                     "/cardById/*/controller"
                   ],
                   "offDo": [
                      "COND",
@@ -4311,6 +4347,16 @@
                         [
                            "DECREASE_VAL",
                            "/cardById/$TARGET_ID/tokens/willpower",
+                           1
+                        ],
+                        [
+                           "DECREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/attack",
+                           1
+                        ],
+                        [
+                           "DECREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/defense",
                            1
                         ]
                      ]
@@ -4339,13 +4385,23 @@
                         [
                            "LOG",
                            "└── ",
-                           "Fellowship of the Ring added 1 willpower to ",
+                           "Fellowship of the Ring added 1 willpower, 1 attack, and 1 defense to ",
                            "$TARGET.currentFace.name",
                            "."
                         ],
                         [
                            "INCREASE_VAL",
                            "/cardById/$TARGET_ID/tokens/willpower",
+                           1
+                        ],
+                        [
+                           "INCREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/attack",
+                           1
+                        ],
+                        [
+                           "INCREASE_VAL",
+                           "/cardById/$TARGET_ID/tokens/defense",
                            1
                         ]
                      ]
