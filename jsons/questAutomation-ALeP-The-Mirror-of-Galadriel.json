@@ -58,6 +58,25 @@
                     ]
                 },
                 {
+                    "label": "Shire",
+                    "code": [
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Shire"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "sharedEncounterDeck", "$CONDITION"],
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "f32ad408-c413-49ec-b3dc-dc3acdf43198", "loadGroupId": "sharedStagingArea", "quantity": 1}
+                        ]],
+                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Gandalf", "Objective Ally", "player1Play1", -1],
+                        ["VAR", "$GANDALF", ["ONE_CARD", "$C", ["AND",
+                            ["EQUAL", "$C.sides.A.name", "Gandalf"],
+                            ["EQUAL", "$C.sides.A.type", "Objective Ally"]
+                        ]]],
+                        ["VAR", "$ONE_RING", ["ONE_CARD_WITH_FACE_KEY_VAL", "name", "The One Ring"]],
+                        ["ATTACH_CARD", "$ONE_RING.id", "$GANDALF.id"]
+                    ]
+                },
+                {
                     "label": "Cancel",
                     "hotkey": "X"
                 }
@@ -280,6 +299,19 @@
                         ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "The Dark Lord Beckons", "sharedStagingArea", -1],
                         ["MOVE_CARD_BY_NAME", "Sauron", "sharedSetAside", -1]
+                    ]
+                },
+                {
+                    "label": "Gandalf",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "1d5a8cfa-7a19-45e7-b39f-6d27e7bdfd3e", "loadGroupId": "sharedStagingArea", "quantity": 1}
+                        ]],
+                        ["VAR", "$CONDITION", ["POINTER", ["AND",
+                            ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Gandalf"]
+                        ]]],
+                        ["LOAD_CARDS_BY_CONDITION", "sharedExtra3", "$CONDITION"],
+                        ["MOVE_CARD_BY_NAME", "Gandalf the Black", "sharedSetAside", -1]
                     ]
                 },
                 {
