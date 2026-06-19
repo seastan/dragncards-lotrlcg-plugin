@@ -48,8 +48,8 @@
                 {"databaseId": "27b4f482-37ba-4987-beef-d2d2b7562ff8", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Mirror of Galadriel 6"},
                 {"databaseId": "131aaf3d-31d5-4046-998e-697dd19fd461", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Mirror of Galadriel 7"},
                 {"databaseId": "06d4affb-9fa4-4c6d-ac9a-4b73d6400d81", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "Siege of Middle-earth"},
-                {"databaseId": "aefab7b9-75d2-45d3-9740-455e4ad6053f", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "The Ring Comes to Gondor"},
-                {"databaseId": "90a6215a-434a-4a50-96e1-129520c4894a", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "The Dark Lord Beckons"},
+                {"databaseId": "aefab7b9-75d2-45d3-9740-455e4ad6053f", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Ring Comes to Gondor"},
+                {"databaseId": "90a6215a-434a-4a50-96e1-129520c4894a", "quantity": 1, "loadGroupId": "sharedSetAside", "_name": "The Dark Lord Beckons"},
                 {"databaseId": "d971d622-9455-49ff-8ff8-db11b41088a0", "quantity": 1, "loadGroupId": "sharedStagingArea", "_name": "The One Ring"}
             ]
         }
