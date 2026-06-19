@@ -67,6 +67,7 @@
                         ["LOAD_CARDS", ["LIST",
                             {"databaseId": "f32ad408-c413-49ec-b3dc-dc3acdf43198", "loadGroupId": "sharedStagingArea", "quantity": 1}
                         ]],
+                        ["MOVE_CARD_BY_NAME", "The Ring Comes to Gondor", "sharedSetAside", -1],
                         ["MOVE_CARD_BY_NAME_AND_TYPE", "Gandalf", "Objective Ally", "player1Play1", -1],
                         ["VAR", "$GANDALF", ["ONE_CARD", "$C", ["AND",
                             ["EQUAL", "$C.sides.A.name", "Gandalf"],
@@ -307,6 +308,7 @@
                         ["LOAD_CARDS", ["LIST",
                             {"databaseId": "1d5a8cfa-7a19-45e7-b39f-6d27e7bdfd3e", "loadGroupId": "sharedStagingArea", "quantity": 1}
                         ]],
+                        ["MOVE_CARD_BY_NAME", "The Dark Lord Beckons", "sharedSetAside", -1],
                         ["VAR", "$CONDITION", ["POINTER", ["AND",
                             ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Gandalf"]
                         ]]],
