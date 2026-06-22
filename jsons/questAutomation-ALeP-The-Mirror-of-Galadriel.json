@@ -67,11 +67,10 @@
                         ["LOAD_CARDS", ["LIST",
                             {"databaseId": "f32ad408-c413-49ec-b3dc-dc3acdf43198", "loadGroupId": "sharedStagingArea", "quantity": 1}
                         ]],
-                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Gandalf", "Objective Ally", "player1Play1", -1],
-                        ["VAR", "$GANDALF", ["ONE_CARD", "$C", ["AND",
-                            ["EQUAL", "$C.sides.A.name", "Gandalf"],
-                            ["EQUAL", "$C.sides.A.type", "Objective Ally"]
-                        ]]],
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "ae007750-56c9-46b6-8f00-d126b830eebb", "loadGroupId": "player1Play1", "quantity": 1}
+                        ]],
+                        ["VAR", "$GANDALF", ["ONE_CARD", "$C", ["EQUAL", "$C.databaseId", "ae007750-56c9-46b6-8f00-d126b830eebb"]]],
                         ["VAR", "$ONE_RING", ["ONE_CARD_WITH_FACE_KEY_VAL", "name", "The One Ring"]],
                         ["ATTACH_CARD", "$ONE_RING.id", "$GANDALF.id"]
                     ]
