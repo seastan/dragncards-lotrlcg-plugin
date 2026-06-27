@@ -319,6 +319,15 @@
                     "label": "Setup",
                     "hotkey": "S",
                     "code": [
+                        ["VAR", "$MOUNT_GRAM_NIGHTMARE", ["ONE_CARD", "$C", ["EQUAL", "$C.databaseId", "688f685a-c89d-46d5-92b6-d827e3ee83d9"]]],
+                        ["VAR", "$CAPTURE_DECK_POSITION", 0],
+                        ["COND",
+                            ["NOT_EQUAL", "$MOUNT_GRAM_NIGHTMARE.id", null],
+                            [
+                                ["UPDATE_VAR", "$CAPTURE_DECK_POSITION", -1],
+                                ["LOG", "Nightmare mode detected: the final captured hero will be placed on the bottom of each player's capture deck."]
+                            ]
+                        ],
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                             ["LOG", "Performing Escape from Mount Gram setup for ", ["GET_ALIAS", "$PLAYER_I"], "."],
                             ["VAR", "$FACEDOWN_HEROES", ["LIST"]],
@@ -368,7 +377,7 @@
                                             ]
                                         ]
                                     ]],
-                                    ["MOVE_CARD", "$FACEDOWN_HEROES.[$SET_ASIDE_HERO_INDEX]", "{{$PLAYER_I}}Deck2", 0]
+                                    ["MOVE_CARD", "$FACEDOWN_HEROES.[$SET_ASIDE_HERO_INDEX]", "{{$PLAYER_I}}Deck2", "$CAPTURE_DECK_POSITION"]
                                 ],
                                 ["TRUE"],
                                 ["LOG", "WARNING: No facedown heroes detected."]
