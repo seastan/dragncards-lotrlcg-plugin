@@ -201,11 +201,18 @@
                                     ]
                                 ]],
                                 ["VAR", "$MUGASH_CARDS", ["CONCAT_LISTS", "$MUGASH_CARD", "$MUGASH_GUARDS"]],
+                                ["VAR", "$VIGILANT_ORCS", ["FILTER_CARDS", "$C",
+                                    ["AND",
+                                        ["EQUAL", "$C.groupId", "sharedSetAside"],
+                                        ["EQUAL", "$C.sides.A.name", "Vigilant Orc"]
+                                    ]
+                                ]],
                                 ["VAR", "$PLAYER_INDEX", 0],
                                 ["LOG", "{{$ALIAS_N}} created the secondary player decks."],
                                 ["LOG", "{{$ALIAS_N}} moved the Mugash cards to the secondary player decks."],
                                 ["FOR_EACH_VAL", "$PLAYER_I", ["SHUFFLE_LIST", "$PLAYER_ORDER"], [
                                     ["MOVE_CARD", "$MUGASH_CARDS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0],
+                                    ["COND", ["GREATER_THAN", ["LENGTH", "$VIGILANT_ORCS"], "$PLAYER_INDEX"], ["MOVE_CARD", "$VIGILANT_ORCS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0]],
                                     ["MOVE_STACKS", "{{$PLAYER_I}}Deck", "{{$PLAYER_I}}Deck2", 20, "shuffle"],
                                     ["SHOW_PLAYER_DECK_2", "$PLAYER_I", true],
                                     ["INCREASE_VAR", "$PLAYER_INDEX", 1]
