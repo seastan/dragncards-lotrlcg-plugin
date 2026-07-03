@@ -189,8 +189,8 @@
                 {
                     "label": "The Nazgûl",
                     "code": [
-                        ["LOAD_MIRROR_WAVE", "The Nazgûl", "sharedExtra2"]//,
-                        //["MOVE_CARD_BY_NAME", "The Witch-king", "sharedSetAside", -1]
+                        ["LOAD_MIRROR_WAVE", "The Nazgûl", "sharedExtra2"],
+                        ["MOVE_CARD_BY_NAME", "The Witch-king", "sharedSetAside", -1]
                     ]
                 },
                 {
