@@ -117,6 +117,22 @@
                     }
                 }
             },
+            "b1662195-6d46-474c-9ee9-ccbf14c7b70e": {
+                "_comment": "The Clutches of Carn Dûm",
+                "rules": {
+                    "clutchesOfCarnDumShadows": {
+                        "_comment": "While side B (The Clutches of Carn Dûm) is active, prevent shadow cards from being auto-discarded by rotating them to -29 instead of -30 so the discard automation skips them",
+                        "type": "whileInPlay",
+                        "side": "B",
+                        "listenTo": ["/cardById/*/rotation"],
+                        "condition": ["EQUAL", "$TARGET.rotation", -30],
+                        "onDo": [
+                            ["SET", "/cardById/$TARGET_ID/rotation", -29]
+                        ],
+                        "offDo": []
+                    }
+                }
+            },
             "5c8e7eab-3899-489e-a801-3ac34b77f62f": {
                 "_comment": "The Nine are Abroad",
                 "rules": {

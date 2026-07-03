@@ -201,11 +201,18 @@
                                     ]
                                 ]],
                                 ["VAR", "$MUGASH_CARDS", ["CONCAT_LISTS", "$MUGASH_CARD", "$MUGASH_GUARDS"]],
+                                ["VAR", "$VIGILANT_ORCS", ["FILTER_CARDS", "$C",
+                                    ["AND",
+                                        ["EQUAL", "$C.groupId", "sharedSetAside"],
+                                        ["EQUAL", "$C.sides.A.name", "Vigilant Orc"]
+                                    ]
+                                ]],
                                 ["VAR", "$PLAYER_INDEX", 0],
                                 ["LOG", "{{$ALIAS_N}} created the secondary player decks."],
                                 ["LOG", "{{$ALIAS_N}} moved the Mugash cards to the secondary player decks."],
                                 ["FOR_EACH_VAL", "$PLAYER_I", ["SHUFFLE_LIST", "$PLAYER_ORDER"], [
                                     ["MOVE_CARD", "$MUGASH_CARDS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0],
+                                    ["COND", ["GREATER_THAN", ["LENGTH", "$VIGILANT_ORCS"], "$PLAYER_INDEX"], ["MOVE_CARD", "$VIGILANT_ORCS.[$PLAYER_INDEX].id", "{{$PLAYER_I}}Deck2", 0]],
                                     ["MOVE_STACKS", "{{$PLAYER_I}}Deck", "{{$PLAYER_I}}Deck2", 20, "shuffle"],
                                     ["SHOW_PLAYER_DECK_2", "$PLAYER_I", true],
                                     ["INCREASE_VAR", "$PLAYER_INDEX", 1]
@@ -319,6 +326,15 @@
                     "label": "Setup",
                     "hotkey": "S",
                     "code": [
+                        ["VAR", "$MOUNT_GRAM_NIGHTMARE", ["ONE_CARD", "$C", ["EQUAL", "$C.databaseId", "688f685a-c89d-46d5-92b6-d827e3ee83d9"]]],
+                        ["VAR", "$CAPTURE_DECK_POSITION", 0],
+                        ["COND",
+                            ["NOT_EQUAL", "$MOUNT_GRAM_NIGHTMARE.id", null],
+                            [
+                                ["UPDATE_VAR", "$CAPTURE_DECK_POSITION", -1],
+                                ["LOG", "Nightmare mode detected: the final captured hero will be placed on the bottom of each player's capture deck."]
+                            ]
+                        ],
                         ["FOR_EACH_VAL", "$PLAYER_I", "$PLAYER_ORDER", [
                             ["LOG", "Performing Escape from Mount Gram setup for ", ["GET_ALIAS", "$PLAYER_I"], "."],
                             ["VAR", "$FACEDOWN_HEROES", ["LIST"]],
@@ -368,7 +384,7 @@
                                             ]
                                         ]
                                     ]],
-                                    ["MOVE_CARD", "$FACEDOWN_HEROES.[$SET_ASIDE_HERO_INDEX]", "{{$PLAYER_I}}Deck2", 0]
+                                    ["MOVE_CARD", "$FACEDOWN_HEROES.[$SET_ASIDE_HERO_INDEX]", "{{$PLAYER_I}}Deck2", "$CAPTURE_DECK_POSITION"]
                                 ],
                                 ["TRUE"],
                                 ["LOG", "WARNING: No facedown heroes detected."]

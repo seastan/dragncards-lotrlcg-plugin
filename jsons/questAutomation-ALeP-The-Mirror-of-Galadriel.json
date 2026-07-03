@@ -310,7 +310,7 @@
                             ["IN_STRING", "$CARD_DETAILS.A.encounterSet", "The Mirror of Galadriel - Gandalf"]
                         ]]],
                         ["LOAD_CARDS_BY_CONDITION", "sharedExtra3", "$CONDITION"],
-                        ["MOVE_CARD_BY_NAME", "Gandalf the Black", "sharedSetAside", -1]
+                        ["MOVE_CARD_BY_NAME", "Gandalf", "player1Play1", -1]
                     ]
                 },
                 {
