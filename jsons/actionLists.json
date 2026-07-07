@@ -137,12 +137,26 @@
             ["LOG", "$ALIAS_N", " drew 1 card."]
         ],
         "discardShadows": [
-            ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
+            ["VAR", "$CLUTCHES_OF_CARN_DUM", ["ONE_CARD", "$C", ["AND",
+                ["EQUAL", "$C.databaseId", "b1662195-6d46-474c-9ee9-ccbf14c7b70e"],
+                ["EQUAL", "$C.currentSide", "B"],
+                ["EQUAL", "$C.inPlay", true]
+            ]]],
+            ["COND",
+                ["NOT_EQUAL", "$CLUTCHES_OF_CARN_DUM.id", null],
                 [
-                    ["COND",
-                        ["EQUAL", "$CARD.rotation", -30],
+                    ["LOG", "The Clutches of Carn Dûm: unresolved shadow cards were not discarded."]
+                ],
+                ["TRUE"],
+                [
+                    ["FOR_EACH_KEY_VAL", "$CARD_ID", "$CARD", "$CARD_BY_ID",
                         [
-                            ["DISCARD_CARD", "$CARD"]
+                            ["COND",
+                                ["EQUAL", "$CARD.rotation", -30],
+                                [
+                                    ["DISCARD_CARD", "$CARD"]
+                                ]
+                            ]
                         ]
                     ]
                 ]
