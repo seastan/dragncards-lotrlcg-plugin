@@ -177,6 +177,17 @@
                     "code": ["LOAD_MIRROR_WAVE", "Wolf-cult", "sharedExtra1"]
                 },
                 {
+                    "label": "Barrow Wights",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "1b9e02cc-d46e-4816-bdbd-9daa05590173", "loadGroupId": "sharedExtra1", "quantity": 2},
+                            {"databaseId": "29562ee1-56d9-4a46-ba4b-1af24f85deb6", "loadGroupId": "sharedExtra1", "quantity": 3},
+                            {"databaseId": "516b75d8-9abe-423e-9ef1-a92f1c87c86f", "loadGroupId": "sharedExtra1", "quantity": 3}
+                        ]],
+                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Barrow Wights", "Objective", "sharedStagingArea", -1]
+                    ]
+                },
+                {
                     "label": "Cancel",
                     "hotkey": "X"
                 }
@@ -269,6 +280,22 @@
                     "code": [
                         ["LOAD_MIRROR_WAVE", "Ruffians", "sharedExtra2"],
                         ["MOVE_CARD_BY_NAME", "Ruffians on the Rise", "sharedSetAside", -1]
+                    ]
+                },
+                {
+                    "label": "Bree Lowlifes",
+                    "code": [
+                        ["LOAD_CARDS", ["LIST",
+                            {"databaseId": "2608ba25-8375-4093-9d93-3c8cfa7b697c", "loadGroupId": "sharedExtra2", "quantity": 3},
+                            {"databaseId": "63284aea-d814-4ceb-bb8e-57f402edc54d", "loadGroupId": "sharedExtra2", "quantity": 2},
+                            {"databaseId": "1de51c4f-659d-465f-bf45-4d6c00c6bdf1", "loadGroupId": "sharedExtra2", "quantity": 3},
+                            {"databaseId": "054189b9-c165-4561-9b62-f0384145da97", "loadGroupId": "sharedSetAside", "quantity": 1},
+                            {"databaseId": "1c028523-9f37-4e16-83cf-c9ea1cfbc9d3", "loadGroupId": "sharedSetAside", "quantity": 1},
+                            {"databaseId": "518f546e-a3ce-4af8-b89d-2e1a6b765857", "loadGroupId": "sharedSetAside", "quantity": 1},
+                            {"databaseId": "847e6b9c-f795-4625-86d3-4ab6460ccdfe", "loadGroupId": "sharedSetAside", "quantity": 1},
+                            {"databaseId": "e70dc756-86c4-460a-97cd-1d2c65b1e874", "loadGroupId": "sharedSetAside", "quantity": 1}
+                        ]],
+                        ["MOVE_CARD_BY_NAME_AND_TYPE", "Bree Lowlifes", "Objective", "sharedStagingArea", -1]
                     ]
                 },
                 {
