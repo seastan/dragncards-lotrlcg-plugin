@@ -51,12 +51,19 @@
                     ["EQUAL", "$CARD.groupId", "sharedBoons"],
                     ["UPDATE_VAR", "$LOADED_BOONS", true]
                 ],
-                ["COND", 
+                ["COND",
                     ["AND", ["EQUAL", "$CARD.sides.A.type", "Quest"], ["EQUAL", "$CARD.sides.A.cost", 1]],
                     [
                         ["LOG", "$ALIAS_N", " made ", "$CARD.sides.A.name", " the main quest."],
                         ["MOVE_CARD", "$CARD_ID", "sharedMainQuest", 0],
                         ["UPDATE_VAR", "$LOADED_ENCOUNTER_DECK", true]
+                    ]
+                ],
+                ["COND",
+                    ["EQUAL", "$CARD.sides.A.type", "Player Objective"],
+                    [
+                        ["LOG", "$ALIAS_N", " put ", "$CARD.sides.A.name", " into the staging area."],
+                        ["MOVE_CARD", "$CARD_ID", "sharedStagingArea", 0]
                     ]
                 ]
             ]],
