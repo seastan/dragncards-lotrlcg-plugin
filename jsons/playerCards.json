@@ -90,6 +90,32 @@
                 }
             },
             "61f5c07a-bdec-401b-be5c-19d3c7c456c9": {"_comment": "Silvan Tracker", "inheritFrom": "51223bd0-ffd1-11df-a976-0801205c9014"},
+            "e4fd6e25-982a-464f-82d8-812269864d46": {
+                "_comment": "Silvan Refugee",
+                "rules": {
+                    "silvanRefugeeDiscard": {
+                        "_comment": "Forced: After a character leaves play, prompt to discard Silvan Refugee from play.",
+                        "type": "trigger",
+                        "listenTo": ["/cardById/*/inPlay"],
+                        "condition": ["AND",
+                            "$THIS.inPlay",
+                            ["NOT_EQUAL", "$TARGET_ID", "$THIS_ID"],
+                            ["PREV", "$TARGET.inPlay"],
+                            ["NOT", "$TARGET.inPlay"],
+                            ["OR", ["IS_ALLY", "$TARGET"], ["IS_HERO", "$TARGET"]]
+                        ],
+                        "then": [
+                            ["PROMPT", "$PLAYER_N", "basePrompt", "A character left play. Discard Silvan Refugee?"],
+                            ["PROMPT_ADD_OPTION", "$PLAYER_N", "Discard Silvan Refugee", "Y", ["POINTER", [
+                                ["LOG", "└── ", "Discarded Silvan Refugee from play."],
+                                ["DISCARD_CARD", "$THIS"]
+                            ]]],
+                            ["PROMPT_ADD_OPTION", "$PLAYER_N", "Do not discard", "N", ["POINTER", []]]
+                        ]
+                    }
+                }
+            },
+            "8f29b50f-8fd3-47f0-9e21-bd24fff49fac": {"_comment": "Silvan Refugee", "inheritFrom": "e4fd6e25-982a-464f-82d8-812269864d46"},
             "4124136c-8c86-4f86-830c-94c8c76df161": {
                 "_comment": "Sam Gamgee",
                 "ability": {
