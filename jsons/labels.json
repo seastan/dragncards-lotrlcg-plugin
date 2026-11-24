@@ -1846,7 +1846,7 @@
             "Spanish": "En el Pozo",
             "Portuguese": "No Poço",
             "Italian": "Nel Pozzo",
-            "German": "In die Grube",
+            "German": "In die schwarze Grube",
             "Chinese": "深入矿坑"
         },
         "The Seventh Level": {
@@ -1855,7 +1855,7 @@
             "Spanish": "El Séptimo Nivel",
             "Portuguese": "O Sétimo Nível",
             "Italian": "Il Settimo Livello",
-            "German": "Die Siebte Ebene",
+            "German": "Die siebente Sohle",
             "Chinese": "第七层"
         },
         "Flight from Moria": {
@@ -2566,7 +2566,7 @@
             "Spanish": "Debemos irnos antes del amanecer",
             "Portuguese": "Devemos partir antes do amanhecer",
             "Italian": "Dobbiamo partire prima dell'alba",
-            "German": "Wir müssen vor Tagesanbruch aufbrechen",
+            "German": "Da ziehen wir hin, da lockt Gewinn",
             "Chinese": "荷戟赴险莫待旦"
         },
         "Over the Misty Mountains Grim": {
@@ -2575,7 +2575,7 @@
             "Spanish": "Sobre las Montañas Brumosas",
             "Portuguese": "Além das Montanhas Nebulosas",
             "Italian": "Oltre le Montagne Nebbiose",
-            "German": "Über die Nebelberge",
+            "German": "Über die Nebelberge weit",
             "Chinese": "阴山雾峦路难行"
         },
         "Dungeons Deep and Caverns Dim": {
@@ -2584,7 +2584,7 @@
             "Spanish": "Mazmorras Profundas y Cavernas Oscuras",
             "Portuguese": "Masmoiras Profundas e Cavernas Sombras",
             "Italian": "Prigioni Profonde e Caverne Oscure",
-            "German": "Tiefes Verlies und Dunkle Höhlen",
+            "German": "Zu Höhlen tief aus alter Zeit",
             "Chinese": "幽冥地穴杳时光"
         },
         "Flies and Spiders": {
@@ -2602,7 +2602,7 @@
             "Spanish": "La Montaña Solitaria",
             "Portuguese": "A Montanha Solitária",
             "Italian": "La Montagna Solitaria",
-            "German": "Der Einsame Berg",
+            "German": "Der einsame Berg",
             "Chinese": "孤山"
         },
         "The Battle of Five Armies": {
@@ -2611,7 +2611,7 @@
             "Spanish": "La Batalla de los Cinco Ejércitos",
             "Portuguese": "A Batalha dos Cinco Exércitos",
             "Italian": "La Battaglia dei Cinque Eserciti",
-            "German": "Die Schlacht der Fünf Heere",
+            "German": "Die Schlacht der fünf Heere",
             "Chinese": "五军之战"
         },
         "The Lord of the Rings Standalone": {
@@ -2638,7 +2638,7 @@
             "Spanish": "El Paso de los Pantanos",
             "Portuguese": "A Passagem dos Pântanos",
             "Italian": "Il Passaggio delle Paludi",
-            "German": "Der Durchgang der Sümpfe",
+            "German": "Die Durchquerung der Sümpfe",
             "Chinese": "沼泽秘径"
         },
         "Journey to the Cross-roads": {
@@ -2647,7 +2647,7 @@
             "Spanish": "Viaje a los Cruce de Caminos",
             "Portuguese": "Jornada aos Cruzamentos",
             "Italian": "Viaggio ai Bivii",
-            "German": "Reise zu den Kreuzwegen",
+            "German": "Wanderung zum Scheideweg",
             "Chinese": "十字路口之旅"
         },
         "Shelob's Lair": {
@@ -2656,7 +2656,7 @@
             "Spanish": "La Guarida de Shelob",
             "Portuguese": "A Caverna de Shelob",
             "Italian": "La Tana di Shelob",
-            "German": "Shelobs Höhle",
+            "German": "Kankras Lauer",
             "Chinese": "希洛布的巢穴"
         },
         "The Passing of the Grey Company": {
@@ -2723,10 +2723,12 @@
             "Chinese": "双人限量版入门套装（黑森林之黯）"
         },
         "The Oath": {
-            "English": "The Oath"
+            "English": "The Oath",
+            "German": "Der Eid"
         },
         "The Caves of Nibin-Dûm": {
-            "English": "The Caves of Nibin-Dûm"
+            "English": "The Caves of Nibin-Dûm",
+            "German": "Die Tiefen von Nibin-dûm"
         },
         "Print on Demand": {
             "English": "Print on Demand",
@@ -3139,7 +3141,7 @@
             "Spanish": "Un Cuchillo en la Oscuridad",
             "Portuguese": "Uma Faca na Escuridão",
             "Italian": "Un Coltello nel Buio",
-            "German": "Ein Messer in der Dunkelheit",
+            "German": "Ein Messer im Dunkeln",
             "Chinese": "暗夜白刃"
         },
         "Flight to the Ford": {
@@ -3148,7 +3150,7 @@
             "Spanish": "Huida al Vado",
             "Portuguese": "Fuga para o Vado",
             "Italian": "Fuga al Guado",
-            "German": "Flucht zum Furt",
+            "German": "Flucht zur Furt",
             "Chinese": "渡口逃亡"
         },
         "The Ring Goes South": {
@@ -3157,7 +3159,7 @@
             "Spanish": "El Anillo Va al Sur",
             "Portuguese": "O Anel Vai para o Sul",
             "Italian": "L'Anello Va a Sud",
-            "German": "Der Ring Geht nach Süden",
+            "German": "Der Ring geht nach Süden",
             "Chinese": "魔戒南下"
         },
         "Journey in the Dark": {
@@ -3166,7 +3168,7 @@
             "Spanish": "Viaje en la Oscuridad",
             "Portuguese": "Viagem na Escuridão",
             "Italian": "Viaggio nel Buio",
-            "German": "Reise im Dunkeln",
+            "German": "Eine Wanderung im Dunkeln",
             "Chinese": "黑暗中的旅程"
         },
         "Breaking of the Fellowship": {
@@ -3175,7 +3177,7 @@
             "Spanish": "La Ruptura de la Comunidad",
             "Portuguese": "A Quebra da Comunidade",
             "Italian": "La Rottura della Compagnia",
-            "German": "Die Zersplitterung der Gefährten",
+            "German": "Der Zerfall des Bundes",
             "Chinese": "分道扬镳"
         },
         "The Uruk-hai": {
@@ -3202,7 +3204,7 @@
             "Spanish": "El Camino a Isengard",
             "Portuguese": "A Estrada para Isengard",
             "Italian": "La Strada per Isengard",
-            "German": "Der Weg nach Isengard",
+            "German": "Der Weg nach Isengart",
             "Chinese": "通往艾森加德之路"
         },
         "The Massing at Osgiliath": {
