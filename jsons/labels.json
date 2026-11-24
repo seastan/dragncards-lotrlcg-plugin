@@ -141,7 +141,7 @@
             "Spanish": "El Cazador de Sueños",
             "Portuguese": "O Caçador de Sonhos",
             "Italian": "Il Cacciatore di Sogni",
-            "German": "Der Traumjäger",
+            "German": "Traumjäger",
             "Chinese": "追梦者"
         },
         "The Dark of Mirkwood": {
@@ -150,7 +150,7 @@
             "Spanish": "La Oscuridad de Mirkwood",
             "Portuguese": "A Escuridão de Mirkwood",
             "Italian": "Le Tenebre di Mirkwood",
-            "German": "Die Dunkelheit von Mirkwood",
+            "German": "Geheimnisse des Düsterwalds",
             "Chinese": "米尔克伍德的黑暗"
         },
         "roundAdvancementFunction": {
@@ -1732,13 +1732,22 @@
             "German": "Alptraum",
             "Chinese": "噩梦"
         },
+        "Player": {
+            "English": "Player",
+            "French": "Joueur",
+            "Spanish": "Jugador",
+            "Portuguese": "Jogador",
+            "Italian": "Giocatore",
+            "German": "Spieler",
+            "Chinese": "玩家"
+        },
         "Core Set & Shadows of Mirkwood": {
             "English": "Core Set & Shadows of Mirkwood",
             "French": "Jeu de base & Les Ombres de la Forêt Noire",
             "Spanish": "Juego base & Sombras de Mirkwood",
             "Portuguese": "Conjunto Básico & Sombras de Mirkwood",
             "Italian": "Set base & Le ombre di Mirkwood",
-            "German": "Kernset & Schatten von Mirkwood",
+            "German": "Grundspiel & Schatten des Düsterwalds",
             "Chinese": "核心包 & 幽暗密林的阴影"
         },
         "Passage Through Mirkwood": {
@@ -1747,7 +1756,7 @@
             "Spanish": "Paso a través de Mirkwood",
             "Portuguese": "Passagem por Mirkwood",
             "Italian": "Passaggio attraverso Mirkwood",
-            "German": "Durchgang durch Mirkwood",
+            "German": "Weg durch den Düsterwald",
             "Chinese": "穿越黑森林"
         },
         "Journey Along the Anduin": {
@@ -1756,7 +1765,7 @@
             "Spanish": "Viaje a lo largo del Anduin",
             "Portuguese": "Jornada ao longo do Anduin",
             "Italian": "Viaggio lungo l'Anduin",
-            "German": "Reise entlang des Anduin",
+            "German": "Reise den Anduin hinab",
             "Chinese": "沿河而下"
         },
         "Escape from Dol Guldur": {
@@ -1774,7 +1783,7 @@
             "Spanish": "La Caza de Gollum",
             "Portuguese": "A Caçada a Gollum",
             "Italian": "La Caccia a Gollum",
-            "German": "Die Jagd nach Gollum",
+            "German": "Auf der Jagd nach Gollum",
             "Chinese": "追捕咕噜"
         },
         "Conflict at the Carrock": {
@@ -1783,7 +1792,7 @@
             "Spanish": "Conflicto en Carrock",
             "Portuguese": "Conflito no Carrock",
             "Italian": "Conflitto al Carrock",
-            "German": "Konflikt am Carrock",
+            "German": "Der Kampf am Carrock",
             "Chinese": "激战卡洛克"
         },
         "A Journey to Rhosgobel": {
@@ -1792,7 +1801,7 @@
             "Spanish": "Un viaje a Rhosgobel",
             "Portuguese": "Uma jornada para Rhosgobel",
             "Italian": "Un viaggio a Rhosgobel",
-            "German": "Eine Reise nach Rhosgobel",
+            "German": "Die Reise nach Rhosgobel",
             "Chinese": "罗斯加堡之旅"
         },
         "The Hills of Emyn Muil": {
@@ -1810,7 +1819,7 @@
             "Spanish": "Los pantanos muertos",
             "Portuguese": "Os Pântanos Mortos",
             "Italian": "Le Paludi Morte",
-            "German": "Die Toten Moore",
+            "German": "Die Totensümpfe",
             "Chinese": "死亡沼泽"
         },
         "Return to Mirkwood": {
@@ -1819,7 +1828,7 @@
             "Spanish": "Regreso a Mirkwood",
             "Portuguese": "Retorno a Mirkwood",
             "Italian": "Ritorno a Mirkwood",
-            "German": "Rückkehr nach Mirkwood",
+            "German": "Die Rückkehr zum Düsterwald",
             "Chinese": "重返幽暗密林"
         },
         "Khazad-dûm & Dwarrowdelf": {
@@ -1828,7 +1837,7 @@
             "Spanish": "Khazad-dûm & Dwarrowdelf",
             "Portuguese": "Khazad-dûm & Dwarrowdelf",
             "Italian": "Khazad-dûm & Dwarrowdelf",
-            "German": "Khazad-dûm & Dwarrowdelf",
+            "German": "Khazad-dûm & Zwergenbinge",
             "Chinese": "凯撒督姆 & 矮人故乡"
         },
         "Into the Pit": {
@@ -1837,7 +1846,7 @@
             "Spanish": "En el Pozo",
             "Portuguese": "No Poço",
             "Italian": "Nel Pozzo",
-            "German": "In die Grube",
+            "German": "In die schwarze Grube",
             "Chinese": "深入矿坑"
         },
         "The Seventh Level": {
@@ -1846,7 +1855,7 @@
             "Spanish": "El Séptimo Nivel",
             "Portuguese": "O Sétimo Nível",
             "Italian": "Il Settimo Livello",
-            "German": "Die Siebte Ebene",
+            "German": "Die siebente Sohle",
             "Chinese": "第七层"
         },
         "Flight from Moria": {
@@ -1864,7 +1873,7 @@
             "Spanish": "La Puerta del Cuerno Rojo",
             "Portuguese": "A Porta do Corno Vermelho",
             "Italian": "La Porta del Corno Rosso",
-            "German": "Das Rote Horn Tor",
+            "German": "Der Rothornpass",
             "Chinese": "红角隘口"
         },
         "Road to Rivendell": {
@@ -1873,7 +1882,7 @@
             "Spanish": "Camino a Rivendel",
             "Portuguese": "Caminho para Rivendell",
             "Italian": "La Strada per Rivendell",
-            "German": "Der Weg nach Rivendell",
+            "German": "Der Weg nach Bruchtal",
             "Chinese": "瑞文戴尔之路"
         },
         "The Watcher in the Water": {
@@ -1891,7 +1900,7 @@
             "Spanish": "La Larga Oscuridad",
             "Portuguese": "A Longa Escuridão",
             "Italian": "La Lunga Oscurità",
-            "German": "Die Lange Dunkelheit",
+            "German": "Die lange Dunkelheit",
             "Chinese": "漫长的黑暗"
         },
         "Foundations of Stone": {
@@ -1900,7 +1909,7 @@
             "Spanish": "Las Fundaciones de Piedra",
             "Portuguese": "As Fundamentos de Pedra",
             "Italian": "Le Fondamenta di Pietra",
-            "German": "Fundamente aus Stein",
+            "German": "Die Grundfesten der Welt",
             "Chinese": "大地的根基"
         },
         "Shadow and Flame": {
@@ -1918,7 +1927,7 @@
             "Spanish": "Hijos de Númenor & Contra la Sombra",
             "Portuguese": "Heróis de Númenor & Contra a Sombra",
             "Italian": "Eredi di Númenor & Contro l'Ombra",
-            "German": "Erben von Númenor & Gegen den Schatten",
+            "German": "Die Erben von Númenor & Gegen den Schatten",
             "Chinese": "努门诺尔的后裔 & 对抗暗影"
         },
         "Peril In Pelargir": {
@@ -1954,7 +1963,7 @@
             "Spanish": "El Miedo del Regente",
             "Portuguese": "O Medo do Regente",
             "Italian": "La Paura del Sovrintendente",
-            "German": "Die Angst des Verwalters",
+            "German": "Die Furcht des Truchsess",
             "Chinese": "摄政王的恐惧"
         },
         "The Drúadan Forest": {
@@ -1963,7 +1972,7 @@
             "Spanish": "El Bosque Drúadan",
             "Portuguese": "A Floresta Drúadan",
             "Italian": "La Foresta Drúadan",
-            "German": "Der Drúadanwald",
+            "German": "Der Drúadan-Wald",
             "Chinese": "督伊顿森林"
         },
         "Encounter at Amon Dîn": {
@@ -1972,7 +1981,7 @@
             "Spanish": "Encuentro en Amon Dîn",
             "Portuguese": "Encontro em Amon Dîn",
             "Italian": "Incontro a Amon Dîn",
-            "German": "Begegnung bei Amon Dîn",
+            "German": "Begegnung am Amon Dîn",
             "Chinese": "阿蒙丁山的遭遇"
         },
         "Assault on Osgiliath": {
@@ -1981,7 +1990,7 @@
             "Spanish": "Asalto a Osgiliath",
             "Portuguese": "Assalto a Osgiliath",
             "Italian": "Assalto a Osgiliath",
-            "German": "Angriff auf Osgiliath",
+            "German": "Ansturm auf Osgiliath",
             "Chinese": "强袭奥斯吉力亚斯"
         },
         "The Blood of Gondor": {
@@ -1990,7 +1999,7 @@
             "Spanish": "La Sangre de Gondor",
             "Portuguese": "O Sangue de Gondor",
             "Italian": "Il Sangue di Gondor",
-            "German": "Das Blut von Gondor",
+            "German": "Das Blut Gondors",
             "Chinese": "刚铎之血"
         },
         "The Morgul Vale": {
@@ -2008,7 +2017,7 @@
             "Spanish": "La Voz de Isengard & El Creador de Anillos",
             "Portuguese": "A Voz de Isengard & O Criador de Anéis",
             "Italian": "La Voce di Isengard & Il Fabbro degli Anelli",
-            "German": "Die Stimme von Isengard & Der Ringeschmied",
+            "German": "Die Stimme Isengarts & Ringmacher",
             "Chinese": "艾辛格之声 & 铸戒者"
         },
         "Fords of Isen": {
@@ -2044,7 +2053,7 @@
             "Spanish": "La Trampa de Dunland",
             "Portuguese": "A Armadilha de Dunland",
             "Italian": "La Trappola di Dunland",
-            "German": "Die Falle von Dunland",
+            "German": "Die Dúnland-Falle",
             "Chinese": "登兰德的陷阱"
         },
         "The Three Trials": {
@@ -2053,7 +2062,7 @@
             "Spanish": "Las Tres Pruebas",
             "Portuguese": "Os Três Desafios",
             "Italian": "Le Tre Prove",
-            "German": "Die Drei Prüfungen",
+            "German": "Die drei Prüfungen",
             "Chinese": "三场试炼"
         },
         "Trouble in Tharbad": {
@@ -2062,7 +2071,7 @@
             "Spanish": "Problemas en Tharbad",
             "Portuguese": "Problemas em Tharbad",
             "Italian": "Problemi a Tharbad",
-            "German": "Probleme in Tharbad",
+            "German": "Ärger in Tharbad",
             "Chinese": "塔巴德的麻烦"
         },
         "The Nîn-in-Eilph": {
@@ -2071,7 +2080,7 @@
             "Spanish": "El Nin en Eilph",
             "Portuguese": "O Nin em Eilph",
             "Italian": "Il Nin in Eilph",
-            "German": "Der Nin in Eilph",
+            "German": "Der Nîn-in-Eilph",
             "Chinese": "天鹅沼泽"
         },
         "Celebrimbor's Secret": {
@@ -2089,7 +2098,7 @@
             "Spanish": "La Corona con Cuernos",
             "Portuguese": "A Coroa com Chifres",
             "Italian": "La Corona Cornuta",
-            "German": "Die Gehörnte Krone",
+            "German": "Die Geweihkrone",
             "Chinese": "鹿角王冠"
         },
         "The Lost Realm & Angmar Awakened": {
@@ -2098,7 +2107,7 @@
             "Spanish": "El Reino Perdido & Angmar Despierto",
             "Portuguese": "O Reino Perdido & Angmar Desperto",
             "Italian": "Il Regno Perduto & Angmar Risvegliato",
-            "German": "Das Verlorene Reich & Angmar Erwacht",
+            "German": "Das Verlorene Königreich & Angmar erwacht",
             "Chinese": "失落的王国 & 安格玛觉醒"
         },
         "Intruders in Chetwood": {
@@ -2134,7 +2143,7 @@
             "Spanish": "Las Tierras Desoladas de Eriador",
             "Portuguese": "As Terras Desoladas de Eriador",
             "Italian": "Le Terre Desolate di Eriador",
-            "German": "Die Wüsten von Eriador",
+            "German": "Die Ödlande von Eriador",
             "Chinese": "伊利雅德荒原"
         },
         "Escape from Mount Gram": {
@@ -2143,7 +2152,7 @@
             "Spanish": "Escape del Monte Gram",
             "Portuguese": "Fuga do Monte Gram",
             "Italian": "Fuga dal Monte Gram",
-            "German": "Flucht vom Berg Gram",
+            "German": "Flucht aus dem Berg Gram",
             "Chinese": "逃离格兰山"
         },
         "Across the Ettenmoors": {
@@ -2152,7 +2161,7 @@
             "Spanish": "A través de los Ettenmoors",
             "Portuguese": "Através dos Ettenmoors",
             "Italian": "Attraverso gli Ettenmoors",
-            "German": "Über die Ettenmoors",
+            "German": "Durch die Ettenöden",
             "Chinese": "横穿伊顿荒原"
         },
         "The Treachery of Rhudaur": {
@@ -2179,7 +2188,7 @@
             "Spanish": "El Reino del Miedo",
             "Portuguese": "O Reino do Terror",
             "Italian": "Il Regno del Terrore",
-            "German": "Das Schreckensreich",
+            "German": "Das schaurige Reich",
             "Chinese": "亡者国度"
         },
         "The Grey Havens & Dream-chaser": {
@@ -2188,7 +2197,7 @@
             "Spanish": "Los Puertos Grises & El Cazador de Sueños",
             "Portuguese": "Os Portos Cinzentos & O Caçador de Sonhos",
             "Italian": "I Porti Grigi & Il Cacciatore di Sogni",
-            "German": "Die Grauen Hafen & Der Traumjäger",
+            "German": "Die Grauen Anfurten & Traumjäger",
             "Chinese": "灰港岸 & 逐梦者"
         },
         "Voyage Across Belegaer": {
@@ -2224,7 +2233,7 @@
             "Spanish": "Huida del Llamador de Tormentas",
             "Portuguese": "Fuga do Chamador da Tormenta",
             "Italian": "Fuga del Chiamatore della Tempesta",
-            "German": "Flucht des Sturmrufer",
+            "German": "Flucht der Sturmrufer",
             "Chinese": "追击风暴召唤者"
         },
         "The Thing in the Depths": {
@@ -2242,7 +2251,7 @@
             "Spanish": "Templo de los Engañados",
             "Portuguese": "Templo dos Enganados",
             "Italian": "Tempio degli Ingannati",
-            "German": "Tempel der Getäuschten",
+            "German": "Tempel der Vergangenen",
             "Chinese": "欺诈者神庙"
         },
         "The Drowned Ruins": {
@@ -2251,7 +2260,7 @@
             "Spanish": "Las Ruinas Sumergidas",
             "Portuguese": "As Ruínas Submersas",
             "Italian": "Le Rovine Sommersa",
-            "German": "Die Ertrunkenen Ruinen",
+            "German": "Die versunkenen Ruinen",
             "Chinese": "淹没的废墟"
         },
         "A Storm on Cobas Haven": {
@@ -2260,7 +2269,7 @@
             "Spanish": "Una Tormenta en Cobas Haven",
             "Portuguese": "Uma Tempestade em Cobas Haven",
             "Italian": "Una Tempesta su Cobas Haven",
-            "German": "Ein Sturm auf Cobas Haven",
+            "German": "Sturm auf Cobas Hafen",
             "Chinese": "科巴斯港的风暴"
         },
         "The City of Corsairs": {
@@ -2278,7 +2287,7 @@
             "Spanish": "Las Arenas de Harad & Los Haradrim",
             "Portuguese": "As Areias de Harad & Os Haradrim",
             "Italian": "Le Sabbie di Harad & Gli Haradrim",
-            "German": "Die Sanddünen von Harad & Die Haradrim",
+            "German": "Der Sand von Harad & Haradrim",
             "Chinese": "哈拉德之沙 & 哈拉德林"
         },
         "Escape from Umbar": {
@@ -2314,7 +2323,7 @@
             "Spanish": "Los Mumakil",
             "Portuguese": "Os Mumakil",
             "Italian": "I Mumakil",
-            "German": "Die Mumakil",
+            "German": "Die Mûmakil",
             "Chinese": "猛犸巨象"
         },
         "Race Across Harad": {
@@ -2323,7 +2332,7 @@
             "Spanish": "Carrera a través de Harad",
             "Portuguese": "Corrida através de Harad",
             "Italian": "Corsa attraverso Harad",
-            "German": "Rennen durch Harad",
+            "German": "Jagd durch Harad",
             "Chinese": "哈拉德竞逐"
         },
         "Beneath the Sands": {
@@ -2332,7 +2341,7 @@
             "Spanish": "Bajo las Arenas",
             "Portuguese": "Sob as Areias",
             "Italian": "Sotto le Sabbie",
-            "German": "Unter den Sanden",
+            "German": "Unter dem Sand",
             "Chinese": "沙土之下"
         },
         "The Black Serpent": {
@@ -2341,7 +2350,7 @@
             "Spanish": "La Serpiente Negra",
             "Portuguese": "A Serpente Negra",
             "Italian": "Il Serpente Nero",
-            "German": "Die Schwarze Schlange",
+            "German": "Die schwarze Schlange",
             "Chinese": "黑蛇"
         },
         "The Dungeons of Cirith Gurat": {
@@ -2359,7 +2368,7 @@
             "Spanish": "Los Cruces de Poros",
             "Portuguese": "As Travessias de Poros",
             "Italian": "I Passaggi di Poros",
-            "German": "Die Übergänge von Poros",
+            "German": "Der Übergang des Poros",
             "Chinese": "波罗斯渡口"
         },
         "The Wilds of Rhovanion & Ered Mithrin": {
@@ -2368,7 +2377,7 @@
             "Spanish": "Las Tierras Salvajes de Rhovanion & Ered Mithrin",
             "Portuguese": "As Terras Selvagens de Rhovanion & Ered Mithrin",
             "Italian": "Le Terre Selvagge di Rhovanion & Ered Mithrin",
-            "German": "Die Wildnisse von Rhovanion & Ered Mithrin",
+            "German": "Die Wildnis von Rhovanion & Ered Mithrin",
             "Chinese": "罗马尼安的荒野 & 伊瑞德米斯林"
         },
         "Journey Up the Anduin": {
@@ -2404,7 +2413,7 @@
             "Spanish": "La Ciénaga Marchita",
             "Portuguese": "A Charneca Murcha",
             "Italian": "La Brughiera Inaridita",
-            "German": "Die Verwüstete Heide",
+            "German": "Die dürre Heide",
             "Chinese": "凋谢荒地"
         },
         "Roam Across Rhovanion": {
@@ -2413,7 +2422,7 @@
             "Spanish": "Vagar por Rhovanion",
             "Portuguese": "Vaguear por Rhovanion",
             "Italian": "Vagare per Rhovanion",
-            "German": "Durch Rhovanion Streifen",
+            "German": "Kreuz und quer durch Rhovanion",
             "Chinese": "漫游罗马尼安"
         },
         "Fire in the Night": {
@@ -2440,7 +2449,7 @@
             "Spanish": "Montaña Gundabad",
             "Portuguese": "Montanha Gundabad",
             "Italian": "Monte Gundabad",
-            "German": "Der Gundabad Berg",
+            "German": "Der Berg Gundabad",
             "Chinese": "刚达巴山"
         },
         "The Fate of Wilderland": {
@@ -2458,7 +2467,7 @@
             "Spanish": "Una Sombra en el Este & Venganza de Mordor",
             "Portuguese": "Uma Sombra no Leste & A Vingança de Mordor",
             "Italian": "Un'Ombra a Est & La Vendetta di Mordor",
-            "German": "Ein Schatten im Osten & Rache von Mordor",
+            "German": "Ein Schatten im Osten & Die Rache Mordors",
             "Chinese": "东方魔影 & 摩多的复仇"
         },
         "The River Running": {
@@ -2494,7 +2503,7 @@
             "Spanish": "Ira y Ruina",
             "Portuguese": "Ira e Ruína",
             "Italian": "Collera e Rovina",
-            "German": "Zorn und Ruin",
+            "German": "Zorn und Verderben",
             "Chinese": "愤怒与毁灭"
         },
         "The City of Ulfast": {
@@ -2503,7 +2512,7 @@
             "Spanish": "La Ciudad de Ulfast",
             "Portuguese": "A Cidade de Ulfast",
             "Italian": "La Città di Ulfast",
-            "German": "Die Stadt von Ulfast",
+            "German": "Die Stadt Ulfast",
             "Chinese": "乌法斯特之城"
         },
         "Challenge of the Wainriders": {
@@ -2512,7 +2521,7 @@
             "Spanish": "Desafío de los Wainriders",
             "Portuguese": "Desafio dos Wainriders",
             "Italian": "Sfida dei Wainriders",
-            "German": "Herausforderung der Wainriders",
+            "German": "Das große Wagenrennen",
             "Chinese": "战车民的挑战"
         },
         "Under the Ash Mountains": {
@@ -2521,7 +2530,7 @@
             "Spanish": "Bajo las Montañas de Ceniza",
             "Portuguese": "Sob as Montanhas de Cinzas",
             "Italian": "Sotto le Montagne di Cenere",
-            "German": "Unter den Aschenbergen",
+            "German": "Unter dem Aschengebirge",
             "Chinese": "灰烬山下"
         },
         "The Land of Sorrow": {
@@ -2530,7 +2539,7 @@
             "Spanish": "La Tierra de la Tristeza",
             "Portuguese": "A Terra da Tristeza",
             "Italian": "La Terra della Tristezza",
-            "German": "Das Land des Kummers",
+            "German": "Das leidvolle Land",
             "Chinese": "悲伤之地"
         },
         "The Fortress of Nurn": {
@@ -2548,7 +2557,7 @@
             "Spanish": "El Hobbit",
             "Portuguese": "O Hobbit",
             "Italian": "Lo Hobbit",
-            "German": "Der Hobbit",
+            "German": "Der kleine Hobbit",
             "Chinese": "霍比特人"
         },
         "We Must Away, Ere Break of Day": {
@@ -2557,7 +2566,7 @@
             "Spanish": "Debemos irnos antes del amanecer",
             "Portuguese": "Devemos partir antes do amanhecer",
             "Italian": "Dobbiamo partire prima dell'alba",
-            "German": "Wir müssen vor Tagesanbruch aufbrechen",
+            "German": "Da ziehen wir hin, da lockt Gewinn",
             "Chinese": "荷戟赴险莫待旦"
         },
         "Over the Misty Mountains Grim": {
@@ -2566,7 +2575,7 @@
             "Spanish": "Sobre las Montañas Brumosas",
             "Portuguese": "Além das Montanhas Nebulosas",
             "Italian": "Oltre le Montagne Nebbiose",
-            "German": "Über die Nebelberge",
+            "German": "Über die Nebelberge weit",
             "Chinese": "阴山雾峦路难行"
         },
         "Dungeons Deep and Caverns Dim": {
@@ -2575,7 +2584,7 @@
             "Spanish": "Mazmorras Profundas y Cavernas Oscuras",
             "Portuguese": "Masmoiras Profundas e Cavernas Sombras",
             "Italian": "Prigioni Profonde e Caverne Oscure",
-            "German": "Tiefes Verlies und Dunkle Höhlen",
+            "German": "Zu Höhlen tief aus alter Zeit",
             "Chinese": "幽冥地穴杳时光"
         },
         "Flies and Spiders": {
@@ -2593,7 +2602,7 @@
             "Spanish": "La Montaña Solitaria",
             "Portuguese": "A Montanha Solitária",
             "Italian": "La Montagna Solitaria",
-            "German": "Der Einsame Berg",
+            "German": "Der einsame Berg",
             "Chinese": "孤山"
         },
         "The Battle of Five Armies": {
@@ -2602,7 +2611,7 @@
             "Spanish": "La Batalla de los Cinco Ejércitos",
             "Portuguese": "A Batalha dos Cinco Exércitos",
             "Italian": "La Battaglia dei Cinque Eserciti",
-            "German": "Die Schlacht der Fünf Heere",
+            "German": "Die Schlacht der fünf Heere",
             "Chinese": "五军之战"
         },
         "The Lord of the Rings Standalone": {
@@ -2629,7 +2638,7 @@
             "Spanish": "El Paso de los Pantanos",
             "Portuguese": "A Passagem dos Pântanos",
             "Italian": "Il Passaggio delle Paludi",
-            "German": "Der Durchgang der Sümpfe",
+            "German": "Die Durchquerung der Sümpfe",
             "Chinese": "沼泽秘径"
         },
         "Journey to the Cross-roads": {
@@ -2638,7 +2647,7 @@
             "Spanish": "Viaje a los Cruce de Caminos",
             "Portuguese": "Jornada aos Cruzamentos",
             "Italian": "Viaggio ai Bivii",
-            "German": "Reise zu den Kreuzwegen",
+            "German": "Wanderung zum Scheideweg",
             "Chinese": "十字路口之旅"
         },
         "Shelob's Lair": {
@@ -2647,7 +2656,7 @@
             "Spanish": "La Guarida de Shelob",
             "Portuguese": "A Caverna de Shelob",
             "Italian": "La Tana di Shelob",
-            "German": "Shelobs Höhle",
+            "German": "Kankras Lauer",
             "Chinese": "希洛布的巢穴"
         },
         "The Passing of the Grey Company": {
@@ -2714,10 +2723,12 @@
             "Chinese": "双人限量版入门套装（黑森林之黯）"
         },
         "The Oath": {
-            "English": "The Oath"
+            "English": "The Oath",
+            "German": "Der Eid"
         },
         "The Caves of Nibin-Dûm": {
-            "English": "The Caves of Nibin-Dûm"
+            "English": "The Caves of Nibin-Dûm",
+            "German": "Die Tiefen von Nibin-dûm"
         },
         "Print on Demand": {
             "English": "Print on Demand",
@@ -2725,7 +2736,7 @@
             "Spanish": "Impresión Bajo Demanda",
             "Portuguese": "Impressão Sob Demanda",
             "Italian": "Stampa su Richiesta",
-            "German": "Druck auf Abruf",
+            "German": "Print on Demand",
             "Chinese": "独立剧情小扩（POD）"
         },
         "Attack on Dol Guldur": {
@@ -2743,7 +2754,7 @@
             "Spanish": "La Misión del Mago",
             "Portuguese": "A Missão do Mago",
             "Italian": "La Quest del Mago",
-            "German": "Die Quest des Zauberers",
+            "German": "Der Auftrag des Zauberers",
             "Chinese": "巫师的任务"
         },
         "The Woodland Realm": {
@@ -2752,7 +2763,7 @@
             "Spanish": "El Reino del Bosque",
             "Portuguese": "O Reino da Floresta",
             "Italian": "Il Regno Forestale",
-            "German": "Das Waldreich",
+            "German": "Das Waldlandreich",
             "Chinese": "林地王国"
         },
         "The Mines of Moria": {
@@ -3130,7 +3141,7 @@
             "Spanish": "Un Cuchillo en la Oscuridad",
             "Portuguese": "Uma Faca na Escuridão",
             "Italian": "Un Coltello nel Buio",
-            "German": "Ein Messer in der Dunkelheit",
+            "German": "Ein Messer im Dunkeln",
             "Chinese": "暗夜白刃"
         },
         "Flight to the Ford": {
@@ -3139,7 +3150,7 @@
             "Spanish": "Huida al Vado",
             "Portuguese": "Fuga para o Vado",
             "Italian": "Fuga al Guado",
-            "German": "Flucht zum Furt",
+            "German": "Flucht zur Furt",
             "Chinese": "渡口逃亡"
         },
         "The Ring Goes South": {
@@ -3148,7 +3159,7 @@
             "Spanish": "El Anillo Va al Sur",
             "Portuguese": "O Anel Vai para o Sul",
             "Italian": "L'Anello Va a Sud",
-            "German": "Der Ring Geht nach Süden",
+            "German": "Der Ring geht nach Süden",
             "Chinese": "魔戒南下"
         },
         "Journey in the Dark": {
@@ -3157,7 +3168,7 @@
             "Spanish": "Viaje en la Oscuridad",
             "Portuguese": "Viagem na Escuridão",
             "Italian": "Viaggio nel Buio",
-            "German": "Reise im Dunkeln",
+            "German": "Eine Wanderung im Dunkeln",
             "Chinese": "黑暗中的旅程"
         },
         "Breaking of the Fellowship": {
@@ -3166,7 +3177,7 @@
             "Spanish": "La Ruptura de la Comunidad",
             "Portuguese": "A Quebra da Comunidade",
             "Italian": "La Rottura della Compagnia",
-            "German": "Die Zersplitterung der Gefährten",
+            "German": "Der Zerfall des Bundes",
             "Chinese": "分道扬镳"
         },
         "The Uruk-hai": {
@@ -3193,7 +3204,7 @@
             "Spanish": "El Camino a Isengard",
             "Portuguese": "A Estrada para Isengard",
             "Italian": "La Strada per Isengard",
-            "German": "Der Weg nach Isengard",
+            "German": "Der Weg nach Isengart",
             "Chinese": "通往艾森加德之路"
         },
         "The Massing at Osgiliath": {
@@ -3202,7 +3213,7 @@
             "Spanish": "El Asalto a Osgiliath",
             "Portuguese": "O Massacre em Osgiliath",
             "Italian": "L'Assalto a Osgiliath",
-            "German": "Das Aufgebot in Osgiliath",
+            "German": "Der Feind in Osgiliath",
             "Chinese": "兵临旧都"
         },
         "The Battle of Lake-town": {
@@ -3211,7 +3222,7 @@
             "Spanish": "La Batalla de Lago Town",
             "Portuguese": "A Batalha da Cidade do Lago",
             "Italian": "La Battaglia della Città del Lago",
-            "German": "Die Schlacht um Lake Town",
+            "German": "Die Schlacht um Seestadt",
             "Chinese": "长湖镇之战"
         },
         "The Stone of Erech": {
@@ -3238,7 +3249,7 @@
             "Spanish": "Niebla sobre las Colinas de los Túmulos",
             "Portuguese": "Nevoeiro sobre os Montes dos Túmulos",
             "Italian": "Nebbia sulle Colline delle Tombe",
-            "German": "Nebel über den Hügelgräbern",
+            "German": "Nebel auf den Hügelgräberhöhen",
             "Chinese": "古墓岗之雾"
         },
         "The Ruins of Belegost": {
@@ -3256,7 +3267,7 @@
             "Spanish": "Asesinato en la Poni Saltarina",
             "Portuguese": "Assassinato no Pônei Saltitante",
             "Italian": "Omicidio alla Locanda del Poney Saltante",
-            "German": "Mord im Trampelponny",
+            "German": "Mord im Tänzelnden Pony",
             "Chinese": "跃马旅店的谋杀"
         },
         "Standard The Siege of Annúminas": {
@@ -3265,7 +3276,7 @@
             "Spanish": "Estándar El Asedio de Annuminas",
             "Portuguese": "Padrão O Cerco de Annuminas",
             "Italian": "Standard L'Assedio di Annuminas",
-            "German": "Standard Die Belagerung von Annuminas",
+            "German": "Standard Die Belagerung von Annúminas",
             "Chinese": "围攻阿努米纳斯普通模式"
         },
         "Epic The Siege of Annúminas": {
@@ -3274,7 +3285,7 @@
             "Spanish": "Épico El Asedio de Annuminas",
             "Portuguese": "Épico O Cerco de Annuminas",
             "Italian": "Epico L'Assedio di Annuminas",
-            "German": "Episch Die Belagerung von Annuminas",
+            "German": "Episch Die Belagerung von Annúminas",
             "Chinese": "围攻阿努米纳斯史诗模式"
         },
         "The Lord of the Rings": {
@@ -3304,7 +3315,7 @@
             "Spanish": "Angmar Despierto",
             "Portuguese": "Angmar Desperto",
             "Italian": "Angmar Risvegliato",
-            "German": "Angmar Erwacht",
+            "German": "Angmar erwacht",
             "Chinese": "安格玛觉醒"
         },
         "name": {
