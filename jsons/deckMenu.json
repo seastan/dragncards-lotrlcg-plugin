@@ -1,7 +1,7 @@
 {
     "deckMenu": {
         "subMenus": [
-            {   "label": "Player",
+            {   "label": "id:Player",
                 "deckLists": [
                     {"label": "id:coreLeadership", "deckListId": "coreLeadership"},
                     {"label": "id:coreLore", "deckListId": "coreLore"},

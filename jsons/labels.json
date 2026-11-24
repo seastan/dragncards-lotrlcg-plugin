@@ -150,7 +150,7 @@
             "Spanish": "La Oscuridad de Mirkwood",
             "Portuguese": "A Escuridão de Mirkwood",
             "Italian": "Le Tenebre di Mirkwood",
-            "German": "Die Dunkelheit von Mirkwood",
+            "German": "Geheimnisse des Düsterwalds",
             "Chinese": "米尔克伍德的黑暗"
         },
         "roundAdvancementFunction": {
@@ -1732,13 +1732,22 @@
             "German": "Alptraum",
             "Chinese": "噩梦"
         },
+        "Player": {
+            "English": "Player",
+            "French": "Joueur",
+            "Spanish": "Jugador",
+            "Portuguese": "Jogador",
+            "Italian": "Giocatore",
+            "German": "Spieler",
+            "Chinese": "玩家"
+        },
         "Core Set & Shadows of Mirkwood": {
             "English": "Core Set & Shadows of Mirkwood",
             "French": "Jeu de base & Les Ombres de la Forêt Noire",
             "Spanish": "Juego base & Sombras de Mirkwood",
             "Portuguese": "Conjunto Básico & Sombras de Mirkwood",
             "Italian": "Set base & Le ombre di Mirkwood",
-            "German": "Kernset & Schatten von Mirkwood",
+            "German": "Grundspiel & Schatten des Düsterwalds",
             "Chinese": "核心包 & 幽暗密林的阴影"
         },
         "Passage Through Mirkwood": {
@@ -1828,7 +1837,7 @@
             "Spanish": "Khazad-dûm & Dwarrowdelf",
             "Portuguese": "Khazad-dûm & Dwarrowdelf",
             "Italian": "Khazad-dûm & Dwarrowdelf",
-            "German": "Khazad-dûm & Dwarrowdelf",
+            "German": "Khazad-dûm & Zwergenbinge",
             "Chinese": "凯撒督姆 & 矮人故乡"
         },
         "Into the Pit": {
@@ -1918,7 +1927,7 @@
             "Spanish": "Hijos de Númenor & Contra la Sombra",
             "Portuguese": "Heróis de Númenor & Contra a Sombra",
             "Italian": "Eredi di Númenor & Contro l'Ombra",
-            "German": "Erben von Númenor & Gegen den Schatten",
+            "German": "Die Erben von Númenor & Gegen den Schatten",
             "Chinese": "努门诺尔的后裔 & 对抗暗影"
         },
         "Peril In Pelargir": {
@@ -2008,7 +2017,7 @@
             "Spanish": "La Voz de Isengard & El Creador de Anillos",
             "Portuguese": "A Voz de Isengard & O Criador de Anéis",
             "Italian": "La Voce di Isengard & Il Fabbro degli Anelli",
-            "German": "Die Stimme von Isengard & Der Ringeschmied",
+            "German": "Die Stimme Isengarts & Ringmacher",
             "Chinese": "艾辛格之声 & 铸戒者"
         },
         "Fords of Isen": {
@@ -2098,7 +2107,7 @@
             "Spanish": "El Reino Perdido & Angmar Despierto",
             "Portuguese": "O Reino Perdido & Angmar Desperto",
             "Italian": "Il Regno Perduto & Angmar Risvegliato",
-            "German": "Das Verlorene Reich & Angmar Erwacht",
+            "German": "Das Verlorene Königreich & Angmar erwacht",
             "Chinese": "失落的王国 & 安格玛觉醒"
         },
         "Intruders in Chetwood": {
@@ -2188,7 +2197,7 @@
             "Spanish": "Los Puertos Grises & El Cazador de Sueños",
             "Portuguese": "Os Portos Cinzentos & O Caçador de Sonhos",
             "Italian": "I Porti Grigi & Il Cacciatore di Sogni",
-            "German": "Die Grauen Hafen & Der Traumjäger",
+            "German": "Die Grauen Anfurten & Traumjäger",
             "Chinese": "灰港岸 & 逐梦者"
         },
         "Voyage Across Belegaer": {
@@ -2278,7 +2287,7 @@
             "Spanish": "Las Arenas de Harad & Los Haradrim",
             "Portuguese": "As Areias de Harad & Os Haradrim",
             "Italian": "Le Sabbie di Harad & Gli Haradrim",
-            "German": "Die Sanddünen von Harad & Die Haradrim",
+            "German": "Der Sand von Harad & Haradrim",
             "Chinese": "哈拉德之沙 & 哈拉德林"
         },
         "Escape from Umbar": {
@@ -2368,7 +2377,7 @@
             "Spanish": "Las Tierras Salvajes de Rhovanion & Ered Mithrin",
             "Portuguese": "As Terras Selvagens de Rhovanion & Ered Mithrin",
             "Italian": "Le Terre Selvagge di Rhovanion & Ered Mithrin",
-            "German": "Die Wildnisse von Rhovanion & Ered Mithrin",
+            "German": "Die Wildnis von Rhovanion & Ered Mithrin",
             "Chinese": "罗马尼安的荒野 & 伊瑞德米斯林"
         },
         "Journey Up the Anduin": {
@@ -2458,7 +2467,7 @@
             "Spanish": "Una Sombra en el Este & Venganza de Mordor",
             "Portuguese": "Uma Sombra no Leste & A Vingança de Mordor",
             "Italian": "Un'Ombra a Est & La Vendetta di Mordor",
-            "German": "Ein Schatten im Osten & Rache von Mordor",
+            "German": "Ein Schatten im Osten & Die Rache Mordors",
             "Chinese": "东方魔影 & 摩多的复仇"
         },
         "The River Running": {
@@ -2725,7 +2734,7 @@
             "Spanish": "Impresión Bajo Demanda",
             "Portuguese": "Impressão Sob Demanda",
             "Italian": "Stampa su Richiesta",
-            "German": "Druck auf Abruf",
+            "German": "Print on Demand",
             "Chinese": "独立剧情小扩（POD）"
         },
         "Attack on Dol Guldur": {
